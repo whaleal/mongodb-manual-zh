@@ -12,7 +12,7 @@ MongoDB  中文汉化
 联系方式   
 负责人  
 H   
-其他  
+报告问题  
 在我们的 MongoDB-Manual-zh/issues github 上提 issue.  
 发邮件到 Email:预留位置    
 
