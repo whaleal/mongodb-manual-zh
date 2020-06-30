@@ -3,6 +3,7 @@ MongoDB  中文汉化
 
 
 原文地址:[https://docs.mongodb.com/manual/](https://docs.mongodb.com/manual/)
+汉化预览地址[https://hbn-king.gitbook.io/mongodb-doc-zh/](https://hbn-king.gitbook.io/mongodb-doc-zh/)
 
 协议：AL2.0  Apache Licence 2.0
 
