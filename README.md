@@ -1,5 +1,5 @@
 
-# [MongoDB官方文档中文版](https://hbn-king.gitbook.io/mongodb-manual-zh/](https://hbn-king.gitbook.io/mongodb-manual-zh/)
+#  [MongoDB官方文档中文版](https://hbn-king.gitbook.io/mongodb-manual-zh/](https://hbn-king.gitbook.io/mongodb-manual-zh/)
 
 
 原文地址:[https://docs.mongodb.com/manual/](https://docs.mongodb.com/manual/)    
