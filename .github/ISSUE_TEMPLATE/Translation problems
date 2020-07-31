@@ -1,0 +1,2 @@
+“Returned by mongod if there is a mismatch between hostnames specified on the command line and in the `local.sources` collection, in master/slave mode”
+翻译有歧义。
