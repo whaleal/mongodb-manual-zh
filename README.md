@@ -1,7 +1,14 @@
 #  [MongoDB官方文档中文版](https://hbn-king.gitbook.io/mongodb-manual-zh/)
 
+
+
 ![](./img/logo/MongoLogoBlack.png)  
-![](./img/logo/jmlogo.png )  
+
+
+
+![](./img/logo/WechatIMG4.png)
+
+![](./img/logo/jmlogo.png)  
 
 
 ##  项目介绍 
@@ -28,25 +35,17 @@ MongoDB是专为可扩展性，高性能和高可用性而设计的数据库。�
 [如何提交请点击](CONTRIBUTING.md)
 
 ## 贡献者名单
- 
+
 [links](https://github.com/JinMuInfo/MongoDB-Manual-zh/issues/4)
- 
+
 ## 其他
 欢迎任何人参与和完善：一个人可以走的很快，但是一群人却可以走的更远。  
-予人成功才是最大的成功  
+予人成功才是最大的成功 。
 
+## 免责声明
 
-##  鸣谢 
-[MongoDB中文社区](https://mongoing.com/)
+锦木信息  纯粹出于学习目的与个人兴趣翻译本书，不追求任何经济利益。
 
-相关公众号：
-
-Mongoing中文社区—— MongoDB实践一手干货，社区用户大会最新资讯；
-
-MongoDB数据库—— MongoDB官方微信；
-
-MongoDB中文用户组 —— MongoDB用户手册最新翻译发布。 （本资料库内容的更新将会以全中文格式发布到MongoDB中文用户组上哦）
-
-
+本译文只供学习研究参考之用，不得用于商业用途。我方将保留对此版本译文的署名权及其它相关权利。
 
 
