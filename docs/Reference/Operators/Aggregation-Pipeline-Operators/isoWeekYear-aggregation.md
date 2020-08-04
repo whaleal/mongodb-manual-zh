@@ -1,2 +1,0 @@
-# [ ](#)$isoWeekYear (aggregation)
-[]()

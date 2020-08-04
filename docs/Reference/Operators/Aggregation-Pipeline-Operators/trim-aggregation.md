@@ -1,2 +1,0 @@
-# [ ](#)$trim (aggregation)
-[]()

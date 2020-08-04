@@ -1,2 +1,0 @@
-# [ ](#)$toString (aggregation)
-[]()

@@ -1,2 +1,0 @@
-# [ ](#)$substr (aggregation)
-[]()
