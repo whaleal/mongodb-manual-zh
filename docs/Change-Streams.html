@@ -1,0 +1,4361 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Change Streams · MongoDB-Manual-zh</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="sphard">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Change-Streams/Change-Streams-Production-Recommendations.html" />
+    
+    
+    <link rel="prev" href="Security/Network-and-Configuration-Hardening.html" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"repo":"repoxxx","types":["star"],"size":"small"};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="The-Mongo-Shell.html">
+            
+                <a href="The-Mongo-Shell.html">
+            
+                    
+                    The mongo Shell
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="The-Mongo-Shell/Configure-the-mongo-shell.html">
+            
+                <a href="The-Mongo-Shell/Configure-the-mongo-shell.html">
+            
+                    
+                    Configure the mongo shell
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="The-Mongo-Shell/Access-the-mongo-Shell Help.html">
+            
+                <a href="The-Mongo-Shell/Access-the-mongo-Shell Help.html">
+            
+                    
+                    Access the mongo Shell Help
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="The-Mongo-Shell/Write-Scripts-for-the-mongo-Shell.html">
+            
+                <a href="The-Mongo-Shell/Write-Scripts-for-the-mongo-Shell.html">
+            
+                    
+                    Write Scripts for the mongo Shell
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="The-Mongo-Shell/Data-Types-in-the-mongo-Shell.html">
+            
+                <a href="The-Mongo-Shell/Data-Types-in-the-mongo-Shell.html">
+            
+                    
+                    Data Types in the mongo Shell
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="The-Mongo-Shell/mongo-Shell-Quick-Reference.html">
+            
+                <a href="The-Mongo-Shell/mongo-Shell-Quick-Reference.html">
+            
+                    
+                    mongo Shell Quick Reference
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="MongoDB-CRUD-Operations.html">
+            
+                <a href="MongoDB-CRUD-Operations.html">
+            
+                    
+                    MongoDB CRUD Operations
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="MongoDB-CRUD-Operations/Insert-Documents.html">
+            
+                <a href="MongoDB-CRUD-Operations/Insert-Documents.html">
+            
+                    
+                    Insert Document
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="MongoDB-CRUD-Operations/Insert-Documents/Insert-Methods.html">
+            
+                <a href="MongoDB-CRUD-Operations/Insert-Documents/Insert-Methods.html">
+            
+                    
+                    Insert Methods
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="MongoDB-CRUD-Operations/Query-Documents.html">
+            
+                <a href="MongoDB-CRUD-Operations/Query-Documents.html">
+            
+                    
+                    Query Document
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" data-path="MongoDB-CRUD-Operations/Query-Documents/Iterate-a-Cursor-in-the-mongo-Shell.html">
+            
+                <a href="MongoDB-CRUD-Operations/Query-Documents/Iterate-a-Cursor-in-the-mongo-Shell.html">
+            
+                    
+                    Iterate a Cursor in the mongo Shell
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2" data-path="MongoDB-CRUD-Operations/Query-Documents/Project-Fields-to-Return-from-Query.html">
+            
+                <a href="MongoDB-CRUD-Operations/Query-Documents/Project-Fields-to-Return-from-Query.html">
+            
+                    
+                    Project Fields to Return from Query
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.3" data-path="MongoDB-CRUD-Operations/Query-Documents/Query-an-Array-of-Embedded-Documents.html">
+            
+                <a href="MongoDB-CRUD-Operations/Query-Documents/Query-an-Array-of-Embedded-Documents.html">
+            
+                    
+                    Query an Array of Embedded Documents
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.4" data-path="MongoDB-CRUD-Operations/Query-Documents/Query-an-Array.html">
+            
+                <a href="MongoDB-CRUD-Operations/Query-Documents/Query-an-Array.html">
+            
+                    
+                    Query an Array
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.5" data-path="MongoDB-CRUD-Operations/Query-Documents/Query-for-Null-or-Missing-Fields.html">
+            
+                <a href="MongoDB-CRUD-Operations/Query-Documents/Query-for-Null-or-Missing-Fields.html">
+            
+                    
+                    Query for Null or Missing Fields
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.6" data-path="MongoDB-CRUD-Operations/Query-Documents/Query-on-Embedded-or-Nested.html">
+            
+                <a href="MongoDB-CRUD-Operations/Query-Documents/Query-on-Embedded-or-Nested.html">
+            
+                    
+                    Query on Embedded or Nested
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="MongoDB-CRUD-Operations/Update-Documents.html">
+            
+                <a href="MongoDB-CRUD-Operations/Update-Documents.html">
+            
+                    
+                    Update Document
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="MongoDB-CRUD-Operations/Update-Documents/Update-Methods.html">
+            
+                <a href="MongoDB-CRUD-Operations/Update-Documents/Update-Methods.html">
+            
+                    
+                    Update Methods
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.2" data-path="MongoDB-CRUD-Operations/Update-Documents/Updates-with-Aggregation-Pipeline.html">
+            
+                <a href="MongoDB-CRUD-Operations/Update-Documents/Updates-with-Aggregation-Pipeline.html">
+            
+                    
+                    Updates with Aggregation Pipeline
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="MongoDB-CRUD-Operations/Delete-Documents.html">
+            
+                <a href="MongoDB-CRUD-Operations/Delete-Documents.html">
+            
+                    
+                    Delete Document
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.4.1" data-path="MongoDB-CRUD-Operations/Delete-Documents/Delete-Methods.html">
+            
+                <a href="MongoDB-CRUD-Operations/Delete-Documents/Delete-Methods.html">
+            
+                    
+                    Delete Methods
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="MongoDB-CRUD-Operations/Geospatial-Queries.html">
+            
+                <a href="MongoDB-CRUD-Operations/Geospatial-Queries.html">
+            
+                    
+                    Geospatial Queries
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.5.1" data-path="MongoDB-CRUD-Operations/Geospatial-Queries/Find-Restaurants-with-Geospatial-Queries.html">
+            
+                <a href="MongoDB-CRUD-Operations/Geospatial-Queries/Find-Restaurants-with-Geospatial-Queries.html">
+            
+                    
+                    Find Restaurants with Geospatial Queries
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5.2" data-path="MongoDB-CRUD-Operations/Geospatial-Queries/GeoJSON-Objects.html">
+            
+                <a href="MongoDB-CRUD-Operations/Geospatial-Queries/GeoJSON-Objects.html">
+            
+                    
+                    GeoJSON Objects
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="MongoDB-CRUD-Operations/Bulk-Write-Operations.html">
+            
+                <a href="MongoDB-CRUD-Operations/Bulk-Write-Operations.html">
+            
+                    
+                    Bulk Write Operations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="MongoDB-CRUD-Operations/Retryable-Writes.html">
+            
+                <a href="MongoDB-CRUD-Operations/Retryable-Writes.html">
+            
+                    
+                    Retryable Writes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="MongoDB-CRUD-Operations/Retryable-Reads.html">
+            
+                <a href="MongoDB-CRUD-Operations/Retryable-Reads.html">
+            
+                    
+                    Retryable Reads
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="MongoDB-CRUD-Operations/SQL-to-MongoDB-Mapping-Chart.html">
+            
+                <a href="MongoDB-CRUD-Operations/SQL-to-MongoDB-Mapping-Chart.html">
+            
+                    
+                    SQL to MongoDB Mapping Chart
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="MongoDB-CRUD-Operations/Text-Search.html">
+            
+                <a href="MongoDB-CRUD-Operations/Text-Search.html">
+            
+                    
+                    Text Search
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.10.1" data-path="MongoDB-CRUD-Operations/Text-Search/Text-indexes.html">
+            
+                <a href="MongoDB-CRUD-Operations/Text-Search/Text-indexes.html">
+            
+                    
+                    Test indexes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10.2" data-path="MongoDB-CRUD-Operations/Text-Search/Text-Search-Operators.html">
+            
+                <a href="MongoDB-CRUD-Operations/Text-Search/Text-Search-Operators.html">
+            
+                    
+                    Text Search Operators
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10.3" data-path="MongoDB-CRUD-Operations/Text-Search/Text-Search-in-the-Aggregation-Pipeline.html">
+            
+                <a href="MongoDB-CRUD-Operations/Text-Search/Text-Search-in-the-Aggregation-Pipeline.html">
+            
+                    
+                    Text Search in the Aggregation Pipeline
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10.4" data-path="MongoDB-CRUD-Operations/Text-Search/Text-Search-Languages.html">
+            
+                <a href="MongoDB-CRUD-Operations/Text-Search/Text-Search-Languages.html">
+            
+                    
+                    Text Search Languages
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11" data-path="MongoDB-CRUD-Operations/Read-Isolation-Read-Concern.html">
+            
+                <a href="MongoDB-CRUD-Operations/Read-Isolation-Read-Concern.html">
+            
+                    
+                    Read Isolation(Read Concern)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.11.1" data-path="MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-local.html">
+            
+                <a href="MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-local.html">
+            
+                    
+                    Read Concern "local"
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11.2" data-path="MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-available.html">
+            
+                <a href="MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-available.html">
+            
+                    
+                    Read Concern "available"
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11.3" data-path="MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-majority.html">
+            
+                <a href="MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-majority.html">
+            
+                    
+                    Read Concern "majority"
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11.4" data-path="MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-linearizable.html">
+            
+                <a href="MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-linearizable.html">
+            
+                    
+                    Read Concern "linearizable"
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11.5" data-path="MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-snapshot.html">
+            
+                <a href="MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-snapshot.html">
+            
+                    
+                    Read Concern "snapshot"
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.12" data-path="MongoDB-CRUD-Operations/Write-Acknowledgement-Write-concern.html">
+            
+                <a href="MongoDB-CRUD-Operations/Write-Acknowledgement-Write-concern.html">
+            
+                    
+                    Write Acknowledgement(Write concern)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.13" data-path="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts.html">
+            
+                <a href="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts.html">
+            
+                    
+                    MongoDB CRUD Concepts
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.13.1" data-path="MongoDB-CRUD-Operations/MOngoDB-CRUD-Concepts/Atomicity-and-Transactions.html">
+            
+                <a href="MongoDB-CRUD-Operations/MOngoDB-CRUD-Concepts/Atomicity-and-Transactions.html">
+            
+                    
+                    Atomicity and Transactions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.13.2" data-path="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Read-Isolation-Consistency-and-Recency.html">
+            
+                <a href="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Read-Isolation-Consistency-and-Recency.html">
+            
+                    
+                    Read Isolation Consistency and Recency
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.13.2.1" data-path="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Read-Isolation-Consistency-and-Recency/Causal-Consistency-and-Read-and-Write-Concerns.html">
+            
+                <a href="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Read-Isolation-Consistency-and-Recency/Causal-Consistency-and-Read-and-Write-Concerns.html">
+            
+                    
+                    Causal Consistency and Read and Write-Concerns
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.13.3" data-path="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Distributed-Queries.html">
+            
+                <a href="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Distributed-Queries.html">
+            
+                    
+                    Distributed Queries
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.13.4" data-path="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Linearizable-Reads-via-findAndModify.html">
+            
+                <a href="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Linearizable-Reads-via-findAndModify.html">
+            
+                    
+                    Linearizable Reads via findAndModify
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.13.5" data-path="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Query-Plans.html">
+            
+                <a href="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Query-Plans.html">
+            
+                    
+                    Query Plans
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.13.6" data-path="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Query-Optimization.html">
+            
+                <a href="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Query-Optimization.html">
+            
+                    
+                    Query Optimization
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.13.6.1" data-path="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Query-Optimization/Evaluate-Performance-of-Current-Operations.html">
+            
+                <a href="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Query-Optimization/Evaluate-Performance-of-Current-Operations.html">
+            
+                    
+                    Evaluate Performance of Current Operations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.13.6.2" data-path="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Query-Optimization/Optimize-Query-Performance.html">
+            
+                <a href="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Query-Optimization/Optimize-Query-Performance.html">
+            
+                    
+                    Optimize Query Performance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.13.6.3" data-path="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Query-Optimization/Write-Operation-Performance.html">
+            
+                <a href="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Query-Optimization/Write-Operation-Performance.html">
+            
+                    
+                    Write Operation Performance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.13.6.4" data-path="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Query-Optimization/Explain-Results.html">
+            
+                <a href="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Query-Optimization/Explain-Results.html">
+            
+                    
+                    Explain Results
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.13.7" data-path="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Analyze-Query-Performance.html">
+            
+                <a href="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Analyze-Query-Performance.html">
+            
+                    
+                    Analyze Query Performance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.13.8" data-path="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Tailable-Cursors.html">
+            
+                <a href="MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Tailable-Cursors.html">
+            
+                    
+                    Tailable Cursors
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="Aggregation.html">
+            
+                <a href="Aggregation.html">
+            
+                    
+                    Aggregation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="Aggregation/Aggregation-Pipeline.html">
+            
+                <a href="Aggregation/Aggregation-Pipeline.html">
+            
+                    
+                    Aggregation Pipeline
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="Aggregation/Aggregation-Pipeline/Aggregation-Pipeline-Optimization.html">
+            
+                <a href="Aggregation/Aggregation-Pipeline/Aggregation-Pipeline-Optimization.html">
+            
+                    
+                    Aggregation Pipeline Optimization
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" data-path="Aggregation/Aggregation-Pipeline/Aggregation-Pipeline-Limits.html">
+            
+                <a href="Aggregation/Aggregation-Pipeline/Aggregation-Pipeline-Limits.html">
+            
+                    
+                    Aggregation Pipeline Limits
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3" data-path="Aggregation/Aggregation-Pipeline/Aggregation-Pipeline-and-Sharded-Collections.html">
+            
+                <a href="Aggregation/Aggregation-Pipeline/Aggregation-Pipeline-and-Sharded-Collections.html">
+            
+                    
+                    Aggregation Pipeline and Sharded Collections
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.4" data-path="Aggregation/Aggregation-Pipeline/Example-with-ZIP-Code-Data.html">
+            
+                <a href="Aggregation/Aggregation-Pipeline/Example-with-ZIP-Code-Data.html">
+            
+                    
+                    Example with ZIP Code Data
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.5" data-path="Aggregation/Aggregation-Pipeline/Example-with-User-Preference-Data.html">
+            
+                <a href="Aggregation/Aggregation-Pipeline/Example-with-User-Preference-Data.html">
+            
+                    
+                    Example with User Preference Data
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="Aggregation/Map-Reduce.html">
+            
+                <a href="Aggregation/Map-Reduce.html">
+            
+                    
+                    Map-Reduce
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="Aggregation/Map-Reduce/Map-Reduce-and-Sharded-Collections.html">
+            
+                <a href="Aggregation/Map-Reduce/Map-Reduce-and-Sharded-Collections.html">
+            
+                    
+                    Map-Reduce and Sharded Collections
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="Aggregation/Map-Reduce/Map-Reduce-Concurrency.html">
+            
+                <a href="Aggregation/Map-Reduce/Map-Reduce-Concurrency.html">
+            
+                    
+                    Map-Reduce Concurrency
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.3" data-path="Aggregation/Map-Reduce/Map-Reduce-Examples.html">
+            
+                <a href="Aggregation/Map-Reduce/Map-Reduce-Examples.html">
+            
+                    
+                    Map-Reduce Examples
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.4" data-path="Aggregation/Map-Reduce/Perform-Incremental-Map-Reduce.html">
+            
+                <a href="Aggregation/Map-Reduce/Perform-Incremental-Map-Reduce.html">
+            
+                    
+                    Perform Incremental Map-Reduce
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.5" data-path="Aggregation/Map-Reduce/Troubleshoot-the-Map-Function.html">
+            
+                <a href="Aggregation/Map-Reduce/Troubleshoot-the-Map-Function.html">
+            
+                    
+                    Troubleshoot the Map Function
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.6" data-path="Aggregation/Map-Reduce/Troubleshoot-the-Reduce-Function.html">
+            
+                <a href="Aggregation/Map-Reduce/Troubleshoot-the-Reduce-Function.html">
+            
+                    
+                    Troubleshoot the Reduce Function
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="Aggregation/Aggregation-Reference.html">
+            
+                <a href="Aggregation/Aggregation-Reference.html">
+            
+                    
+                    Aggregation Reference
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.3.1" data-path="Aggregation/Aggregation-Reference/Aggregation-Pipeline-Quick-Reference.html">
+            
+                <a href="Aggregation/Aggregation-Reference/Aggregation-Pipeline-Quick-Reference.html">
+            
+                    
+                    Aggregation Pipeline Quick Reference
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.2" data-path="Aggregation/Aggregation-Reference/Aggregation-Commands.html">
+            
+                <a href="Aggregation/Aggregation-Reference/Aggregation-Commands.html">
+            
+                    
+                    Aggregation Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.3" data-path="Aggregation/Aggregation-Reference/Aggregation-Commands-Commparison.html">
+            
+                <a href="Aggregation/Aggregation-Reference/Aggregation-Commands-Commparison.html">
+            
+                    
+                    Aggregation Commands Commparison
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.4" data-path="Aggregation/Aggregation-Reference/Variables-in-Aggregation-Expressions.html">
+            
+                <a href="Aggregation/Aggregation-Reference/Variables-in-Aggregation-Expressions.html">
+            
+                    
+                    Variables in Aggregation Expressions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.5" data-path="Aggregation/Aggregation-Reference/SQL-to-Aggregation-Mapping-Chart.html">
+            
+                <a href="Aggregation/Aggregation-Reference/SQL-to-Aggregation-Mapping-Chart.html">
+            
+                    
+                    SQL to Aggregation Mapping Chart
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="Indexes.html">
+            
+                <a href="Indexes.html">
+            
+                    
+                    Indexes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="Indexes/Single-Field-Indexes.html">
+            
+                <a href="Indexes/Single-Field-Indexes.html">
+            
+                    
+                    Single Field Indexes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="Indexes/Compound-Indexes.html">
+            
+                <a href="Indexes/Compound-Indexes.html">
+            
+                    
+                    Compound Indexes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="Indexes/Multikey-Indexes.html">
+            
+                <a href="Indexes/Multikey-Indexes.html">
+            
+                    
+                    Multikey Indexes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.3.1" data-path="Indexes/Multikey-Indexes/Multikey-Index-Bounds.html">
+            
+                <a href="Indexes/Multikey-Indexes/Multikey-Index-Bounds.html">
+            
+                    
+                    Multikey Index Bounds
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="Indexes/Text-Indexes.html">
+            
+                <a href="Indexes/Text-Indexes.html">
+            
+                    
+                    Text Indexes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.4.1" data-path="Indexes/Text-Indexes/Specify-a-Language-for-Text-Index.html">
+            
+                <a href="Indexes/Text-Indexes/Specify-a-Language-for-Text-Index.html">
+            
+                    
+                    Specify a Language for Text Index
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.2" data-path="Indexes/Text-Indexes/Specify-Name-for-text-Index.html">
+            
+                <a href="Indexes/Text-Indexes/Specify-Name-for-text-Index.html">
+            
+                    
+                    Specify Name for text Index
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.3" data-path="Indexes/Text-Indexes/Control-Search-Results-with-Weights.html">
+            
+                <a href="Indexes/Text-Indexes/Control-Search-Results-with-Weights.html">
+            
+                    
+                    Control Search Results with Weights
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.4" data-path="Indexes/Text-Indexes/Limit-the-Number-of-Entries-Scanned.html">
+            
+                <a href="Indexes/Text-Indexes/Limit-the-Number-of-Entries-Scanned.html">
+            
+                    
+                    Limit the Number of Entries Scanned
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="Indexes/Wildcard-Indexes.html">
+            
+                <a href="Indexes/Wildcard-Indexes.html">
+            
+                    
+                    Wildcard Indexes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.5.1" data-path="Indexes/Wildcard-Indexes/Wildcard-Index-Restrictions.html">
+            
+                <a href="Indexes/Wildcard-Indexes/Wildcard-Index-Restrictions.html">
+            
+                    
+                    Wildcard Index Restrictions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="Indexes/2dsphere-Indexes.html">
+            
+                <a href="Indexes/2dsphere-Indexes.html">
+            
+                    
+                    2dsphere Indexes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.6.1" data-path="Indexes/2dsphere-Indexes/Query-a-2dsphere-Index.html">
+            
+                <a href="Indexes/2dsphere-Indexes/Query-a-2dsphere-Index.html">
+            
+                    
+                    Query a 2dsphere Index
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="Indexes/2d-Indexes.html">
+            
+                <a href="Indexes/2d-Indexes.html">
+            
+                    
+                    2d Indexes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.7.1" data-path="Indexes/2d-Indexes/Create-a-2d-Index.html">
+            
+                <a href="Indexes/2d-Indexes/Create-a-2d-Index.html">
+            
+                    
+                    Create a 2d Index
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.2" data-path="Indexes/2d-Indexes/Query-a-2d-Index.html">
+            
+                <a href="Indexes/2d-Indexes/Query-a-2d-Index.html">
+            
+                    
+                    Query a 2d Index
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3" data-path="Indexes/2d-Indexes/2d-Index-Internals.html">
+            
+                <a href="Indexes/2d-Indexes/2d-Index-Internals.html">
+            
+                    
+                    2d Index Internals
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.4" data-path="Indexes/2d-Indexes/Calculate-Distance-Using-Spherical-Geometry.html">
+            
+                <a href="Indexes/2d-Indexes/Calculate-Distance-Using-Spherical-Geometry.html">
+            
+                    
+                    Calculate Distance Using Spherical Geometry
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="Indexes/geoHaystack-Indexes.html">
+            
+                <a href="Indexes/geoHaystack-Indexes.html">
+            
+                    
+                    geoHaystack Indexes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.8.1" data-path="Indexes/geoHaystack-Indexes/Create-a-Haystack-Index.html">
+            
+                <a href="Indexes/geoHaystack-Indexes/Create-a-Haystack-Index.html">
+            
+                    
+                    Create a Haystack Index
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8.2" data-path="Indexes/geoHaystack-Indexes/Query-a-Haystack-Index.html">
+            
+                <a href="Indexes/geoHaystack-Indexes/Query-a-Haystack-Index.html">
+            
+                    
+                    Query a Haystack Index
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="Indexes/Hashed-Indexes.html">
+            
+                <a href="Indexes/Hashed-Indexes.html">
+            
+                    
+                    Hashed Indexes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="Indexes/Index-Properties.html">
+            
+                <a href="Indexes/Index-Properties.html">
+            
+                    
+                    Index Properties
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.10.1" data-path="Indexes/Index-Properties/TTL-Indexes.html">
+            
+                <a href="Indexes/Index-Properties/TTL-Indexes.html">
+            
+                    
+                    TTL Indexes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.10.1.1" data-path="Indexes/Index-Properties/TTL-Indexes/Expire-Data-from-Collections-by-Setting-TTL.html">
+            
+                <a href="Indexes/Index-Properties/TTL-Indexes/Expire-Data-from-Collections-by-Setting-TTL.html">
+            
+                    
+                    Expire Data from Collections by Setting TTL
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10.2" data-path="Indexes/Index-Properties/Unique-Indexes.html">
+            
+                <a href="Indexes/Index-Properties/Unique-Indexes.html">
+            
+                    
+                    Unique Indexes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10.3" data-path="Indexes/Index-Properties/Partial-Indexes.html">
+            
+                <a href="Indexes/Index-Properties/Partial-Indexes.html">
+            
+                    
+                    Partial Indexes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10.4" data-path="Indexes/Index-Properties/Case-Insensitive-Indexes.html">
+            
+                <a href="Indexes/Index-Properties/Case-Insensitive-Indexes.html">
+            
+                    
+                    Case Insensitive Indexes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10.5" data-path="Indexes/Index-Properties/Sparse-Indexes.html">
+            
+                <a href="Indexes/Index-Properties/Sparse-Indexes.html">
+            
+                    
+                    Sparse Indexes
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="Indexes/Index-Builds-on-Populated-Collections.html">
+            
+                <a href="Indexes/Index-Builds-on-Populated-Collections.html">
+            
+                    
+                    Index Builds on Populated Collections
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.11.1" data-path="Indexes/Index-Builds-on-Populated-Collections/Rolling-Index-Builds-on-Replica-Sets.html">
+            
+                <a href="Indexes/Index-Builds-on-Populated-Collections/Rolling-Index-Builds-on-Replica-Sets.html">
+            
+                    
+                    Rolling Index Builds on Replica Sets
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11.2" data-path="Indexes/Index-Builds-on-Populated-Collections/Rolling-Index-Builds-on-Sharded-Clusters.html">
+            
+                <a href="Indexes/Index-Builds-on-Populated-Collections/Rolling-Index-Builds-on-Sharded-Clusters.html">
+            
+                    
+                    Rolling Index Builds on Sharded Clusters
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="Indexes/Index-Intersection.html">
+            
+                <a href="Indexes/Index-Intersection.html">
+            
+                    
+                    Index Intersection
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.13" data-path="Indexes/Manage-Indexes.html">
+            
+                <a href="Indexes/Manage-Indexes.html">
+            
+                    
+                    Manage Indexes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14" data-path="Indexes/Measure-Index-Use.html">
+            
+                <a href="Indexes/Measure-Index-Use.html">
+            
+                    
+                    Measure Index Use
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15" data-path="Indexes/Indexing-Strategies.html">
+            
+                <a href="Indexes/Indexing-Strategies.html">
+            
+                    
+                    Indexing Strategies
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.15.1" data-path="Indexes/Indexing-Strategies/Create-Indexes-to-Support-Your-Queries.html">
+            
+                <a href="Indexes/Indexing-Strategies/Create-Indexes-to-Support-Your-Queries.html">
+            
+                    
+                    Create Indexes to Support Your Queries
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.2" data-path="Indexes/Indexing-Strategies/Use-Indexes-to-Sort-Query-Results.html">
+            
+                <a href="Indexes/Indexing-Strategies/Use-Indexes-to-Sort-Query-Results.html">
+            
+                    
+                    Use Indexes to Sort Query Results
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.3" data-path="Indexes/Indexing-Strategies/Ensure-Indexes-Fit-in-RAM.html">
+            
+                <a href="Indexes/Indexing-Strategies/Ensure-Indexes-Fit-in-RAM.html">
+            
+                    
+                    Ensure Indexes Fit in RAM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15.4" data-path="Indexes/Indexing-Strategies/Create-Queries-that-Ensure-Selectivity.html">
+            
+                <a href="Indexes/Indexing-Strategies/Create-Queries-that-Ensure-Selectivity.html">
+            
+                    
+                    Create Queries that Ensure Selectivity
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.16" data-path="Indexes/Indexing-Reference.html">
+            
+                <a href="Indexes/Indexing-Reference.html">
+            
+                    
+                    Indexing Reference
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Security
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="Security/Audit.html">
+            
+                <a href="Security/Audit.html">
+            
+                    
+                    Auditing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1.1" data-path="Security/Audit/Configure-Audit-Filters.html">
+            
+                <a href="Security/Audit/Configure-Audit-Filters.html">
+            
+                    
+                    Configure Audit Filters
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.2" data-path="Security/Audit/configure-Auditing.html">
+            
+                <a href="Security/Audit/configure-Auditing.html">
+            
+                    
+                    configure Auditing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.3" data-path="Security/Audit/System-Event-Audit-Messages.html">
+            
+                <a href="Security/Audit/System-Event-Audit-Messages.html">
+            
+                    
+                    System Event Audit Messages
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="Security/Network-and-Configuration-Hardening.html">
+            
+                <a href="Security/Network-and-Configuration-Hardening.html">
+            
+                    
+                    Network and Configuration Hardening
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7" data-path="Change-Streams.html">
+            
+                <a href="Change-Streams.html">
+            
+                    
+                    Change Streams
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="Change-Streams/Change-Streams-Production-Recommendations.html">
+            
+                <a href="Change-Streams/Change-Streams-Production-Recommendations.html">
+            
+                    
+                    Change Streams Production Recommendations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="Change-Streams/Change-Event.html">
+            
+                <a href="Change-Streams/Change-Event.html">
+            
+                    
+                    Change Events
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="Replication.html">
+            
+                <a href="Replication.html">
+            
+                    
+                    Replication
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="Replication/Replica-Set-Members.html">
+            
+                <a href="Replication/Replica-Set-Members.html">
+            
+                    
+                    Replica Set Members
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    Sharding
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" >
+            
+                <span>
+            
+                    
+                    Shard keys
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" >
+            
+                <span>
+            
+                    
+                    Zones
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.2.1" >
+            
+                <span>
+            
+                    
+                    Manage Shard Zones
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.2" >
+            
+                <span>
+            
+                    
+                    Segmenting Data by Location
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.3" >
+            
+                <span>
+            
+                    
+                    Tiered Hardware for Varying SLA or SLO
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.4" >
+            
+                <span>
+            
+                    
+                    Segmenting Data by Application or Customer
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.5" >
+            
+                <span>
+            
+                    
+                    Distributed Local Writes for Insert Only Workloads
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.6" >
+            
+                <span>
+            
+                    
+                    Manage Shard Zones
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    Administration
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" >
+            
+                <span>
+            
+                    
+                    Performance
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" >
+            
+                <span>
+            
+                    
+                    Configuration and Maintenance
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" >
+            
+                <span>
+            
+                    
+                    Data Center Awareness
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.3.1" >
+            
+                <span>
+            
+                    
+                    Workload Isolation in MongoDB Deployments
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3.2" >
+            
+                <span>
+            
+                    
+                    Zones
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.3.2.1" >
+            
+                <span>
+            
+                    
+                    Manage Shard Zones
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3.2.2" >
+            
+                <span>
+            
+                    
+                    Segmenting Data by Location
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3.2.3" >
+            
+                <span>
+            
+                    
+                    Tiered Hardware for Varying SLA or SLO
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3.2.4" >
+            
+                <span>
+            
+                    
+                    Segmenting Data by Application or Customer
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3.2.5" >
+            
+                <span>
+            
+                    
+                    Distributed Local Writes for Insert Only Workloads
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3.3" >
+            
+                <span>
+            
+                    
+                    Manage Shard Zones
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    Storage
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" >
+            
+                <span>
+            
+                    
+                    Storage Engines
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" >
+            
+                <span>
+            
+                    
+                    Journaling
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.2.1" >
+            
+                <span>
+            
+                    
+                    Manage Journaling
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" >
+            
+                <span>
+            
+                    
+                    GridFS
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    Reference
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" >
+            
+                <span>
+            
+                    
+                    Operators
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1.1" data-path="Reference/Operators/Query-and-Projection-Operators.html">
+            
+                <a href="Reference/Operators/Query-and-Projection-Operators.html">
+            
+                    
+                    Query and Projection Operators
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1.1.1" data-path="Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators.html">
+            
+                <a href="Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators.html">
+            
+                    
+                    Comparison Query Operators
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1.1.1.1" data-path="Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/eq.html">
+            
+                <a href="Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/eq.html">
+            
+                    
+                    $eq
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.1.1.2" data-path="Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/gt.html">
+            
+                <a href="Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/gt.html">
+            
+                    
+                    $gt
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.1.1.3" data-path="Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/gte.html">
+            
+                <a href="Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/gte.html">
+            
+                    
+                    $gte
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.1.1.4" data-path="Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/in.html">
+            
+                <a href="Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/in.html">
+            
+                    
+                    $in
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.1.1.5" data-path="Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/lt.html">
+            
+                <a href="Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/lt.html">
+            
+                    
+                    $lt
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.1.1.6" data-path="Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/lte.html">
+            
+                <a href="Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/lte.html">
+            
+                    
+                    $lte
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.1.1.7" data-path="Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/ne.html">
+            
+                <a href="Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/ne.html">
+            
+                    
+                    $ne
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.1.1.8" data-path="Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/nin.html">
+            
+                <a href="Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/nin.html">
+            
+                    
+                    $nin
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.1.2" data-path="Reference/Operators/Query-and-Projection-Operators/Logical-Query-Operators.html">
+            
+                <a href="Reference/Operators/Query-and-Projection-Operators/Logical-Query-Operators.html">
+            
+                    
+                    Logical Query Operators
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1.1.2.1" data-path="Reference/Operators/Query-and-Projection-Operators/Logical-Query-Operators/and.html">
+            
+                <a href="Reference/Operators/Query-and-Projection-Operators/Logical-Query-Operators/and.html">
+            
+                    
+                    $and
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.1.2.2" data-path="Reference/Operators/Query-and-Projection-Operators/Logical-Query-Operators/not.html">
+            
+                <a href="Reference/Operators/Query-and-Projection-Operators/Logical-Query-Operators/not.html">
+            
+                    
+                    $not
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.1.2.3" data-path="Reference/Operators/Query-and-Projection-Operators/Logical-Query-Operators/nor.html">
+            
+                <a href="Reference/Operators/Query-and-Projection-Operators/Logical-Query-Operators/nor.html">
+            
+                    
+                    $nor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.1.2.4" data-path="Reference/Operators/Query-and-Projection-Operators/Logical-Query-Operators/or.html">
+            
+                <a href="Reference/Operators/Query-and-Projection-Operators/Logical-Query-Operators/or.html">
+            
+                    
+                    $or
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.1.3" data-path="Reference/Operators/Query-and-Projection-Operators/Element-Query-Operators.html">
+            
+                <a href="Reference/Operators/Query-and-Projection-Operators/Element-Query-Operators.html">
+            
+                    
+                    Element Query Operators
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.1.4" data-path="Reference/Operators/Query-and-Projection-Operators/Evaluation-Query-Operators.html">
+            
+                <a href="Reference/Operators/Query-and-Projection-Operators/Evaluation-Query-Operators.html">
+            
+                    
+                    Evaluation Query Operators
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.1.5" data-path="Reference/Operators/Query-and-Projection-Operators/Geospatial-Query-Operators.html">
+            
+                <a href="Reference/Operators/Query-and-Projection-Operators/Geospatial-Query-Operators.html">
+            
+                    
+                    Geospatial Query Operators
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.1.6" data-path="Reference/Operators/Query-and-Projection-Operators/Array-Query-Operators.html">
+            
+                <a href="Reference/Operators/Query-and-Projection-Operators/Array-Query-Operators.html">
+            
+                    
+                    Array Query Operators
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.1.7" data-path="Reference/Operators/Query-and-Projection-Operators/Bitwise-Query-Operators.html">
+            
+                <a href="Reference/Operators/Query-and-Projection-Operators/Bitwise-Query-Operators.html">
+            
+                    
+                    Bitwise Query Operators
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.1.8" data-path="Reference/Operators/Query-and-Projection-Operators/comment.html">
+            
+                <a href="Reference/Operators/Query-and-Projection-Operators/comment.html">
+            
+                    
+                    $comment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.1.9" >
+            
+                <span>
+            
+                    
+                    Projection Operators
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.2" data-path="Reference/Operators/Update-Operators.html">
+            
+                <a href="Reference/Operators/Update-Operators.html">
+            
+                    
+                    Update Operators
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1.2.1" data-path="Reference/Operators/Update-Operators/Field-Update-Operators.html">
+            
+                <a href="Reference/Operators/Update-Operators/Field-Update-Operators.html">
+            
+                    
+                    Field Update Operators
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.2.2" data-path="Reference/Operators/Update-Operators/Array-Update-Operators.html">
+            
+                <a href="Reference/Operators/Update-Operators/Array-Update-Operators.html">
+            
+                    
+                    Array Update Operators
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.2.3" data-path="Reference/Operators/Update-Operators/Bitwise-Update-Operator.html">
+            
+                <a href="Reference/Operators/Update-Operators/Bitwise-Update-Operator.html">
+            
+                    
+                    Bitwise Update Operator
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.3" data-path="Reference/Operators/Aggregation-Pipeline-Stages.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Stages.html">
+            
+                    
+                    Aggregation Pipeline Stages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4" data-path="Reference/Operators/Aggregation-Pipeline-Operators.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators.html">
+            
+                    
+                    Aggregation Pipeline Operators
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1.4.1" data-path="Reference/Operators/Aggregation-Pipeline-Operators/abs-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/abs-aggregation.html">
+            
+                    
+                    $abs (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.2" data-path="Reference/Operators/Aggregation-Pipeline-Operators/acos-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/acos-aggregation.html">
+            
+                    
+                    $acos (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.3" data-path="Reference/Operators/Aggregation-Pipeline-Operators/acosh-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/acosh-aggregation.html">
+            
+                    
+                    $acosh (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.4" data-path="Reference/Operators/Aggregation-Pipeline-Operators/add-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/add-aggregation.html">
+            
+                    
+                    $add (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.5" data-path="Reference/Operators/Aggregation-Pipeline-Operators/addToSet-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/addToSet-aggregation.html">
+            
+                    
+                    $addToSet (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.6" data-path="Reference/Operators/Aggregation-Pipeline-Operators/allElementsTrue-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/allElementsTrue-aggregation.html">
+            
+                    
+                    $allElementsTrue (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.7" data-path="Reference/Operators/Aggregation-Pipeline-Operators/and-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/and-aggregation.html">
+            
+                    
+                    $and (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.8" data-path="Reference/Operators/Aggregation-Pipeline-Operators/anyElementTrue-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/anyElementTrue-aggregation.html">
+            
+                    
+                    $anyElementTrue (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.9" data-path="Reference/Operators/Aggregation-Pipeline-Operators/arrayElemAt-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/arrayElemAt-aggregation.html">
+            
+                    
+                    $arrayElemAt (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.10" data-path="Reference/Operators/Aggregation-Pipeline-Operators/arrayToObject-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/arrayToObject-aggregation.html">
+            
+                    
+                    $arrayToObject (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.11" data-path="Reference/Operators/Aggregation-Pipeline-Operators/asin-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/asin-aggregation.html">
+            
+                    
+                    $asin (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.12" data-path="Reference/Operators/Aggregation-Pipeline-Operators/asinh-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/asinh-aggregation.html">
+            
+                    
+                    $asinh (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.13" data-path="Reference/Operators/Aggregation-Pipeline-Operators/atan-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/atan-aggregation.html">
+            
+                    
+                    $atan (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.14" data-path="Reference/Operators/Aggregation-Pipeline-Operators/atan2-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/atan2-aggregation.html">
+            
+                    
+                    $atan2 (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.15" data-path="Reference/Operators/Aggregation-Pipeline-Operators/atanh-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/atanh-aggregation.html">
+            
+                    
+                    $atanh (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.16" data-path="Reference/Operators/Aggregation-Pipeline-Operators/avg-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/avg-aggregation.html">
+            
+                    
+                    $avg (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.17" data-path="Reference/Operators/Aggregation-Pipeline-Operators/ceil-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/ceil-aggregation.html">
+            
+                    
+                    $ceil (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.18" data-path="Reference/Operators/Aggregation-Pipeline-Operators/cmp-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/cmp-aggregation.html">
+            
+                    
+                    $cmp (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.19" data-path="Reference/Operators/Aggregation-Pipeline-Operators/concat-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/concat-aggregation.html">
+            
+                    
+                    $concat (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.20" data-path="Reference/Operators/Aggregation-Pipeline-Operators/concatArrays-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/concatArrays-aggregation.html">
+            
+                    
+                    $concatArrays (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.21" data-path="Reference/Operators/Aggregation-Pipeline-Operators/cond-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/cond-aggregation.html">
+            
+                    
+                    $cond (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.22" data-path="Reference/Operators/Aggregation-Pipeline-Operators/convert-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/convert-aggregation.html">
+            
+                    
+                    $convert (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.23" data-path="Reference/Operators/Aggregation-Pipeline-Operators/cos-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/cos-aggregation.html">
+            
+                    
+                    $cos (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.24" data-path="Reference/Operators/Aggregation-Pipeline-Operators/dateFromParts-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/dateFromParts-aggregation.html">
+            
+                    
+                    $dateFromParts (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.25" data-path="Reference/Operators/Aggregation-Pipeline-Operators/dateToParts-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/dateToParts-aggregation.html">
+            
+                    
+                    $dateToParts (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.26" data-path="Reference/Operators/Aggregation-Pipeline-Operators/dateFromString-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/dateFromString-aggregation.html">
+            
+                    
+                    $dateFromString (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4.27" data-path="Reference/Operators/Aggregation-Pipeline-Operators/literal-aggregation.html">
+            
+                <a href="Reference/Operators/Aggregation-Pipeline-Operators/literal-aggregation.html">
+            
+                    
+                    $literal (aggregation)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.5" data-path="Reference/Operators/Query-Modifiers.html">
+            
+                <a href="Reference/Operators/Query-Modifiers.html">
+            
+                    
+                    Query Modifiers
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="Reference/Database-Commands.html">
+            
+                <a href="Reference/Database-Commands.html">
+            
+                    
+                    Database Commands
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.2.1" data-path="Reference/Database-Commands/Aggregation-Commands.html">
+            
+                <a href="Reference/Database-Commands/Aggregation-Commands.html">
+            
+                    
+                    Aggregation Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.2" data-path="Reference/Database-Commands/Geospatial-Commands.html">
+            
+                <a href="Reference/Database-Commands/Geospatial-Commands.html">
+            
+                    
+                    Geospatial Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.3" data-path="Reference/Database-Commands/Query-and-Write-Operation-Commands.html">
+            
+                <a href="Reference/Database-Commands/Query-and-Write-Operation-Commands.html">
+            
+                    
+                    Query and Write Operation Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.4" data-path="Reference/Database-Commands/Query-Plan-Cache-Commands.html">
+            
+                <a href="Reference/Database-Commands/Query-Plan-Cache-Commands.html">
+            
+                    
+                    Query Plan Cache Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.5" data-path="Reference/Database-Commands/Authentication-Commands.html">
+            
+                <a href="Reference/Database-Commands/Authentication-Commands.html">
+            
+                    
+                    Authentication Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.6" data-path="Reference/Database-Commands/User-Management-Commands.html">
+            
+                <a href="Reference/Database-Commands/User-Management-Commands.html">
+            
+                    
+                    User Management Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.7" data-path="Reference/Database-Commands/Role-Management-Commands.html">
+            
+                <a href="Reference/Database-Commands/Role-Management-Commands.html">
+            
+                    
+                    Role Management Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.8" data-path="Reference/Database-Commands/Replication-Commands.html">
+            
+                <a href="Reference/Database-Commands/Replication-Commands.html">
+            
+                    
+                    Replication Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.9" data-path="Reference/Database-Commands/Sharding-Commands.html">
+            
+                <a href="Reference/Database-Commands/Sharding-Commands.html">
+            
+                    
+                    Sharding Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.10" data-path="Reference/Database-Commands/Sessions-Commands.html">
+            
+                <a href="Reference/Database-Commands/Sessions-Commands.html">
+            
+                    
+                    Sessions Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.11" data-path="Reference/Database-Commands/Administration-Commands.html">
+            
+                <a href="Reference/Database-Commands/Administration-Commands.html">
+            
+                    
+                    Administration Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.12" data-path="Reference/Database-Commands/Diagnostic-Commands.html">
+            
+                <a href="Reference/Database-Commands/Diagnostic-Commands.html">
+            
+                    
+                    Diagnostic Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.13" data-path="Reference/Database-Commands/Free-Monitoring-Commands.html">
+            
+                <a href="Reference/Database-Commands/Free-Monitoring-Commands.html">
+            
+                    
+                    Free Monitoring Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.14" data-path="Reference/Database-Commands/System-Events-Auditing-Commands.html">
+            
+                <a href="Reference/Database-Commands/System-Events-Auditing-Commands.html">
+            
+                    
+                    System Events Auditing Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="Reference/mongo-Shell-Methods.html">
+            
+                <a href="Reference/mongo-Shell-Methods.html">
+            
+                    
+                    mongo Shell Methods
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.3.1" data-path="Reference/mongo-Shell-Methods/Collection-Methods.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods.html">
+            
+                    
+                    Collection Methods
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.3.1.1" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-aggregate.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-aggregate.html">
+            
+                    
+                    db.collection.aggregate()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.2" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-bulkWrite.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-bulkWrite.html">
+            
+                    
+                    db.collection.bulkWrite()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.3" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-copyTo.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-copyTo.html">
+            
+                    
+                    db.collection.copyTo()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.4" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-count.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-count.html">
+            
+                    
+                    db.collection.count()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.5" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-countDocuments.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-countDocuments.html">
+            
+                    
+                    db.collection.countDocuments()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.6" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-estimatedDocumentCount.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-estimatedDocumentCount.html">
+            
+                    
+                    db.collection.estimatedDocumentCount()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.7" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-createIndex.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-createIndex.html">
+            
+                    
+                    db.collection.createIndex()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.8" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-createIndexes.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-createIndexes.html">
+            
+                    
+                    db.collection.createIndexes()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.9" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-dataSize.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-dataSize.html">
+            
+                    
+                    db.collection.dataSize()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.10" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-deleteOne.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-deleteOne.html">
+            
+                    
+                    db.collection.deleteOne()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.11" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-deleteMany.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-deleteMany.html">
+            
+                    
+                    db.collection.deleteMany()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.12" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-distinct.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-distinct.html">
+            
+                    
+                    db.collection.distinct()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.13" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-drop.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-drop.html">
+            
+                    
+                    db.collection.drop()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.14" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-dropIndex.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-dropIndex.html">
+            
+                    
+                    db.collection.dropIndex()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.15" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-dropIndexes.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-dropIndexes.html">
+            
+                    
+                    db.collection.dropIndexes()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.16" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-ensureIndex.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-ensureIndex.html">
+            
+                    
+                    db.collection.ensureIndex()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.17" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-explain.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-explain.html">
+            
+                    
+                    db.collection.explain()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.18" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-find.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-find.html">
+            
+                    
+                    db.collection.find()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.19" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-findAndModify.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-findAndModify.html">
+            
+                    
+                    db.collection.findAndModify()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.20" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-findOne.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-findOne.html">
+            
+                    
+                    db.collection.findOne()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.21" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-findOneAndDelete.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-findOneAndDelete.html">
+            
+                    
+                    db.collection.findOneAndDelete()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.22" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-findOneAndReplace.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-findOneAndReplace.html">
+            
+                    
+                    db.collection.findOneAndReplace()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.23" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-findOneAndUpdate.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-findOneAndUpdate.html">
+            
+                    
+                    db.collection.findOneAndUpdate()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.24" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-getIndexes.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-getIndexes.html">
+            
+                    
+                    db.collection.getIndexes()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.25" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-getShardDistribution.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-getShardDistribution.html">
+            
+                    
+                    db.collection.getShardDistribution()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.26" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-getShardVersion.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-getShardVersion.html">
+            
+                    
+                    db.collection.getShardVersion()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.27" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-insert.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-insert.html">
+            
+                    
+                    db.collection.insert()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.28" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-insertOne.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-insertOne.html">
+            
+                    
+                    db.collection.insertOne()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.29" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-insertMany.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-insertMany.html">
+            
+                    
+                    db.collection.insertMany()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.30" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-isCapped.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-isCapped.html">
+            
+                    
+                    db.collection.isCapped()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.31" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-latencyStats.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-latencyStats.html">
+            
+                    
+                    db.collection.latencyStats()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.32" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-mapReduce.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-mapReduce.html">
+            
+                    
+                    db.collection.mapReduce()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.33" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-reIndex.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-reIndex.html">
+            
+                    
+                    db.collection.reIndex()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.34" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-remove.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-remove.html">
+            
+                    
+                    db.collection.remove()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.35" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-renameCollection.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-renameCollection.html">
+            
+                    
+                    db.collection.renameCollection()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.36" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-replaceOne.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-replaceOne.html">
+            
+                    
+                    db.collection.replaceOne()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.37" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-save.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-save.html">
+            
+                    
+                    db.collection.save()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.38" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-stats.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-stats.html">
+            
+                    
+                    db.collection.stats()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.39" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-storageSize.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-storageSize.html">
+            
+                    
+                    db.collection.storageSize()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.40" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-totalIndexSize.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-totalIndexSize.html">
+            
+                    
+                    db.collection.totalIndexSize()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.41" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-totalSize.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-totalSize.html">
+            
+                    
+                    db.collection.totalSize()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.42" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-update.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-update.html">
+            
+                    
+                    db.collection.update()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.43" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-updateOne.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-updateOne.html">
+            
+                    
+                    db.collection.updateOne()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.44" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-updateMany.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-updateMany.html">
+            
+                    
+                    db.collection.updateMany()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.45" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-watch.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-watch.html">
+            
+                    
+                    db.collection.watch()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.46" data-path="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-validate.html">
+            
+                <a href="Reference/mongo-Shell-Methods/Collection-Methods/db-collection-validate.html">
+            
+                    
+                    db.collection.validate()
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="Reference/Glossary.html">
+            
+                <a href="Reference/Glossary.html">
+            
+                    
+                    Glossary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="Reference/Default-MongoDB-Port.html">
+            
+                <a href="Reference/Default-MongoDB-Port.html">
+            
+                    
+                    Default MongoDB Port
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="Reference/Default-MongoDB-Read-Concerns-and-Write-Concerns.html">
+            
+                <a href="Reference/Default-MongoDB-Read-Concerns-and-Write-Concerns.html">
+            
+                    
+                    Default MongoDB Read Concerns Write Concerns
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="Reference/Server-Sessions.html">
+            
+                <a href="Reference/Server-Sessions.html">
+            
+                    
+                    Server Sessions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" >
+            
+                <span>
+            
+                    
+                    FAQ
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" >
+            
+                <span>
+            
+                    
+                    联系我们
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" >
+            
+                <a target="_blank" href="http://www.jinmuinfo.com/">
+            
+                    
+                    锦木信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" >
+            
+                <span>
+            
+                    
+                    MongoDB中文社区
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Change Streams</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>&#x6539;&#x53D8;&#x6D41;<br>
+<br>
+<br>&#x6539;&#x53D8;&#x6D41;<br>
+<br>&#x5728;&#x672C;&#x9875;&#x9762;<br>
+<br>&#x6253;&#x5F00;&#x53D8;&#x9769;&#x6D41;<br>
+<br>&#x4FEE;&#x6539;&#x66F4;&#x6539;&#x6D41;&#x8F93;&#x51FA;<br>
+<br>&#x67E5;&#x627E;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x7684;&#x5B8C;&#x6574;&#x6587;&#x6863;<br>
+<br>&#x6062;&#x590D;&#x53D8;&#x66F4;&#x6D41;<br>
+<br>&#x7528;&#x4F8B;<br>
+<br>&#x8BBF;&#x95EE;&#x63A7;&#x5236;<br>
+<br>Event &#x901A;&#x77E5;<br>
+<br>version 3.6 &#x4E2D;&#x7684;&#x65B0;&#x5185;&#x5BB9;&#x3002;<br>
+<br>&#x66F4;&#x6539;&#x6D41;&#x5141;&#x8BB8; applications &#x8BBF;&#x95EE; real-time &#x6570;&#x636E;&#x66F4;&#x6539;&#xFF0C;&#x800C;&#x6CA1;&#x6709;&#x62D6;&#x5C3E;OPLOG&#x7684;&#x590D;&#x6742;&#x6027;&#x548C;&#x98CE;&#x9669;&#x3002; Applications &#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x66F4;&#x6539;&#x6D41;&#x6765;&#x8BA2;&#x9605;&#x96C6;&#x5408;&#x4E0A;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x66F4;&#x6539;&#xFF0C;&#x5E76;&#x7ACB;&#x5373;&#x5BF9;&#x5B83;&#x4EEC;&#x505A;&#x51FA;&#x53CD;&#x5E94;&#x3002;<br>
+<br>&#x91CD;&#x8981;<br>&#x4EC5;&#x5F53;&#x542F;&#x7528;&#x4E86;&#x201C;&#x591A;&#x6570;&#x201D;&#x8BFB;&#x53D6;&#x5173;&#x6CE8;&#x652F;&#x6301;&#x65F6;&#xFF0C;&#x624D;&#x80FD;&#x4F7F;&#x7528;&#x66F4;&#x6539;&#x6D41;(&#x9ED8;&#x8BA4;)&#x3002;<br>
+<br>&#x6253;&#x5F00;&#x53D8;&#x9769;&#x6D41;<br>&#x60A8;&#x53EA;&#x80FD;&#x9488;&#x5BF9;&#x526F;&#x672C; sets&#x6216;&#x5206;&#x7247;&#x7C07;&#x6253;&#x5F00;&#x66F4;&#x6539;&#x6D41;&#x3002;&#x5BF9;&#x4E8E;&#x5206;&#x7247; cluster&#xFF0C;&#x60A8;&#x5FC5;&#x987B;&#x9488;&#x5BF9;mongos&#x53D1;&#x51FA;&#x6253;&#x5F00;&#x66F4;&#x6539;&#x6D41;&#x64CD;&#x4F5C;&#x3002;<br>
+<br>&#x526F;&#x672C;&#x96C6;&#x6216;&#x5206;&#x7247; cluster &#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x526F;&#x672C;&#x96C6;&#x534F;&#x8BAE; version 1(PV1)&#x548C;WiredTiger&#x5B58;&#x50A8;&#x5F15;&#x64CE;(&#x53EF;&#x4EE5;&#x662F;&#x52A0;&#x5BC6;)&#x3002;<br>
+<br>&#x4EE5;&#x4E0B; example &#x6253;&#x5F00;&#x96C6;&#x5408;&#x7684;&#x66F4;&#x6539;&#x6D41;&#xFF0C;&#x5E76;&#x8FED;&#x4EE3;&#x5149;&#x6807;&#x4EE5;&#x68C0;&#x7D22;&#x66F4;&#x6539;&#x6D41;&#x6587;&#x6863;&#x3002;&#x4E0E; MongoDB &#x90E8;&#x7F72;&#x7684;&#x8FDE;&#x63A5;&#x4FDD;&#x6301;&#x6253;&#x5F00;&#x72B6;&#x6001;&#x65F6;&#xFF0C;&#x5149;&#x6807;&#x5C06;&#x4FDD;&#x6301;&#x6253;&#x5F00;&#x72B6;&#x6001;&#xFF0C;&#x76F4;&#x5230;&#x51FA;&#x73B0;&#x4EE5;&#x4E0B;&#x60C5;&#x51B5;&#x4E4B;&#x4E00;&#xFF1A;<br>
+<br>&#x6E38;&#x6807;&#x663E;&#x5F0F;&#x5173;&#x95ED;&#x3002;<br>
+<br>&#x53D1;&#x751F;&#x4F7F; event &#x65E0;&#x6548;&#x3002;<br>
+<br>&#x5982;&#x679C;&#x90E8;&#x7F72;&#x662F;&#x5206;&#x7247; cluster&#xFF0C;&#x5219;&#x5220;&#x9664;&#x5206;&#x7247;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x6253;&#x5F00;&#x66F4;&#x6539;&#x6D41;&#x6E38;&#x6807;&#x5173;&#x95ED;&#xFF0C;&#x5E76;&#x4E14;&#x5173;&#x95ED;&#x7684;&#x66F4;&#x6539;&#x6D41;&#x6E38;&#x6807;&#x53EF;&#x80FD;&#x65E0;&#x6CD5;&#x5B8C;&#x5168;&#x6062;&#x590D;&#x3002;<br>
+<br>&#x87D2;&#x86C7;<br>&#x4E0B;&#x9762;&#x7684; Python &#x793A;&#x4F8B;&#x5047;&#x8BBE;&#x60A8;&#x6709;&#x8FDE;&#x63A5;&#x5230; MongoDB &#x526F;&#x672C;&#x96C6;&#x5E76;&#x8BBF;&#x95EE;&#x8FC7;&#x6570;&#x636E;&#x5E93;&#x5305;&#x542B;inventory&#x96C6;&#x5408;&#x3002;<br>
+<br>cursor = db.inventory.watch()<br>document = next(cursor)<br>Java(&#x540C;&#x6B65;)<br>&#x4E0B;&#x9762;&#x7684; Java &#x793A;&#x4F8B;&#x5047;&#x8BBE;&#x60A8;&#x6709;&#x8FDE;&#x63A5;&#x5230; MongoDB &#x526F;&#x672C;&#x96C6;&#x5E76;&#x8BBF;&#x95EE;&#x8FC7;&#x6570;&#x636E;&#x5E93;&#x5305;&#x542B;inventory&#x96C6;&#x5408;&#x3002;<br>
+<br>MongoCursor<changestreamdocument> cursor = inventory.watch().iterator();<br>ChangeStreamDocument next = cursor.next();<br>Node.js<br>&#x4E0B;&#x9762;&#x7684; Node.js &#x793A;&#x4F8B;&#x5047;&#x8BBE;&#x60A8;&#x6709;&#x5305;&#x542B;inventory&#x96C6;&#x5408;&#x7684;&#x8FDE;&#x63A5;&#x5230; MongoDB &#x526F;&#x672C;&#x96C6;&#x5E76;&#x8BBF;&#x95EE;&#x8FC7;&#x6570;&#x636E;&#x5E93;&#x3002;<br>
+<br>&#x4EE5;&#x4E0B; example &#x4F7F;&#x7528; stream &#x6765;&#x5904;&#x7406;&#x66F4;&#x6539; events&#x3002;<br>
+<br>const collection = db.collection(&apos;inventory&apos;);<br>const changeStream = collection.watch();<br>changeStream.on(&apos;change&apos;, next =&gt; {<br>// process next document<br>});<br>&#x6216;&#x8005;&#xFF0C;&#x60A8;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FED;&#x4EE3;&#x5668;&#x6765;&#x5904;&#x7406;&#x66F4;&#x6539; events&#xFF1A;<br>
+<br>const changeStreamIterator = collection.watch();<br>const next = await changeStreamIterator.next();<br> PHP<br>&#x4E0B;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x5047;&#x8BBE;&#x60A8;&#x6709;&#x8FDE;&#x63A5;&#x5230; MongoDB &#x526F;&#x672C;&#x96C6;&#x5E76;&#x8BBF;&#x95EE;&#x8FC7;&#x6570;&#x636E;&#x5E93;&#x5305;&#x542B;inventory&#x96C6;&#x5408;&#x3002;<br>
+<br>$changeStream = $db-&gt;inventory-&gt;watch();<br>$changeStream-&gt;rewind();<br>
+<br>$firstChange = $changeStream-&gt;current();<br>
+<br>$changeStream-&gt;next();<br>
+<br>$secondChange = $changeStream-&gt;current();<br>&#x53D1;&#x52A8;&#x673A;<br>&#x4E0B;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x5047;&#x8BBE;&#x60A8;&#x6709;&#x8FDE;&#x63A5;&#x5230; MongoDB &#x526F;&#x672C;&#x96C6;&#x5E76;&#x8BBF;&#x95EE;&#x8FC7;&#x6570;&#x636E;&#x5E93;&#x5305;&#x542B;inventory&#x96C6;&#x5408;&#x3002;<br>
+<br>cursor = db.inventory.watch()<br>document = await cursor.next()<br>C#<br>&#x4E0B;&#x9762;&#x7684; C#&#x793A;&#x4F8B;&#x5047;&#x8BBE;&#x60A8;&#x6709;&#x8FDE;&#x63A5;&#x5230; MongoDB &#x526F;&#x672C;&#x96C6;&#x5E76;&#x8BBF;&#x95EE;&#x8FC7;&#x6570;&#x636E;&#x5E93;&#x5305;&#x542B;inventory&#x96C6;&#x5408;&#x3002;<br>
+<br>var enumerator = inventory.Watch().ToEnumerable().GetEnumerator();<br>enumerator.MoveNext();<br>var next = enumerator.Current;<br>enumerator.Dispose();<br>&#x7EA2;&#x5B9D;&#x77F3;<br>&#x4E0B;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x5047;&#x8BBE;&#x60A8;&#x6709;&#x8FDE;&#x63A5;&#x5230; MongoDB &#x526F;&#x672C;&#x96C6;&#x5E76;&#x8BBF;&#x95EE;&#x8FC7;&#x6570;&#x636E;&#x5E93;&#x5305;&#x542B;inventory&#x96C6;&#x5408;&#x3002;<br>
+<br>cursor = inventory.watch.to<em>enum<br>next_change = cursor.next<br>&#x8981;&#x68C0;&#x7D22;&#x6570;&#x636E;&#x66F4;&#x6539; event &#x901A;&#x77E5;&#xFF0C;&#x8BF7;&#x8FED;&#x4EE3;&#x66F4;&#x6539;&#x6D41;cursor&#x3002;<br>
+<br>&#x6CE8;&#x610F;<br>&#x672A;&#x5C01;&#x95ED;&#x6E38;&#x6807;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E3A; language-dependent&#x3002;<br>
+<br>&#x6709;&#x5173;&#x66F4;&#x6539;&#x6D41;&#x54CD;&#x5E94;&#x6587;&#x6863;&#x683C;&#x5F0F;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x89C1;&#x6539;&#x53D8; Events&#x3002;<br>
+<br>&#x4FEE;&#x6539;&#x66F4;&#x6539;&#x6D41;&#x8F93;&#x51FA;<br>&#x87D2;&#x86C7;<br>&#x5728;&#x914D;&#x7F6E;&#x66F4;&#x6539;&#x6D41;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x63D0;&#x4F9B;&#x4EE5;&#x4E0B;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x7BA1;&#x9053;&#x9636;&#x6BB5;&#x7684; array &#x6765;&#x63A7;&#x5236;&#x6539;&#x53D8;&#x6D41;&#x8F93;&#x51FA;&#xFF1A;<br>
+<br>$match<br>
+<br>$project<br>
+<br>$addFields<br>
+<br>$replaceRoot<br>
+<br>$redact<br>
+<br>Java(&#x540C;&#x6B65;)<br>&#x5728;&#x914D;&#x7F6E;&#x66F4;&#x6539;&#x6D41;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x63D0;&#x4F9B;&#x4EE5;&#x4E0B;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x7BA1;&#x9053;&#x9636;&#x6BB5;&#x7684; array &#x6765;&#x63A7;&#x5236;&#x6539;&#x53D8;&#x6D41;&#x8F93;&#x51FA;&#xFF1A;<br>
+<br>$match<br>
+<br>$project<br>
+<br>$addFields<br>
+<br>$replaceRoot<br>
+<br>$redact<br>
+<br>MongoClient mongoClient = new MongoClient( new MongoClientURI(&quot;mongodb://host1:port1,host2:port2...&quot;));<br>
+<br>// Select the MongoDB database and collection to open the change stream against<br>
+<br>MongoDatabase db = mongoClient.getDatabase(&quot;myTargetDatabase&quot;);<br>
+<br>MongoCollection collection = db.getCollection(&quot;myTargetCollection&quot;);<br>
+<br>// Create $match pipeline stage.<br>List pipeline = singletonList(Aggregates.match(Filters.or(<br>Document.parse(&quot;{&apos;fullDocument.username&apos;: &apos;alice&apos;}&quot;),<br>Filters.in(&quot;operationType&quot;, asList(&quot;delete&quot;)))));<br>
+<br>// Create the change stream cursor, passing the pipeline to the<br>// collection.watch() method<br>
+<br>MongoCursor cursor = collection.watch(pipeline).iterator();<br>pipeline&#x5217;&#x8868;&#x5305;&#x62EC;&#x4E00;&#x4E2A;$match&#x9636;&#x6BB5;&#xFF0C;&#x7528;&#x4E8E;&#x8FC7;&#x6EE4;username&#x4E3A;alice&#x7684;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;&#xFF0C;&#x6216;&#x8005;operationType&#x4E3A;delete&#x7684;&#x64CD;&#x4F5C;&#x3002;<br>
+<br>&#x5C06;pipeline&#x4F20;&#x9012;&#x7ED9;watch()&#x65B9;&#x6CD5;&#x4F1A;&#x5728;&#x5C06;&#x66F4;&#x6539;&#x6D41;&#x4F20;&#x9012;&#x7ED9;&#x6307;&#x5B9A;&#x7684;pipeline&#x540E;&#x5C06;&#x66F4;&#x6539;&#x6D41;&#x6307;&#x5411; return &#x901A;&#x77E5;&#x3002;<br>
+<br>Node.js<br>&#x5728;&#x914D;&#x7F6E;&#x66F4;&#x6539;&#x6D41;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x63D0;&#x4F9B;&#x4EE5;&#x4E0B;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x7BA1;&#x9053;&#x9636;&#x6BB5;&#x7684; array &#x6765;&#x63A7;&#x5236;&#x6539;&#x53D8;&#x6D41;&#x8F93;&#x51FA;&#xFF1A;<br>
+<br>$match<br>
+<br>$project<br>
+<br>$addFields<br>
+<br>$replaceRoot<br>
+<br>$redact<br>
+<br>&#x4EE5;&#x4E0B; example &#x4F7F;&#x7528; stream &#x6765;&#x5904;&#x7406;&#x66F4;&#x6539; events&#x3002;<br>
+<br>const pipeline = [<br>{ $match: { &apos;fullDocument.username&apos;: &apos;alice&apos; } },<br>{ $addFields: { newField: &apos;this is an added field!&apos; } }<br>];<br>
+<br>const collection = db.collection(&apos;inventory&apos;);<br>const changeStream = collection.watch(pipeline);<br>changeStream.on(&apos;change&apos;, next =&gt; {<br>// process next document<br>});<br>&#x6216;&#x8005;&#xFF0C;&#x60A8;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FED;&#x4EE3;&#x5668;&#x6765;&#x5904;&#x7406;&#x66F4;&#x6539; events&#xFF1A;<br>
+<br>const changeStreamIterator = collection.watch(pipeline);<br>const next = await changeStreamIterator.next();<br> PHP<br>&#x5728;&#x914D;&#x7F6E;&#x66F4;&#x6539;&#x6D41;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x63D0;&#x4F9B;&#x4EE5;&#x4E0B;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x7BA1;&#x9053;&#x9636;&#x6BB5;&#x7684; array &#x6765;&#x63A7;&#x5236;&#x6539;&#x53D8;&#x6D41;&#x8F93;&#x51FA;&#xFF1A;<br>
+<br>$match<br>
+<br>$project<br>
+<br>$addFields<br>
+<br>$replaceRoot<br>
+<br>$redact<br>
+<br>&#x53D1;&#x52A8;&#x673A;<br>&#x5728;&#x914D;&#x7F6E;&#x66F4;&#x6539;&#x6D41;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x63D0;&#x4F9B;&#x4EE5;&#x4E0B;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x7BA1;&#x9053;&#x9636;&#x6BB5;&#x7684; array &#x6765;&#x63A7;&#x5236;&#x6539;&#x53D8;&#x6D41;&#x8F93;&#x51FA;&#xFF1A;<br>
+<br>$match<br>
+<br>$project<br>
+<br>$addFields<br>
+<br>$replaceRoot<br>
+<br>$redact<br>
+<br>C#<br>&#x5728;&#x914D;&#x7F6E;&#x66F4;&#x6539;&#x6D41;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x63D0;&#x4F9B;&#x4EE5;&#x4E0B;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x7BA1;&#x9053;&#x9636;&#x6BB5;&#x7684; array &#x6765;&#x63A7;&#x5236;&#x6539;&#x53D8;&#x6D41;&#x8F93;&#x51FA;&#xFF1A;<br>
+<br>$match<br>
+<br>$project<br>
+<br>$addFields<br>
+<br>$replaceRoot<br>
+<br>$redact<br>
+<br>&#x7EA2;&#x5B9D;&#x77F3;<br>&#x5728;&#x914D;&#x7F6E;&#x66F4;&#x6539;&#x6D41;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x63D0;&#x4F9B;&#x4EE5;&#x4E0B;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x7BA1;&#x9053;&#x9636;&#x6BB5;&#x7684; array &#x6765;&#x63A7;&#x5236;&#x6539;&#x53D8;&#x6D41;&#x8F93;&#x51FA;&#xFF1A;<br>
+<br>$match<br>
+<br>$project<br>
+<br>$addFields<br>
+<br>$replaceRoot<br>
+<br>$redact<br>
+<br>&#x6709;&#x5173;&#x66F4;&#x6539;&#x6D41;&#x54CD;&#x5E94;&#x6587;&#x6863;&#x683C;&#x5F0F;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x89C1;&#x6539;&#x53D8; Events&#x3002;<br>
+<br>&#x67E5;&#x627E;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x7684;&#x5B8C;&#x6574;&#x6587;&#x6863;<br>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4EC5;&#x66F4;&#x6539;&#x6D41;&#x5728;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x671F;&#x95F4;&#x8FD4;&#x56DE;&#x5B57;&#x6BB5;&#x7684;&#x589E;&#x91CF;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x5C06;&#x66F4;&#x6539;&#x6D41;&#x914D;&#x7F6E;&#x4E3A; return &#x66F4;&#x65B0;&#x6587;&#x6863;&#x7684;&#x6700;&#x65B0; majority-committed version&#x3002;<br>&#x87D2;&#x86C7;<br>&#x8981;_return &#x66F4;&#x65B0;&#x6587;&#x6863;&#x7684;&#x6700;&#x65B0; majority-committed version&#xFF0C;&#x8BF7;&#x5C06;full_document=&apos;updateLookup&apos;&#x4F20;&#x9012;&#x7ED9;db.collection.watch()&#x65B9;&#x6CD5;&#x3002;<br>
+<br>&#x5728;&#x4E0B;&#x9762;&#x7684; example &#x4E2D;&#xFF0C;&#x6240;&#x6709;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x901A;&#x77E5;&#x90FD;&#x5305;&#x542B;&#x4E00;&#x4E2A;full_document&#x5B57;&#x6BB5;&#xFF0C;&#x8BE5;&#x5B57;&#x6BB5;&#x8868;&#x793A;&#x53D7;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x5F71;&#x54CD;&#x7684;&#x6587;&#x6863;&#x7684;&#x5F53;&#x524D; version&#x3002;<br>
+<br>cursor = db.inventory.watch(full_document=&apos;updateLookup&apos;)<br>document = next(cursor)<br>Java(&#x540C;&#x6B65;)<br>&#x8981;_return &#x66F4;&#x65B0;&#x6587;&#x6863;&#x7684;&#x6700;&#x65B0; majority-committed version&#xFF0C;&#x8BF7;&#x5C06;FullDocument.UPDATE_LOOKUP&#x4F20;&#x9012;&#x7ED9;db.collection.watch.fullDocument()&#x65B9;&#x6CD5;&#x3002;<br>
+<br>&#x5728;&#x4E0B;&#x9762;&#x7684; example &#x4E2D;&#xFF0C;&#x6240;&#x6709;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x901A;&#x77E5;&#x90FD;&#x5305;&#x542B;&#x4E00;&#x4E2A;FullDocument&#x5B57;&#x6BB5;&#xFF0C;&#x8BE5;&#x5B57;&#x6BB5;&#x8868;&#x793A;&#x53D7;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x5F71;&#x54CD;&#x7684;&#x6587;&#x6863;&#x7684;&#x5F53;&#x524D; version&#x3002;<br>
+<br>cursor = inventory.watch().fullDocument(FullDocument.UPDATE_LOOKUP).iterator();<br>next = cursor.next();<br>Node.js&#x8981;_return &#x66F4;&#x65B0;&#x6587;&#x6863;&#x7684;&#x6700;&#x65B0; majority-committed version&#xFF0C;&#x8BF7;&#x5C06;{ fullDocument: &apos;updateLookup&apos; }&#x4F20;&#x9012;&#x7ED9;collection.watch()&#x65B9;&#x6CD5;&#x3002;<br>
+<br>&#x5728;&#x4E0B;&#x9762;&#x7684; example &#x4E2D;&#xFF0C;&#x6240;&#x6709;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x901A;&#x77E5;&#x90FD;&#x5305;&#x542B;&#x4E00;&#x4E2A;fullDocument&#x5B57;&#x6BB5;&#xFF0C;&#x8BE5;&#x5B57;&#x6BB5;&#x8868;&#x793A;&#x53D7;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x5F71;&#x54CD;&#x7684;&#x6587;&#x6863;&#x7684;&#x5F53;&#x524D; version&#x3002;<br>
+<br>&#x4EE5;&#x4E0B; example &#x4F7F;&#x7528; stream &#x6765;&#x5904;&#x7406;&#x66F4;&#x6539; events&#x3002;<br>
+<br>const collection = db.collection(&apos;inventory&apos;);<br>const changeStream = collection.watch({ fullDocument: &apos;updateLookup&apos; });<br>changeStream.on(&apos;change&apos;, next =&gt; {<br>// process next document<br>});<br>&#x6216;&#x8005;&#xFF0C;&#x60A8;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FED;&#x4EE3;&#x5668;&#x6765;&#x5904;&#x7406;&#x66F4;&#x6539; events&#xFF1A;<br>
+<br>const changeStreamIterator = collection.watch({ fullDocument: &apos;updateLookup&apos; });<br>const next = await changeStreamIterator.next();<br> PHP<br>&#x8981;_return &#x66F4;&#x65B0;&#x6587;&#x6863;&#x7684;&#x6700;&#x65B0; majority-committed version&#xFF0C;&#x8BF7;&#x5C06;&quot;fullDocument&apos; =&gt; \MongoDB\Operation\ChangeStreamCommand::FULL_DOCUMENT_UPDATE_LOOKUP&quot;&#x4F20;&#x9012;&#x7ED9;watch()&#x65B9;&#x6CD5;&#x3002;<br>
+<br>&#x5728;&#x4E0B;&#x9762;&#x7684; example &#x4E2D;&#xFF0C;&#x6240;&#x6709;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x901A;&#x77E5;&#x90FD;&#x5305;&#x542B;&#x4E00;&#x4E2A;fullDocument&#x5B57;&#x6BB5;&#xFF0C;&#x8BE5;&#x5B57;&#x6BB5;&#x8868;&#x793A;&#x53D7;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x5F71;&#x54CD;&#x7684;&#x6587;&#x6863;&#x7684;&#x5F53;&#x524D; version&#x3002;<br>
+<br>$changeStream = $db-&gt;inventory-&gt;watch([], [&apos;fullDocument&apos; =&gt; \MongoDB\Operation\Watch::FULL_DOCUMENT_UPDATE_LOOKUP]);<br>$changeStream-&gt;rewind();<br>
+<br>$firstChange = $changeStream-&gt;current();<br>
+<br>$changeStream-&gt;next();<br>
+<br>$nextChange = $changeStream-&gt;current();<br>&#x53D1;&#x52A8;&#x673A;<br>&#x8981;_return &#x66F4;&#x65B0;&#x6587;&#x6863;&#x7684;&#x6700;&#x65B0; majority-committed version&#xFF0C;&#x8BF7;&#x5C06;full_document=&apos;updateLookup&apos;&#x4F20;&#x9012;&#x7ED9;db.collection.watch()&#x65B9;&#x6CD5;&#x3002;<br>
+<br>&#x5728;&#x4E0B;&#x9762;&#x7684; example &#x4E2D;&#xFF0C;&#x6240;&#x6709;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x901A;&#x77E5;&#x90FD;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x201C;full_document&#x201D;&#x5B57;&#x6BB5;&#xFF0C;&#x8868;&#x793A;&#x53D7;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x5F71;&#x54CD;&#x7684;&#x6587;&#x6863;&#x7684;&#x5F53;&#x524D; version&#x3002;<br>
+<br>cursor = db.inventory.watch(full_document=&apos;updateLookup&apos;)<br>document = await cursor.next()<br>C#<br>&#x8981;_return &#x66F4;&#x65B0;&#x6587;&#x6863;&#x7684;&#x6700;&#x65B0; majority-committed version&#xFF0C;&#x8BF7;&#x5C06;&quot;FullDocument = ChangeStreamFullDocumentOption.UpdateLookup&quot;&#x4F20;&#x9012;&#x7ED9;collection.Watch()&#x65B9;&#x6CD5;&#x3002;<br>
+<br>&#x5728;&#x4E0B;&#x9762;&#x7684; example &#x4E2D;&#xFF0C;&#x6240;&#x6709;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x901A;&#x77E5;&#x90FD;&#x5305;&#x542B;&#x4E00;&#x4E2A;FullDocument&#x5B57;&#x6BB5;&#xFF0C;&#x8BE5;&#x5B57;&#x6BB5;&#x8868;&#x793A;&#x53D7;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x5F71;&#x54CD;&#x7684;&#x6587;&#x6863;&#x7684;&#x5F53;&#x524D; version&#x3002;<br>
+<br>var options = new ChangeStreamOptions { FullDocument = ChangeStreamFullDocumentOption.UpdateLookup };<br>var enumerator = inventory.Watch(options).ToEnumerable().GetEnumerator();<br>enumerator.MoveNext();<br>var next = enumerator.Current;<br>enumerator.Dispose();<br>&#x7EA2;&#x5B9D;&#x77F3;<br>&#x8981;_return &#x66F4;&#x65B0;&#x6587;&#x6863;&#x7684;&#x6700;&#x65B0; majority-committed version&#xFF0C;&#x8BF7;&#x5C06;full_document: &apos;updateLookup&apos;&#x4F20;&#x9012;&#x7ED9;watch()&#x65B9;&#x6CD5;&#x3002;<br>
+<br>&#x5728;&#x4E0B;&#x9762;&#x7684; example &#x4E2D;&#xFF0C;&#x6240;&#x6709;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x901A;&#x77E5;&#x90FD;&#x5305;&#x542B;&#x4E00;&#x4E2A;full_document&#x5B57;&#x6BB5;&#xFF0C;&#x8BE5;&#x5B57;&#x6BB5;&#x8868;&#x793A;&#x53D7;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x5F71;&#x54CD;&#x7684;&#x6587;&#x6863;&#x7684;&#x5F53;&#x524D; version&#x3002;<br>
+<br>cursor = inventory.watch([], full_document: &apos;updateLookup&apos;).to_enum<br>next_change = cursor.next<br>&#x6CE8;&#x610F;<br>&#x6709;&#x5173;&#x66F4;&#x6539;&#x6D41;&#x54CD;&#x5E94;&#x6587;&#x6863;&#x683C;&#x5F0F;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x89C1;&#x6539;&#x53D8; Events&#x3002;<br>
+<br>&#x6062;&#x590D;&#x53D8;&#x66F4;&#x6D41;<br>&#x6253;&#x5F00;&#x6E38;&#x6807;&#x65F6;&#xFF0C;&#x901A;&#x8FC7;&#x6307;&#x5B9A;resumeAfter&#x6807;&#x8BB0;&#x53EF;&#x4EE5;&#x6062;&#x590D;&#x66F4;&#x6539;&#x6D41;&#x3002;&#x5BF9;&#x4E8E;resumeAfter&#x6807;&#x8BB0;&#xFF0C;&#x8BF7;&#x4F7F;&#x7528;&#x66F4;&#x6539;&#x6D41; event &#x6587;&#x6863;&#x7684;_id value&#x3002;&#x5C06;_id value &#x4F20;&#x9012;&#x7ED9;&#x66F4;&#x6539;&#x6D41;&#x4F1A;&#x5C1D;&#x8BD5;&#x5728;&#x6307;&#x5B9A;&#x7684;&#x64CD;&#x4F5C;&#x4E4B;&#x540E;&#x6062;&#x590D;&#x901A;&#x77E5;&#x3002;<br>
+<br>&#x91CD;&#x8981;<br>
+<br>&#x5982;&#x679C;&#x65F6;&#x95F4;&#x6233;&#x662F;&#x8FC7;&#x53BB;&#x7684;&#xFF0C;&#x5219; oplog &#x5FC5;&#x987B;&#x5177;&#x6709;&#x8DB3;&#x591F;&#x7684;&#x5386;&#x53F2;&#x8BB0;&#x5F55;&#x6765;&#x5B9A;&#x4F4D;&#x4E0E;&#x4EE4;&#x724C;&#x6216;&#x65F6;&#x95F4;&#x6233;&#x5173;&#x8054;&#x7684;&#x64CD;&#x4F5C;&#x3002;<br>
+<br>&#x5728;&#x4F7F; event &#x65E0;&#x6548;(&#x5BF9;&#x4E8E; example&#xFF0C;&#x96C6;&#x5408;&#x5220;&#x9664;&#x6216;&#x91CD;&#x547D;&#x540D;)&#x5173;&#x95ED;&#x6D41;&#x4E4B;&#x540E;&#xFF0C;&#x60A8;&#x65E0;&#x6CD5;&#x6062;&#x590D;&#x66F4;&#x6539;&#x6D41;&#x3002;<br>Python<br>&#x5728;&#x4E0B;&#x9762;&#x7684; example &#x4E2D;&#xFF0C;resume_token&#x5305;&#x542B;&#x66F4;&#x6539;&#x6D41;&#x901A;&#x77E5; ID&#x3002; resume_after&#x4FEE;&#x9970;&#x7B26;&#x91C7;&#x7528;&#x5FC5;&#x987B;&#x89E3;&#x6790;&#x4E3A;&#x6062;&#x590D;&#x6807;&#x8BB0;&#x7684;&#x53C2;&#x6570;&#x3002;&#x5C06;resume_token&#x4F20;&#x9012;&#x7ED9;resume_after&#x4FEE;&#x9970;&#x7B26;&#x4F1A;&#x6307;&#x793A;&#x66F4;&#x6539;&#x6D41;&#x5C1D;&#x8BD5;&#x5728;&#x6062;&#x590D;&#x4EE4;&#x724C;&#x4E2D;&#x6307;&#x5B9A;&#x7684;&#x64CD;&#x4F5C;&#x4E4B;&#x540E;&#x5F00;&#x59CB;&#x6062;&#x590D;&#x901A;&#x77E5;&#x3002;<br>
+<br>resume_token = document.get(&quot;_id&quot;)<br>cursor = db.inventory.watch(resume_after=resume_token)<br>document = next(cursor)<br>Java(&#x540C;&#x6B65;)<br>&#x5728;&#x4E0B;&#x9762;&#x7684; example &#x4E2D;&#xFF0C;resumeToken&#x5305;&#x542B;&#x66F4;&#x6539;&#x6D41;&#x901A;&#x77E5; ID&#x3002; resumeAfter()&#x65B9;&#x6CD5;&#x91C7;&#x7528;&#x5FC5;&#x987B;&#x89E3;&#x6790;&#x4E3A;&#x6062;&#x590D;&#x6807;&#x8BB0;&#x7684;&#x53C2;&#x6570;&#x3002;&#x5C06;resumeToken&#x4F20;&#x9012;&#x7ED9;resumeAfter()&#x65B9;&#x6CD5;&#x4F1A;&#x6307;&#x793A;&#x66F4;&#x6539;&#x6D41;&#x5C1D;&#x8BD5;&#x5728;&#x6062;&#x590D;&#x4EE4;&#x724C;&#x4E2D;&#x6307;&#x5B9A;&#x7684;&#x64CD;&#x4F5C;&#x4E4B;&#x540E;&#x5F00;&#x59CB;&#x6062;&#x590D;&#x901A;&#x77E5;&#x3002;<br>
+<br>BsonDocument resumeToken = next.getResumeToken();<br>cursor = inventory.watch().resumeAfter(resumeToken).iterator();<br>next = cursor.next();<br>Node.js<br>&#x5728;&#x4E0B;&#x9762;&#x7684; example &#x4E2D;&#xFF0C;resumeToken&#x5305;&#x542B;&#x66F4;&#x6539;&#x6D41;&#x901A;&#x77E5; ID&#x3002; resumeAfter&#x91C7;&#x7528;&#x5FC5;&#x987B;&#x89E3;&#x6790;&#x4E3A;&#x6062;&#x590D;&#x4EE4;&#x724C;&#x7684;&#x53C2;&#x6570;&#x3002;&#x5C06;resumeToken&#x4F20;&#x9012;&#x7ED9;resumeAfter&#x4FEE;&#x9970;&#x7B26;&#x4F1A;&#x6307;&#x793A;&#x66F4;&#x6539;&#x6D41;&#x5C1D;&#x8BD5;&#x5728;&#x6307;&#x5B9A;&#x7684;&#x64CD;&#x4F5C;&#x4E4B;&#x540E;&#x5F00;&#x59CB;&#x6062;&#x590D;&#x901A;&#x77E5;&#x3002;<br>
+<br>const collection = db.collection(&apos;inventory&apos;);<br>const changeStream = collection.watch();<br>
+<br>let resumeToken, newChangeStream;<br>changeStream.on(&apos;change&apos;, next =&gt; {<br>resumeToken = next._id;<br>changeStream.close();<br>
+<br>newChangeStream = collection.watch({ resumeAfter });<br>newChangeStream.on(&apos;change&apos;, next =&gt; {<br>// process next document<br>});<br>});<br> PHP<br>&#x5728;&#x4E0B;&#x9762;&#x7684; example &#x4E2D;&#xFF0C;$resumeToken&#x5305;&#x542B;&#x66F4;&#x6539;&#x6D41;&#x901A;&#x77E5; ID&#x3002; resumeAfter&#x9009;&#x9879;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x5FC5;&#x987B;&#x89E3;&#x6790;&#x4E3A;&#x6062;&#x590D;&#x6807;&#x8BB0;&#x7684; value&#x3002;&#x5C06;$resumeToken&#x4F20;&#x9012;&#x7ED9;resumeAfter&#x9009;&#x9879;&#x4F1A;&#x6307;&#x793A;&#x66F4;&#x6539;&#x6D41;&#x5C1D;&#x8BD5;&#x5728;&#x6062;&#x590D;&#x4EE4;&#x724C;&#x4E2D;&#x6307;&#x5B9A;&#x7684;&#x64CD;&#x4F5C;&#x4E4B;&#x540E;&#x5F00;&#x59CB;&#x6062;&#x590D;&#x901A;&#x77E5;&#x3002;<br>
+<br>$resumeToken = ($lastChange !== null) ? $lastChange-&gt;_id : null;<br>
+<br>if ($resumeToken === null) {<br>throw new \Exception(&apos;resumeToken was not found&apos;);<br>}<br>
+<br>$changeStream = $db-&gt;inventory-&gt;watch([], [&apos;resumeAfter&apos; =&gt; $resumeToken]);<br>$changeStream-&gt;rewind();<br>
+<br>$nextChange = $changeStream-&gt;current();<br>&#x53D1;&#x52A8;&#x673A;<br>&#x5728;&#x4E0B;&#x9762;&#x7684; example &#x4E2D;&#xFF0C;resume_token&#x5305;&#x542B;&#x66F4;&#x6539;&#x6D41;&#x901A;&#x77E5; ID&#x3002; resume_after&#x4FEE;&#x9970;&#x7B26;&#x91C7;&#x7528;&#x5FC5;&#x987B;&#x89E3;&#x6790;&#x4E3A;&#x6062;&#x590D;&#x6807;&#x8BB0;&#x7684;&#x53C2;&#x6570;&#x3002;&#x5C06;resume_token&#x4F20;&#x9012;&#x7ED9;resume_after&#x4FEE;&#x9970;&#x7B26;&#x4F1A;&#x6307;&#x793A;&#x66F4;&#x6539;&#x6D41;&#x5C1D;&#x8BD5;&#x5728;&#x6062;&#x590D;&#x4EE4;&#x724C;&#x4E2D;&#x6307;&#x5B9A;&#x7684;&#x64CD;&#x4F5C;&#x4E4B;&#x540E;&#x5F00;&#x59CB;&#x6062;&#x590D;&#x901A;&#x77E5;&#x3002;<br>
+<br>resume_token = document.get(&quot;_id&quot;)<br>cursor = db.inventory.watch(resume_after=resume_token)<br>document = await cursor.next()<br>C#<br>&#x5728;&#x4E0B;&#x9762;&#x7684; example &#x4E2D;&#xFF0C;&#x4ECE;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x66F4;&#x6539;&#x6D41;&#x6587;&#x6863;&#x4E2D;&#x68C0;&#x7D22;resumeToken&#x5E76;&#x4F5C;&#x4E3A;&#x9009;&#x9879;&#x4F20;&#x9012;&#x7ED9;Watch()&#x65B9;&#x6CD5;&#x3002;&#x5C06;resumeToken&#x4F20;&#x9012;&#x7ED9;Watch()&#x65B9;&#x6CD5;&#x4F1A;&#x6307;&#x793A;&#x66F4;&#x6539;&#x6D41;&#x5C1D;&#x8BD5;&#x5728;&#x6062;&#x590D;&#x4EE4;&#x724C;&#x4E2D;&#x6307;&#x5B9A;&#x7684;&#x64CD;&#x4F5C;&#x4E4B;&#x540E;&#x5F00;&#x59CB;&#x6062;&#x590D;&#x901A;&#x77E5;&#x3002;<br>
+<br>var resumeToken = lastChangeStreamDocument.ResumeToken;<br>var options = new ChangeStreamOptions { ResumeAfter = resumeToken };<br>var enumerator = inventory.Watch(options).ToEnumerable().GetEnumerator();<br>enumerator.MoveNext();<br>var next = enumerator.Current;<br>enumerator.Dispose();<br>&#x7EA2;&#x5B9D;&#x77F3;<br>&#x5728;&#x4E0B;&#x9762;&#x7684; example &#x4E2D;&#xFF0C;resume_token&#x5305;&#x542B;&#x66F4;&#x6539;&#x6D41;&#x901A;&#x77E5; ID&#x3002; resume_after&#x4FEE;&#x9970;&#x7B26;&#x91C7;&#x7528;&#x5FC5;&#x987B;&#x89E3;&#x6790;&#x4E3A;&#x6062;&#x590D;&#x6807;&#x8BB0;&#x7684;&#x53C2;&#x6570;&#x3002;&#x5C06;resume_token&#x4F20;&#x9012;&#x7ED9;resume_after&#x4FEE;&#x9970;&#x7B26;&#x4F1A;&#x6307;&#x793A;&#x66F4;&#x6539;&#x6D41;&#x5C1D;&#x8BD5;&#x5728;&#x6062;&#x590D;&#x4EE4;&#x724C;&#x4E2D;&#x6307;&#x5B9A;&#x7684;&#x64CD;&#x4F5C;&#x4E4B;&#x540E;&#x5F00;&#x59CB;&#x6062;&#x590D;&#x901A;&#x77E5;&#x3002;<br>
+<br>resume_token = next_change[&apos;_id&apos;]<br>cursor = inventory.watch([], resume_after: resume_token).to_enum<br>resumed_change = cursor.next<br>
+<br>&#x7528;&#x4F8B;<br>&#x53D8;&#x66F4;&#x6D41;&#x53EF;&#x4EE5;&#x4F7F;&#x5177;&#x6709;&#x76F8;&#x5173;&#x4E1A;&#x52A1;&#x7CFB;&#x7EDF;&#x7684;&#x67B6;&#x6784;&#x53D7;&#x76CA;&#xFF0C;&#x4E00;&#x65E6;&#x6570;&#x636E;&#x53D8;&#x5316;&#x6301;&#x4E45;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x77E5;&#x4E0B;&#x6E38;&#x7CFB;&#x7EDF;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5728;&#x5B9E;&#x73B0; Extract&#xFF0C;Transform &#x548C; Load(ETL)&#x670D;&#x52A1;&#xFF0C;cross-platform &#x540C;&#x6B65;&#xFF0C;&#x534F;&#x4F5C;&#x529F;&#x80FD;&#x548C;&#x901A;&#x77E5;&#x670D;&#x52A1;&#x65F6;&#xFF0C;&#x66F4;&#x6539;&#x6D41;&#x53EF;&#x4EE5;&#x4E3A;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x8282;&#x7701; time&#x3002;<br>
+<br>&#x8BBF;&#x95EE;&#x63A7;&#x5236;<br>&#x5BF9;&#x4E8E;&#x5F3A;&#x5236;&#x6267;&#x884C;&#x8BA4;&#x8BC1;&#x548C;&#x6388;&#x6743;&#x7684;&#x90E8;&#x7F72;&#xFF0C;&#x8BF7;&#x5BF9;&#x8981;&#x5BF9;&#x5176;&#x6253;&#x5F00;&#x66F4;&#x6539;&#x6D41;&#x7684;&#x96C6;&#x5408;&#x6267;&#x884C;changeStream&#x548C;&#x627E;&#x6743;&#x9650;&#x64CD;&#x4F5C;&#x7684;&#x7528;&#x6237;&#x8FDB;&#x884C;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x3002;<br>
+<br>&#x8BFB; built-in &#x89D2;&#x8272;&#x5305;&#x62EC;&#x652F;&#x6301;&#x9488;&#x5BF9;&#x96C6;&#x5408;&#x6253;&#x5F00;&#x66F4;&#x6539;&#x6D41;&#x6240;&#x9700;&#x7684;&#x6743;&#x9650;&#x3002;&#x4EFB;&#x4F55; built-in &#x89D2;&#x8272;&#x6216;user-defined &#x89D2;&#x8272;&#x7EE7;&#x627F;&#x8BFB;&#x89D2;&#x8272;&#x4E5F;&#x53EF;&#x4EE5;&#x652F;&#x6301;&#x6253;&#x5F00;&#x96C6;&#x5408;&#x7684;&#x66F4;&#x6539;&#x6D41;&#x3002;<br>
+<br>&#x6216;&#x8005;&#xFF0C;&#x4F7F;&#x7528;db.createRole&#x521B;&#x5EFA; user-defined &#x89D2;&#x8272;&#xFF0C;&#x5728;&#x76EE;&#x6807;&#x96C6;&#x5408;&#x4E0A;&#x6388;&#x4E88;changeStream&#x548C;&#x627E;&#x6743;&#x9650;&#x64CD;&#x4F5C;&#x3002;&#x6709;&#x5173;&#x66F4;&#x5B8C;&#x6574;&#x7684;&#x6587;&#x6863;&#xFF0C;&#x8BF7;&#x53C2;&#x89C1;User-Defined &#x89D2;&#x8272;&#x3002;<br>
+<br>&#x8981;&#x5C06; built-in &#x89D2;&#x8272;&#x6216; user-defined &#x89D2;&#x8272;&#x4E0E;&#x73B0;&#x6709;&#x7528;&#x6237;&#x76F8;&#x5173;&#x8054;&#xFF0C;&#x8BF7;&#x4F7F;&#x7528;db.grantRolesToUser()&#x6216;db.updateUser()&#x65B9;&#x6CD5;&#x3002;&#x60A8;&#x8FD8;&#x53EF;&#x4EE5;&#x5728;</em>&#x4F7F;&#x7528;db.createUser()&#x521B;&#x5EFA;&#x65B0;&#x7528;&#x6237;&#x65F6;&#x6307;&#x5B9A;&#x89D2;&#x8272;&#x3002;<br>
+<br>Event &#x901A;&#x77E5;<br>&#x66F4;&#x6539;&#x6D41;&#x4EC5;&#x901A;&#x77E5;&#x5DF2;&#x4FDD;&#x7559;&#x5230;&#x526F;&#x672C;&#x96C6;&#x4E2D;&#x5927;&#x591A;&#x6570; data-bearing &#x6210;&#x5458;&#x7684;&#x6570;&#x636E;&#x66F4;&#x6539;&#x3002;&#x8FD9;&#x53EF;&#x786E;&#x4FDD;&#x4EC5;&#x5728;&#x5931;&#x8D25;&#x65B9;&#x6848;&#x4E2D;&#x6301;&#x4E45;&#x7684; majority-committed &#x66F4;&#x6539;&#x89E6;&#x53D1;&#x901A;&#x77E5;&#x3002;<br>
+<br>&#x4F8B;&#x5982;&#xFF0C;&#x8003;&#x8651;&#x4E00;&#x4E2A; 3-member &#x526F;&#x672C;&#x96C6;&#xFF0C;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x66F4;&#x6539;&#x6D41;&#x6E38;&#x6807;&#x9488;&#x5BF9;&#x4E3B;&#x6253;&#x5F00;&#x3002;&#x5982;&#x679C; client &#x53D1;&#x51FA; insert &#x64CD;&#x4F5C;&#xFF0C;&#x5219;&#x53EA;&#x8981; insert &#x6301;&#x7EED;&#x5B58;&#x5728;&#x4E8E;&#x5927;&#x591A;&#x6570; data-bearing &#x6210;&#x5458;&#xFF0C;&#x66F4;&#x6539;&#x6D41;&#x624D;&#x4F1A;&#x901A;&#x77E5; application &#x6570;&#x636E;&#x66F4;&#x6539;&#x3002;<br>
+<br>Change Streams Production Recommendations<br>
+<br>&#x6539;&#x53D8; Events<br></changestreamdocument></p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; &#x4E0A;&#x6D77;&#x9526;&#x6728;&#x4FE1;&#x606F;&#x6280;&#x672F;&#x6709;&#x9650;&#x516C;&#x53F8; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2020-07-07 20:03:56
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Security/Network-and-Configuration-Hardening.html" class="navigation navigation-prev " aria-label="Previous page: Network and Configuration Hardening">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Change-Streams/Change-Streams-Production-Recommendations.html" class="navigation navigation-next " aria-label="Next page: Change Streams Production Recommendations">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Change Streams","level":"1.7","depth":1,"next":{"title":"Change Streams Production Recommendations","level":"1.7.1","depth":2,"path":"docs/Change-Streams/Change-Streams-Production-Recommendations.md","ref":"docs/Change-Streams/Change-Streams-Production-Recommendations.md","articles":[]},"previous":{"title":"Network and Configuration Hardening","level":"1.6.2","depth":2,"path":"docs/Security/Network-and-Configuration-Hardening.md","ref":"docs/Security/Network-and-Configuration-Hardening.md","articles":[]},"dir":"ltr"},"config":{"plugins":["donate","github-buttons@2.1.0","edit-link","tbfed-pagefooter","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 上海锦木信息技术有限公司","modify_label":"文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"./img/pay/alipay.jpeg","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"./img/pay/Wechatpay.jpeg","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"github-buttons":{"repo":"repoxxx","types":["star"],"size":"small"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"issue"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"sphard","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MongoDB-Manual-zh","language":"zh-hans","gitbook":"*","description":"MongoDB-Manual-zh"},"file":{"path":"docs/Change-Streams.md","mtime":"2020-07-07T12:03:56.537Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-04T18:05:43.300Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
