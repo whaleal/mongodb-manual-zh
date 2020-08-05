@@ -2,13 +2,10 @@
 
 
 
-![](./img/logo/MongoLogoBlack.png)  
+<img src="./img/logo/MongoLogoBlack.png" width="50%" height="50%">
+<img src="./img/logo/mongoChina.png" width="50%" height="50%">
+<img src="./img/logo/jmlogo.png" width="50%" height="50%">
 
-
-
-![](./img/logo/WechatIMG4.png)
-
-![](./img/logo/jmlogo.png)  
 
 
 ##  项目介绍 
