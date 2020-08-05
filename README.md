@@ -1,4 +1,4 @@
-#  [MongoDB官方文档中文版](https://hbn-king.gitbook.io/mongodb-manual-zh/)
+#  [MongoDB官方文档中文版](https://jinmuinfo.github.io/MongoDB-Manual-zh/)
 
 
 
@@ -16,7 +16,7 @@ MongoDB是专为可扩展性，高性能和高可用性而设计的数据库。�
 
 维护地址  
 [Github](https://github.com/JinMuInfo/MongoDB-Manual-zh)  
-[在线阅读]()  
+[在线阅读](https://jinmuinfo.github.io/MongoDB-Manual-zh/)  
 
 ## 项目协议
 
