@@ -120,3 +120,4 @@ docs/README.md
 src/
 src
 *.sh
+/.idea
