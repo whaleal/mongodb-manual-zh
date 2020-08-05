@@ -117,4 +117,7 @@ Thumbs.db
 
 # custom
 docs/README.md
-
+src/
+src
+*.md
+*.sh
