@@ -148,3 +148,7 @@ fork Github 项目并建立你的分支 branch（我们强烈建议这样做）�
 commit 和 push 你的修改；  
 pull request。
 如果你还不熟练这个流程，请参阅 Github 入门指南。
+
+##### 四、工具推荐
+
+**Typora 文本编辑工具**
