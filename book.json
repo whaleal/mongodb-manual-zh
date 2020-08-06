@@ -20,7 +20,10 @@
           "-search", 
           "search-pro",
 	"splitter",
-	"page-toc-button"	
+	"page-toc-button",
+	"lightbox",
+	"alerts",
+	"auto-scroll-table"	
     ],
 
     "pluginsConfig": {
