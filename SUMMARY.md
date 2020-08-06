@@ -280,6 +280,13 @@
     * [Default MongoDB Read Concerns Write Concerns](docs/Reference/Default-MongoDB-Read-Concerns-and-Write-Concerns.md)
     * [Server Sessions](docs/Reference/Server-Sessions.md)
 * FAQ
+    * [FAQ: MongoDB Fundamentals](docs/Frequently-Asked-Questions/MongoDB-Fundamentals.md)
+    * [FAQ: Indexes](docs/Frequently-Asked-Questions/Indexes.md)
+    * [FAQ: Concurrency](docs/Frequently-Asked-Questions/Concurrency.md)
+    * [FAQ: Sharding with MongoDB](docs/Frequently-Asked-Questions/Sharding-with-MongoDB.md)
+    * [FAQ: Replication and Replica Sets](docs/Frequently-Asked-Questions/Replication-and-ReplicaSets.md)
+    * [FAQ: MongoDB Storage](docs/Frequently-Asked-Questions/MongoDB-Storage.md)
+    * [FAQ: MongoDB Diagnostics](docs/Frequently-Asked-Questions/MongoDB-Diagnostics.md)
 * 联系我们
     * [锦木信息](http://www.jinmuinfo.com/)
     * MongoDB中文社区
