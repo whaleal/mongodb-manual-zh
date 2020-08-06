@@ -8,7 +8,7 @@
 
 索引字段的默认权重为1。要调整索引字段的权重，请在[`db.collection.createIndex()`](https://docs.mongodb.com/master/reference/method/db.collection.createIndex/#db.collection.createIndex)方法中包含权重选项。
 
-> 警告
+>  **[warning] warning**
 >
 > 仔细选择权重，以防止需要重新索引。
 

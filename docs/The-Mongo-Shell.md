@@ -1,18 +1,20 @@
-<a name="aNNmc"></a>
-
 # The mongo Shell
-在本页面
+**在本页面**
 
 * [启动mongo Shell并连接到MongoDB](#启动连接)
+
 * [使用mongo Shell](#使用mongo-Shell)
+
 * [制表符完成和其他键盘快捷键](#制表符完成和其他键盘快捷键)
+
 * [mongorc.js文件](#mongorcjs文件)
+
 * [退出Shell](#退出Shell)
 
-	 mongo shell是MongoDB的交互式JavaScript接口。您可以使用mongo shell查询和更新数据以及执行管理操作。<br />
-	 mongo shell作为MongoDB Server安装的一部分包含在内。 MongoDB还提供mongo shell作为独立软件包。如何下载独立的mongo shell软件包：<br />
-	 1.打开下载中心。对于mongo Enterprise Shell，选择MongoDB Enterprise Server选项卡。<br />
-	 2.从下拉列表中选择您的首选版本和操作系统。<br />
+	 mongo shell是MongoDB的交互式JavaScript接口。您可以使用mongo shell查询和更新数据以及执行管理操作。
+	 mongo shell作为MongoDB Server安装的一部分包含在内。 MongoDB还提供mongo shell作为独立软件包。如何下载独立的mongo shell软件包：
+	 1.打开下载中心。对于mongo Enterprise Shell，选择MongoDB Enterprise Server选项卡。
+	 2.从下拉列表中选择您的首选版本和操作系统。
 	 3.选择要根据您的系统下载的安装包：
 
 | 系统 | 下载包 |
@@ -21,11 +23,13 @@
 | Mac | 选择TGZ以下载包含mongo shell的安装包 |
 | Linux | 选择shell以下载包含mongo shell的安装包 |
 
-安装并启动MongoDB之后，将mongo shell连接到正在运行的MongoDB实例。<br />
-#### <span id="启动连接">启动mongo Shell并连接到MongoDB</span>
-> **先决条件**<br />在尝试启动mongo shell之前，请确保MongoDB正在运行。<br />
+安装并启动MongoDB之后，将mongo shell连接到正在运行的MongoDB实例。
+## <span id="启动连接">启动mongo Shell并连接到MongoDB</span>
+> **前提条件**
+>
+> 在尝试启动mongo shell之前，请确保MongoDB正在运行。
 
-打开终端窗口（或Windows的命令提示符），然后转`<mongodb安装目录>/bin` 目录。<br />
+打开终端窗口（或Windows的命令提示符），然后转`<mongodb安装目录>/bin` 目录。
 
 ```shell
 cd <mongodb安装目录>/bin
@@ -35,63 +39,93 @@ cd <mongodb安装目录>/bin
 >
 > 将`<mongodb安装目录> / bin`添加到PATH环境变量中，可以键入mongo，而不必转到`<mongodb安装目录> / bin`目录或指定二进制文件的完整路径。
 
-**默认端口上的本地MongoDB实例**<br />
-您可以在不使用任何命令行选项的情况下运行mongo shell，以使用默认端口27017连接到在本地主机上运行的MongoDB实例：<br />
-mongo<br />
-**非默认端口上的本地MongoDB实例**<br />
-要显式指定端口，请包括--port命令行选项。例如，要使用非默认端口28015连接到在localhost上运行的MongoDB实例，请执行以下操作：<br />
-`mongo --port 28015`<br />
-**远程主机上的MongoDB实例**<br />
-要明确指定主机名或端口：<br />
-您可以指定一个连接字符串。例如：要连接到在远程主机上运行的MongoDB实例，请执行以下操作：<br />
+#### **默认端口上的本地MongoDB实例**
+
+您可以在不使用任何命令行选项的情况下运行mongo shell，以使用默认端口27017连接到在本地主机上运行的MongoDB实例：
+
+```shell
+mongo
+```
+
+#### **非默认端口上的本地MongoDB实例**
+
+要显式指定端口，请包括--port命令行选项。例如，要使用非默认端口28015连接到在localhost上运行的MongoDB实例，请执行以下操作：
+
+#### **非默认端口上的本地MongoDB实例**
+
+要显式指定端口，请包括--port命令行选项。例如，要使用非默认端口28015连接到在localhost上运行的MongoDB实例，请执行以下操作：
+
+```shell
+mongo --port 28015
+```
+
+#### **远程主机上的MongoDB实例**
+
+要明确指定主机名或端口：
+
+* 您可以指定一个[连接字符串](https://docs.mongodb.com/master/reference/connection-string/)。例如：要连接到在远程主机上运行的MongoDB实例，请执行以下操作：
 
 ```shell
 mongo "mongodb://mongodb0.example.com:28015"
 ```
 
-您可以使用命令行选项[--host <host>:<port>](https://docs.mongodb.com/manual/reference/program/mongo/#cmdoption-mongo-host)。例如，要连接到在远程主机上运行的MongoDB实例，请执行以下操作：<br />
-mongo --host mongodb0.example.com:28015<br />
-您可以使用--host <host>和--port <port>命令行选项。例如，要连接到在远程主机上运行的MongoDB实例，请执行以下操作：<br />
+* 您可以使用命令行选项[--host <`host`>:<`port`>](https://docs.mongodb.com/manual/reference/program/mongo/#cmdoption-mongo-host)。例如，要连接到在远程主机上运行的MongoDB实例，请执行以下操作：
+
+```shell
+mongo --host mongodb0.example.com:28015
+```
+
+您可以使用[`--host `<`host`>](https://docs.mongodb.com/master/reference/program/mongo/#cmdoption-mongo-host)和[`--port ` <`port`>](https://docs.mongodb.com/master/reference/program/mongo/#cmdoption-mongo-port) 命令行选项。例如，要连接到在远程主机上运行的MongoDB实例，请执行以下操作：
 
 ```shell
 mongo --host mongodb0.example.com --port 28015
 ```
 
-**具有身份验证的MongoDB实例**<br />要连接到MongoDB实例，需要进行身份验证：<br />您可以在连接字符串中指定用户名，身份验证数据库以及可选的密码。例如：以alice用户身份连接并认证到远程MongoDB实例：
+#### **具有身份验证的MongoDB实例**
 
-> **注意**<br />**如果未在连接字符串中指定密码，则shell程序将提示您输入密码。**
+要连接到MongoDB实例，需要进行身份验证：
+
+您可以在连接字符串中指定用户名，身份验证数据库以及可选的密码。例如：以**alice**用户身份连接并认证到远程MongoDB实例：
+
+> **[note]  Note**
+>
+> 如果未在连接字符串中指定密码，则shell程序将提示您输入密码。
 
 ```shell
 mongo "mongodb://alice@mongodb0.examples.com:28015/?authSource=admin"
 ```
 
-您可以使用--username <user>和--password，--authenticationDatabase <db>命令行选项。 例如，以alice用户身份连接并认证到远程MongoDB实例：
+您可以使用[`--username `<`user`>](https://docs.mongodb.com/master/reference/program/mongo/#cmdoption-mongo-username) 和[`--password`](https://docs.mongodb.com/master/reference/program/mongo/#cmdoption-mongo-password), [`--authenticationDatabase <db>`](https://docs.mongodb.com/master/reference/program/mongo/#cmdoption-mongo-authenticationdatabase)命令行选项。 例如，以**alice**用户身份连接并认证到远程MongoDB实例：
 
-> **注意**<br />**如果您指定--password而不输入用户密码，则shell程序将提示您输入密码。**
+> **[note]  Note**
+>
+> 如果您指定**--password**而不输入用户密码，则shell程序将提示您输入密码。
 
 ```shell
 mongo --username alice --password --authenticationDatabase admin --host mongodb0.examples.com --port 28015
 ```
 
-**连接到MongoDB复制集集（Connect to a MongoDB Replica Set）**<br />
-**要连接到复制集：**<br />
-您可以在连接字符串中指定复制集名称和成员<br />
+#### 连接到MongoDB复制集
+
+要连接到复制集：
+
+* 您可以在连接字符串中指定复制集名称和成员
 
 ```shell
-mongo "mongodb://mongodb0.example.com.local:27017,mongodb1.example.com.local:27017,mongodb2.example.com.local:27017/?replicaSet=replA"<br />
+mongo "mongodb://mongodb0.example.com.local:27017,mongodb1.example.com.local:27017,mongodb2.example.com.local:27017/?replicaSet=replA"
 ```
 
-如果使用DNS种子列表连接格式，则可以指定连接字符串：<br />
+* 如果使用[DNS Seedlist 链接格式](https://docs.mongodb.com/master/reference/connection-string/#connections-dns-seedlist)，则可以指定连接字符串：
 
 ```shell
 mongo "mongodb+srv://server.example.com/"
 ```
 
-> **注意**
+> **[note]  Note**
 >
-> **对于连接，使用+ srv连接字符串修饰符会自动将ssl选项设置为true。**
+> 对于连接，使用**+ srv**连接字符串修饰符会自动将ssl选项设置为true。
 
-您可以从--host <复制集名称> / <host1>：<port1>，<host2>：<port2>，...命令行选项中指定复制集集名称和成员。 例如，要连接到名为replA的复制集集，请执行以下操作：<br />
+* 您可以从--host <复制集名称> / <host1>：<port1>，<host2>：<port2>，...命令行选项中指定复制集集名称和成员。 例如，要连接到名为replA的复制集集，请执行以下操作：
 
 ```shell
 mongo --host replA/mongodb0.example.com.local:27017,mongodb1.example.com.local:27017,mongodb2.example.com.local:27017
