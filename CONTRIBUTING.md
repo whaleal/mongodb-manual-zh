@@ -12,6 +12,7 @@
 ### 一 翻译
 请将你的文档转为 markdown  格式。  
 注意以下事项  
+
   * 格式
 
     ​	标题：一级目录
@@ -78,6 +79,43 @@
   * 新版本新增的功能
 
     以最新版本为主
+
+# 格式规范
+
+### 警报格式
+
+**用法样式：**
+**信息样式**
+
+```kotlin
+> **[info] info**
+>
+> Use this for infomation messages.
+```
+
+**警告造型**
+
+```kotlin
+> **[warning] warning**
+>
+> Use this for warning messages.
+```
+
+**危险造型**
+
+```kotlin
+> **[danger] danger**
+>
+> Use this for danger messages.
+```
+
+**成功造型**
+
+```kotlin
+> **[success] success**
+>
+> Use this for success messages.
+```
 
 本项目以最新版本的文档为主，当旧版本的一些内容在新版本被删除时，汉化的新文档不删除该内容只是标记该文档的过期版本。
 比如 **MMAPv1 Storage Engine** 已被放弃使用 ，但是我们在文档中仍然保留他的相关资料。
