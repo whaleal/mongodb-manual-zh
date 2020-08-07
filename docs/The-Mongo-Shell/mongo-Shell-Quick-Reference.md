@@ -1,5 +1,5 @@
 
-## mongo Shell 快速参考
+# mongo Shell 快速参考
 **在本页面**
 
 * [mongo Shell命令历史](#命令历史)
@@ -24,15 +24,21 @@
 
 * [其他资源](#其他资源)
 
-  
+> **[success] Note**
+>
+> 下面的文档是[MongoDB服务器下载](https://www.mongodb.com/try/download/community?tck=docs_server).中包含的[`mongo`](https://docs.mongodb.com/master/reference/program/mongo/#bin.mongo) shell。有关新的MongoDB Shell ，**mongosh**的信息，请参考[mongosh文档](https://docs.mongodb.com/mongodb-shell/)。
+>
+> 要了解这两种shell的区别，请参阅[Comparison of the mongo Shell and mongosh](https://docs.mongodb.com/master/mongo/#compare-mongosh-mongo).
 
-### <span id="命令历史">**mongo Shell命令历史**</span>
+## <span id="命令历史">mongo Shell命令历史</span>
 
-  您可以使用上下箭头键检索在mongo shell中发布的先前命令。 命令历史记录存储在**〜/ .dbshell**文件中。 有关更多信息，请参见**.dbshell**。<br />
+ 您可以使用上下箭头键检索在 [`mongo`](https://docs.mongodb.com/master/reference/program/mongo/#bin.mongo) shell中发布的先前命令。 命令历史记录存储在**〜/ .dbshell**文件中。 有关更多信息，请参见[.dbshell](https://docs.mongodb.com/master/reference/program/mongo/#mongo-dbshell-file) 。
 
-  <span id="命令行选项">**命令行选项**</span>
+### <span id="命令行选项">命令行选项</span>
 
-  mongo shell可以使用许多选项启动。 有关所有可用选项的详细信息，请参见mongo shell页面。<br />下表显示了mongo的一些常用选项：
+ [`mongo`](https://docs.mongodb.com/master/reference/program/mongo/#bin.mongo)  shell可以使用许多选项启动。 有关所有可用选项的详细信息，请参见[mongo shell](https://docs.mongodb.com/master/reference/program/mongo/) 页面。
+
+下表显示了mongo的一些常用选项：
 
 | 选项 | 说明 |
 | --- | --- |
@@ -40,29 +46,31 @@
 | [--nodb](#) | 在不连接数据库的情况下启动mongo shell。<br />要稍后连接，请参阅[Opening New Connections](https://docs.mongodb.com/manual/tutorial/write-scripts-for-the-mongo-shell/#mongo-shell-new-connections)。 |
 | [--shell](#) | 与JavaScript文件（即<[file.js](#)>]）结合使用，以在运行JavaScript文件后在mongo shell中继续。<br />有关示例，请参见 [JavaScript file](https://docs.mongodb.com/manual/tutorial/write-scripts-for-the-mongo-shell/#mongo-shell-javascript-file)。 |
 
-### <span id="助手">**命令助手**</span>
+## <span id="助手">**命令助手**</span>
 
-mongo shell提供了各种帮助。下表显示了一些常见的帮助方法和命令：
+[`mongo`](https://docs.mongodb.com/master/reference/program/mongo/#bin.mongo)shell提供了各种帮助。下表显示了一些常见的帮助方法和命令：
 
 | 帮助方法和命令 | 描述 |
 | --- | --- |
 | help() | 打印当前数据库的列表 |
-| db.help() | 打印当前数据库的所有角色的列表，包括用户定义的角色和内置角色。 |
+| [`db.help()`](https://docs.mongodb.com/master/reference/method/db.help/#db.help) | 打印当前数据库的所有角色的列表，包括用户定义的角色和内置角色。 |
 | db.`<collection>`.help() | 打印耗时1毫秒或更长时间的五个最新操作。 有关更多信息，请参见数据库分析器上的文档。 |
-| show dbs | 打印所有可用数据库的列表。<br />该操作对应于listDatabases命令。 如果部署使用访问控制运行，则该操作将根据用户权限返回不同的值。 有关详细信息，请参见 [listDatabases](https://docs.mongodb.com/manual/reference/command/listDatabases/#dbcmd.listDatabases)。 |
-| use<`db`> | 将当前数据库切换到<`db`>。 mongo shell变量db设置为当前数据库。 |
-| show collections | 打印当前数据库的所有集合的列表。<br />另可参考：[show collections](https://docs.mongodb.com/manual/release-notes/4.0-compatibility/#compat-show-collections)<br />  |
+| show dbs | 打印所有可用数据库的列表。<br />该操作对应于[`listDatabases`](https://docs.mongodb.com/master/reference/command/listDatabases/#dbcmd.listDatabases)命令。 如果部署使用访问控制运行，则该操作将根据用户权限返回不同的值。 有关详细信息，请参见 [listDatabases](https://docs.mongodb.com/manual/reference/command/listDatabases/#dbcmd.listDatabases)。 |
+| use<`db`> | 将当前数据库切换到<`db`>。 [`mongo`](https://docs.mongodb.com/master/reference/program/mongo/#bin.mongo) shell变量**db**设置为当前数据库。 |
+| show collections | 打印当前数据库的所有集合的列表。<br />另可参考：<br />[show collections](https://docs.mongodb.com/manual/release-notes/4.0-compatibility/#compat-show-collections) |
 | show users | 打印当前数据库列表 |
 | show roles | 打印当前数据库的所有角色的列表，包括用户定义角色和内置角色。 |
 | show profile | 打印耗时1毫秒或更长时间的五个最新操作。 有关更多信息，请参见 [database profiler](https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/)。 |
 | show databases | 打印所有可用数据库的列表。<br />该操作对应于 [listDatabases](https://docs.mongodb.com/manual/reference/command/listDatabases/#dbcmd.listDatabases) 命令。 如果部署使用访问控制运行，则该操作将根据用户权限返回不同的值。 有关详细信息，请参见 [listDatabases](https://docs.mongodb.com/manual/reference/command/listDatabases/#dbcmd.listDatabases)。 |
 | load() | 执行一个JavaScript文件。 有关更多信息，请参见 [Write Scripts for the mongo Shell](https://docs.mongodb.com/manual/tutorial/write-scripts-for-the-mongo-shell/)。 |
 
-### <span id="shell">**Shell基本JavaScript操作**</span>
+## <span id="shell">**Shell基本JavaScript操作**</span>
 
-mongo shell提供了用于数据库操作的**JavaScript API**。<br />
+[`mongo`](https://docs.mongodb.com/master/reference/program/mongo/#bin.mongo)  shell提供了用于数据库操作的[JavaScript API](https://docs.mongodb.com/master/reference/method/) 。
 
-在mongo shell中，db是引用当前数据库的变量。该变量自动设置为默认数据库测试，或者在**use <`db`>**切换当前数据库时设置。<br />下表显示了一些常见的JavaScript操作：
+在mongo shell中，**db**是引用当前数据库的变量。该变量自动设置为默认数据库测试，或者在**use <`db`>**切换当前数据库时设置。
+
+下表显示了一些常见的JavaScript操作：
 
 | JavaScript数据库操作 | 说明 |
 | --- | --- |
@@ -85,9 +93,11 @@ mongo shell提供了用于数据库操作的**JavaScript API**。<br />
 - [MongoDB CRUD Operations](https://docs.mongodb.com/manual/crud/)
 - [mongo Shell Methods](https://docs.mongodb.com/manual/reference/method/#js-administrative-methods)
 
-### <span id="快捷键">**键盘快捷键**</span>
+## <span id="快捷键">**键盘快捷键**</span>
 
-mongo shell提供了大多数键盘快捷键，类似于**bash shell**或**Emacs**中的快捷键。 对于某些功能，mongo提供了多个键绑定，以适应几种熟悉的范例。<br />下表列举了mongo shell支持的击键：
+ shell提供了大多数键盘快捷键，类似于**bash shell**或**Emacs**中的快捷键。 对于某些功能，[`mongo`](https://docs.mongodb.com/master/reference/program/mongo/#bin.mongo) 提供了多个键绑定，以适应几种熟悉的范例。
+
+下表列举了 [`mongo`](https://docs.mongodb.com/master/reference/program/mongo/#bin.mongo) shell支持的按键：
 
 | 按键 | 功能 |
 | --- | --- |
@@ -135,25 +145,25 @@ mongo shell提供了大多数键盘快捷键，类似于**bash shell**或**Emacs
 | Meta-< | 历史开始 |
 | Meta->   | 历史结束 |
 
-### <span id="查询">**查询**</span>
+## <span id="查询">**查询**</span>
 
-在mongo shell中，使用`find()`和`findOne()`方法执行读取操作。<br />`find()`方法返回一个游标对象，mongo shell对其进行迭代以在屏幕上打印文档。 默认情况下，mongo打印前20个结果。mongo shell将提示用户“输入”以继续迭代接下来的20个结果。<br />下表提供了mongo shell中的一些常见读取操作：
+在mongo shell中，使用[`find()`](https://docs.mongodb.com/master/reference/method/db.collection.find/#db.collection.find) 和[`findOne()`](https://docs.mongodb.com/master/reference/method/db.collection.findOne/#db.collection.findOne) 方法执行读取操作。<br />[`find()`](https://docs.mongodb.com/master/reference/method/db.collection.find/#db.collection.find)方法返回一个游标对象，[`mongo`](https://docs.mongodb.com/master/reference/program/mongo/#bin.mongo)  shell对其进行迭代以在屏幕上打印文档。 默认情况下，[`mongo`](https://docs.mongodb.com/master/reference/program/mongo/#bin.mongo) 打印前20个结果。[`mongo`](https://docs.mongodb.com/master/reference/program/mongo/#bin.mongo) shell将提示用户“输入”以继续迭代接下来的20个结果。<br />下表提供了mongo shell中的一些常见读取操作：
 
 | 读取操作 | 说明描述 |
 | --- | --- |
-| [db.collection.find(<query>)](https://docs.mongodb.com/manual/reference/method/db.collection.find/#db.collection.find) | 在集合中找到符合<query>条件的文档。 如果未指定<query>条件或该条件为空（即{}），则读取操作将选择集合中的所有文档。<br />以下示例在用户集合中选择name字段等于“ Joe”的文档：coll = db.users;coll.find( { name: "Joe" } );有关指定<query>条件的更多信息，请参见：<br />[Specify Equality Condition](https://docs.mongodb.com/manual/tutorial/query-documents/#read-operations-query-argument).<br />  |
-| [db.collection.find(<query>,` `<projection>)](https://docs.mongodb.com/manual/reference/method/db.collection.find/#db.collection.find) | 查找符合<query>条件的文档，并仅返回<projection>中的特定字段。<br />以下示例从集合中选择所有文档，但仅返回名称字段和_id字段。 除非明确指定不返回，否则始终返回_id。<br />coll = db.users;<br />coll.find（{}，{name：true}）;<br />有关指定<projection>的更多信息，请参见要从查询返回的项目字段。 |
-| [db.collection.find().sort(<sort` `order>)](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort) | 以指定的<sort order>返回结果。<br />以下示例从集合中选择所有文档，并返回按名称字段升序+1排序的结果。 使用-1降序：<br />coll = db.users;<br />coll.find（）。sort（{name：1}）; |
-| [db.collection.find(<query>).sort(<sort` `order>)](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort) | 以指定的<sort order>返回符合<query>条件的文档。 |
-| [db.collection.find(` `...` `).limit(` `<n>` `)](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit) | 将结果限制为n行。 如果只需要一定数量的行以获得最佳性能，则强烈建议使用。 |
-| [db.collection.find(` `...` `).skip(` `<n>` `)](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip) | 跳过n个结果。 |
+| [`db.collection.find(<query>`)](https://docs.mongodb.com/manual/reference/method/db.collection.find/#db.collection.find) | 在集合中找到符合<`query`>条件的文档。 如果未指定<`query`>条件或该条件为空（即{}），则读取操作将选择集合中的所有文档。<br />以下示例在用户集合中选择name字段等于“ Joe”的文档：coll = db.users;coll.find( { name: "Joe" } );有关指定<`query`>条件的更多信息，请参见：<br />[Specify Equality Condition](https://docs.mongodb.com/manual/tutorial/query-documents/#read-operations-query-argument).<br /> |
+| [`db.collection.find(<query>,` `<projection>)`](https://docs.mongodb.com/manual/reference/method/db.collection.find/#db.collection.find) | 查找符合<`query`>条件的文档，并仅返回<`projection`>中的特定字段。<br />以下示例从集合中选择所有文档，但仅返回名称字段和**_id**字段。 除非明确指定不返回，否则始终返回**_id**。<br />**coll = db.users;<br />coll.find（{}，{name：true}）;<br />**有关指定<`projection`>的更多信息，请参见[Project Fields to Return from Query](https://docs.mongodb.com/master/tutorial/project-fields-from-query-results/#read-operations-projection).。 |
+| [`db.collection.find().sort(<sort order>)`](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort) | 以指定的<`sort order`>返回结果。<br />以下示例从集合中选择所有文档，并返回按名称字段升序+1排序的结果。 使用-1降序：<br />**coll = db.users;<br />coll.find（）。sort（{name：1}）;** |
+| [`db.collection.find(<query>).sort(<sort` `order`>)](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort) | 以指定的<`sort order`>返回符合<`query`>条件的文档。 |
+| [`db.collection.find( ... ).limit( )`](https://docs.mongodb.com/master/reference/method/cursor.limit/#cursor.limit) | 将结果限制为<`n`>行。 如果只需要一定数量的行以获得最佳性能，则强烈建议使用。 |
+| [`db.collection.find( ... ).skip( )`](https://docs.mongodb.com/master/reference/method/cursor.skip/#cursor.skip) | 跳过<`n`>个结果。 |
 | [db.collection.count()](https://docs.mongodb.com/manual/reference/method/db.collection.count/#db.collection.count) | 返回集合中的文档总数。 |
-| [db.collection.find(<query>).count()](https://docs.mongodb.com/manual/reference/method/cursor.count/#cursor.count) | 返回与查询匹配的文档总数。<br />count（）忽略limit（）和skip（）。例如，如果有100条记录匹配，但限制为10，则count（）将返回100。这比迭代自己的速度更快，但仍然需要时间。 |
-| [db.collection.findOne(<query>)](https://docs.mongodb.com/manual/reference/method/db.collection.findOne/#db.collection.findOne) | 查找并返回一个文档。 如果找不到，则返回null。<br />以下示例在用户集合中选择一个名称与“ Joe”匹配的文档：<br />coll = db.users;<br />coll.findOne（{name：“ Joe”}）;<br />在内部，findOne（）方法是带有limit（1）的find（）方法。 |
+| [`db.collection.find().count()`](https://docs.mongodb.com/master/reference/method/cursor.count/#cursor.count) | 返回与查询匹配的文档总数。<br />[`count()`](https://docs.mongodb.com/master/reference/method/cursor.count/#cursor.count)忽略[`limit()`](https://docs.mongodb.com/master/reference/method/cursor.limit/#cursor.limit)和[`skip()`](https://docs.mongodb.com/master/reference/method/cursor.skip/#cursor.skip).例如，如果有100条记录匹配，但限制为10，则[`count()`](https://docs.mongodb.com/master/reference/method/cursor.count/#cursor.count)将返回100。这比迭代自己的速度更快，但仍然需要时间。 |
+| [`db.collection.findOne()`](https://docs.mongodb.com/master/reference/method/db.collection.findOne/#db.collection.findOne) | 查找并返回一个文档。 如果找不到，则返回null。<br />以下示例在用户集合中选择一个名称与“ Joe”匹配的文档：<br />**coll = db.users;<br />coll.findOne（{name：“ Joe”}）;<br />**在内部，**[`findOne()`](https://docs.mongodb.com/master/reference/method/db.collection.findOne/#db.collection.findOne)**方法是带有[`limit(1)`](https://docs.mongodb.com/master/reference/method/cursor.limit/#cursor.limit)的[`find()`](https://docs.mongodb.com/master/reference/method/db.collection.find/#db.collection.find)方法。 |
 
 有关更多信息和示例，请参阅[Query Documents](https://docs.mongodb.com/manual/tutorial/query-documents/) 。 请参阅[Query and Projection Operators](https://docs.mongodb.com/manual/reference/operator/query/)。<br />
 
-### <span id="错误检查">**错误检查方法**</span>
+## <span id="错误检查">**错误检查方法**</span>
 
 mongo shell write方法将**Write Concern**直接集成到方法执行中，并返回一个**WriteResult()**对象，该对象包含操作结果，包括所有写错误和写关注错误。<br />
 
@@ -163,24 +173,24 @@ mongo shell write方法将**Write Concern**直接集成到方法执行中，并�
 
 | JavaScript数据库管理 | 方法说明 |
 | --- | --- |
-| [db.fromColl.renameCollection(<toColl>)](https://docs.mongodb.com/manual/reference/method/db.collection.renameCollection/#db.collection.renameCollection) | 将集合从fromColl重命名为<toColl>。 请参阅[Naming Restrictions](https://docs.mongodb.com/manual/reference/limits/#restrictions-on-db-names)。 |
-| [db.getCollectionNames()](https://docs.mongodb.com/manual/reference/method/db.getCollectionNames/#db.getCollectionNames) | 获取当前数据库中所有集合的列表。 |
-| [db.dropDatabase()](https://docs.mongodb.com/manual/reference/method/db.dropDatabase/#db.dropDatabase) | 删除当前数据库。 |
+| [`db.fromColl.renameCollection(<toColl>)`](https://docs.mongodb.com/manual/reference/method/db.collection.renameCollection/#db.collection.renameCollection) | 将集合从**fromColl**重命名为<`toColl`>。 请参阅[Naming Restrictions](https://docs.mongodb.com/manual/reference/limits/#restrictions-on-db-names)。 |
+| [`db.getCollectionNames()`](https://docs.mongodb.com/manual/reference/method/db.getCollectionNames/#db.getCollectionNames) | 获取当前数据库中所有集合的列表。 |
+| [`db.dropDatabase()`](https://docs.mongodb.com/manual/reference/method/db.dropDatabase/#db.dropDatabase) | 删除当前数据库。 |
 
 另请参见[administrative database methods](https://docs.mongodb.com/manual/reference/method/#js-administrative-methods)以获取方法的完整列表。<br />
 
-### <span id="其他连接">**打开其他连接**</span>
+## <span id="其他连接">**打开其他连接**</span>
 
 您可以在mongo shell中创建新的连接。<br />下表显示了创建连接的方法：
 
 | JavaScript连接创建方法 | 说明 |
 | --- | --- |
-| db = connect("<host><:port>/<dbname>") | 打开一个新的数据库连接。 |
-| conn = **new** Mongo()db = conn.getDB("dbname") | 使用新的Mongo（）打开与新服务器的连接。<br />使用连接的getDB（）方法选择数据库。 |
+| db = connect("<`host`><:port>/<`dbname`>") | 打开一个新的数据库连接。 |
+| conn = **new** Mongo()<br />db = conn.getDB("dbname") | 使用新的Mongo（）打开与新服务器的连接。<br />使用连接的getDB（）方法选择数据库。 |
 
 另请参阅 [Opening New Connections](https://docs.mongodb.com/manual/tutorial/write-scripts-for-the-mongo-shell/#mongo-shell-new-connections)以获取有关从mongo shell打开新连接的更多信息。<br />
 
-### <span id="多样式">**多样式**</span>
+## <span id="多样式">**多样式**</span>
 
 下表显示了一些其他方法：
 
@@ -188,9 +198,7 @@ mongo shell write方法将**Write Concern**直接集成到方法执行中，并�
 | --- | --- |
 | Object.bsonsize(<`document`>) | Prints the [BSON](https://docs.mongodb.com/manual/reference/glossary/#term-bson) size of a <`document`> in bytes |
 
-Object.bsonsize（<`document`>）打印<`document`>的BSON大小（以字节为单位）<br />
-
-### <span id="其他资源">**其他资源**</span>
+## <span id="其他资源">**其他资源**</span>
 
 考虑以下解决mongo shell及其接口的参考资料：
 
@@ -201,3 +209,9 @@ Object.bsonsize（<`document`>）打印<`document`>的BSON大小（以字节为�
 - [Getting Started Guide](https://docs.mongodb.com/getting-started/shell)
 
 另外，MongoDB源代码存储库包括一个[jstests](https://github.com/mongodb/mongo/tree/master/jstests/)目录，该目录包含许多mongo shell脚本。
+
+
+
+译者：王恒
+
+校对：杨帅
