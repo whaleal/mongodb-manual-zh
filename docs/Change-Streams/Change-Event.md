@@ -1,54 +1,121 @@
-# Change Streams Production Recommendations
+#Change Events
+在本页面
 
-**在本页面**
 
-- [改变 Events](#)
-- [insert Event]()
-- [更新 Event]()
-- [替换 Event]()
-- [删除 Event]()
-- [使 Event 无效]()
-<br />
-<a name="f2mHB"></a>
-## 改变 Events
-以下文档表示更改流响应文档可以具有的所有可能字段。
-```powershell
+Change Events  
+insert Event  
+update Event  
+replace Event  
+delete Event  
+drop Event  
+rename Event  
+dropDatabase Event  
+invalidate Event  
+
+
+## Change Events  
+以下文档表示变更流响应文档可以具有的所有可能的字段。
+```
 {
    _id : { <BSON Object> },
    "operationType" : "<operation>",
    "fullDocument" : { <document> },
    "ns" : {
       "db" : "<database>",
-      "coll" : "<collection"
+      "coll" : "<collection>"
+   },
+   "to" : {
+      "db" : "<database>",
+      "coll" : "<collection>"
    },
    "documentKey" : { "_id" : <value> },
    "updateDescription" : {
       "updatedFields" : { <document> },
       "removedFields" : [ "<field>", ... ]
    }
+   "clusterTime" : <Timestamp>,
+   "txnNumber" : <NumberLong>,
+   "lsid" : {
+      "id" : <UUID>,
+      "uid" : <BinData>
+   }
 }
 ```
-某些字段仅适用于某些操作，例如更新。以下 table 描述了更改流响应文档中的每个字段：
+有些字段仅适用于某些操作，例如更新。下表描述了变更流响应文档中的每个字段：
 
-| 领域 | 类型 | 描述 |
-| :--- | :--- | :--- |
-| `_id` | 文献 | 与操作相关的元数据。<br />恢复更改流时，将此文档用作`resumeAfter`的`resumeAfter`参数。 |
-| `operationType` | 串 | 发生的操作类型。可以是以下任何值：<br />`insert`<br />`delete`<br />`replace`<br />`update`<br />`invalidate` |
-| `fullDocument` | 文献 | 该操作创建或修改的文档。<br />对于`insert`和`replace`操作，这表示操作创建的新文档。<br />对于`delete`操作，由于文档不再存在，因此省略此字段。<br />对于`update`操作，仅当您将更改流配置为`fullDocument`设置为`updateLookup`时，才会显示此字段。然后，该字段表示由更新操作修改的文档的最新 majority-committed version。如果其他 majority-committed 操作在原始更新操作和完整文档查找之间修改了文档，则此文档可能与`updateDescription`中描述的更改不同。 |
-| `ns` | 文献 | 数据库的名称空间和更改流的集合是打开的。 |
-| `ns.db` | 串 | 数据库的 name。 |
-| `ns.coll` | 串 | 集合的 name。 |
-| `documentKey` | 文献 | 包含操作创建或修改的文档的`_id`的文档。对于分片集合，还会显示文档的完整分片 key。如果`_id`字段已经是分片 key 的一部分，则不会重复该字段。 |
-| `updateDescription` | 文献 | 描述更新操作更新或删除的字段的文档。<br />仅当`operationType`为`update`时，才会显示此文档及其字段。 |
-| `updateDescription.updatedFields` | 文献 | 一个文档，其键对应于更新操作修改的字段。每个字段的 value 对应于这些字段的新 value，而不是导致新 value 的操作。 |
-| `updateDescription.removedFields` | array | 更新操作删除的 array 字段。 |
+|领域	|类型	|描述|
+|_ID	|document	|与操作有关的元数据。作为行为resumeToken 的resumeAfter参数恢复的改变流时。  
+{
+   "_data" : <BinData|hex string>  
+}  
+该_data类型取决于MongoDB的版本，在某些情况下，在变换流的开/恢复时间的功能兼容性版本（FCV）。有关详细信息，请参阅“ 恢复令牌”。|
 
-## insert Event
-以下 example 说明了`insert` event：
+|operationType	| String	| 
+发生的操作类型。可以是以下任意值：
+
+insert
+delete
+replace
+update
+drop
+rename
+dropDatabase
+invalidate | 
+|fullDocument	| 文件	|
+通过创建或修改文件insert，replace， delete，update操作（即CRUD操作）。
+
+对于insert和replace操作，这表示该操作创建的新文档。
+
+对于delete操作，此字段将被省略，因为文档不再存在。
+
+对于update操作，如果你配置的变换流本场只出现fullDocument设置为updateLookup。然后，该字段表示由更新操作修改的文档的最新多数提交版本。updateDescription 如果其他多数提交的操作在原始更新操作和完整文档查找之间修改了文档，则此文档可能与所描述的更改有所不同。| 
+
+|ns	|document | 	受事件影响的名称空间（数据库和/或集合）。|
+|ns.db	| String | 数据库的名称。|
+|ns.coll	| String | 	集合的名称  对于dropDatabase操作，将省略此字段。| 
+
+|to |document	| When operationType : rename, this document displays the new name for the ns collection. This document is omitted for all other values of operationType|
+|to.db	|string	|The new name of the database.|
+|to.coll	|string	|The new name of the collection.|
+|documentKey	|document	|A document that contains the _id of the document created or modified by the insert, replace, delete, update operations (i.e. CRUD operations). For sharded collections, also displays the full shard key for the document. The _id field is not repeated if it is already a part of the shard key.|
+|updateDescription |	document	|
+A document describing the fields that were updated or removed by the update operation.
+
+This document and its fields only appears if the operationType is update.
+updateDescription.updatedFields	document	A document whose keys correspond to the fields that were modified by the update operation. The value of each field corresponds to the new value of those fields, rather than the operation that resulted in the new value.
+updateDescription.removedFields	array	An array of fields that were removed by the update operation.  |
+|clusterTime	|Timestamp|	
+The timestamp from the oplog entry associated with the event.
+
+For events that happened as part of a multi-document transaction, the associated change stream notifications will have the same clusterTime value, namely the time when the transaction was committed.
+
+On a sharded cluster, events that occur on different shards can have the same clusterTime but be associated with different transactions or even not be associcated with any transaction. To identify events for a single transaction, you can use the combination of lsid and txnNumber in the change stream event document.
+
+New in version 4.0.|
+
+|txnNumber	|NumberLong	|
+The transaction number.
+
+Only present if the operation is part of a multi-document transaction.
+
+New in version 4.0.|
+
+|lsid	|Document|	
+The identifier for the session associated with the transaction.
+
+Only present if the operation is part of a multi-document transaction.
+
+New in version 4.0.|
+
+
+
+## insert事件
+以下示例说明了一个insert事件：
 ```
 {
    _id: { < Resume Token > },
    operationType: 'insert',
+   clusterTime: <Timestamp>,
    ns: {
       db: 'engineering',
       coll: 'users'
@@ -64,15 +131,17 @@
    }
 }
 ```
-`documentKey`字段包括`_id`和`userName`字段。这表示`engineering.users`集合是分片的，`userName`和`_id`上有一个 shard key。<br />`fullDocument`文档表示 insert 的 time 处文档的 version。
+该documentKey字段包括_id和userName 字段。这表示engineering.users集合已分片，并且在userName和上都有分片键_id。
 
-<a name="3333V"></a>
-## 更新 Event
-以下 example 说明了`update` event：
+该fullDocument文档表示插入时文档的版本。
+
+##update事件
+以下示例说明了一个update事件：
 ```
 {
    _id: { < Resume Token > },
    operationType: 'update',
+   clusterTime: <Timestamp>,
    ns: {
       db: 'engineering',
       coll: 'users'
@@ -88,11 +157,12 @@
    }
 }
 ```
-以下 example 说明了使用`fullDocument : updateLookup`选项打开的更改流的`update` event：
+以下示例说明了update使用选项打开的变更流的事件：fullDocument : updateLookup
 ```
 {
    _id: { < Resume Token > },
    operationType: 'update',
+   clusterTime: <Timestamp>,
    ns: {
       db: 'engineering',
       coll: 'users'
@@ -115,14 +185,15 @@
    }
 }
 ```
-`fullDocument`文档代表更新文档的最新 majority-committed version。 `fullDocument`文档可能与更新操作的 time 时的文档不同，具体取决于更新操作和文档查找之间发生的交错 majority-committed 操作的数量。<br />
-<a name="T2uKA"></a>
-## 替换 Event
-以下 example 说明了`replace` event：
-```
+该fullDocument文档代表了更新文档的最新多数批准版本。该fullDocument文档可能与更新操作时的文档有所不同，具体取决于在更新操作和文档查找之间发生的交错多数授权操作的数量。
+
+##replace事件
+以下示例说明了一个replace事件：
+
 {
    _id: { < Resume Token > },
    operationType: 'replace',
+   clusterTime: <Timestamp>,
    ns: {
       db: 'engineering',
       coll: 'users'
@@ -137,19 +208,19 @@
    }
 }
 ```
-`replace`操作使用 update 命令，包含两个阶段：
+一个replace操作使用update命令，并且包括两个阶段：
 
-- 使用`documentKey`和删除原始文档<br />
-- 使用相同的`documentkey`插入新文档<br />
+使用documentKey和删除原始文档
+使用相同的插入新文档 documentkey
+在fullDocument一个的replace事件表示替换文件的插入后的文件。
 
-`replace` event 的`fullDocument`表示替换文档的 insert 之后的文档。<br />
-<a name="sH3OG"></a>
-## 删除 Event
-以下 example 说明了`delete` event：
+##delete事件
+以下示例说明了一个delete事件：
 ```
 {
    _id: { < Resume Token > },
    operationType: 'delete',
+   clusterTime: <Timestamp>,
    ns: {
       db: 'engineering',
       coll: 'users'
@@ -159,15 +230,81 @@
    }
 }
 ```
-文档被省略，因为更改流游标将`delete` event 发送到 client 的 time 时文档不再存在。
+该fullDocument文档被省略，因为在更改流游标将delete事件发送到客户端时，该文档不再存在。
 
-<a name="wSk94"></a>
-## 使 Event 无效
-以下 example 说明了`invalidate` event：
+##drop事件
+版本4.0.1中的新功能。
+
+一个drop在集合从数据库中删除发生的事件。以下示例说明了一个drop事件：
+
 ```
 {
    _id: { < Resume Token > },
-   operationType: 'invalidate'
+   operationType: 'drop',
+   clusterTime: <Timestamp>,
+   ns: {
+      db: 'engineering',
+      coll: 'users'
+   }
 }
 ```
-对于针对集合打开的更改流，`invalidate` events 发生在影响监视集合的[dropDatabase]()
+一个drop事件导致一个无效事件 变革流张开攻击它的ns集合。
+
+##rename事件
+版本4.0.1中的新功能。
+
+一个rename在集合重命名发生的事件。以下示例说明了一个rename事件：
+```
+{
+   _id: { < Resume Token > },
+   operationType: 'rename',
+   clusterTime: <Timestamp>,
+   ns: {
+      db: 'engineering',
+      coll: 'users'
+   },
+   to: {
+      db: 'engineering',
+      coll: 'people'
+   }
+}
+```
+一个rename事件导致一个 无效事件的流变化对打开的ns集合或to集合。
+
+##dropDatabase事件
+版本4.0.1中的新功能。
+
+一个dropDatabase当数据库被丢弃发生的事件。以下示例说明了一个dropDatabase事件：
+```
+{
+   _id: { < Resume Token > },
+   operationType: 'dropDatabase',
+   clusterTime: <Timestamp>,
+   ns: {
+      db: 'engineering'
+   }
+}
+```
+A dropDatabase command generates a drop event for each collection in the database before generating a dropDatabase event for the database.
+
+一个dropDatabase事件导致一个 无效事件的流变化对打开的ns.db数据库。
+
+##invalidate事件
+以下示例说明了一个invalidate事件：
+
+```
+{
+   _id: { < Resume Token > },
+   operationType: 'invalidate',
+   clusterTime: <Timestamp>
+}
+```
+对于针对集合打开的变更流，影响监视的集合的 放置事件， 重命名事件或 dropDatabase事件导致 无效事件。
+
+对于针对数据库打开的变更流，影响受监视数据库的 dropDatabase事件将导致 invalidate事件。
+
+invalidate 事件关闭更改流游标。
+
+resumeAfter在无效事件（例如，集合删除或重命名）关闭流之后，您不能用来恢复更改 流。从MongoDB 4.2开始，您可以使用 startAfter在invalidate事件之后启动新的更改流。
+
+译者：wh
