@@ -22,8 +22,9 @@
 	"splitter",
 	"page-toc-button",
 	"lightbox",
-	"alerts",
-	"auto-scroll-table"	
+	"auto-scroll-table",
+	"flexible-alerts",
+	"alerts"	
     ],
 
     "pluginsConfig": {

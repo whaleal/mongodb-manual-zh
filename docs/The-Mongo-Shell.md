@@ -14,11 +14,11 @@
 
 * [退出Shell](#退出Shell)
 
-	 mongo shell是MongoDB的交互式JavaScript接口。您可以使用mongo shell查询和更新数据以及执行管理操作。
-	 mongo shell作为MongoDB Server安装的一部分包含在内。 MongoDB还提供mongo shell作为独立软件包。如何下载独立的mongo shell软件包：
-	 1.打开下载中心。对于mongo Enterprise Shell，选择MongoDB Enterprise Server选项卡。
-	 2.从下拉列表中选择您的首选版本和操作系统。
-	 3.选择要根据您的系统下载的安装包：
+mongo shell是MongoDB的交互式JavaScript接口。您可以使用mongo shell查询和更新数据以及执行管理操作。
+mongo shell作为MongoDB Server安装的一部分包含在内。 MongoDB还提供mongo shell作为独立软件包。如何下载独立的mongo shell软件包：
+1.打开下载中心。对于mongo Enterprise Shell，选择MongoDB Enterprise Server选项卡。
+2.从下拉列表中选择您的首选版本和操作系统。
+3.选择要根据您的系统下载的安装包：
 
 | 系统 | 下载包 |
 | --- | --- |
@@ -38,7 +38,7 @@
 cd <mongodb安装目录>/bin
 ```
 
-> **提示**
+> **[success] Note**
 >
 > 将`<mongodb安装目录> / bin`添加到PATH环境变量中，可以键入mongo，而不必转到`<mongodb安装目录> / bin`目录或指定二进制文件的完整路径。
 
@@ -90,7 +90,7 @@ mongo --host mongodb0.example.com --port 28015
 
 您可以在连接字符串中指定用户名，身份验证数据库以及可选的密码。例如：以**alice**用户身份连接并认证到远程MongoDB实例：
 
-> **[note]  Note**
+> **[success]  Note**
 >
 > 如果未在连接字符串中指定密码，则shell程序将提示您输入密码。
 
@@ -100,7 +100,7 @@ mongo "mongodb://alice@mongodb0.examples.com:28015/?authSource=admin"
 
 您可以使用[`--username `<`user`>](https://docs.mongodb.com/master/reference/program/mongo/#cmdoption-mongo-username) 和[`--password`](https://docs.mongodb.com/master/reference/program/mongo/#cmdoption-mongo-password), [`--authenticationDatabase <db>`](https://docs.mongodb.com/master/reference/program/mongo/#cmdoption-mongo-authenticationdatabase)命令行选项。 例如，以**alice**用户身份连接并认证到远程MongoDB实例：
 
-> **[note]  Note**
+> **[success]  Note**
 >
 > 如果您指定**--password**而不输入用户密码，则shell程序将提示您输入密码。
 
@@ -124,7 +124,7 @@ mongo "mongodb://mongodb0.example.com.local:27017,mongodb1.example.com.local:270
 mongo "mongodb+srv://server.example.com/"
 ```
 
-> **[note]  Note**
+> **[success]  Note**
 >
 > 对于连接，使用**+ srv**连接字符串修饰符会自动将ssl选项设置为true。
 
@@ -150,7 +150,7 @@ mongo "mongodb://mongodb0.example.com.local:27017,mongodb1.example.com.local:270
 mongo "mongodb+srv://server.example.com/"
 ```
 
-> **[note]  Note**
+> **[success]  Note**
 >
 > 对于连接，使用**+srv**连接字符串修饰符会自动将ssl选项设置为true。
 
