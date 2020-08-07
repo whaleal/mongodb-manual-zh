@@ -125,19 +125,34 @@
         * [Ensure Indexes Fit in RAM](docs/Indexes/Indexing-Strategies/Ensure-Indexes-Fit-in-RAM.md)
         * [Create Queries that Ensure Selectivity](docs/Indexes/Indexing-Strategies/Create-Queries-that-Ensure-Selectivity.md)
     * [Indexing Reference](docs/Indexes/Indexing-Reference.md)
-* Security
+* [Security](docs/Security/Security.md)
+    * [Security-CheckList](docs/Security/Security-Checklist.md)
+    * [Enable-Access-Control](docs/Security/Enable-Access-Control.md)
+    * [Authentication](docs/Security/Authentication.md)
     * [Auditing](docs/Security/Audit.md)
         * [Configure Audit Filters](docs/Security/Audit/Configure-Audit-Filters.md)
         * [configure Auditing](docs/Security/Audit/configure-Auditing.md)
         * [System Event Audit Messages](docs/Security/Audit/System-Event-Audit-Messages.md)
     * [Network and Configuration Hardening](docs/Security/Network-and-Configuration-Hardening.md)
+    * [Security Reference](docs/Security/Security-Reference.md)
+		* [system.roles Collection](docs/Security/Security-Reference/system.rolesCollection.md)
+		* [system.users Collection](docs/Security/Security-Reference/system.usersCollection.md)
+		* [Resource Document](docs/Security/Security-Reference/Resource-Document.md)
+		* [Privilege Actions](docs/Security/Security-Reference/Privilege-Actions.md)
+    * [Appendix](docs/Security/Appendix.md)
+		* [Appendix A - OpenSSL CA Certificate for Testing](docs/Security/Appendix/Appendix-A-OpenSSL-CA-Certificate-for-Testing.md)
+		* [Appendix B - OpenSSL Server Certificates for Testing](docs/Security/Appendix/Appendix-B-OpenSSL-Server-Certificates-for-Testing.md）
+		* [Appendix C - OpenSSL Client Certificates for Testing](docs/Security/Appendix/Appendix-C-OpenSSL-Client-Certificates-for-Testing.md)
 * [Change Streams](docs/Change-Streams.md)
     * [Change Streams Production Recommendations](docs/Change-Streams/Change-Streams-Production-Recommendations.md)
     * [Change Events](docs/Change-Streams/Change-Event.md)
 * [Replication](docs/Replication.md)
     * [Replica Set Members](docs/Replication/Replica-Set-Members.md)
+    * [Replica Set Oplog](docs/Replication/Replica-Set-Oplog.md)
+    * [Replica Set Data Synchronization](docs/Replication/Replica-Set-Data-Synchronization.md)
+    * [Replica Set Deployment Architectures](docs/Replication/Replica-Set-Deployment-Architectures.md)
 * Sharding
-    * Shard keys
+    * [Shard keys](docs/Sharding/Shard-keys.md)
     * Zones
         * Manage Shard Zones
         * Segmenting Data by Location
@@ -146,21 +161,27 @@
         * Distributed Local Writes for Insert Only Workloads
         * Manage Shard Zones
 * Administration
-    * Performance
-    * Configuration and Maintenance
-    * Data Center Awareness
-        * Workload Isolation in MongoDB Deployments
-        * Zones
-            * Manage Shard Zones
-            * Segmenting Data by Location
-            * Tiered Hardware for Varying SLA or SLO
-            * Segmenting Data by Application or Customer
-            * Distributed Local Writes for Insert Only Workloads
-        * Manage Shard Zones
+	* [Production Notes](docs/Administration/Production-Notes.md)
+	* [Operations Checklist](docs/Administration/Operations-Checklist.md)
+	* [Development Checklist]()
+	* [Performance](docs/Administration/Performance.md)
+	* Configuration and Maintenance
+	* Data Center Awareness
+		* Workload Isolation in MongoDB Deployments
+		* Zones
+		* Manage Shard Zones
+		* Segmenting Data by Location
+		* Tiered Hardware for Varying SLA or SLO
+		* Segmenting Data by Application or Customer
+		* Distributed Local Writes for Insert Only Workloads
+		* Manage Shard Zones
+	* [MongoDB Backup Methods](docs/Administration/MongoDB-Backup-Methods.md)
 * Storage
-    * Storage Engines
-    * Journaling
-        * Manage Journaling
+	* Storage Engine
+		* [WiredTiger Storage Engine](docs/Storage/Storage-Engines/WiredTiger-Storage-Engine.md)
+		* [In-Memory Storage Engine](docs/Storage/Storage-Engines/In-Memory-Storage-Engine.md)
+	* Journaling
+		* Manage Journaling
     * GridFS
 * Reference
     * Operators

@@ -193,3 +193,5 @@ tips
 
 ##Collation
 从MongoDB 4.2开始，更改流将使用simple二进制比较，除非提供了明确的排序规则。在早期版本中，在单个集合（db.collection.watch()）上打开的更改流将继承该集合的默认排序规则。
+
+译者： wh
