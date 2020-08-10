@@ -154,8 +154,8 @@
     * Journaling
         * Manage Journaling
     * GridFS
-* Reference
-    * Operators
+* [Reference]()
+    * [Operators]()
         * [Query and Projection Operators](docs/Reference/Operators/Query-and-Projection-Operators.md)
             * [Comparison Query Operators](docs/Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators.md)
                 * [$eq](docs/Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/eq.md)
