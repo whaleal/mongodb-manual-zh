@@ -29,8 +29,8 @@
 
     "pluginsConfig": {
         "donate": {
-            "wechat": "./img/pay/Wechatpay.jpeg",
-            "alipay": "./img/pay/alipay.jpeg",
+            "wechat": "https://jinmuinfo.github.io/MongoDB-Manual-zh/img/pay/Wechatpay.jpeg",
+            "alipay": "https://jinmuinfo.github.io/MongoDB-Manual-zh/img/pay/alipay.jpeg",
             "title": "",
             "button": "打赏",
             "alipayText": "支付宝打赏",
