@@ -142,7 +142,7 @@
 		* [Privilege Actions](docs/Security/Security-Reference/Privilege-Actions.md)
     * [Appendix](docs/Security/Appendix.md)
 		* [Appendix-A-OpenSSL CA Certificate for Testing](docs/Security/Appendix/Appendix-A-OpenSSL-CA-Certificate-for-Testing.md)
-		* [Appendix-B-OpenSSL Server Certificates for Testing](docs/Security/Appendix/Appendix-B-OpenSSL-Server-Certificates-for-Testing.md）
+		* [Appendix-B-OpenSSL-Server-Certificates-for-Testing](docs/Security/Appendix/Appendix-B-OpenSSL-Server-Certificates-for-Testing.md)
 		* [Appendix-C-OpenSSL Client Certificates for Testing](docs/Security/Appendix/Appendix-C-OpenSSL-Client-Certificates-for-Testing.md)
 * [Change Streams](docs/Change-Streams.md)
     * [Change Streams Production Recommendations](docs/Change-Streams/Change-Streams-Production-Recommendations.md)
