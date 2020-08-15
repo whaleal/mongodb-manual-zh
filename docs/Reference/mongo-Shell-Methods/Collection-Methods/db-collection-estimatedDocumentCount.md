@@ -18,7 +18,7 @@
 
 返回集合或视图中所有文档的计数。该方法包装`count`命令。
 
-```
+```powershell
 db.collection.estimatedDocumentCount( <options> )
 ```
 
@@ -60,7 +60,7 @@ db.collection.estimatedDocumentCount( <options> )
 
 以下示例用于 `db.collection.estimatedDocumentCount`检索`orders`集合中所有文档的计数：
 
-```
+```powershell
 db.orders.estimatedDocumentCount({})
 ```
 

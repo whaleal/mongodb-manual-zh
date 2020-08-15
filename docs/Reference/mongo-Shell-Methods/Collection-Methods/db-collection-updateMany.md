@@ -22,17 +22,19 @@
 
 updateMany()方法具有以下形式：
 
-    db.collection.updateMany(
-       <filter>,
-       <update>,
-       {
-         upsert: <boolean>,
-         writeConcern: <document>,
-         collation: <document>,
-         arrayFilters: [ <filterdocument1>, ... ],
-         hint:  <document|string>        // Available starting in MongoDB 4.2.1
-       }
-    )
+```powershell
+db.collection.updateMany(
+   <filter>,
+   <update>,
+   {
+     upsert: <boolean>,
+     writeConcern: <document>,
+     collation: <document>,
+     arrayFilters: [ <filterdocument1>, ... ],
+     hint:  <document|string>        // Available starting in MongoDB 4.2.1
+   }
+)
+```
 
 ### 参数
 
@@ -80,7 +82,7 @@ updateMany()使用`update`条件应用修改更新匹配`filter`的集合中的�
 
 例如：
 
-```
+```powershell
 db.collection.updateMany(
    <query>,
    { $set: { status: "D" }, $inc: { quantity: 2 } },
@@ -100,7 +102,7 @@ db.collection.updateMany(
 
 例如：
 
-```
+```powershell
 db.collection.updateMany(
    <query>,
    [
@@ -111,7 +113,8 @@ db.collection.updateMany(
 )
 ```
 
-> **注意**<br />
+> **注意**
+>
 > 管道中使用的`$set`和`$unset`分别指向聚合阶段`$set`和`$unset`，而不是更新操作符`$set`和`$unset`。
 
 有关示例，请参见使用聚合管道更新。
@@ -138,7 +141,8 @@ db.collection.updateMany(
 
 如果在事务中运行，请不要为操作明确设置写关注点。要对事务使用写关注，请参见 事务和写关注。
 
-> **重要**<br />
+> **重要**
+>
 > 在大多数情况下，与单文档写入相比，多文档事务产生的性能成本更高，并且多文档事务的可用性不应替代有效的架构设计。在许多情况下， 非规范化数据模型（嵌入式文档和数组）将继续是您的数据和用例的最佳选择。也就是说，在许多情况下，适当地对数据建模将最大程度地减少对多文档交易的需求。
 >
 > 有关其他事务使用方面的注意事项（例如运行时限制和操作日志大小限制），另请参见 生产注意事项。
@@ -149,7 +153,7 @@ db.collection.updateMany(
 
 `restaurant`集合包含以下文档：
 
-```
+```powershell
 { "_id" : 1, "name" : "Central Perk Cafe", "violations" : 3 }
 { "_id" : 2, "name" : "Rock A Feller Bar and Grill", "violations" : 2 }
 { "_id" : 3, "name" : "Empire State Sub", "violations" : 5 }
@@ -171,13 +175,13 @@ try {
 
 操作返回：
 
-```
+```powershell
 { "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 2 }
 ```
 
 该集合现在包含以下文档：
 
-```
+```powershell
 { "_id" : 1, "name" : "Central Perk Cafe", "violations" : 3 }
 { "_id" : 2, "name" : "Rock A Feller Bar and Grill", "violations" : 2 }
 { "_id" : 3, "name" : "Empire State Sub", "violations" : 5, "Review" : true }
@@ -186,7 +190,7 @@ try {
 
 如果未找到匹配项，则操作将返回：
 
-```
+```powershell
 { "acknowledged" : true, "matchedCount" : 0, "modifiedCount" : 0 }
 ```
 
@@ -208,7 +212,7 @@ try {
 
 `members`使用以下文档创建一个集合：
 
-```
+```powershell
 db.members.insertMany([
    { "_id" : 1, "member" : "abc123", "status" : "A", "points" : 2, "misc1" : "note to self: confirm status", "misc2" : "Need to activate", "lastUpdate" : ISODate("2019-01-01T00:00:00Z") },
    { "_id" : 2, "member" : "xyz123", "status" : "A", "points" : 60, "misc1" : "reminder: ping me at 100pts", "misc2" : "Some random comment", "lastUpdate" : ISODate("2019-01-01T00:00:00Z") }
@@ -220,7 +224,7 @@ db.members.insertMany([
 - 添加新`comments`字段并设置该`lastUpdate`字段。
 - 删除集合中所有文档的`misc1`和`misc2`字段。
 
-```
+```powershell
 db.members.updateMany(
    { },
    [
@@ -230,8 +234,9 @@ db.members.updateMany(
 )
 ```
 
-> **注意**<br />
-> 该`$set`和`$unset`在管道中是指聚合阶段`$set`，并`$unset`分别，而不是更新的运营商`$set`和`$unset`。
+> **注意**
+>
+> `$set`和`$unset`在管道中是指聚合阶段`$set`，并`$unset`分别，而不是更新的运营商`$set`和`$unset`。
 
 **第一阶段**
 
@@ -242,11 +247,11 @@ db.members.updateMany(
 
 第二阶段
 
-该`$unset`阶段将删除`misc1`和`misc2`字段。
+`$unset`阶段将删除`misc1`和`misc2`字段。
 
 命令后，集合包含以下文档：
 
-```
+```powershell
 { "_id" : 1, "member" : "abc123", "status" : "Modified", "points" : 2, "lastUpdate" : ISODate("2020-01-23T05:50:49.247Z"), "comments" : [ "note to self: confirm status", "Need to activate" ] }
 { "_id" : 2, "member" : "xyz123", "status" : "Modified", "points" : 60, "lastUpdate" : ISODate("2020-01-23T05:50:49.247Z"), "comments" : [ "reminder: ping me at 100pts", "Some random comment" ] }
 ```
@@ -257,7 +262,7 @@ db.members.updateMany(
 
 例如，`students3`使用以下文档创建一个集合：
 
-```
+```powershell
 db.students3.insert([
    { "_id" : 1, "tests" : [ 95, 92, 90 ], "lastUpdate" : ISODate("2019-01-01T00:00:00Z") },
    { "_id" : 2, "tests" : [ 94, 88, 90 ], "lastUpdate" : ISODate("2019-01-01T00:00:00Z") },
@@ -267,7 +272,7 @@ db.students3.insert([
 
 使用聚合管道，可以使用计算出的平均成绩和字母成绩更新文档。
 
-```
+```powershell
 db.students3.updateMany(
    { },
    [
@@ -285,36 +290,38 @@ db.students3.updateMany(
 )
 ```
 
-> **注意**<br />
-> 该`$set`管道中的使用是指聚合阶段 `$set`，而不是更新运算符`$set`。
+> **注意**
+>
+> `$set`管道中的使用是指聚合阶段 `$set`，而不是更新运算符`$set`。
 
 第一阶段
 
-该`$set`阶段：
+`$set`阶段：
 
 * 根据字段`average`的平均值 计算一个新`tests`字段。请参阅`$avg`有关 `$avg`聚合运算符`$trunc`的更多信息和有关`$trunc`截断聚合运算符的更多信息。
 * 将字段设置为`lastUpdate`聚合变量的值`NOW`。聚合变量 `NOW`解析为当前日期时间值，并且在整个管道中保持不变。要访问聚合变量，请在变量前加双美元符号`$$` 并用引号引起来。
 
 第二阶段
 
-该`$set`阶段计算新字段`grade`基础上，`average`在前一阶段计算。参见 `$switch`以获取有关`$switch` 聚合运算符的更多信息。
+`$set`阶段计算新字段`grade`基础上，`average`在前一阶段计算。参见 `$switch`以获取有关`$switch` 聚合运算符的更多信息。
 
 命令后，集合包含以下文档：
 
-```
+```powershell
 { "_id" : 1, "tests" : [ 95, 92, 90 ], "lastUpdate" : ISODate("2020-01-24T17:31:01.670Z"), "average" : 92, "grade" : "A" }
 { "_id" : 2, "tests" : [ 94, 88, 90 ], "lastUpdate" : ISODate("2020-01-24T17:31:01.670Z"), "average" : 90, "grade" : "A" }
 { "_id" : 3, "tests" : [ 70, 75, 82 ], "lastUpdate" : ISODate("2020-01-24T17:31:01.670Z"), "average" : 75, "grade" : "C" }
 ```
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > 聚合管道更新
 
 ### 使用 Upsert 更新多个文档
 
 `inspectors`集合包含以下文档：
 
-```
+```powershell
 { "_id" : 92412, "inspector" : "F. Drebin", "Sector" : 1, "Patrolling" : true },
 { "_id" : 92413, "inspector" : "J. Clouseau", "Sector" : 2, "Patrolling" : false },
 { "_id" : 92414, "inspector" : "J. Clouseau", "Sector" : 3, "Patrolling" : true },
@@ -323,7 +330,7 @@ db.students3.updateMany(
 
 以下操作更新`Sector`大于 4 且`inspector`等于`"R. Coltrane"`的所有文档：
 
-```
+```powershell
 try {
     db.inspectors.updateMany(
         { "Sector" : { $gt : 4 }, "inspector" : "R. Coltrane" },
@@ -337,7 +344,7 @@ try {
 
 操作返回：
 
-```
+```powershell
 {
     "acknowledged" : true,
     "matchedCount" : 0,
@@ -348,7 +355,7 @@ try {
 
 该集合现在包含以下文档：
 
-```
+```powershell
 { "_id" : 92412, "inspector" : "F. Drebin", "Sector" : 1, "Patrolling" : true },
 { "_id" : 92413, "inspector" : "J. Clouseau", "Sector" : 2, "Patrolling" : false },
 { "_id" : 92414, "inspector" : "J. Clouseau", "Sector" : 3, "Patrolling" : true },
@@ -362,7 +369,7 @@ try {
 
 给定三个成员副本集，以下操作指定`majority` `majority`和`wtimeout` `100`：
 
-```
+```powershell
 try {
     db.restaurant.updateMany(
         { "name" : "Pizza Rat's Pizzaria" },
@@ -376,7 +383,7 @@ try {
 
 如果确认时间超过`wtimeout`限制，则抛出以下 exception：
 
-```
+```powershell
 WriteConcernError({
     "code" : 64,
     "errInfo" : {
@@ -397,7 +404,7 @@ version 3.4 中的新内容。
 
 集合`myColl`具有以下文档：
 
-```
+```powershell
 { _id: 1, category: "cafe", status: "A" }
 { _id: 2, category: "cafe", status: "a" }
 { _id: 3, category: "cafE", status: "a" }
@@ -405,7 +412,7 @@ version 3.4 中的新内容。
 
 以下操作包括整理选项：
 
-```
+```powershell
 db.myColl.updateMany(
     { category: "cafe" },
     { $set: { status: "Updated" } },
@@ -423,7 +430,7 @@ version 3.6 中的新内容。
 
 使用以下文档创建集合`students`：
 
-```
+```powershell
 db.students.insert([
     { "_id" : 1, "grades" : [ 95, 92, 90 ] },
     { "_id" : 2, "grades" : [ 98, 100, 102 ] },
@@ -433,7 +440,7 @@ db.students.insert([
 
 要更新`grades` array 中大于或等于`100`的所有元素，请使用带有`arrayFilters`选项的已过滤位置 operator $ [<identifier>]：
 
-```
+```powershell
 db.students.updateMany(
     { grades: { $gte: 100 } },
     { $set: { "grades.$[element]" : 100 } },
@@ -443,7 +450,7 @@ db.students.updateMany(
 
 操作后，该集合包含以下文档：
 
-```
+```powershell
 { "_id" : 1, "grades" : [ 95, 92, 90 ] }
 { "_id" : 2, "grades" : [ 98, 100, 100 ] }
 { "_id" : 3, "grades" : [ 95, 100, 100 ] }
@@ -453,7 +460,7 @@ db.students.updateMany(
 
 使用以下文档创建集合`students2`：
 
-```
+```powershell
 db.students2.insert([
     {
         "_id" : 1,
@@ -476,7 +483,7 @@ db.students2.insert([
 
 要修改`grades` array 中等级大于或等于`85`的所有元素的`mean`字段的 value，请使用已过滤的位置 operator $ [&lt;identifier&gt;]和`arrayFilters`：
 
-```
+```powershell
 db.students2.updateMany(
     { },
     { $set: { "grades.$[elem].mean" : 100 } },
@@ -486,7 +493,7 @@ db.students2.updateMany(
 
 操作后，该集合包含以下文件：
 
-```
+```powershell
 {
     "_id" : 1,
     "grades" : [
@@ -511,7 +518,7 @@ db.students2.updateMany(
 
 `members`使用以下文档创建样本集合：
 
-```
+```powershell
 db.members.insertMany([
    { "_id" : 1, "member" : "abc123", "status" : "P", "points" :  0,  "misc1" : null, "misc2" : null },
    { "_id" : 2, "member" : "xyz123", "status" : "A", "points" : 60,  "misc1" : "reminder: ping me at 100pts", "misc2" : "Some random comment" },
@@ -524,17 +531,18 @@ db.members.insertMany([
 
 在集合上创建以下索引：
 
-```
+```powershell
 db.members.createIndex( { status: 1 } )
 db.members.createIndex( { points: 1 } )
 ```
 
 以下更新操作明确暗示要使用索引：`{ status: 1 }`
 
-> **注意**<br />
+> **注意**
+>
 > 如果指定的索引不存在，则操作错误。
 
-```
+```powershell
 db.members.updateMany(
    { "points": { $lte: 20 }, "status": "P" },
    { $set: { "misc1": "Need to activate" } },
@@ -544,13 +552,13 @@ db.members.updateMany(
 
 update命令返回以下内容：
 
-```
+```powershell
 { "acknowledged" : true, "matchedCount" : 3, "modifiedCount" : 3 }
 ```
 
 要查看使用的索引，可以使用`$indexStats`管道：
 
-```
+```powershell
 db.members.aggregate( [ { $indexStats: { } }, { $sort: { name: 1 } } ] )
 ```
 

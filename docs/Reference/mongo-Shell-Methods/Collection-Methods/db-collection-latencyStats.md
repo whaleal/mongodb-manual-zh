@@ -19,13 +19,14 @@
 
 此方法具有以下形式：
 
-```
+```powershell
 db.collection.latencyStats( { histograms: <boolean> } )
 ```
 
 `histograms`参数是可选的 boolean。如果`histograms: true`则latencyStats()将延迟直方图添加到 return 文档。
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > $collStats
 
 ## <span id="output">输出</span>
@@ -50,13 +51,13 @@ latencyStats()返回包含字段`latencyStats`的文档，其中包含以下字�
 
 您可以在mongo shell 中运行latencyStats()，如下所示：
 
-```
+```powershell
 db.data.latencyStats( { histograms: true } ).pretty()
 ```
 
 latencyStats()返回如下文档：
 
-```
+```powershell
 {
     "ns" : "test.data",
     "localTime" : ISODate("2016-11-01T21:56:28.962Z"),

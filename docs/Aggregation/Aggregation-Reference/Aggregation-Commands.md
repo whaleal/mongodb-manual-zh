@@ -7,7 +7,8 @@
 *   [聚合命令](#id1)
 
 *   [聚合方法](#aggregation-methods)
-> **注意**<br />
+> **注意**
+>
 > 有关特定 operator 的详细信息，包括语法和示例，请单击特定的 operator 以转到其 reference 页面。
 
 []()

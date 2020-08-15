@@ -18,7 +18,7 @@
 
 * `_id`从集合中删除除索引之外的所有内容。
 
-  ```
+  ```powershell
   db.collection.dropIndexes()
   ```
 
@@ -26,27 +26,29 @@
 
   * 索引规范文档（除非索引是 文本索引，在这种情况下，请使用索引名称删除）：
 
-    ```
+    ```powershell
     db.collection.dropIndexes( { a: 1, b: 1 } )
     ```
 
   * 索引名称：
 
-    ```
+    ```powershell
     db.collection.dropIndexes( "a_1_b_1" )
     ```
-    > **建议**<br />
+    > **建议**
+    >
     > 若要获取索引的名称，请使用 `db.collection.getIndexes()`方法。
 
 * 从集合中删除指定的索引。（从MongoDB 4.2开始可用）。要指定要删除的多个索引，请向该方法传递一个索引名称数组：
 
-  ```
+  ```powershell
   db.collection.dropIndexes( [ "a_1_b_1", "a_1", "a_1__id_-1" ] )
   ```
 
   如果索引名称数组包含不存在的索引，则该方法将出错，而不会删除任何指定的索引。
   
-  > **建议**<br />
+  > **建议**
+  >
   > 若要获取索引的名称，请使用 `db.collection.getIndexes()`方法。
 
 `db.collection.dropIndexes()`方法采用以下可选参数：

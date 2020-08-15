@@ -19,7 +19,7 @@
 
 `$atanh`具有以下语法：
 
-```
+```powershell
 { $atanh: <expression> }
 ```
 
@@ -51,7 +51,7 @@
 
 该`trigonometry`集合包含一个文档，该文档沿`x`二维图形的轴存储值：
 
-```
+```powershell
 {
   "_id" : ObjectId("5c50782193f833234ba90d85"),
   "x-coordinate" : NumberDecimal("0.5")
@@ -60,7 +60,7 @@
 
 以下聚合操作使用该 `$atanh`表达式计算的反双曲正切值，`x-coordinate`并使用`$addFields`管道阶段将其添加到输入文档中。
 
-```
+```powershell
 db.trigonometry.aggregate([
   {
     $addFields : {
@@ -76,7 +76,7 @@ db.trigonometry.aggregate([
 
 该命令返回以下输出：
 
-```
+```powershell
 {
   "_id" : ObjectId("5c50782193f833234ba90d85"),
   "x-coordinate" : NumberDecimal("0.5"),
@@ -90,7 +90,7 @@ db.trigonometry.aggregate([
 
 `trigonometry`集合包含一个文档，该文档沿`x`二维图形的轴存储值：
 
-```
+```powershell
 {
   "_id" : ObjectId("5c50782193f833234ba90d85"),
   "x-coordinate" : NumberDecimal("0.5")
@@ -99,7 +99,7 @@ db.trigonometry.aggregate([
 
 以下聚合操作使用该 `$atanh`表达式计算的反双曲正切值，`x-coordinate`并使用`$addFields`管道阶段将其添加到输入文档中。
 
-```
+```powershell
 db.trigonometry.aggregate([
   {
     $addFields : {
@@ -113,7 +113,7 @@ db.trigonometry.aggregate([
 
 该命令返回以下输出：
 
-```
+```powershell
 {
   "_id" : ObjectId("5c50782193f833234ba90d85"),
   "x-coordinate" : NumberDecimal("0.5"),

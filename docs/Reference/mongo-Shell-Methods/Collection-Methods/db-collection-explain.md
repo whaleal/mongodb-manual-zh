@@ -24,11 +24,13 @@
 
 若要使用`db.collection.explain()`，请将上述方法之一附加到`db.collection.explain()`：
 
-    db.collection.explain().<method(...)>
+```powershell
+db.collection.explain().<method(...)>
+```
 
 例如，
 
-```
+```powershell
 db.products.explain().remove( { category: "apparel" }, { justOne: true } )
 ```
 
@@ -96,13 +98,13 @@ db.collection.explain()方法包装说明命令，是 run 说明的首选方法�
 
 要查看db.collection.explain()，run 支持的操作列表：
 
-```
+```powershell
 db.collection.explain().help()
 ```
 
 `db.collection.explain().find()`返回一个游标，允许链接查询修饰符。要查看db.collection.explain().find()以及 cursor-related 方法支持的查询修饰符列表，润：
 
-```
+```powershell
 db.collection.explain().find().help()
 ```
 
@@ -116,7 +118,7 @@ db.collection.explain().find().help()
 
 以下 example 在“queryPlanner” 详细模式下运行db.collection.explain()以返回指定count()操作的查询计划信息：
 
-```
+```powershell
 db.products.explain().count( { quantity: { $gt: 50 } } )
 ```
 
@@ -124,18 +126,21 @@ db.products.explain().count( { quantity: { $gt: 50 } } )
 
 以下 example 在“executionStats” verbosity 模式下运行db.collection.explain()以_return 指定find()操作的查询计划和执行信息：
 
-    db.products.explain("executionStats").find(
-        { quantity: { $gt: 50 }, category: "apparel" }
-    )
+```powershell
+db.products.explain("executionStats").find(
+    { quantity: { $gt: 50 }, category: "apparel" }
+)
+```
 
 ### allPlansExecution 模式
 
 以下 example 在“allPlansExecution” verbosity 模式下运行db.collection.explain()。对于指定的update()操作，db.collection.explain()为所有考虑的计划返回queryPlanner和executionStats：
 
-> **注意**<br />
+> **注意**
+>
 > 执行此解释不会修改数据，而是运行更新操作的查询谓词。对于候选计划，MongoDB 返回计划选择阶段期间捕获的执行信息。
 
-```
+```powershell
 db.products.explain("allPlansExecution").update(
     { quantity: { $lt: 1000}, category: "apparel" },
     { $set: { reorder: true } }
@@ -146,7 +151,7 @@ db.products.explain("allPlansExecution").update(
 
 `db.collection.explain().find()` construct 允许链接查询修饰符。对于 example，以下操作使用sort()和hint()查询修饰符提供有关find()方法的信息。
 
-```
+```powershell
 db.products.explain("executionStats").find(
     { quantity: { $gt: 50 }, category: "apparel" }
 ).sort( { quantity: -1 } ).hint( { category: 1, quantity: -1 } )
@@ -154,7 +159,7 @@ db.products.explain("executionStats").find(
 
 有关可用的查询修饰符列表，shell 中的 run：
 
-```
+```powershell
 db.collection.explain().find().help()
 ```
 
@@ -162,7 +167,7 @@ db.collection.explain().find().help()
 
 `db.collection.explain().find()`将光标返回到解释结果。如果在mongo shell 中以交互方式 run，mongo shell 将使用`.next()`方法自动迭代游标。但是，对于脚本，必须显式调用`.next()`(或其别名`.finish()`)来_return 结果：
 
-```
+```powershell
 var explainResult = db.products.explain().find( { category: "apparel" } ).next();
 ```
 

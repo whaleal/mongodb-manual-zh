@@ -20,7 +20,7 @@
 
 `$atan2`具有以下语法：
 
-```
+```powershell
 { $atan2: [ <expression 1>, <expression 2> ] }
 ```
 
@@ -49,7 +49,7 @@
 
 该`trigonometry`集合包含一个文档，该文档存储直角三角形的三个边：
 
-```
+```powershell
 {
   "_id" : ObjectId("5c50782193f833234ba90d85"),
   "side_a" : NumberDecimal("3"),
@@ -60,7 +60,7 @@
 
 以下聚合操作使用该 `$atan2`表达式来计算`side_a`与`$addFields`管道之间相邻的角度并将其添加到输入文档中 。
 
-```
+```powershell
 db.trigonometry.aggregate([
   {
     $addFields : {
@@ -78,7 +78,7 @@ db.trigonometry.aggregate([
 
 该命令返回以下输出：
 
-```
+```powershell
 {
   "_id" : ObjectId("5c50782193f833234ba90d85"),
   "side_a" : NumberDecimal("3"),
@@ -94,7 +94,7 @@ db.trigonometry.aggregate([
 
 该`trigonometry`集合包含一个文档，该文档存储直角三角形的三个边：
 
-```
+```powershell
 {
   "_id" : ObjectId("5c50782193f833234ba90d85"),
   "side_a" : NumberDecimal("3"),
@@ -105,7 +105,7 @@ db.trigonometry.aggregate([
 
 以下聚合操作使用该 `$atan2`表达式来计算`side_a`与`$addFields`管道之间相邻的角度并将其添加到输入文档中 。
 
-```
+```powershell
 db.trigonometry.aggregate([
   {
     $addFields : {
@@ -119,7 +119,7 @@ db.trigonometry.aggregate([
 
 该命令返回以下输出：
 
-```
+```powershell
 {
   "_id" : ObjectId("5c50782193f833234ba90d85"),
   "side_a" : NumberDecimal("3"),

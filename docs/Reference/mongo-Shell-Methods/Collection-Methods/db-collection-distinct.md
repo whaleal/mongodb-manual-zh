@@ -26,12 +26,13 @@
 
 db.collection.distinct()方法在不同命令周围提供 wrapper。
 
-> **注意**<br />
+> **注意**
+>
 > 结果不得大于最大BSON 大小。如果结果超过最大 BSON 大小，请使用聚合管道使用$group operator 检索不同的值，如使用聚合管道检索不同的值中所述。
 
 ## <span id="options">选项</span>
 
-```
+```powershell
 { collation: <document> }
 ```
 
@@ -67,7 +68,8 @@ db.collection.distinct()方法在不同命令周围提供 wrapper。
 
   要查找分片集合的不同值，请在`$group`阶段使用聚合管道。有关详细信息，请参见“ 区别操作 ”。
 
-> **重要**<br />
+> **重要**
+>
 > 在大多数情况下，与单文档写入相比，多文档事务产生的性能成本更高，并且多文档事务的可用性不应替代有效的架构设计。在许多情况下， 非规范化数据模型（嵌入式文档和数组）将继续是您的数据和用例的最佳选择。也就是说，在许多情况下，适当地对数据建模将最大程度地减少对多文档交易的需求。
 >
 > 有关其他事务使用方面的注意事项（例如运行时限制和操作日志大小限制），另请参见 生产注意事项。
@@ -80,7 +82,7 @@ db.collection.distinct()方法在不同命令周围提供 wrapper。
 
 这些示例使用包含以下文档的`inventory`集合：
 
-```
+```powershell
 { "_id": 1, "dept": "A", "item": { "sku": "111", "color": "red" }, "sizes": [ "S", "M" ] }
 { "_id": 2, "dept": "A", "item": { "sku": "111", "color": "blue" }, "sizes": [ "M", "L" ] }
 { "_id": 3, "dept": "B", "item": { "sku": "222", "color": "blue" }, "sizes": "S" }
@@ -92,14 +94,14 @@ db.collection.distinct()方法在不同命令周围提供 wrapper。
 
 以下 example 从`inventory`集合中的所有文档返回字段`dept`的不同值：
 
-```
+```powershell
 db.inventory.distinct( "dept" )
 ```
 
 
 该方法返回以下 array 不同的`dept`值：
 
-```
+```powershell
 [ "A", "B" ]
 ```
 
@@ -107,32 +109,33 @@ db.inventory.distinct( "dept" )
 
 以下 example 从`inventory`集合中的所有文档返回嵌入在`item`字段中的字段`sku`的不同值：
 
-```
+```powershell
 db.inventory.distinct( "item.sku" )
 ```
 
 
 该方法返回以下 array 不同的`sku`值：
 
-```
+```powershell
 [ "111", "222", "333" ]
 ```
 
 > **也可以看看**
+>
 > 点符号有关访问嵌入文档中的字段的信息
 
 ### 返回 Array 字段的不同值
 
 以下 example 从`inventory`集合中的所有文档返回字段`sizes`的不同值：
 
-```
+```powershell
 db.inventory.distinct( "sizes" )
 ```
 
 
 该方法返回以下 array 不同的`sizes`值：
 
-```
+```powershell
 [ "M", "S", "L" ]
 ```
 
@@ -143,14 +146,14 @@ db.inventory.distinct( "sizes" )
 
 以下 example 从`dept`等于`"A"`的文档中返回嵌入在`item`字段中的字段`sku`的不同值：
 
-```
+```powershell
 db.inventory.distinct( "item.sku", { dept: "A" } )
 ```
 
 
 该方法返回以下 array 不同的`sku`值：
 
-```
+```powershell
 [ "111", "333" ]
 ```
 
@@ -163,7 +166,7 @@ version 3.4 中的新内容。
 
 集合`myColl`具有以下文档：
 
-```
+```powershell
 { _id: 1, category: "café", status: "A" }
 { _id: 2, category: "cafe", status: "a" }
 { _id: 3, category: "cafE", status: "a" }
@@ -172,7 +175,7 @@ version 3.4 中的新内容。
 
 以下聚合操作包括整理选项：
 
-```
+```powershell
 db.myColl.distinct( "category", {}, { collation: { locale: "fr", strength: 1 } } )
 ```
 

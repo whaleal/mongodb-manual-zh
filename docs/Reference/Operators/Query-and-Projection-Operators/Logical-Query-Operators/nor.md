@@ -10,11 +10,13 @@
 
 `$nor`对包含一个或多个查询表达式的数组执行逻辑`nor`操作，并选择数组中所有查询表达式失败的文档。`$nor`有以下语法:
 
-```
+```powershell
 { $nor: [ { <expression1> }, { <expression2> }, ...  { <expressionN> } ] }
 ```
 
-> **也可以看看**<br />[`find()`](), [`update()`](), [`$or`](), [`$set`](), and [`$exists`]().
+> **也可以看看**
+>
+> [`find()`](), [`update()`](), [`$or`](), [`$set`](), and [`$exists`]().
 
 ## <span id="examples">例子</span>
 
@@ -22,7 +24,7 @@
 
 考虑以下仅使用`$nor`操作符的查询:
 
-```
+```powershell
 db.inventory.find( { $nor: [ { price: 1.99 }, { sale: true } ]  } )
 ```
 
@@ -37,7 +39,7 @@ db.inventory.find( { $nor: [ { price: 1.99 }, { sale: true } ]  } )
 
 考虑以下查询:
 
-```
+```powershell
 db.inventory.find( { $nor: [ { price: 1.99 }, { qty: { $lt: 20 } }, { sale: true } ] } )
 ```
 
@@ -55,7 +57,7 @@ db.inventory.find( { $nor: [ { price: 1.99 }, { qty: { $lt: 20 } }, { sale: true
 
 下面的查询使用`$nor`操作符和`$exists`操作符:
 
-```
+```powershell
 db.inventory.find( { $nor: [ { price: 1.99 }, { price: { $exists: false } },
                              { sale: true }, { sale: { $exists: false } } ] } )
 ```

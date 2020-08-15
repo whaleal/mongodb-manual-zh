@@ -14,7 +14,7 @@ $not对指定的`<operator-expression>`执行逻辑`NOT`操作，并选择与`<o
 
 考虑以下查询：
 
-```
+```powershell
 db.inventory.find( { price: { $not: { $gt: 1.99 } } } )
 ```
 
@@ -41,7 +41,7 @@ db.inventory.find( { price: { $not: { $gt: 1.99 } } } )
 
   例如：下面的查询选择`inventory`集合中`item`字段值不以字母`p`开头的所有文档。
 
-  ```
+  ```powershell
   db.inventory.find( { item: { $not: /^p.*/ } } )
   ```
 
@@ -49,7 +49,7 @@ db.inventory.find( { price: { $not: { $gt: 1.99 } } } )
 
   例如，下面的查询选择`inventory`集合中`item`字段值不以字母`p`开头的所有文档。
 
-  ```
+  ```powershell
   db.inventory.find( { item: { $not: { $regex: "^p.*" } } } )
   db.inventory.find( { item: { $not: { $regex: /^p.*/ } } } )
   ```
@@ -58,7 +58,7 @@ db.inventory.find( { price: { $not: { $gt: 1.99 } } } )
 
   例如，下面的PyMongo查询使用Python的`re.compile()`方法编译一个正则表达式:
 
-  ```
+  ```python
   import re
   for noMatch in db.inventory.find( { "item": { "$not": re.compile("^p.*") } } ):
       print noMatch

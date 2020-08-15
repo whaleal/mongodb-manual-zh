@@ -10,10 +10,13 @@
 
 除了[`$out`]()、[`$merge`]()和[`$geoNear`]()阶段之外，所有阶段都可以在管道中出现多次。
 
-> **注意**<br />
+> **注意**
+>
 > 有关特定运算符的详细信息，包括语法和示例，请单击特定运算符以转到其参考页。
 
-    db.collection.aggregate( [ { <stage> }, ... ] )
+```powershell
+db.collection.aggregate( [ { <stage> }, ... ] )
+```
 | 阶段                | 描述                                                         |
 | ------------------- | ------------------------------------------------------------ |
 | [$addFields]()      | 向文档添加新字段。与$project类似，$addFields重塑了流中的每个文档;具体而言，通过向输出文档添加新字段，该文档包含输入文档和新添加字段中的现有字段。<br />`$set`是的别名`$addFields`。 |
@@ -51,7 +54,7 @@
 
 从 version 3.6 开始，MongoDB 还提供了db.aggregate方法：
 
-```
+```powershell
 db.aggregate( [ { <stage> }, ... ] )
 ```
 

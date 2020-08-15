@@ -20,7 +20,7 @@
 
 考虑一个假设的体育俱乐部，其数据库包含一个`users`集合，用于跟踪用户的加入日期，运动偏好，并将这些数据存储在类似于以下内容的文档中：
 
-```
+```powershell
 {
     _id : “jane“,
     joined : ISODate(“2011-03-02“),
@@ -39,7 +39,7 @@
 
 以下操作以大写和字母 order 返回用户名。聚合包括`users`集合中所有文档的用户名。您可以这样做以规范化用户名以进行处理。
 
-```
+```powershell
 db.users.aggregate([
     { $project : { name:{$toUpper:“$_id“} , _id:0 } },
     { $sort : { name : 1 } }
@@ -59,7 +59,7 @@ db.users.aggregate([
 
 聚合的结果类似于以下内容：
 
-```
+```powershell
 {
     "name" : "JANE"
 },
@@ -78,7 +78,7 @@ db.users.aggregate([
 
 以下聚合操作返回按其加入的月份排序的用户名。这种聚合可以帮助生成会员续订通知。
 
-```
+```powershell
 db.users.aggregate([
     { $project :
         {
@@ -105,7 +105,7 @@ db.users.aggregate([
 
 该操作返回类似于以下内容的结果：
 
-```
+```powershell
 {
     “month_joined“ : 1,
     “name“ : “ruth“
@@ -130,7 +130,7 @@ db.users.aggregate([
 
 以下操作显示了一年中每个月加入的人数。您可以将此汇总数据用于招聘和营销策略。
 
-```
+```powershell
 db.users.aggregate([
     { $project : { month_joined : { $month : “$joined“ } } } ,
     { $group : { _id : {month_joined:“$month_joined“} , number : { $sum : 1 } } },
@@ -154,7 +154,7 @@ db.users.aggregate([
 
 此聚合操作的结果类似于以下内容：
 
-```
+```powershell
 {
     “_id“ : {
         “month_joined“ : 1
@@ -181,7 +181,7 @@ db.users.aggregate([
 
 以下聚合收集数据集中前五个最“喜欢”的活动。这种分析有助于规划和未来发展。
 
-```
+```powershell
 db.users.aggregate([
     { $unwind : “$likes“ },
     { $group : { _id : “$likes“ , number : { $sum : 1 } } },
@@ -194,29 +194,30 @@ db.users.aggregate([
 
 *   [$unwind](reference-operator-aggregation-unwind.html#pipe._S_unwind) operator 分隔`likes` array 中的每个 value，并为 array 中的每个元素创建源文档的新 version。
     
-> **例**<br />
+> **例子**
+>
 > 给出来自用户集合的以下文档：
 >
-> ```
+> ```powershell
 > {
->   _id : "jane",
->   joined : ISODate("2011-03-02"),
->   likes : ["golf", "racquetball"]
+> _id : "jane",
+> joined : ISODate("2011-03-02"),
+> likes : ["golf", "racquetball"]
 > }
 > ```
 >
 > 该$unwind运营商将创建下列文件：
 >
-> ```
+> ```powershell
 > {
->     _id : “jane“,
->     joined : ISODate(“2011-03-02“),
->     likes : “golf“
+>  _id : “jane“,
+>  joined : ISODate(“2011-03-02“),
+>  likes : “golf“
 > }
 > {
->     _id : “jane“,
->     joined : ISODate(“2011-03-02“),
->     likes : “racquetball“
+>  _id : “jane“,
+>  joined : ISODate(“2011-03-02“),
+>  likes : “racquetball“
 > }
 > ```
 
@@ -229,7 +230,7 @@ db.users.aggregate([
 
 聚合的结果类似于以下内容：
 
-```
+```powershell
 {
     “_id“ : “golf“,
     “number“ : 33

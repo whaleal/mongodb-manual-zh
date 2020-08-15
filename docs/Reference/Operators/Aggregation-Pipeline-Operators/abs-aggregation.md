@@ -22,7 +22,7 @@ version 3.2 中的新内容。
 
 `$abs`具有以下语法：
 
-```
+```powershell
 { $abs: <number> }
 ```
 
@@ -42,7 +42,7 @@ version 3.2 中的新内容。
 
 集合`ratings`包含以下文档：
 
-```
+```powershell
 { _id: 1, start: 5, end: 8 }
 { _id: 2, start: 4, end: 4 }
 { _id: 3, start: 9, end: 7 }
@@ -52,7 +52,7 @@ version 3.2 中的新内容。
 
 以下 example 计算`start`和`end`评级之间的差异大小：
 
-```
+```powershell
 db.ratings.aggregate([
    {
        $project: { delta: { $abs: { $subtract: [ "$start", "$end" ] } } }
@@ -62,7 +62,7 @@ db.ratings.aggregate([
 
 该操作返回以下结果：
 
-```
+```powershell
 { "_id" : 1, "delta" : 3 }
 { "_id" : 2, "delta" : 0 }
 { "_id" : 3, "delta" : 2 }

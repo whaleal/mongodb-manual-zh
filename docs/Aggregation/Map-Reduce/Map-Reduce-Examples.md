@@ -10,7 +10,7 @@
 
 在[mongo]() shell 中，[db.collection.mapReduce()]()方法是[MapReduce]()命令周围的 wrapper。以下示例使用[db.collection.mapReduce()]()方法：
 
-> **聚合管道作为替代**<br />
+> **聚合管道作为替代**
 >
 > [聚合管道]() 比map-reduce提供更好的性能和更一致的接口。
 >
@@ -20,7 +20,7 @@
 
 `orders`使用以下文档创建样本集合：
 
-```
+```powershell
 db.orders.insertMany([
    { _id: 1, cust_id: "Ant O. Knee", ord_date: new Date("2020-03-01"), price: 25, items: [ { sku: "oranges", qty: 5, price: 2.5 }, { sku: "apples", qty: 5, price: 2.5 } ], status: "A" },
    { _id: 2, cust_id: "Ant O. Knee", ord_date: new Date("2020-03-08"), price: 70, items: [ { sku: "oranges", qty: 8, price: 2.5 }, { sku: "chocolates", qty: 5, price: 10 } ], status: "A" },
@@ -47,7 +47,7 @@ db.orders.insertMany([
 - 在函数中，`this`指的是map-reduce操作正在处理的文档。
 - 该函数将映射`price`到`cust_id`每个文档的，并发出`cust_id`和`price`对。
 
-```
+```powershell
 var mapFunction1 = function() {
    emit(this.cust_id, this.price);
 };
@@ -58,7 +58,7 @@ var mapFunction1 = function() {
 - `valuesPrices`是一个数组，其元素是`price` 由map功能发射并由分组值`keyCustId`。
 - 该函数将`valuesPrice`数组简化为其元素的总和。
 
-```
+```powershell
 var reduceFunction1 = function(keyCustId, valuesPrices) {
    return Array.sum(valuesPrices);
 };
@@ -66,7 +66,7 @@ var reduceFunction1 = function(keyCustId, valuesPrices) {
 
 3. `orders`使用`mapFunction1`map函数和`reduceFunction1` reduce函数对集合中的所有文档执行map-reduce 。
 
-```
+```powershell
 db.orders.mapReduce(
    mapFunction1,
    reduceFunction1,
@@ -78,13 +78,13 @@ db.orders.mapReduce(
 
 4. 查询`map_reduce_example`集合以验证结果：
 
-```
+```powershell
 db.map_reduce_example.find().sort( { _id: 1 } )
 ```
 
 ​	该操作返回以下文档：
 
-```
+```powershell
 { "_id" : "Ant O. Knee", "value" : 95 }
 { "_id" : "Busby Bee", "value" : 125 }
 { "_id" : "Cam Elot", "value" : 60 }
@@ -95,7 +95,7 @@ db.map_reduce_example.find().sort( { _id: 1 } )
 
 使用可用的聚合管道运算符，您可以重写map-reduce操作，而无需定义自定义函数：
 
-```
+```powershell
 db.orders.aggregate([
    { $group: { _id: "$cust_id", value: { $sum: "$price" } } },
    { $out: "agg_alternative_1" }
@@ -106,7 +106,7 @@ db.orders.aggregate([
 
    该阶段将以下文档输出到下一阶段：
 
-   ```
+   ```powershell
    { "_id" : "Don Quis", "value" : 155 }
    { "_id" : "Ant O. Knee", "value" : 95 }
    { "_id" : "Cam Elot", "value" : 60 }
@@ -117,13 +117,13 @@ db.orders.aggregate([
 
 3. 查询`agg_alternative_1`集合以验证结果：
 
-   ```
+   ```powershell
    db.agg_alternative_1.find().sort( { _id: 1 } )
    ```
 
    该操作返回以下文档：
 
-   ```
+   ```powershell
    { "_id" : "Ant O. Knee", "value" : 95 }
    { "_id" : "Busby Bee", "value" : 125 }
    { "_id" : "Cam Elot", "value" : 60 }
@@ -139,7 +139,7 @@ db.orders.aggregate([
    - 在函数中，`this`指的是map-reduce操作正在处理的文档。
    - 对于每个商品，该函数将其`sku`与一个新对象相关联，该对象`value`包含订单的`count`of `1`和该商品`qty`，并发出`sku`and `value`对。
 
-   ```
+   ```powershell
    var mapFunction2 = function() {
        for (var idx = 0; idx < this.items.length; idx++) {
           var key = this.items[idx].sku;
@@ -156,7 +156,7 @@ db.orders.aggregate([
    - 该函数将`countObjVals`数组简化为`reducedValue`包含`count`和 `qty`字段的单个对象。
    - 在中`reducedVal`，该`count`字段包含 `count`各个数组元素的`qty`字段总和，而该字段包含各个数组元素的 字段总和`qty`。
 
-   ```
+   ```powershell
    var reduceFunction2 = function(keySKU, countObjVals) {
       reducedVal = { count: 0, qty: 0 };
    
@@ -171,7 +171,7 @@ db.orders.aggregate([
 
 3. 定义有两个参数的函数确定`key`和 `reducedVal`。该函数修改`reducedVal`对象以添加一个名为`avg`的计算字段，并返回修改后的对象：
 
-   ```
+   ```powershell
    var finalizeFunction2 = function (key, reducedVal) {
      reducedVal.avg = reducedVal.qty/reducedVal.count;
      return reducedVal;
@@ -180,7 +180,7 @@ db.orders.aggregate([
 
 4. 在执行的map-reduce操作`orders`使用集合`mapFunction2`，`reduceFunction2`和 `finalizeFunction2`功能。
 
-   ```
+   ```powershell
    db.orders.mapReduce(
       mapFunction2,
       reduceFunction2,
@@ -198,13 +198,13 @@ db.orders.aggregate([
 
 5. 查询`map_reduce_example2`集合以验证结果：
 
-   ```
+   ```powershell
    db.map_reduce_example2.find().sort( { _id: 1 } )
    ```
 
    该操作返回以下文档：
 
-   ```
+   ```powershell
    { "_id" : "apples", "value" : { "count" : 3, "qty" : 30, "avg" : 10 } }
    { "_id" : "carrots", "value" : { "count" : 2, "qty" : 15, "avg" : 7.5 } }
    { "_id" : "chocolates", "value" : { "count" : 3, "qty" : 15, "avg" : 5 } }
@@ -216,7 +216,7 @@ db.orders.aggregate([
 
    使用可用的聚合管道运算符，您可以重写map-reduce操作，而无需定义自定义函数：
 
-   ```
+   ```powershell
    db.orders.aggregate( [
       { $match: { ord_date: { $gte: new Date("2020-03-01") } } },
       { $unwind: "$items" },
@@ -230,8 +230,7 @@ db.orders.aggregate([
 
 2. 该`$unwinds`阶段按`items`数组字段细分文档，以输出每个数组元素的文档。例如：
 
-      ```
-      
+      ```powershell
       { "_id" : 1, "cust_id" : "Ant O. Knee", "ord_date" : ISODate("2020-03-01T00:00:00Z"), "price" : 25, "items" : { "sku" : "oranges", "qty" : 5, "price" : 2.5 }, "status" : "A" }
       { "_id" : 1, "cust_id" : "Ant O. Knee", "ord_date" : ISODate("2020-03-01T00:00:00Z"), "price" : 25, "items" : { "sku" : "apples", "qty" : 5, "price" : 2.5 }, "status" : "A" }
       { "_id" : 2, "cust_id" : "Ant O. Knee", "ord_date" : ISODate("2020-03-08T00:00:00Z"), "price" : 70, "items" : { "sku" : "oranges", "qty" : 8, "price" : 2.5 }, "status" : "A" }
@@ -242,13 +241,13 @@ db.orders.aggregate([
       { "_id" : 5, "cust_id" : "Busby Bee", "ord_date" : ISODate("2020-03-19T00:00:00Z"), "price" : 50, "items" : { "sku" : "chocolates", "qty" : 5, "price" : 10 }, "status" : "A" }
       ...
       ```
-
+      
 3. [`$group`]()由平台组`items.sku`，计算每个SKU：
 
     - 该`qty`字段。该`qty`字段包含`qty`每个订单的总数`items.sku`（请参阅参考资料`$sum`）。
     - `orders_ids`列表。该`orders_ids`字段包含不同顺序的列表`_id`的对`items.sku`（参见 `$addToSet`）。
 
-      ```
+      ```powershell
       { "_id" : "chocolates", "qty" : 15, "orders_ids" : [ 2, 5, 8 ] }
       { "_id" : "oranges", "qty" : 63, "orders_ids" : [ 4, 7, 3, 2, 9, 1, 10 ] }
       { "_id" : "carrots", "qty" : 15, "orders_ids" : [ 6, 9 ] }
@@ -262,7 +261,7 @@ db.orders.aggregate([
     - 在`value.qty`到`qty`输入文档的数量字段。
     - `value.avg`平均每笔订购的数量。（请参阅[`$divide`]()和[`$size`]()）
 
-      ```
+      ```powershell
       { "_id" : "apples", "value" : { "count" : 4, "qty" : 35, "avg" : 8.75 } }
       { "_id" : "pears", "value" : { "count" : 1, "qty" : 10, "avg" : 10 } }
       { "_id" : "chocolates", "value" : { "count" : 3, "qty" : 15, "avg" : 5 } }
@@ -274,13 +273,13 @@ db.orders.aggregate([
 
 6. 查询`agg_alternative_3`集合以验证结果：
 
-    ```
+    ```powershell
     db.agg_alternative_3.find().sort( { _id: 1 } )
     ```
 
     该操作返回以下文档：
 
-    ```
+    ```powershell
     { "_id" : "apples", "value" : { "count" : 4, "qty" : 35, "avg" : 8.75 } }
     { "_id" : "carrots", "value" : { "count" : 2, "qty" : 15, "avg" : 7.5 } }
     { "_id" : "chocolates", "value" : { "count" : 3, "qty" : 15, "avg" : 5 } }

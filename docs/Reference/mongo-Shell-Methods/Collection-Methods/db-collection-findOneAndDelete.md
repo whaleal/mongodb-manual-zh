@@ -18,15 +18,17 @@
 
 findOneAndDelete()方法具有以下形式：
 
-    db.collection.findOneAndDelete(
-        <filter>,
-        {
-            projection: <document>,
-            sort: <document>,
-            maxTimeMS: <number>,
-            collation: <document>
-        }
-    )
+```powershell
+db.collection.findOneAndDelete(
+    <filter>,
+    {
+        projection: <document>,
+        sort: <document>,
+        maxTimeMS: <number>,
+        collation: <document>
+    }
+)
+```
 
 findOneAndDelete()方法采用以下参数：
 
@@ -50,7 +52,7 @@ findOneAndDelete()删除集合中与`filter`匹配的第一个匹配文档。 `s
 
 `projection`参数采用以下形式的文档：
 
-```
+```powershell
 { field1 : < boolean >, field2 : < boolean> ... }
 ```
 
@@ -65,9 +67,10 @@ findOneAndDelete()删除集合中与`filter`匹配的第一个匹配文档。 `s
 
 如果在事务中运行，请不要为操作明确设置写关注点。要对事务使用写关注，请参见 事务和写关注。
 
-> **重要**<br />
+> **重要**
+>
 > 在大多数情况下，与单文档写入相比，多文档事务产生的性能成本更高，并且多文档事务的可用性不应替代有效的架构设计。在许多情况下， 非规范化数据模型（嵌入式文档和数组）将继续是您的数据和用例的最佳选择。也就是说，在许多情况下，适当地对数据建模将最大程度地减少对多文档交易的需求。
-> 
+>
 > 有关其他事务使用方面的注意事项（例如运行时限制和操作日志大小限制），另请参见 生产注意事项。
 
 ### 例子
@@ -76,7 +79,7 @@ findOneAndDelete()删除集合中与`filter`匹配的第一个匹配文档。 `s
 
 `grades`集合包含类似于以下内容的文档：
 
-```
+```powershell
 { _id: 6305, name : "A. MacDyver", "assignment" : 5, "points" : 24 },
 { _id: 6308, name : "B. Batlock", "assignment" : 3, "points" : 22 },
 { _id: 6312, name : "M. Tagnum", "assignment" : 5, "points" : 30 },
@@ -87,7 +90,7 @@ findOneAndDelete()删除集合中与`filter`匹配的第一个匹配文档。 `s
 
 以下操作查找`name : M. Tagnum`并删除它的第一个文档：
 
-```
+```powershell
 db.scores.findOneAndDelete(
     { "name" : "M. Tagnum" }
 )
@@ -95,7 +98,7 @@ db.scores.findOneAndDelete(
 
 该操作返回已删除的原始文档：
 
-```
+```powershell
 { _id: 6312, name: "M. Tagnum", "assignment" : 5, "points" : 30 }
 ```
 
@@ -103,7 +106,7 @@ db.scores.findOneAndDelete(
 
 `grades`集合包含类似于以下内容的文档：
 
-```
+```powershell
 { _id: 6305, name : "A. MacDyver", "assignment" : 5, "points" : 24 },
 { _id: 6308, name : "B. Batlock", "assignment" : 3, "points" : 22 },
 { _id: 6312, name : "M. Tagnum", "assignment" : 5, "points" : 30 },
@@ -114,7 +117,7 @@ db.scores.findOneAndDelete(
 
 以下操作首先查找`name : "A. MacDyver"`所有文档。然后在删除具有最低点 value 的文档之前按`points`升序排序：
 
-```
+```powershell
 db.scores.findOneAndDelete(
     { "name" : "A. MacDyver" },
     { sort : { "points" : 1 } }
@@ -123,7 +126,7 @@ db.scores.findOneAndDelete(
 
 该操作返回已删除的原始文档：
 
-```
+```powershell
 { _id: 6322, name: "A. MacDyver", "assignment" : 2, "points" : 14 }
 ```
 
@@ -131,7 +134,7 @@ db.scores.findOneAndDelete(
 
 以下操作使用 projection 仅返回返回文档中的`_id`和`assignment`字段：
 
-```
+```powershell
 db.scores.findOneAndDelete(
     { "name" : "A. MacDyver" },
     { sort : { "points" : 1 }, projection: { "assignment" : 1 } }
@@ -140,7 +143,7 @@ db.scores.findOneAndDelete(
 
 该操作返回包含`assignment`和`_id`字段的原始文档：
 
-```
+```powershell
 { _id: 6322, "assignment" : 2 }
 ```
 
@@ -148,7 +151,7 @@ db.scores.findOneAndDelete(
 
 以下操作设置 5ms time 限制以完成删除：
 
-```
+```powershell
 try {
     db.scores.findOneAndDelete(
         { "name" : "A. MacDyver" },
@@ -161,7 +164,7 @@ try {
 
 如果操作超过 time 限制，则返回：
 
-```
+```powershell
 Error: findAndModifyFailed failed: { "ok" : 0, "errmsg" : "operation exceeded time limit", "code" : 50 }
 ```
 
@@ -173,7 +176,7 @@ version 3.4 中的新内容。
 
 集合`myColl`具有以下文档：
 
-```
+```powershell
 { _id: 1, category: "café", status: "A" }
 { _id: 2, category: "cafe", status: "a" }
 { _id: 3, category: "cafE", status: "a" }
@@ -181,7 +184,7 @@ version 3.4 中的新内容。
 
 以下操作包括整理选项：
 
-```
+```powershell
 db.myColl.findOneAndDelete(
     { category: "cafe", status: "a" },
     { collation: { locale: "fr", strength: 1 } }
@@ -190,7 +193,7 @@ db.myColl.findOneAndDelete(
 
 该操作返回以下文档：
 
-```
+```powershell
 { "_id" : 1, "category" : "café", "status" : "A" }
 ```
 
