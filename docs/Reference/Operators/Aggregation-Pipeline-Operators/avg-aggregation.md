@@ -29,7 +29,7 @@
 
 在`$group`阶段中使用时，`$avg`具有以下语法，并返回通过将指定的表达式应用于按键共享同一组的一组文档中的每个文档而得到的所有数值的总平均值：
 
-```
+```powershell
 { $avg: <expression> }
 ```
 
@@ -37,13 +37,13 @@
 
 - `$avg` 有一个指定的表达式作为其操作数：
 
-  ```
+  ```powershell
   { $avg: <expression> }
   ```
 
 - `$avg` 有一个指定表达式的列表作为其操作数：
 
-  ```
+  ```powershell
   { $avg: [ <expression1>, <expression2> ... ]  }
   ```
 
@@ -70,7 +70,7 @@
 
 考虑`sales`包含以下文档的集合：
 
-```
+```powershell
 { "_id" : 1, "item" : "abc", "price" : 10, "quantity" : 2, "date" : ISODate("2014-01-01T08:00:00Z") }
 { "_id" : 2, "item" : "jkl", "price" : 20, "quantity" : 1, "date" : ISODate("2014-02-03T09:00:00Z") }
 { "_id" : 3, "item" : "xyz", "price" : 5, "quantity" : 5, "date" : ISODate("2014-02-03T09:05:00Z") }
@@ -80,7 +80,7 @@
 
 按`item`字段对文档进行分组，以下操作使用`$avg`累加器计算每个分组的平均数量和平均数量。
 
-```
+```powershell
 db.sales.aggregate(
    [
      {
@@ -97,7 +97,7 @@ db.sales.aggregate(
 
 该操作返回以下结果：
 
-```
+```powershell
 { "_id" : "xyz", "avgAmount" : 37.5, "avgQuantity" : 7.5 }
 { "_id" : "jkl", "avgAmount" : 20, "avgQuantity" : 1 }
 { "_id" : "abc", "avgAmount" : 60, "avgQuantity" : 6 }
@@ -107,7 +107,7 @@ db.sales.aggregate(
 
 集合`students`包含以下文档：
 
-```
+```powershell
 { "_id": 1, "quizzes": [ 10, 6, 7 ], "labs": [ 5, 8 ], "final": 80, "midterm": 75 }
 { "_id": 2, "quizzes": [ 9, 10 ], "labs": [ 8, 8 ], "final": 95, "midterm": 80 }
 { "_id": 3, "quizzes": [ 4, 5, 5 ], "labs": [ 6, 5 ], "final": 78, "midterm": 70 }
@@ -115,7 +115,7 @@ db.sales.aggregate(
 
 以下示例`$avg`在 `$project`阶段中使用来计算平均测验分数，平均实验室分数以及期末和期中考试的平均值：
 
-```
+```powershell
 db.students.aggregate([
    { $project: { quizAvg: { $avg: "$quizzes"}, labAvg: { $avg: "$labs" }, examAvg: { $avg: [ "$final", "$midterm" ] } } }
 ])
@@ -123,7 +123,7 @@ db.students.aggregate([
 
 该操作产生以下文档：
 
-```
+```powershell
 { "_id" : 1, "quizAvg" : 7.666666666666667, "labAvg" : 6.5, "examAvg" : 77.5 }
 { "_id" : 2, "quizAvg" : 9.5, "labAvg" : 8, "examAvg" : 87.5 }
 { "_id" : 3, "quizAvg" : 4.666666666666667, "labAvg" : 5.5, "examAvg" : 74 }

@@ -15,7 +15,7 @@
 
 考虑以下查询：
 
-```
+```powershell
 db.inventory.find( { qty: { $nin: [ 5, 15 ] } } )
 ```
 
@@ -25,7 +25,7 @@ db.inventory.find( { qty: { $nin: [ 5, 15 ] } } )
 
 考虑以下查询：
 
-```
+```powershell
 db.inventory.update( { tags: { $nin: [ "appliances", "school" ] } }, { $set: { sale: false } } )
 ```
 
@@ -33,6 +33,7 @@ db.inventory.update( { tags: { $nin: [ "appliances", "school" ] } }, { $set: { s
 
 不等运算符`$nin`的选择性不是很强，因为它经常匹配索引的很大一部分。因此，在许多情况下，带有索引的`$nin`查询的性能可能不比必须扫描集合中所有文档的`$nin`查询好。请参见查询选择性。
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > `find()`，`update()`，`$set`。
 

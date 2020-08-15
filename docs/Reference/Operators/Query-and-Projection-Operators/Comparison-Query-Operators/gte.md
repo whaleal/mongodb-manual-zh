@@ -12,7 +12,7 @@
 
 考虑以下示例：
 
-```
+```powershell
 db.inventory.find( { qty: { $gte: 20 } } )
 ```
 
@@ -20,12 +20,13 @@ db.inventory.find( { qty: { $gte: 20 } } )
 
 考虑以下示例，该示例将`$gte`运算符与嵌入式文档中的字段一起使用：
 
-```
+```powershell
 db.inventory.update( { "carrier.fee": { $gte: 2 } }, { $set: { price: 9.99 } } )
 ```
 
 `update()`操作将设置`price`包含嵌入文档`carrier`的`fee`字段的值，该嵌入文档 的字段值大于或等于 `2`。
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > `find()`，`update()`，`$set`。
 

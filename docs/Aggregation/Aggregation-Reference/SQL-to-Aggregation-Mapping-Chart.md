@@ -27,8 +27,9 @@
 
 有关所有聚合管道和表达式 operators 的列表，请参阅[聚合管道快速参考](Aggregation-Pipeline-Quick-Reference.md)。
 
-> **也可以看看**<br />
-> [SQL 到 MongoDB 映射图表](SQL-to-Aggregation-Mapping-Chart.md)
+> **也可以看看**
+>
+> SQL 到 MongoDB 映射图表](SQL-to-Aggregation-Mapping-Chart.md)
 
 []()
 
@@ -40,7 +41,7 @@
 
 *   MongoDB 示例假设一个集合`orders`包含以下原型的文档：
 
-    ```
+    ```powershell
     {
       cust_id: "abc123",
       ord_date: ISODate("2012-11-02T17:04:11.102Z"),

@@ -22,16 +22,18 @@
 
 updateOne()方法具有以下形式：
 
-    db.collection.updateOne(
-       <filter>,
-       <update>,
-       {
-         upsert: <boolean>,
-         writeConcern: <document>,
-         collation: <document>,
-         arrayFilters: [ <filterdocument1>, ... ]
-       }
-    )
+```powershell
+db.collection.updateOne(
+   <filter>,
+   <update>,
+   {
+     upsert: <boolean>,
+     writeConcern: <document>,
+     collation: <document>,
+     arrayFilters: [ <filterdocument1>, ... ]
+   }
+)
+```
 
 ### 参数
 
@@ -73,7 +75,7 @@ updateOne()方法具有以下形式：
 
 例如：
 
-```
+```powershell
 db.collection.updateOne(
    <query>,
    { $set: { status: "D" }, $inc: { quantity: 2 } },
@@ -93,7 +95,7 @@ db.collection.updateOne(
 
 例如：
 
-```
+```powershell
 db.collection.updateOne(
    <query>,
    [
@@ -104,8 +106,9 @@ db.collection.updateOne(
 )
 ```
 
-> **注意**<br />
-> 该`$set`和`$unset`在管道中是指聚集阶段`$set`，并`$unset`分别，而不是更新的运算符`$set`和`$unset`。
+> **注意**
+>
+> `$set`和`$unset`在管道中是指聚集阶段`$set`，并`$unset`分别，而不是更新的运算符`$set`和`$unset`。
 
 有关示例，请参见使用聚合管道更新。
 
@@ -147,7 +150,8 @@ db.collection.updateOne(
 
 `db.collection.updateOne()`可以在多文档事务中使用。
 
-> **重要**<br />
+> **重要**
+>
 > 在大多数情况下，与单文档写入相比，多文档事务产生的性能成本更高，并且多文档事务的可用性不应替代有效的架构设计。在许多情况下， 非规范化数据模型（嵌入式文档和数组）将继续是您的数据和用例的最佳选择。也就是说，在许多情况下，适当地对数据建模将最大程度地减少对多文档交易的需求。
 >
 > 有关其他事务使用方面的注意事项（例如运行时限制和操作日志大小限制），另请参见 生产注意事项。
@@ -166,13 +170,15 @@ db.collection.updateOne(
 
 `restaurant`集合包含以下文档：
 
-    { "_id" : 1, "name" : "Central Perk Cafe", "Borough" : "Manhattan" },
-    { "_id" : 2, "name" : "Rock A Feller Bar and Grill", "Borough" : "Queens", "violations" : 2 },
-    { "_id" : 3, "name" : "Empire State Pub", "Borough" : "Brooklyn", "violations" : 0 }
+```powershell
+{ "_id" : 1, "name" : "Central Perk Cafe", "Borough" : "Manhattan" },
+{ "_id" : 2, "name" : "Rock A Feller Bar and Grill", "Borough" : "Queens", "violations" : 2 },
+{ "_id" : 3, "name" : "Empire State Pub", "Borough" : "Brooklyn", "violations" : 0 }
+```
 
 以下操作使用`violations`字段更新`name: "Central Perk Cafe"`的单个文档：
 
-```
+```powershell
 try {
     db.restaurant.updateOne(
         { "name" : "Central Perk Cafe" },
@@ -185,13 +191,13 @@ try {
 
 操作返回：
 
-```
+```powershell
 { "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
 ```
 
 如果未找到匹配项，则操作将返回：
 
-```
+```powershell
 { "acknowledged" : true, "matchedCount" : 0, "modifiedCount" : 0 }
 ```
 
@@ -213,7 +219,7 @@ try {
 
 `members`使用以下文档创建一个集合：
 
-```
+```powershell
 db.members.insertMany([
     { "_id" : 1, "member" : "abc123", "status" : "A", "points" : 2, "misc1" : "note to self: confirm status", "misc2" : "Need to activate", "lastUpdate" : ISODate("2019-01-01T00:00:00Z") },
     { "_id" : 2, "member" : "xyz123", "status" : "A", "points" : 60, comments: [ "reminder: ping me at 100pts", "Some random comment" ], "lastUpdate" : ISODate("2019-01-01T00:00:00Z") }
@@ -225,7 +231,7 @@ db.members.insertMany([
 - 添加新`comments`字段并设置该`lastUpdate`字段。
 - 删除集合中所有文档的`misc1`和`misc2`字段。
 
-```
+```powershell
 db.members.updateOne(
    { _id: 1 },
    [
@@ -235,8 +241,9 @@ db.members.updateOne(
 )
 ```
 
-> **注意**<br />
-> 该`$set`和`$unset`在管道中是指聚合阶段`$set`，并`$unset`分别，而不是更新的运营商`$set`和`$unset`。
+> **注意**
+>
+> `$set`和`$unset`在管道中是指聚合阶段`$set`，并`$unset`分别，而不是更新的运营商`$set`和`$unset`。
 
 **第一阶段**
 
@@ -251,7 +258,7 @@ db.members.updateOne(
 
 命令后，集合包含以下文档：
 
-```
+```powershell
 { "_id" : 1, "member" : "abc123", "status" : "Modified", "points" : 2, "lastUpdate" : ISODate("2020-01-23T05:21:59.321Z"), "comments" : [ "note to self: confirm status", "Need to activate" ] }
 { "_id" : 2, "member" : "xyz123", "status" : "A", "points" : 60, "comments" : [ "reminder: ping me at 100pts", "Some random comment" ], "lastUpdate" : ISODate("2019-01-01T00:00:00Z") }
 ```
@@ -262,7 +269,7 @@ db.members.updateOne(
 
 例如，`students3`使用以下文档创建一个集合：
 
-```
+```powershell
 db.students3.insert([
    { "_id" : 1, "tests" : [ 95, 92, 90 ], "average" : 92, "grade" : "A", "lastUpdate" : ISODate("2020-01-23T05:18:40.013Z") },
    { "_id" : 2, "tests" : [ 94, 88, 90 ], "average" : 91, "grade" : "A", "lastUpdate" : ISODate("2020-01-23T05:18:40.013Z") },
@@ -272,7 +279,7 @@ db.students3.insert([
 
 第三个文档`_id: 3`缺少`average`和 `grade` 字段。使用聚合管道，可以使用计算出的平均成绩和字母成绩更新文档。
 
-```
+```powershell
 db.students3.updateOne(
    { _id: 3 },
    [
@@ -290,8 +297,9 @@ db.students3.updateOne(
 )
 ```
 
-> **注意**<br />
-> 该`$set`管道中的使用是指聚合阶段 `$set`，而不是更新运算符`$set`。
+> **注意**
+>
+> `$set`管道中的使用是指聚合阶段 `$set`，而不是更新运算符`$set`。
 
 第一阶段
 
@@ -306,20 +314,21 @@ db.students3.updateOne(
 
 命令后，集合包含以下文档：
 
-```
+```powershell
 { "_id" : 1, "tests" : [ 95, 92, 90 ], "average" : 92, "grade" : "A", "lastUpdate" : ISODate("2020-01-23T05:18:40.013Z") }
 { "_id" : 2, "tests" : [ 94, 88, 90 ], "average" : 91, "grade" : "A", "lastUpdate" : ISODate("2020-01-23T05:18:40.013Z") }
 { "_id" : 3, "tests" : [ 70, 75, 82 ], "lastUpdate" : ISODate("2020-01-24T17:33:30.674Z"), "average" : 75, "grade" : "C" }
 ```
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > 聚合管道更新
 
 ### 使用 Upsert 更新
 
 `restaurant`集合包含以下文档：
 
-```
+```powershell
 { "_id" : 1, "name" : "Central Perk Cafe", "Borough" : "Manhattan", "violations" : 3 },
 { "_id" : 2, "name" : "Rock A Feller Bar and Grill", "Borough" : "Queens", "violations" : 2 },
 { "_id" : 3, "name" : "Empire State Pub", "Borough" : "Brooklyn", "violations" : "0" }
@@ -327,7 +336,7 @@ db.students3.updateOne(
 
 以下操作尝试使用`name : "Pizza Rat's Pizzaria"`更新文档，而`upsert: true`：
 
-```
+```powershell
 try {
     db.restaurant.updateOne(
         { "name" : "Pizza Rat's Pizzaria" },
@@ -341,7 +350,7 @@ try {
 
 从`upsert:true`开始，文档基于`filter`和`update`标准`inserted`。操作返回：
 
-```
+```powershell
 {
     "acknowledged" : true,
     "matchedCount" : 0,
@@ -352,7 +361,7 @@ try {
 
 该集合现在包含以下文档：
 
-```
+```powershell
 { "_id" : 1, "name" : "Central Perk Cafe", "Borough" : "Manhattan", "violations" : 3 },
 { "_id" : 2, "name" : "Rock A Feller Bar and Grill", "Borough" : "Queens", "violations" : 2 },
 { "_id" : 3, "name" : "Empire State Pub", "Borough" : "Brooklyn", "violations" : 4 },
@@ -363,7 +372,7 @@ try {
 
 以下操作使用`violations`更新大于`10`的第一个文档：
 
-```
+```powershell
 try {
     db.restaurant.updateOne(
         { "violations" : { $gt: 10} },
@@ -377,7 +386,7 @@ try {
 
 操作返回：
 
-```
+```powershell
 {
     "acknowledged" : true,
     "matchedCount" : 0,
@@ -388,7 +397,7 @@ try {
 
 该集合现在包含以下文档：
 
-```
+```powershell
 { "_id" : 1, "name" : "Central Perk Cafe", "Borough" : "Manhattan", "violations" : 3 },
 { "_id" : 2, "name" : "Rock A Feller Bar and Grill", "Borough" : "Queens", "violations" : 2 },
 { "_id" : 3, "name" : "Empire State Pub", "Borough" : "Brooklyn", "violations" : 4 },
@@ -402,7 +411,7 @@ try {
 
 给定三个成员副本集，以下操作指定`majority` `wtimeout`，`wtimeout` `100`：
 
-```
+```powershell
 try {
     db.restaurant.updateOne(
         { "name" : "Pizza Rat's Pizzaria" },
@@ -416,13 +425,13 @@ try {
 
 如果主要和至少一个辅助设备在 100 毫秒内确认每个写入操作，则返回：
 
-```
+```powershell
 { "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
 ```
 
 如果确认时间超过`wtimeout`限制，则抛出以下 exception：
 
-```
+```powershell
 WriteConcernError({
     "code" : 64,
     "errInfo" : {
@@ -440,7 +449,7 @@ version 3.4 中的新内容。
 
 集合`myColl`具有以下文档：
 
-```
+```powershell
 { _id: 1, category: "cafe", status: "A" }
 { _id: 2, category: "cafe", status: "a" }
 { _id: 3, category: "cafE", status: "a" }
@@ -448,7 +457,7 @@ version 3.4 中的新内容。
 
 以下操作包括整理选项：
 
-```
+```powershell
 db.myColl.updateOne(
     { category: "cafe" },
     { $set: { status: "Updated" } },
@@ -466,7 +475,7 @@ version 3.6 中的新内容。
 
 使用以下文档创建集合`students`：
 
-```
+```powershell
 db.students.insert([
     { "_id" : 1, "grades" : [ 95, 92, 90 ] },
     { "_id" : 2, "grades" : [ 98, 100, 102 ] },
@@ -476,7 +485,7 @@ db.students.insert([
 
 要修改`grades` array 中大于或等于`100`的所有元素，请使用过滤后的位置 operator $ [&lt;identifier&gt;]和db.collection.updateOne方法中的`arrayFilters`选项：
 
-```
+```powershell
 db.students.updateOne(
     { grades: { $gte: 100 } },
     { $set: { "grades.$[element]" : 100 } },
@@ -486,7 +495,7 @@ db.students.updateOne(
 
 该操作更新单个文档的`grades`字段，在操作之后，该集合具有以下文档：
 
-```
+```powershell
 { "_id" : 1, "grades" : [ 95, 92, 90 ] }
 { "_id" : 2, "grades" : [ 98, 100, 100 ] }
 { "_id" : 3, "grades" : [ 95, 110, 100 ] }
@@ -494,7 +503,7 @@ db.students.updateOne(
 
 要修改是大于或等于所有元素`100`中 `grades`阵列中，使用过滤的位置操作者 `$[<identifier>]`与`arrayFilters`在选项 `db.collection.updateOne`方法：
 
-```
+```powershell
 db.students.updateOne(
    { grades: { $gte: 100 } },
    { $set: { "grades.$[element]" : 100 } },
@@ -504,7 +513,7 @@ db.students.updateOne(
 
 该操作将更新`grades`单个文档的字段，并且在操作之后，集合具有以下文档：
 
-```
+```powershell
 { "_id" : 1, "grades" : [ 95, 92, 90 ] }
 
 { "_id" : 2, "grades" : [ 98, 100, 100 ] }
@@ -516,7 +525,7 @@ db.students.updateOne(
 
 使用以下文档创建集合`students2`：
 
-```
+```powershell
 db.students2.insert([
     {
         "_id" : 1,
@@ -539,7 +548,7 @@ db.students2.insert([
 
 要修改`grades` array 中等级大于或等于`85`的所有元素的`mean`字段的 value，请使用过滤后的位置 operator $ [&lt;identifier&gt;]和db.collection.updateOne方法中的`arrayFilters`：
 
-```
+```powershell
 db.students2.updateOne(
     { },
     { $set: { "grades.$[elem].mean" : 100 } },
@@ -549,7 +558,7 @@ db.students2.updateOne(
 
 该操作更新单个文档的 array，并且在操作之后，该集合具有以下文档：
 
-```
+```powershell
 {
     "_id" : 1,
     "grades" : [
@@ -568,7 +577,8 @@ db.students2.updateOne(
 }
 ```
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > 要更新多个文档，请参阅db.collection.updateMany()。
 
 ### 指定`hint`更新操作
@@ -577,7 +587,7 @@ db.students2.updateOne(
 
 `members`使用以下文档创建样本集合：
 
-```
+```powershell
 db.members.insertMany([
    { "_id" : 1, "member" : "abc123", "status" : "P", "points" :  0,  "misc1" : null, "misc2" : null },
    { "_id" : 2, "member" : "xyz123", "status" : "A", "points" : 60,  "misc1" : "reminder: ping me at 100pts", "misc2" : "Some random comment" },
@@ -590,17 +600,18 @@ db.members.insertMany([
 
 在集合上创建以下索引：
 
-```
+```powershell
 db.members.createIndex( { status: 1 } )
 db.members.createIndex( { points: 1 } )
 ```
 
 以下更新操作明确暗示要使用索引：`{ status: 1 }`
 
-> **注意**<br />
+> **注意**
+>
 > 如果指定的索引不存在，则操作错误。
 
-```
+```powershell
 db.members.updateOne(
    { "points": { $lte: 20 }, "status": "P" },
    { $set: { "misc1": "Need to activate" } },
@@ -610,13 +621,13 @@ db.members.updateOne(
 
 update命令返回以下内容：
 
-```
+```powershell
 { "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
 ```
 
 要查看使用的索引，可以使用`$indexStats`管道：
 
-```
+```powershell
 db.members.aggregate( [ { $indexStats: { } }, { $sort: { name: 1 } } ] )
 ```
 

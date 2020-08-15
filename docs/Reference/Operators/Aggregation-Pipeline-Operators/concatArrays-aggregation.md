@@ -19,7 +19,7 @@
 
 `$concatArrays`具有以下语法：
 
-```
+```powershell
 { $concatArrays: [ <array1>, <array2>, ... ] }
 ```
 
@@ -38,7 +38,7 @@
 
 名为的集合`warehouses`包含以下文档：
 
-```
+```powershell
 { "_id" : 1, instock: [ "chocolate" ], ordered: [ "butter", "apples" ] }
 { "_id" : 2, instock: [ "apples", "pudding", "pie" ] }
 { "_id" : 3, instock: [ "pears", "pecans"], ordered: [ "cherries" ] }
@@ -47,13 +47,13 @@
 
 以下示例将`instock`和`ordered` 数组串联在一起：
 
-```
+```powershell
 db.warehouses.aggregate([
    { $project: { items: { $concatArrays: [ "$instock", "$ordered" ] } } }
 ])
 ```
 
-```
+```powershell
 { "_id" : 1, "items" : [ "chocolate", "butter", "apples" ] }
 { "_id" : 2, "items" : null }
 { "_id" : 3, "items" : [ "pears", "pecans", "cherries" ] }

@@ -20,7 +20,7 @@
 
 `$arrayElemAt` 具有以下语法：
 
-```
+```powershell
 { $anyElement: [ <expression> ] }
 ```
 
@@ -49,7 +49,7 @@
 
 名为的集合`users`包含以下文档：
 
-```
+```powershell
 { "_id" : 1, "name" : "dave123", favorites: [ "chocolate", "cake", "butter", "apples" ] }
 { "_id" : 2, "name" : "li", favorites: [ "apples", "pudding", "pie" ] }
 { "_id" : 3, "name" : "ahn", favorites: [ "pears", "pecans", "chocolate", "cherries" ] }
@@ -58,7 +58,7 @@
 
 下面的示例返回`favorites`数组中的第一个和最后一个元素 ：
 
-```
+```powershell
 db.users.aggregate([
    {
      $project:
@@ -73,7 +73,7 @@ db.users.aggregate([
 
 该操作返回以下结果：
 
-```
+```powershell
 { "_id" : 1, "name" : "dave123", "first" : "chocolate", "last" : "apples" }
 { "_id" : 2, "name" : "li", "first" : "apples", "last" : "pie" }
 { "_id" : 3, "name" : "ahn", "first" : "pears", "last" : "cherries" }

@@ -20,16 +20,18 @@
 
 db.collection.remove()方法可以具有两种语法之一。 remove()方法可以采用查询文档和可选的`justOne` boolean：
 
-    db.collection.remove(
-        <query>,
-        <justOne>
-    )
+```powershell
+db.collection.remove(
+    <query>,
+    <justOne>
+)
+```
 
 或者该方法可以采用查询文档和可选的删除选项文档：
 
 version 2.6 中的新内容。
 
-```
+```powershell
 db.collection.remove(
     <query>,
     {
@@ -79,9 +81,10 @@ remove()方法使用删除命令，该命令使用默认的写关注。要指定
 
 如果在事务中运行，请不要为操作明确设置写关注点。要对事务使用写关注，请参见 事务和写关注。
 
-> **重要**<br />
+> **重要**
+>
 > 在大多数情况下，与单文档写入相比，多文档事务产生的性能成本更高，并且多文档事务的可用性不应替代有效的架构设计。在许多情况下， 非规范化数据模型（嵌入式文档和数组）将继续是您的数据和用例的最佳选择。也就是说，在许多情况下，适当地对数据建模将最大程度地减少对多文档交易的需求。
-> 
+>
 > 有关其他事务使用方面的注意事项（例如运行时限制和操作日志大小限制），另请参见 生产注意事项。
 
 ## <span id="examples">例子</span>
@@ -106,7 +109,7 @@ db.bios.remove( { } )
 
 以下操作将从集合`products`中删除`qty`大于`20`的所有文档：
 
-```
+```powershell
 db.products.remove( { qty: { $gt: 20 } } )
 ```
 
@@ -114,7 +117,7 @@ db.products.remove( { qty: { $gt: 20 } } )
 
 对副本集的以下操作将删除集合`products`中`qty`大于`20`的所有文档，并指定`"w: majority"`的`"w: majority"`，其`wtimeout`为 5000 毫秒，以便该方法在写入传播到大多数表决副本集后返回成员或方法在 5 秒后超时。
 
-```
+```powershell
 db.products.remove(
     { qty: { $gt: 20 } },
     { writeConcern: { w: "majority", wtimeout: 5000 } }
@@ -127,7 +130,7 @@ db.products.remove(
 
 以下操作从集合`products`中删除第一个文档，其中`qty`大于`20`：
 
-```
+```powershell
 db.products.remove( { qty: { $gt: 20 } }, true )
 ```
 
@@ -139,7 +142,7 @@ version 3.4 中的新内容。
 
 集合`myColl`具有以下文档：
 
-```
+```powershell
 { _id: 1, category: "cafe", status: "A" }
 { _id: 2, category: "cafe", status: "a" }
 { _id: 3, category: "cafE", status: "a" }
@@ -147,7 +150,7 @@ version 3.4 中的新内容。
 
 以下操作包括整理选项：
 
-```
+```powershell
 db.myColl.remove(
     { category: "cafe", status: "A" },
     { collation: { locale: "fr", strength: 1 } }
@@ -162,18 +165,19 @@ db.myColl.remove(
 
 remove()返回包含操作状态的写结果 object。成功后，写结果 object 包含有关删除的文档数量的信息：
 
-```
+```powershell
 WriteResult({ "nRemoved" : 4 })
 ```
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > WriteResult.nRemoved
 
 ### 写下关注错误
 
 如果remove()方法遇到写入关注错误，则结果包括WriteResult.writeConcernError字段：
 
-```
+```powershell
 WriteResult({
     "nRemoved" : 21,
     "writeConcernError" : {
@@ -186,14 +190,15 @@ WriteResult({
 })
 ```
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > WriteResult.hasWriteConcernError()
 
 ### 与写关注无关的错误
 
 如果remove()方法遇到 non-write 关注错误，则结果包括WriteResult.writeError字段：
 
-```
+```powershell
 WriteResult({
     "nRemoved" : 0,
     "writeError" : {
@@ -203,5 +208,6 @@ WriteResult({
 })
 ```
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > WriteResult.hasWriteError()

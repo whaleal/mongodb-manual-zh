@@ -52,7 +52,7 @@
 | -------- | ------------------------------------------------------------ |
 | 返回值： | 一个游标是保持被打开，以MongoDB的部署的连接保持打开状态，并收集存在。有关变更事件文档的示例，请参见变更事件。 |
 
-> **也可以看看**<br />
+> **也可以看看**
 > 
 > `db.watch()` 和 `Mongo.watch()`
 
@@ -131,7 +131,7 @@ MongoDB版本中引入的新的恢复令牌格式不能被早期MongoDB版本使
 
 使用访问控制运行时，用户必须对集合资源具有 `find`和`changeStream`特权操作。也就是说，用户必须具有授予以下特权的角色：
 
-```
+```powershell
 { resource: { db: <dbname>, collection: <collection> }, actions: [ "find", "changeStream" ] }
 ```
 
@@ -143,13 +143,13 @@ MongoDB版本中引入的新的恢复令牌格式不能被早期MongoDB版本使
 
 以下操作将针对`data.sensors`集合打开更改流游标：
 
-```
+```powershell
 watchCursor = db.getSiblingDB("data").sensors.watch()
 ```
 
 迭代光标以检查新的 events。使用`cursor.isExhausted()`方法确保循环仅在更改流游标关闭且最新批次中没有 objects 时退出：
 
-```
+```powershell
 while (!watchCursor.isExhausted()){
     if (watchCursor.hasNext()){
         watchCursor.next();
@@ -163,9 +163,9 @@ while (!watchCursor.isExhausted()){
 
 设置`fullDocument`选项以`"updateLookup"`指示更改流游标查找与更新更改流事件相关联的文档的最新的多数提交版本。
 
-以下操作`data.sensors`使用该选项针对集合 打开更改流游标。`fullDocument : "updateLookup"`
+以下操作使用`fullDocument : "updateLookup"`该选项针对集合 `data.sensors`打开更改流游标。
 
-```
+```powershell
 watchCursor = db.getSiblingDB("data").sensors.watch(
     [],
     { fullDocument : "updateLookup" }
@@ -174,7 +174,7 @@ watchCursor = db.getSiblingDB("data").sensors.watch(
 
 迭代光标以检查新的 events。使用`cursor.isExhausted()`方法确保循环仅在更改流游标关闭且最新批次中没有 objects 时退出：
 
-```
+```powershell
 while (!watchCursor.isExhausted()){
     if (watchCursor.hasNext()){
         watchCursor.next();
@@ -190,12 +190,13 @@ while (!watchCursor.isExhausted()){
 
 ### <span id="change-stream-with-aggregation-pipeline-filter">使用聚合管道过滤器更改流</span>
 
-> **注意**<br />
+> **注意**
+>
 > 从MongoDB 4.2开始，如果更改流聚合管道修改了事件的_id字段，则更改流将引发异常。
 
 以下操作使用聚合管道打开针对`data.sensors`集合的更改流游标：
 
-```
+```powershell
 watchCursor = db.getSiblingDB("data").sensors.watch(
     [
         { $match : {"operationType" : "insert" } }
@@ -205,7 +206,7 @@ watchCursor = db.getSiblingDB("data").sensors.watch(
 
 迭代光标以检查新的事件。使用`cursor.isExhausted()`方法确保循环仅在更改流游标关闭且最新批次中没有 objects 时退出：
 
-```
+```powershell
 while (!watchCursor.isExhausted()){
     if (watchCursor.hasNext()){
         watchCursor.next();
@@ -221,7 +222,7 @@ while (!watchCursor.isExhausted()){
 
 以下操作`data.sensors`使用恢复令牌恢复针对集合的更改流游标 。假设生成恢复令牌的操作尚未脱离集群的操作日志。
 
-```
+```powershell
 let watchCursor = db.getSiblingDB("data").sensors.watch();
 let firstChange;
 
@@ -244,7 +245,7 @@ resumedWatchCursor = db.getSiblingDB("data").sensors.watch(
 
 迭代光标以检查新的事件。使用`cursor.isExhausted()`方法确保循环仅在更改流游标关闭且最新批次中没有 objects 时退出：
 
-```
+```powershell
 while (!resumedWatchCursor.isExhausted()){
     if (resumedWatchCursor.hasNext()){
         resumedWatchCursor.next();

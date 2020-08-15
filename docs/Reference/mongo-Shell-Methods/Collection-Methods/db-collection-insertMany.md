@@ -19,7 +19,7 @@
 
 insertMany()方法具有以下语法：
 
-```
+```powershell
 db.collection.insertMany(
     [ <document 1> , <document 2>, ... ],
     {
@@ -53,7 +53,8 @@ db.collection.insertMany(
 
 此限制可防止出现超大错误消息的问题。如果 group 超过此`limit`，则 client 驱动程序将 group 分成较小的组，其计数小于或等于限制的 value。例如，对于`100,000`的`maxWriteBatchSize` value，如果队列包含`200,000`操作，则驱动程序将创建 2 个组，每个组具有`100,000`个操作。
 
-> **注意**<br />
+> **注意**
+>
 > 使用 high-level API 时，驱动程序仅将 group 分为较小的组。如果直接使用db.runCommand()(对于 example，在编写驱动程序时)，MongoDB 在尝试执行超出限制的写入批处理时会抛出错误。
 
 从 MongoDB 3.6 开始，一旦单个批处理的错误报告变得太大，MongoDB 会将所有剩余的错误消息截断为空的 string。目前，一旦至少有 2 个错误消息，总大小大于`1MB`，则开始。
@@ -94,9 +95,10 @@ insertMany()与db.collection.explain()不兼容。
 
 如果在事务中运行，请不要为操作明确设置写关注点。要对事务使用写关注，请参见 事务和写关注。
 
-> **重要**<br />
+> **重要**
+>
 > 在大多数情况下，与单文档写入相比，多文档事务产生的性能成本更高，并且多文档事务的可用性不应替代有效的架构设计。在许多情况下， 非规范化数据模型（嵌入式文档和数组）将继续是您的数据和用例的最佳选择。也就是说，在许多情况下，适当地对数据建模将最大程度地减少对多文档交易的需求。
-> 
+>
 > 有关其他事务使用方面的注意事项（例如运行时限制和操作日志大小限制），另请参见 生产注意事项。
 
 ## <span id="examples">例子</span>
@@ -107,7 +109,7 @@ insertMany()与db.collection.explain()不兼容。
 
 以下 example 使用db.collection.insertMany()来插入不包含`_id`字段的文档：
 
-```
+```powershell
 try {
     db.products.insertMany( [
         { item: "card", qty: 15 },
@@ -121,7 +123,7 @@ try {
 
 该操作返回以下文档：
 
-```
+```powershell
 {
     "acknowledged" : true,
     "insertedIds" : [
@@ -140,7 +142,7 @@ try {
 
 以下 example/operation 使用insertMany()来插入包含`_id`字段的文档。 `_id`的 value 在集合中必须是唯一的，以避免重复的 key 错误。
 
-```
+```powershell
 try {
     db.products.insertMany( [
         { _id: 10, item: "large box", qty: 20 },
@@ -154,13 +156,13 @@ try {
 
 该操作返回以下文档：
 
-```
+```powershell
 { "acknowledged" : true, "insertedIds" : [ 10, 11, 12 ] }
 ```
 
 为的任何 key(例如`_id`)插入重复的 value 会抛出 exception。以下尝试使用已存在的`_id` value 插入文档：
 
-```
+```powershell
 try {
     db.products.insertMany( [
         { _id: 13, item: "envelopes", qty: 60 },
@@ -174,7 +176,7 @@ try {
 
 由于`_id: 13`已存在，因此抛出以下 exception：
 
-```
+```powershell
 BulkWriteError({
     "writeErrors" : [
         {
@@ -206,7 +208,7 @@ BulkWriteError({
 
 以下尝试使用`_id`字段和`ordered: false`插入多个文档。 array 文档包含两个具有重复`_id`字段的文档。
 
-```
+```powershell
 try {
     db.products.insertMany( [
         { _id: 10, item: "large box", qty: 20 },
@@ -224,7 +226,7 @@ try {
 
 该操作抛出以下 exception：
 
-```
+```powershell
 BulkWriteError({
     "writeErrors" : [
         {
@@ -264,7 +266,7 @@ BulkWriteError({
 
 给定三个成员副本集，以下操作指定`majority` `majority`和`wtimeout` `100`：
 
-```
+```powershell
 try {
     db.products.insertMany(
         [
@@ -281,7 +283,7 @@ try {
 
 如果主要和至少一个辅助设备在 100 毫秒内确认每个写入操作，则返回：
 
-```
+```powershell
 {
     "acknowledged" : true,
     "insertedIds" : [
@@ -296,7 +298,7 @@ try {
 
 此操作返回：
 
-```
+```powershell
 WriteConcernError({
     "code" : 64,
     "errInfo" : {

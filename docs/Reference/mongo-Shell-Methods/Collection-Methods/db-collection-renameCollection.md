@@ -28,7 +28,8 @@ db.collection.renameCollection()方法通过更改与给定集合关联的元数
 
 有关其他警告和消息，请参阅文档renameCollection。
 
-> **警告**<br />
+> **警告**
+>
 > db.collection.renameCollection()方法和renameCollection命令将使打开的游标无效，这会中断当前返回数据的查询。
 >
 > 对于Change Streams，该 `db.collection.renameCollection()`方法和 `renameCollection`命令为在源或目标集合上打开的任何现有 Change Streams创建一个 无效事件。
@@ -47,13 +48,15 @@ db.collection.renameCollection()方法通过更改与给定集合关联的元数
 
 ### 与`mongodump`交互
 
-一`mongodump`开始 `--oplog`，如果客户的问题未能 `db.collection.renameCollection()`在转储过程。请参阅 以获取更多信息。`mongodump --oplog`
+如果客户端在转储过程中发出`db.collection.renameCollection()`，则`mongodump`以`--oplog`失败开始。看到`mongodump.--oplog`获取更多信息。
 
 ## <span id="examples">例子</span>
 
 在集合 object 上调用db.collection.renameCollection()方法。例如：
 
-    db.rrecord.renameCollection("record")
+```powershell
+db.rrecord.renameCollection("record")
+```
 
 此操作会将`rrecord`集合重命名为`record`。如果目标 name(i.e.`record`)是现有集合的 name，则操作将失败。
 

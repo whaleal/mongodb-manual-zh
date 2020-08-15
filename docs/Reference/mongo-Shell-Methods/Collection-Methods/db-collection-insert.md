@@ -22,7 +22,7 @@
 
 insert()方法具有以下语法：
 
-```
+```powershell
 db.collection.insert(
        <document or array of documents>,
        {
@@ -67,9 +67,10 @@ insert()方法使用插入命令，该命令使用默认的写关注。要指定
 
 如果在事务中运行，请不要为操作明确设置写关注点。要对事务使用写关注，请参见 事务和写关注。
 
-> **重要**<br />
+> **重要**
+>
 > 在大多数情况下，与单文档写入相比，多文档事务产生的性能成本更高，并且多文档事务的可用性不应替代有效的架构设计。在许多情况下， 非规范化数据模型（嵌入式文档和数组）将继续是您的数据和用例的最佳选择。也就是说，在许多情况下，适当地对数据建模将最大程度地减少对多文档交易的需求。
-> 
+>
 > 有关其他事务使用方面的注意事项（例如运行时限制和操作日志大小限制），另请参见 生产注意事项。
 
 ## <span id="examples">例子</span>
@@ -79,13 +80,13 @@ insert()方法使用插入命令，该命令使用默认的写关注。要指定
 
 在以下 example 中，传递给insert()方法的文档不包含`_id`字段：
 
-```
+```powershell
 db.products.insert( { item: "card", qty: 15 } )
 ```
 
 在 insert 期间，mongod将创建`_id`字段并为其分配唯一的ObjectId value，由插入的文档验证：
 
-```
+```powershell
 { "_id" : ObjectId("5063114bd386d8fadbd6b004"), "item" : "card", "qty" : 15 }
 ```
 
@@ -95,13 +96,13 @@ db.products.insert( { item: "card", qty: 15 } )
 
 在下面的示例中，传递给insert()方法的文档包含`_id`字段。 `_id`的 value 在集合中必须是唯一的，以避免重复的 key 错误。
 
-```
+```powershell
 db.products.insert( { _id: 10, item: "box", qty: 20 } )
 ```
 
 该操作在`products`集合中插入以下文档：
 
-```
+```powershell
 { "_id" : 10, "item" : "box", "qty" : 20 }
 ```
 
@@ -111,7 +112,7 @@ db.products.insert( { _id: 10, item: "box", qty: 20 } )
 
 array 中的文档不需要具有相同的字段。例如，array 中的第一个文档有一个`_id`字段和一个`type`字段。由于第二个和第三个文档不包含`_id`字段，mongod将在 insert 期间为第二个和第三个文档创建`_id`字段：
 
-```
+```powershell
 db.products.insert(
     [
         { _id: 11, item: "pencil", qty: 50, type: "no.2" },
@@ -123,7 +124,7 @@ db.products.insert(
 
 该操作插入了以下三个文件：
 
-```
+```powershell
 { "_id" : 11, "item" : "pencil", "qty" : 50, "type" : "no.2" }
 { "_id" : ObjectId("51e0373c6f35bd826f47e9a0"), "item" : "pen", "qty" : 20 }
 { "_id" : ObjectId("51e0373c6f35bd826f47e9a1"), "item" : "eraser", "qty" : 25 }
@@ -133,7 +134,7 @@ db.products.insert(
 
 以下 example 执行三个文档的无序插入。对于无序插入，如果在其中一个文档的 insert 期间发生错误，MongoDB 将继续插入 array 中的其余文档。
 
-```
+```powershell
 db.products.insert(
     [
         { _id: 20, item: "lamp", qty: 50, type: "desk" },
@@ -150,7 +151,7 @@ db.products.insert(
 
 在 version 3.0 中更改：在以前的版本中，`majority`指的是副本集的大多数成员而不是大多数投票成员。
 
-```
+```powershell
 db.products.insert(
     { item: "envelopes", qty : 100, type: "Clasp" },
     { writeConcern: { w: "majority", wtimeout: 5000 } }
@@ -165,7 +166,7 @@ db.products.insert(
 
 insert()返回包含操作状态的写结果 object。成功后，写结果 object 包含有关插入文档数量的信息：
 
-```
+```powershell
 WriteResult({ "nInserted" : 1 })
 ```
 
@@ -173,7 +174,7 @@ WriteResult({ "nInserted" : 1 })
 
 如果insert()方法遇到写入关注错误，则结果包括WriteResult.writeConcernError字段：
 
-```
+```powershell
 WriteResult({
     "nInserted" : 1,
     "writeConcernError" : {
@@ -187,7 +188,7 @@ WriteResult({
 
 如果insert()方法遇到 non-write 关注错误，则结果包括WriteResult.writeError字段：
 
-```
+```powershell
 WriteResult({
     "nInserted" : 0,
     "writeError" : {

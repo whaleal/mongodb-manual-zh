@@ -19,8 +19,13 @@
 *   [本机](#native)
 *   [客户端字段级加密](#client-side-field-level-encryption)
 > **MONGODB 中的 JAVASCRIPT**
+> 
 > 虽然这些方法使用 JavaScript，但大多数与 MongoDB 的交互都不使用 JavaScript，而是在交互 application 的语言中使用惯用的司机。
+
+
+
 > **注意**
+> 
 > 有关特定方法(包括语法和示例)的详细信息，请单击特定方法以转到其 reference 页面。
 
 ## <span id="collection">集合</span>
@@ -348,8 +353,9 @@
 
 ## <span id="client-side-field-level-encryption">客户端字段级加密</span>
 
-> **注意**<br />
-> 该[`mongo`]()客户端的字段级的加密方法需要与客户端的字段级加密的数据库连接启用。如果当前数据库连接不是在启用客户端字段级加密的情况下启动的，则可以：
+> **注意**
+>
+> [`mongo`]()客户端的字段级的加密方法需要与客户端的字段级加密的数据库连接启用。如果当前数据库连接不是在启用客户端字段级加密的情况下启动的，则可以：
 >
 > - 使用shell程序中的[`Mongo()`]()构造函数[`mongo`]()与所需的客户端字段级加密选项建立连接。该[`Mongo()`]()方法同时支持Amazon Web Services和本地密钥管理服务（KMS）提供程序以进行客户主密钥（CMK）管理。
 >

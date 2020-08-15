@@ -12,8 +12,9 @@
 
 `$and`执行的逻辑`AND`的阵列上操作*的一个或多个*表达式（例如`<expression1>`， `<expression2>`等），并且选择满足该文件 *的所有*阵列中的表达式。`$and`运算符使用*短路计算*。如果第一个表达式（例如`<expression1>`）的计算结果为`false`，则MongoDB将不计算其余的表达式。
 
-> **注意**<br />`AND`当指定逗号分隔的表达式列表时，MongoDB提供隐式操作。
+> **注意**
 >
+> `AND`当指定逗号分隔的表达式列表时，MongoDB提供隐式操作。
 
 ## <span id="examples">例子</span>
 
@@ -21,7 +22,7 @@
 
 考虑以下示例：
 
-```
+```powershell
 db.inventory.find( { $and: [ { price: { $ne: 1.99 } }, { price: { $exists: true } } ] } )
 ```
 
@@ -32,7 +33,7 @@ db.inventory.find( { $and: [ { price: { $ne: 1.99 } }, { price: { $exists: true 
 
 `AND` 通过组合`price` 字段的运算符表达式，也可以使用隐式操作构造此查询。例如，此查询可以写为：
 
-```
+```powershell
 db.inventory.find( { price: { $ne: 1.99, $exists: true } } )
 ```
 
@@ -40,7 +41,7 @@ db.inventory.find( { price: { $ne: 1.99, $exists: true } } )
 
 考虑以下示例：
 
-```
+```powershell
 db.inventory.find( {
     $and: [
         { $or: [ { qty: { $lt : 10 } }, { qty : { $gt: 50 } } ] },
@@ -56,5 +57,6 @@ db.inventory.find( {
 
 无法使用隐式`AND`操作构造此查询，因为它`$or`多次使用运算符。
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > [`find()`]()，[`update()`]()， [`$ne`]()，[`$exists`]()，[`$set`]()。

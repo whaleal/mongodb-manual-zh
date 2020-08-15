@@ -19,18 +19,20 @@
 
 findOneAndReplace()方法具有以下形式：
 
-    db.collection.findOneAndReplace(
-        <filter>,
-        <replacement>,
-        {
-            projection: <document>,
-            sort: <document>,
-            maxTimeMS: <number>,
-            upsert: <boolean>,
-            returnNewDocument: <boolean>,
-            collation: <document>
-        }
-    )
+```powershell
+db.collection.findOneAndReplace(
+    <filter>,
+    <replacement>,
+    {
+        projection: <document>,
+        sort: <document>,
+        maxTimeMS: <number>,
+        upsert: <boolean>,
+        returnNewDocument: <boolean>,
+        collation: <document>
+    }
+)
+```
 
 findOneAndReplace()方法采用以下参数：
 
@@ -57,7 +59,7 @@ findOneAndReplace()替换集合中与`filter`匹配的第一个匹配文档。 `
 
 `projection`参数采用以下形式的文档：
 
-```
+```powershell
 { field1 : < boolean >, field2 : < boolean > ... }
 ```
 
@@ -84,7 +86,8 @@ findOneAndReplace()替换集合中与`filter`匹配的第一个匹配文档。 `
 
 如果在事务中运行，请不要为操作明确设置写关注点。要对事务使用写关注，请参见 事务和写关注。
 
-> **重要**<br />
+> **重要**
+>
 > 在大多数情况下，与单文档写入相比，多文档事务产生的性能成本更高，并且多文档事务的可用性不应替代有效的架构设计。在许多情况下， 非规范化数据模型（嵌入式文档和数组）将继续是您的数据和用例的最佳选择。也就是说，在许多情况下，适当地对数据建模将最大程度地减少对多文档交易的需求。
 >
 > 有关其他事务使用方面的注意事项（例如运行时限制和操作日志大小限制），另请参见 生产注意事项。
@@ -95,7 +98,7 @@ findOneAndReplace()替换集合中与`filter`匹配的第一个匹配文档。 `
 
 `scores`集合包含类似于以下内容的文档：
 
-```
+```powershell
 { "_id" : 1521, "team" : "Fearful Mallards", "score" : 25000 },
 { "_id" : 2231, "team" : "Tactful Mooses", "score" : 23500 },
 { "_id" : 4511, "team" : "Aquatic Ponies", "score" : 19250 },
@@ -105,7 +108,7 @@ findOneAndReplace()替换集合中与`filter`匹配的第一个匹配文档。 `
 
 以下操作查找`score`小于`20000`的第一个文档并替换它：
 
-```
+```powershell
 db.scores.findOneAndReplace(
     { "score" : { $lt : 20000 } },
     { "team" : "Observant Badgers", "score" : 20000 }
@@ -114,7 +117,7 @@ db.scores.findOneAndReplace(
 
 该操作返回已替换的原始文档：
 
-```
+```powershell
 { "_id" : 2512, "team" : "Aquatic Ponies", "score" : 19250 }
 ```
 
@@ -124,15 +127,17 @@ db.scores.findOneAndReplace(
 
 `scores`集合包含类似于以下内容的文档：
 
-    { "_id" : 1521, "team" : "Fearful Mallards", "score" : 25000 },
-    { "_id" : 2231, "team" : "Tactful Mooses", "score" : 23500 },
-    { "_id" : 4511, "team" : "Aquatic Ponies", "score" : 19250 },
-    { "_id" : 5331, "team" : "Cuddly Zebras", "score" : 15235 },
-    { "_id" : 3412, "team" : "Garrulous Bears", "score" : 22300 }
+```powershell
+{ "_id" : 1521, "team" : "Fearful Mallards", "score" : 25000 },
+{ "_id" : 2231, "team" : "Tactful Mooses", "score" : 23500 },
+{ "_id" : 4511, "team" : "Aquatic Ponies", "score" : 19250 },
+{ "_id" : 5331, "team" : "Cuddly Zebras", "score" : 15235 },
+{ "_id" : 3412, "team" : "Garrulous Bears", "score" : 22300 }
+```
 
 按`score`排序会更改操作的结果。以下操作按`score`升序对`filter`的结果进行排序，并替换最低得分文档：
 
-```
+```powershell
 db.scores.findOneAndReplace(
     { "score" : { $lt : 20000 } },
     { "team" : "Observant Badgers", "score" : 20000 },
@@ -142,7 +147,7 @@ db.scores.findOneAndReplace(
 
 该操作返回已替换的原始文档：
 
-```
+```powershell
 { "_id" : 5112, "team" : "Cuddly Zebras", "score" : 15235 }
 ```
 
@@ -152,7 +157,7 @@ db.scores.findOneAndReplace(
 
 `scores`集合包含类似于以下内容的文档：
 
-```
+```powershell
 { "_id" : 1521, "team" : "Fearful Mallards", "score" : 25000 },
 { "_id" : 2231, "team" : "Tactful Mooses", "score" : 23500 },
 { "_id" : 4511, "team" : "Aquatic Ponies", "score" : 19250 },
@@ -162,7 +167,7 @@ db.scores.findOneAndReplace(
 
 以下操作使用 projection 仅显示返回文档中的`team`字段：
 
-```
+```powershell
 db.scores.findOneAndReplace(
     { "score" : { $lt : 22250 } },
     { "team" : "Therapeutic Hamsters", "score" : 22250 },
@@ -172,7 +177,7 @@ db.scores.findOneAndReplace(
 
 该操作返回仅包含`team`字段的原始文档：
 
-```
+```powershell
 { "team" : "Aquatic Ponies"}
 ```
 
@@ -180,7 +185,7 @@ db.scores.findOneAndReplace(
 
 以下操作设置完成的 5ms time 限制：
 
-```
+```powershell
 try {
     db.scores.findOneAndReplace(
         { "score" : { $gt : 25000 } },
@@ -194,7 +199,7 @@ try {
 
 如果操作超过 time 限制，则返回：
 
-```
+```powershell
 Error: findAndModifyFailed failed: { "ok" : 0, "errmsg" : "operation exceeded time limit", "code" : 50 }
 ```
 
@@ -202,7 +207,7 @@ Error: findAndModifyFailed failed: { "ok" : 0, "errmsg" : "operation exceeded ti
 
 如果没有匹配的`filter`，则以下操作使用`upsert`字段来插入替换文档：
 
-```
+```powershell
 try {
     db.scores.findOneAndReplace(
         { "team" : "Fortified Lobsters" },
@@ -216,7 +221,7 @@ try {
 
 该操作返回以下内容：
 
-```
+```powershell
 {
     "_id" : 6019,
     "team" : "Fortified Lobsters",
@@ -234,7 +239,7 @@ version 3.4 中的新内容。
 
 集合`myColl`具有以下文档：
 
-```
+```powershell
 { _id: 1, category: "café", status: "A" }
 { _id: 2, category: "cafe", status: "a" }
 { _id: 3, category: "cafE", status: "a" }
@@ -242,7 +247,7 @@ version 3.4 中的新内容。
 
 以下操作包括整理选项：
 
-```
+```powershell
 db.myColl.findOneAndReplace(
     { category: "cafe", status: "a" },
     { category: "cafÉ", status: "Replaced" },
@@ -252,7 +257,7 @@ db.myColl.findOneAndReplace(
 
 该操作返回以下文档：
 
-```
+```powershell
 { "_id" : 1, "category" : "café", "status" : "A" }
 ```
 

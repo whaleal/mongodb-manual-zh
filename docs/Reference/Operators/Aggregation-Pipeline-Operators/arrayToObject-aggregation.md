@@ -20,7 +20,7 @@
 
 * 一个由两个元素组成的数组，其中第一个元素是字段名称，第二个元素是字段值：
 
-  ```
+  ```powershell
   [ [ "item", "abc123"], [ "qty", 25 ] ]
   ```
 
@@ -31,13 +31,13 @@
   * 该`k`字段包含字段名称。
   * 该`v`字段包含该字段的值。
 
-  ```
+  ```powershell
   [ { "k": "item", "v": "abc123"}, { "k": "qty", "v": 25 } ]
   ```
 
 `$arrayToObject`具有以下语法：
 
-```
+```powershell
 { $arrayToObject: <expression> }
 ```
 
@@ -65,7 +65,7 @@
 
 考虑`inventory`包含以下文档的集合：
 
-```
+```powershell
 { "_id" : 1, "item" : "ABC1",  dimensions: [ { "k": "l", "v": 25} , { "k": "w", "v": 10 }, { "k": "uom", "v": "cm" } ] }
 { "_id" : 2, "item" : "ABC2",  dimensions: [ [ "l", 50 ], [ "w",  25 ], [ "uom", "cm" ] ] }
 { "_id" : 3, "item" : "ABC3",  dimensions: [ [ "l", 25 ], [ "l",  "cm" ], [ "l", 50 ] ] }
@@ -73,7 +73,7 @@
 
 以下聚合管道操作使用 `$arrayToObject`将该`dimensions`字段作为文档返回：
 
-```
+```powershell
 db.inventory.aggregate(
    [
       {
@@ -88,7 +88,7 @@ db.inventory.aggregate(
 
 该操作返回以下结果：
 
-```
+```powershell
 { "_id" : 1, "item" : "ABC1", "dimensions" : { "l" : 25, "w" : 10, "uom" : "cm" } }
 { "_id" : 2, "item" : "ABC2", "dimensions" : { "l" : 50, "w" : 25, "uom" : "cm" } }
 { "_id" : 3, "item" : "ABC3", "dimensions" : { "l" : 50 } }
@@ -100,14 +100,14 @@ db.inventory.aggregate(
 
 考虑`inventory`包含以下文档的集合：
 
-```
+```powershell
 { "_id" : 1, "item" : "ABC1", instock: { warehouse1: 2500, warehouse2: 500 } }
 { "_id" : 2, "item" : "ABC2", instock: { warehouse2: 500, warehouse3: 200} }
 ```
 
 以下聚合管道操作将计算每个物料的总存货并将其添加到`instock`凭证中：
 
-```
+```powershell
 db.inventory.aggregate( [
    { $addFields: { instock: { $objectToArray: "$instock" } } },
    { $addFields: { instock: { $concatArrays: [ "$instock", [ { "k": "total", "v": { $sum: "$instock.v" } } ] ] } } } ,
@@ -117,7 +117,7 @@ db.inventory.aggregate( [
 
 该操作返回以下内容：
 
-```
+```powershell
 { "_id" : 1, "item" : "ABC1", "instock" : { "warehouse1" : 2500, "warehouse2" : 500, "total" : 3000 } }
 { "_id" : 2, "item" : "ABC2", "instock" : { "warehouse2" : 500, "warehouse3" : 200, "total" : 700 } }
 ```

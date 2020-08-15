@@ -19,7 +19,9 @@ db.collection.drop()的形式如下：
 
 *在版本4.0中更改：*`db.collection.drop()`接受选项文档。
 
-    db.collection.drop()
+```powershell
+db.collection.drop()
+```
 `db.collection.drop()`接受具有以下字段的可选文档：
 
 | 字段         | 描述                                                         |
@@ -49,7 +51,9 @@ db.collection.drop()的形式如下：
 
 以下操作将`students`集合拖放到当前数据库中。
 
-    db.students.drop()
+```powershell
+db.students.drop()
+```
 
 ### 使用Write Concern 删除一个集合`w: "majority"`
 
@@ -57,7 +61,7 @@ db.collection.drop()的形式如下：
 
 以下操作将`students`集合拖放到当前数据库中。该操作使用`"majority"`写关注点：
 
-```
+```powershell
 db.students.drop( { writeConcern: { w: "majority" } } )
 ```
 

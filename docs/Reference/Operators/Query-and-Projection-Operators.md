@@ -8,7 +8,8 @@
 
 *   [映射运算符](#projection-operators)
 
-> **注意**<br />
+> **注意**
+>
 > 有关特定运算符的详细信息，包括语法和示例，请单击特定运算符以转到其参考页。
 
 ## <span id="query-selectors">查询选择器</span>

@@ -22,19 +22,21 @@ findAndModify()方法具有以下形式：
 
 更改了 version 3.6.
 
-    db.collection.findAndModify({
-        query: <document>,
-        sort: <document>,
-        remove: <boolean>,
-        update: <document>,
-        new: <boolean>,
-        fields: <document>,
-        upsert: <boolean>,
-        bypassDocumentValidation: <boolean>,
-        writeConcern: <document>,
-        collation: <document>,
-        arrayFilters: [ <filterdocument1>, ... ]
-    });
+```powershell
+db.collection.findAndModify({
+    query: <document>,
+    sort: <document>,
+    remove: <boolean>,
+    update: <document>,
+    new: <boolean>,
+    fields: <document>,
+    upsert: <boolean>,
+    bypassDocumentValidation: <boolean>,
+    writeConcern: <document>,
+    collation: <document>,
+    arrayFilters: [ <filterdocument1>, ... ]
+});
+```
 
 db.collection.findAndModify()方法采用带有以下嵌入文档字段的文档参数：
 
@@ -77,7 +79,7 @@ db.collection.findAndModify()方法采用带有以下嵌入文档字段的文档
 
 在下面的示例中，不存在 name `Andy`的文档，并且多个 clients 发出以下命令：
 
-```
+```powershell
 db.people.findAndModify({
     query: { name: "Andy" },
     sort: { rating: 1 },
@@ -127,9 +129,10 @@ db.collection.findAndModify()方法添加了对`bypassDocumentValidation`选项�
 
 `db.collection.findAndModify()`可以在多文档交易中使用。
 
-> **重要**<br />
+> **重要**
+>
 > 在大多数情况下，与单文档写入相比，多文档事务产生的性能成本更高，并且多文档事务的可用性不应替代有效的架构设计。在许多情况下， 非规范化数据模型（嵌入式文档和数组）将继续是您的数据和用例的最佳选择。也就是说，在许多情况下，适当地对数据建模将最大程度地减少对多文档交易的需求。
-> 
+>
 > 有关其他事务使用方面的注意事项（例如运行时限制和操作日志大小限制），另请参见 生产注意事项。
 
 #### 现有的收藏和交易
@@ -146,7 +149,7 @@ db.collection.findAndModify()方法添加了对`bypassDocumentValidation`选项�
 
 以下方法更新并返回文档与查询条件匹配的人员集合中的现有文档：
 
-```
+```powershell
 db.people.findAndModify({
     query: { name: "Tom", state: "active", rating: { $gt: 10 } },
     sort: { rating: 1 },
@@ -164,7 +167,7 @@ db.people.findAndModify({
 
 *   该方法返回为此更新选择的原始(i.e.pre-modification)文档：
 
-    ```
+    ```powershell
     {
         "_id" : ObjectId("50f1e2c99beb36a0f45c6453"),
         "name" : "Tom",
@@ -182,7 +185,7 @@ db.people.findAndModify({
 
 以下方法包括`update`选项的`upsert: true`选项，用于更新匹配的文档;如果不存在匹配的文档，则创建新文档：
 
-```
+```powershell
 db.people.findAndModify({
     query: { name: "Gus", state: "active", rating: 100 },
     sort: { rating: 1 },
@@ -195,13 +198,13 @@ db.people.findAndModify({
 
 如果方法**不**找到匹配的文档，则该方法创建一个新文档。因为该方法包含`sort`选项，所以它返回一个空文档`{ }`作为原始(pre-modification)文档：
 
-```
+```powershell
 { }
 ```
 
 如果方法确实**不包含`sort`选项，则该方法返回`null`。
 
-```
+```powershell
 null
 ```
 
@@ -211,7 +214,7 @@ null
 
 在以下 example 中，`people`集合中的任何文档都不匹配`query`条件：
 
-```
+```powershell
 db.people.findAndModify({
     query: { name: "Pascal", state: "active", rating: 25 },
     sort: { rating: 1 },
@@ -223,7 +226,7 @@ db.people.findAndModify({
 
 该方法返回新插入的文档：
 
-```
+```powershell
 {
     "_id" : ObjectId("50f49ad6444c11ac2448a5d6"),
     "name" : "Pascal",
@@ -237,7 +240,7 @@ db.people.findAndModify({
 
 通过在`rating`字段上包含`sort`规范，以下 example 将从`people`集合中删除`state` value 为`active`且匹配文档中最低`rating`的单个文档：
 
-```
+```powershell
 db.people.findAndModify(
     {
         query: { state: "active" },
@@ -249,7 +252,7 @@ db.people.findAndModify(
 
 该方法返回已删除的文档：
 
-```
+```powershell
 {
     "_id" : ObjectId("52fba867ab5fdca1299674ad"),
     "name" : "XYZ123",
@@ -267,7 +270,7 @@ version 3.4 中的新内容。
 
 集合`myColl`具有以下文档：
 
-```
+```powershell
 { _id: 1, category: "café", status: "A" }
 { _id: 2, category: "cafe", status: "a" }
 { _id: 3, category: "cafE", status: "a" }
@@ -275,7 +278,7 @@ version 3.4 中的新内容。
 
 以下操作包括整理选项：
 
-```
+```powershell
 db.myColl.findAndModify({
     query: { category: "cafe", status: "a" },
     sort: { category: 1 },
@@ -286,13 +289,14 @@ db.myColl.findAndModify({
 
 该操作返回以下文档：
 
-```
+```powershell
 { "_id" : 1, "category" : "café", "status" : "A" }
 ```
 
 ### 为 Array Update Operations 指定 arrayFilters
 
-> **注意**<br />
+> **注意**
+>
 > `arrayFilters` 不适用于使用聚合管道的更新。
 
 version 3.6 中的新内容。
@@ -303,7 +307,7 @@ version 3.6 中的新内容。
 
 使用以下文档创建集合`students`：
 
-```
+```powershell
 db.students.insert([
     { "_id" : 1, "grades" : [ 95, 92, 90 ] },
     { "_id" : 2, "grades" : [ 98, 100, 102 ] },
@@ -313,7 +317,7 @@ db.students.insert([
 
 要修改`grades` array 中大于或等于`100`的所有元素，请使用过滤后的位置 operator $ [&lt;identifier&gt; ]和db.collection.findAndModify方法中的`arrayFilters`选项：
 
-```
+```powershell
 db.students.findAndModify({
     query: { grades: { $gte: 100 } },
     update: { $set: { "grades.$[element]" : 100 } },
@@ -323,7 +327,7 @@ db.students.findAndModify({
 
 该操作更新单个文档的`grades`字段，在操作之后，该集合具有以下文档：
 
-```
+```powershell
 { "_id" : 1, "grades" : [ 95, 92, 90 ] }
 { "_id" : 2, "grades" : [ 98, 100, 100 ] }
 { "_id" : 3, "grades" : [ 95, 110, 100 ] }
@@ -333,7 +337,7 @@ db.students.findAndModify({
 
 使用以下文档创建集合`students2`：
 
-```
+```powershell
 db.students2.insert([
     {
         "_id" : 1,
@@ -356,7 +360,7 @@ db.students2.insert([
 
 要修改`grades` array 中等级大于或等于`85`的所有元素的`mean`字段的 value，请使用过滤后的位置 operator $ [&lt;identifier&gt; ]和db.collection.findAndModify方法中的`arrayFilters`：
 
-```
+```powershell
 db.students2.findAndModify({
     query: { },
     update: { $set: { "grades.$[elem].mean" : 100 } },
@@ -366,7 +370,7 @@ db.students2.findAndModify({
 
 该操作更新单个文档的`grades`字段，在操作之后，该集合具有以下文档：
 
-```
+```powershell
 {
     "_id" : 1,
     "grades" : [
@@ -397,7 +401,7 @@ db.students2.findAndModify({
 
 例如，`students2`使用以下文档创建一个集合：
 
-```
+```powershell
 db.students2.insert([
    {
       "_id" : 1,
@@ -420,7 +424,7 @@ db.students2.insert([
 
 以下操作将查找一个`_id`字段等于 的文档，`1`并使用聚合管道`total`从该`grades`字段中计算一个新 字段：
 
-```
+```powershell
 db.students2.findAndModify( {
    query: {  "_id" : 1 },
    update: [ { $set: { "total" : { $sum: "$grades.grade" } } } ],  // The $set stage is an alias for ``$addFields`` stage
@@ -428,12 +432,13 @@ db.students2.findAndModify( {
 } )
 ```
 
-> **注意**<br />
-> 该$set管道中的使用是指聚集阶段 $set，而不是更新操作$set。
+> **注意**
+>
+> $set管道中的使用是指聚集阶段 $set，而不是更新操作$set。
 
 该操作返回*更新的*文档：
 
-```
+```powershell
 {
    "_id" : 1,
    "grades" : [ { "grade" : 80, "mean" : 75, "std" : 6 }, { "grade" : 85, "mean" : 90, "std" : 4 }, { "grade" : 85, "mean" : 85, "std" : 6 } ],
@@ -441,5 +446,6 @@ db.students2.findAndModify( {
 }
 ```
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > 可线性化通过 findAndModify 读取

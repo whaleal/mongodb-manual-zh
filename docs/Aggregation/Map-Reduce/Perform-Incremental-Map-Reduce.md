@@ -32,7 +32,7 @@ Map-reduce 操作可以处理复杂的聚合任务。要执行 map-reduce 操作
 
 `sessions`集合包含 log 用户每天会话的文档，例如：
 
-```
+```powershell
 db.sessions.save( { userid: "a", ts: ISODate('2011-11-03 14:17:00'), length: 95 } );
 db.sessions.save( { userid: "b", ts: ISODate('2011-11-03 14:23:00'), length: 110 } );
 db.sessions.save( { userid: "c", ts: ISODate('2011-11-03 15:02:00'), length: 120 } );
@@ -52,7 +52,7 @@ db.sessions.save( { userid: "d", ts: ISODate('2011-11-04 15:37:00'), length: 65 
 
 *   定义 map function _将`userid`映射到包含字段`userid`，`total_time`，`count`和`avg_time`的 object：
     
-    ```
+    ```powershell
     var mapFunction = function() {
         var key = this.userid;
         var value = {
@@ -67,7 +67,7 @@ db.sessions.save( { userid: "d", ts: ISODate('2011-11-04 15:37:00'), length: 65 
     
 *   使用两个 arguments `key`和`values`定义相应的 reduce function 以计算总 time 和计数。 `key`对应于`userid`，`values`是 array，其元素对应于映射到`mapFunction`中`userid`的各个 object。
     
-    ```
+    ```powershell
     var reduceFunction = function(key, values) {
         var reducedObject = {
             userid: key,
@@ -86,7 +86,7 @@ db.sessions.save( { userid: "d", ts: ISODate('2011-11-04 15:37:00'), length: 65 
     
 *   使用两个 arguments `key`和`reducedValue`定义 finalize function。 function 修改`reducedValue`文档以添加另一个字段`average`并返回修改后的文档。
     
-    ```
+    ```powershell
     var finalizeFunction = function (key, reducedValue) {
         if (reducedValue.count > 0)
             reducedValue.avg_time = reducedValue.total_time / reducedValue.count;
@@ -97,7 +97,7 @@ db.sessions.save( { userid: "d", ts: ISODate('2011-11-04 15:37:00'), length: 65 
     
 * 使用`mapFunction`，`reduceFunction`和`finalizeFunction`函数在`session`集合上执行 map-reduce。将结果输出到集合`session_stat`。如果`session_stat`集合已存在，则操作将替换内容：
 
-  ```
+  ```powershell
   db.sessions.mapReduce( mapFunction,
       reduceFunction,
       {
@@ -110,13 +110,13 @@ db.sessions.save( { userid: "d", ts: ISODate('2011-11-04 15:37:00'), length: 65 
 
 * 查询`session_stats`集合以验证结果：
 
-  ```
+  ```powershell
   db.session_stats.find().sort( { _id: 1 } )
   ```
 
   该操作返回以下文档：
 
-  ```
+  ```powershell
   { "_id" : "a", "value" : { "total_time" : 200, "count" : 2, "avg_time" : 100 } }
   { "_id" : "b", "value" : { "total_time" : 230, "count" : 2, "avg_time" : 115 } }
   { "_id" : "c", "value" : { "total_time" : 250, "count" : 2, "avg_time" : 125 } }
@@ -129,7 +129,7 @@ db.sessions.save( { userid: "d", ts: ISODate('2011-11-04 15:37:00'), length: 65 
 
 之后，随着`sessions`集合的增长，您可以运行其他 map-reduce 操作。对于 example，将新文档添加到`sessions`集合：
 
-```
+```powershell
 db.sessions.save( { userid: "a", ts: ISODate('2011-11-05 14:17:00'), length: 100 } );
 db.sessions.save( { userid: "b", ts: ISODate('2011-11-05 14:23:00'), length: 115 } );
 db.sessions.save( { userid: "c", ts: ISODate('2011-11-05 15:02:00'), length: 125 } );
@@ -138,7 +138,7 @@ db.sessions.save( { userid: "d", ts: ISODate('2011-11-05 16:45:00'), length: 55 
 
 最终，对`usersessions`集合执行增量map-reduce ，但使用该`query`字段仅选择新文档。将结果输出到collection `session_stats`，但是`reduce`将内容与增量map-reduce的结果进行比较：
 
-```
+```powershell
 db.usersessions.mapReduce(
    mapFunction,
    reduceFunction,
@@ -152,13 +152,13 @@ db.usersessions.mapReduce(
 
 查询`session_stats`集合以验证结果：
 
-```
+```powershell
 db.session_stats.find().sort( { _id: 1 } )
 ```
 
 该操作返回以下文档：
 
-```
+```powershell
 { "_id" : "a", "value" : { "total_time" : 330, "count" : 3, "avg_time" : 110 } }
 { "_id" : "b", "value" : { "total_time" : 270, "count" : 3, "avg_time" : 90 } }
 { "_id" : "c", "value" : { "total_time" : 360, "count" : 3, "avg_time" : 120 } }
@@ -169,7 +169,7 @@ db.session_stats.find().sort( { _id: 1 } )
 
 前提条件：将集合设置为原始状态：
 
-```
+```powershell
 db.usersessions.drop();
 
 db.usersessions.insertMany([
@@ -186,7 +186,7 @@ db.usersessions.insertMany([
 
 使用可用的聚合管道运算符，您可以重写map-reduce示例，而无需定义自定义函数：
 
-```
+```powershell
 db.usersessions.aggregate([
    { $group: { _id: "$userid", total_time: { $sum: "$length" }, count: { $sum: 1 }, avg_time: { $avg: "$length" } } },
    { $project: { value: { total_time: "$total_time", count: "$count", avg_time: "$avg_time" } } },
@@ -210,7 +210,7 @@ db.usersessions.aggregate([
 
    该操作返回以下文档：
 
-   ```
+   ```powershell
    { "_id" : "c", "total_time" : 250, "count" : 2, "avg_time" : 125 }
    { "_id" : "d", "total_time" : 110, "count" : 2, "avg_time" : 55 }
    { "_id" : "a", "total_time" : 200, "count" : 2, "avg_time" : 100 }
@@ -219,7 +219,7 @@ db.usersessions.aggregate([
 
 2. 该[`$project`]()阶段调整输出文档的形状以反映map-reduce的输出，该输出具有两个字段`_id`和 `value`。如果不需要镜像`_id`and `value`结构，则该阶段是可选的 。
 
-   ```
+   ```powershell
    { "_id" : "a", "value" : { "total_time" : 200, "count" : 2, "avg_time" : 100 } }
    { "_id" : "d", "value" : { "total_time" : 110, "count" : 2, "avg_time" : 55 } }
    { "_id" : "b", "value" : { "total_time" : 230, "count" : 2, "avg_time" : 115 } }
@@ -230,13 +230,13 @@ db.usersessions.aggregate([
 
 4. 查询`session_stats_agg`集合以验证结果：
 
-   ```
+   ```powershell
    db.session_stats_agg.find().sort( { _id: 1 } )
    ```
 
    该操作返回以下文档：
 
-   ```
+   ```powershell
    { "_id" : "a", "value" : { "total_time" : 200, "count" : 2, "avg_time" : 100 } }
    { "_id" : "b", "value" : { "total_time" : 230, "count" : 2, "avg_time" : 115 } }
    { "_id" : "c", "value" : { "total_time" : 250, "count" : 2, "avg_time" : 125 } }
@@ -245,7 +245,7 @@ db.usersessions.aggregate([
 
 5. 新文档添加到`usersessions`集合中：
 
-   ```
+   ```powershell
    db.usersessions.insertMany([
       { userid: "a", ts: ISODate('2020-03-05 14:17:00'), length: 130 },
       { userid: "b", ts: ISODate('2020-03-05 14:23:00'), length: 40 },
@@ -256,7 +256,7 @@ db.usersessions.aggregate([
 
 6. [`$match`]()在管道的开头添加一个阶段以指定日期过滤器：
 
-   ```
+   ```powershell
    db.usersessions.aggregate([
       { $match: { ts: { $gte: ISODate('2020-03-05 00:00:00') } } },
       { $group: { _id: "$userid", total_time: { $sum: "$length" }, count: { $sum: 1 }, avg_time: { $avg: "$length" } } },
@@ -275,13 +275,13 @@ db.usersessions.aggregate([
 
 7. 查询`session_stats_agg`集合以验证结果：
 
-   ```
+   ```powershell
    db.session_stats_agg.find().sort( { _id: 1 } )
    ```
 
    该操作返回以下文档：
 
-   ```
+   ```powershell
    { "_id" : "a", "value" : { "total_time" : 330, "count" : 3, "avg_time" : 110 } }
    { "_id" : "b", "value" : { "total_time" : 270, "count" : 3, "avg_time" : 90 } }
    { "_id" : "c", "value" : { "total_time" : 360, "count" : 3, "avg_time" : 120 } }
@@ -290,7 +290,7 @@ db.usersessions.aggregate([
 
 8. 可选的。为了避免[`$match`]()每次运行时都必须修改聚合管道的日期条件，可以在帮助函数中定义包装聚合：
 
-   ```
+   ```powershell
    updateSessionStats = function(startDate) {
       db.usersessions.aggregate([
          { $match: { ts: { $gte: startDate } } },
@@ -311,7 +311,7 @@ db.usersessions.aggregate([
 
    然后，要运行，您只需将开始日期传递给该`updateSessionStats()`函数：
 
-   ```
+   ```powershell
    updateSessionStats(ISODate('2020-03-05 00:00:00'))
    ```
 
