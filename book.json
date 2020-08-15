@@ -20,7 +20,11 @@
           "-search", 
           "search-pro",
 	"splitter",
-	"page-toc-button"
+	"page-toc-button",
+	"auto-scroll-table",
+	"flexible-alerts",
+	"alerts"	
+
 			
     ],
 
