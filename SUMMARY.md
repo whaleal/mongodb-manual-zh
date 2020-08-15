@@ -1,6 +1,19 @@
 # Summary
 
 * [Introduction](README.md)
+
+
+* [Mongodb Introduction](docs/Mongo-Introduction.md)
+	* [Getting Started](docs/Mongo-Introduction/Getting-Started.md)
+	* [Databases and Collections](docs/Mongo-Introduction/Databases-and-Collections.md)
+		* [Views](docs/Mongo-Introduction/Databases-and-Collections/Views.md)
+		* [On-Demand Materialized Views]()
+		* [Capped Collections](docs/Mongo-Introduction/Databases-and-Collections/Capped-Collections.md)
+	* [Documents](docs/Mongo-Introduction/Documents.md)
+	* [BSON Types](docs/Mongo-Introduction/BSON-Types.md)
+		* [Comparison and Sort Order](docs/Mongo-Introduction/BSON-Types/Comparison-Sort-Order.md)
+		* [MongoDB Extended JSON (v2)](docs/Mongo-Introduction/BSON-Types/extended-json.md)
+		* [MongoDB Extended JSON (v1)](docs/Mongo-Introduction/BSON-Types/extended-json.md)
 * [The mongo Shell](docs/The-Mongo-Shell.md)
     * [Configure the mongo shell](docs/The-Mongo-Shell/Configure-the-mongo-shell.md)
     * [Access the mongo Shell Help](docs/The-Mongo-Shell/Access-the-mongo-Shell Help.md)
@@ -154,7 +167,7 @@
     * [Replica Set Deployment Architectures](docs/Replication/Replica-Set-Deployment-Architectures.md)
 * Sharding
     * [Shard keys](docs/Sharding/Shard-keys.md)
-    * Zones
+    * [Zones](docs/Sharding/Zones.md)
         * Manage Shard Zones
         * Segmenting Data by Location
         * Tiered Hardware for Varying SLA or SLO
