@@ -12,7 +12,7 @@
 
 考虑以下示例：
 
-```
+```powershell
 db.inventory.find( { qty: { $ne: 20 } } )
 ```
 
@@ -20,7 +20,7 @@ db.inventory.find( { qty: { $ne: 20 } } )
 
 考虑以下示例，该示例`$ne`在嵌入式文档中使用运算符和字段：
 
-```
+```powershell
 db.inventory.update( { "carrier.state": { $ne: "NY" } }, { $set: { qty: 20 } } )
 ```
 
@@ -28,6 +28,7 @@ db.inventory.update( { "carrier.state": { $ne: "NY" } }, { $set: { qty: 20 } } )
 
 不等式操作符`$ne`是*不*非常有选择性的，因为它往往是指数的很大一部分相匹配。结果，在许多情况下，`$ne`带有索引的查询的性能可能不比`$ne`必须扫描集合中所有文档的查询更好。另请参阅查询选择性。
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > `find()`，`update()`，`$set`。
 

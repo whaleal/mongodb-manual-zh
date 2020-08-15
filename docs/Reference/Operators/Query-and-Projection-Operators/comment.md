@@ -20,7 +20,7 @@
 
 `$comment`运算符的形式为：
 
-```
+```powershell
 db.collection.find( { <query>, $comment: <comment> } )
 ```
 
@@ -34,7 +34,7 @@ db.collection.find( { <query>, $comment: <comment> } )
 
 以下示例`$comment`在 `find()`操作中添加了：
 
-```
+```powershell
 db.records.find(
    {
      x: { $mod: [ 2, 0 ] },
@@ -49,12 +49,13 @@ db.records.find(
 
 以下示例在`$match`阶段中使用运算符`$comment`来阐明操作：
 
-```
+```powershell
 db.records.aggregate( [
    { $match: { x: { $gt: 0 }, $comment: "Don't allow negative inputs." } },
    { $group : { _id: { $mod: [ "$x", 2 ] }, total: { $sum: "$x" } } }
 ] )
 ```
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > `$comment`

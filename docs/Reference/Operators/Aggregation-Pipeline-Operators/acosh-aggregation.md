@@ -16,7 +16,7 @@
 
 `$acosh` 具有以下语法：
 
-```
+```powershell
 { $acosh: <expression> }
 ```
 
@@ -47,7 +47,7 @@
 
 `trigonometry`集合包含一个文档，该文档沿`x`二维图形的轴存储值：
 
-```
+```powershell
 {
     "_id" : ObjectId("5c50782193f833234ba90d85"),
     "x-coordinate" : NumberDecimal("3")
@@ -56,7 +56,7 @@
 
 以下聚合操作使用该 `$acosh`表达式计算的反双曲余弦值，`x-coordinate`并使用`$addFields`管道阶段将其添加到输入文档中。
 
-```
+```powershell
 db.trigonometry.aggregate([
     {
         $addFields : {
@@ -72,7 +72,7 @@ db.trigonometry.aggregate([
 
 该命令返回以下输出：
 
-```
+```powershell
 {
     "_id" : ObjectId("5c50782193f833234ba90d85"),
     "x-coordinate" : NumberDecimal("3"),
@@ -86,7 +86,7 @@ db.trigonometry.aggregate([
 
 `trigonometry`集合包含一个文档，该文档沿`x`二维图形的轴存储值：
 
-```
+```powershell
 {
   "_id" : ObjectId("5c50782193f833234ba90d85"),
   "x-coordinate" : NumberDecimal("3")
@@ -95,7 +95,7 @@ db.trigonometry.aggregate([
 
 以下聚合操作使用该 `$acosh`表达式计算的反双曲余弦值，`x-coordinate`并使用`$addFields`管道阶段将其添加到输入文档中。
 
-```
+```powershell
 db.trigonometry.aggregate([
   {
     $addFields : {
@@ -109,7 +109,7 @@ db.trigonometry.aggregate([
 
 该命令返回以下输出：
 
-```
+```powershell
 {
   "_id" : ObjectId("5c50782193f833234ba90d85"),
   "x-coordinate" : NumberDecimal("3"),

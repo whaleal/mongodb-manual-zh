@@ -24,7 +24,8 @@
 | --------------- | ------ | --------------------------- |
 | `newCollection` | string | 要将数据写入的集合的 name。 |
 
-> **警告**<br />
+> **警告**
+>
 > 使用 db.collection.copyTo()检查字段类型时，确保操作不会在从 BSON 转换为 JSON 期间从文档中删除类型信息。
 > db.collection.copyTo()方法在内部使用EVAL命令。因此，db.collection.copyTo()操作采用 global 锁定，阻止所有其他读取和写入操作，直到db.collection.copyTo()完成。
 
@@ -38,5 +39,7 @@ copyTo()返回复制的文档数。如果复制失败，则抛出 exception。
 
 以下操作将`source`集合中的所有文档复制到`target`集合中。
 
-    db.source.copyTo(target)
+```powershell
+db.source.copyTo(target)
+```
 

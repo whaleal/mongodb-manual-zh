@@ -23,21 +23,23 @@
 
 `db.collection.update()`方法具有以下形式：
 
-    db.collection.update(
-       <query>,
-       <update>,
-       {
-         upsert: <boolean>,
-         multi: <boolean>,
-         writeConcern: <document>,
-         collation: <document>,
-         arrayFilters: [ <filterdocument1>, ... ]
-       }
-    )
+```powershell
+db.collection.update(
+   <query>,
+   <update>,
+   {
+     upsert: <boolean>,
+     multi: <boolean>,
+     writeConcern: <document>,
+     collation: <document>,
+     arrayFilters: [ <filterdocument1>, ... ]
+   }
+)
+```
 
 ### 参数
 
-该`db.collection.update()`方法采用以下参数：
+`db.collection.update()`方法采用以下参数：
 
 | 参数           | 类型                 | 描述                                                         |
 | -------------- | -------------------- | ------------------------------------------------------------ |
@@ -72,7 +74,8 @@
 
 当`db.collection.update()`执行更新操作（而不是文档替换操作）时， `db.collection.update()`可以针对多个分片。
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > `findAndModify()`
 
 #### 替换分片集合上的文档操作
@@ -105,7 +108,8 @@
 
 `db.collection.update()`可以在多文档交易中使用。
 
-> **重要**<br />
+> **重要**
+>
 > 在大多数情况下，与单文档写入相比，多文档事务产生的性能成本更高，并且多文档事务的可用性不应替代有效的架构设计。在许多情况下， 非规范化数据模型（嵌入式文档和数组）将继续是您的数据和用例的最佳选择。也就是说，在许多情况下，适当地对数据建模将最大程度地减少对多文档交易的需求。
 >
 > 有关其他事务使用方面的注意事项（例如：运行时限制和操作日志大小限制），另请参见 生产注意事项。
@@ -126,7 +130,7 @@
 
 在`mongo`shell中，创建一个`books`包含以下文档的集合。此命令首先从`books`集合中删除所有先前存在的文档：
 
-```
+```powershell
 db.books.remove({});
 
 db.books.insertMany([
@@ -160,7 +164,7 @@ db.books.insertMany([
 
 您可以使用下面的Web Shell插入示例文档并执行示例更新操作：
 
-```
+```powershell
 db.books.update(
    { _id: 1 },
    {
@@ -187,7 +191,7 @@ db.books.update(
 
 更新后的文档如下：
 
-```
+```powershell
 {
 
   "_id" : 1,
@@ -202,7 +206,7 @@ db.books.update(
 
 此操作对应于以下SQL语句：
 
-```
+```powershell
 UPDATE books
 SET    stock = stock + 5
        item = "ABC123"
@@ -214,19 +218,21 @@ SET    stock = stock + 5
 WHERE  _id = 1
 ```
 
-> **注意**<br />
+> **注意**
+>
 > 如果`query`参数已匹配多个文档，则此操作将仅更新一个匹配的文档。要更新多个文档，必须将`multi`选项设置为`true`。
 
 <br />
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > `$set`, `$inc`, `Update运算符`, `点符号`
 
 #### 将元素添加到现有数组
 
 在`mongo`shell中，创建一个`books`包含以下文档的集合。此命令首先从`books`集合中删除所有先前存在的文档：
 
-```
+```powershell
 db.books.remove({});
 
 db.books.insertMany([
@@ -255,7 +261,7 @@ db.books.insertMany([
 
 您可以使用下面的Web Shell插入示例文档并执行示例更新操作：
 
-```
+```powershell
 db.books.update(
    { _id: 2 },
    {
@@ -266,7 +272,7 @@ db.books.update(
 
 更新后的文档如下：
 
-```
+```powershell
 {
   "_id" : 2,
   "item" : "XYZ123",
@@ -286,14 +292,15 @@ db.books.update(
  }
 ```
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > `$push`
 
 #### 删除字段（$ unset）
 
 在`mongo`shell中，创建一个`books`包含以下文档的集合。此命令首先从`books`集合中删除所有先前存在的文档：
 
-```
+```powershell
 db.books.remove({});
 
 db.books.insertMany([
@@ -328,7 +335,7 @@ db.books.update( { _id: 1 }, { $unset: { tags: 1 } } )
 
 更新后的文档如下：
 
-```
+```powershell
 {
   "_id" : 1,
   "item" : "TBD",
@@ -344,19 +351,20 @@ db.books.update( { _id: 1 }, { $unset: { tags: 1 } } )
 
 没有直接等效于`$unset`的SQL ，但是`$unset`类似于以下SQL命令，该命令`tags`从`books` 表中删除了该字段：
 
-```
+```sql
 ALTER TABLE books
 DROP COLUMN tags
 ```
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > `$unset`，`$rename`，update运算符
 
 #### 替换整个文件
 
 在`mongo`shell中，创建一个`books`包含以下文档的集合。此命令首先从`books`集合中删除所有先前存在的文档：
 
-```
+```powershell
 db.books.remove({});
 
 db.books.insertMany([
@@ -390,7 +398,7 @@ db.books.insertMany([
 
 您可以使用下面的Web Shell插入示例文档并执行示例更新操作：
 
-```
+```powershell
 db.books.update(
    { _id: 2 },
    {
@@ -404,7 +412,7 @@ db.books.update(
 
 更新的文档*仅*包含替换文档中的`_id`字段和该字段。这样，这些字段 `ratings`和`reorder`不再存在于更新的文档中，因为这些字段不在替换文档中。
 
-```
+```powershell
 {
    "_id" : 2,
    "item" : "XYZ123",
@@ -416,7 +424,7 @@ db.books.update(
 
 此操作对应于以下SQL语句：
 
-```
+```sql
 DELETE from books WHERE _id = 2
 
 INSERT INTO books
@@ -438,7 +446,7 @@ VALUES     (2,
 
 在`mongo`shell中，创建一个`books`包含以下文档的集合。此命令首先从`books`集合中删除所有先前存在的文档：
 
-```
+```powershell
 db.books.remove({});
 
 db.books.insertMany([
@@ -469,7 +477,7 @@ db.books.insertMany([
 
 您可以使用下面的Web Shell插入示例文档并执行示例更新操作：
 
-```
+```powershell
 db.books.update(
    { stock: { $lte: 10 } },
    { $set: { reorder: true } },
@@ -479,7 +487,7 @@ db.books.update(
 
 集合中的结果文档如下：
 
-```
+```powershell
 [
   {
     "_id" : 1,
@@ -509,19 +517,21 @@ db.books.update(
 
 此操作对应于以下SQL语句：
 
-```
+```sql
 UPDATE books
 SET reorder=true
 WHERE stock <= 10
 ```
 
-> **注意**<br />
+> **注意**
+>
 > 您无法指定何时执行替换，即&lt;update&gt;文档何时*仅*包含表达式：`multi: true` `field:value`
 
 <br />
 
-> **也可以看看**<br />
-> `$set`
+> **也可以看看**
+>
+> $set`
 
 ### 如果不存在匹配项，则插入新文档（`Upsert`）
 
@@ -539,12 +549,13 @@ WHERE stock <= 10
 - 如果您`_id`在查询参数或替换文档中指定字段，则MongoDB将`_id`在插入的文档中使用该字段。
 - 如果您未`_id`在查询参数或替换文档中指定字段，则MongoDB生成的`_id`字段会添加带有随机生成的ObjectId值的 字段。
 
-> **注意**<br />
+> **注意**
+>
 > 您不能`_id`在查询参数和替换文档中指定其他字段值。如果这样做，则操作错误。
 
 例如，以下更新将upsert选项设置为`true`：
 
-```
+```powershell
 db.books.update(
    { item: "ZZZ135" },   // Query parameter
    {                     // Replacement document
@@ -560,7 +571,7 @@ db.books.update(
 
 如果没有文档与该`<query>`参数匹配，则更新操作将插入*仅*包含替换文档的文档。由于`_id`在替换文档或查询文档中未指定任何字段，因此该操作`ObjectId`将为新文档的`_id`字段创建一个新的唯一性。您可以看到`upsert`反映在操作的WriteResult中：
 
-```
+```powershell
 WriteResult({
   "nMatched" : 0,
   "nUpserted" : 1,
@@ -571,7 +582,7 @@ WriteResult({
 
 该操作将以下文档插入`books` 集合中（您的ObjectId值将有所不同）：
 
-```
+```powershell
 {
   "_id" : ObjectId("5da78973835b2f1c75347a83"),
   "item" : "ZZZ135",
@@ -588,7 +599,7 @@ WriteResult({
 
 例如，以下更新将upsert选项设置为`true`：
 
-```
+```powershell
 db.books.update(
    { item: "BLP921" },   // Query parameter
    {                     // Update document
@@ -601,7 +612,7 @@ db.books.update(
 
 如果没有文档符合查询条件，则该操作将插入以下文档（您的ObjectId值将有所不同）：
 
-```
+```powershell
 {
   "_id" : ObjectId("5da79019835b2f1c75348a0a"),
   "item" : "BLP921",
@@ -610,7 +621,8 @@ db.books.update(
 }
 ```
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > `$setOnInsert`
 
 #### 使用Upsert的聚合管道
@@ -623,7 +635,7 @@ db.books.update(
 - `$set`可以提供与`$set`更新操作符表达式相似的行为的阶段，
 - 聚合变量`NOW`，它解析为当前日期时间，并且可以提供与`$currentDate`更新运算符表达式类似的行为 。
 
-```
+```powershell
 db.books.update(
    { item: "MRQ014", ratings: [2, 5, 3] }, // Query parameter
    [                                       // Aggregation pipeline
@@ -636,7 +648,7 @@ db.books.update(
 
 如果没有文档与该`<query>`参数匹配，则该操作会将以下文档插入到`books` 集合中（您的ObjectId值将有所不同）：
 
-```
+```powershell
 {
    "_id" : ObjectId("5e2921e0b4c550aad59d1ba9"),
    "stock" : 0,
@@ -648,7 +660,8 @@ db.books.update(
 }
 ```
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > 有关使用聚合管道进行更新的其他示例，请参见使用聚合管道进行更新。
 
 #### 结合Upsert和多选项
@@ -657,7 +670,7 @@ db.books.update(
 
 在`mongo`shell中，将以下文档插入`books`集合中：
 
-```
+```powershell
 db.books.insertMany([
   {
     _id: 5,
@@ -678,7 +691,7 @@ db.books.insertMany([
 
 以下操作同时指定了`multi`选项和`upsert`选项。如果存在匹配的文档，则该操作将更新所有匹配的文档。如果不存在匹配的文档，则该操作将插入一个新文档。
 
-```
+```powershell
 db.books.update(
    { stock: { $gte: 10 } },        // Query parameter
    {                               // Update document
@@ -690,7 +703,7 @@ db.books.update(
 
 该操作将更新所有匹配的文档，并产生以下结果：
 
-```
+```powershell
 {
    "_id" : 5,
    "item" : "RQM909",
@@ -713,7 +726,7 @@ db.books.update(
 
 如果集合中*没有*匹配的文档，则该操作将导致使用`<query>`和`<update>` 规范中的字段插入单个文档。例如，考虑以下操作：
 
-```
+```powershell
 db.books.update(
   { "info.publisher": "Self-Published" },   // Query parameter
   {                                         // Update document
@@ -725,7 +738,7 @@ db.books.update(
 
 该操作将以下文档插入`books` 集合中（您的ObjectId值将有所不同）：
 
-```
+```powershell
 {
   "_id" : ObjectId("5db337934f670d584b6ca8e0"),
   "info" : { "publisher" : "Self-Published" },
@@ -743,7 +756,7 @@ db.books.update(
 
 如果您尝试以这种方式插入文档，MongoDB将引发错误。例如，考虑以下更新操作。由于更新操作指定`upsert:true`了`_id`字段并且查询使用点符号指定了字段上的条件，因此在构建要插入的文档时，更新将导致错误。
 
-```
+```powershell
 db.collection.update( { "_id.name": "Robert Frost", "_id.uid": 0 },
    { "categories": ["poet", "playwright"] },
    { upsert: true } )
@@ -751,7 +764,7 @@ db.collection.update( { "_id.name": "Robert Frost", "_id.uid": 0 },
 
 该`WriteResult`操作将返回以下错误：
 
-```
+```powershell
 WriteResult({
   "nMatched" : 0,
   "nUpserted" : 0,
@@ -763,17 +776,19 @@ WriteResult({
 })
 ```
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > `WriteResult()`
 
 #### 使用唯一索引
 
-> **警告**<br />
+> **警告**
+>
 > 为避免多次插入同一文档，请仅在`query`字段是唯一索引时使用`upsert: true` 。
 
 给定一个名为集合`people`，其中没有包含`Andy`值的`name`字段，考虑当多个客户端在同一时间使用`upsert: true`发出以下`db.collection.update()`时：
 
-```
+```powershell
 db.people.update(
    { name: "Andy" },   // Query parameter
    {                   // Update document
@@ -797,7 +812,8 @@ db.people.update(
 
   如果操作由于重复的索引键错误而失败，则应用程序可以重试该操作，该操作将作为更新操作成功。
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > `$setOnInsert`
 
 ### 使用聚合管道更新
@@ -814,7 +830,7 @@ db.people.update(
 
 `members`使用以下文档创建一个集合：
 
-```
+```powershell
 db.members.insertMany([
    { "_id" : 1, "member" : "abc123", "status" : "A", "points" : 2, "misc1" : "note to self: confirm status", "misc2" : "Need to activate", "lastUpdate" : ISODate("2019-01-01T00:00:00Z") },
    { "_id" : 2, "member" : "xyz123", "status" : "A", "points" : 60, "misc1" : "reminder: ping me at 100pts", "misc2" : "Some random comment", "lastUpdate" : ISODate("2019-01-01T00:00:00Z") }
@@ -826,7 +842,7 @@ db.members.insertMany([
 - 添加新`comments`字段并设置该`lastUpdate`字段。
 - 删除集合中所有文档的`misc1`和`misc2`字段。
 
-```
+```powershell
 db.members.update(
    { },
    [
@@ -837,12 +853,13 @@ db.members.update(
 )
 ```
 
-> **注意**<br />
-> 该`$set`和`$unset`在管道中是指聚合阶段`$set`，并`$unset` 分别，而不是更新的运营商`$set`和 `$unset`。
+> **注意**
+>
+> `$set`和`$unset`在管道中是指聚合阶段`$set`，并`$unset` 分别，而不是更新的运营商`$set`和 `$unset`。
 
 **第一阶段**
 
-该[`$set`](https://docs.mongodb.com/manual/reference/operator/aggregation/set/#pipe._S_set)阶段：
+[`$set`](https://docs.mongodb.com/manual/reference/operator/aggregation/set/#pipe._S_set)阶段：
 
 * 创建一个新的数组字段，`comments`其元素是`misc1`和`misc2`字段的当前内容，
 * 并且将字段设置为`lastUpdate`聚合变量的值`NOW`。聚合变量 `NOW`解析为当前日期时间值，并且在整个管道中保持不变。要访问聚合变量，请在变量前加双美元符号`$$` 并用引号引起来。
@@ -853,19 +870,20 @@ db.members.update(
 
 命令后，集合包含以下文档：
 
-```
+```powershell
 { "_id" : 1, "member" : "abc123", "status" : "Modified", "points" : 2, "lastUpdate" : ISODate("2020-01-23T05:11:45.784Z"), "comments" : [ "note to self: confirm status", "Need to activate" ] }
 { "_id" : 2, "member" : "xyz123", "status" : "Modified", "points" : 60, "lastUpdate" : ISODate("2020-01-23T05:11:45.784Z"), "comments" : [ "reminder: ping me at 100pts", "Some random comment" ] }
 ```
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > Updates with Aggregation Pipeline
 
 #### 根据当前字段值执行条件更新
 
 使用以下文档创建一个`students3`集合：
 
-```
+```powershell
 db.students3.insert([
    { "_id" : 1, "tests" : [ 95, 92, 90 ], "lastUpdate" : ISODate("2019-01-01T00:00:00Z") },
    { "_id" : 2, "tests" : [ 94, 88, 90 ], "lastUpdate" : ISODate("2019-01-01T00:00:00Z") },
@@ -875,7 +893,7 @@ db.students3.insert([
 
 使用聚合管道，可以使用计算出的平均成绩和字母成绩更新文档。
 
-```
+```powershell
 db.students3.update(
    { },
    [
@@ -894,7 +912,8 @@ db.students3.update(
 )
 ```
 
-> **注意**<br />
+> **注意**
+>
 > `$set`管道中的使用是指聚合阶段 `$set`，而不是更新运算符`$set`。
 
 **第一阶段**
@@ -910,25 +929,27 @@ db.students3.update(
 
 命令后，集合包含以下文档：
 
-```
+```powershell
 { "_id" : 1, "tests" : [ 95, 92, 90 ], "lastUpdate" : ISODate("2020-01-24T17:29:35.340Z"), "average" : 92, "grade" : "A" }
 { "_id" : 2, "tests" : [ 94, 88, 90 ], "lastUpdate" : ISODate("2020-01-24T17:29:35.340Z"), "average" : 90, "grade" : "A" }
 { "_id" : 3, "tests" : [ 70, 75, 82 ], "lastUpdate" : ISODate("2020-01-24T17:29:35.340Z"), "average" : 75, "grade" : "C" }
 ```
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > Updates with Aggregation Pipeline
 
 ### 指定`arrayFilters`数组更新操作
 
 在更新文档中，使用`$[<identifier>]`过滤后的位置运算符定义一个标识符，然后在数组过滤器文档中引用该标识符。如果更新文档中未包含标识符，则不能具有数组过滤器文档作为标识符。
 
-> **注意**<br />
+> **注意**
+>
 > 在`<identifier>`必须以小写字母开头，并且只包含字母数字字符。
 
 您可以在更新文档中多次包含相同的标识符；但是，对于`$[identifier]`更新文档中的每个不同的标识符，必须**精确地**指定**一个** 对应的数组过滤器文档。即：您不能为同一标识符指定多个数组过滤器文档。例如：如果update语句包含标识符`x` （可能多次），则不能为以下内容指定以下内容 `arrayFilters`：包括2个单独的过滤器文档`x`：
 
-```
+```powershell
 // INVALID
 
 [
@@ -939,7 +960,7 @@ db.students3.update(
 
 但是，可以在单个过滤器文档中的相同标识符上指定复合条件，例如以下示例：
 
-```
+```powershell
 // Example 1
 [
   { $or: [{"x.a": {$gt: 85}}, {"x.b": {$gt: 80}}] }
@@ -962,7 +983,7 @@ db.students3.update(
 
 在`mongo`shell程序中，`students` 使用以下文档创建一个集合：
 
-```
+```powershell
 db.students.insertMany([
    { "_id" : 1, "grades" : [ 95, 92, 90 ] },
    { "_id" : 2, "grades" : [ 98, 100, 102 ] },
@@ -972,7 +993,7 @@ db.students.insertMany([
 
 要更新`grades`阵列中大于或等于`100`的所有元素 ，使用过滤的位置操作符 `$[<identifier>]`与所述`arrayFilters`选项：
 
-```
+```powershell
 db.students.update(
    { grades: { $gte: 100 } },
    { $set: { "grades.$[element]" : 100 } },
@@ -985,7 +1006,7 @@ db.students.update(
 
 操作后，集合包含以下文档：
 
-```
+```powershell
 { "_id" : 1, "grades" : [ 95, 92, 90 ] }
 { "_id" : 2, "grades" : [ 98, 100, 100 ] }
 { "_id" : 3, "grades" : [ 95, 100, 100 ] }
@@ -997,7 +1018,7 @@ db.students.update(
 
 在`mongo`shell程序中，`students2` 使用以下文档创建一个集合：
 
-```
+```powershell
 db.students2.insertMany([
   {
     "_id" : 1,
@@ -1020,7 +1041,7 @@ db.students2.insertMany([
 
 要修改`mean`的`grades`数组中`grade`大于或等于`85`的所有元素的字段 值，请使用`$[<identifier>]`带有过滤条件的位置运算符和`arrayFilters`：
 
-```
+```powershell
 db.students2.update(
    { },
    { $set: { "grades.$[elem].mean" : 100 } },
@@ -1033,7 +1054,7 @@ db.students2.update(
 
 操作后，集合具有以下文档：
 
-```
+```powershell
 {
    "_id" : 1,
    "grades" : [
@@ -1058,7 +1079,7 @@ db.students2.update(
 
 `mongo`shell程序中，`members` 使用以下文档创建一个集合：
 
-```
+```powershell
 db.members.insertMany([
    { "_id" : 1, "member" : "abc123", "status" : "P", "points" :  0,  "misc1" : null, "misc2" : null },
    { "_id" : 2, "member" : "xyz123", "status" : "A", "points" : 60,  "misc1" : "reminder: ping me at 100pts", "misc2" : "Some random comment" },
@@ -1071,17 +1092,18 @@ db.members.insertMany([
 
 在集合上创建以下索引：
 
-```
+```powershell
 db.members.createIndex( { status: 1 } )
 db.members.createIndex( { points: 1 } )
 ```
 
 以下更新操作`hints`明确指出要使用索引：`{status: 1 }`
 
-> **注意**<br />
+> **注意**
+>
 > 如果指定的索引不存在，则操作错误。
 
-```
+```powershell
 db.members.update(
    { points: { $lte: 20 }, status: "P" },     // Query parameter
    { $set: { misc1: "Need to activate" } },   // Update document
@@ -1091,13 +1113,13 @@ db.members.update(
 
 update命令返回以下内容：
 
-```
+```powershell
 WriteResult({ "nMatched" : 3, "nUpserted" : 0, "nModified" : 3 })
 ```
 
 要查看使用的索引，请运行`explain`以下操作：
 
-```
+```powershell
 db.members.explain().update(
    { "points": { $lte: 20 }, "status": "P" },
    { $set: { "misc1": "Need to activate" } },
@@ -1111,7 +1133,7 @@ db.members.explain().update(
 
 对副本集的以下操作指定5,000毫秒的写关注时间`"w: majority"`，以 使该方法在写传送到大多数有表决权的副本集成员之后返回，或者该方法在5秒钟后超时。
 
-```
+```powershell
 db.books.update(
    { stock: { $lte: 10 } },
    { $set: { reorder: true } },
@@ -1130,7 +1152,7 @@ db.books.update(
 
 排序规则选项具有以下语法：
 
-```
+```powershell
 collation: {
    locale: <string>,
    caseLevel: <boolean>,
@@ -1155,7 +1177,7 @@ collation: {
 
 在`mongo`shell程序中，创建一个`myColl`包含以下文档的集合 ：
 
-```
+```powershell
 db.myColl.insertMany(
   [
     { _id: 1, category: "café", status: "A" },
@@ -1166,7 +1188,7 @@ db.myColl.insertMany(
 
 下面的操作包括排序选项和设置`multi`，以`true`更新所有匹配的文档：
 
-```
+```powershell
 db.myColl.update(
    { category: "cafe" },
    { $set: { status: "Updated" } },
@@ -1179,13 +1201,13 @@ db.myColl.update(
 
 该操作的写入结果返回以下文档，指示集合中的所有三个文档均已更新：
 
-```
+```powershell
 WriteResult({ "nMatched" : 3, "nUpserted" : 0, "nModified" : 3 })
 ```
 
 操作后，集合包含以下文档：
 
-```
+```powershell
 { "_id" : 1, "category" : "café", "status" : "Updated" }
 { "_id" : 2, "category" : "cafe", "status" : "Updated" }
 { "_id" : 3, "category" : "cafE", "status" : "Updated" }
@@ -1197,18 +1219,19 @@ WriteResult({ "nMatched" : 3, "nUpserted" : 0, "nModified" : 3 })
 
 `db.collection.update()`方法返回一个 `WriteResult`包含操作状态的对象。成功后，`WriteResult`对象包含符合查询条件的文档数，更新插入的文档数以及修改的文档数：
 
-```
+```powershell
 WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 ```
 
-> **注意**<br />
+> **注意**
+>
 > WriteResult.nMatched，WriteResult.nUpserted，WriteResult.nModified
 
 ### 写关注错误
 
 如果该`db.collection.update()`方法遇到写关注错误，则结果包括以下 `WriteResult.writeConcernError`字段：
 
-```
+```powershell
 WriteResult({
     "nMatched" : 1,
     "nUpserted" : 0,
@@ -1220,14 +1243,15 @@ WriteResult({
 })
 ```
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > WriteResult.hasWriteConcernError()
 
 ### 与写关注无关的错误
 
 如果`db.collection.update()`方法遇到非写关注错误，则结果包括以下`WriteResult.writeError`字段：
 
-```
+```powershell
 WriteResult({
     "nMatched" : 0,
     "nUpserted" : 0,
@@ -1239,5 +1263,6 @@ WriteResult({
 })
 ```
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > WriteResult.hasWriteError()

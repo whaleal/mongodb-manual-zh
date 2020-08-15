@@ -21,7 +21,7 @@
 
 `$cmp`具有以下语法：
 
-```
+```powershell
 { $cmp: [ <expression1>, <expression2> ] }
 ```
 
@@ -31,7 +31,7 @@
 
 考虑包含`inventory`以下文档的集合：
 
-```
+```powershell
 { "_id" : 1, "item" : "abc1", description: "product 1", qty: 300 }
 { "_id" : 2, "item" : "abc2", description: "product 2", qty: 200 }
 { "_id" : 3, "item" : "xyz1", description: "product 3", qty: 250 }
@@ -41,7 +41,7 @@
 
 以下操作使用`$cmp`运算符将`qty`值与进行比较`250`：
 
-```
+```powershell
 db.inventory.aggregate(
    [
      {
@@ -59,7 +59,7 @@ db.inventory.aggregate(
 
 该操作返回以下结果：
 
-```
+```powershell
 { "item" : "abc1", "qty" : 300, "cmpTo250" : 1 }
 { "item" : "abc2", "qty" : 200, "cmpTo250" : -1 }
 { "item" : "xyz1", "qty" : 250, "cmpTo250" : 0 }

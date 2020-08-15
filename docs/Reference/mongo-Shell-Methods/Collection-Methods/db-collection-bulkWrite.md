@@ -20,7 +20,7 @@
 
 bulkWrite()具有以下语法：
 
-```
+```powershell
 db.collection.bulkWrite(
        [ <operation 1>, <operation 2>, ... ],
        {
@@ -52,7 +52,7 @@ bulkWrite()采用 array 写操作并执行每个操作。默认情况下，操�
 
 见db.collection.insertOne()。
 
-```
+```powershell
 db.collection.bulkWrite( [
        { insertOne : { "document" : <document> } }
     ] )
@@ -66,7 +66,7 @@ db.collection.bulkWrite( [
 
 `updateOne`更新集合中与过滤器匹配的单个文档。如果多个文档 match，`updateOne`将仅更新第一个匹配的文档。见db.collection.updateOne()。
 
-```
+```powershell
 db.collection.bulkWrite( [
        { updateOne :
           {
@@ -82,7 +82,7 @@ db.collection.bulkWrite( [
 
 `updateMany`更新集合中匹配过滤器的所有文档。见db.collection.updateMany()。
 
-```
+```powershell
 db.collection.bulkWrite( [
        { updateMany :
           {
@@ -99,7 +99,7 @@ db.collection.bulkWrite( [
 | 字段           | 描述                                                         |
 | -------------- | ------------------------------------------------------------ |
 | `filter`       | 更新的选择标准。提供与 方法中相同的查询选择器`db.collection.find()`。 |
-| `update`       | 要执行的更新操作。可以指定：<br />仅包含更新运算符表达式的文档。<br />一个聚合管道 ，指定要执行的修改。`[ <stage1>, <stage2>, ... ]` |
+| `update`       | 要执行的更新操作。可以指定：<br />仅包含更新运算符表达式的文档。<br />一个聚合管道 `[ <stage1>, <stage2>, ... ]`，指定要执行的修改。 |
 | `upsert`       | 可选的。一个布尔值，指示是否执行upsert。<br />默认情况下`upsert`为`false`。 |
 | `arrayFilters` | 可选的。筛选器文档数组，用于确定要对数组字段进行更新操作要修改的数组元素。 |
 | `collation`    | 可选的。指定用于操作的排序规则。                             |
@@ -111,7 +111,7 @@ db.collection.bulkWrite( [
 
 `replaceOne`替换与过滤器匹配的集合中的单个文档。如果多个文档 match，`replaceOne`将仅替换第一个匹配的文档。
 
-```
+```powershell
 db.collection.bulkWrite([
        { replaceOne :
           {
@@ -135,9 +135,9 @@ db.collection.bulkWrite([
 
 #### deleteOne 和 deleteMany
 
-`deleteOne`删除集合中的一个文件 match 过滤器。如果多个文档 match，`deleteOne`将仅删除第一个匹配的文档。见db.collection.deleteOne()。
+`deleteOne`删除集合中的一个文件 match 过滤器。如果多个文档 match，`deleteOne`将仅删除第一个匹配的文档。见`db.collection.deleteOne()`。
 
-```
+```powershell
 db.collection.bulkWrite([
        { deleteOne :  { "filter" : <document> } }
     ] )
@@ -145,7 +145,7 @@ db.collection.bulkWrite([
 
 `deleteMany`删除集合中匹配过滤器的所有文档。见db.collection.deleteMany()。
 
-```
+```powershell
 db.collection.bulkWrite([
        { deleteMany :  { "filter" : <document> } }
     ] )
@@ -172,7 +172,7 @@ db.collection.bulkWrite([
 
 以下 code 表示带有五个操作的bulkWrite()。
 
-```
+```powershell
 db.collection.bulkWrite(
        [
           { insertOne : <document> },
@@ -191,7 +191,7 @@ db.collection.bulkWrite(
 
 以下 code 表示无序bulkWrite()，包含六个操作：
 
-```
+```powershell
 db.collection.bulkWrite(
        [
           { insertOne : <document> },
@@ -211,7 +211,8 @@ db.collection.bulkWrite(
 
 此限制可防止出现超大错误消息的问题。如果 group 超过此`limit`，则 client 驱动程序将 group 分成较小的组，其计数小于或等于限制的 value。例如，对于`100,000`的`maxWriteBatchSize` value，如果队列包含`200,000`操作，则驱动程序将创建 2 个组，每个组具有`100,000`个操作。
 
-> **注意**<br />
+> **注意**
+>
 > 使用 high-level API 时，驱动程序仅将 group 分为较小的组。如果直接使用db.runCommand()(对于 example，在编写驱动程序时)，MongoDB 在尝试执行超出限制的写入批处理时会抛出错误。
 
 从 MongoDB 3.6 开始，一旦单个批处理的错误报告变得太大，MongoDB 会将所有剩余的错误消息截断为空的 string。目前，一旦至少有 2 个错误消息，总大小大于`1MB`，则开始。
@@ -246,7 +247,8 @@ bulkWrite()会在错误上抛出`BulkWriteError` exception。
 
 如果在事务中运行，请不要为操作明确设置写关注点。要对事务使用写关注，请参见 事务和写关注。
 
-> **重要**<br />
+> **重要**
+>
 > 在大多数情况下，与单文档写入相比，多文档事务产生的性能成本更高，并且多文档事务的可用性不应替代有效的架构设计。在许多情况下， 非规范化数据模型（嵌入式文档和数组）将继续是您的数据和用例的最佳选择。也就是说，在许多情况下，适当地对数据建模将最大程度地减少对多文档交易的需求。
 >
 > 有关其他事务使用方面的注意事项（例如运行时限制和操作日志大小限制），另请参见 生产注意事项。
@@ -265,7 +267,7 @@ bulkWrite()会在错误上抛出`BulkWriteError` exception。
 
 `guidebook`数据库中的`characters`集合包含以下文档：
 
-```
+```powershell
 { "_id" : 1, "char" : "Brisbane", "class" : "monk", "lvl" : 4 },
 { "_id" : 2, "char" : "Eldon", "class" : "alchemist", "lvl" : 3 },
 { "_id" : 3, "char" : "Meldane", "class" : "ranger", "lvl" : 3 }
@@ -273,7 +275,7 @@ bulkWrite()会在错误上抛出`BulkWriteError` exception。
 
 以下bulkWrite()对集合执行多个操作：
 
-```
+```powershell
 try {
        db.characters.bulkWrite([
           { insertOne: { "document": { "_id": 4, "char": "Dithras", "class": "barbarian", "lvl": 4 } } },
@@ -295,7 +297,7 @@ try {
 
 该操作返回以下内容：
 
-```
+```powershell
 {
        "acknowledged" : true,
        "deletedCount" : 1,
@@ -313,7 +315,7 @@ try {
 
 如果集合在执行批量写入之前包含带有`"_id" : 5"`的文档，则在执行批量写入时，将为第二个 insertOne 抛出以下重复的 key exception：
 
-```
+```powershell
 BulkWriteError({
        "writeErrors" : [
           {
@@ -344,7 +346,7 @@ BulkWriteError({
 
 `guidebook`数据库中的`characters`集合包含以下文档：
 
-```
+```powershell
 { "_id" : 1, "char" : "Brisbane", "class" : "monk", "lvl" : 4 },
 { "_id" : 2, "char" : "Eldon", "class" : "alchemist", "lvl" : 3 },
 { "_id" : 3, "char" : "Meldane", "class" : "ranger", "lvl" : 3 }
@@ -352,7 +354,7 @@ BulkWriteError({
 
 以下bulkWrite()对`characters`集合执行多个`unordered`操作。请注意，其中一个`insertOne`阶段具有重复的`_id` value：
 
-```
+```powershell
 try {
        db.characters.bulkWrite([
           { insertOne: { "document": { "_id": 4, "char": "Dithras", "class": "barbarian", "lvl": 4 } } },
@@ -374,7 +376,7 @@ try {
 
 该操作返回以下内容：
 
-```
+```powershell
 BulkWriteError({
        "writeErrors" : [
           {
@@ -405,16 +407,16 @@ BulkWriteError({
 
 `enemies`集合包含以下文档：
 
-```
+```powershell
 { "_id" : 1, "char" : "goblin", "rating" : 1, "encounter" : 0.24 },
 { "_id" : 2, "char" : "hobgoblin", "rating" : 1.5, "encounter" : 0.30 },
 { "_id" : 3, "char" : "ogre", "rating" : 3, "encounter" : 0.2 },
 { "_id" : 4, "char" : "ogre berserker" , "rating" : 3.5, "encounter" : 0.12}
 ```
 
-以下bulkWrite()使用`"majority"` value `"majority"`和超时 value 为 100 毫秒对集合执行多个操作：
+以下bulkWrite()使用100 毫秒写入关注值`"majority"`和超时值为对集合执行多个操作：
 
-```
+```powershell
 try {
        db.enemies.bulkWrite(
           [
@@ -449,7 +451,7 @@ try {
 
 如果副本集中所有必需节点确认写入操作所需的总 time 大于`wtimeout`，则在`wtimeout`期间过后将显示以下`writeConcernError`。
 
-```
+```powershell
 BulkWriteError({
        "writeErrors" : [ ],
        "writeConcernErrors" : [

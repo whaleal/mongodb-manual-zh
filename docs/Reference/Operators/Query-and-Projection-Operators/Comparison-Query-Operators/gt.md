@@ -12,7 +12,7 @@
 
 考虑以下示例：
 
-```
+```powershell
 db.inventory.find( { qty: { $gt: 20 } } )
 ```
 
@@ -20,7 +20,7 @@ db.inventory.find( { qty: { $gt: 20 } } )
 
 考虑以下示例，该示例将`$gt`运算符与嵌入式文档中的字段一起使用：
 
-```
+```powershell
 db.inventory.update( { "carrier.fee": { $gt: 2 } }, { $set: { price: 9.99 } } )
 ```
 
@@ -28,7 +28,7 @@ db.inventory.update( { "carrier.fee": { $gt: 2 } }, { $set: { price: 9.99 } } )
 
 要`price`在包含嵌入文档的*所有*文档中设置该字段的值，该嵌入文档`carrier`的`fee`字段值大于`2`，请在`update()`方法中指定`multi:true`选项：
 
-```
+```powershell
 db.inventory.update(
    { "carrier.fee": { $gt: 2 } },
    { $set: { price: 9.99 } },
@@ -36,6 +36,7 @@ db.inventory.update(
 )
 ```
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > `find()`，`update()`，`$set`。
 

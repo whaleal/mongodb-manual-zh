@@ -11,7 +11,6 @@
 *   [Operator 表达式](#operator-expressions)
 
 *   [表达式 Operators 的索引](#index-of-expression-operators)
-> **注意**<br />
 > 有关特定 operator 的详细信息，包括语法和示例，请单击特定的 operator 以转到其 reference 页面。
 
 []()
@@ -24,7 +23,7 @@
 
 在[db.collection.aggregate](../../Reference/mongo-Shell-Methods/Collection-Methods/db-collection-aggregate.md)方法中，管道阶段出现在 array 中。文档按顺序通过各个阶段。除和[$geoNear]()阶段之外的所有阶段都可以在管道中多次出现。
 
-```
+```powershell
 db.collection.aggregate( [ { <stage> }, ... ] )
 ```
 
@@ -60,7 +59,7 @@ db.collection.aggregate( [ { <stage> }, ... ] )
 
 从 version 3.6 开始，MongoDB 还提供了[db.aggregate]()方法：
 
-```
+```powershell
 db.aggregate( [ { <stage> }, ... ] )
 ```
 
@@ -100,7 +99,7 @@ Literals 可以是任何类型。但是，MongoDB 解析以美元符号`$`开头
 
 表达式 objects 具有以下形式：
 
-```
+```powershell
 { <field1>: <expression1>, ... }
 ```
 
@@ -131,13 +130,13 @@ Literals 可以是任何类型。但是，MongoDB 解析以美元符号`$`开头
 
 Operator 表达式与采用 arguments 的函数类似。通常，这些表达式采用 array 的 array 并具有以下形式：
 
-```
+```powershell
 { <operator>: [ <argument1>, <argument2> ... ] }
 ```
 
 如果 operator 接受单个参数，则可以省略指定参数列表的外部 array：
 
-```
+```powershell
 { <operator>: <argument> }
 ```
 
@@ -353,11 +352,7 @@ Set 表达式对数组执行 set 操作，将数组视为 sets。 Set 表达式�
 | [$type]() | 返回该字段的 BSON 数据类型。 |
 
 
-[]()
-
-[]()
-
-[]()
+[](s
 
 ### <span id="accumulators-group">累加器($group)</span>
 

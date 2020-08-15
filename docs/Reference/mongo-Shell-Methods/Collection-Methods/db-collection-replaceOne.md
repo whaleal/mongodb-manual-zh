@@ -21,15 +21,17 @@
 
 replaceOne()方法具有以下形式：
 
-    db.collection.replaceOne(
-       <filter>,
-       <replacement>,
-       {
-         upsert: <boolean>,
-         writeConcern: <document>,
-         collation: <document>
-       }
-    )
+```powershell
+db.collection.replaceOne(
+   <filter>,
+   <replacement>,
+   {
+     upsert: <boolean>,
+     writeConcern: <document>,
+     collation: <document>
+   }
+)
+```
 
 replaceOne()方法采用以下参数：
 
@@ -93,9 +95,10 @@ replaceOne()使用`replacement`文档替换集合中与`filter`匹配的第一�
 
 如果在事务中运行，请不要为操作明确设置写关注点。要对事务使用写关注，请参见 事务和写关注。
 
-> **重要**<br />
+> **重要**
+>
 > 在大多数情况下，与单文档写入相比，多文档事务产生的性能成本更高，并且多文档事务的可用性不应替代有效的架构设计。在许多情况下， 非规范化数据模型（嵌入式文档和数组）将继续是您的数据和用例的最佳选择。也就是说，在许多情况下，适当地对数据建模将最大程度地减少对多文档交易的需求。
-> 
+>
 > 有关其他事务使用方面的注意事项（例如运行时限制和操作日志大小限制），另请参见 生产注意事项。
 
 ## <span id="examples">例子</span>
@@ -104,7 +107,7 @@ replaceOne()使用`replacement`文档替换集合中与`filter`匹配的第一�
 
 `restaurant`集合包含以下文档：
 
-```
+```powershell
 { "_id" : 1, "name" : "Central Perk Cafe", "Borough" : "Manhattan" },
 { "_id" : 2, "name" : "Rock A Feller Bar and Grill", "Borough" : "Queens", "violations" : 2 },
 { "_id" : 3, "name" : "Empire State Pub", "Borough" : "Brooklyn", "violations" : 0 }
@@ -112,7 +115,7 @@ replaceOne()使用`replacement`文档替换集合中与`filter`匹配的第一�
 
 以下操作替换`name: "Central Perk Cafe"`所在的单个文档：
 
-```
+```powershell
 try {
     db.restaurant.replaceOne(
         { "name" : "Central Perk Cafe" },
@@ -125,13 +128,13 @@ try {
 
 操作返回：
 
-```
+```powershell
 { "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
 ```
 
 如果未找到匹配项，则操作将返回：
 
-```
+```powershell
 { "acknowledged" : true, "matchedCount" : 0, "modifiedCount" : 0 }
 ```
 
@@ -141,7 +144,7 @@ try {
 
 `restaurant`集合包含以下文档：
 
-```
+```powershell
 { "_id" : 1, "name" : "Central Perk Cafe", "Borough" : "Manhattan",  "violations" : 3 },
 { "_id" : 2, "name" : "Rock A Feller Bar and Grill", "Borough" : "Queens", "violations" : 2 },
 { "_id" : 3, "name" : "Empire State Pub", "Borough" : "Brooklyn", "violations" : 0 }
@@ -149,7 +152,7 @@ try {
 
 以下操作尝试使用`upsert : true`替换文档，使用`upsert : true`：
 
-```
+```powershell
 try {
     db.restaurant.replaceOne(
         { "name" : "Pizza Rat's Pizzaria" },
@@ -163,7 +166,7 @@ try {
 
 从`upsert : true`开始，文档是根据`replacement`文档插入的。操作返回：
 
-```
+```powershell
 {
     "acknowledged" : true,
     "matchedCount" : 0,
@@ -174,7 +177,7 @@ try {
 
 该集合现在包含以下文档：
 
-```
+```powershell
 { "_id" : 1, "name" : "Central Perk Cafe", "Borough" : "Manhattan", "violations" : 3 },
 { "_id" : 2, "name" : "Rock A Feller Bar and Grill", "Borough" : "Queens", "violations" : 2 },
 { "_id" : 3, "name" : "Empire State Pub", "Borough" : "Brooklyn", "violations" : 0 },
@@ -185,7 +188,7 @@ try {
 
 给定三个成员副本集，以下操作指定`majority` `majority`和`wtimeout` `100`：
 
-```
+```powershell
 try {
     db.restaurant.replaceOne(
         { "name" : "Pizza Rat's Pizzaria" },
@@ -199,7 +202,7 @@ try {
 
 如果确认时间超过`wtimeout`限制，则抛出以下 exception：
 
-```
+```powershell
 WriteConcernError({
     "code" : 64,
     "errInfo" : {
@@ -217,7 +220,7 @@ version 3.4 中的新内容。
 
 集合`myColl`具有以下文档：
 
-```
+```powershell
 { _id: 1, category: "café", status: "A" }
 { _id: 2, category: "cafe", status: "a" }
 { _id: 3, category: "cafE", status: "a" }
@@ -225,7 +228,7 @@ version 3.4 中的新内容。
 
 以下操作包括整理选项：
 
-```
+```powershell
 db.myColl.replaceOne(
     { category: "cafe", status: "a" },
     { category: "cafÉ", status: "Replaced" },
@@ -239,7 +242,7 @@ db.myColl.replaceOne(
 
 `members`使用以下文档创建样本集合：
 
-```
+```powershell
 db.members.insertMany([
    { "_id" : 1, "member" : "abc123", "status" : "P", "points" :  0,  "misc1" : null, "misc2" : null },
    { "_id" : 2, "member" : "xyz123", "status" : "A", "points" : 60,  "misc1" : "reminder: ping me at 100pts", "misc2" : "Some random comment" },
@@ -252,17 +255,18 @@ db.members.insertMany([
 
 在集合上创建以下索引：
 
-```
+```powershell
 db.members.createIndex( { status: 1 } )
 db.members.createIndex( { points: 1 } )
 ```
 
 以下更新操作明确暗示要使用索引：`{ status: 1 }`
 
-> **注意**<br />
+> **注意**
+>
 > 如果指定的索引不存在，则操作错误。
 
-```
+```powershell
 db.members.replaceOne(
    { "points": { $lte: 20 }, "status": "P" },
    { "misc1": "using index on status", status: "P", member: "replacement", points: "20"},
@@ -272,13 +276,13 @@ db.members.replaceOne(
 
 该操作返回以下内容：
 
-```
+```powershell
 { "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
 ```
 
 要查看使用的索引，可以使用`$indexStats`管道：
 
-```
+```powershell
 db.members.aggregate( [ { $indexStats: { } }, { $sort: { name: 1 } } ] )
 ```
 

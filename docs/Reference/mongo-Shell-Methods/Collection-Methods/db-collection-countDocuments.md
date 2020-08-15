@@ -38,7 +38,7 @@
 
 `db.collection.countDocuments()`包装以下聚合操作并仅返回的值`n`：
 
-```
+```powershell
 db.collection.aggregate([
     { $match: <query> },
     { $group: { _id: null, n: { $sum: 1 } } }
@@ -65,7 +65,8 @@ db.collection.aggregate([
 
 `db.collection.countDocuments()`可以在多文档事务中使用。
 
-> **重要**<br />
+> **重要**
+>
 > 在大多数情况下，与单文档写入相比，多文档事务产生的性能成本更高，并且多文档事务的可用性不应替代有效的架构设计。在许多情况下， 非规范化数据模型（嵌入式文档和数组）将继续是您的数据和用例的最佳选择。也就是说，在许多情况下，适当地对数据建模将最大程度地减少对多文档事务的需求。
 >
 > 有关其他事务使用方面的注意事项（例如运行时限制和操作日志大小限制），另请参见 生产注意事项。
@@ -80,7 +81,7 @@ db.collection.aggregate([
 
 要计算`orders`集合中所有文档的数量，请使用以下操作：
 
-```
+```powershell
 db.orders.countDocuments({})
 ```
 
@@ -88,7 +89,7 @@ db.orders.countDocuments({})
 
 计算`orders` 集合中具有`ord_dt`大于的字段的文档数：`new Date('01/01/2012')`：
 
-```
+```powershell
 db.orders.countDocuments( { ord_dt: { $gt: new Date('01/01/2012') } }, { limit: 100 } )
 ```
 

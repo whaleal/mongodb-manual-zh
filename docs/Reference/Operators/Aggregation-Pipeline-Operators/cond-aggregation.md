@@ -15,13 +15,13 @@
 
 该`$cond`表达式具有以下两种语法之一：
 
-```
+```powershell
 { $cond: { if: <boolean-expression>, then: <true-case>, else: <false-case> } }
 ```
 
 or
 
-```
+```powershell
 { $cond: [ <boolean-expression>, <true-case>, <false-case> ] }
 ```
 
@@ -39,7 +39,7 @@ or
 
 以下示例将`inventory`集合与以下文档一起使用：
 
-```
+```powershell
 { "_id" : 1, "item" : "abc1", qty: 300 }
 { "_id" : 2, "item" : "abc2", qty: 200 }
 { "_id" : 3, "item" : "xyz1", qty: 250 }
@@ -47,7 +47,7 @@ or
 
 下面的聚合操作使用$cond表达式，如果qty值大于或等于250，将折扣值设置为30，如果qty值小于250，则设置为20:
 
-```
+```powershell
 db.inventory.aggregate(
    [
       {
@@ -66,7 +66,7 @@ db.inventory.aggregate(
 
 该操作返回以下结果：
 
-```
+```powershell
 { "_id" : 1, "item" : "abc1", "discount" : 30 }
 { "_id" : 2, "item" : "abc2", "discount" : 20 }
 { "_id" : 3, "item" : "xyz1", "discount" : 30 }
@@ -74,7 +74,7 @@ db.inventory.aggregate(
 
 以下操作使用`$cond`表达式的数组语法， 并返回相同的结果：
 
-```
+```powershell
 db.inventory.aggregate(
    [
       {

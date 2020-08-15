@@ -14,18 +14,20 @@
 
        *   打印分片集合的数据分布统计信息。
 
-> **建议**<br />
+> **建议**
+>
 > 在运行方法之前，使用flushRouterConfig命令刷新缓存的路由 table，以避免返回集合的陈旧分发信息。刷新后，run db.collection.getShardDistribution()为您希望 build 索引的集合。
 
 例如：
 
-```
+```powershell
 db.adminCommand( { flushRouterConfig: "test.myShardedCollection" } );
 db.getSiblingDB("test").myShardedCollection.getShardDistribution();
 ```
 
-> **也可以看看**<br />
->     分片
+> **也可以看看**
+>
+> 分片
 
 ## <span id="output">输出</span>
 
@@ -33,7 +35,7 @@ db.getSiblingDB("test").myShardedCollection.getShardDistribution();
 
 以下是分片集合分布的 sample 输出：
 
-```
+```powershell
 Shard shard-a at shard-a/MyMachine.local:30000,MyMachine.local:30001,MyMachine.local:30002
 data : 38.14Mb docs : 1000003 chunks : 2
 estimated data per chunk : 19.07Mb
@@ -52,7 +54,7 @@ Shard shard-b contains 49.99% data, 49.99% docs in cluster, avg obj size on shar
 
 ### 输出字段
 
-```
+```powershell
 Shard <shard-a> at <host-a>
  data : <size-a> docs : <count-a> chunks : <number of chunks-a>
  estimated data per chunk : <size-a>/<number of chunks-a>
@@ -90,20 +92,21 @@ Totals
 * `<stats.count>`是一个 value，用于报告分片集合中的文档总数。
 
 *   `<calc total chunks>`是一个计算出的数字，用于报告所有分片的块数，例如：
-    ```
+    ```powershell
     <calc total chunks> = <number of chunks-a> + <number of chunks-b>
     ```
 
 *   `<estDataPercent-x>`是一个计算的 value，对于每个分片，数据大小反映为集合总数据大小的百分比，对于 example：
     
-	```
+	```powershell
 	<estDataPercent-x> = <size-x>/<stats.size>
 	```
 
 *   `<estDocPercent-x>`是一个计算的 value，对于每个分片，它反映了文档的数量，作为集合的文档总数的百分比，对于 example：
     
-	```
+	```powershell
    <estDocPercent-x> = <count-x>/<stats.count>
 	```
 
 *   `stats.shards[ <shard-x> ].avgObjSize`是反映分片的平均 object 大小(包括度量单位)的数字。
+

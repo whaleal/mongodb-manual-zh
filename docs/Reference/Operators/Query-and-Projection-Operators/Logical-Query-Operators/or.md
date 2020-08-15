@@ -10,13 +10,13 @@
 
 `$or`操作符对包含两个或多个`<expressions>`的数组执行逻辑或操作，并选择满足至少一个`<expressions>`的文档。`$or`的语法如下:
 
-```
+```powershell
 { $or: [ { <expression1> }, { <expression2> }, ... , { <expressionN> } ] }
 ```
 
 考虑下面的例子:
 
-```
+```powershell
 db.inventory.find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } )
 ```
 
@@ -30,13 +30,13 @@ db.inventory.find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } )
 
 当对`$or`查询使用索引时，`$or`的每个子句都可以使用自己的索引。考虑以下查询:
 
-```
+```powershell
 db.inventory.find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } )
 ```
 
 为了支持此查询，而不是复合索引，您将创建一个关于`quantity`的索引和另一个关于`price`的索引:
 
-```
+```powershell
 db.inventory.createIndex( { quantity: 1 } )
 db.inventory.createIndex( { price: 1 } )
 ```
@@ -61,7 +61,7 @@ MongoDB可以使用除`geoHaystack`索引之外的所有索引来支持`$or`子�
 
 例如，要选择数量字段值为`20`或`50`的库存集合中的所有文档，使用`$in`操作符:
 
-```
+```powershell
 db.inventory.find ( { quantity: { $in: [20, 50] } } )
 ```
 
@@ -69,5 +69,6 @@ db.inventory.find ( { quantity: { $in: [20, 50] } } )
 
 你可能会嵌套`$or`操作。
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > [`$and`](), [`find()`](), [`sort()`](), [`$in`]()

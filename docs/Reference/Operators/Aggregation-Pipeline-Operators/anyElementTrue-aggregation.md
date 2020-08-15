@@ -18,7 +18,7 @@
 
 `$anyElementTrue`具有以下语法：
 
-```
+```powershell
 { $anyElementTrue: [ <expression> ] }
 ```
 
@@ -41,7 +41,7 @@
 
 创建一个示例集合，其名称`survey`包含以下文档：
 
-```
+```powershell
 db.survey.insertMany([
    { "_id" : 1, "responses" : [ true ] },
    { "_id" : 2, "responses" : [ true, false ] },
@@ -58,7 +58,7 @@ db.survey.insertMany([
 
 以下操作使用`$anyElementTrue`运算符来确定`responses`数组是否包含任何计算结果为`true`：
 
-```
+```powershell
 db.survey.aggregate(
    [
      { $project: { responses: 1, isAnyTrue: { $anyElementTrue: [ "$responses" ] }, _id: 0 } }
@@ -68,7 +68,7 @@ db.survey.aggregate(
 
 该操作返回以下结果：
 
-```
+```powershell
 { "responses" : [ true ], "isAnyTrue" : true }
 { "responses" : [ true, false ], "isAnyTrue" : true }
 { "responses" : [ ], "isAnyTrue" : false }

@@ -7,7 +7,8 @@
 *   [更新运算符](#update-operators)
 *   [更新运算符修饰符](#update-operator-modifiers)
 
-> **注意**<br />
+> **注意**
+>
 > 有关特定运算符的详细信息，包括语法和示例，请单击特定运算符以转到其参考页。
 
 ## <span id="update-operators">更新运算符</span>

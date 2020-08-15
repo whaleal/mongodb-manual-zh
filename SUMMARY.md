@@ -69,6 +69,7 @@
         * [Perform Incremental Map-Reduce](docs/Aggregation/Map-Reduce/Perform-Incremental-Map-Reduce.md)
         * [Troubleshoot the Map Function](docs/Aggregation/Map-Reduce/Troubleshoot-the-Map-Function.md)
         * [Troubleshoot the Reduce Function](docs/Aggregation/Map-Reduce/Troubleshoot-the-Reduce-Function.md)
+        * [Map-Reduce to Aggregation Pipeline](docs/Aggregation/Map-Reduce/Map-Reduce-to-Aggregation-Pipeline.md)
     * [Aggregation Reference](docs/Aggregation/Aggregation-Reference.md)
         * [Aggregation Pipeline Quick Reference](docs/Aggregation/Aggregation-Reference/Aggregation-Pipeline-Quick-Reference.md)
         * [Aggregation Commands](docs/Aggregation/Aggregation-Reference/Aggregation-Commands.md)

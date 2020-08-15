@@ -18,7 +18,7 @@
 
 $allElementsTrue具有以下语法：
 
-```
+```powershell
 { $allElementsTrue: [ <expression> ] }
 ```
 
@@ -42,7 +42,7 @@ $allElementsTrue具有以下语法：
 
 考虑带有以下文档的`survey`集合：
 
-```
+```powershell
 { "_id" : 1, "responses" : [ true ] }
 { "_id" : 2, "responses" : [ true, false ] }
 { "_id" : 3, "responses" : [ ] }
@@ -57,7 +57,7 @@ $allElementsTrue具有以下语法：
 
 以下操作使用$allElementsTrue operator 来确定`responses` array 是否仅包含求值为`true`的值：
 
-```
+```powershell
 db.survey.aggregate(
     [
         { $project: { responses: 1, isAllTrue: { $allElementsTrue: [ "$responses" ] }, _id: 0 } }
@@ -67,7 +67,7 @@ db.survey.aggregate(
 
 该操作返回以下结果：
 
-```
+```powershell
 { "responses" : [ true ], "isAllTrue" : true }
 { "responses" : [ true, false ], "isAllTrue" : false }
 { "responses" : [ ], "isAllTrue" : true }

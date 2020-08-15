@@ -16,7 +16,7 @@
 
        *   从集合中删除匹配`filter`的所有文档。
 
-```
+```powershell
 db.collection.deleteMany(
     <filter>,
     {
@@ -54,7 +54,8 @@ db.collection.deleteMany(
 
 如果在事务中运行，请不要为操作明确设置写关注点。要对事务使用写关注，请参见 事务和写关注。
 
-> **重要**<br />
+> **重要**
+>
 > 在大多数情况下，与单文档写入相比，多文档事务产生的性能成本更高，并且多文档事务的可用性不应替代有效的架构设计。在许多情况下， 非规范化数据模型（嵌入式文档和数组）将继续是您的数据和用例的最佳选择。也就是说，在许多情况下，适当地对数据建模将最大程度地减少对多文档交易的需求。
 >
 > 有关其他事务使用方面的注意事项（例如运行时限制和操作日志大小限制），另请参见 生产注意事项。
@@ -65,7 +66,7 @@ db.collection.deleteMany(
 
 `orders`集合包含具有以下结构的文档：
 
-```
+```powershell
 {
     _id: ObjectId("563237a41a4d68582c2509da"),
     stock: "Brent Crude Futures",
@@ -80,7 +81,7 @@ db.collection.deleteMany(
 
 以下操作将删除`client : "Crude Traders Inc."`所有文档：
 
-```
+```powershell
 try {
     db.orders.deleteMany( { "client" : "Crude Traders Inc." } );
 } catch (e) {
@@ -90,13 +91,13 @@ try {
 
 操作返回：
 
-```
+```powershell
 { "acknowledged" : true, "deletedCount" : 10 }
 ```
 
 以下操作将删除`stock : "Brent Crude Futures"`和`limit`大于`48.88`的所有文档：
 
-```
+```powershell
 try {
     db.orders.deleteMany( { "stock" : "Brent Crude Futures", "limit" : { $gt : 48.88 } } );
 } catch (e) {
@@ -106,7 +107,7 @@ try {
 
 操作返回：
 
-```
+```powershell
 { "acknowledged" : true, "deletedCount" : 8 }
 ```
 
@@ -114,7 +115,7 @@ try {
 
 给定三个成员副本集，以下操作指定`majority` `majority`和`wtimeout` `100`：
 
-```
+```powershell
 try {
     db.orders.deleteMany(
         { "client" : "Crude Traders Inc." },
@@ -127,7 +128,7 @@ try {
 
 如果确认时间超过`wtimeout`限制，则抛出以下 exception：
 
-```
+```powershell
 WriteConcernError({
     "code" : 64,
     "errInfo" : {
@@ -145,7 +146,7 @@ version 3.4 中的新内容。
 
 集合`myColl`具有以下文档：
 
-```
+```powershell
 { _id: 1, category: "café", status: "A" }
 { _id: 2, category: "cafe", status: "a" }
 { _id: 3, category: "cafE", status: "a" }
@@ -153,7 +154,7 @@ version 3.4 中的新内容。
 
 以下操作包括整理选项：
 
-```
+```powershell
 db.myColl.deleteMany(
     { category: "cafe", status: "A" },
     { collation: { locale: "fr", strength: 1 } }

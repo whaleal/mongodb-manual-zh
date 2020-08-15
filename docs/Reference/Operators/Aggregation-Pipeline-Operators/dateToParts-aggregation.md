@@ -21,7 +21,7 @@
 
 `$dateToParts`表达式具有以下语法：
 
-```
+```powershell
 {
     $dateToParts: {
         'date' : <dateExpression>,
@@ -45,7 +45,7 @@
 
 例如，考虑`sales`包含以下文档的集合：
 
-```
+```powershell
 {
    "_id" : 1,
    "item" : "abc",
@@ -57,7 +57,7 @@
 
 以下汇总说明了MongoDB如何处理Olson时区标识符的DST偏移量。该示例使用 `$hour`和 `$minute`运算符返回`date`字段的相应部分：
 
-```
+```powershell
 db.sales.aggregate([
 {
    $project: {
@@ -84,7 +84,7 @@ db.sales.aggregate([
 
 该操作返回以下结果：
 
-```
+```powershell
 {
    "_id": 1,
    "nycHour" : 5,
@@ -100,7 +100,7 @@ db.sales.aggregate([
 
 考虑`sales`包含以下文档的集合：
 
-```
+```powershell
 {
   "_id" : 2,
   "item" : "abc",
@@ -112,7 +112,7 @@ db.sales.aggregate([
 
 以下聚合用于`$dateToParts`返回包含`date`字段组成部分的文档。
 
-```
+```powershell
 db.sales.aggregate([
  {
     $project: {
@@ -131,7 +131,7 @@ db.sales.aggregate([
 
 该操作返回以下结果：
 
-```
+```powershell
 {
    "_id" : 2,
    "date" : {

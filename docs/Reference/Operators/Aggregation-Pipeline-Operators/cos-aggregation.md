@@ -18,7 +18,7 @@
 
 `$cos` 具有以下语法：
 
-```
+```powershell
 { $cos: <expression> }
 ```
 
@@ -46,7 +46,7 @@
 
 该`trigonometry`集合包含一个文档，该文档存储斜边和直角三角形中的一个角度：
 
-```
+```powershell
 {
   "_id" : ObjectId("5c50782193f833234ba90d85"),
   "angle_a" : NumberDecimal("53.13010235415597870314438744090659"),
@@ -56,7 +56,7 @@
 
 以下聚合操作使用该 `$cos`表达式来计算相邻的边，`angle_a`并使用`$addFields`管道阶段将其添加到输入文档中 。
 
-```
+```powershell
 db.trigonometry.aggregate([
   {
     $addFields : {
@@ -75,7 +75,7 @@ db.trigonometry.aggregate([
 
 该操作返回以下结果：
 
-```
+```powershell
 {
   "_id" : ObjectId("5c50782193f833234ba90d85"),
   "angle_a" : NumberDecimal("53.13010235415597870314438744090659"),
@@ -88,9 +88,9 @@ db.trigonometry.aggregate([
 
 **弧度中的正弦值**
 
-该`trigonometry`集合包含一个文档，该文档存储斜边和直角三角形中的一个角度：
+`trigonometry`集合包含一个文档，该文档存储斜边和直角三角形中的一个角度：
 
-```
+```powershell
 {
   "_id" : ObjectId("5c50782193f833234ba90d85"),
   "angle_a" : NumberDecimal("0.9272952180016122324285124629224288"),
@@ -100,7 +100,7 @@ db.trigonometry.aggregate([
 
 以下聚合操作使用该 `$cos`表达式来计算相邻的边，`angle_a`并使用`$addFields`管道阶段将其添加到输入文档中 。
 
-```
+```powershell
 db.trigonometry.aggregate([
   {
     $addFields : {
@@ -117,7 +117,7 @@ db.trigonometry.aggregate([
 
 该命令返回以下输出：
 
-```
+```powershell
 {
   "_id" : ObjectId("5c50782193f833234ba90d85"),
   "angle_a" : NumberDecimal("0.9272952180016122324285124629224288"),

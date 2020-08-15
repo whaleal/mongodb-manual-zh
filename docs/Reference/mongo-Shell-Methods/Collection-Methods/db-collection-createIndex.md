@@ -58,7 +58,8 @@ db.collection.createIndex()是createIndexes命令周围的 wrapper。
 
 version 3.4 中的新内容。
 
-> **警告**<br />
+> **警告**
+>
 > MongoDB 3.2 和早期版本不支持排序规则。在 MongoDB 3.2 及更早版本中，不要使用不受支持的排序规则选项创建索引，因为这会阻止升级到 3.4，这将强制执行更严格的索引选项验证。
 
 | 参数        | 类型     | 描述                                                         |
@@ -72,7 +73,8 @@ version 3.4 中的新内容。
 *   2 d索引和
 
 *   geoHaystack索引。
-> **建议**<br />
+> **建议**
+>
 > 要在具有 non-simple 归类的集合上创建`text`，`2d`或`geoHaystack`索引，必须在创建索引时显式指定`{collation: {locale: "simple"} }`。
 
 #### 整理和索引使用
@@ -82,8 +84,9 @@ version 3.4 中的新内容。
 *   如果在创建索引时未指定排序规则，MongoDB 将使用集合的默认排序规则创建索引。
 
 *   如果在创建索引时指定了排序规则，MongoDB 将使用指定的排序规则创建索引。
-> **建议**<br />
-> 通过指定`1`或`2`的归类`strength`，可以创建 case-insensitive 索引。 `1`的整理`strength`的索引是变音符号和 case-insensitive。
+> **建议**
+>
+> 通过指定`1`或`2`的归类`strength`，可以创建不区分大小写的索引。排序规则`strength`的索引是 `1`的不区分字母也不区分大小写。
 
 与其他索引选项不同，您可以使用不同的排序规则在同一 key(s) 上创建多个索引。要使用相同的 key pattern 但不同的排序规则创建索引，必须提供唯一的索引名称。
 
@@ -91,17 +94,19 @@ version 3.4 中的新内容。
 
 对于 example，集合`myColl`在 string 字段`category`上有一个索引，其中包含整理 locale `"fr"`。
 
-    db.myColl.createIndex( { category: 1 }, { collation: { locale: "fr" } } )
+```powershell
+db.myColl.createIndex( { category: 1 }, { collation: { locale: "fr" } } )
+```
 
 以下查询操作(指定与索引相同的排序规则)可以使用索引：
 
-```
+```powershell
 db.myColl.find( { category: "cafe" } ).collation( { locale: "fr" } )
 ```
 
 但是，以下查询操作(默认情况下使用“简单”二进制文件夹)无法使用索引：
 
-```
+```powershell
 db.myColl.find( { category: "cafe" } )
 ```
 
@@ -109,7 +114,7 @@ db.myColl.find( { category: "cafe" } )
 
 对于 example，集合`myColl`在数字字段`score`和`price`以及 string 字段`category`上具有复合索引;使用用于 string 比较的排序规则 locale `"fr"`创建索引：
 
-```
+```powershell
 db.myColl.createIndex(
     { score: 1, price: 1, category: 1 },
     { collation: { locale: "fr" } } )
@@ -117,14 +122,14 @@ db.myColl.createIndex(
 
 以下操作(使用`"simple"`二进制排序规则进行 string 比较)可以使用索引：
 
-```
+```powershell
 db.myColl.find( { score: 5 } ).sort( { price: 1 } )
 db.myColl.find( { score: 5, price: { $gt: NumberDecimal( "10" ) } } ).sort( { price: 1 } )
 ```
 
 以下操作在索引的`category`字段上使用`"simple"`二进制排序规则进行 string 比较，可以使用索引仅满足查询的`score: 5`部分：
 
-```
+```powershell
 db.myColl.find( { score: 5, category: "cafe" } )
 ```
 
@@ -211,7 +216,7 @@ db.myColl.find( { score: 5, category: "cafe" } )
 
 以下 example 在字段`orderDate`上创建升序索引。
 
-```
+```powershell
 db.collection.createIndex( { orderDate: 1 } )
 ```
 
@@ -221,13 +226,14 @@ db.collection.createIndex( { orderDate: 1 } )
 
 以下 example 在`orderDate`字段(在升序 order 中)和`zipcode`字段(在降序 order.)中)创建复合索引
 
-```
+```powershell
 db.collection.createIndex( { orderDate: 1, zipcode: -1 } )
 ```
 
 复合索引不能包含哈希指数 component。
 
-> **注意**<br />
+> **注意**
+>
 > 索引的 order 对于使用索引支持sort()操作很重要。
 
 ### 使用指定的排序规则创建索引
@@ -236,7 +242,7 @@ version 3.4 中的新内容。
 
 以下 example 创建名为`category_fr`的索引。 example 使用整理创建索引，指定 locale `fr`和比较强度`2`：
 
-```
+```powershell
 db.collection.createIndex(
     { category: 1 },
     { name: "category_fr", collation: { locale: "fr", strength: 2 } }
@@ -245,7 +251,7 @@ db.collection.createIndex(
 
 以下 example 使用整理创建名为`date_category_fr`的复合索引。排序规则仅适用于具有 string 值的索引键。
 
-```
+```powershell
 db.collection.createIndex(
     { orderDate: 1, category: 1 },
     { name: "date_category_fr", collation: { locale: "fr", strength: 2 } }
@@ -260,11 +266,11 @@ db.collection.createIndex(
 
 *4.2版中的新功能。*
 
-该featureCompatibilityVersion必须创建通配符索引。有关设置fCV的说明，请参阅 在MongoDB 4.2部署上设置功能兼容版本。`mongod` `4.2`
+`mongod`featureCompatibilityVersion必须`4.2`创建通配符索引。有关设置fCV的说明，请参阅 在MongoDB 4.2部署上设置功能兼容版本。 
 
 * `_id`默认情况下，通配符索引会忽略该字段。要将`_id`字段包含 在通配符索引中，必须在`wildcardProjection`文档中明确包含它：
 
-  ```
+  ```powershell
   {
     "wildcardProjection" : {
       "_id" : 1,
@@ -285,7 +291,8 @@ db.collection.createIndex(
   * Hashed
   * Unique
 
-  > **注意**<br />
+  > **注意**
+  >
   > 通配符索引与通配符文本索引不同并且不兼容 。通配符索引不能支持使用`$text`运算符的查询。
   
   有关通配符索引限制的完整文档，请参见 通配符索引限制。
@@ -303,7 +310,7 @@ db.collection.createIndex(
 
 考虑一个集合`products_catalog`，其中文档可能包含一个 `product_attributes`字段。该`product_attributes`字段可以包含任意嵌套的字段，包括嵌入式文档和数组：
 
-```
+```powershell
 {
   "_id" : ObjectId("5c1d358bf383fbee028aea0b"),
   "product_name" : "Blaster Gauntlet",
@@ -328,7 +335,7 @@ db.collection.createIndex(
 
 以下操作在`product_attributes`字段上创建通配符索引 ：
 
-```
+```powershell
 use inventory
 db.products_catalog.createIndex( { "product_attributes.$**" : 1 } )
 ```
@@ -337,20 +344,21 @@ db.products_catalog.createIndex( { "product_attributes.$**" : 1 } )
 
 通配符索引可以支持`product_attributes`对其嵌套字段之一或其嵌套字段进行任意单字段查询 ：
 
-```
+```powershell
 db.products_catalog.find( { "product_attributes.superFlight" : true } )
 db.products_catalog.find( { "product_attributes.maxSpeed" : { $gt : 20 } } )
 db.products_catalog.find( { "product_attributes.elements" : { $eq: "water" } } )
 ```
 
-> **注意**<br />
+> **注意**
+>
 > 特定于路径的通配符索引语法与该wildcardProjection选项不兼容 。有关更多信息，请参见参数文档。
 
 #### 在所有字段路径上创建通配符索引
 
 考虑一个集合`products_catalog`，其中文档可能包含一个 `product_attributes`字段。该`product_attributes`字段可以包含任意嵌套的字段，包括嵌入式文档和数组：
 
-```
+```powershell
 {
   "_id" : ObjectId("5c1d358bf383fbee028aea0b"),
   "product_name" : "Blaster Gauntlet",
@@ -375,7 +383,7 @@ db.products_catalog.find( { "product_attributes.elements" : { $eq: "water" } } )
 
 以下操作在所有标量字段（不包括`_id`字段）上创建通配符索引：
 
-```
+```powershell
 use inventory
 db.products_catalog.createIndex( { "$**" : 1 } )
 ```
@@ -384,19 +392,20 @@ db.products_catalog.createIndex( { "$**" : 1 } )
 
 创建的索引可以支持对集合中文档中任意字段的查询：
 
-```
+```powershell
 db.products_catalog.find( { "product_price" : { $lt : 25 } } )
 db.products_catalog.find( { "product_attributes.elements" : { $eq: "water" } } )
 ```
 
-> **注意**<br />
+> **注意**
+>
 > \_id默认情况下，通配符索引会忽略该字段。要将_id字段包括 在通配符索引中，必须在wildcardProjection文档中明确包含它。有关更多信息，请参见参数文档。
 
 #### 在通配符索引覆盖率中包括特定字段
 
 考虑一个集合`products_catalog`，其中文档可能包含一个 `product_attributes`字段。该`product_attributes`字段可以包含任意嵌套的字段，包括嵌入式文档和数组：
 
-```
+```powershell
 {
   "_id" : ObjectId("5c1d358bf383fbee028aea0b"),
   "product_name" : "Blaster Gauntlet",
@@ -421,7 +430,7 @@ db.products_catalog.find( { "product_attributes.elements" : { $eq: "water" } } )
 
 以下操作将创建一个通配符索引，并使用该`wildcardProjection`选项在索引中仅包含`product_attributes.elements`和`product_attributes.resistance` 字段的标量值 。
 
-```
+```powershell
 use inventory
 db.products_catalog.createIndex(
   { "$**" : 1 },
@@ -440,19 +449,20 @@ db.products_catalog.createIndex(
 
 创建的索引可以支持对以下内容中包含的任何标量字段的查询`wildcardProjection`：
 
-```
+```powershell
 db.products_catalog.find( { "product_attributes.elements" : { $eq: "Water" } } )
 db.products_catalog.find( { "product_attributes.resistance" : "Bludgeoning" } )
 ```
 
-> **注意**<br />
+> **注意**
+>
 > 通配符索引不支持在wildcardProjection文档中混合包含和排除语句，除非明确包含该_id字段。有关更多信息 wildcardProjection，请参见参数文档。
 
 #### 从通配符索引覆盖率中忽略特定字段
 
 考虑一个集合`products_catalog`，其中文档可能包含一个 `product_attributes`字段。该`product_attributes`字段可以包含任意嵌套的字段，包括嵌入式文档和数组：
 
-```
+```powershell
 {
   "_id" : ObjectId("5c1d358bf383fbee028aea0b"),
   "product_name" : "Blaster Gauntlet",
@@ -477,7 +487,7 @@ db.products_catalog.find( { "product_attributes.resistance" : "Bludgeoning" } )
 
 以下操作创建一个通配符指数，并使用`wildcardProjection`文件索引的所有标量场的每个文档的集合中，*排除*了 `product_attributes.elements`和`product_attributes.resistance` 字段：
 
-```
+```powershell
 use inventory
 db.products_catalog.createIndex(
   { "$**" : 1 },
@@ -496,12 +506,13 @@ db.products_catalog.createIndex(
 
 创建的索引可以支持对任何标量字段的查询，**但** 以下项除外`wildcardProjection`：
 
-```
+```powershell
 db.products_catalog.find( { "product_attributes.maxSpeed" : { $gt: 25 } } )
 db.products_catalog.find( { "product_attributes.superStrength" : true } )
 ```
 
-> **注意**<br />
+> **注意**
+>
 > 通配符索引不支持在wildcardProjection文档中混合包含和排除语句，除非明确包含该_id字段。有关更多信息 wildcardProjection，请参见参数文档。
 
 

@@ -17,7 +17,7 @@
 
 `$dateToString`表达式具有以下 运算符表达式语法：
 
-```
+```powershell
 { $dateToString: {
     date: <dateExpression>,
     format: <formatString>,
@@ -35,7 +35,7 @@
 | timezone | `Optional.`运算结果的时区。 `<tzExpression>`必须是一个有效的表达式，可以解析为格式为Olson时区标识符或 UTC偏移量的字符串。如果未`timezone`提供，结果将显示在中`UTC`。<br /><br />1. 奥尔森时区标识符：<br />a. "America/New_York"<br />b. "Europe/London"<br />c. "GMT"<br />2. UTC偏移：<br />a. +/-[hh]:[mm], e.g. "+04:45"<br />b. +/-\[hh][mm], e.g. "-0530"<br />c. +/-[hh], e.g. "+03"<br /><br />*3.6版的新功能。* |
 | onNull   | 可选的。如果`date`为null或缺少，则返回的值。参数可以是任何有效的表达式。<br />如果未指定，`$dateToString`则如果`date`null为null或缺少，则返回null 。<br />*版本4.0中的新功能：*要求`featureCompatibilityVersion`（fCV）设置为 `"4.0"`或更高。有关fCV的更多信息，请参见 `setFeatureCompatibilityVersion`。 |
 
-> **也可以看看**<br />
+> **也可以看看**
 > 
 > `$toString`和 `$convert`
 
@@ -66,7 +66,7 @@
 
 考虑`sales`包含以下文档的集合：
 
-```
+```powershell
 {
   "_id" : 1,
   "item" : "abc",
@@ -78,7 +78,7 @@
 
 以下聚合用于`$dateToString`将`date`字段作为格式化的字符串返回：
 
-```
+```powershell
 db.sales.aggregate(
    [
      {
@@ -96,7 +96,7 @@ db.sales.aggregate(
 
 该操作返回以下结果：
 
-```
+```powershell
 {
    "_id" : 1,
    "yearMonthDayUTC" : "2014-01-01",

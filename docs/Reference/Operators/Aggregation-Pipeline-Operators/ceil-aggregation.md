@@ -18,7 +18,7 @@
 
 `$ceil`具有以下语法：
 
-```
+```powershell
 { $ceil: <number> }
 ```
 
@@ -38,7 +38,7 @@
 
 名为`samples`的集合包含以下文档：
 
-```
+```powershell
 { _id: 1, value: 9.25 }
 { _id: 2, value: 8.73 }
 { _id: 3, value: 4.32 }
@@ -47,7 +47,7 @@
 
 以下事例返回原始值和上限值：
 
-```
+```powershell
 db.samples.aggregate([
     { $project: { value: 1, ceilingValue: { $ceil: "$value" } } }
 ])
@@ -55,7 +55,7 @@ db.samples.aggregate([
 
 该操作返回以下结果：
 
-```
+```powershell
 { "_id" : 1, "value" : 9.25, "ceilingValue" : 10 }
 { "_id" : 2, "value" : 8.73, "ceilingValue" : 9 }
 { "_id" : 3, "value" : 4.32, "ceilingValue" : 5 }

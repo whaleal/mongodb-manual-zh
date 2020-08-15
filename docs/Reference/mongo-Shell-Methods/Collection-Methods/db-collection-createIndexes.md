@@ -35,7 +35,8 @@ db.collection.createIndexes()是createIndexes命令周围的 wrapper。
 
 `options`文档包含一组控制索引创建的选项。不同的索引类型可以具有特定于该类型的附加选项。
 
-> **重要**<br />
+> **重要**
+>
 > 为 db.collection.createIndexes()指定选项时，这些选项适用于所有指定的索引。对于 example，如果指定了排序规则选项，则所有创建的索引都将包含该排序规则。
 > 如果尝试使用不兼容的选项创建索引，db.collection.createIndexes()将_return 错误。有关更多信息，请参阅选项说明。
 
@@ -52,7 +53,7 @@ db.collection.createIndexes()是createIndexes命令周围的 wrapper。
 | `background`              | boolean  | 可选的。在后台构建索引，以便操作不会阻止其他数据库活动。在后台指定`true`到 build。默认的 value 是`false`。 |
 | `unique`                  | boolean  | 可选的。指定`keyPatterns` array 中指定的每个索引都是独特的指数。唯一索引不接受索引 key value 与索引中现有 value 匹配的文档的插入或更新。 <br/>指定`true`以创建唯一索引。默认的 value 是`false`。 <br/>该选项不适用于哈希索引。 |
 | `name`                    | string   | 可选的。索引的 name。如果未指定，MongoDB 通过连接索引字段和 sort order 的名称来生成索引 name。 <br/>无论是用户指定还是生成 MongoDB，索引名称(包括其完整命名空间(即：`database.collection`))都不能超过索引名称限制。 <br/>为db.collection.createIndexes指定的选项适用于 key pattern array 中包含的所有**索引规范**。由于索引名称必须是唯一的，因此如果使用db.collection.createIndexes创建单个索引，则只能指定 name。 |
-| `partialFilterExpression` | document | 可选的。如果指定，则仅索引 reference 文档匹配过滤器表达式。有关更多信息，请参见部分索引。 <br/>过滤器表达式可以包括：<br/>等式表达式(i.e.`field: value`或使用$eq operator)，<br/> $exists：true表达式，<br/> $gt，$gte，$lt，$lte表达式，<br/> $type表达式，<br/> $and operator 仅 top-level <br/>您可以指定所有 MongoDB 索引类型的`partialFilterExpression`选项。 <br/> version 3.2 中的新内容。 |
+| `partialFilterExpression` | document | 可选的。如果指定，则仅索引 reference 文档匹配过滤器表达式。有关更多信息，请参见部分索引。 <br/>过滤器表达式可以包括：<br/>等式表达式(即.`field: value`或使用`$eq` operator)，<br/> $exists：true表达式，<br/> $gt，$gte，$lt，$lte表达式，<br/> $type表达式，<br/> $and operator 仅 top-level <br/>您可以指定所有 MongoDB 索引类型的`partialFilterExpression`选项。 <br/> version 3.2 中的新内容。 |
 | `sparse`                  | boolean  | 可选的。如果是`true`，索引只有 reference 文件带有指定的字段。这些索引使用较少的空间，但在某些情况下(特别是排序)表现不同。默认的 value 是`false`。有关更多信息，请参见稀疏索引。 <br/>在 version 3.2 中更改：从 MongoDB 3.2 开始，MongoDB 提供了创建部分索引的选项。部分索引提供了稀疏索引功能的超集。如果您使用 MongoDB 3.2 或更高版本，则部分索引应优先于稀疏索引。 <br/> version 2.6 中更改：2 dsphere索引默认为稀疏，并忽略此选项。对于包含`2dsphere` index key(s)的复合索引以及其他类型的键，只有`2dsphere`索引字段确定索引是否引用文档。 <br/> 2 d，geoHaystack和文本索引的行为与2 dsphere索引类似。 |
 | `expireAfterSeconds`      | integer  | 可选的。将 value(以秒为单位)指定为TTL，以控制 long MongoDB 如何保留此集合中的文档。有关此功能的更多信息，请参见通过设置 TTL 使集合中的数据过期。这仅适用于TTL索引。 |
 | `storageEngine`           | document | 可选的。允许用户为创建的索引配置存储引擎。 <br/> `storageEngine`选项应采用以下形式：<br/> `storageEngine: { <storage-engine-name>: <options> }` <br/>在验证 creating 索引时指定的存储引擎 configuration 选项，并在复制期间记录到OPLOG以支持具有使用不同存储引擎的成员的副本_set。 <br/> version 3.0 中的新内容。 |
@@ -71,7 +72,8 @@ db.collection.createIndexes()是createIndexes命令周围的 wrapper。
 *   2 d索引和
 
 *   geoHaystack索引。
-> **建议**<br />
+> **建议**
+>
 > 要在具有 non-simple 归类的集合上创建`text`，`2d`或`geoHaystack`索引，必须在创建索引时显式指定`{collation: {locale: "simple"} }`。
 
 #### 整理和索引使用
@@ -81,7 +83,8 @@ db.collection.createIndexes()是createIndexes命令周围的 wrapper。
 *   如果在创建索引时未指定排序规则，MongoDB 将使用集合的默认排序规则创建索引。
 
 *   如果在创建索引时指定了排序规则，MongoDB 将使用指定的排序规则创建索引。
-> **建议**<br />
+> **建议**
+>
 > 通过指定`1`或`2`的归类`strength`，可以创建 case-insensitive 索引。 `1`的整理`strength`的索引是变音符号和 case-insensitive。
 
 与其他索引选项不同，您可以使用不同的排序规则在同一 key(s) 上创建多个索引。要使用相同的 key pattern 但不同的排序规则创建索引，必须提供唯一的索引名称。
@@ -90,17 +93,19 @@ db.collection.createIndexes()是createIndexes命令周围的 wrapper。
 
 对于 example，集合`myColl`在 string 字段`category`上有一个索引，其中包含整理 locale `"fr"`。
 
-    db.myColl.createIndex( { category: 1 }, { collation: { locale: "fr" } } )
+```powershell
+db.myColl.createIndex( { category: 1 }, { collation: { locale: "fr" } } )
+```
 
 以下查询操作(指定与索引相同的排序规则)可以使用索引：
 
-```
+```powershell
 db.myColl.find( { category: "cafe" } ).collation( { locale: "fr" } )
 ```
 
 但是，以下查询操作(默认情况下使用“简单”二进制文件夹)无法使用索引：
 
-```
+```powershell
 db.myColl.find( { category: "cafe" } )
 ```
 
@@ -108,7 +113,7 @@ db.myColl.find( { category: "cafe" } )
 
 对于 example，集合`myColl`在数字字段`score`和`price`以及 string 字段`category`上具有复合索引;使用用于 string 比较的排序规则 locale `"fr"`创建索引：
 
-```
+```powershell
 db.myColl.createIndex(
     { score: 1, price: 1, category: 1 },
     { collation: { locale: "fr" } } )
@@ -116,14 +121,14 @@ db.myColl.createIndex(
 
 以下操作(使用`"simple"`二进制排序规则进行 string 比较)可以使用索引：
 
-```
+```powershell
 db.myColl.find( { score: 5 } ).sort( { price: 1 } )
 db.myColl.find( { score: 5, price: { $gt: NumberDecimal( "10" ) } } ).sort( { price: 1 } )
 ```
 
 以下操作在索引的`category`字段上使用`"simple"`二进制排序规则进行 string 比较，可以使用索引仅满足查询的`score: 5`部分：
 
-```
+```powershell
 db.myColl.find( { score: 5, category: "cafe" } )
 ```
 
@@ -209,7 +214,7 @@ db.myColl.find( { score: 5, category: "cafe" } )
 
 * `_id`默认情况下，通配符索引会忽略该字段。要将`_id`字段包含 在通配符索引中，必须在`wildcardProjection`文档中明确包含它：
 
-  ```
+  ```powershell
   {
     "wildcardProjection" : {
       "_id" : 1,
@@ -232,7 +237,8 @@ db.myColl.find( { score: 5, category: "cafe" } )
   * Hashed
   * Unique
 
-> **注意**<br />
+> **注意**
+>
 > 通配符索引与通配符文本索引不同并且不兼容 。通配符索引不能支持使用$text运算符的查询。
 
 有关通配符索引限制的完整文档，请参见 通配符索引限制。
@@ -241,14 +247,15 @@ db.myColl.find( { score: 5, category: "cafe" } )
 
 ## <span id="examples">例子</span>
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > db.collection.createIndex()用于各种索引规范的示例。
 
 ### 创建没有选项的索引
 
 考虑包含类似于以下内容的文档的`restaurants`集合：
 
-```
+```powershell
 {
     location: {
         type: "Point",
@@ -262,7 +269,7 @@ db.myColl.find( { score: 5, category: "cafe" } )
 
 以下 example 在`restaurants`集合上创建两个索引：`borough`字段上的升序索引和`location`字段上的2 dsphere索引。
 
-```
+```powershell
 db.restaurants.createIndexes([{"borough": 1}, {"location": "2dsphere"}])
 ```
 
@@ -270,7 +277,7 @@ db.restaurants.createIndexes([{"borough": 1}, {"location": "2dsphere"}])
 
 以下 example 在`products`集合上创建两个索引：`manufacturer`字段上的升序索引和`category`字段上的升序索引。两个索引都使用整理指定 locale `fr`和比较强度`2`：
 
-```
+```powershell
 db.products.createIndexes( [ { "manufacturer": 1}, { "category": 1 } ],
    { collation: { locale: "fr", strength: 2 } })
 ```
@@ -279,7 +286,7 @@ db.products.createIndexes( [ { "manufacturer": 1}, { "category": 1 } ],
 
 ### 创建一个通配符指数
 
-*新的4.2版：*该featureCompatibilityVersion必须创建通配符索引。有关设置fCV的说明，请参阅 在MongoDB 4.2部署上设置功能兼容版本。`mongod` `4.2`
+*新的4.2版：*`mongod`featureCompatibilityVersion必须是`4.2`创建通配符索引。有关设置fCV的说明，请参阅 在MongoDB 4.2部署上设置功能兼容版本。 
 
 有关通配符索引的完整文档，请参见 通配符索引。
 
@@ -294,7 +301,7 @@ db.products.createIndexes( [ { "manufacturer": 1}, { "category": 1 } ],
 
 考虑一个集合`products_catalog`，其中文档可能包含一个 `product_attributes`字段。该`product_attributes`字段可以包含任意嵌套的字段，包括嵌入式文档和数组：
 
-```
+```powershell
 {
   "_id" : ObjectId("5c1d358bf383fbee028aea0b"),
   "product_name" : "Blaster Gauntlet",
@@ -319,7 +326,7 @@ db.products.createIndexes( [ { "manufacturer": 1}, { "category": 1 } ],
 
 以下操作在`product_attributes`字段上创建通配符索引 ：
 
-```
+```powershell
 use inventory
 db.products_catalog.createIndexes(
   [ { "product_attributes.$**" : 1 } ]
@@ -330,20 +337,21 @@ db.products_catalog.createIndexes(
 
 通配符索引可以支持`product_attributes`对其嵌套字段之一或其嵌套字段进行任意单字段查询 ：
 
-```
+```powershell
 db.products_catalog.find( { "product_attributes.superFlight" : true } )
 db.products_catalog.find( { "product_attributes.maxSpeed" : { $gt : 20 } } )
 db.products_catalog.find( { "product_attributes.elements" : { $eq: "water" } } )
 ```
 
->**注意**<br />
+>**注意**
+>
 >特定于路径的通配符索引语法与该`wildcardProjection`选项不兼容 。有关更多信息，请参见参数文档。
 
 #### 在所有字段路径上创建通配符索引
 
 考虑一个集合`products_catalog`，其中文档可能包含一个 `product_attributes`字段。该`product_attributes`字段可以包含任意嵌套的字段，包括嵌入式文档和数组：
 
-```
+```powershell
 {
   "_id" : ObjectId("5c1d358bf383fbee028aea0b"),
   "product_name" : "Blaster Gauntlet",
@@ -368,7 +376,7 @@ db.products_catalog.find( { "product_attributes.elements" : { $eq: "water" } } )
 
 以下操作在所有标量字段（不包括`_id`字段）上创建通配符索引：
 
-```
+```powershell
 use inventory
 db.products_catalog.createIndexes(
   [ { "$**" : 1 } ]
@@ -379,19 +387,20 @@ db.products_catalog.createIndexes(
 
 创建的索引可以支持对集合中文档中任意字段的查询：
 
-```
+```powershell
 db.products_catalog.find( { "product_price" : { $lt : 25 } } )
 db.products_catalog.find( { "product_attributes.elements" : { $eq: "water" } } )
 ```
 
->**注意**<br />
->`_id`默认情况下，通配符索引会忽略该字段。要将`_id`字段包括 在通配符索引中，必须在`wildcardProjection`文档中明确包含它。有关更多信息，请参见参数文档。
+>**注意**
+>
+>\_id`默认情况下，通配符索引会忽略该字段。要将`_id`字段包括 在通配符索引中，必须在`wildcardProjection`文档中明确包含它。有关更多信息，请参见参数文档。
 
 #### 在多个特定字段路径上创建通配符索引
 
 考虑一个集合`products_catalog`，其中文档可能包含一个 `product_attributes`字段。该`product_attributes`字段可以包含任意嵌套的字段，包括嵌入式文档和数组：
 
-```
+```powershell
 {
   "_id" : ObjectId("5c1d358bf383fbee028aea0b"),
   "product_name" : "Blaster Gauntlet",
@@ -416,7 +425,7 @@ db.products_catalog.find( { "product_attributes.elements" : { $eq: "water" } } )
 
 以下操作将创建一个通配符索引，并使用该`wildcardProjection`选项在索引中仅包含`product_attributes.elements`和`product_attributes.resistance` 字段的标量值 。
 
-```
+```powershell
 use inventory
 db.products_catalog.createIndexes(
   [ { "$**" : 1 } ],
@@ -435,19 +444,20 @@ db.products_catalog.createIndexes(
 
 创建的索引可以支持对以下内容中包含的任何标量字段的查询`wildcardProjection`：
 
-```
+```powershell
 db.products_catalog.find( { "product_attributes.elements" : { $eq: "Water" } } )
 db.products_catalog.find( { "product_attributes.resistance" : "Bludgeoning" } )
 ```
 
->**注意**<br />
+>**注意**
+>
 >通配符索引不支持在`wildcardProjection`文档中混合包含和排除语句，*除非*明确包含该`_id`字段。有关更多信息 `wildcardProjection`，请参见参数文档。
 
 #### 创建一个排除多个特定字段路径的通配符索引
 
 考虑一个集合`products_catalog`，其中文档可能包含一个 `product_attributes`字段。该`product_attributes`字段可以包含任意嵌套的字段，包括嵌入式文档和数组：
 
-```
+```powershell
 {
   "_id" : ObjectId("5c1d358bf383fbee028aea0b"),
   "product_name" : "Blaster Gauntlet",
@@ -472,7 +482,7 @@ db.products_catalog.find( { "product_attributes.resistance" : "Bludgeoning" } )
 
 以下操作创建一个通配符指数，并使用`wildcardProjection`文件索引的所有标量场的每个文档的集合中，*排除*了 `product_attributes.elements`和`product_attributes.resistance` 字段：
 
-```
+```powershell
 use inventory
 db.products_catalog.createIndexes(
   [ { "$**" : 1 } ],
@@ -491,12 +501,13 @@ db.products_catalog.createIndexes(
 
 创建的索引可以支持对任何标量字段的查询，**但** 以下项除外`wildcardProjection`：
 
-```
+```powershell
 db.products_catalog.find( { "product_attributes.maxSpeed" : { $gt: 25 } } )
 db.products_catalog.find( { "product_attributes.superStrength" : true } )
 ```
 
->**注意**<br />
+>**注意**
+>
 >通配符索引不支持在`wildcardProjection`文档中混合包含和排除语句，*除非*明确包含该`_id`字段。有关更多信息 `wildcardProjection`，请参见参数文档。
 
 
