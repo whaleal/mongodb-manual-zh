@@ -57,11 +57,15 @@
                 
             
                 
-                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-alerts/style.css">
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-auto-scroll-table/website.css">
                 
             
                 
-                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-auto-scroll-table/website.css">
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-alerts/style.css">
                 
             
                 
@@ -1122,6 +1126,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.4.2.7" data-path="Map-Reduce-to-Aggregation-Pipeline.html">
+            
+                <a href="Map-Reduce-to-Aggregation-Pipeline.html">
+            
+                    
+                    Map-Reduce to Aggregation Pipeline
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -2158,7 +2175,7 @@
                 <a href="../../Security/Appendix/Appendix-A-OpenSSL-CA-Certificate-for-Testing.html">
             
                     
-                    Appendix A - OpenSSL CA Certificate for Testing
+                    Appendix-A-OpenSSL CA Certificate for Testing
             
                 </a>
             
@@ -2166,14 +2183,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.7.2" >
+        <li class="chapter " data-level="1.8.7.2" data-path="../../Security/Appendix/Appendix-B-OpenSSL-Server-Certificates-for-Testing.html">
             
-                <span>
+                <a href="../../Security/Appendix/Appendix-B-OpenSSL-Server-Certificates-for-Testing.html">
             
                     
-                    [Appendix B - OpenSSL Server Certificates for Testing](docs/Security/Appendix/Appendix-B-OpenSSL-Server-Certificates-for-Testing.md）
+                    Appendix-B-OpenSSL-Server-Certificates-for-Testing
             
-                </span>
+                </a>
             
 
             
@@ -2184,7 +2201,7 @@
                 <a href="../../Security/Appendix/Appendix-C-OpenSSL-Client-Certificates-for-Testing.html">
             
                     
-                    Appendix C - OpenSSL Client Certificates for Testing
+                    Appendix-C-OpenSSL Client Certificates for Testing
             
                 </a>
             
@@ -4691,128 +4708,141 @@
 <p><a href=""></a></p>
 <h2 id="&#x6570;&#x636E;&#x8BBE;&#x7F6E;"><span id="data-setup">&#x6570;&#x636E;&#x8BBE;&#x7F6E;</span></h2>
 <p><code>sessions</code>&#x96C6;&#x5408;&#x5305;&#x542B; log &#x7528;&#x6237;&#x6BCF;&#x5929;&#x4F1A;&#x8BDD;&#x7684;&#x6587;&#x6863;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
-<pre><code>db.sessions.save( { userid: &quot;a&quot;, ts: ISODate(&apos;2011-11-03 14:17:00&apos;), length: 95 } );
-db.sessions.save( { userid: &quot;b&quot;, ts: ISODate(&apos;2011-11-03 14:23:00&apos;), length: 110 } );
-db.sessions.save( { userid: &quot;c&quot;, ts: ISODate(&apos;2011-11-03 15:02:00&apos;), length: 120 } );
-db.sessions.save( { userid: &quot;d&quot;, ts: ISODate(&apos;2011-11-03 16:45:00&apos;), length: 45 } );
+<pre><code class="lang-powershell">db.sessions.save( { userid: <span class="hljs-string">&quot;a&quot;</span>, ts: ISODate(<span class="hljs-string">&apos;2011-11-03 14:17:00&apos;</span>), length: <span class="hljs-number">95</span> } );
+db.sessions.save( { userid: <span class="hljs-string">&quot;b&quot;</span>, ts: ISODate(<span class="hljs-string">&apos;2011-11-03 14:23:00&apos;</span>), length: <span class="hljs-number">110</span> } );
+db.sessions.save( { userid: <span class="hljs-string">&quot;c&quot;</span>, ts: ISODate(<span class="hljs-string">&apos;2011-11-03 15:02:00&apos;</span>), length: <span class="hljs-number">120</span> } );
+db.sessions.save( { userid: <span class="hljs-string">&quot;d&quot;</span>, ts: ISODate(<span class="hljs-string">&apos;2011-11-03 16:45:00&apos;</span>), length: <span class="hljs-number">45</span> } );
 
-db.sessions.save( { userid: &quot;a&quot;, ts: ISODate(&apos;2011-11-04 11:05:00&apos;), length: 105 } );
-db.sessions.save( { userid: &quot;b&quot;, ts: ISODate(&apos;2011-11-04 13:14:00&apos;), length: 120 } );
-db.sessions.save( { userid: &quot;c&quot;, ts: ISODate(&apos;2011-11-04 17:00:00&apos;), length: 130 } );
-db.sessions.save( { userid: &quot;d&quot;, ts: ISODate(&apos;2011-11-04 15:37:00&apos;), length: 65 } );
-</code></pre><p><a href=""></a></p>
+db.sessions.save( { userid: <span class="hljs-string">&quot;a&quot;</span>, ts: ISODate(<span class="hljs-string">&apos;2011-11-04 11:05:00&apos;</span>), length: <span class="hljs-number">105</span> } );
+db.sessions.save( { userid: <span class="hljs-string">&quot;b&quot;</span>, ts: ISODate(<span class="hljs-string">&apos;2011-11-04 13:14:00&apos;</span>), length: <span class="hljs-number">120</span> } );
+db.sessions.save( { userid: <span class="hljs-string">&quot;c&quot;</span>, ts: ISODate(<span class="hljs-string">&apos;2011-11-04 17:00:00&apos;</span>), length: <span class="hljs-number">130</span> } );
+db.sessions.save( { userid: <span class="hljs-string">&quot;d&quot;</span>, ts: ISODate(<span class="hljs-string">&apos;2011-11-04 15:37:00&apos;</span>), length: <span class="hljs-number">65</span> } );
+</code></pre>
+<p><a href=""></a></p>
 <h2 id="&#x5F53;&#x524D;&#x96C6;&#x5408;&#x7684;&#x521D;&#x59CB;-map-reduce"><span id="initial-map-reduce-of-current-collection">&#x5F53;&#x524D;&#x96C6;&#x5408;&#x7684;&#x521D;&#x59CB; Map-Reduce</span></h2>
 <p>&#x8FD0;&#x884C;&#x7B2C;&#x4E00;&#x4E2A; map-reduce &#x64CD;&#x4F5C;&#x5982;&#x4E0B;&#xFF1A;</p>
 <ul>
 <li><p>&#x5B9A;&#x4E49; map function _&#x5C06;<code>userid</code>&#x6620;&#x5C04;&#x5230;&#x5305;&#x542B;&#x5B57;&#x6BB5;<code>userid</code>&#xFF0C;<code>total_time</code>&#xFF0C;<code>count</code>&#x548C;<code>avg_time</code>&#x7684; object&#xFF1A;</p>
-<pre><code>var mapFunction = function() {
+<pre><code class="lang-powershell">var mapFunction = <span class="hljs-keyword">function</span>() {
     var key = this.userid;
     var value = {
         userid: this.userid,
         total_time: this.length,
-        count: 1,
-        avg_time: 0
+        count: <span class="hljs-number">1</span>,
+        avg_time: <span class="hljs-number">0</span>
     };
     emit( key, value );
 };
-</code></pre></li>
+</code></pre>
+</li>
 <li><p>&#x4F7F;&#x7528;&#x4E24;&#x4E2A; arguments <code>key</code>&#x548C;<code>values</code>&#x5B9A;&#x4E49;&#x76F8;&#x5E94;&#x7684; reduce function &#x4EE5;&#x8BA1;&#x7B97;&#x603B; time &#x548C;&#x8BA1;&#x6570;&#x3002; <code>key</code>&#x5BF9;&#x5E94;&#x4E8E;<code>userid</code>&#xFF0C;<code>values</code>&#x662F; array&#xFF0C;&#x5176;&#x5143;&#x7D20;&#x5BF9;&#x5E94;&#x4E8E;&#x6620;&#x5C04;&#x5230;<code>mapFunction</code>&#x4E2D;<code>userid</code>&#x7684;&#x5404;&#x4E2A; object&#x3002;</p>
-<pre><code>var reduceFunction = function(key, values) {
+<pre><code class="lang-powershell">var reduceFunction = <span class="hljs-keyword">function</span>(key, values) {
     var reducedObject = {
         userid: key,
-        total_time: 0,
-        count:0,
-        avg_time:0
+        total_time: <span class="hljs-number">0</span>,
+        count:<span class="hljs-number">0</span>,
+        avg_time:<span class="hljs-number">0</span>
     };
 
-    values.forEach( function(value) {
+    values.forEach( <span class="hljs-keyword">function</span>(value) {
         reducedObject.total_time += value.total_time;
         reducedObject.count += value.count;
     });
-    return reducedObject;
+    <span class="hljs-keyword">return</span> reducedObject;
 };
-</code></pre></li>
+</code></pre>
+</li>
 <li><p>&#x4F7F;&#x7528;&#x4E24;&#x4E2A; arguments <code>key</code>&#x548C;<code>reducedValue</code>&#x5B9A;&#x4E49; finalize function&#x3002; function &#x4FEE;&#x6539;<code>reducedValue</code>&#x6587;&#x6863;&#x4EE5;&#x6DFB;&#x52A0;&#x53E6;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;<code>average</code>&#x5E76;&#x8FD4;&#x56DE;&#x4FEE;&#x6539;&#x540E;&#x7684;&#x6587;&#x6863;&#x3002;</p>
-<pre><code>var finalizeFunction = function (key, reducedValue) {
-    if (reducedValue.count &gt; 0)
+<pre><code class="lang-powershell">var finalizeFunction = <span class="hljs-keyword">function</span> (key, reducedValue) {
+    <span class="hljs-keyword">if</span> (reducedValue.count &gt; <span class="hljs-number">0</span>)
         reducedValue.avg_time = reducedValue.total_time / reducedValue.count;
 
-    return reducedValue;
+    <span class="hljs-keyword">return</span> reducedValue;
 };
-</code></pre></li>
+</code></pre>
+</li>
 <li><p>&#x4F7F;&#x7528;<code>mapFunction</code>&#xFF0C;<code>reduceFunction</code>&#x548C;<code>finalizeFunction</code>&#x51FD;&#x6570;&#x5728;<code>session</code>&#x96C6;&#x5408;&#x4E0A;&#x6267;&#x884C; map-reduce&#x3002;&#x5C06;&#x7ED3;&#x679C;&#x8F93;&#x51FA;&#x5230;&#x96C6;&#x5408;<code>session_stat</code>&#x3002;&#x5982;&#x679C;<code>session_stat</code>&#x96C6;&#x5408;&#x5DF2;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x64CD;&#x4F5C;&#x5C06;&#x66FF;&#x6362;&#x5185;&#x5BB9;&#xFF1A;</p>
-<pre><code>db.sessions.mapReduce( mapFunction,
+<pre><code class="lang-powershell">db.sessions.mapReduce( mapFunction,
     reduceFunction,
     {
-        out: &quot;session_stat&quot;,
+        out: <span class="hljs-string">&quot;session_stat&quot;</span>,
         finalize: finalizeFunction
     }
 )
-</code></pre></li>
+</code></pre>
+</li>
 </ul>
 <ul>
 <li><p>&#x67E5;&#x8BE2;<code>session_stats</code>&#x96C6;&#x5408;&#x4EE5;&#x9A8C;&#x8BC1;&#x7ED3;&#x679C;&#xFF1A;</p>
-<pre><code>db.session_stats.find().sort( { _id: 1 } )
-</code></pre><p>&#x8BE5;&#x64CD;&#x4F5C;&#x8FD4;&#x56DE;&#x4EE5;&#x4E0B;&#x6587;&#x6863;&#xFF1A;</p>
-<pre><code>{ &quot;_id&quot; : &quot;a&quot;, &quot;value&quot; : { &quot;total_time&quot; : 200, &quot;count&quot; : 2, &quot;avg_time&quot; : 100 } }
-{ &quot;_id&quot; : &quot;b&quot;, &quot;value&quot; : { &quot;total_time&quot; : 230, &quot;count&quot; : 2, &quot;avg_time&quot; : 115 } }
-{ &quot;_id&quot; : &quot;c&quot;, &quot;value&quot; : { &quot;total_time&quot; : 250, &quot;count&quot; : 2, &quot;avg_time&quot; : 125 } }
-{ &quot;_id&quot; : &quot;d&quot;, &quot;value&quot; : { &quot;total_time&quot; : 110, &quot;count&quot; : 2, &quot;avg_time&quot; : 55 } }
-</code></pre></li>
+<pre><code class="lang-powershell">db.session_stats.find().sort( { _id: <span class="hljs-number">1</span> } )
+</code></pre>
+<p>&#x8BE5;&#x64CD;&#x4F5C;&#x8FD4;&#x56DE;&#x4EE5;&#x4E0B;&#x6587;&#x6863;&#xFF1A;</p>
+<pre><code class="lang-powershell">{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;value&quot;</span> : { <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">200</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">2</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">100</span> } }
+{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;value&quot;</span> : { <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">230</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">2</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">115</span> } }
+{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;value&quot;</span> : { <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">250</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">2</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">125</span> } }
+{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;d&quot;</span>, <span class="hljs-string">&quot;value&quot;</span> : { <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">110</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">2</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">55</span> } }
+</code></pre>
+</li>
 </ul>
 <p><a href=""></a></p>
 <h2 id="&#x540E;&#x7EED;&#x589E;&#x91CF;-map-reduce"><span id="subsequent-incremental-map-reduce">&#x540E;&#x7EED;&#x589E;&#x91CF; Map-Reduce</span></h2>
 <p>&#x4E4B;&#x540E;&#xFF0C;&#x968F;&#x7740;<code>sessions</code>&#x96C6;&#x5408;&#x7684;&#x589E;&#x957F;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x5176;&#x4ED6; map-reduce &#x64CD;&#x4F5C;&#x3002;&#x5BF9;&#x4E8E; example&#xFF0C;&#x5C06;&#x65B0;&#x6587;&#x6863;&#x6DFB;&#x52A0;&#x5230;<code>sessions</code>&#x96C6;&#x5408;&#xFF1A;</p>
-<pre><code>db.sessions.save( { userid: &quot;a&quot;, ts: ISODate(&apos;2011-11-05 14:17:00&apos;), length: 100 } );
-db.sessions.save( { userid: &quot;b&quot;, ts: ISODate(&apos;2011-11-05 14:23:00&apos;), length: 115 } );
-db.sessions.save( { userid: &quot;c&quot;, ts: ISODate(&apos;2011-11-05 15:02:00&apos;), length: 125 } );
-db.sessions.save( { userid: &quot;d&quot;, ts: ISODate(&apos;2011-11-05 16:45:00&apos;), length: 55 } );
-</code></pre><p>&#x6700;&#x7EC8;&#xFF0C;&#x5BF9;<code>usersessions</code>&#x96C6;&#x5408;&#x6267;&#x884C;&#x589E;&#x91CF;map-reduce &#xFF0C;&#x4F46;&#x4F7F;&#x7528;&#x8BE5;<code>query</code>&#x5B57;&#x6BB5;&#x4EC5;&#x9009;&#x62E9;&#x65B0;&#x6587;&#x6863;&#x3002;&#x5C06;&#x7ED3;&#x679C;&#x8F93;&#x51FA;&#x5230;collection <code>session_stats</code>&#xFF0C;&#x4F46;&#x662F;<code>reduce</code>&#x5C06;&#x5185;&#x5BB9;&#x4E0E;&#x589E;&#x91CF;map-reduce&#x7684;&#x7ED3;&#x679C;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#xFF1A;</p>
-<pre><code>db.usersessions.mapReduce(
+<pre><code class="lang-powershell">db.sessions.save( { userid: <span class="hljs-string">&quot;a&quot;</span>, ts: ISODate(<span class="hljs-string">&apos;2011-11-05 14:17:00&apos;</span>), length: <span class="hljs-number">100</span> } );
+db.sessions.save( { userid: <span class="hljs-string">&quot;b&quot;</span>, ts: ISODate(<span class="hljs-string">&apos;2011-11-05 14:23:00&apos;</span>), length: <span class="hljs-number">115</span> } );
+db.sessions.save( { userid: <span class="hljs-string">&quot;c&quot;</span>, ts: ISODate(<span class="hljs-string">&apos;2011-11-05 15:02:00&apos;</span>), length: <span class="hljs-number">125</span> } );
+db.sessions.save( { userid: <span class="hljs-string">&quot;d&quot;</span>, ts: ISODate(<span class="hljs-string">&apos;2011-11-05 16:45:00&apos;</span>), length: <span class="hljs-number">55</span> } );
+</code></pre>
+<p>&#x6700;&#x7EC8;&#xFF0C;&#x5BF9;<code>usersessions</code>&#x96C6;&#x5408;&#x6267;&#x884C;&#x589E;&#x91CF;map-reduce &#xFF0C;&#x4F46;&#x4F7F;&#x7528;&#x8BE5;<code>query</code>&#x5B57;&#x6BB5;&#x4EC5;&#x9009;&#x62E9;&#x65B0;&#x6587;&#x6863;&#x3002;&#x5C06;&#x7ED3;&#x679C;&#x8F93;&#x51FA;&#x5230;collection <code>session_stats</code>&#xFF0C;&#x4F46;&#x662F;<code>reduce</code>&#x5C06;&#x5185;&#x5BB9;&#x4E0E;&#x589E;&#x91CF;map-reduce&#x7684;&#x7ED3;&#x679C;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#xFF1A;</p>
+<pre><code class="lang-powershell">db.usersessions.mapReduce(
    mapFunction,
    reduceFunction,
    {
-     query: { ts: { $gte: ISODate(&apos;2020-03-05 00:00:00&apos;) } },
-     out: { reduce: &quot;session_stats&quot; },
+     query: { ts: { <span class="hljs-variable">$gte:</span> ISODate(<span class="hljs-string">&apos;2020-03-05 00:00:00&apos;</span>) } },
+     out: { reduce: <span class="hljs-string">&quot;session_stats&quot;</span> },
      finalize: finalizeFunction
    }
 );
-</code></pre><p>&#x67E5;&#x8BE2;<code>session_stats</code>&#x96C6;&#x5408;&#x4EE5;&#x9A8C;&#x8BC1;&#x7ED3;&#x679C;&#xFF1A;</p>
-<pre><code>db.session_stats.find().sort( { _id: 1 } )
-</code></pre><p>&#x8BE5;&#x64CD;&#x4F5C;&#x8FD4;&#x56DE;&#x4EE5;&#x4E0B;&#x6587;&#x6863;&#xFF1A;</p>
-<pre><code>{ &quot;_id&quot; : &quot;a&quot;, &quot;value&quot; : { &quot;total_time&quot; : 330, &quot;count&quot; : 3, &quot;avg_time&quot; : 110 } }
-{ &quot;_id&quot; : &quot;b&quot;, &quot;value&quot; : { &quot;total_time&quot; : 270, &quot;count&quot; : 3, &quot;avg_time&quot; : 90 } }
-{ &quot;_id&quot; : &quot;c&quot;, &quot;value&quot; : { &quot;total_time&quot; : 360, &quot;count&quot; : 3, &quot;avg_time&quot; : 120 } }
-{ &quot;_id&quot; : &quot;d&quot;, &quot;value&quot; : { &quot;total_time&quot; : 210, &quot;count&quot; : 3, &quot;avg_time&quot; : 70 } }
-</code></pre><h2 id="&#x805A;&#x5408;&#x66FF;&#x4EE3;">&#x805A;&#x5408;&#x66FF;&#x4EE3;</h2>
+</code></pre>
+<p>&#x67E5;&#x8BE2;<code>session_stats</code>&#x96C6;&#x5408;&#x4EE5;&#x9A8C;&#x8BC1;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-powershell">db.session_stats.find().sort( { _id: <span class="hljs-number">1</span> } )
+</code></pre>
+<p>&#x8BE5;&#x64CD;&#x4F5C;&#x8FD4;&#x56DE;&#x4EE5;&#x4E0B;&#x6587;&#x6863;&#xFF1A;</p>
+<pre><code class="lang-powershell">{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;value&quot;</span> : { <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">330</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">3</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">110</span> } }
+{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;value&quot;</span> : { <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">270</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">3</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">90</span> } }
+{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;value&quot;</span> : { <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">360</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">3</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">120</span> } }
+{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;d&quot;</span>, <span class="hljs-string">&quot;value&quot;</span> : { <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">210</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">3</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">70</span> } }
+</code></pre>
+<h2 id="&#x805A;&#x5408;&#x66FF;&#x4EE3;">&#x805A;&#x5408;&#x66FF;&#x4EE3;</h2>
 <p>&#x524D;&#x63D0;&#x6761;&#x4EF6;&#xFF1A;&#x5C06;&#x96C6;&#x5408;&#x8BBE;&#x7F6E;&#x4E3A;&#x539F;&#x59CB;&#x72B6;&#x6001;&#xFF1A;</p>
-<pre><code>db.usersessions.drop();
+<pre><code class="lang-powershell">db.usersessions.drop();
 
 db.usersessions.insertMany([
-   { userid: &quot;a&quot;, start: ISODate(&apos;2020-03-03 14:17:00&apos;), length: 95 },
-   { userid: &quot;b&quot;, start: ISODate(&apos;2020-03-03 14:23:00&apos;), length: 110 },
-   { userid: &quot;c&quot;, start: ISODate(&apos;2020-03-03 15:02:00&apos;), length: 120 },
-   { userid: &quot;d&quot;, start: ISODate(&apos;2020-03-03 16:45:00&apos;), length: 45 },
-   { userid: &quot;a&quot;, start: ISODate(&apos;2020-03-04 11:05:00&apos;), length: 105 },
-   { userid: &quot;b&quot;, start: ISODate(&apos;2020-03-04 13:14:00&apos;), length: 120 },
-   { userid: &quot;c&quot;, start: ISODate(&apos;2020-03-04 17:00:00&apos;), length: 130 },
-   { userid: &quot;d&quot;, start: ISODate(&apos;2020-03-04 15:37:00&apos;), length: 65 }
+   { userid: <span class="hljs-string">&quot;a&quot;</span>, start: ISODate(<span class="hljs-string">&apos;2020-03-03 14:17:00&apos;</span>), length: <span class="hljs-number">95</span> },
+   { userid: <span class="hljs-string">&quot;b&quot;</span>, start: ISODate(<span class="hljs-string">&apos;2020-03-03 14:23:00&apos;</span>), length: <span class="hljs-number">110</span> },
+   { userid: <span class="hljs-string">&quot;c&quot;</span>, start: ISODate(<span class="hljs-string">&apos;2020-03-03 15:02:00&apos;</span>), length: <span class="hljs-number">120</span> },
+   { userid: <span class="hljs-string">&quot;d&quot;</span>, start: ISODate(<span class="hljs-string">&apos;2020-03-03 16:45:00&apos;</span>), length: <span class="hljs-number">45</span> },
+   { userid: <span class="hljs-string">&quot;a&quot;</span>, start: ISODate(<span class="hljs-string">&apos;2020-03-04 11:05:00&apos;</span>), length: <span class="hljs-number">105</span> },
+   { userid: <span class="hljs-string">&quot;b&quot;</span>, start: ISODate(<span class="hljs-string">&apos;2020-03-04 13:14:00&apos;</span>), length: <span class="hljs-number">120</span> },
+   { userid: <span class="hljs-string">&quot;c&quot;</span>, start: ISODate(<span class="hljs-string">&apos;2020-03-04 17:00:00&apos;</span>), length: <span class="hljs-number">130</span> },
+   { userid: <span class="hljs-string">&quot;d&quot;</span>, start: ISODate(<span class="hljs-string">&apos;2020-03-04 15:37:00&apos;</span>), length: <span class="hljs-number">65</span> }
 ])
-</code></pre><p>&#x4F7F;&#x7528;&#x53EF;&#x7528;&#x7684;&#x805A;&#x5408;&#x7BA1;&#x9053;&#x8FD0;&#x7B97;&#x7B26;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x91CD;&#x5199;map-reduce&#x793A;&#x4F8B;&#xFF0C;&#x800C;&#x65E0;&#x9700;&#x5B9A;&#x4E49;&#x81EA;&#x5B9A;&#x4E49;&#x51FD;&#x6570;&#xFF1A;</p>
-<pre><code>db.usersessions.aggregate([
-   { $group: { _id: &quot;$userid&quot;, total_time: { $sum: &quot;$length&quot; }, count: { $sum: 1 }, avg_time: { $avg: &quot;$length&quot; } } },
-   { $project: { value: { total_time: &quot;$total_time&quot;, count: &quot;$count&quot;, avg_time: &quot;$avg_time&quot; } } },
-   { $merge: {
-      into: &quot;session_stats_agg&quot;,
-      whenMatched: [ { $set: {
-         &quot;value.total_time&quot;: { $add: [ &quot;$value.total_time&quot;, &quot;$$new.value.total_time&quot; ] },
-         &quot;value.count&quot;: { $add: [ &quot;$value.count&quot;, &quot;$$new.value.count&quot; ] },
-         &quot;value.avg&quot;: { $divide: [ { $add: [ &quot;$value.total_time&quot;, &quot;$$new.value.total_time&quot; ] },  { $add: [ &quot;$value.count&quot;, &quot;$$new.value.count&quot; ] } ] }
+</code></pre>
+<p>&#x4F7F;&#x7528;&#x53EF;&#x7528;&#x7684;&#x805A;&#x5408;&#x7BA1;&#x9053;&#x8FD0;&#x7B97;&#x7B26;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x91CD;&#x5199;map-reduce&#x793A;&#x4F8B;&#xFF0C;&#x800C;&#x65E0;&#x9700;&#x5B9A;&#x4E49;&#x81EA;&#x5B9A;&#x4E49;&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-powershell">db.usersessions.aggregate([
+   { <span class="hljs-variable">$group:</span> { _id: <span class="hljs-string">&quot;<span class="hljs-variable">$userid</span>&quot;</span>, total_time: { <span class="hljs-variable">$sum:</span> <span class="hljs-string">&quot;<span class="hljs-variable">$length</span>&quot;</span> }, count: { <span class="hljs-variable">$sum:</span> <span class="hljs-number">1</span> }, avg_time: { <span class="hljs-variable">$avg:</span> <span class="hljs-string">&quot;<span class="hljs-variable">$length</span>&quot;</span> } } },
+   { <span class="hljs-variable">$project:</span> { value: { total_time: <span class="hljs-string">&quot;<span class="hljs-variable">$total_time</span>&quot;</span>, count: <span class="hljs-string">&quot;<span class="hljs-variable">$count</span>&quot;</span>, avg_time: <span class="hljs-string">&quot;<span class="hljs-variable">$avg_time</span>&quot;</span> } } },
+   { <span class="hljs-variable">$merge:</span> {
+      into: <span class="hljs-string">&quot;session_stats_agg&quot;</span>,
+      whenMatched: [ { <span class="hljs-variable">$set:</span> {
+         <span class="hljs-string">&quot;value.total_time&quot;</span>: { <span class="hljs-variable">$add:</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$value</span>.total_time&quot;</span>, <span class="hljs-string">&quot;$<span class="hljs-variable">$new</span>.value.total_time&quot;</span> ] },
+         <span class="hljs-string">&quot;value.count&quot;</span>: { <span class="hljs-variable">$add:</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$value</span>.count&quot;</span>, <span class="hljs-string">&quot;$<span class="hljs-variable">$new</span>.value.count&quot;</span> ] },
+         <span class="hljs-string">&quot;value.avg&quot;</span>: { <span class="hljs-variable">$divide:</span> [ { <span class="hljs-variable">$add:</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$value</span>.total_time&quot;</span>, <span class="hljs-string">&quot;$<span class="hljs-variable">$new</span>.value.total_time&quot;</span> ] },  { <span class="hljs-variable">$add:</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$value</span>.count&quot;</span>, <span class="hljs-string">&quot;$<span class="hljs-variable">$new</span>.value.count&quot;</span> ] } ] }
       } } ],
-      whenNotMatched: &quot;insert&quot;
+      whenNotMatched: <span class="hljs-string">&quot;insert&quot;</span>
    }}
 ])
-</code></pre><ol>
+</code></pre>
+<ol>
 <li><p>&#x901A;&#x8FC7;<code>userid</code><a href=""><code>$group</code></a>&#xFF0C;&#x5F97;&#x51FA;&#xFF1A;</p>
 <ul>
 <li><code>total_time</code>&#x4F7F;&#x7528;<code>$sum</code>&#x64CD;&#x4F5C;</li>
@@ -4820,79 +4850,89 @@ db.usersessions.insertMany([
 <li><code>avg_time</code>&#x4F7F;&#x7528;<a href=""><code>$avg</code></a>&#x64CD;&#x4F5C;</li>
 </ul>
 <p>&#x8BE5;&#x64CD;&#x4F5C;&#x8FD4;&#x56DE;&#x4EE5;&#x4E0B;&#x6587;&#x6863;&#xFF1A;</p>
-<pre><code>{ &quot;_id&quot; : &quot;c&quot;, &quot;total_time&quot; : 250, &quot;count&quot; : 2, &quot;avg_time&quot; : 125 }
-{ &quot;_id&quot; : &quot;d&quot;, &quot;total_time&quot; : 110, &quot;count&quot; : 2, &quot;avg_time&quot; : 55 }
-{ &quot;_id&quot; : &quot;a&quot;, &quot;total_time&quot; : 200, &quot;count&quot; : 2, &quot;avg_time&quot; : 100 }
-{ &quot;_id&quot; : &quot;b&quot;, &quot;total_time&quot; : 230, &quot;count&quot; : 2, &quot;avg_time&quot; : 115 }
-</code></pre></li>
+<pre><code class="lang-powershell">{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">250</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">2</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">125</span> }
+{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;d&quot;</span>, <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">110</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">2</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">55</span> }
+{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">200</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">2</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">100</span> }
+{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">230</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">2</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">115</span> }
+</code></pre>
+</li>
 <li><p>&#x8BE5;<a href=""><code>$project</code></a>&#x9636;&#x6BB5;&#x8C03;&#x6574;&#x8F93;&#x51FA;&#x6587;&#x6863;&#x7684;&#x5F62;&#x72B6;&#x4EE5;&#x53CD;&#x6620;map-reduce&#x7684;&#x8F93;&#x51FA;&#xFF0C;&#x8BE5;&#x8F93;&#x51FA;&#x5177;&#x6709;&#x4E24;&#x4E2A;&#x5B57;&#x6BB5;<code>_id</code>&#x548C; <code>value</code>&#x3002;&#x5982;&#x679C;&#x4E0D;&#x9700;&#x8981;&#x955C;&#x50CF;<code>_id</code>and <code>value</code>&#x7ED3;&#x6784;&#xFF0C;&#x5219;&#x8BE5;&#x9636;&#x6BB5;&#x662F;&#x53EF;&#x9009;&#x7684; &#x3002;</p>
-<pre><code>{ &quot;_id&quot; : &quot;a&quot;, &quot;value&quot; : { &quot;total_time&quot; : 200, &quot;count&quot; : 2, &quot;avg_time&quot; : 100 } }
-{ &quot;_id&quot; : &quot;d&quot;, &quot;value&quot; : { &quot;total_time&quot; : 110, &quot;count&quot; : 2, &quot;avg_time&quot; : 55 } }
-{ &quot;_id&quot; : &quot;b&quot;, &quot;value&quot; : { &quot;total_time&quot; : 230, &quot;count&quot; : 2, &quot;avg_time&quot; : 115 } }
-{ &quot;_id&quot; : &quot;c&quot;, &quot;value&quot; : { &quot;total_time&quot; : 250, &quot;count&quot; : 2, &quot;avg_time&quot; : 125 } }
-</code></pre></li>
+<pre><code class="lang-powershell">{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;value&quot;</span> : { <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">200</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">2</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">100</span> } }
+{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;d&quot;</span>, <span class="hljs-string">&quot;value&quot;</span> : { <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">110</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">2</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">55</span> } }
+{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;value&quot;</span> : { <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">230</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">2</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">115</span> } }
+{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;value&quot;</span> : { <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">250</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">2</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">125</span> } }
+</code></pre>
+</li>
 <li><p>&#x8BE5;<a href=""><code>$merge</code></a>&#x9636;&#x6BB5;&#x5C06;&#x7ED3;&#x679C;&#x8F93;&#x51FA;&#x5230; <code>session_stats_agg</code>&#x96C6;&#x5408;&#x3002;&#x5982;&#x679C;&#x73B0;&#x6709;&#x6587;&#x6863;<code>_id</code>&#x4E0E;&#x65B0;&#x7ED3;&#x679C;&#x76F8;&#x540C;&#xFF0C;&#x5219;&#x8BE5;&#x64CD;&#x4F5C;&#x5C06;&#x5E94;&#x7528;&#x6307;&#x5B9A;&#x7684;&#x7BA1;&#x9053;&#xFF0C;&#x4EE5;&#x6839;&#x636E;&#x7ED3;&#x679C;&#x548C;&#x73B0;&#x6709;&#x6587;&#x6863;&#x8BA1;&#x7B97;total_time&#xFF0C;count&#x548C;avg_time&#x3002;&#x5982;&#x679C;&#x662F;&#x76F8;&#x540C;&#x7684;&#xFF0C;&#x73B0;&#x6709;&#x7684;&#x6587;&#x6863;<code>_id</code>&#x4E2D;<code>session_stats_agg</code>&#xFF0C;&#x64CD;&#x4F5C;&#x63D2;&#x5165;&#x6587;&#x6863;&#x3002;</p>
 </li>
 <li><p>&#x67E5;&#x8BE2;<code>session_stats_agg</code>&#x96C6;&#x5408;&#x4EE5;&#x9A8C;&#x8BC1;&#x7ED3;&#x679C;&#xFF1A;</p>
-<pre><code>db.session_stats_agg.find().sort( { _id: 1 } )
-</code></pre><p>&#x8BE5;&#x64CD;&#x4F5C;&#x8FD4;&#x56DE;&#x4EE5;&#x4E0B;&#x6587;&#x6863;&#xFF1A;</p>
-<pre><code>{ &quot;_id&quot; : &quot;a&quot;, &quot;value&quot; : { &quot;total_time&quot; : 200, &quot;count&quot; : 2, &quot;avg_time&quot; : 100 } }
-{ &quot;_id&quot; : &quot;b&quot;, &quot;value&quot; : { &quot;total_time&quot; : 230, &quot;count&quot; : 2, &quot;avg_time&quot; : 115 } }
-{ &quot;_id&quot; : &quot;c&quot;, &quot;value&quot; : { &quot;total_time&quot; : 250, &quot;count&quot; : 2, &quot;avg_time&quot; : 125 } }
-{ &quot;_id&quot; : &quot;d&quot;, &quot;value&quot; : { &quot;total_time&quot; : 110, &quot;count&quot; : 2, &quot;avg_time&quot; : 55 } }
-</code></pre></li>
+<pre><code class="lang-powershell">db.session_stats_agg.find().sort( { _id: <span class="hljs-number">1</span> } )
+</code></pre>
+<p>&#x8BE5;&#x64CD;&#x4F5C;&#x8FD4;&#x56DE;&#x4EE5;&#x4E0B;&#x6587;&#x6863;&#xFF1A;</p>
+<pre><code class="lang-powershell">{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;value&quot;</span> : { <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">200</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">2</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">100</span> } }
+{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;value&quot;</span> : { <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">230</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">2</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">115</span> } }
+{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;value&quot;</span> : { <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">250</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">2</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">125</span> } }
+{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;d&quot;</span>, <span class="hljs-string">&quot;value&quot;</span> : { <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">110</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">2</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">55</span> } }
+</code></pre>
+</li>
 <li><p>&#x65B0;&#x6587;&#x6863;&#x6DFB;&#x52A0;&#x5230;<code>usersessions</code>&#x96C6;&#x5408;&#x4E2D;&#xFF1A;</p>
-<pre><code>db.usersessions.insertMany([
-   { userid: &quot;a&quot;, ts: ISODate(&apos;2020-03-05 14:17:00&apos;), length: 130 },
-   { userid: &quot;b&quot;, ts: ISODate(&apos;2020-03-05 14:23:00&apos;), length: 40 },
-   { userid: &quot;c&quot;, ts: ISODate(&apos;2020-03-05 15:02:00&apos;), length: 110 },
-   { userid: &quot;d&quot;, ts: ISODate(&apos;2020-03-05 16:45:00&apos;), length: 100 }
+<pre><code class="lang-powershell">db.usersessions.insertMany([
+   { userid: <span class="hljs-string">&quot;a&quot;</span>, ts: ISODate(<span class="hljs-string">&apos;2020-03-05 14:17:00&apos;</span>), length: <span class="hljs-number">130</span> },
+   { userid: <span class="hljs-string">&quot;b&quot;</span>, ts: ISODate(<span class="hljs-string">&apos;2020-03-05 14:23:00&apos;</span>), length: <span class="hljs-number">40</span> },
+   { userid: <span class="hljs-string">&quot;c&quot;</span>, ts: ISODate(<span class="hljs-string">&apos;2020-03-05 15:02:00&apos;</span>), length: <span class="hljs-number">110</span> },
+   { userid: <span class="hljs-string">&quot;d&quot;</span>, ts: ISODate(<span class="hljs-string">&apos;2020-03-05 16:45:00&apos;</span>), length: <span class="hljs-number">100</span> }
 ])
-</code></pre></li>
+</code></pre>
+</li>
 <li><p><a href=""><code>$match</code></a>&#x5728;&#x7BA1;&#x9053;&#x7684;&#x5F00;&#x5934;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x9636;&#x6BB5;&#x4EE5;&#x6307;&#x5B9A;&#x65E5;&#x671F;&#x8FC7;&#x6EE4;&#x5668;&#xFF1A;</p>
-<pre><code>db.usersessions.aggregate([
-   { $match: { ts: { $gte: ISODate(&apos;2020-03-05 00:00:00&apos;) } } },
-   { $group: { _id: &quot;$userid&quot;, total_time: { $sum: &quot;$length&quot; }, count: { $sum: 1 }, avg_time: { $avg: &quot;$length&quot; } } },
-   { $project: { value: { total_time: &quot;$total_time&quot;, count: &quot;$count&quot;, avg_time: &quot;$avg_time&quot; } } },
-   { $merge: {
-      into: &quot;session_stats_agg&quot;,
-      whenMatched: [ { $set: {
-         &quot;value.total_time&quot;: { $add: [ &quot;$value.total_time&quot;, &quot;$$new.value.total_time&quot; ] },
-         &quot;value.count&quot;: { $add: [ &quot;$value.count&quot;, &quot;$$new.value.count&quot; ] },
-         &quot;value.avg_time&quot;: { $divide: [ { $add: [ &quot;$value.total_time&quot;, &quot;$$new.value.total_time&quot; ] },  { $add: [ &quot;$value.count&quot;, &quot;$$new.value.count&quot; ] } ] }
+<pre><code class="lang-powershell">db.usersessions.aggregate([
+   { <span class="hljs-variable">$match:</span> { ts: { <span class="hljs-variable">$gte:</span> ISODate(<span class="hljs-string">&apos;2020-03-05 00:00:00&apos;</span>) } } },
+   { <span class="hljs-variable">$group:</span> { _id: <span class="hljs-string">&quot;<span class="hljs-variable">$userid</span>&quot;</span>, total_time: { <span class="hljs-variable">$sum:</span> <span class="hljs-string">&quot;<span class="hljs-variable">$length</span>&quot;</span> }, count: { <span class="hljs-variable">$sum:</span> <span class="hljs-number">1</span> }, avg_time: { <span class="hljs-variable">$avg:</span> <span class="hljs-string">&quot;<span class="hljs-variable">$length</span>&quot;</span> } } },
+   { <span class="hljs-variable">$project:</span> { value: { total_time: <span class="hljs-string">&quot;<span class="hljs-variable">$total_time</span>&quot;</span>, count: <span class="hljs-string">&quot;<span class="hljs-variable">$count</span>&quot;</span>, avg_time: <span class="hljs-string">&quot;<span class="hljs-variable">$avg_time</span>&quot;</span> } } },
+   { <span class="hljs-variable">$merge:</span> {
+      into: <span class="hljs-string">&quot;session_stats_agg&quot;</span>,
+      whenMatched: [ { <span class="hljs-variable">$set:</span> {
+         <span class="hljs-string">&quot;value.total_time&quot;</span>: { <span class="hljs-variable">$add:</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$value</span>.total_time&quot;</span>, <span class="hljs-string">&quot;$<span class="hljs-variable">$new</span>.value.total_time&quot;</span> ] },
+         <span class="hljs-string">&quot;value.count&quot;</span>: { <span class="hljs-variable">$add:</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$value</span>.count&quot;</span>, <span class="hljs-string">&quot;$<span class="hljs-variable">$new</span>.value.count&quot;</span> ] },
+         <span class="hljs-string">&quot;value.avg_time&quot;</span>: { <span class="hljs-variable">$divide:</span> [ { <span class="hljs-variable">$add:</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$value</span>.total_time&quot;</span>, <span class="hljs-string">&quot;$<span class="hljs-variable">$new</span>.value.total_time&quot;</span> ] },  { <span class="hljs-variable">$add:</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$value</span>.count&quot;</span>, <span class="hljs-string">&quot;$<span class="hljs-variable">$new</span>.value.count&quot;</span> ] } ] }
       } } ],
-      whenNotMatched: &quot;insert&quot;
+      whenNotMatched: <span class="hljs-string">&quot;insert&quot;</span>
    }}
 ])
-</code></pre></li>
+</code></pre>
+</li>
 <li><p>&#x67E5;&#x8BE2;<code>session_stats_agg</code>&#x96C6;&#x5408;&#x4EE5;&#x9A8C;&#x8BC1;&#x7ED3;&#x679C;&#xFF1A;</p>
-<pre><code>db.session_stats_agg.find().sort( { _id: 1 } )
-</code></pre><p>&#x8BE5;&#x64CD;&#x4F5C;&#x8FD4;&#x56DE;&#x4EE5;&#x4E0B;&#x6587;&#x6863;&#xFF1A;</p>
-<pre><code>{ &quot;_id&quot; : &quot;a&quot;, &quot;value&quot; : { &quot;total_time&quot; : 330, &quot;count&quot; : 3, &quot;avg_time&quot; : 110 } }
-{ &quot;_id&quot; : &quot;b&quot;, &quot;value&quot; : { &quot;total_time&quot; : 270, &quot;count&quot; : 3, &quot;avg_time&quot; : 90 } }
-{ &quot;_id&quot; : &quot;c&quot;, &quot;value&quot; : { &quot;total_time&quot; : 360, &quot;count&quot; : 3, &quot;avg_time&quot; : 120 } }
-{ &quot;_id&quot; : &quot;d&quot;, &quot;value&quot; : { &quot;total_time&quot; : 210, &quot;count&quot; : 3, &quot;avg_time&quot; : 70 } }
-</code></pre></li>
+<pre><code class="lang-powershell">db.session_stats_agg.find().sort( { _id: <span class="hljs-number">1</span> } )
+</code></pre>
+<p>&#x8BE5;&#x64CD;&#x4F5C;&#x8FD4;&#x56DE;&#x4EE5;&#x4E0B;&#x6587;&#x6863;&#xFF1A;</p>
+<pre><code class="lang-powershell">{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;value&quot;</span> : { <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">330</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">3</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">110</span> } }
+{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;value&quot;</span> : { <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">270</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">3</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">90</span> } }
+{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;value&quot;</span> : { <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">360</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">3</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">120</span> } }
+{ <span class="hljs-string">&quot;_id&quot;</span> : <span class="hljs-string">&quot;d&quot;</span>, <span class="hljs-string">&quot;value&quot;</span> : { <span class="hljs-string">&quot;total_time&quot;</span> : <span class="hljs-number">210</span>, <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">3</span>, <span class="hljs-string">&quot;avg_time&quot;</span> : <span class="hljs-number">70</span> } }
+</code></pre>
+</li>
 <li><p>&#x53EF;&#x9009;&#x7684;&#x3002;&#x4E3A;&#x4E86;&#x907F;&#x514D;<a href=""><code>$match</code></a>&#x6BCF;&#x6B21;&#x8FD0;&#x884C;&#x65F6;&#x90FD;&#x5FC5;&#x987B;&#x4FEE;&#x6539;&#x805A;&#x5408;&#x7BA1;&#x9053;&#x7684;&#x65E5;&#x671F;&#x6761;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x5E2E;&#x52A9;&#x51FD;&#x6570;&#x4E2D;&#x5B9A;&#x4E49;&#x5305;&#x88C5;&#x805A;&#x5408;&#xFF1A;</p>
-<pre><code>updateSessionStats = function(startDate) {
+<pre><code class="lang-powershell">updateSessionStats = <span class="hljs-keyword">function</span>(startDate) {
    db.usersessions.aggregate([
-      { $match: { ts: { $gte: startDate } } },
-      { $group: { _id: &quot;$userid&quot;, total_time: { $sum: &quot;$length&quot; }, count: { $sum: 1 }, avg_time: { $avg: &quot;$length&quot; } } },
-      { $project: { value: { total_time: &quot;$total_time&quot;, count: &quot;$count&quot;, avg_time: &quot;$avg_time&quot; } } },
-      { $merge: {
-         into: &quot;session_stats_agg&quot;,
-         whenMatched: [ { $set: {
-            &quot;value.total_time&quot;: { $add: [ &quot;$value.total_time&quot;, &quot;$$new.value.total_time&quot; ] },
-            &quot;value.count&quot;: { $add: [ &quot;$value.count&quot;, &quot;$$new.value.count&quot; ] },
-            &quot;value.avg_time&quot;: { $divide: [ { $add: [ &quot;$value.total_time&quot;, &quot;$$new.value.total_time&quot; ] },  { $add: [ &quot;$value.count&quot;, &quot;$$new.value.count&quot; ] } ] }
+      { <span class="hljs-variable">$match:</span> { ts: { <span class="hljs-variable">$gte:</span> startDate } } },
+      { <span class="hljs-variable">$group:</span> { _id: <span class="hljs-string">&quot;<span class="hljs-variable">$userid</span>&quot;</span>, total_time: { <span class="hljs-variable">$sum:</span> <span class="hljs-string">&quot;<span class="hljs-variable">$length</span>&quot;</span> }, count: { <span class="hljs-variable">$sum:</span> <span class="hljs-number">1</span> }, avg_time: { <span class="hljs-variable">$avg:</span> <span class="hljs-string">&quot;<span class="hljs-variable">$length</span>&quot;</span> } } },
+      { <span class="hljs-variable">$project:</span> { value: { total_time: <span class="hljs-string">&quot;<span class="hljs-variable">$total_time</span>&quot;</span>, count: <span class="hljs-string">&quot;<span class="hljs-variable">$count</span>&quot;</span>, avg_time: <span class="hljs-string">&quot;<span class="hljs-variable">$avg_time</span>&quot;</span> } } },
+      { <span class="hljs-variable">$merge:</span> {
+         into: <span class="hljs-string">&quot;session_stats_agg&quot;</span>,
+         whenMatched: [ { <span class="hljs-variable">$set:</span> {
+            <span class="hljs-string">&quot;value.total_time&quot;</span>: { <span class="hljs-variable">$add:</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$value</span>.total_time&quot;</span>, <span class="hljs-string">&quot;$<span class="hljs-variable">$new</span>.value.total_time&quot;</span> ] },
+            <span class="hljs-string">&quot;value.count&quot;</span>: { <span class="hljs-variable">$add:</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$value</span>.count&quot;</span>, <span class="hljs-string">&quot;$<span class="hljs-variable">$new</span>.value.count&quot;</span> ] },
+            <span class="hljs-string">&quot;value.avg_time&quot;</span>: { <span class="hljs-variable">$divide:</span> [ { <span class="hljs-variable">$add:</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$value</span>.total_time&quot;</span>, <span class="hljs-string">&quot;$<span class="hljs-variable">$new</span>.value.total_time&quot;</span> ] },  { <span class="hljs-variable">$add:</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$value</span>.count&quot;</span>, <span class="hljs-string">&quot;$<span class="hljs-variable">$new</span>.value.count&quot;</span> ] } ] }
          } } ],
-         whenNotMatched: &quot;insert&quot;
+         whenNotMatched: <span class="hljs-string">&quot;insert&quot;</span>
       }}
    ]);
 };
-</code></pre><p>&#x7136;&#x540E;&#xFF0C;&#x8981;&#x8FD0;&#x884C;&#xFF0C;&#x60A8;&#x53EA;&#x9700;&#x5C06;&#x5F00;&#x59CB;&#x65E5;&#x671F;&#x4F20;&#x9012;&#x7ED9;&#x8BE5;<code>updateSessionStats()</code>&#x51FD;&#x6570;&#xFF1A;</p>
-<pre><code>updateSessionStats(ISODate(&apos;2020-03-05 00:00:00&apos;))
-</code></pre></li>
+</code></pre>
+<p>&#x7136;&#x540E;&#xFF0C;&#x8981;&#x8FD0;&#x884C;&#xFF0C;&#x60A8;&#x53EA;&#x9700;&#x5C06;&#x5F00;&#x59CB;&#x65E5;&#x671F;&#x4F20;&#x9012;&#x7ED9;&#x8BE5;<code>updateSessionStats()</code>&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-powershell">updateSessionStats(ISODate(<span class="hljs-string">&apos;2020-03-05 00:00:00&apos;</span>))
+</code></pre>
+</li>
 </ol>
 <p>&#x4E5F;&#x53EF;&#x4EE5;&#x770B;&#x770B;</p>
 <ul>
@@ -4900,7 +4940,7 @@ db.usersessions.insertMany([
 <li><a href="">&#x6309;&#x9700;&#x5B9E;&#x4F8B;&#x5316;&#x89C6;&#x56FE;</a> </li>
 </ul>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; &#x4E0A;&#x6D77;&#x9526;&#x6728;&#x4FE1;&#x606F;&#x6280;&#x672F;&#x6709;&#x9650;&#x516C;&#x53F8; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2020-08-05 23:44:03
+2020-08-15 10:04:39
 </span></footer>
                                 
                                 </section>
@@ -4944,7 +4984,7 @@ db.usersessions.insertMany([
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Perform Incremental Map-Reduce","level":"1.4.2.4","depth":3,"next":{"title":"Troubleshoot the Map Function","level":"1.4.2.5","depth":3,"path":"docs/Aggregation/Map-Reduce/Troubleshoot-the-Map-Function.md","ref":"docs/Aggregation/Map-Reduce/Troubleshoot-the-Map-Function.md","articles":[]},"previous":{"title":"Map-Reduce Examples","level":"1.4.2.3","depth":3,"path":"docs/Aggregation/Map-Reduce/Map-Reduce-Examples.md","ref":"docs/Aggregation/Map-Reduce/Map-Reduce-Examples.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","donate","tbfed-pagefooter","github-buttons","github","chapter-fold","expandable-chapters","pageview-count","edit-link","back-to-top-button","-lunr","-search","search-pro","splitter","page-toc-button","lightbox","alerts","auto-scroll-table","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 上海锦木信息技术有限公司","modify_label":"文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/JinMuInfo/MongoDB-Manual-zh"},"livereload":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"donate":{"alipay":"./img/pay/alipay.jpeg","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"./img/pay/Wechatpay.jpeg","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"lightbox":{"jquery":true,"sameUuid":false},"page-toc-button":{"maxTocDepth":4,"minTocSize":4},"back-to-top-button":{},"pageview-count":{},"alerts":{},"github-buttons":{"buttons":[{"user":"JinMuInfo","repo":"MongoDB-Manual-zh","type":"star","count":true,"size":"small"}]},"edit-link":{"label":"Edit This Page","base":"https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"hbnking","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MongoDB-Manual-zh","language":"zh-hans","gitbook":"*","description":"MongoDB-Manual-zh"},"file":{"path":"docs/Aggregation/Map-Reduce/Perform-Incremental-Map-Reduce.md","mtime":"2020-08-05T15:44:03.951Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-07T06:50:00.484Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Perform Incremental Map-Reduce","level":"1.4.2.4","depth":3,"next":{"title":"Troubleshoot the Map Function","level":"1.4.2.5","depth":3,"path":"docs/Aggregation/Map-Reduce/Troubleshoot-the-Map-Function.md","ref":"docs/Aggregation/Map-Reduce/Troubleshoot-the-Map-Function.md","articles":[]},"previous":{"title":"Map-Reduce Examples","level":"1.4.2.3","depth":3,"path":"docs/Aggregation/Map-Reduce/Map-Reduce-Examples.md","ref":"docs/Aggregation/Map-Reduce/Map-Reduce-Examples.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","donate","tbfed-pagefooter","github-buttons","github","chapter-fold","expandable-chapters","pageview-count","edit-link","back-to-top-button","-lunr","-search","search-pro","splitter","page-toc-button","lightbox","auto-scroll-table","flexible-alerts","alerts","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 上海锦木信息技术有限公司","modify_label":"文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/JinMuInfo/MongoDB-Manual-zh"},"livereload":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"donate":{"alipay":"https://jinmuinfo.github.io/MongoDB-Manual-zh/img/pay/alipay.jpeg","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"https://jinmuinfo.github.io/MongoDB-Manual-zh/img/pay/Wechatpay.jpeg","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"lightbox":{"jquery":true,"sameUuid":false},"page-toc-button":{"maxTocDepth":4,"minTocSize":4},"back-to-top-button":{},"pageview-count":{},"alerts":{},"github-buttons":{"buttons":[{"user":"JinMuInfo","repo":"MongoDB-Manual-zh","type":"star","count":true,"size":"small"}]},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"edit-link":{"label":"Edit This Page","base":"https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"hbnking","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MongoDB-Manual-zh","language":"zh-hans","gitbook":"*","description":"MongoDB-Manual-zh"},"file":{"path":"docs/Aggregation/Map-Reduce/Perform-Incremental-Map-Reduce.md","mtime":"2020-08-15T02:04:39.758Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-15T02:33:10.227Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -5006,11 +5046,15 @@ db.usersessions.insertMany([
         
     
         
-        <script src="../../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
+        <script src="../../../gitbook/gitbook-plugin-auto-scroll-table/plugin.js"></script>
         
     
         
-        <script src="../../../gitbook/gitbook-plugin-auto-scroll-table/plugin.js"></script>
+        <script src="../../../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-alerts/plugin.js"></script>
         
     
         
