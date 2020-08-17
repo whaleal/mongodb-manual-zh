@@ -1,0 +1,86 @@
+On this page 本页面中
+
+Create Operations 创建操作
+Read Operations 读操作
+Update Operations 更新操作
+Delete Operations 删除操作
+Bulk Write 批量写
+CRUD operations create, read, update, and delete documents.
+CURD操作指的是文档的创建、读、更新以及删除操作。
+
+Create Operations 创建操作
+Create or insert operations add new documents to a collection. If the collection does not currently exist, insert operations will create the collection.
+创建或者插入操作将新的文档添加到一个集合中。如果集合当前并不存在，插入操作会创建该集合。
+
+MongoDB provides the following methods to insert documents into a collection:
+MongoDB提供了以下两个方法来向集合中插入文档：
+
+db.collection.insertOne() New in version 3.2 3.2版本引入
+db.collection.insertMany() New in version 3.2 3.2版本引入
+In MongoDB, insert operations target a single collection. All write operations in MongoDB are atomic on the level of a single document.
+在MongoDB中，插入操作只针对单个集合。MongoDB中的所有写操作都是单个文档级别的原子操作。
+
+The components of a MongoDB insertOne operations.
+
+For examples, see Insert Documents.
+关于示例，请参考【插入文档】。
+
+Read Operations 读操作
+Read operations retrieves documents from a collection; i.e. queries a collection for documents. MongoDB provides the following methods to read documents from a collection:
+读操作从一个集合中检索文档；即查询集合中的文档。MongoDB提供了以下方法来从集合中读取文档：
+
+db.collection.find()
+You can specify query filters or criteria that identify the documents to return.
+你可以指定查询过滤器或条件来标识要返回的文档
+
+The components of a MongoDB find operation.
+
+For examples, see:
+更多示例，请参考：
+
+Query Documents 查询文档
+Query on Embedded/Nested Documents 查询嵌入式文档
+Query an Array 查询数据
+Query an Array of Embedded Documents 查询嵌入式文档的数组
+Update Operations 更新操作
+Update operations modify existing documents in a collection. MongoDB provides the following methods to update documents of a collection:
+更新操作修改一个集合中已存在的文档。MongoDB提供了以下方法来更新一个集合中的文档：
+
+db.collection.updateOne() New in version 3.2 3.2版本引入
+db.collection.updateMany() New in version 3.2 3.2版本引入
+db.collection.replaceOne() New in version 3.2 3.2版本引入
+In MongoDB, update operations target a single collection. All write operations in MongoDB are atomic on the level of a single document.
+在MongoDB中，更新操作只针对单个集合。MongoDB中的所有写操作都是单个文档级别的原子操作。
+
+You can specify criteria, or filters, that identify the documents to update. These filters use the same syntax as read operations.
+你可以指定查询过滤器或条件来标识要更新的文档，这里的过滤器和读操作的语法是一致的。
+
+The components of a MongoDB updateMany operation.
+
+For examples, see Update Documents.
+关于示例，请参考【更新文档】。
+
+Delete Operations 删除操作
+Delete operations remove documents from a collection. MongoDB provides the following methods to delete documents of a collection:
+删除操作从一个集合中删除文档。MongoDB提供了以下方法来从一个集合中删除文档：
+
+db.collection.deleteOne() New in version 3.2 3.2版本引入
+db.collection.deleteMany() New in version 3.2 3.2版本引入
+In MongoDB, delete operations target a single collection. All write operations in MongoDB are atomic on the level of a single document.
+在MongoDB中，删除操作只针对单个集合。MongoDB中的所有写操作都是单个文档级别的原子操作。
+
+You can specify criteria, or filters, that identify the documents to remove. These filters use the same syntax as read operations.
+你可以指定查询过滤器或条件来标识要更新的文档，这里的过滤器和读操作的语法是一致的。
+
+The components of a MongoDB deleteMany operation.
+
+For examples, see Delete Documents.
+关于示例，请参考【删除文档】。
+
+Bulk Write 批量写
+MongoDB provides the ability to perform write operations in bulk. For details, see Bulk Write Operations.
+MongoDB提供了批量执行写操作的能力。更多细节请参考【批量写操作】。
+
+
+译者：刘翔
+校对：徐雷
