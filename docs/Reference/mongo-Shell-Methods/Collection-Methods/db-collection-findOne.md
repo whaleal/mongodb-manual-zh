@@ -21,7 +21,9 @@
 
 `projection`参数采用以下形式的文档：
 
-    { field1: <boolean>, field2: <boolean> ... }
+```powershell
+{ field1: <boolean>, field2: <boolean> ... }
+```
 
 `<boolean>`可以是以下包含或排除值之一：
 
@@ -46,7 +48,7 @@ projection 参数不能混合 include 和 exclude 规则，而 exception 则排�
 
 以下操作从bios 系列返回单个文档：
 
-```
+```powershell
 db.bios.findOne()
 ```
 
@@ -54,7 +56,7 @@ db.bios.findOne()
 
 以下操作返回bios 系列中的第一个匹配文档，其中嵌入文档`name`中的字段`first`以字母`G` **开头，或**字段`birth`小于`new Date('01/01/1945')`：
 
-```
+```powershell
 db.bios.findOne(
     {
         $or: [
@@ -73,7 +75,7 @@ db.bios.findOne(
 
 以下操作在bios 系列中查找文档，并仅返回`name`，`contribs`和`_id`字段：
 
-```
+```powershell
 db.bios.findOne(
     { },
     { name: 1, contribs: 1 }
@@ -84,7 +86,7 @@ db.bios.findOne(
 
 以下操作返回bios 系列中的文档，其中`contribs`字段包含元素`OOP`，并返回除`_id`字段，`name`嵌入文档中的`first`字段和`birth`字段之外的所有字段：
 
-```
+```powershell
 db.bios.findOne(
     { contribs: 'OOP' },
     { _id: 0, 'name.first': 0, birth: 0 }
@@ -95,7 +97,7 @@ db.bios.findOne(
 
 您不能将游标方法应用于findOne()的结果，因为返回单个文档。您可以直接访问该文档：
 
-```
+```powershell
 var myDocument = db.bios.findOne();
 
 if (myDocument) {

@@ -13,5 +13,6 @@ map-reduce 操作由许多任务组成，包括从输入集合中读取，执行
 *   如果输出集合不存在，则输出集合的创建将采用写入锁定。
 
 *   如果输出集合存在，则输出操作(即：`merge`，`replace`，`reduce`)将执行写入锁定。此写锁定是 global，并阻止[mongod]()实例上的所有操作。
-> **注意**<br />
+> **注意**
+>
 > 后处理期间的最终写锁定使结果自动显示。然而，输出操作`merge`和`reduce`可能需要时间来处理。对于`merge`和`reduce`，该 `nonAtomic`标志可用，从而释放写入每个输出文档之间的锁定。从MongoDB 4.2开始，不推荐使用显式设置。有关 更多信息，请参见参考。`nonAtomic: false`[`db.collection.mapReduce()`]()

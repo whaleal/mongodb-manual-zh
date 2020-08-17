@@ -12,7 +12,7 @@
 
 有关不同BSON类型值的比较，请参见指定的BSON比较顺序。
 
-```
+```powershell
 { field: { $in: [<value1>, <value2>, ... <valueN> ] } }
 ```
 
@@ -24,7 +24,7 @@
 
 考虑以下示例：
 
-```
+```powershell
 db.inventory.find( { qty: { $in: [ 5, 15 ] } } )
 ```
 
@@ -34,13 +34,13 @@ db.inventory.find( { qty: { $in: [ 5, 15 ] } } )
 
 集合`inventory`包含包含字段的文档， `tags`如下所示：
 
-```
+```powershell
 { _id: 1, item: "abc", qty: 10, tags: [ "school", "clothing" ], sale: false }
 ```
 
 然后，下面的`update()`操作将设定的`sale`字段值`true`，其中`tags`字段保持与至少一个元素匹配任一阵列`"appliances"`或 `"school"`。
 
-```
+```powershell
 db.inventory.update(
                      { tags: { $in: ["appliances", "school"] } },
                      { $set: { sale:true } }
@@ -62,12 +62,12 @@ db.inventory.update(
 
 考虑以下示例：
 
-```
+```powershell
 db.inventory.find( { tags: { $in: [ /^be/, /^st/ ] } } )
 ```
 
 此查询选择`inventory`集合中的所有文档，其中`tags`字段包含以`be`或`st`开头的字符串，或至少有一个以`be`或`st`开头的元素的数组。
 
-> **也可以看看**<br />
+> **也可以看看**
 > `find()`，`update()`，`$or`，`$set`，`$elemMatch`。
 

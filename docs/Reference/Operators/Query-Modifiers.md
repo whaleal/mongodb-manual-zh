@@ -4,14 +4,15 @@
 
 除了MongoDB查询运算符外，还有许多`meta`运算符可让您修改查询的输出或行为。
 
-> **注意**<br />
+> **注意**
+>
 > `mongo`从v3.2开始在Shell中不推荐使用
 >
 > 从v3.2开始，`mongo`shell 中不建议使用查询`meta`运算符。在`mongo`shell程序中，改用游标方法 。
 
 驱动程序接口可以提供包装这些选项的游标方法。如果可能，请使用这些方法。否则，您可以使用以下两种语法之一添加这些选项：
 
-```
+```powershell
 db.collection.find( { <query> } )._addSpecial( <option> )
 db.collection.find( { $query: { <query> }, <option> } )
 ```
@@ -20,7 +21,8 @@ db.collection.find( { $query: { <query> }, <option> } )
 
 ### 修饰符
 
-> **注意**<br />
+> **注意**
+>
 > `mongo`从v3.2开始在Shell中不推荐使用
 >
 > 从v3.2开始，`mongo`shell 中不建议使用查询`meta`运算符。在`mongo`shell程序中，改用游标方法 。

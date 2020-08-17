@@ -22,7 +22,7 @@
 
 `zipcodes`集合中的每个文档都具有以下形式：
 
-```
+```powershell
 {
   "_id": "10280",
   "city": "NEW YORK",
@@ -59,7 +59,7 @@
 
 以下聚合操作将返回总人口超过 1000 万的所有州：
 
-```
+```powershell
 db.zipcodes.aggregate( [
     { $group: { _id: “$state“, totalPop: { $sum: “$pop“ } } },
     { $match: { totalPop: { $gte: 10*1000*1000 } } }
@@ -74,7 +74,7 @@ db.zipcodes.aggregate( [
 
   在[$group](reference-operator-aggregation-group.html#pipe._S_group)阶段之后，管道中的文档类似于以下内容：
 
-  ```
+  ```powershell
   {
       “_id“ : “AK“,
       “totalPop“ : 550043
@@ -85,14 +85,15 @@ db.zipcodes.aggregate( [
 
 此聚合操作的等效[SQL](reference-glossary.html#term-sql)是：
 
-```
+```sql
 SELECT state, SUM(pop) AS totalPop
     FROM zipcodes
     GROUP BY state
     HAVING totalPop >= (10*1000*1000)
 ```
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > [$group](reference-operator-aggregation-group.html#pipe._S_group)，[$match](reference-operator-aggregation-match.html#pipe._S_match)，[$sum](reference-operator-aggregation-sum.html#grp._S_sum)
 
 []()
@@ -101,7 +102,7 @@ SELECT state, SUM(pop) AS totalPop
 
 以下聚合操作返回每个 state 中城市的平均人口数：
 
-```
+```powershell
 db.zipcodes.aggregate( [
     { $group: { _id: { state: “$state“, city: “$city“ }, pop: { $sum: “$pop“ } } },
     { $group: { _id: “$_id.state“, avgCityPop: { $avg: “$pop“ } } }
@@ -114,7 +115,7 @@ db.zipcodes.aggregate( [
 
   在管道中的这个阶段之后，文档类似于以下内容：
 
-  ```
+  ```powershell
   {
       “_id“ : {
           “state“ : “CO“,
@@ -128,14 +129,15 @@ db.zipcodes.aggregate( [
 
 此聚合操作产生的文档类似于以下内容：
 
-```
+```powershell
 {
     “_id“ : “MN“,
     “avgCityPop“ : 5335
 }
 ```
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > [$group](reference-operator-aggregation-group.html#pipe._S_group)，[$sum](reference-operator-aggregation-sum.html#grp._S_sum)，[$avg](reference-operator-aggregation-avg.html#grp._S_avg)
 
 []()
@@ -144,7 +146,7 @@ db.zipcodes.aggregate( [
 
 以下聚合操作按每个 state 的填充返回最小和最大的城市：
 
-```
+```powershell
 db.zipcodes.aggregate( [
     { 
         $group:{
@@ -181,7 +183,7 @@ db.zipcodes.aggregate( [
 
   在管道的这个阶段，文档类似于以下内容：
 
-  ```
+  ```powershell
   {
       “_id“ : {
           “state“ : “CO“,
@@ -191,7 +193,7 @@ db.zipcodes.aggregate( [
   }
   ```
 
-* [$sort](reference-operator-aggregation-sort.html#pipe._S_sort)阶段通过`pop` field value 对管道中的文档进行排序，从最小到最大; i.e。通过增加 order。此操作不会更改文档。
+* [$sort](reference-operator-aggregation-sort.html#pipe._S_sort)阶段通过`pop` field value 对管道中的文档进行排序，从最小到最大; 即：通过增加 order。此操作不会更改文档。
 
 * 下一个[$group](reference-operator-aggregation-group.html#pipe._S_group)阶段按`_id.state`字段(即：`_id`文档中的`state`字段)对 now-sorted 文档进行分组，并为每个 state 输出一个文档。
 
@@ -199,7 +201,7 @@ db.zipcodes.aggregate( [
 
   在管道的这个阶段，文件类似于以下内容：
 
-  ```
+  ```powershell
   {
       “_id“ : “WA“,
       “biggestCity“ : “SEATTLE“,
@@ -213,7 +215,7 @@ db.zipcodes.aggregate( [
 
 此聚合操作的输出文档类似于以下内容：
 
-```
+```powershell
 {
     “state“ : “RI“,
     “biggestCity“ : {

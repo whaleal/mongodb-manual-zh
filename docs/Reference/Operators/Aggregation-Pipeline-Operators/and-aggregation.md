@@ -18,7 +18,7 @@
 
 `$and` 具有以下语法：
 
-```
+```powershell
 { $and: [ <expression1>, <expression2>, ... ] }
 ```
 
@@ -42,7 +42,7 @@
 
 `inventory`使用以下文档创建示例集合：
 
-```
+```powershell
 db.inventory.insertMany([
    { "_id" : 1, "item" : "abc1", description: "product 1", qty: 300 },
    { "_id" : 2, "item" : "abc2", description: "product 2", qty: 200 },
@@ -54,7 +54,7 @@ db.inventory.insertMany([
 
 以下操作使用`$and`运算符确定是否`qty`大于100 *并*小于`250`：
 
-```
+```powershell
 db.inventory.aggregate(
    [
      {
@@ -71,7 +71,7 @@ db.inventory.aggregate(
 
 该操作返回以下结果：
 
-```
+```powershell
 { "_id" : 1, "item" : "abc1", "qty" : 300, "result" : false }
 { "_id" : 2, "item" : "abc2", "qty" : 200, "result" : true }
 { "_id" : 3, "item" : "xyz1", "qty" : 250, "result" : false }

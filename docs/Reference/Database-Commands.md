@@ -12,17 +12,18 @@
 
 要针对当前数据库运行命令，请使用`db.runCommand()`：
 
-```
+```powershell
 db.runCommand( { <command> } )
 ```
 
 要对`admin`数据库运行管理命令，请使用`db.adminCommand()`：
 
-```
+```powershell
 db.adminCommand( { <command> } )
 ```
 
-> **注意**<br />
+> **注意**
+>
 > 有关特定命令的详细信息，包括语法和示例，请单击特定命令以转到其参考页面。
 
 ## <span id="user-commands">用户命令</span>
@@ -120,7 +121,8 @@ db.adminCommand( { <command> } )
 | [`replSetStepDown`]()            | 当前`primary`下台,成为一个`secondary`，迫使选举。            |
 | [`replSetSyncFrom`]()            | 显式覆盖用于选择要复制的成员的默认逻辑。                     |
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > 有关复制的更多信息。
 
 ### 分片命令
@@ -156,7 +158,8 @@ db.adminCommand( { <command> } )
 | [`unsetSharding`]()       | 影响MongoDB部署中实例之间的连接的内部命令。                  |
 | [`updateZoneKeyRange`]()  | 添加或删除范围内的分片数据与`zone`之间的关联。支持在分片群集中配置`zone`。 |
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > 有关MongoDB的分片功能的更多信息。
 
 ### 会话命令

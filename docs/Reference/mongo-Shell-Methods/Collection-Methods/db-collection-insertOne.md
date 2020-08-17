@@ -19,7 +19,7 @@
 
 insertOne()方法具有以下语法：
 
-```
+```powershell
 db.collection.insertOne(
     <document>,
     {
@@ -67,9 +67,10 @@ insertOne()与db.collection.explain()不兼容。
 
 如果在事务中运行，请不要为操作明确设置写关注点。要对事务使用写关注，请参见 事务和写关注。
 
-> **重要**<br />
+> **重要**
+>
 > 在大多数情况下，与单文档写入相比，多文档事务产生的性能成本更高，并且多文档事务的可用性不应替代有效的架构设计。在许多情况下， 非规范化数据模型（嵌入式文档和数组）将继续是您的数据和用例的最佳选择。也就是说，在许多情况下，适当地对数据建模将最大程度地减少对多文档交易的需求。
-> 
+>
 > 有关其他事务使用方面的注意事项（例如运行时限制和操作日志大小限制），另请参见 生产注意事项。
 
 ## <span id="examples">例子</span>
@@ -78,7 +79,7 @@ insertOne()与db.collection.explain()不兼容。
 
 在以下 example 中，传递给insertOne()方法的文档不包含`_id`字段：
 
-```
+```powershell
 try {
     db.products.insertOne( { item: "card", qty: 15 } );
 } catch (e) {
@@ -88,7 +89,7 @@ try {
 
 该操作返回以下文档：
 
-```
+```powershell
 {
     "acknowledged" : true,
     "insertedId" : ObjectId("56fc40f9d735c28df206d078")
@@ -103,7 +104,7 @@ try {
 
 在下面的示例中，传递给insertOne()方法的文档包含`_id`字段。 `_id`的 value 在集合中必须是唯一的，以避免重复的 key 错误。
 
-```
+```powershell
 try {
     db.products.insertOne( { _id: 10, item: "box", qty: 20 } );
 } catch (e) {
@@ -113,13 +114,13 @@ try {
 
 该操作返回以下内容：
 
-```
+```powershell
 { "acknowledged" : true, "insertedId" : 10 }
 ```
 
 为的任何 key 插入重复的 value，例如`_id`，会抛出 exception。以下尝试使用已存在的`_id` value 插入文档：
 
-```
+```powershell
 try {
     db.products.insertOne( { _id: 10, "item" : "packing peanuts", "qty" : 200 } );
 } catch (e) {
@@ -129,7 +130,7 @@ try {
 
 由于`_id: 10`已存在，因此抛出以下 exception：
 
-```
+```powershell
 WriteError({
     "index" : 0,
     "code" : 11000,
@@ -146,7 +147,7 @@ WriteError({
 
 给定三个成员副本集，以下操作指定`majority` `wtimeout`，`wtimeout` `100`：
 
-```
+```powershell
 try {
     db.products.insertOne(
         { "item": "envelopes", "qty": 100, type: "Self-Sealing" },
@@ -159,7 +160,7 @@ try {
 
 如果确认时间超过`wtimeout`限制，则抛出以下 exception：
 
-```
+```powershell
 WriteConcernError({
     "code" : 64,
     "errInfo" : {
@@ -169,5 +170,6 @@ WriteConcernError({
 })
 ```
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > 要插入多个文档，请参阅db.collection.insertMany()

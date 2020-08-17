@@ -18,7 +18,7 @@
 
 返回一个 array，其中包含用于标识和描述集合上现有索引的文档列表。您必须在集合上调用db.collection.getIndexes()。例如：
 
-```
+```powershell
 db.collection.getIndexes()
 ```
 

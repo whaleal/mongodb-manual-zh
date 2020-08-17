@@ -18,7 +18,7 @@
 
 `$dateFromParts`表达式具有以下语法：
 
-```
+```powershell
 {
     $dateFromParts : {
         'year': <year>, 'month': <month>, 'day': <day>,
@@ -30,7 +30,7 @@
 
 您还可以 使用以下语法以ISO周日期格式指定组成日期字段 ：
 
-```
+```powershell
 {
     $dateFromParts : {
         'isoWeekYear': <year>, 'isoWeek': <week>, 'isoDayOfWeek': <day>,
@@ -42,7 +42,7 @@
 
 在`$dateFromParts`需要具有以下字段的文档：
 
-> **重要**<br />
+> **重要**
 > 
 > 构造`$dateFromParts`输入文档时，不能将日历日期字段和ISO周日期字段组合使用。
 
@@ -70,13 +70,13 @@
 
 考虑以下`$dateFromParts`表达式，其中`month`字段值为`14`，比12个月（或1年）的最大值大2个月：
 
-```
+```powershell
 { $dateFromParts: { 'year' : 2017, 'month' : 14, 'day': 1, 'hour' : 12  } }
 ```
 
 该表达式通过将`year`乘以1并将设置`month`为2来返回来计算日期：
 
-```
+```powershell
 ISODate("2018-02-01T12:00:00Z")
 ```
 
@@ -84,13 +84,13 @@ ISODate("2018-02-01T12:00:00Z")
 
 考虑以下`$dateFromParts`表达式，其中`month`字段值为`0`，比最小值1个月小1个月：
 
-```
+```powershell
 { $dateFromParts: { 'year' : 2017, 'month' : 0, 'day': 1, 'hour' : 12  } }
 ```
 
 该表达式通过将减少`year`1并将设置`month`为12来返回，以计算日期：
 
-```
+```powershell
 ISODate("2016-12-01T12:00:00Z")
 ```
 
@@ -100,7 +100,7 @@ ISODate("2016-12-01T12:00:00Z")
 
 例如，考虑`sales`包含以下文档的集合：
 
-```
+```powershell
 {
    "_id" : 1,
    "item" : "abc",
@@ -112,7 +112,7 @@ ISODate("2016-12-01T12:00:00Z")
 
 以下汇总说明了MongoDB如何处理Olson时区标识符的DST偏移量。该示例使用 `$hour`and `$minute`运算符返回`date`字段的相应部分：
 
-```
+```powershell
 db.sales.aggregate([
 {
    $project: {
@@ -139,7 +139,7 @@ db.sales.aggregate([
 
 该操作返回以下结果：
 
-```
+```powershell
 {
    "_id": 1,
    "nycHour" : 5,
@@ -155,7 +155,7 @@ db.sales.aggregate([
 
 以下聚合用于`$dateFromParts`从提供的输入字段构造三个日期对象：
 
-```
+```powershell
 db.sales.aggregate([
 {
    $project: {
@@ -181,7 +181,7 @@ db.sales.aggregate([
 
 该操作返回以下结果：
 
-```
+```powershell
 {
   "_id" : 1,
   "date" : ISODate("2017-02-08T12:00:00Z"),

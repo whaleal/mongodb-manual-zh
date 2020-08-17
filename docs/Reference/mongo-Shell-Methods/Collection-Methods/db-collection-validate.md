@@ -18,13 +18,15 @@
 
 db.collection.validate()方法具有以下语法：
 
-    db.collection.validate( {
-       full: <boolean>         // Optional
-    } )
+```powershell
+db.collection.validate( {
+   full: <boolean>         // Optional
+} )
+```
 
 要指定`full`选项，您还可以使用：
 
-```
+```powershell
 db.collection.validate( <boolean> ) // full option
 ```
 
@@ -45,18 +47,19 @@ db.collection.validate()方法获取集合的排他锁。这将阻止对集合�
 
 db.collection.validate()方法可能很慢，特别是在较大的数据集上。
 
-> **注意**<br />
+> **注意**
+>
 > 由于验证扫描数据结构的方式，即使完整的集合验证也无法检测到 MMAPv1 存储引擎数据 files 上的所有形式的损坏。
 
 ## <span id="examples">例子</span>
 
 *   使用默认设置(即：`full: false`)验证集合`myCollection`
-    ```
+    ```powershell
     db.myCollection.validate()
     ```
     
 *   要对集合进行完整验证`myCollection`
-	```
+	```powershell
 	db.myCollection.validate( { full: true } )
     
     db.myCollection.validate(true)

@@ -18,7 +18,7 @@
 
 该`$dateFromString`表达式具有以下语法：
 
-```
+```powershell
 { $dateFromString: {
      dateString: <dateStringExpression>,
      format: <formatStringExpression>,
@@ -38,7 +38,7 @@
 | onError    | 可选的。如果`$dateFromString`在解析给定`dateString`时遇到错误，则输出所提供`onError` 表达式的结果值。此结果值可以是任何类型。<br />如果未指定`onError`，`$dateFromString` 则无法解析`dateString`时将引发错误。 |
 | onNull     | 可选的。如果提供给`$dateFromString`的`dateString`为空或缺失，则输出提供的`onNull`表达式的结果值。这个结果值可以是任何类型。<br />如果不指定`onNull`，并且`dateString`为`null` 或丢失，然后`$dateFromString`输出`null`。 |
 
-> **也可以看看**<br />
+> **也可以看看**
 > 
 > `$toDate`和 `$convert`
 
@@ -78,7 +78,7 @@
 
 考虑一个`logmessages`包含以下带有日期的文档的集合。
 
-```
+```powershell
 { _id: 1, date: "2017-02-08T12:10:40.787", timezone: "America/New_York", message:  "Step 1: Started" },
 { _id: 2, date: "2017-02-08", timezone: "-05:00", message:  "Step 1: Ended" },
 { _id: 3, message:  " Step 1: Ended " },
@@ -88,7 +88,7 @@
 
 以下聚合使用`$dateFromString`将`date`值转换为日期对象：
 
-```
+```powershell
 db.logmessages.aggregate( [ {
    $project: {
       date: {
@@ -103,7 +103,7 @@ db.logmessages.aggregate( [ {
 
 上述汇总返回以下文档，并将每个`date`字段转换为东部时区：
 
-```
+```powershell
 { "_id" : 1, "date" : ISODate("2017-02-08T17:10:40.787Z") }
 { "_id" : 2, "date" : ISODate("2017-02-08T05:00:00Z") }
 { "_id" : 3, "date" : null }
@@ -113,7 +113,7 @@ db.logmessages.aggregate( [ {
 
 `timezone`参数也可以通过一个文档字段，而不是硬编码参数提供的。例如：
 
-```
+```powershell
 db.logmessages.aggregate( [ {
    $project: {
       date: {
@@ -128,7 +128,7 @@ db.logmessages.aggregate( [ {
 
 上面的汇总返回以下文档，并将每个`date`字段转换为其各自的UTC表示形式。
 
-```
+```powershell
 { "_id" : 1, "date" : ISODate("2017-02-08T17:10:40.787Z") }
 { "_id" : 2, "date" : ISODate("2017-02-08T05:00:00Z") }
 { "_id" : 3, "date" : null }
@@ -142,14 +142,14 @@ db.logmessages.aggregate( [ {
 
 例如，给定一个`dates`具有以下文档的集合：
 
-```
+```powershell
 { "_id" : 1, "date" : "2017-02-08T12:10:40.787", timezone: "America/New_York" },
 { "_id" : 2, "date" : "20177-02-09T03:35:02.055", timezone: "America/New_York" }
 ```
 
 您可以使用`onError`参数以其原始字符串形式返回无效日期：
 
-```
+```powershell
 db.dates.aggregate( [ {
    $project: {
       date: {
@@ -165,7 +165,7 @@ db.dates.aggregate( [ {
 
 这将返回以下文档：
 
-```
+```powershell
 { "_id" : 1, "date" : ISODate("2017-02-08T17:10:40.787Z") }
 { "_id" : 2, "date" : "20177-02-09T03:35:02.055" }
 ```
@@ -176,14 +176,14 @@ db.dates.aggregate( [ {
 
 例如，给定一个`dates`具有以下文档的集合：
 
-```
+```powershell
 { "_id" : 1, "date" : "2017-02-08T12:10:40.787", timezone: "America/New_York" },
 { "_id" : 2, "date" : null, timezone: "America/New_York" }
 ```
 
 您可以使用`onNull`参数让`$dateFromString`返回代表Unix纪元的日期，而不是`null`：
 
-```
+```powershell
 db.dates.aggregate( [ {
    $project: {
       date: {
@@ -199,7 +199,7 @@ db.dates.aggregate( [ {
 
 这将返回以下文档：
 
-```
+```powershell
 { "_id" : 1, "date" : ISODate("2017-02-08T17:10:40.787Z") }
 { "_id" : 2, "date" : ISODate("1970-01-01T00:00:00Z") }
 ```

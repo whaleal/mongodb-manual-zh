@@ -22,7 +22,8 @@
 
 `db.collection. mapReduce`( map，reduce，{&lt;out&gt;，&lt;query&gt;，&lt;sort&gt;，&lt;limit&gt;，&lt;finalize&gt;，&lt;scope&gt;，&lt;jsMode&gt;，&lt;verbose&gt;})
 
-> **注意**<br />
+> **注意**
+>
 > 从4.2版开始，MongoDB弃用：
 >
 > - 地图-reduce选项来*创建*一个新的分片集合以及使用的分片供选择的map-reduce。要输出到分片集合，请首先创建分片集合。MongoDB 4.2还不建议替换现有分片集合。
@@ -30,12 +31,13 @@
 
 db.collection.mapReduce()方法为MapReduce命令提供了包装。
 
-> **注意**<br />
+> **注意**
+>
 > 视图不支持 map-reduce 操作。
 
 db.collection.mapReduce()具有以下语法：
 
-```
+```powershell
 db.collection.mapReduce(
     <map>,
     <reduce>,
@@ -76,7 +78,8 @@ db.collection.mapReduce()采用以下参数：
 | `verbose`   | boolean            | 指定是否在结果信息中包含`timing`信息。将`verbose`设置为`true`以包含`timing`信息。 <br/>默认为`false`。 |
 | `collation` | document           | 可选的。 <br/>指定要用于操作的排序规则。 <br/> 整理允许用户为 string 比较指定 language-specific 规则，例如字母和重音标记的规则。 <br/>排序规则选项具有以下语法：<br/>排序规则：{<br/> locale：&lt;string&gt;，<br/> caseLevel：&lt;boolean&gt;，<br/> caseFirst：&lt;string&gt;，<br/> strength：&lt;int&gt;，<br/> numericOrdering：&lt;boolean&gt;，<br/> alternate：&lt;string&gt;，<br/> maxVariable：&lt;string&gt;，<br/> backwards ：&lt;boolean&gt; <br/>} <br/>指定排序规则时，`locale`字段是必填字段;所有其他校对字段都是可选的。有关字段的说明，请参阅整理文件。 <br/>如果未指定排序规则但集合具有默认排序规则(请参阅db.createCollection())，则操作将使用为集合指定的排序规则。 <br/>如果没有为集合或操作指定排序规则，MongoDB 使用先前版本中用于 string 比较的简单二进制比较。 <br/>您无法为操作指定多个排序规则。对于 example，您不能为每个字段指定不同的排序规则，或者如果使用排序执行查找，则不能对查找使用一个排序规则，而对排序使用另一个排序规则。 <br/> version 3.4 中的新内容。 |
 
-> **注意**<br />
+> **注意**
+>
 > map-reduce operations， group 命令和$where 运算表达式无法访问 mongo shell 中可用的某些 global 函数或 properties，例如 db。
 > 可用的 PropertiesAvailable 函数
 
@@ -90,7 +93,7 @@ db.collection.mapReduce()采用以下参数：
 
 `map` function 负责将每个输入文档转换为零个或多个文档。它可以访问`scope`参数中定义的变量，并具有以下原型：
 
-```
+```powershell
 function() {
     ...
     emit(key, value);
@@ -104,11 +107,14 @@ function() {
 *   `map` function 应该是纯的，或者在 function 之外没有影响(即：side effects.)
 *   单个发射只能容纳 MongoDB 的最大 BSON 文件大小的一半。
 *   `map` function 可以选择多次调用`emit(key,value)`来创建一个将`key`与`value`相关联的输出文档。
-*   从版本4.2.1开始，MongoDB在该功能的作用域（即BSON类型15）中弃用JavaScript `map`。要确定变量的范围，请改用`scope`参数。
+*   在MongoDB 4.2和更早版本中，单个发射只能容纳MongoDB 最大BSON文档大小的一半。从版本4.4开始，MongoDB删除了此限制。
+*   从MongoDB 4.4开始，它的功能`mapReduce`不再支持范围（即BSON类型15）的已弃用JavaScript 。该`map` 函数必须是BSON类型的String（即BSON类型2）或BSON类型的JavaScript（即BSON类型13）。要确定变量的范围，请使用 `scope`参数。
+
+`map`自版本4.2.1起，该功能不建议在范围内使用JavaScript 
 
 以下`map` function 将调用`emit(key,value)` 0 或 1 次，具体取决于输入文档的`status`字段的 value：
 
-```
+```powershell
 function() {
     if (this.status == 'A')
     emit(this.cust_id, 1);
@@ -117,7 +123,7 @@ function() {
 
 以下`map` function 可能会多次调用`emit(key,value)`，具体取决于输入文档的`items`字段中的元素数：
 
-```
+```powershell
 function() {
     this.items.forEach(function(item){ emit(item.sku, 1); });
 }
@@ -127,7 +133,7 @@ function() {
 
 `reduce` function 具有以下原型：
 
-```
+```powershell
 function(key, values) {
     ...
     return result;
@@ -149,19 +155,19 @@ function(key, values) {
 * return object 的类型必须与`map` function 发出的`value`的类型相同。
 
 * `reduce` function 必须是关联的。以下语句必须是 true：
-    ```
+    ```powershell
     reduce(key, [ C, reduce(key, [ A, B ]) ] ) == reduce( key, [ C, A, B ] )
     ```
     
 * `reduce` function 必须是幂等的。确保以下语句是 true：
 
-    ```
+    ```powershell
     reduce( key, [ reduce(key, valuesArray) ] ) == 	reduce( key, valuesArray )
     ```
 
 * `reduce` function 应该是可交换的：也就是说，`valuesArray`中元素的 order 不应该影响`reduce` function 的输出，因此以下语句是 true：
 
-  ```
+  ```powershell
   reduce( key, [ A, B ] ) == reduce( key, [ B, A ] )
   ```
 
@@ -173,21 +179,22 @@ function(key, values) {
 
 此选项输出到新集合，并且在副本集的辅助成员上不可用。
 
-```
+```powershell
 out: <collectionName>
 ```
 
 ### 输出到带有 Action 的 Collection
 
-> **注意**<br />
+> **注意**
+>
 > 从4.2版开始，MongoDB弃用：
-> 
+>
 > - 地图-reduce选项来*创建*一个新的分片集合以及使用的分片供选择的map-reduce。要输出到分片集合，请首先创建分片集合。MongoDB 4.2还不建议替换现有分片集合。
 > - nonAtomic：false选项的显式规范。
 
 此选项仅在将已存在的集合传递给`out`时可用。它不适用于副本集 的辅助成员。
 
-```
+```powershell
 out: { <action>: <collectionName>
     [, db: <dbName>]
     [, sharded: <boolean> ]
@@ -221,9 +228,10 @@ out: { <action>: <collectionName>
 
 *   `nonAtomic` :
 
-    > **注意**<br />
-    > 开始在MongoDB中4.2，明确设置`nonAtomic`到`false`已被弃用。
-
+    > **注意**
+    >
+> 开始在MongoDB中4.2，明确设置`nonAtomic`到`false`已被弃用。
+    
     可选的。将输出操作指定为 non-atomic。这仅对**`merge`和`reduce`输出模式应用**，这可能需要几分钟才能执行。
     
     默认情况下`nonAtomic`是`false`，map-reduce 操作在 post-processing 期间锁定数据库。
@@ -234,7 +242,7 @@ out: { <action>: <collectionName>
 
 在 memory 中执行 map-reduce 操作并 return 结果。此选项是副本集的辅助成员上`out`的唯一可用选项。
 
-```
+```powershell
 out: { inline: 1 }
 ```
 
@@ -244,7 +252,7 @@ out: { inline: 1 }
 
 `finalize` function 具有以下原型：
 
-```
+```powershell
 function(key, reducedValue) {
     ...
     return modifiedObject;
@@ -270,7 +278,7 @@ function(key, reducedValue) {
 
 `orders`使用以下文档创建样本集合：
 
-```
+```powershell
 db.orders.insertMany([
    { _id: 1, cust_id: "Ant O. Knee", ord_date: new Date("2020-03-01"), price: 25, items: [ { sku: "oranges", qty: 5, price: 2.5 }, { sku: "apples", qty: 5, price: 2.5 } ], status: "A" },
    { _id: 2, cust_id: "Ant O. Knee", ord_date: new Date("2020-03-08"), price: 70, items: [ { sku: "oranges", qty: 8, price: 2.5 }, { sku: "chocolates", qty: 5, price: 10 } ], status: "A" },
@@ -294,7 +302,7 @@ db.orders.insertMany([
 * 在 function 中，`this`指的是 map-reduce 操作正在处理的文档。
 
 * function maps 为每个文档的`cust_id`并发出`cust_id`和`price`键值对。
-  ```
+  ```powershell
   var mapFunction1 = function() {
       emit(this.cust_id, this.price);
   };
@@ -305,14 +313,14 @@ db.orders.insertMany([
 * `valuesPrices`是一个数组，其元素是 map function 发出的`price`值，并按`keyCustId`分组。
 
 *   function 将`valuesPrice` array 缩减为其元素的总和。
-	```
+	```powershell
     var reduceFunction1 = function(keyCustId, valuesPrices) {
         return Array.sum(valuesPrices);
     };
 	```
     
 3. 使用`mapFunction1` map function 和`reduceFunction1` reduce function 对`orders`集合中的所有文档执行 map-reduce。
-    ```
+    ```powershell
     db.orders.mapReduce(
         mapFunction1,
         reduceFunction1,
@@ -324,13 +332,13 @@ db.orders.insertMany([
     
 4. 查询`map_reduce_example`集合以验证结果：
 
-    ```
+    ```powershell
     db.map_reduce_example.find().sort( { _id: 1 } )
     ```
 
     该操作返回以下文档：
 
-    ```
+    ```powershell
     { "_id" : "Ant O. Knee", "value" : 95 }
     { "_id" : "Busby Bee", "value" : 125 }
     { "_id" : "Cam Elot", "value" : 60 }
@@ -341,7 +349,7 @@ db.orders.insertMany([
 
 使用可用的聚合管道运算符，您可以重写map-reduce操作，而无需定义自定义函数：
 
-```
+```powershell
 db.orders.aggregate([
    { $group: { _id: "$cust_id", value: { $sum: "$price" } } },
    { $out: "agg_alternative_1" }
@@ -352,7 +360,7 @@ db.orders.aggregate([
 
    该阶段将以下文档输出到下一阶段：
 
-   ```
+   ```powershell
    { "_id" : "Don Quis", "value" : 155 }
    { "_id" : "Ant O. Knee", "value" : 95 }
    { "_id" : "Cam Elot", "value" : 60 }
@@ -363,13 +371,13 @@ db.orders.aggregate([
 
 3. 查询`agg_alternative_1`集合以验证结果：
 
-   ```
+   ```powershell
    db.agg_alternative_1.find().sort( { _id: 1 } )
    ```
 
    该操作返回以下文档：
 
-   ```
+   ```powershell
    { "_id" : "Ant O. Knee", "value" : 95 }
    { "_id" : "Busby Bee", "value" : 125 }
    { "_id" : "Cam Elot", "value" : 60 }
@@ -386,7 +394,7 @@ db.orders.aggregate([
 
 * 对于每个 item，函数将`sku`与一个新的 object `value`相关联，该对象 `value`包含订单的`count`和_ite用于 order 并发出`sku`和`value`对。
 
-  ```
+  ```powershell
   var mapFunction2 = function() {
       for (var idx = 0; idx < this.items.length; idx++) {
           var key = this.items[idx].sku;
@@ -406,7 +414,7 @@ db.orders.aggregate([
 * function 将`countObjVals` array 缩减为包含`count`和`qty`字段的单个 object `reducedValue`。
 
 *   在`reducedVal`中，`count`字段包含来自各个 array 元素的`count`字段的总和，`qty`字段包含来自各个 array 元素的`qty`字段的总和。
-    ```
+    ```powershell
     var reduceFunction2 = function(keySKU, countObjVals) {
     reducedVal = { count: 0, qty: 0 };
         for (var idx = 0; idx < countObjVals.length; idx++) {
@@ -420,7 +428,7 @@ db.orders.aggregate([
 
 3. 使用两个 arguments `key`和`reducedVal`定义 finalize function。 function 修改`reducedVal` object 以添加名为`avg`的计算字段并返回修改后的 object：
    
-    ```
+    ```powershell
     var finalizeFunction2 = function (key, reducedVal) {
         reducedVal.avg = reducedVal.qty/reducedVal.count;
     
@@ -431,7 +439,7 @@ db.orders.aggregate([
     
 4. 使用`mapFunction2`，`reduceFunction2`和`finalizeFunction2`函数对`orders`集合执行 map-reduce 操作。
 
-   ```
+   ```powershell
    db.orders.mapReduce( mapFunction2,
        reduceFunction2,
        {
@@ -448,13 +456,13 @@ db.orders.aggregate([
 
 5. 查询`map_reduce_example2`集合以验证结果：
 
-   ```
+   ```powershell
    db.map_reduce_example2.find().sort( { _id: 1 } )
    ```
 
    该操作返回以下文档：
 
-   ```
+   ```powershell
    { "_id" : "apples", "value" : { "count" : 3, "qty" : 30, "avg" : 10 } }
    { "_id" : "carrots", "value" : { "count" : 2, "qty" : 15, "avg" : 7.5 } }
    { "_id" : "chocolates", "value" : { "count" : 3, "qty" : 15, "avg" : 5 } }
@@ -466,7 +474,7 @@ db.orders.aggregate([
 
 使用可用的聚合管道运算符，您可以重写map-reduce操作，而无需定义自定义函数：
 
-```
+```powershell
 db.orders.aggregate( [
    { $match: { ord_date: { $gte: new Date("2020-03-01") } } },
    { $unwind: "$items" },
@@ -480,7 +488,7 @@ db.orders.aggregate( [
 
 2. 该`$unwinds`阶段按`items`数组字段细分文档，以输出每个数组元素的文档。例如：
 
-   ```
+   ```powershell
    { "_id" : 1, "cust_id" : "Ant O. Knee", "ord_date" : ISODate("2020-03-01T00:00:00Z"), "price" : 25, "items" : { "sku" : "oranges", "qty" : 5, "price" : 2.5 }, "status" : "A" }
    { "_id" : 1, "cust_id" : "Ant O. Knee", "ord_date" : ISODate("2020-03-01T00:00:00Z"), "price" : 25, "items" : { "sku" : "apples", "qty" : 5, "price" : 2.5 }, "status" : "A" }
    { "_id" : 2, "cust_id" : "Ant O. Knee", "ord_date" : ISODate("2020-03-08T00:00:00Z"), "price" : 70, "items" : { "sku" : "oranges", "qty" : 8, "price" : 2.5 }, "status" : "A" }
@@ -498,7 +506,7 @@ db.orders.aggregate( [
 
    - `orders_ids`阵列。该`orders_ids`字段包含不同顺序的阵列`_id`的对`items.sku`（参见 `$addToSet`）。
 
-   ```
+   ```powershell
    { "_id" : "chocolates", "qty" : 15, "orders_ids" : [ 2, 5, 8 ] }
    { "_id" : "oranges", "qty" : 63, "orders_ids" : [ 4, 7, 3, 2, 9, 1, 10 ] }
    { "_id" : "carrots", "qty" : 15, "orders_ids" : [ 6, 9 ] }
@@ -512,7 +520,7 @@ db.orders.aggregate( [
    - `value.qty`在`qty`输入文档的字段。
    - `value.avg`每订购数量的平均数目。（请参阅`$divide`和`$size`。）
 
-   ```
+   ```powershell
    { "_id" : "apples", "value" : { "count" : 4, "qty" : 35, "avg" : 8.75 } }
    { "_id" : "pears", "value" : { "count" : 1, "qty" : 10, "avg" : 10 } }
    { "_id" : "chocolates", "value" : { "count" : 3, "qty" : 15, "avg" : 5 } }
@@ -524,13 +532,13 @@ db.orders.aggregate( [
 
 6. 查询`agg_alternative_3`集合以验证结果：
 
-   ```
+   ```powershell
    db.agg_alternative_3.find().sort( { _id: 1 } )
    ```
 
    该操作返回以下文档：
 
-   ```
+   ```powershell
    { "_id" : "apples", "value" : { "count" : 4, "qty" : 35, "avg" : 8.75 } }
    { "_id" : "carrots", "value" : { "count" : 2, "qty" : 15, "avg" : 7.5 } }
    { "_id" : "chocolates", "value" : { "count" : 3, "qty" : 15, "avg" : 5 } }

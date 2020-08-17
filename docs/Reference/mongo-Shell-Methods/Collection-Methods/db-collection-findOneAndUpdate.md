@@ -23,19 +23,21 @@ findOneAndUpdate()方法具有以下形式：
 
 更改了 version 3.6.
 
-    db.collection.findOneAndUpdate(
-       <filter>,
-       <update>,
-       {
-         projection: <document>,
-         sort: <document>,
-         maxTimeMS: <number>,
-         upsert: <boolean>,
-         returnNewDocument: <boolean>,
-         collation: <document>,
-         arrayFilters: [ <filterdocument1>, ... ]
-       }
-    )
+```powershell
+db.collection.findOneAndUpdate(
+   <filter>,
+   <update>,
+   {
+     projection: <document>,
+     sort: <document>,
+     maxTimeMS: <number>,
+     upsert: <boolean>,
+     returnNewDocument: <boolean>,
+     collation: <document>,
+     arrayFilters: [ <filterdocument1>, ... ]
+   }
+)
+```
 
 findOneAndUpdate()方法采用以下参数：
 
@@ -63,7 +65,7 @@ findOneAndUpdate()更新集合中与`filter`匹配的第一个匹配文档。 `s
 
 `projection`参数采用以下形式的文档：
 
-```
+```powershell
 { field1 : < boolean >, field2 : < boolean> ... }
 ```
 
@@ -91,9 +93,10 @@ findOneAndUpdate()更新集合中与`filter`匹配的第一个匹配文档。 `s
 
 `db.collection.findOneAndUpdate()`可以在多文档交易中使用。
 
-> **重要**<br />
+> **重要**
+>
 > 在大多数情况下，与单文档写入相比，多文档事务产生的性能成本更高，并且多文档事务的可用性不应替代有效的架构设计。在许多情况下， 非规范化数据模型（嵌入式文档和数组）将继续是您的数据和用例的最佳选择。也就是说，在许多情况下，适当地对数据建模将最大程度地减少对多文档交易的需求。
-> 
+>
 > 有关其他事务使用方面的注意事项（例如运行时限制和操作日志大小限制），另请参见 生产注意事项。
 
 #### 现有的收藏和交易
@@ -112,16 +115,18 @@ findOneAndUpdate()更新集合中与`filter`匹配的第一个匹配文档。 `s
 
 `grades`集合包含类似于以下内容的文档：
 
-    { _id: 6305, name : "A. MacDyver", "assignment" : 5, "points" : 24 },
-    { _id: 6308, name : "B. Batlock", "assignment" : 3, "points" : 22 },
-    { _id: 6312, name : "M. Tagnum", "assignment" : 5, "points" : 30 },
-    { _id: 6319, name : "R. Stiles", "assignment" : 2, "points" : 12 },
-    { _id: 6322, name : "A. MacDyver", "assignment" : 2, "points" : 14 },
-    { _id: 6234, name : "R. Stiles", "assignment" : 1, "points" : 10 }
+```powershell
+{ _id: 6305, name : "A. MacDyver", "assignment" : 5, "points" : 24 },
+{ _id: 6308, name : "B. Batlock", "assignment" : 3, "points" : 22 },
+{ _id: 6312, name : "M. Tagnum", "assignment" : 5, "points" : 30 },
+{ _id: 6319, name : "R. Stiles", "assignment" : 2, "points" : 12 },
+{ _id: 6322, name : "A. MacDyver", "assignment" : 2, "points" : 14 },
+{ _id: 6234, name : "R. Stiles", "assignment" : 1, "points" : 10 }
+```
 
 以下操作查找`name : R. Stiles`的第一个文档，并按`5`递增得分：
 
-```
+```powershell
 db.grades.findOneAndUpdate(
     { "name" : "R. Stiles" },
     { $inc: { "points" : 5 } }
@@ -130,7 +135,7 @@ db.grades.findOneAndUpdate(
 
 该操作在更新之前返回原始文档：
 
-```
+```powershell
 { _id: 6319, name: "R. Stiles", "assignment" : 2, "points" : 12 }
 ```
 
@@ -140,7 +145,7 @@ db.grades.findOneAndUpdate(
 
 `grades`集合包含类似于以下内容的文档：
 
-```
+```powershell
 { _id: 6305, name : "A. MacDyver", "assignment" : 5, "points" : 24 },
 { _id: 6308, name : "B. Batlock", "assignment" : 3, "points" : 22 },
 { _id: 6312, name : "M. Tagnum", "assignment" : 5, "points" : 30 },
@@ -151,7 +156,7 @@ db.grades.findOneAndUpdate(
 
 以下操作更新`name : "A. MacDyver"`的文档。操作通过`points`升序对匹配文档进行排序，以更新具有最少点的匹配文档。
 
-```
+```powershell
 db.grades.findOneAndUpdate(
     { "name" : "A. MacDyver" },
     { $inc : { "points" : 5 } },
@@ -161,7 +166,7 @@ db.grades.findOneAndUpdate(
 
 该操作在更新之前返回原始文档：
 
-```
+```powershell
 { _id: 6322, name: "A. MacDyver", "assignment" : 2, "points" : 14 }
 ```
 
@@ -169,7 +174,7 @@ db.grades.findOneAndUpdate(
 
 以下操作使用 projection 仅显示返回文档中的`_id`，`points`和`assignment`字段：
 
-```
+```powershell
 db.grades.findOneAndUpdate(
     { "name" : "A. MacDyver" },
     { $inc : { "points" : 5 } },
@@ -179,7 +184,7 @@ db.grades.findOneAndUpdate(
 
 该操作仅返回原始文档，其中仅包含`projection`文档和`_id`字段中指定的字段，因为它未在投影文件中明确禁止(`_id: 0`)。
 
-```
+```powershell
 { "_id" : 6322, "assignment" : 2, "points" : 14 }
 ```
 
@@ -187,7 +192,7 @@ db.grades.findOneAndUpdate(
 
 以下操作设置 5ms time 限制以完成更新：
 
-```
+```powershell
 try {
     db.grades.findOneAndUpdate(
         { "name" : "A. MacDyver" },
@@ -201,7 +206,7 @@ try {
 
 如果操作超过 time 限制，则返回：
 
-```
+```powershell
 Error: findAndModifyFailed failed: { "ok" : 0, "errmsg" : "operation exceeded time limit", "code" : 50 }
 ```
 
@@ -209,7 +214,7 @@ Error: findAndModifyFailed failed: { "ok" : 0, "errmsg" : "operation exceeded ti
 
 如果没有匹配`filter`，则以下操作使用`upsert`字段来插入更新文档：
 
-```
+```powershell
 try {
     db.grades.findOneAndUpdate(
         { "name" : "A.B. Abracus" },
@@ -223,7 +228,7 @@ try {
 
 该操作返回以下内容：
 
-```
+```powershell
 {
     "_id" : ObjectId("5789249f1c49e39a8adc479a"),
     "name" : "A.B. Abracus",
@@ -242,7 +247,7 @@ version 3.4 中的新内容。
 
 集合`myColl`具有以下文档：
 
-```
+```powershell
 { _id: 1, category: "café", status: "A" }
 { _id: 2, category: "cafe", status: "a" }
 { _id: 3, category: "cafE", status: "a" }
@@ -250,7 +255,7 @@ version 3.4 中的新内容。
 
 以下操作包括整理选项：
 
-```
+```powershell
 db.myColl.findOneAndUpdate(
     { category: "cafe" },
     { $set: { status: "Updated" } },
@@ -260,7 +265,7 @@ db.myColl.findOneAndUpdate(
 
 该操作返回以下文档：
 
-```
+```powershell
 { "_id" : 1, "category" : "café", "status" : "A" }
 ```
 
@@ -274,7 +279,7 @@ version 3.6 中的新内容。
 
 使用以下文档创建集合`students`：
 
-```
+```powershell
 db.students.insert([
     { "_id" : 1, "grades" : [ 95, 92, 90 ] },
     { "_id" : 2, "grades" : [ 98, 100, 102 ] },
@@ -284,7 +289,7 @@ db.students.insert([
 
 要修改`grades` array 中大于或等于`100`的所有元素，请使用过滤后的位置 operator $ [&lt;identifier&gt;]和db.collection.findOneAndUpdate方法中的`arrayFilters`选项：
 
-```
+```powershell
 db.students.findOneAndUpdate(
     { grades: { $gte: 100 } },
     { $set: { "grades.$[element]" : 100 } },
@@ -294,7 +299,7 @@ db.students.findOneAndUpdate(
 
 该操作更新单个文档的`grades`字段，在操作之后，该集合具有以下文档：
 
-```
+```powershell
 { "_id" : 1, "grades" : [ 95, 92, 90 ] }
 { "_id" : 2, "grades" : [ 98, 100, 100 ] }
 { "_id" : 3, "grades" : [ 95, 110, 100 ] }
@@ -304,7 +309,7 @@ db.students.findOneAndUpdate(
 
 使用以下文档创建集合`students2`：
 
-```
+```powershell
 db.students2.insert([
     {
         "_id" : 1,
@@ -327,7 +332,7 @@ db.students2.insert([
 
 要修改`grades` array 中等级大于或等于`85`的所有元素的`mean`字段的 value，请使用过滤后的位置 operator $ [&lt;identifier&gt;]和db.collection.findOneAndUpdate方法中的`arrayFilters`：
 
-```
+```powershell
 db.students2.findOneAndUpdate(
     { },
     { $set: { "grades.$[elem].mean" : 100 } },
@@ -337,7 +342,7 @@ db.students2.findOneAndUpdate(
 
 该操作更新单个文档的`grades`字段，在操作之后，该集合具有以下文档：
 
-```
+```powershell
 {
     "_id" : 1,
     "grades" : [
@@ -368,7 +373,7 @@ db.students2.findOneAndUpdate(
 
 例如，`students2`使用以下文档创建一个集合：
 
-```
+```powershell
 db.students2.insert([
    {
       "_id" : 1,
@@ -391,7 +396,7 @@ db.students2.insert([
 
 以下操作将查找一个`_id`字段等于 的文档，`1`并使用聚合管道`total`从该`grades`字段中计算一个新 字段：
 
-```
+```powershell
 db.students2.findOneAndUpdate(
    { _id : 1 },
    [ { $set: { "total" : { $sum: "$grades.grade" } } } ],  // The $set stage is an alias for ``$addFields`` stage
@@ -399,12 +404,13 @@ db.students2.findOneAndUpdate(
 )
 ```
 
-> **注意**<br />
+> **注意**
+>
 > 该$set管道中的使用是指聚集阶段 $set，而不是更新操作$set。
 
 该操作返回*更新的*文档：
 
-```
+```powershell
 {
   "_id" : 1,
   "grades" : [ { "grade" : 80, "mean" : 75, "std" : 6 }, { "grade" : 85, "mean" : 90, "std" : 4 }, { "grade" : 85, "mean" :85, "std" : 6 } ],

@@ -12,7 +12,8 @@
 
 *   `db.collection.dropIndex`(索引)
    *   从集合中删除或删除指定的索引。 db.collection.dropIndex()方法在dropIndexes命令周围提供包装。
-> **注意**<br />
+> **注意**
+>
 > 您不能删除`_id`字段上的默认索引。
 >
 > 从MongoDB 4.2开始，您不能指定 `db.collection.dropIndex("*")`删除所有非`_id`索引。使用 `db.collection.dropIndexes()`代替。
@@ -21,12 +22,13 @@ db.collection.dropIndex()方法采用以下参数：
 
 | 参数    | 类型               | 描述                                                         |
 | ------- | ------------------ | ------------------------------------------------------------ |
-| `index` | string or document | 指定要删除的索引。您可以通过索引 name 或索引规范文档指定索引。 [1] <br/>要删除文本索引，请指定索引 name。<br />从MongoDB 4.2开始，您不能指定`"*"`删除所有非`_id`索引。使用 `db.collection.dropIndexes()`代替。 |
+| `index` | string or document | 指定要删除的索引。您可以通过索引 name 或索引规范文档指定索引。 [[1]]() <br/>要删除文本索引，请指定索引 name。<br />从MongoDB 4.2开始，您不能指定`"*"`删除所有非`_id`索引。使用 `db.collection.dropIndexes()`代替。 |
 
 
 要获取db.collection.dropIndex()方法的索引 name 或索引规范文档，请使用db.collection.getIndexes()方法。
 
-> **警告**<br />
+> **警告**
+>
 > 此命令在受影响的数据库上获取写锁定，并将阻止其他操作，直到完成为止。
 
 ## 行为
@@ -47,38 +49,40 @@ db.collection.dropIndex()方法采用以下参数：
 
 考虑一个`pets`集合。在`pets`集合上调用getIndexes()方法将返回以下索引：
 
-    [
-        {
-            “v“ : 1,
-            “key“ : { “_id“ : 1 },
-            “ns“ : “test.pets“,
-            “name“ : “_id_“
-        },
-        {
-            “v“ : 1,
-            “key“ : { “cat“ : -1 },
-            “ns“ : “test.pets“,
-            “name“ : “catIdx“
-        },
-        {
-            “v“ : 1,
-            “key“ : { “cat“ : 1, “dog“ : -1 },
-            “ns“ : “test.pets“,
-            “name“ : “cat_1_dog_-1“
-        }
-    ]
+```powershell
+[
+    {
+        “v“ : 1,
+        “key“ : { “_id“ : 1 },
+        “ns“ : “test.pets“,
+        “name“ : “_id_“
+    },
+    {
+        “v“ : 1,
+        “key“ : { “cat“ : -1 },
+        “ns“ : “test.pets“,
+        “name“ : “catIdx“
+    },
+    {
+        “v“ : 1,
+        “key“ : { “cat“ : 1, “dog“ : -1 },
+        “ns“ : “test.pets“,
+        “name“ : “cat_1_dog_-1“
+    }
+]
+```
 
-字段上的单个字段索引`cat`具有用户指定的名称`catIdx` [2]和索引指定文档为 。`{ "cat" : -1 }`
+字段上的单个字段索引`cat`具有用户指定的名称`catIdx` [[2]]()和索引指定文档为 。`{ "cat" : -1 }`
 
 要删除索引`catIdx`，可以使用索引 name：
 
-```
+```powershell
 db.pets.dropIndex( “catIdx“ )
 ```
 
 或者您可以使用索引规范文档`{ “cat“ : -1 }`：
 
-```
+```powershell
 db.pets.dropIndex( { “cat“ : -1 } )
 ```
 

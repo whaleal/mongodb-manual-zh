@@ -19,7 +19,7 @@
 
 `$convert`具有以下语法：
 
-```
+```powershell
 {
    $convert:
       {
@@ -95,7 +95,7 @@
 | { input: "", to: "bool" }                                  | true  |
 | { input: null, to: "bool" }                                | Null  |
 
-> **也可以看看**<br />
+> **也可以看看**
 > 
 > `$toBool`
 
@@ -128,7 +128,7 @@
 | { input: "2.5", to: "int" }                                  | Error                                |
 | { input: null, to: "int" }                                   | null                                 |
 
-> **也可以看看**<br />
+> **也可以看看**
 > 
 > `$toInt`操作符。
 
@@ -158,7 +158,7 @@
 | { input: "-5.5", to: "decimal" }                             | NumberDecimal(“-5.5”)             |
 | { input: ISODate("2018-03-27T05:04:47.890Z"), to: "decimal" } | NumberDecimal(“1522127087890”)    |
 
-> **也可以看看**<br />
+> **也可以看看**
 > 
 > `$toDecimal`
 
@@ -190,7 +190,7 @@
 | {<br />    input: "5e550",<br />    to: "double",<br />    onError: "Could not convert to type double."<br /> } | “Could not convert to type double.” |
 | { input: ISODate("2018-03-27T05:04:47.890Z"), to: "double" } | 1522127087890                       |
 
-> **也可以看看**<br />
+> **也可以看看**
 > 
 > `$toDouble`
 
@@ -224,7 +224,7 @@
 | { input: "2.5", to: "long" }                                 | Error                             |
 | { input: null, to: "long" }                                  | null                              |
 
-> **也可以看看**<br />
+> **也可以看看**
 > 
 > `$toLong`
 
@@ -254,7 +254,7 @@
 | { input: "Friday", to: "date" }                              | Error                             |
 | {<br />    input: "Friday",<br />    to: "date",<br />    onError: "Could not convert to type date."<br /> } | “Could not convert to type date.” |
 
-> **也可以看看**<br />
+> **也可以看看**
 > 
 > `$toDate`操作符， `$dateFromString`
 
@@ -274,7 +274,7 @@
 | { input: "5ab9cbfa31c2ab715d42129", to: "objectId"}          | Error                                 |
 | {<br />    input: "5ab9cbfa31c2ab715d42129",<br />    to: "objectId",<br />    onError: "Could not convert to type ObjectId."<br /> } | “Could not convert to type ObjectId.” |
 
-> **也可以看看**<br />
+> **也可以看看**
 > 
 > `$toObjectId`操作符。
 
@@ -305,7 +305,7 @@
 | { input: ObjectId("5ab9c3da31c2ab715d421285"), to: "string" } | “5ab9c3da31c2ab715d421285”                                   |
 | { input:  ISODate("2018-03-27T16:58:51.538Z"), to: "string" } | { input:  ISODate("2018-03-27T16:58:51.538Z"), to: "string" }“2018-03-27T16:58:51.538Z” |
 
-> **也可以看看**<br />
+> **也可以看看**
 > 
 > `$toString`操作符。 `$dateToString`
 
@@ -313,7 +313,7 @@
 
 `orders`使用以下文档创建一个集合：
 
-```
+```powershell
 db.orders.insert( [
    { _id: 1, item: "apple", qty: 5, price: 10 },
    { _id: 2, item: "pie", qty: 10, price: NumberDecimal("20.0") },
@@ -325,7 +325,7 @@ db.orders.insert( [
 
 集合上的以下汇总操作`orders`会将转换`price`为小数：
 
-```
+```powershell
 // 定义使用转换后的价格和数量值添加convertedPrice和convertedQty字段的阶段
 // 如果没有price或qty值，则返回十进制值或整数值
 // 如果不能转换价格或数量值，将返回一个字符串
@@ -360,7 +360,7 @@ db.orders.aggregate( [
 
 该操作返回以下文档：
 
-```
+```powershell
 { "_id" : 1, "totalPrice" : NumberDecimal("50.0000000000000") }
 { "_id" : 2, "totalPrice" : NumberDecimal("200.0") }
 { "_id" : 3, "totalPrice" : NumberDecimal("9.98") }

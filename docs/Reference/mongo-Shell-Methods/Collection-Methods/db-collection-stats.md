@@ -27,7 +27,7 @@
 
 仅指定`scale`因素，MongoDB支持旧格式：
 
-```
+```powershell
 db.collection.stats(<number>)
 ```
 
@@ -41,7 +41,7 @@ db.collection.stats(<number>)
 
 ### 缩放大小
 
-除非度量标准名称（例如`"bytes currently in the cache"` ）另外指定，与大小相关的值以字节为单位显示，可以按比例覆盖。。
+除非度量标准名称（例如`"bytes currently in the cache"` ）另外指定，与大小相关的值以字节为单位显示，可以按比例覆盖。
 
 比例因子将受影响的大小值四舍五入为整数。
 
@@ -63,7 +63,9 @@ db.collection.stats(<number>)
 
 `indexDetailsKey`字段采用以下形式的文档：
 
-    { '<string>' : <value>, '<string>' : <value>, ... }
+```powershell
+{ '<string>' : <value>, '<string>' : <value>, ... }
+```
 
 其中`<string>`是索引的字段，`<value>`是索引的方向，或特殊索引类型，如`text`或`2dsphere`。有关索引类型的完整列表，请参见索引类型。
 
@@ -83,20 +85,21 @@ db.collection.stats(<number>)
 
 ## <span id="examples">例子</span>
 
-> **注意**<br />
+> **注意**
+>
 > 您可以在入门指南中找到用于这些示例的集合数据
 
 ### 基本统计查询
 
 以下操作返回`restaurants`集合上的统计信息：
 
-```
+```powershell
 db.restaurants.stats()
 ```
 
 操作返回：
 
-```
+```powershell
 {
     "ns" : "guidebook.restaurants",
     "count" : 25359,
@@ -239,13 +242,13 @@ db.restaurants.stats()
 
 以下操作通过指定`scale`的`scale`来更改从`bytes`到`kilobytes`的数据比例：
 
-```
+```powershell
 db.restaurants.stats( { scale : 1024 } )
 ```
 
 操作返回：
 
-```
+```powershell
 {
     "ns" : "guidebook.restaurants",
     "count" : 25359,
@@ -272,13 +275,13 @@ db.restaurants.stats( { scale : 1024 } )
 
 以下操作将创建一个`indexDetails`文档，其中包含与集合中每个索引相关的信息：
 
-```
+```powershell
 db.restaurant.stats( { indexDetails : true } )
 ```
 
 操作返回：
 
-```
+```powershell
 {
     "ns" : "guidebook.restaurants",
     "count" : 25359,
@@ -294,9 +297,9 @@ db.restaurant.stats( { indexDetails : true } )
         "_id_" : {
             "metadata" : {
                 "formatVersion" : 6,
-                "infoObj" : "{ \"v\" : 1, \"key\" : { \"_id\" : 1 }, \"name\" : \"_id_\", \"ns\" : \"blogs.posts\" }"
+                "infoObj" : "{ "v" : 1, "key" : { "_id" : 1 }, "name" : "_id_", "ns" : "blogs.posts" }"
              },
-            "creationString" : "allocation_size=4KB,app_metadata=(formatVersion=6,infoObj={ \"v\" : 1, \"key\" : { \"_id\" : 1 }, \"name\" : \"_id_\", \"ns\" : \"blogs.posts\" }),block_allocation=best,block_compressor=,cache_resident=0,checksum=on,colgroups=,collator=,columns=,dictionary=0,encryption=(keyid=,name=),exclusive=0,extractor=,format=btree,huffman_key=,huffman_value=,immutable=0,internal_item_max=0,internal_key_max=0,internal_key_truncate=,internal_page_max=16k,key_format=u,key_gap=10,leaf_item_max=0,leaf_key_max=0,leaf_page_max=16k,leaf_value_max=0,log=(enabled=),lsm=(auto_throttle=,bloom=,bloom_bit_count=16,bloom_config=,bloom_hash_count=8,bloom_oldest=0,chunk_count_limit=0,chunk_max=5GB,chunk_size=10MB,merge_max=15,merge_min=0),memory_page_max=5MB,os_cache_dirty_max=0,os_cache_max=0,prefix_compression=true,prefix_compression_min=4,source=,split_deepen_min_child=0,split_deepen_per_child=0,split_pct=75,type=file,value_format=u",
+            "creationString" : "allocation_size=4KB,app_metadata=(formatVersion=6,infoObj={ "v" : 1, "key" : { "_id" : 1 }, "name" : "_id_", "ns" : "blogs.posts" }),block_allocation=best,block_compressor=,cache_resident=0,checksum=on,colgroups=,collator=,columns=,dictionary=0,encryption=(keyid=,name=),exclusive=0,extractor=,format=btree,huffman_key=,huffman_value=,immutable=0,internal_item_max=0,internal_key_max=0,internal_key_truncate=,internal_page_max=16k,key_format=u,key_gap=10,leaf_item_max=0,leaf_key_max=0,leaf_page_max=16k,leaf_value_max=0,log=(enabled=),lsm=(auto_throttle=,bloom=,bloom_bit_count=16,bloom_config=,bloom_hash_count=8,bloom_oldest=0,chunk_count_limit=0,chunk_max=5GB,chunk_size=10MB,merge_max=15,merge_min=0),memory_page_max=5MB,os_cache_dirty_max=0,os_cache_max=0,prefix_compression=true,prefix_compression_min=4,source=,split_deepen_min_child=0,split_deepen_per_child=0,split_pct=75,type=file,value_format=u",
             "type" : "file",
             "uri" : "statistics:table:index-3-7253336746667145592",
             "LSM" : {
@@ -330,9 +333,9 @@ db.restaurant.stats( { indexDetails : true } )
         "borough_1_cuisine_1" : {
             "metadata" : {
                 "formatVersion" : 6,
-                "infoObj" : "{ \"v\" : 1, \"key\" : { \"borough\" : 1, \"cuisine\" : 1 }, \"name\" : \"borough_1_cuisine_1\", \"ns\" : \"blogs.posts\" }"
+                "infoObj" : "{ "v" : 1, "key" : { "borough" : 1, "cuisine" : 1 }, "name" : "borough_1_cuisine_1", "ns" : "blogs.posts" }"
         },
-        "creationString" : "allocation_size=4KB,app_metadata=(formatVersion=6,infoObj={ \"v\" : 1, \"key\" : { \"borough\" : 1, \"cuisine\" : 1 }, \"name\" : \"borough_1_cuisine_1\", \"ns\" : \"blogs.posts\" }),block_allocation=best,block_compressor=,cache_resident=0,checksum=on,colgroups=,collator=,columns=,dictionary=0,encryption=(keyid=,name=),exclusive=0,extractor=,format=btree,huffman_key=,huffman_value=,immutable=0,internal_item_max=0,internal_key_max=0,internal_key_truncate=,internal_page_max=16k,key_format=u,key_gap=10,leaf_item_max=0,leaf_key_max=0,leaf_page_max=16k,leaf_value_max=0,log=(enabled=),lsm=(auto_throttle=,bloom=,bloom_bit_count=16,bloom_config=,bloom_hash_count=8,bloom_oldest=0,chunk_count_limit=0,chunk_max=5GB,chunk_size=10MB,merge_max=15,merge_min=0),memory_page_max=5MB,os_cache_dirty_max=0,os_cache_max=0,prefix_compression=true,prefix_compression_min=4,source=,split_deepen_min_child=0,split_deepen_per_child=0,split_pct=75,type=file,value_format=u",
+        "creationString" : "allocation_size=4KB,app_metadata=(formatVersion=6,infoObj={ "v" : 1, "key" : { "borough" : 1, "cuisine" : 1 }, "name" : "borough_1_cuisine_1", "ns" : "blogs.posts" }),block_allocation=best,block_compressor=,cache_resident=0,checksum=on,colgroups=,collator=,columns=,dictionary=0,encryption=(keyid=,name=),exclusive=0,extractor=,format=btree,huffman_key=,huffman_value=,immutable=0,internal_item_max=0,internal_key_max=0,internal_key_truncate=,internal_page_max=16k,key_format=u,key_gap=10,leaf_item_max=0,leaf_key_max=0,leaf_page_max=16k,leaf_value_max=0,log=(enabled=),lsm=(auto_throttle=,bloom=,bloom_bit_count=16,bloom_config=,bloom_hash_count=8,bloom_oldest=0,chunk_count_limit=0,chunk_max=5GB,chunk_size=10MB,merge_max=15,merge_min=0),memory_page_max=5MB,os_cache_dirty_max=0,os_cache_max=0,prefix_compression=true,prefix_compression_min=4,source=,split_deepen_min_child=0,split_deepen_per_child=0,split_pct=75,type=file,value_format=u",
         "type" : "file",
         "uri" : "statistics:table:index-4-7253336746667145592",
         "LSM" : {
@@ -367,9 +370,9 @@ db.restaurant.stats( { indexDetails : true } )
     "cuisine_1" : {
         "metadata" : {
             "formatVersion" : 6,
-            "infoObj" : "{ \"v\" : 1, \"key\" : { \"cuisine\" : 1 }, \"name\" : \"cuisine_1\", \"ns\" : \"blogs.posts\" }"
+            "infoObj" : "{ "v" : 1, "key" : { "cuisine" : 1 }, "name" : "cuisine_1", "ns" : "blogs.posts" }"
         },
-        "creationString" : "allocation_size=4KB,app_metadata=(formatVersion=6,infoObj={ \"v\" : 1, \"key\" : { \"cuisine\" : 1 }, \"name\" : \"cuisine_1\", \"ns\" : \"blogs.posts\" }),block_allocation=best,block_compressor=,cache_resident=0,checksum=on,colgroups=,collator=,columns=,dictionary=0,encryption=(keyid=,name=),exclusive=0,extractor=,format=btree,huffman_key=,huffman_value=,immutable=0,internal_item_max=0,internal_key_max=0,internal_key_truncate=,internal_page_max=16k,key_format=u,key_gap=10,leaf_item_max=0,leaf_key_max=0,leaf_page_max=16k,leaf_value_max=0,log=(enabled=),lsm=(auto_throttle=,bloom=,bloom_bit_count=16,bloom_config=,bloom_hash_count=8,bloom_oldest=0,chunk_count_limit=0,chunk_max=5GB,chunk_size=10MB,merge_max=15,merge_min=0),memory_page_max=5MB,os_cache_dirty_max=0,os_cache_max=0,prefix_compression=true,prefix_compression_min=4,source=,split_deepen_min_child=0,split_deepen_per_child=0,split_pct=75,type=file,value_format=u",
+        "creationString" : "allocation_size=4KB,app_metadata=(formatVersion=6,infoObj={ "v" : 1, "key" : { "cuisine" : 1 }, "name" : "cuisine_1", "ns" : "blogs.posts" }),block_allocation=best,block_compressor=,cache_resident=0,checksum=on,colgroups=,collator=,columns=,dictionary=0,encryption=(keyid=,name=),exclusive=0,extractor=,format=btree,huffman_key=,huffman_value=,immutable=0,internal_item_max=0,internal_key_max=0,internal_key_truncate=,internal_page_max=16k,key_format=u,key_gap=10,leaf_item_max=0,leaf_key_max=0,leaf_page_max=16k,leaf_value_max=0,log=(enabled=),lsm=(auto_throttle=,bloom=,bloom_bit_count=16,bloom_config=,bloom_hash_count=8,bloom_oldest=0,chunk_count_limit=0,chunk_max=5GB,chunk_size=10MB,merge_max=15,merge_min=0),memory_page_max=5MB,os_cache_dirty_max=0,os_cache_max=0,prefix_compression=true,prefix_compression_min=4,source=,split_deepen_min_child=0,split_deepen_per_child=0,split_pct=75,type=file,value_format=u",
         "type" : "file",
         "uri" : "statistics:table:index-5-7253336746667145592",
         "LSM" : {
@@ -403,9 +406,9 @@ db.restaurant.stats( { indexDetails : true } )
     "borough_1_address.zipcode_1" : {
         "metadata" : {
             "formatVersion" : 6,
-            "infoObj" : "{ \"v\" : 1, \"key\" : { \"borough\" : 1, \"address.zipcode\" : 1 }, \"name\" : \"borough_1_address.zipcode_1\", \"ns\" : \"blogs.posts\" }"
+            "infoObj" : "{ "v" : 1, "key" : { "borough" : 1, "address.zipcode" : 1 }, "name" : "borough_1_address.zipcode_1", "ns" : "blogs.posts" }"
              },
-            "creationString" : "allocation_size=4KB,app_metadata=(formatVersion=6,infoObj={ \"v\" : 1, \"key\" : { \"borough\" : 1, \"address.zipcode\" : 1 }, \"name\" : \"borough_1_address.zipcode_1\", \"ns\" : \"blogs.posts\" }),block_allocation=best,block_compressor=,cache_resident=0,checksum=on,colgroups=,collator=,columns=,dictionary=0,encryption=(keyid=,name=),exclusive=0,extractor=,format=btree,huffman_key=,huffman_value=,immutable=0,internal_item_max=0,internal_key_max=0,internal_key_truncate=,internal_page_max=16k,key_format=u,key_gap=10,leaf_item_max=0,leaf_key_max=0,leaf_page_max=16k,leaf_value_max=0,log=(enabled=),lsm=(auto_throttle=,bloom=,bloom_bit_count=16,bloom_config=,bloom_hash_count=8,bloom_oldest=0,chunk_count_limit=0,chunk_max=5GB,chunk_size=10MB,merge_max=15,merge_min=0),memory_page_max=5MB,os_cache_dirty_max=0,os_cache_max=0,prefix_compression=true,prefix_compression_min=4,source=,split_deepen_min_child=0,split_deepen_per_child=0,split_pct=75,type=file,value_format=u",
+            "creationString" : "allocation_size=4KB,app_metadata=(formatVersion=6,infoObj={ "v" : 1, "key" : { "borough" : 1, "address.zipcode" : 1 }, "name" : "borough_1_address.zipcode_1", "ns" : "blogs.posts" }),block_allocation=best,block_compressor=,cache_resident=0,checksum=on,colgroups=,collator=,columns=,dictionary=0,encryption=(keyid=,name=),exclusive=0,extractor=,format=btree,huffman_key=,huffman_value=,immutable=0,internal_item_max=0,internal_key_max=0,internal_key_truncate=,internal_page_max=16k,key_format=u,key_gap=10,leaf_item_max=0,leaf_key_max=0,leaf_page_max=16k,leaf_value_max=0,log=(enabled=),lsm=(auto_throttle=,bloom=,bloom_bit_count=16,bloom_config=,bloom_hash_count=8,bloom_oldest=0,chunk_count_limit=0,chunk_max=5GB,chunk_size=10MB,merge_max=15,merge_min=0),memory_page_max=5MB,os_cache_dirty_max=0,os_cache_max=0,prefix_compression=true,prefix_compression_min=4,source=,split_deepen_min_child=0,split_deepen_per_child=0,split_pct=75,type=file,value_format=u",
             "type" : "file",
             "uri" : "statistics:table:index-6-7253336746667145592",
             "LSM" : {
@@ -454,7 +457,7 @@ db.restaurant.stats( { indexDetails : true } )
 
 给定以下索引：
 
-```
+```powershell
 {
     "ns" : "guidebook.restaurants",
     "v" : 1,
@@ -468,7 +471,7 @@ db.restaurant.stats( { indexDetails : true } )
 
 以下操作将`indexDetails`文档过滤为`indexDetailsKey`文档定义的单个索引。
 
-```
+```powershell
 db.restaurants.stats(
     {
         'indexDetails' : true,
@@ -483,7 +486,7 @@ db.restaurants.stats(
 
 以下操作将`indexDetails`文档过滤为`indexDetailsName`文档定义的单个索引。
 
-```
+```powershell
 db.restaurants.stats(
     {
         'indexDetails' : true,
@@ -494,7 +497,7 @@ db.restaurants.stats(
 
 两个操作都会 return 相同的输出：
 
-```
+```powershell
 {
     "ns" : "blogs.restaurants",
     "count" : 25359,
@@ -510,9 +513,9 @@ db.restaurants.stats(
         "borough_1_cuisine_1" : {
             "metadata" : {
                 "formatVersion" : 6,
-                "infoObj" : "{ \"v\" : 1, \"key\" : { \"borough\" : 1, \"cuisine\" : 1 }, \"name\" : \"borough_1_cuisine_1\", \"ns\" : \"blogs.posts\" }"
+                "infoObj" : "{ "v" : 1, "key" : { "borough" : 1, "cuisine" : 1 }, "name" : "borough_1_cuisine_1", "ns" : "blogs.posts" }"
              },
-            "creationString" : "allocation_size=4KB,app_metadata=(formatVersion=6,infoObj={ \"v\" : 1, \"key\" : { \"borough\" : 1, \"cuisine\" : 1 }, \"name\" : \"borough_1_cuisine_1\", \"ns\" : \"blogs.posts\" }),block_allocation=best,block_compressor=,cache_resident=0,checksum=on,colgroups=,collator=,columns=,dictionary=0,encryption=(keyid=,name=),exclusive=0,extractor=,format=btree,huffman_key=,huffman_value=,immutable=0,internal_item_max=0,internal_key_max=0,internal_key_truncate=,internal_page_max=16k,key_format=u,key_gap=10,leaf_item_max=0,leaf_key_max=0,leaf_page_max=16k,leaf_value_max=0,log=(enabled=),lsm=(auto_throttle=,bloom=,bloom_bit_count=16,bloom_config=,bloom_hash_count=8,bloom_oldest=0,chunk_count_limit=0,chunk_max=5GB,chunk_size=10MB,merge_max=15,merge_min=0),memory_page_max=5MB,os_cache_dirty_max=0,os_cache_max=0,prefix_compression=true,prefix_compression_min=4,source=,split_deepen_min_child=0,split_deepen_per_child=0,split_pct=75,type=file,value_format=u",
+            "creationString" : "allocation_size=4KB,app_metadata=(formatVersion=6,infoObj={ "v" : 1, "key" : { "borough" : 1, "cuisine" : 1 }, "name" : "borough_1_cuisine_1", "ns" : "blogs.posts" }),block_allocation=best,block_compressor=,cache_resident=0,checksum=on,colgroups=,collator=,columns=,dictionary=0,encryption=(keyid=,name=),exclusive=0,extractor=,format=btree,huffman_key=,huffman_value=,immutable=0,internal_item_max=0,internal_key_max=0,internal_key_truncate=,internal_page_max=16k,key_format=u,key_gap=10,leaf_item_max=0,leaf_key_max=0,leaf_page_max=16k,leaf_value_max=0,log=(enabled=),lsm=(auto_throttle=,bloom=,bloom_bit_count=16,bloom_config=,bloom_hash_count=8,bloom_oldest=0,chunk_count_limit=0,chunk_max=5GB,chunk_size=10MB,merge_max=15,merge_min=0),memory_page_max=5MB,os_cache_dirty_max=0,os_cache_max=0,prefix_compression=true,prefix_compression_min=4,source=,split_deepen_min_child=0,split_deepen_per_child=0,split_pct=75,type=file,value_format=u",
             "type" : "file",
             "uri" : "statistics:table:index-4-7253336746667145592",
             "LSM" : {
@@ -557,5 +560,6 @@ db.restaurants.stats(
 
 有关输出的说明，请参阅输出细节。
 
-> **也可以看看**<br />
+> **也可以看看**
+>
 > $collStats

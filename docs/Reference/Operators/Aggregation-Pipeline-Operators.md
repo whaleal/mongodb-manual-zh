@@ -1,5 +1,6 @@
 # [ ](#)聚合管道操作符
-> **注意：**<br />
+> **注意：**
+>
 > 有关特定运算符的详细信息，包括语法和示例，请单击特定运算符以转到其参考页。
 
 []()
@@ -33,12 +34,16 @@
 
 运算符表达式类似于带有参数的函数。通常，这些表达式采用参数数组并具有以下形式：
 
-    { <operator>: [ <argument1>, <argument2> ... ] }
+```powershell
+{ <operator>: [ <argument1>, <argument2> ... ] }
+```
 
 
 如果 operator 接受单个参数，可以省略指定参数列表的外部数组：
 
-    { <operator>: <argument> }
+```powershell
+{ <operator>: <argument> }
+```
 
 为了避免在参数是文字数组的情况下解析歧义，必须将文字数组包装在[`$literal`](Aggregation-Pipeline-Operators/literal-aggregation.md)表达式中，或者保留指定参数列表的外部数组。
 
