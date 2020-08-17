@@ -82,25 +82,25 @@ mongo --retryWrites
 | [db.collection.updateOne()](https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/#db.collection.updateOne)<br />[db.collection.replaceOne()](https://docs.mongodb.com/manual/reference/method/db.collection.replaceOne/#db.collection.replaceOne)<br />[db.collection.save()](https://docs.mongodb.com/manual/reference/method/db.collection.save/#db.collection.save)<br />[db.collection.update()](https://docs.mongodb.com/manual/reference/method/db.collection.update/#db.collection.update) where `multi` is `false` | 单文档更新操作。 |
 | [db.collection.deleteOne()](https://docs.mongodb.com/manual/reference/method/db.collection.deleteOne/#db.collection.deleteOne)<br />[db.collection.remove()](https://docs.mongodb.com/manual/reference/method/db.collection.remove/#db.collection.remove) where justOne is true | 单个文档删除操作 |
 | [db.collection.findAndModify()](https://docs.mongodb.com/manual/reference/method/db.collection.findAndModify/#db.collection.findAndModify)<br />[db.collection.findOneAndDelete()](https://docs.mongodb.com/manual/reference/method/db.collection.findOneAndDelete/#db.collection.findOneAndDelete)<br />[db.collection.findOneAndReplace()](https://docs.mongodb.com/manual/reference/method/db.collection.findOneAndReplace/#db.collection.findOneAndReplace)<br />[db.collection.findOneAndUpdate()](https://docs.mongodb.com/manual/reference/method/db.collection.findOneAndUpdate/#db.collection.findOneAndUpdate) | **findAndModify**操作。所有**findAndModify**操作都是单个文档操作。 |
-| <br /> [db.collection.bulkWrite()](https://docs.mongodb.com/manual/reference/method/db.collection.bulkWrite/#db.collection.bulkWrite) 具有以下写操作：<br />. [insertOne](https://docs.mongodb.com/manual/reference/method/db.collection.bulkWrite/#bulkwrite-write-operations-insertone)<br />. [updateOne](https://docs.mongodb.com/manual/reference/method/db.collection.bulkWrite/#bulkwrite-write-operations-updateonemany)<br />. [replaceOne](https://docs.mongodb.com/manual/reference/method/db.collection.bulkWrite/#bulkwrite-write-operations-replaceone)<br />. [deleteOne](https://docs.mongodb.com/manual/reference/method/db.collection.bulkWrite/#bulkwrite-write-operations-deleteonemany)<br /> | 只包含单文档写操作的批量写操作。可重试的批量操作可以包括指定写操作的任何组合，但不能包括任何多文档写操作，例如updateMany。 |
-| [Bulk](https://docs.mongodb.com/manual/reference/method/Bulk/#Bulk) operations for:<br />. [Bulk.find.removeOne()](https://docs.mongodb.com/manual/reference/method/Bulk.find.removeOne/#Bulk.find.removeOne)<br />. [Bulk.find.replaceOne()](https://docs.mongodb.com/manual/reference/method/Bulk.find.replaceOne/#Bulk.find.replaceOne)<br />. [Bulk.find.replaceOne()](https://docs.mongodb.com/manual/reference/method/Bulk.find.replaceOne/#Bulk.find.replaceOne)<br /> | 仅由单文档写操作组成的批量写操作。可重试的批量操作可以包括指定写操作的任何组合，但不能包括任何多文档写操作，例如update，它为multi选项指定true。 |
+| <br /> [db.collection.bulkWrite()](https://docs.mongodb.com/manual/reference/method/db.collection.bulkWrite/#db.collection.bulkWrite) 具有以下写操作：<br />. [insertOne](https://docs.mongodb.com/manual/reference/method/db.collection.bulkWrite/#bulkwrite-write-operations-insertone)<br />. [updateOne](https://docs.mongodb.com/manual/reference/method/db.collection.bulkWrite/#bulkwrite-write-operations-updateonemany)<br />. [replaceOne](https://docs.mongodb.com/manual/reference/method/db.collection.bulkWrite/#bulkwrite-write-operations-replaceone)<br />. [deleteOne](https://docs.mongodb.com/manual/reference/method/db.collection.bulkWrite/#bulkwrite-write-operations-deleteonemany)<br /> | 只包含单文档写操作的批量写操作。可重试的大容量操作可以包括指定的写操作的任何组合，但不能包括任何多文档写操作，比如**updateMany**。 |
+| [Bulk](https://docs.mongodb.com/manual/reference/method/Bulk/#Bulk) operations for:<br />. [Bulk.find.removeOne()](https://docs.mongodb.com/manual/reference/method/Bulk.find.removeOne/#Bulk.find.removeOne)<br />. [Bulk.find.replaceOne()](https://docs.mongodb.com/manual/reference/method/Bulk.find.replaceOne/#Bulk.find.replaceOne)<br />. [Bulk.find.replaceOne()](https://docs.mongodb.com/manual/reference/method/Bulk.find.replaceOne/#Bulk.find.replaceOne)<br /> | 仅由单文档写操作组成的批量写操作。可重试的大容量操作可以包括指定的写操作的任何组合，但不能包括任何多文档写操作，比如**update**，它为**multi**选项指定**true**。 |
 
 > **分片键值更新**
 >
 > 从MongoDB 4.2开始，您可以通过发布可重试写入或事务处理中的单文档**update / findAndModify**操作来更新文档的分片键值(除非分片键字段是不可变的**_id**字段)。 有关详细信息，请参见[更改文档的分片键值](https://docs.mongodb.com/master/core/sharding-shard-key/#update-shard-key).。
 
-* MongoDB 4.2将重试遇到重复密钥异常的某些单文档upsert（更新使用**upsert：true**和**multi：false**）。 有关条件，请参阅Upsert上的重复键错误。
+* MongoDB 4.2将重试遇到重复密钥异常的某些单文档upsert（更新使用**upsert：true**和**multi：false**）。 有关条件，请参阅 [Duplicate Key Errors on Upsert](https://docs.mongodb.com/master/core/retryable-writes/#retryable-update-upsert) .
 * 在MongoDB 4.2之前，MongoDB不会重试遇到重复键错误的upsert操作。
 
 ## <span id="behavior">行为</span>
 
 ### 持续的网络错误
 
-MongoDB可重试写入仅进行一次重试尝试。 这有助于解决瞬态网络错误和副本集选择，但不能解决持久性网络错误。
+MongoDB可重试写只做一次重试尝试。这有助于解决暂时的网络错误和复制集选举，但不能解决持久的网络错误。
 
 ### 故障转移期
 
-如果驱动程序在目标副本集或分片的群集分片中找不到正常的主数据库，则驱动程序将等待[`serverSelectionTimeoutMS`](https://docs.mongodb.com/manual/reference/connection-string/#urioption.serverSelectionTimeoutMS)毫秒确定新的主数据库，然后重试。 可重试的写操作不会解决故障转移时间超过[`serverSelectionTimeoutMS`](https://docs.mongodb.com/manual/reference/connection-string/#urioption.serverSelectionTimeoutMS)的实例。
+如果驱动程序在目标复制集中或分片集群分片中找不到正常的主服务器，则驱动程序在重试之前会等待[`serverSelectionTimeoutMS`](https://docs.mongodb.com/manual/reference/connection-string/#urioption.serverSelectionTimeoutMS)毫秒来确定新的主服务器。可重试写操作不会处理故障转移周期超过[`serverSelectionTimeoutMS`](https://docs.mongodb.com/manual/reference/connection-string/#urioption.serverSelectionTimeoutMS)的实例。
 
 > **[warning]  Warning**
 >
@@ -108,21 +108,26 @@ MongoDB可重试写入仅进行一次重试尝试。 这有助于解决瞬态网
 
 ### Upsert上的重复键错误
 
-仅当操作满足以下所有条件时，MongoDB 4.2才会重试由于重复键错误而失败的单文档upsert操作(即:**upsert : true**和**multi : false**):
+MongoDB 4.2将重试单文档的upsert操作(即:**upsert: true**和**multi: false**)由于重复的键错误而失败，只有当操作满足以下所有条件:
 
 * 目标集合具有导致重复键错误的唯一索引。
 
 * 更新匹配条件为：
-  * 单个相等谓词<br />**{ "fieldA" : "valueA" }**，<br />or<br />
-  * 相等谓词的逻辑与<br />**{ "fieldA" : "valueA", "fieldB" : "valueB" }**<br />
-  
+  * 单个相等谓词
+
+    **{ "fieldA" : "valueA" }**，
+
+  * 相等谓词的逻辑
+
+    **{ "fieldA" : "valueA", "fieldB" : "valueB" }**
+
 * 唯一索引键模式中的字段集与更新查询谓词中的字段集匹配。
 
 * 更新操作不会修改查询谓词中的任何字段。
 
   下表包含服务器可以或不能在重复键错误时重试的upsert操作示例：
 
-| **唯一索引键模式**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| **更新操作**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | **可重试** |
+| **唯一索引键模式**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | **更新操作**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | **可重试** |
 | ---- | --- | --- |
 | {  _id  ： **1**  } | db.collName.updateOne(  <br />      { _id : ObjectId("**1aa1c1efb123f14aaa167aaa**") },  <br/>      { $set : { fieldA : **25** } },  <br />      { upsert : **true** } <br />) | 是 |
 | {  fieldA  ： **1**  } | db.collName.updateOne(  <br />        { fieldA : { $in : [ **25** ] } },  <br />        { $set : { fieldB : "**someValue**" } }, <br />        { upsert : **true** } <br />) | 是 |
@@ -145,3 +150,9 @@ MongoDB可重试写入仅进行一次重试尝试。 这有助于解决瞬态网
 官方的MongoDB 4.2系列驱动程序默认情况下启用重试写入。 除非明确禁止重试写入，否则写入本地数据库的应用程序在升级到4.2系列驱动程序时将遇到写入错误。
 
 要禁用可重试写入，请在MongoDB集群的[连接字符串](https://docs.mongodb.com/manual/reference/connection-string/#mongodb-uri)中指定[`retryWrites=false`](https://docs.mongodb.com/master/reference/connection-string/#urioption.retryWrites) 。
+
+
+
+译者：杨帅
+
+校对：杨帅
