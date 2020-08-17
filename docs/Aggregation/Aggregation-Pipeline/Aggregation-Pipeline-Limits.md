@@ -35,6 +35,12 @@
 从MongoDB 4.2开始，如果任何聚合阶段由于内存限制而将数据写到临时文件，则分析器日志消息和诊断日志消息包括一个usedDisk指示器。
 
 
-> **也可以看看**
+> **[success] 可以看看**
 >
 > [$sort and Memory Restrictions]()和[$group Operator and Memory]()。
+
+
+
+译者：李冠飞
+
+校对：李冠飞

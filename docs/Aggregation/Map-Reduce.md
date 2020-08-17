@@ -11,7 +11,7 @@
 
 Map-reduce 是一种数据处理范式，用于将大量数据压缩为有用的聚合结果。对于 map-reduce 操作，MongoDB 提供[MapReduce]()数据库命令。
 
-> **注意**
+> **[success] 注意**
 >
 > 从4.2版开始，MongoDB弃用：
 >
@@ -26,7 +26,7 @@ Map-reduce 是一种数据处理范式，用于将大量数据压缩为有用的
 
 MongoDB 中的所有 map-reduce 函数都是JavaScript，在mongod进程中运行。 Map-reduce 操作将单个[集合]()的文档作为输入，并且可以在开始 map 阶段之前执行任意排序和限制。 [MapReduce]()可以将map-reduce操作的结果作为文档返回，或者可以将结果写入集合。
 
-> **注意**
+> **[success] 注意**
 >
 > 对于大多数聚合操作，[聚合管道](Aggregation-Pipeline.md)提供更好的性能和更一致的接口。但是，map-reduce 操作提供了一些在聚合管道中目前不可用的灵活性。
 
@@ -60,3 +60,8 @@ MongoDB 支持[分片集合]()上的 map-reduce 操作。
 
 [视图]()不支持 map-reduce 操作。
 
+
+
+译者：李冠飞
+
+校对：李冠飞
