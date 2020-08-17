@@ -21,16 +21,17 @@
           "search-pro",
 	"splitter",
 	"page-toc-button",
-	"lightbox",
 	"auto-scroll-table",
 	"flexible-alerts",
 	"alerts"	
+
+			
     ],
 
     "pluginsConfig": {
         "donate": {
-            "wechat": "./img/pay/Wechatpay.jpeg",
-            "alipay": "./img/pay/alipay.jpeg",
+            "wechat": "https://jinmuinfo.github.io/MongoDB-Manual-zh/img/pay/Wechatpay.jpeg",
+            "alipay": "https://jinmuinfo.github.io/MongoDB-Manual-zh/img/pay/alipay.jpeg",
             "title": "",
             "button": "打赏",
             "alipayText": "支付宝打赏",
@@ -40,7 +41,7 @@
             "buttons": [
               {
                 "user": "JinMuInfo",
-                "repo": "MongoDB-Manual-zh", 
+                "repo": "MongoDB-Manual-zh",
                 "type": "star",
                 "count": true,
                 "size": "small"
@@ -56,8 +57,8 @@
           "modify_label": "文件修订时间：",
           "modify_format": "YYYY-MM-DD HH:mm:ss"
         },
-	"github": { 
-		"url": "https://github.com/JinMuInfo/MongoDB-Manual-zh" 
+	"github": {
+		"url": "https://github.com/JinMuInfo/MongoDB-Manual-zh"
 		},
 	 "page-toc-button": {
             "maxTocDepth": 4,
@@ -65,4 +66,6 @@
            }
 	}
 	    
+	
 }
+
