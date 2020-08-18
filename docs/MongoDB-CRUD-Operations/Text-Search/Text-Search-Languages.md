@@ -28,3 +28,7 @@
 
 [Specify a Language for Text Index](https://docs.mongodb.com/manual/tutorial/specify-language-for-text-index/)
 
+
+译者：杨帅
+
+校对：杨帅
