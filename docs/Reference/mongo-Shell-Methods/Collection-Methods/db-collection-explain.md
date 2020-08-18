@@ -187,3 +187,8 @@ db.collection.explain()操作可以 return 以下信息：
 
 > 对于具有 version 3.0 mongos和至少一个 2.6 mongod分片的混合 version 分片 cluster，当您在 version 3.0 mongo shell 中 run db.collection.explain()时，db.collection.explain()将使用$explain operator 重试_ret以 2.6 格式返回结果。
 
+
+
+译者：李冠飞
+
+校对：

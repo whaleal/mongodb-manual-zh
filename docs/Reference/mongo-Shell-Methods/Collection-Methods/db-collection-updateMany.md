@@ -562,3 +562,8 @@ update命令返回以下内容：
 db.members.aggregate( [ { $indexStats: { } }, { $sort: { name: 1 } } ] )
 ```
 
+
+
+译者：李冠飞
+
+校对：

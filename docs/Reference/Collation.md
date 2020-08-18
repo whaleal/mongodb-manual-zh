@@ -149,3 +149,9 @@ db.myColl.find( { score: 5, category: "cafe" } )
 > 提示
 >
 > 要在具有非简单排序规则的集合上创建**text**、**2d**或**geoHaystack**索引，必须在创建索引时显式指定`{collation: {locale: "simple"}}`。
+
+
+
+译者：李冠飞
+
+校对：

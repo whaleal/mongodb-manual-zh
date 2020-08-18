@@ -449,3 +449,9 @@ db.students2.findAndModify( {
 > **也可以看看**
 >
 > 可线性化通过 findAndModify 读取
+
+
+
+译者：李冠飞
+
+校对：

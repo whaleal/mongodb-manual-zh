@@ -21,3 +21,8 @@
 | [`replSetStepDown`]()            | 当前`primary`下台,成为一个`secondary`，迫使选举。            |
 | [`replSetSyncFrom`]()            | 显式覆盖用于选择要复制的成员的默认逻辑。                     |
 
+
+
+译者：李冠飞
+
+校对：

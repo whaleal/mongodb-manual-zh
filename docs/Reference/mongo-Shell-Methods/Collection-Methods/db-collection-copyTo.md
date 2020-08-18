@@ -43,3 +43,8 @@ copyTo()返回复制的文档数。如果复制失败，则抛出 exception。
 db.source.copyTo(target)
 ```
 
+
+
+译者：李冠飞
+
+校对：

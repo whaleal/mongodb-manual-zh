@@ -110,3 +110,8 @@ Totals
 
 *   `stats.shards[ <shard-x> ].avgObjSize`是反映分片的平均 object 大小(包括度量单位)的数字。
 
+
+
+译者：李冠飞
+
+校对：

@@ -173,3 +173,9 @@ WriteConcernError({
 > **也可以看看**
 >
 > 要插入多个文档，请参阅db.collection.insertMany()
+
+
+
+译者：李冠飞
+
+校对：

@@ -122,3 +122,9 @@ db.trigonometry.aggregate([
 ```
 
 由于`x-coordinate`存储为 128-bit十进制数，因此输出 `$asin`为128-bit十进制数。
+
+
+
+译者：李冠飞
+
+校对：

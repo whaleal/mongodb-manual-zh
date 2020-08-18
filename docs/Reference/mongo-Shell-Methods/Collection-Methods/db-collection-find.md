@@ -552,3 +552,9 @@ db.bios.find().limit( 5 ).sort( { name: 1 } )
 - [`cursor.sort()`]()
 - [`cursor.tailable()`]()
 - [`cursor.toArray()`]()
+
+
+
+译者：李冠飞
+
+校对：

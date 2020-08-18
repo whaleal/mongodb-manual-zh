@@ -361,24 +361,24 @@ Set 表达式对数组执行 set 操作，将数组视为集合。 Set 表达式
 
 如果集合包含嵌套的数组元素，则 set 表达式不会深入到嵌套的数组中，而是在最外层处计算数组。
 
-| 名称                 | 描述                                                         |
-| -------------------- | ------------------------------------------------------------ |
-| [$allElementsTrue]() | 如果没有集合的元素计算为`false`，则返回`true`，否则返回`false`。接受单个参数表达式。 |
-| [$anyElementTrue]()  | 如果集合中的任意一个元素求值为`true`，则返回`true`；否则，返回`false`。接受单个参数表达式。 |
-| [$setDifference]()   | 返回一个集合，其中的元素出现在第一个集合中但不出现在第二个集合中；即：执行第二个集合相对于第一个集合的[相对补充]()。接受两个参数表达式。 |
-| [$setEquals]()       | 如果输入 sets 具有相同的不同元素，则返回`true`。接受两个或多个参数表达式。 |
-| [$setIntersection]() | 返回一个包含所有输入 sets 中出现的元素的集合。接受任意数量的参数表达式。 |
-| [$setIsSubset]()     | 如果第一组的所有元素出现在第二组中，则返回`true`，包括第一组的等于第二组的时间; i.e。不是[严格的子集](http://en.wikipedia.org/wiki/Subset)。接受两个参数表达式。 |
-| [$setUnion]()        | 返回一个包含任何输入 sets 中出现的元素的集合。               |
+| 名称                                                         | 描述                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [$allElementsTrue](../../Reference/Operators/Aggregation-Pipeline-Operators/allElementsTrue-aggregation.md) | 如果没有集合的元素计算为`false`，则返回`true`，否则返回`false`。接受单个参数表达式。 |
+| [$anyElementTrue](../../Reference/Operators/Aggregation-Pipeline-Operators/anyElementTrue-aggregation.md) | 如果集合中的任意一个元素求值为`true`，则返回`true`；否则，返回`false`。接受单个参数表达式。 |
+| [$setDifference](../../Reference/Operators/Aggregation-Pipeline-Operators/setDifference-aggregation.md) | 返回一个集合，其中的元素出现在第一个集合中但不出现在第二个集合中；即：执行第二个集合相对于第一个集合的[相对补充]()。接受两个参数表达式。 |
+| [$setEquals](../../Reference/Operators/Aggregation-Pipeline-Operators/setEquals-aggregation.md) | 如果输入 sets 具有相同的不同元素，则返回`true`。接受两个或多个参数表达式。 |
+| [$setIntersection](../../Reference/Operators/Aggregation-Pipeline-Operators/setIntersection-aggregation.md) | 返回一个包含所有输入 sets 中出现的元素的集合。接受任意数量的参数表达式。 |
+| [$setIsSubset](../../Reference/Operators/Aggregation-Pipeline-Operators/setIsSubset-aggregation.md) | 如果第一组的所有元素出现在第二组中，包括第一个集合和第二个集合相等时，则返回`true`；即：不是[严格的子集](http://en.wikipedia.org/wiki/Subset)。接受两个参数表达式。 |
+| [$setUnion](../../Reference/Operators/Aggregation-Pipeline-Operators/setUnion-aggregation.md) | 返回包含出现在任何输入集合中的元素的集合。                   |
 
 
 []()
 
 ### <span id="string-expression-operators">字符串表达式运算符</span>
 
-具有[$concat]()的 exception 的 String 表达式仅对 strings 的 ASCII 字符具有 well-defined 行为。
+除了[$concat]()之外，字符串表达式只对ASCII字符的字符串具有定义良好的行为。
 
-无论使用哪个字符，[$concat]()行为都是 well-defined。
+无论使用哪个字符，[$concat]()行为都是定义良好的。
 
 | 名称                | 描述                                                         |
 | ------------------- | ------------------------------------------------------------ |
@@ -473,3 +473,8 @@ Set 表达式对数组执行 set 操作，将数组视为集合。 Set 表达式
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [$abs]()<br/>[$add]()<br/>[$addToSet]()<br/>[$allElementsTrue]()<br/>[$and]()<br/>[$anyElementTrue]()<br/>[$arrayElemAt]()<br/>[$arrayToObject]()<br/>[$avg]()<br/>[$cmp]()<br/>[$concat]()<br/>[$concatArrays]()<br/>[$cond]()<br/>[$dateFromParts]()<br/>[$dateToParts]()<br/>[$dateFromString]()<br/>[$dateToString]() | [$dayOfMonth]()<br/>[$dayOfWeek]()<br/>[$dayOfYear]()<br/>[$divide]()<br/>[$eq]()<br/>[$exp]()<br/>[$filter]()<br/>[$first]()<br/>[$floor]()<br/>[$gt]()<br/>[$gte]()<br/>[$hour]()<br/>[$ifNull]()<br/>[$in]()<br/>[$indexOfArray]()<br/>[$indexOfBytes]()<br/>[$indexOfCP]()<br/>[$isArray]() | [$isoDayOfWeek]()<br/>[$isoWeek]()<br/>[$isoWeekYear]()<br/>[$last]()<br/>[$let]()<br/>[$literal]()<br/>[$ln]()<br/>[$log]()<br/>[$log10]()<br/>[$lt]()<br/>[$lte]()<br/>[$map]()<br/>[$max]()<br/>[$mergeObjects]()<br/>[$meta]()<br/>[$min]()<br/>[$millisecond]() | [$minute]()<br/>[$mod]()<br/>[$month]()<br/>[$multiply]()<br/>[$ne]()<br/>[$not]()<br/>[$objectToArray]()<br/>[$or]()<br/>[$pow]()<br/>[$push]()<br/>[$range]()<br/>[$reduce]()<br/>[$reverseArray]()<br/>[$second]()<br/>[$setDifference]()<br/>[$setEquals]()<br/>[$setIntersection]()<br/>[$setIsSubset]()<br/>[$setUnion]()<br/>[$size]() | [$slice]()<br/>[$split]()<br/>[$sqrt]()<br/>[$stdDevPop]()<br/>[$stdDevSamp]()<br/>[$strcasecmp]()<br/>[$strLenBytes]()<br/>[$strLenCP]()<br/>[$substr]()<br/>[$substrBytes]()<br/>[$substrCP]()<br/>[$subtract]()<br/>[$sum]()<br/>[$switch]()<br/>[$toLower]()<br/>[$toUpper]()<br/>[$trunc]()<br/>[$type]()<br/>[$week]()<br/>[$year]()<br/>[$zip]() |
 
+
+
+译者：李冠飞
+
+校对：

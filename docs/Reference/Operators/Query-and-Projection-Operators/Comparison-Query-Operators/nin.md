@@ -37,3 +37,8 @@ db.inventory.update( { tags: { $nin: [ "appliances", "school" ] } }, { $set: { s
 >
 > `find()`，`update()`，`$set`。
 
+
+
+译者：李冠飞
+
+校对：

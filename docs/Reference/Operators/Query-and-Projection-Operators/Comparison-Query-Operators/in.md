@@ -71,3 +71,8 @@ db.inventory.find( { tags: { $in: [ /^be/, /^st/ ] } } )
 > **也可以看看**
 > `find()`，`update()`，`$or`，`$set`，`$elemMatch`。
 
+
+
+译者：李冠飞
+
+校对：

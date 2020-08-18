@@ -77,3 +77,8 @@ db.sales.aggregate(
 { "_id" : { "day" : 1, "year" : 2014 }, "itemsSold" : [ "abc" ] }
 ```
 
+
+
+译者：李冠飞
+
+校对：

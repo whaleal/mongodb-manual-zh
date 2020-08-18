@@ -79,3 +79,8 @@ db.inventory.aggregate(
 { "_id" : 5, "item" : "VWZ2", "qty" : 180, "result" : true }
 ```
 
+
+
+译者：李冠飞
+
+校对：

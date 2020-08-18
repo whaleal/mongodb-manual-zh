@@ -99,3 +99,9 @@ db.orders.countDocuments( { ord_dt: { $gt: new Date('01/01/2012') } }, { limit: 
 >* `$group` 和 `$sum`
 >* `count`
 >* 带有count选项的collStats pipeline stage。
+
+
+
+译者：李冠飞
+
+校对：

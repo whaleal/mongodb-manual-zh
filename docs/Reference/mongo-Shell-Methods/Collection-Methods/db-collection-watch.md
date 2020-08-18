@@ -255,3 +255,8 @@ while (!resumedWatchCursor.isExhausted()){
 
 有关恢复更改流的完整文档，请参阅恢复变更流。
 
+
+
+译者：李冠飞
+
+校对：

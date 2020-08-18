@@ -66,3 +66,9 @@ db.inventory.find( { price: { $not: { $gt: 1.99 } } } )
 
 > **也可以看看**<br />
 > [`find()`](), [`update()`](), [`$set`](), [`$gt`](), [`$regex`](), [PyMongo](), [driver]().
+
+
+
+译者：李冠飞
+
+校对：

@@ -127,3 +127,9 @@ db.trigonometry.aggregate([
 ```
 
 由于`angle_a`和`hypotenuse`被存储为 128-bit小数，因此输出 `$cos`为128-bit小数。
+
+
+
+译者：李冠飞
+
+校对：

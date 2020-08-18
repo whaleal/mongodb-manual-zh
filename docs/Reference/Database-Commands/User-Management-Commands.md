@@ -15,3 +15,9 @@
 | [`revokeRolesFromUser`]()      | 从用户删除角色。             |
 | [`updateUser`]()               | 更新用户的数据。             |
 | [`usersInfo`]()                | 返回有关指定用户的信息。     |
+
+
+
+译者：李冠飞
+
+校对：

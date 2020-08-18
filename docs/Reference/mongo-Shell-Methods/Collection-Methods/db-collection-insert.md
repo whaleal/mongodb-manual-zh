@@ -202,3 +202,8 @@ WriteResult({
 
 传递 array 文档时，insert()返回BulkWriteResult() object。有关详细信息，请参阅BulkWriteResult()。
 
+
+
+译者：李冠飞
+
+校对：

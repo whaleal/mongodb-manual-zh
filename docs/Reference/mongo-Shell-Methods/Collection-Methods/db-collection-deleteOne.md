@@ -163,3 +163,9 @@ db.myColl.deleteOne(
 > **也可以看看**
 >
 > 要删除多个文档，请参阅db.collection.deleteMany()
+
+
+
+译者：李冠飞
+
+校对：

@@ -10,3 +10,8 @@
 
 返回的 value 是db.collection.storageSize()和db.collection.totalIndexSize()的总和(以字节为单位)。
 
+
+
+译者：李冠飞
+
+校对：
