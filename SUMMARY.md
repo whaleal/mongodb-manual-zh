@@ -179,14 +179,10 @@
     * [Data Partitioning with Chunks]()
         * [Split Chunks in a Sharded Cluster](docs/Sharding/Data-Partitioning-with-Chunks/Split-Chunks-in-a-Sharded-Cluster.md)
 * Administration
-    * [Production Notes](docs/Administration/Production-Notes.md)
-    * [Operations Checklist](docs/Administration/Operations-Checklist.md)
-    * [Development Checklist](docs/Administration/Development-Checklist.md)
-    * [Configuration and Maintenance](docs/Administration/Configuration-and-Maintenance.md)
-    * [MongoDB Backup Methods](docs/Administration/MongoDB-Backup-Methods.md)
-	* [Production Notes](docs/Administration/Production-Notes.md)
-	* [Operations Checklist](docs/Administration/Operations-Checklist.md)
-	* [Development Checklist]()
+   	* [Production Notes](docs/Administration/Production-Notes.md)
+ 	* [Operations Checklist](docs/Administration/Operations-Checklist.md)
+   	* [Development Checklist](docs/Administration/Development-Checklist.md)
+   	* [Configuration and Maintenance](docs/Administration/Configuration-and-Maintenance.md)
 	* [Performance](docs/Administration/Performance.md)
 	* Configuration and Maintenance
 	* Data Center Awareness
