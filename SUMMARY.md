@@ -16,7 +16,7 @@
 		* [MongoDB Extended JSON (v1)](docs/Mongo-Introduction/BSON-Types/extended-json.md)
 * [The mongo Shell](docs/The-Mongo-Shell.md)
     * [Configure the mongo shell](docs/The-Mongo-Shell/Configure-the-mongo-shell.md)
-    * [Access the mongo Shell Help](docs/The-Mongo-Shell/Access-the-mongo-Shell Help.md)
+    * [Access the mongo Shell Help](docs/The-Mongo-Shell/Access-the-mongo-Shell-Help.md)
     * [Write Scripts for the mongo Shell](docs/The-Mongo-Shell/Write-Scripts-for-the-mongo-Shell.md)
     * [Data Types in the mongo Shell](docs/The-Mongo-Shell/Data-Types-in-the-mongo-Shell.md)
     * [mongo Shell Quick Reference](docs/The-Mongo-Shell/mongo-Shell-Quick-Reference.md)
