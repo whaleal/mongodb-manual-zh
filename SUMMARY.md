@@ -7,7 +7,7 @@
 	* [Getting Started](docs/Mongo-Introduction/Getting-Started.md)
 	* [Databases and Collections](docs/Mongo-Introduction/Databases-and-Collections.md)
 		* [Views](docs/Mongo-Introduction/Databases-and-Collections/Views.md)
-		* [On-Demand Materialized Views](docs/Mongo-Introduction/On-Demand-Materialized-Views.md)
+		* [On-Demand Materialized Views](docs/Mongo-Introduction/Databases-and-Collections/On-Demand-Materialized-Views.md)
 		* [Capped Collections](docs/Mongo-Introduction/Databases-and-Collections/Capped-Collections.md)
 	* [Documents](docs/Mongo-Introduction/Documents.md)
 	* [BSON Types](docs/Mongo-Introduction/BSON-Types.md)
