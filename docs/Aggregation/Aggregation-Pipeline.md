@@ -52,7 +52,7 @@ MongoDB 在[mongo](../docs/Reference/MongoDB-Package-Components/mongo.md) shell 
 | [`findAndModify`]() | [db.collection.findOneAndUpdate（）]()<br />[db.collection.findAndModify（）]() |
 | [`pdate`]()         | [db.collection.updateOne（）]()<br />[db.collection.updateMany（）]()<br />[db.collection.update（）]()<br /><br />[Bulk.find.update（）]()<br />[Bulk.find.updateOne（）]()<br />[Bulk.find.upsert（）]() |
 
-> **也可以看看**
+> **[success] 也可以看看**
 >
 > [聚合管道更新]()
 
@@ -90,7 +90,7 @@ Mongodb 3.2的变化：[$project]()阶段有一些累加器可用;但是，在[$
 
 MongoDB的[query planner]()分析聚合管道，以确定是否可以使用[索引](https://docs.mongodb.com/manual/indexes/#indexes)来改善管道性能。例如，以下管道阶段可以利用索引：
 
-> **注意**
+> **[success] 注意**
 >
 > 以下管道阶段并不代表可以使用索引的所有阶段的完整列表。
 
@@ -154,3 +154,9 @@ MongoDB的[query planner]()分析聚合管道，以确定是否可以使用[索�
 ### 管道优化
 
 管道优化聚合管道具有内部优化阶段，可为某些操作符序列提供改进的性能。有关详细信息，请参阅[聚合管道优化](Aggregation-Pipeline/Aggregation-Pipeline-Optimization.md)。
+
+
+
+译者：李冠飞
+
+校对：李冠飞

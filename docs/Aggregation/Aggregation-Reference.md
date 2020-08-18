@@ -25,3 +25,9 @@
 *   [SQL 到聚合映射图表](Aggregation-Reference/SQL-to-Aggregation-Mapping-Chart.md)
 
     使用MongoDB和常见SQL语句中的聚合管道和操作符概述SQL和MongoDB中的常见聚合操作。
+
+
+
+译者：李冠飞
+
+校对：李冠飞
