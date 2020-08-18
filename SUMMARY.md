@@ -197,13 +197,11 @@
 	* [MongoDB Backup Methods](docs/Administration/MongoDB-Backup-Methods.md)
 * Storage
 
-     * Storage Engine
-
-        * [WiredTiger Storage Engine](docs/Storage/Storage-Engines/WiredTiger-Storage-Engine.md)
-         * [In-Memory Storage Engine](docs/Storage/Storage-Engines/In-Memory-Storage-Engine.md)
-    * Journaling
-
-         * Manage Journaling
+	* Storage Engine
+		* [WiredTiger Storage Engine](docs/Storage/Storage-Engines/WiredTiger-Storage-Engine.md)
+		* [In-Memory Storage Engine](docs/Storage/Storage-Engines/In-Memory-Storage-Engine.md)
+	* Journaling
+		 * Manage Journaling
     * GridFS
     * [FAQ:MongoDB Storage](docs/Storage/FAQ:MongoDB-Storage.md)
 * [Reference]()
