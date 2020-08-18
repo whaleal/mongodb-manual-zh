@@ -179,7 +179,6 @@
     * [Data Partitioning with Chunks]()
         * [Split Chunks in a Sharded Cluster](docs/Sharding/Data-Partitioning-with-Chunks/Split-Chunks-in-a-Sharded-Cluster.md)
 * Administration
-
     * [Production Notes](docs/Administration/Production-Notes.md)
     * [Operations Checklist](docs/Administration/Operations-Checklist.md)
     * [Development Checklist](docs/Administration/Development-Checklist.md)
