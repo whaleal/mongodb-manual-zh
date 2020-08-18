@@ -231,7 +231,7 @@ out: { <action>: <collectionName>
     > **注意**
     >
 > 开始在MongoDB中4.2，明确设置`nonAtomic`到`false`已被弃用。
-    
+
     可选的。将输出操作指定为 non-atomic。这仅对**`merge`和`reduce`输出模式应用**，这可能需要几分钟才能执行。
     
     默认情况下`nonAtomic`是`false`，map-reduce 操作在 post-processing 期间锁定数据库。
@@ -567,3 +567,9 @@ MongoDB驱动程序会自动将afterClusterTime设置为与因果一致的会话
 *   Map-Reduce
 
 *   执行增量 Map-Reduce
+
+
+
+译者：李冠飞
+
+校对：

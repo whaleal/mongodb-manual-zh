@@ -32,3 +32,8 @@ db.inventory.update( { "carrier.state": { $ne: "NY" } }, { $set: { qty: 20 } } )
 >
 > `find()`，`update()`，`$set`。
 
+
+
+译者：李冠飞
+
+校对：

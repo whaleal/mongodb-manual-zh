@@ -12,3 +12,8 @@
 
 此方法在collStats(即：db.collection.stats())命令的尺寸输出周围提供 wrapper。
 
+
+
+译者：李冠飞
+
+校对：

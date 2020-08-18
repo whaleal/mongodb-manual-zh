@@ -491,3 +491,8 @@ BulkWriteError({
 
 结果集显示执行的操作，因为`writeConcernErrors`错误不是任何写操作失败的指示。
 
+
+
+译者：李冠飞
+
+校对：

@@ -40,3 +40,8 @@ db.inventory.update(
 >
 > `find()`，`update()`，`$set`。
 
+
+
+译者：李冠飞
+
+校对：

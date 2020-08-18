@@ -167,6 +167,8 @@
     * [Replica Set Deployment Architectures](docs/Replication/Replica-Set-Deployment-Architectures.md)
 * Sharding
     * [Shard keys](docs/Sharding/Shard-keys.md)
+    * [Hashed Sharding](docs/Sharding/Hashed-Sharding.md)
+    * [Ranged Sharding](docs/Sharding/Ranged-Sharding.md)
     * [Zones](docs/Sharding/Zones.md)
         * Manage Shard Zones
         * Segmenting Data by Location
@@ -174,7 +176,15 @@
         * Segmenting Data by Application or Customer
         * Distributed Local Writes for Insert Only Workloads
         * Manage Shard Zones
+    * [Data Partitioning with Chunks]()
+        * [Split Chunks in a Sharded Cluster](docs/Sharding/Data-Partitioning-with-Chunks/Split-Chunks-in-a-Sharded-Cluster.md)
 * Administration
+
+    * [Production Notes](/doc/Administration/Production-Notes.md)
+    * [Operations Checklist](/doc/Administration/Operations-Checklist.md)
+    * [Development Checklist](/doc/Administration/Development-Checklist.md)
+    * [Configuration and Maintenance](doc/Administration/Configuration-and-Maintenance.md)
+    * [MongoDB Backup Methods](doc/Administration/MongoDB-Backup-Methods.md)
 	* [Production Notes](docs/Administration/Production-Notes.md)
 	* [Operations Checklist](docs/Administration/Operations-Checklist.md)
 	* [Development Checklist]()
@@ -191,12 +201,16 @@
 		* Manage Shard Zones
 	* [MongoDB Backup Methods](docs/Administration/MongoDB-Backup-Methods.md)
 * Storage
-	* Storage Engine
-		* [WiredTiger Storage Engine](docs/Storage/Storage-Engines/WiredTiger-Storage-Engine.md)
-		* [In-Memory Storage Engine](docs/Storage/Storage-Engines/In-Memory-Storage-Engine.md)
-	* Journaling
-		* Manage Journaling
+
+     * Storage Engine
+
+        * [WiredTiger Storage Engine](docs/Storage/Storage-Engines/WiredTiger-Storage-Engine.md)
+         * [In-Memory Storage Engine](docs/Storage/Storage-Engines/In-Memory-Storage-Engine.md)
+    * Journaling
+
+         * Manage Journaling
     * GridFS
+    * [FAQ:MongoDB Storage](docs/Storage/FAQ:MongoDB-Storage.md)
 * [Reference]()
     * [Operators]()
         * [Query and Projection Operators](docs/Reference/Operators/Query-and-Projection-Operators.md)

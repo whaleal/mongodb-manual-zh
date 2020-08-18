@@ -358,3 +358,9 @@ db.system.profile.find( { "command.aggregate": "movies", "command.comment" : "ma
 ```
 
 应用程序可以编码 order 中的任意信息，以便更轻松地跟踪或识别系统中的特定操作。例如，application 可能附加 string comment，其中包含 process ID，线程 ID，client 主机名和发出命令的用户。
+
+
+
+译者：李冠飞
+
+校对：

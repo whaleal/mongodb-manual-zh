@@ -78,3 +78,9 @@
 *   [聚合管道快速参考](Aggregation-Pipeline-Quick-Reference.md)
 
 *   [db.collection.aggregate()](../../Reference/mongo-Shell-Methods/Collection-Methods/db-collection-aggregate.md)
+
+
+
+译者：李冠飞
+
+校对：

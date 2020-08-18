@@ -36,3 +36,9 @@
 | [`splitVector`]()         | 确定分割点的内部命令。                                       |
 | [`unsetSharding`]()       | 影响MongoDB部署中实例之间的连接的内部命令。                  |
 | [`updateZoneKeyRange`]()  | 添加或删除范围内的分片数据与`zone`之间的关联。支持在分片群集中配置`zone`。 |
+
+
+
+译者：李冠飞
+
+校对：

@@ -67,3 +67,8 @@ db.inventory.aggregate(
 { "item" : "VWZ2", "qty" : 180, "cmpTo250" : -1 }
 ```
 
+
+
+译者：李冠飞
+
+校对：

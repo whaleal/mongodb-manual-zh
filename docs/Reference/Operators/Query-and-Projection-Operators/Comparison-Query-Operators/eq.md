@@ -141,3 +141,8 @@ db.inventory.find( { tags: [ "A", "B" ] } )
 { _id: 5, item: { name: "mn", code: "000" }, qty: 20, tags: [ [ "A", "B" ], "C" ] }
 ```
 
+
+
+译者：李冠飞
+
+校对：
