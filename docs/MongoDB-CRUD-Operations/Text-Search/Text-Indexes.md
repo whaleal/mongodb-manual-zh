@@ -11,3 +11,8 @@ db.stores.createIndex( { name: "text", description: "text" } )
 
 有关文本索引的完整引用，包括行为、标记和属性，请参阅[Text Indexes](https://docs.mongodb.com/manual/core/index-text/)部分。
 
+
+
+译者：杨帅
+
+校对：杨帅
