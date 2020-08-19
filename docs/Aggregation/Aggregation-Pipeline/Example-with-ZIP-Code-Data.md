@@ -92,7 +92,7 @@ SELECT state, SUM(pop) AS totalPop
     HAVING totalPop >= (10*1000*1000)
 ```
 
-> **也可以看看**
+> **[success] 也可以看看**
 >
 > [$group](reference-operator-aggregation-group.html#pipe._S_group)，[$match](reference-operator-aggregation-match.html#pipe._S_match)，[$sum](reference-operator-aggregation-sum.html#grp._S_sum)
 
@@ -136,7 +136,7 @@ db.zipcodes.aggregate( [
 }
 ```
 
-> **也可以看看**
+> **[success] 也可以看看**
 >
 > [$group](reference-operator-aggregation-group.html#pipe._S_group)，[$sum](reference-operator-aggregation-sum.html#grp._S_sum)，[$avg](reference-operator-aggregation-avg.html#grp._S_avg)
 
@@ -233,3 +233,8 @@ db.zipcodes.aggregate( [
 | ------ | ------------------------------------------------------------ |
 | [1]    | 一个城市可以有多个与之关联的 zip code，因为城市的不同部分可以各自具有不同的 zip code。 |
 
+
+
+译者：李冠飞
+
+校对：李冠飞

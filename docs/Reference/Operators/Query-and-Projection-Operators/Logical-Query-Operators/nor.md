@@ -65,3 +65,9 @@ db.inventory.find( { $nor: [ { price: 1.99 }, { price: { $exists: false } },
 此查询将返回以下所有文档:
 
 包含值不等于`1.99`的`price`字段和值不等于`true`的`sale`字段
+
+
+
+译者：李冠飞
+
+校对：

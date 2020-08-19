@@ -80,3 +80,8 @@ db.survey.aggregate(
 { "responses" : [ null ], "isAllTrue" : false }
 ```
 
+
+
+译者：李冠飞
+
+校对：

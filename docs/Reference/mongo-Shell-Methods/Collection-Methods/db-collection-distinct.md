@@ -182,3 +182,8 @@ db.myColl.distinct( "category", {}, { collation: { locale: "fr", strength: 1 } }
 
 有关归类字段的说明，请参阅整理文件。
 
+
+
+译者：李冠飞
+
+校对：

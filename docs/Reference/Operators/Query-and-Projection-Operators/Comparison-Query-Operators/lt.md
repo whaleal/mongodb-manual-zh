@@ -30,3 +30,8 @@ db.inventory.update( { "carrier.fee": { $lt: 20 } }, { $set: { price: 9.99 } } )
 >
 > `find()`，`update()`，`$set`。
 
+
+
+译者：李冠飞
+
+校对：

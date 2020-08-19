@@ -12,7 +12,7 @@
 
 * [批量写入](#批量)
 
-  **CRUD操作增加、读取、更新、删除文档。**
+  **CURD操作指的是文档的*创建*、*读*、*更新*以及*删除*操作。**
 
 ## <span id="创建">创建操作</span>
 
@@ -65,9 +65,11 @@ MongoDB提供以下将文档插入集合的方法：
 - [`db.collection.deleteOne()`](https://docs.mongodb.com/manual/reference/method/db.collection.deleteOne/#db.collection.deleteOne) *3.2版中的新功能*
 - [`db.collection.deleteMany()`](https://docs.mongodb.com/manual/reference/method/db.collection.deleteMany/#db.collection.deleteMany) *3.2版中的新功能*
 
-在MongoDB中，删除操作的目标是分离集合。MongoDB中的所有写操作都是多个文档级别的原子操作。
+在MongoDB中，删除操作只针对单个集合。MongoDB中的所有写操作都是单个文档级别的原子 操作。
 
-您可以指定标准或过滤器，以标识要删除的文档。这些过滤器使用与读取操作相同的语法。![](https://docs.mongodb.com/master/_images/crud-annotated-mongodb-deleteMany.bakedsvg.svg)
+你可以指定查询过滤器或条件来标识要更新的文档，这里的过滤器和读操作的语法是一致的。
+
+![](https://docs.mongodb.com/master/_images/crud-annotated-mongodb-deleteMany.bakedsvg.svg)
 
 有关示例，请参见[删除文档](https://docs.mongodb.com/manual/tutorial/remove-documents/)。
 
@@ -77,6 +79,6 @@ MongoDB提供了批量执行写入操作的功能。有关详细信息，请参�
 
 
 
-译者：杨帅
+译者：刘翔 杨帅
 
-校对：杨帅
+校对：徐雷 杨帅  王恒

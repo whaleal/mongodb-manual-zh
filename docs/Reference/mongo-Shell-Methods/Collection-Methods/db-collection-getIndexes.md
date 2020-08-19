@@ -38,3 +38,8 @@ db.collection.getIndexes()
 
 db.collection.getIndexes()返回包含集合索引信息的 array 文档。索引信息包括用于创建索引的键和选项。有关键和索引选项的信息，请参阅db.collection.createIndex()。
 
+
+
+译者：李冠飞
+
+校对：

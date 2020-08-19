@@ -194,7 +194,7 @@ db.users.aggregate([
 
 *   [$unwind](reference-operator-aggregation-unwind.html#pipe._S_unwind) operator 分隔`likes` array 中的每个 value，并为 array 中的每个元素创建源文档的新 version。
     
-> **例子**
+> **[success] 例子**
 >
 > 给出来自用户集合的以下文档：
 >
@@ -206,7 +206,7 @@ db.users.aggregate([
 > }
 > ```
 >
-> 该$unwind运营商将创建下列文件：
+> `$unwind`运算符将创建下列文件：
 >
 > ```powershell
 > {
@@ -254,3 +254,7 @@ db.users.aggregate([
 ```
 
 
+
+译者：李冠飞
+
+校对：李冠飞

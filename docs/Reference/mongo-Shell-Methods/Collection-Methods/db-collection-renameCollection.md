@@ -60,3 +60,8 @@ db.rrecord.renameCollection("record")
 
 此操作会将`rrecord`集合重命名为`record`。如果目标 name(i.e.`record`)是现有集合的 name，则操作将失败。
 
+
+
+译者：李冠飞
+
+校对：

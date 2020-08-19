@@ -65,3 +65,9 @@
 > **也可以看看**
 >
 > map` function 必须满足各种要求。有关`map` function 的所有要求的列表，请参阅[MapReduce]()或[mongo]() shell 辅助方法[db.collection.mapReduce()]()。
+
+
+
+译者：李冠飞
+
+校对：

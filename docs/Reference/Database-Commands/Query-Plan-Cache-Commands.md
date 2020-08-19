@@ -15,3 +15,8 @@
 | [`planCacheListQueryShapes`]() | 显示存在其缓存的查询计划的查询模型。 |
 | [`planCacheSetFilter`]()       | 为集合设置索引过滤器。               |
 
+
+
+译者：李冠飞
+
+校对：

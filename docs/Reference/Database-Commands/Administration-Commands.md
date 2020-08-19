@@ -37,3 +37,9 @@
 | [`setFeatureCompatibilityVersion`]() | 启用或禁用保留向后不兼容的数据的功能。                       |
 | [`setParameter`]()                   | 修改配置选项。                                               |
 | [`shutdown`]()                       | 关闭`mongod`或`mongos`进程。                                 |
+
+
+
+译者：李冠飞
+
+校对：

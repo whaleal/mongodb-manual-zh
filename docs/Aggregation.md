@@ -63,7 +63,7 @@ Map-reduce 使用自定义 JavaScript 函数来执行 map 和 reduce操作，以
 
 Map-reduce 可以在[分片集合 sharded collection]()上运行。 Map-reduce 操作也可以输出到分片集合。有关详细信息，请参阅[聚合管道和分片集合](Aggregation/Aggregation-Pipeline/Aggregation-Pipeline-and-Sharded-Collections.md)和[Map-Reduce 和 Sharded Collections](Aggregation/Map-Reduce/Map-Reduce-and-Sharded-Collections.md)。
 
-> **注意**
+> **[success] 注意**
 >
 > 从 MongoDB 2.4 开始，在 map-reduce 操作中无法访问某些mongoshell 函数和属性。 MongoDB 2.4 还支持多个 JavaScript 操作以在同一时间运行。在 MongoDB 2.4 之前，JavaScript code 在单个线程中执行，引发了 map-reduce 的并发问题。
 
@@ -85,3 +85,8 @@ MongoDB 还提供  [db.collection.estimatedDocumentCount()](), [db.collection.co
 
 有关聚合管道 map-reduce 和特殊组功能的特性比较，请参阅[聚合命令比较](Aggregation/Aggregation-Reference/Aggregation-Commands-Commparison.md)。
 
+
+
+译者：李冠飞
+
+校对：李冠飞

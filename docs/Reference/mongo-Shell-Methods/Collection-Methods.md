@@ -55,3 +55,8 @@
 | db.collection.countDocuments()         | $group包装聚合阶段用$sum表达式，以返回集合或视图中文档数量的计数。 |
 | db.collection.estimatedDocumentCount() | 包装count以返回集合或视图中文档的大概数量。                  |
 
+
+
+译者：李冠飞
+
+校对：

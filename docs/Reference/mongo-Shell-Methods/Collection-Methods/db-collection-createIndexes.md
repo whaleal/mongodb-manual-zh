@@ -524,3 +524,9 @@ db.products_catalog.find( { "product_attributes.superStrength" : true } )
 *   地理空间索引和geoHaystack 索引用于地理空间查询。
 
 *   TTL 指数表示数据到期。
+
+
+
+译者：李冠飞
+
+校对：

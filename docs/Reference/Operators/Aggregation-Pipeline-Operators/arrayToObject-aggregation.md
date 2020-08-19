@@ -125,3 +125,9 @@ db.inventory.aggregate( [
 > 也可以看看
 > 
 > `$objectToArray`
+
+
+
+译者：李冠飞
+
+校对：

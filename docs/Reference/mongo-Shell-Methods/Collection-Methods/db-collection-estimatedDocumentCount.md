@@ -69,3 +69,9 @@ db.orders.estimatedDocumentCount({})
 >* `db.collection.countDocuments()`
 >* `count`
 >* 带有count选项的collStats pipeline stage。
+
+
+
+译者：李冠飞
+
+校对：

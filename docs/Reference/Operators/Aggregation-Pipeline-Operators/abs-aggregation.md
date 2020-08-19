@@ -68,3 +68,9 @@ db.ratings.aggregate([
 { "_id" : 3, "delta" : 2 }
 { "_id" : 4, "delta" : 1 }
 ```
+
+
+
+译者：李冠飞
+
+校对：

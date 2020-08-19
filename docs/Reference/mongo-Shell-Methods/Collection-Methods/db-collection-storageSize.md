@@ -10,3 +10,8 @@
 
 在collStats(即：db.collection.stats())输出的storageSize字段周围提供 wrapper。
 
+
+
+译者：李冠飞
+
+校对：

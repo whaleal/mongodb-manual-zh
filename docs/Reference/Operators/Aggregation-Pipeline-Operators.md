@@ -472,3 +472,9 @@ Set 表达式对数组执行 set 操作，将数组视为 sets。 Set 表达式�
 
 
 对于管道阶段，请参见[聚合管道阶段](Aggregation-Pipeline-Stages.md)。
+
+
+
+译者：李冠飞
+
+校对：

@@ -16,3 +16,9 @@ map-reduce 操作由许多任务组成，包括从输入集合中读取，执行
 > **注意**
 >
 > 后处理期间的最终写锁定使结果自动显示。然而，输出操作`merge`和`reduce`可能需要时间来处理。对于`merge`和`reduce`，该 `nonAtomic`标志可用，从而释放写入每个输出文档之间的锁定。从MongoDB 4.2开始，不推荐使用显式设置。有关 更多信息，请参见参考。`nonAtomic: false`[`db.collection.mapReduce()`]()
+
+
+
+译者：李冠飞
+
+校对：

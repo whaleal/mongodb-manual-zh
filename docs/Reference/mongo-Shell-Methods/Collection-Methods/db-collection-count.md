@@ -179,3 +179,9 @@ db.orders.count( { ord_dt: { $gt: new Date('01/01/2012') } } )
 ```powershell
 db.orders.find( { ord_dt: { $gt: new Date('01/01/2012') } } ).count()
 ```
+
+
+
+译者：李冠飞
+
+校对：
