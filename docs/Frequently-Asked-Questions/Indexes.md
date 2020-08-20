@@ -1,6 +1,6 @@
 # FAQ: Indexes
 
-# 常见问题：索引[¶](https://docs.mongodb.com/manual/faq/indexes/#faq-indexes)
+# 常见问题解答：索引[¶](https://docs.mongodb.com/manual/faq/indexes/#faq-indexes)
 
 On this page
 
