@@ -1,6 +1,6 @@
 # FAQ: Replication and Replica Sets
 
-# 常见问题：复制和副本集[¶](https://docs.mongodb.com/manual/faq/replica-sets/#faq-replication-and-replica-sets)
+# 常见问题解答：复制和副本集[¶](https://docs.mongodb.com/manual/faq/replica-sets/#faq-replication-and-replica-sets)
 
 On this page
 
