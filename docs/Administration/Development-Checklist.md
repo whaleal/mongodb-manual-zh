@@ -1,4 +1,4 @@
-# [开发清单](https://docs.mongodb.com/manual/administration/production-checklist-development/#development-checklist )
+# [开发检查表](https://docs.mongodb.com/manual/administration/production-checklist-development/#development-checklist )
 
 
 - [数据持久性](https://docs.mongodb.com/v4.2/administration/production-checklist-development/#data-durability)
