@@ -1,208 +1,210 @@
-# BSON Types
-
-On this page
-
-* [ObjectId](https://docs.mongodb.com/manual/reference/bson-types/#objectid)
-* [String](https://docs.mongodb.com/manual/reference/bson-types/#string)
-* [Timestamps](https://docs.mongodb.com/manual/reference/bson-types/#timestamps)
-* [Date](https://docs.mongodb.com/manual/reference/bson-types/#date)
-
-[BSON](https://docs.mongodb.com/manual/reference/glossary/#term-bson)is a binary serialization format used to store documents and make remote procedure calls in MongoDB. The BSON specification is located at[bsonspec.org](http://bsonspec.org/).
-
-Each BSON type has both integer and string identifiers as listed in the following table:
-
-| Type | Number | Alias | Notes |
-| :--- | :--- | :--- | :--- |
-| Double | 1 | “double” |  |
-| String | 2 | “string” |  |
-| Object | 3 | “object” |  |
-| Array | 4 | “array” |  |
-| Binary data | 5 | “binData” |  |
-| Undefined | 6 | “undefined” | Deprecated. |
-| ObjectId | 7 | “objectId” |  |
-| Boolean | 8 | “bool” |  |
-| Date | 9 | “date” |  |
-| Null | 10 | “null” |  |
-| Regular Expression | 11 | “regex” |  |
-| DBPointer | 12 | “dbPointer” | Deprecated. |
-| JavaScript | 13 | “javascript” |  |
-| Symbol | 14 | “symbol” | Deprecated. |
-| JavaScript \(with scope\) | 15 | “javascriptWithScope” |  |
-| 32-bit integer | 16 | “int” |  |
-| Timestamp | 17 | “timestamp” |  |
-| 64-bit integer | 18 | “long” |  |
-| Decimal128 | 19 | “decimal” | New in version 3.4. |
-| Min key | -1 | “minKey” |  |
-| Max key | 127 | “maxKey” |  |
-
-You can use these values with the[`$type`](https://docs.mongodb.com/manual/reference/operator/query/type/#op._S_type)operator to query documents by their BSON type. The[`$type`](https://docs.mongodb.com/manual/reference/operator/aggregation/type/#exp._S_type)aggregation operator returns the type of an[operator expression](https://docs.mongodb.com/manual/meta/aggregation-quick-reference/#agg-quick-ref-operator-expressions)using one of the listed BSON type strings.
-
-To determine a field’s type, see[Check Types in the mongo Shell](https://docs.mongodb.com/manual/core/shell-types/#check-types-in-shell).
-
-If you convert BSON to JSON, see the[Extended JSON](https://docs.mongodb.com/manual/reference/mongodb-extended-json/)reference.
-
-The following sections describe special considerations for particular BSON types.
-
-## ObjectId
-
-ObjectIds are small, likely unique, fast to generate, and ordered. ObjectId values consist of 12 bytes, where the first four bytes are a timestamp that reflect the ObjectId’s creation. Specifically:
-
-* a 4-byte value representing the seconds since the Unix epoch,
-* a 3-byte machine identifier,
-* a 2-byte process id, and
-* a 3-byte counter, starting with a random value.
-
-In MongoDB, each document stored in a collection requires a unique[\_id](https://docs.mongodb.com/manual/reference/glossary/#term-id)field that acts as a[primary key](https://docs.mongodb.com/manual/reference/glossary/#term-primary-key). If an inserted document omits the`_id`field, the MongoDB driver automatically generates an[ObjectId](https://docs.mongodb.com/manual/reference/bson-types/#objectid)for the`_id`field.
-
-This also applies to documents inserted through update operations with[upsert: true](https://docs.mongodb.com/manual/reference/method/db.collection.update/#upsert-parameter).
-
-MongoDB clients should add an`_id`field with a unique ObjectId. Using ObjectIds for the`_id`field provides the following additional benefits:
-
-* in the[`mongo`](https://docs.mongodb.com/manual/reference/program/mongo/#bin.mongo)shell, you can access the creation time of the`ObjectId`, using the[`ObjectId.getTimestamp()`](https://docs.mongodb.com/manual/reference/method/ObjectId.getTimestamp/#ObjectId.getTimestamp)method.
-
-* sorting on an`_id`field that stores`ObjectId`values is roughly equivalent to sorting by creation time.
-
-  IMPORTANT
-
-  The relationship between the order of`ObjectId`values and generation time is not strict within a single second. If multiple systems, or multiple processes or threads on a single system generate values, within a single second;`ObjectId`values do not represent a strict insertion order. Clock skew between clients can also result in non-strict ordering even for values because client drivers generate`ObjectId`values.
-
-SEE ALSO
-
-[`ObjectId()`](https://docs.mongodb.com/manual/reference/method/ObjectId/#ObjectId)
-
-## String
-
-BSON strings are UTF-8. In general, drivers for each programming language convert from the language’s string format to UTF-8 when serializing and deserializing BSON. This makes it possible to store most international characters in BSON strings with ease.[\[1\]](https://docs.mongodb.com/manual/reference/bson-types/#sort-string-internationalization)In addition, MongoDB[`$regex`](https://docs.mongodb.com/manual/reference/operator/query/regex/#op._S_regex)queries support UTF-8 in the regex string.
-
-| [\[1\]](https://docs.mongodb.com/manual/reference/bson-types/#id3) | Given strings using UTF-8 character sets, using[`sort()`](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort)on strings will be reasonably correct. However, because internally[`sort()`](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort)uses the C++`strcmp`api, the sort order may handle some characters incorrectly. |
-| :--- | :--- |
 
 
-## Timestamps
+# BSON类型
 
-BSON has a special timestamp type for_internal_MongoDB use and is**not**associated with the regular[Date](https://docs.mongodb.com/manual/reference/bson-types/#document-bson-type-date)type. Timestamp values are a 64 bit value where:
+在本页面
 
-* the first 32 bits are a
-  `time_t`
-  value \(seconds since the Unix epoch\)
-* the second 32 bits are an incrementing
-  `ordinal`
-  for operations within a given second.
+- [对象Id ObjectId](https://docs.mongodb.com/v4.2/reference/bson-types/#objectid)
+- [字符串 String](https://docs.mongodb.com/v4.2/reference/bson-types/#string)
+- [时间戳 Timestamps](https://docs.mongodb.com/v4.2/reference/bson-types/#timestamps)
+- [日期 Date](https://docs.mongodb.com/v4.2/reference/bson-types/#date)
 
-Within a single[`mongod`](https://docs.mongodb.com/manual/reference/program/mongod/#bin.mongod)instance, timestamp values are always unique.
 
-In replication, the[oplog](https://docs.mongodb.com/manual/reference/glossary/#term-oplog)has a`ts`field. The values in this field reflect the operation time, which uses a BSON timestamp value.
 
-NOTE
+[BSON](https://docs.mongodb.com/v4.2/reference/glossary/#term-bson)是一种二进制序列化格式，用于在MongoDB中存储文档和进行远程过程调用。BSON规范位于[ bsonspec.org](http://bsonspec.org/)。
 
-The BSON timestamp type is for_internal_MongoDB use. For most cases, in application development, you will want to use the BSON date type. See[Date](https://docs.mongodb.com/manual/reference/bson-types/#document-bson-type-date)for more information.
+每种BSON类型都具有整数和字符串标识符，如下表所示：
 
-If you insert a document containing an empty BSON timestamp in a top-level field, the MongoDB server will replace that empty timestamp with the current timestamp value. For example, if you create an insert a document with a timestamp value, as in the following operation:
+| 类型 Type                    | 对应数字 Number | 别名 Alias            | 备注 Notes      |
+| :--------------------------- | :-------------- | :-------------------- | :-------------- |
+| 双精度浮点型Double           | 1               | “double”              |                 |
+| 字符串String                 | 2               | “string”              |                 |
+| 对象Object                   | 3               | “object”              |                 |
+| 数组Array                    | 4               | “array”               |                 |
+| 二进制数据Binary data        | 5               | “binData”             |                 |
+| 未定义Undefined              | 6               | “undefined”           | 不推荐使用。    |
+| 对象编号ObjectId             | 7               | “objectId”            |                 |
+| 布尔型Boolean                | 8               | “bool”                |                 |
+| 日期Date                     | 9               | “date”                |                 |
+| 空值Null                     | 10              | “null”                |                 |
+| 正则表达式Regular Expression | 11              | “regex”               |                 |
+| DBPointer                    | 12              | “dbPointer”           | 不推荐使用。    |
+| JavaScript                   | 13              | “javascript”          |                 |
+| Symbol                       | 14              | “symbol”              | 不推荐使用。    |
+| JavaScript (带范围)          | 15              | “javascriptWithScope” |                 |
+| 32位整数 32-bit integer      | 16              | “int”                 |                 |
+| 时间戳 Timestamp             | 17              | “timestamp”           |                 |
+| 64位整数 64-bit integer      | 18              | “long”                |                 |
+| 小数128 Decimal128           | 19              | “decimal”             | 3.4版的新功能。 |
+| 最小键 Min key               | -1              | “minKey”              |                 |
+| 最大键 Max key               | 127             | “maxKey”              |                 |
 
-```
-var
-a
-=
-new
-Timestamp
-();
-db
-.
-test
-.
-insertOne
-(
-{
-ts
-:
-a
-}
-);
-```
+您可以将这些值与[`$type`](https://docs.mongodb.com/v4.2/reference/operator/query/type/#op._S_type)运算符一起使用，以按其BSON类型查询文档。所述[`$type`](https://docs.mongodb.com/v4.2/reference/operator/aggregation/type/#exp._S_type)聚合操作者返回的类型[操作者表达](https://docs.mongodb.com/v4.2/meta/aggregation-quick-reference/#agg-quick-ref-operator-expressions)使用列出的BSON类型字符串之一。
 
-Then, the[`db.test.find()`](https://docs.mongodb.com/manual/reference/method/db.collection.find/#db.collection.find)operation will return a document that resembles the following:
+要确定字段的类型，请参阅[mongo Shell中的Check Types](https://docs.mongodb.com/v4.2/core/shell-types/#check-types-in-shell)。
 
-```
-{
-"_id"
-:
-ObjectId
-(
-"542c2b97bac0595474108b48"
-),
-"ts"
-:
-Timestamp
-(
-1412180887
-,
-1
-)
-}
-```
+如果将BSON转换为JSON，请参阅[扩展JSON](https://docs.mongodb.com/v4.2/reference/mongodb-extended-json/)参考。
 
-If`ts`were a field in an embedded document, the server would have left it as an empty timestamp value.
+以下各节描述了特定BSON类型的特殊注意事项。
 
-Changed in version 2.6:Previously, the server would only replace empty timestamp values in the first two fields, including`_id`, of an inserted document. Now MongoDB will replace any top-level field.
 
-## Date
 
-BSON Date is a 64-bit integer that represents the number of milliseconds since the Unix epoch \(Jan 1, 1970\). This results in a representable date range of about 290 million years into the past and future.
 
-The[official BSON specification](http://bsonspec.org/#/specification)refers to the BSON Date type as the_UTC datetime_.
 
-BSON Date type is signed.[\[2\]](https://docs.mongodb.com/manual/reference/bson-types/#unsigned-date)Negative values represent dates before 1970.
+## ObjectId 
 
-EXAMPLE
+ObjectId很小，可能唯一，可以快速生成并排序。ObjectId值的长度为12个字节，包括：
 
-Construct a Date using the`newDate()`constructor in the[`mongo`](https://docs.mongodb.com/manual/reference/program/mongo/#bin.mongo)shell:
+- 一个4字节的*时间戳记值*，代表自Unix时代以来以秒为单位的ObjectId的创建
+- 5字节*随机值*
+- 3字节*递增计数器*，初始化为随机值
+
+虽然BSON格式本身是低位优先的，但*时间戳*和 *计数器*值却是高位优先的，最高有效字节在字节序列中排在最前面。
+
+在MongoDB中，存储在集合中的每个文档都需要一个唯一的 [_id](https://docs.mongodb.com/v4.2/reference/glossary/#term-id)字段作为[主键](https://docs.mongodb.com/v4.2/reference/glossary/#term-primary-key)。如果插入的文档省略了该`_id`字段，则MongoDB驱动程序会自动为该字段生成一个[ObjectId](https://docs.mongodb.com/v4.2/reference/bson-types/#objectid)`_id`。
+
+这也适用于通过[upsert：true](https://docs.mongodb.com/v4.2/reference/method/db.collection.update/#upsert-parameter)通过更新操作插入的文档。
+
+
+
+MongoDB客户端应添加一个`_id`具有唯一ObjectId 的字段。在该`_id`字段中使用ObjectIds 还可以带来以下好处：
+
+- 在[`mongo`](https://docs.mongodb.com/v4.2/reference/program/mongo/#bin.mongo)shell中，您可以使用[`ObjectId.getTimestamp()`](https://docs.mongodb.com/v4.2/reference/method/ObjectId.getTimestamp/#ObjectId.getTimestamp)方法访问`ObjectId`的创建时间。
+
+- 在存储`ObjectId`值的`_id`字段上按大致相当于创建时间进行排序。
+
+  重要
+
+  尽管[ObjectId](https://docs.mongodb.com/v4.2/reference/bson-types/#objectid)值应随时间增加，但不一定是单调的。这是因为他们：
+
+  - 仅包含一秒的时间分辨率，因此 在同一秒内创建的[ObjectId](https://docs.mongodb.com/v4.2/reference/bson-types/#objectid)值没有保证的顺序，并且
+  - 由客户端生成，客户端可能具有不同的系统时钟。
+
+
+
+也可以看看
+
+[`ObjectId()`](https://docs.mongodb.com/v4.2/reference/method/ObjectId/#ObjectId)
+
+
+
+## 字符串
+
+BSON字符串为UTF-8。通常，在对BSON进行序列化和反序列化时，每种编程语言的驱动程序都会从该语言的字符串格式转换为UTF-8。这样就可以轻松地将大多数国际字符存储在BSON字符串中。 [[1\]](https://docs.mongodb.com/v4.2/reference/bson-types/#sort-string-internationalization)此外，MongoDB [`$regex`](https://docs.mongodb.com/v4.2/reference/operator/query/regex/#op._S_regex)查询在正则表达式字符串中支持UTF-8。
+
+| [[1\]](https://docs.mongodb.com/v4.2/reference/bson-types/#id3) | 给定使用UTF-8字符集的[`sort()`](https://docs.mongodb.com/v4.2/reference/method/cursor.sort/#cursor.sort)字符串，在字符串上使用将是合理正确的。但是，由于内部 [`sort()`](https://docs.mongodb.com/v4.2/reference/method/cursor.sort/#cursor.sort)使用C ++ `strcmp`API，因此排序顺序可能会错误地处理某些字符。 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+|                                                              |                                                              |
+
+
+
+## 时间戳
+
+BSON有一个特殊的时间戳类型给MongoDB*内部* 使用，而非常规相关的[日期](https://docs.mongodb.com/v4.2/reference/bson-types/#document-bson-type-date) 类型。此内部时间戳记类型是64位值，其中：
+
+- 最重要的32位是一个`time_t`值（自Unix时代以来的秒数）
+- 最低有效32位是`ordinal`给定秒内的操作增量。
+
+虽然BSON格式是低位优先的，因此首先存储了最低有效位，但是无论字节序如何，在所有平台上[`mongod`](https://docs.mongodb.com/v4.2/reference/program/mongod/#bin.mongod)实例始终将`time_t`值与`ordinal`值比较。
+
+在单个[`mongod`](https://docs.mongodb.com/v4.2/reference/program/mongod/#bin.mongod)实例中，时间戳记值始终是唯一的。
+
+在复制中，操作[日志](https://docs.mongodb.com/v4.2/reference/glossary/#term-oplog)具有一个`ts`字段。该字段中的值反映了使用BSON时间戳值的操作时间。
+
+
+
+注意
+
+BSON时间戳类型供MongoDB*内部* 使用。在大多数情况下，在应用程序开发中，您将需要使用BSON日期类型。有关更多信息，请参见[日期](https://docs.mongodb.com/v4.2/reference/bson-types/#document-bson-type-date)。
+
+
+
+当插入包含带有空时间戳值的顶级字段的文档时，MongoDB会将空时间戳值替换为当前时间戳值，但以下情况除外。如果`_id` 字段本身包含空的时间戳记值，则将始终按原样插入而不替换它。
+
+
+
+示例
+
+插入带有空时间戳值的文档：
+
+复制
 
 ```
-var
-mydate1
-=
-new
-Date
-()
+db.test.insertOne( { ts: new Timestamp() } );
 ```
 
-EXAMPLE
-
-Construct a Date using the`ISODate()`constructor in the[`mongo`](https://docs.mongodb.com/manual/reference/program/mongo/#bin.mongo)shell:
+运行[`db.test.find()`](https://docs.mongodb.com/v4.2/reference/method/db.collection.find/#db.collection.find) 然后将返回类似于以下内容的文档：
 
 ```
-var
-mydate2
-=
-ISODate
-()
+{ "_id" : ObjectId("542c2b97bac0595474108b48"), "ts" : Timestamp(1412180887, 1) }
 ```
 
-EXAMPLE
+服务器已使用插入时的时间戳值替换了`ts`的空时间戳值。
 
-Return the`Date`value as string:
+
+
+## 日期 Date
+
+BSON Date是一个64位整数，代表自Unix纪元（1970年1月1日）以来的毫秒数。这导致可以追溯到过去和未来约2.9亿年的日期范围。
+
+该[官方BSON规范](http://bsonspec.org/#/specification) 指的是BSON Date类型为*UTC日期时间*。
+
+BSON日期类型是有符号整数。[[2\]](https://docs.mongodb.com/v4.2/reference/bson-types/#unsigned-date)负值表示1970年之前的日期。
+
+
+
+示例
+
+在 [`mongo`](https://docs.mongodb.com/v4.2/reference/program/mongo/#bin.mongo) shell中使用构造函数 `new Date()` 构造一个Date ：
+
+复制
 
 ```
-mydate1
-.
-toString
-()
+var mydate1 = new Date()
 ```
 
-EXAMPLE
 
-Return the month portion of the Date value; months are zero-indexed, so that January is month`0`:
+
+示例
+
+在 [`mongo`](https://docs.mongodb.com/v4.2/reference/program/mongo/#bin.mongo) shell中使用构造函数`ISODate()`构造一个Date ：
+
+复制
 
 ```
-mydate1
-.
-getMonth
-()
+var mydate2 = ISODate()
 ```
 
-| [\[2\]](https://docs.mongodb.com/manual/reference/bson-types/#id4) | Prior to version 2.0,`Date`values were incorrectly interpreted as_unsigned_integers, which affected sorts, range queries, and indexes on`Date`fields. Because indexes are not recreated when upgrading, please re-index if you created an index on`Date`values with an earlier version, and dates before 1970 are relevant to your application. |
-| :--- | :--- |
+
+
+示例
+
+以字符串形式返回`Date`值：
+
+复制
+
+```
+mydate1.toString()
+```
 
 
 
+示例
 
+返回日期值的月份部分；月是零索引，因此一月是`0`月：
+
+复制
+
+```
+mydate1.getMonth()
+```
+
+| [[2\]](https://docs.mongodb.com/v4.2/reference/bson-types/#id4) | 在2.0版之前，`Date`值被错误地解释为*无符号*整数，这会影响排序，范围查询和`Date`字段索引。由于升级时不会重新创建索引，因此，如果您早期版本使用`Date`值创建了索引，请对与应用相关的、1970年前的日期进行重新索引。 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+|                                                              |                                                              |
+
+
+
+原文链接：https://docs.mongodb.com/v4.2/reference/bson-types/
+
+译者：小芒果

@@ -1,6 +1,6 @@
 
-### Text Search Languages（文本搜索语言）
-文本索引和[$text](#)操作符可用于下列语言，并接受两个字母的ISO 639-1语言代码或语言名称的长形式
+# 文本搜索语言
+[文本索引](https://docs.mongodb.com/master/core/index-text/#index-feature-text) 和[`$text`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text) 运算符可用于下列语言，并接受两个字母的ISO 639-1语言代码或语言名称的长形式:
 
 | 语言名称     | ISO 639-1(双字母代码) |
 | :----------- | :-------------------- |
@@ -20,12 +20,15 @@
 | `swedish`    | `sv`                  |
 | `turkish`    | `tr`                  |
 
-> **注意**
+> **[success] Note**
 >
-> 如果您将语言值指定为**“ none”**，则文本搜索将使用简单的标记化，其中没有停用词列表，也没有词干。<br />
+> 如果指定语言值为**“none”**，则文本搜索使用简单的标记化，不包含停止词列表和词干分析。
 
 另看：
 
 [Specify a Language for Text Index](https://docs.mongodb.com/manual/tutorial/specify-language-for-text-index/)
-<a name="HACt3"></a>
 
+
+译者：杨帅
+
+校对：杨帅

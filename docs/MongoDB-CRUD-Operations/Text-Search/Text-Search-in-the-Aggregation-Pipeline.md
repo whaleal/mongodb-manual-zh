@@ -1,39 +1,38 @@
-### Text Search in the Aggregation Pipeline（聚合管道中的文本搜索）
+# 聚合管道中的文本搜索
 **在本页面：**
 
-*  [Restrictions](#Restrictions)(限制条件)<br />
+*  [限制条件](#Restrictions)
 
-*  [Text Score](#Text)(文字分数)<br />
+*  [文字分数](#Text)
 
-*  [Calculate the Total Views for Articles that Contains a Word](#Calculate)(计算包含单词的文章的总浏览量)<br />
+*  [计算包含单词的文章的总浏览量](#Calculate)
 
-*  [Return Results Sorted by Text Search Score](#Return)(返回结果按文本搜索分数排序)<br />
+*  [返回结果按文本搜索分数排序](#Return)
 
-*  [Match on Text Score](#Match)(文字分数匹配)<br />
+*  [文字分数匹配](#Match)
 
-*  [Specify a Language for Text Search](#Specify)(指定用于文本搜索的语言)<br />
+*  [指定用于文本搜索的语言](#Specify)
 
-在聚合管道中，可以在[$match](#)阶段使用[$text](#)查询运算符来进行文本搜索。
+在聚合管道中，可以在[`$match`](https://docs.mongodb.com/master/reference/operator/aggregation/match/#pipe._S_match) 阶段使用[`$text`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text)查询运算符来进行文本搜索。
 
-#### <span id="Restrictions">限制条件</span>
+## <span id="Restrictions">限制条件</span>
 
-有关常规的[$text]()运算符限制，请参见[运算符限制](https://docs.mongodb.com/manual/reference/operator/query/text/#text-query-operator-behavior)。<br />此外，聚合管道中的文本搜索具有以下限制：
+有关常规的[`$text`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text) 运算符限制，请参见[运算符限制](https://docs.mongodb.com/manual/reference/operator/query/text/#text-query-operator-behavior)。
 
-* 包含[$text](#)的[$match](#)阶段必须是管道中的第一阶段。<br />
+此外，聚合管道中的文本搜索具有以下限制：
 
-* 文本运算符在阶段只能出现一次。<br />
+* 包含[`$text`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text)的[`$match`](https://docs.mongodb.com/master/reference/operator/aggregation/match/#pipe._S_match)阶段必须是管道中的第一个阶段。
+* 文本运算符在阶段只能出现一次。
+* 文本运算符表达式不能出现在[`$or`](https://docs.mongodb.com/master/reference/operator/aggregation/or/#exp._S_or) 或[`$not`](https://docs.mongodb.com/master/reference/operator/aggregation/not/#exp._S_not) 表达式中。
+* 默认情况下，文本搜索不会按匹配分数的顺序返回匹配的文档。在[`$sort`](https://docs.mongodb.com/master/reference/operator/aggregation/sort/#pipe._S_sort)阶段使用[`$meta`](https://docs.mongodb.com/master/reference/operator/aggregation/meta/#exp._S_meta)聚合表达式。
 
-* 文本运算符表达式不能出现在[$or](#)或[$not](#)表达式中。<br />
+## <span id="Text">文字分数</span>
 
-* 默认情况下，文本搜索不会按匹配分数的顺序返回匹配的文档。在[$sort](#)阶段使用[$meta](#)聚合表达式。
+ [`$text`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text)操作符为索引字段中包含搜索词的每个文档分配一个分数。分数表示文档与给定文本搜索查询的相关性。分数可以是[`$sort`](https://docs.mongodb.com/master/reference/operator/aggregation/sort/#pipe._S_sort)管道规范的一部分，也可以是投影表达式的一部分。**{$meta: "textScore"}**表达式提供处理[`$text`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text)操作的信息。有关访问投射或排序分数的详细信息，请参阅[`$meta`](https://docs.mongodb.com/master/reference/operator/aggregation/meta/#exp._S_meta) 。
 
-#### <span id="Text">文字分数</span>
+元数据仅在包含 [`$text`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text) 操作的[`$match`](https://docs.mongodb.com/master/reference/operator/aggregation/match/#pipe._S_match)阶段之后可用。
 
-运算符为在索引字段中包含搜索词的每个文档分配一个分数。分数表示文档与给定文本搜索查询的相关性。分数可以是[$sort](#)管道规范的一部分，也可以是投影表达式的一部分。 **{$ meta：“ textScore”}**表达式提供有关[$text](#)操作处理的信息。有关访问投影或排序分数的详细信息，请参见[$meta](#)聚合。<br />
-
-元数据仅在包含[$text](#)操作的[$match](#)阶段之后可用。
-
-**例子**
+### 例子
 
 以下示例假定集合`articles`在字段`subject`上具有文本索引：
 
@@ -41,9 +40,9 @@
  db.articles.createIndex( { subject: "text" } )
 ```
 
-#### <span id="Calculate">计算包含单词的文章的总浏览量</span>
+## <span id="Calculate">计算包含单词的文章的总浏览量</span>
 
-以下聚合在[$match](#)阶段搜索术语蛋糕，并在[$group](#)阶段计算匹配文档的总视图。<br />
+下面的聚合在[`$match`](https://docs.mongodb.com/master/reference/operator/aggregation/match/#pipe._S_match)阶段搜索术语cake，并在[`$group`](https://docs.mongodb.com/master/reference/operator/aggregation/group/#pipe._S_group) 阶段计算匹配文档的总视图。
 
 ```shell
  db.articles.aggregate(
@@ -54,12 +53,12 @@
   )
 ```
 
-#### <span id="Return">返回结果按文本搜索分数排序</span>
+## <span id="Return">返回结果按文本搜索分数排序</span>
 
- 要按文本搜索分数排序，请在[$sort](#)阶段包含一个[$meta](#)表达式。 以下 example 匹配术语`cake`或`tea`，按降序 order 中的`textScore`排序，并仅返回结果集中的`title`字段。
+要根据文本搜索分数进行排序，在[`$sort`](https://docs.mongodb.com/master/reference/operator/aggregation/sort/#pipe._S_sort) 阶段包含[`{$meta: "textScore"}`](https://docs.mongodb.com/master/reference/operator/aggregation/meta/#exp._S_meta) 表达式。下面的示例匹配术语**cake**或**tea**，按**textScore**降序排序，并且只返回结果集中的**title**字段。
 
 ```shell
- db.articles.aggregate(
+db.articles.aggregate(
     [
       { $match: { $text: { $search: "cake tea" } } }, 
       { $sort: { score: { $meta: "textScore" } } }, 
@@ -68,11 +67,13 @@
   )		
 ```
 
-指定的元数据确定 sort order。对于 example，`"textScore"`元数据按降序 order 排序。有关元数据的更多信息，请参阅[$meta](#)，以及覆盖元数据的默认排序 order 的示例。
+指定的元数据决定排序顺序。例如，**“textScore”**元数据按降序排序。有关元数据的更多信息以及覆盖元数据的默认排序顺序的示例，请参见[`$meta`](https://docs.mongodb.com/master/reference/operator/aggregation/meta/#exp._S_meta)。
 
-#### <span id="Match">文字分数匹配</span>
+## <span id="Match">文字分数匹配</span>
 
-**“ textScore”**元数据可用于包含[$text](#)操作的[$match](#)阶段之后的投影，排序和条件。<br />以下 **example** 匹配术语`cake`或`tea`，投影`title`和`score`字段，然后仅返回`score`大于`1.0`的文档。
+**“textScore”**元数据可用于包括[`$text`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text) 操作的[`$match`](https://docs.mongodb.com/master/reference/operator/aggregation/match/#pipe._S_match) 阶段之后的投影、排序和条件。
+
+下面的示例匹配术语**cake**或**tea**，投影标题和分数字段，然后只返回分数大于**1.0**的文档。
 
 ```shell
  db.articles.aggregate(
@@ -84,12 +85,12 @@
  )
 ```
 
-#### <span id="Specify">指定用于文本搜索的语言</span>
+## <span id="Specify">指定用于文本搜索的语言</span>
 
-以下聚合在西班牙语中搜索在[$match](#)阶段中包含术语**saber**但不包含术语**claro**的文档，并在[$group](#)阶段中计算匹配文档的总视图。
+下面的聚合在[`$match`](https://docs.mongodb.com/master/reference/operator/aggregation/match/#pipe._S_match) 阶段中以西班牙语搜索包含术语**saber**而不是术语**claro**的文档，并计算[`$group`](https://docs.mongodb.com/master/reference/operator/aggregation/group/#pipe._S_group) 阶段中匹配文档的总视图。
 
 ```shell
- db.articles.aggregate(
+db.articles.aggregate(
     [   
     		{ $match: { $text: { $search: "saber -claro", $language: "es" } } }, 
     		{ $group: { _id: null, views: { $sum: "$views" } } } 
@@ -98,3 +99,7 @@
 ```
 
 ​    
+
+译者：杨帅
+
+校对：杨帅

@@ -1,73 +1,108 @@
-# MongoDB 简介
+# MongoDB简介
 
-本页索引：
+在本页
 
-* [文档数据库](#文档数据库)
-* [关键特性](#关键特性)
+- [文档数据库](https://docs.mongodb.com/v4.2/introduction/#document-database)
+- [主要特性](https://docs.mongodb.com/v4.2/introduction/#key-features)
 
-MongoDB 是一个提供了高性能、高可用以及自动伸缩（auto scaling）功能的开源的文档数据库 (Document Database).
+
+
+欢迎使用MongoDB 4.2手册！MongoDB是一个文档数据库，旨在简化开发和扩展。该手册介绍了MongoDB中的关键概念，介绍了查询语言，并提供了操作和管理上的注意事项和过程以及全面的参考章节。
+
+MongoDB提供数据库的*社区*版和*企业*版：
+
+- MongoDB社区版是MongoDB的[可用源和免费](https://github.com/mongodb/mongo/)版本。
+- MongoDB企业版作为MongoDB高级企业版订阅的一部分提供，并且包括对MongoDB部署的全面支持。MongoDB企业版还添加了以企业为中心的功能，例如LDAP和Kerberos支持，磁盘加密和审核。
+
+
 
 ## 文档数据库
 
-在 MongoDB 中一条记录 (record) 就是一个文档 (document), 文档本身类似 JSON 对象, 其数据结构是组合的键值对. 值可以是其他文档, 数组或者一个文档的数组等.
+MongoDB中的记录是一个文档，它是由字段和值对组成的数据结构。MongoDB文档类似于JSON对象。字段的值可以包括其他文档，数组和文档数组。
 
-![](https://docs.mongodb.com/manual/_images/crud-annotated-document.bakedsvg.svg "A MongoDB document.")
+![A MongoDB document.](https://docs.mongodb.com/v4.2/_images/crud-annotated-document.bakedsvg.svg)
 
-文档的优势在于:
+使用文档的优点是：
 
-* 文档 \(如 Object\) 可以对应到许多编程语言内置的数据类型.
-* 内嵌的文档和数组结构减少了昂贵的跨表 (join) 查询.
-* 自由的表结构 (Dynamic schema) 支持流畅的多态.
+- 文档（即对象）对应于许多编程语言中的内置数据类型。
+- 嵌入式文档和数组减少了对昂贵连接的需求。
+- 动态模式支持流畅的多态性。
 
-## 关键特性
+
+
+### 集合/视图/按需实例化视图
+
+MongoDB将文档存储在[集合中](https://docs.mongodb.com/v4.2/core/databases-and-collections/#collections)。集合类似于关系数据库中的表。
+
+除集合外，MongoDB还支持：
+
+- 只读[视图](https://docs.mongodb.com/v4.2/core/views/)（从MongoDB 3.4开始）
+- [按需实例化视图](https://docs.mongodb.com/v4.2/core/materialized-views/)（从MongoDB 4.2开始）。
+
+
+
+## 主要特性
 
 ### 高性能
 
-MongoDB 提供了高性能的数据持久化. 特别是,
+MongoDB提供高性能的数据持久化。特别是，
 
-* 通过嵌入式的数据模型来减少 I/O 操作.
-* 索引可以支持快速的查询, 还可以通过通过深层结构的 (embedded) 文档和数组作为 key.
+- 对嵌入式数据模型的支持减少了数据库系统上的I / O操作。
+- 索引支持更快的查询，并且可以包含来自嵌入式文档和数组的键。
 
-### 丰富的查询语句
 
-MongoDB 拥有丰富的查询语句来进行 [读写操作 \(CRUD\)](https://docs.mongodb.com/manual/crud/) 以及:
 
-* [数据聚合 (Aggregation)](https://docs.mongodb.com/manual/core/aggregation-pipeline/)
-* [文本搜索](https://docs.mongodb.com/manual/text-search/)
-  和
-  [地理位置查询](https://docs.mongodb.com/manual/tutorial/geospatial-tutorial/)
-  .
+### 丰富的查询语言
+
+MongoDB支持丰富的查询语言以支持[读写操作（CRUD）](https://docs.mongodb.com/v4.2/crud/)以及：
+
+- [数据聚合](https://docs.mongodb.com/v4.2/core/aggregation-pipeline/)
+- [文本搜索](https://docs.mongodb.com/v4.2/text-search/)和[地理空间查询](https://docs.mongodb.com/v4.2/tutorial/geospatial-tutorial/)。
+
+
+
+也可以看看
+
+- [SQL到MongoDB的映射图](https://docs.mongodb.com/v4.2/reference/sql-comparison/)
+- [SQL到聚合的映射图][SQL to Aggregation Mapping Chart]
+
+
 
 ### 高可用
 
-MongoDB 的备份功能, 名为[复制集 (replica set)](https://docs.mongodb.com/manual/replication/), 提供:
+MongoDB的复制工具（称为[副本集](https://docs.mongodb.com/v4.2/replication/)）提供：
 
-* _自动_ 熔断 (failover)
-* 数据冗余
+- *自动*故障转移
+- 数据冗余。
 
-一个[复制集](https://docs.mongodb.com/manual/replication/)是一组维护相同数据集的 MongoDB 实例, 提供了冗余和新增数据的可用性.
+[副本集](https://docs.mongodb.com/v4.2/replication/)是一组维护相同数据集合的 mongod实例，提供了冗余和提高了数据可用性。
+
+
 
 ### 水平拓展
 
-MongoDB 将水平拓展性作为它的 _核心_ 功能:
+MongoDB提供水平可伸缩性作为其*核心* 功能的一部分：
 
-* [分片 (Sharding)](https://docs.mongodb.com/manual/sharding/#sharding-introduction)
-  将数据分布在一个集群的机器上.
-* MongoDB 3.4 支持根据 [shard key](https://docs.mongodb.com/manual/reference/glossary/#term-shard-key) 创建
-  数据[区域 (zones)](https://docs.mongodb.com/manual/core/zone-sharding/#zone-sharding). 在一个均衡的集群中, MongoDB 根据分区直接读写区域中的节点. 阅读
-  [区域](https://docs.mongodb.com/manual/core/zone-sharding/#zone-sharding)
-  手册了解更多.
+- [分片](https://docs.mongodb.com/v4.2/sharding/#sharding-introduction)将数据分布在一个集群的机器上。
+- 从3.4开始，MongoDB支持基于[分片键](https://docs.mongodb.com/v4.2/reference/glossary/#term-shard-key)创建数据[区域](https://docs.mongodb.com/v4.2/core/zone-sharding/#zone-sharding)。在平衡群集中，MongoDB仅将区域覆盖的读写定向到区域内的那些分片。有关 更多信息，请参见[区域](https://docs.mongodb.com/v4.2/core/zone-sharding/#zone-sharding)章节。
+
+
 
 ### 支持多种存储引擎
 
-MongoDB 支持[多个存储引擎](https://docs.mongodb.com/manual/core/storage-engines/), 如:
+MongoDB支持[多个存储引擎](https://docs.mongodb.com/v4.2/core/storage-engines/)：
 
-* [WiredTiger 存储引擎](https://docs.mongodb.com/manual/core/wiredtiger/)
-  and
-* [MMAPv1 存储引擎](https://docs.mongodb.com/manual/core/mmapv1/)
-  .
+- [WiredTiger存储引擎](https://docs.mongodb.com/v4.2/core/wiredtiger/)（包括对[静态](https://docs.mongodb.com/v4.2/core/wiredtiger/)[加密的](https://docs.mongodb.com/v4.2/core/security-encryption-at-rest/)支持 ）
+- [内存存储引擎](https://docs.mongodb.com/v4.2/core/inmemory/)。
 
-此外, MongoDB 还提供了允许第三方的人员为 MongoDB 开发的插件 API.
+另外，MongoDB提供可插拔的存储引擎API，允许第三方为MongoDB开发存储引擎。
 
-译者：王恒
 
+
+←  [MongoDB手册内容](https://docs.mongodb.com/v4.2/contents/)
+
+
+
+原文链接：https://docs.mongodb.com/v4.2/introduction/
+
+译者：小芒果

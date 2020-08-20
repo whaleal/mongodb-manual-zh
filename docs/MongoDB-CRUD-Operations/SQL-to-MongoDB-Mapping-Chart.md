@@ -1,16 +1,15 @@
 
-## SQL to MongoDB Mapping Chart（SQL到MongoDB的映射图表）
+# SQL到MongoDB的映射图表
 **在本页面**
 
-*  [Terminology and Concepts](#terminology)(术语和概念)<br />
+*  [术语和概念](#terminology)
+*  [可执行性文件](#Executables)
+*  [例子](#Examples)
+* [进一步阅读](#Reading)
 
-*  [Executables](#Executables)(可执行性文件)<br />
+除了下面的图表之外，您可能需要考虑有关MongoDB的常见问题的常见问题部分。
 
-*  [Examples](#Examples)(例子)<br />
-
-* [Further Reading](#Reading)(进一步阅读)<br />除了下面的图表，您可能还需要考虑“常见问题”部分，以选择有关MongoDB的常见问题。
-
-#### <span id="terminology">术语和概念</span>
+## <span id="terminology">术语和概念</span>
 
 下表介绍了各种SQL术语和概念以及相应的MongoDB术语和概念。
 
@@ -21,44 +20,45 @@
 | row | [document](https://docs.mongodb.com/manual/reference/glossary/#term-document) or [BSON](https://docs.mongodb.com/manual/reference/glossary/#term-bson) document |
 | column | [field](https://docs.mongodb.com/manual/reference/glossary/#term-field) |
 | index | [index](https://docs.mongodb.com/manual/reference/glossary/#term-index) |
-| table joins | [$lookup](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/#pipe._S_lookup), embedded documents（嵌入文档） |
+| table joins | [$lookup](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/#pipe._S_lookup), 嵌入文档 |
 | primary key<br />（指定任何唯一的列或列组合作为主键。） | [primary key](https://docs.mongodb.com/manual/reference/glossary/#term-primary-key)<br />（在MongoDB中，主键自动设置为_id字段。） |
 | aggregation (e.g. group by) | aggregation pipeline<br />See the [SQL to Aggregation Mapping Chart](https://docs.mongodb.com/manual/reference/sql-aggregation-comparison/). |
 | SELECT INTO NEW_TABLE | [$out](https://docs.mongodb.com/manual/reference/operator/aggregation/out/#pipe._S_out)<br />See the [SQL to Aggregation Mapping Chart](https://docs.mongodb.com/manual/reference/sql-aggregation-comparison/). |
 | MERGE INTO TABLE | [$merge](https://docs.mongodb.com/manual/reference/operator/aggregation/merge/#pipe._S_merge) (Available starting in MongoDB 4.2)<br />See the [SQL to Aggregation Mapping Chart](https://docs.mongodb.com/manual/reference/sql-aggregation-comparison/). |
 | Transactions | [transactions](https://docs.mongodb.com/manual/core/transactions/)<br />在许多情况下，非规范化数据模型（嵌入式文档和数组）<br />将继续是您数据和用例的最佳选择，而不是多文档事务。<br />也就是说，在许多情况下，对数据进行适当的建模将最<br />大程度地减少对多文档交易的需求。<br /> |
 
-#### <span id="Executables">可执行文件</span>
+## <span id="Executables">可执行文件</span>
 
-下表显示了一些数据库可执行文件和相应的MongoDB可执行文件。 该表并非详尽无遗。
+下表展示了一些数据库可执行文件和相应的MongoDB可执行文件。这个表格并不是详尽无遗的。
 
 |  | MongoDB | MySQL | Oracle | Informix | DB2 |
 | --- | --- | --- | --- | --- | --- |
 | Database Server | [mongod](https://docs.mongodb.com/manual/reference/program/mongod/#bin.mongod) | mysqld | oracle | IDS | DB2 Server |
 | Database Client | [mongo](https://docs.mongodb.com/manual/reference/program/mongo/#bin.mongo) | mysql | sqlplus | DB-Access | DB2 Client |
 
-#### <span id="Examples">例子</span>
+## <span id="Examples">例子</span>
 
-下表显示了各种SQL语句和相应的MongoDB语句。 表格中的示例假定以下条件：
+下表展示了各种SQL语句和相应的MongoDB语句。表中的例子假设以下条件:
 
-* SQL示例假定一个名为people的表。<br />
-
-* MongoDB示例假定一个名为people的集合，其中包含以下原型的文档：<br />
+* SQL示例假设有一个名为**people**的表。
+* MongoDB示例假设一个名为**people**的集合，它包含以下原型的文档:
 
 ```shell
-  { 
+ { 
   	 _id: ObjectId("509a8fb2f3f4948bd2f983a0"),
   	 user_id: "abc123",
   	 age: 55,
   	 status: 'A'
-  }
+ }
 ```
 
-**创建和修改**<br />下表列出了与表级操作和相应的MongoDB语句相关的各种SQL语句。
+### 创建和修改
 
-| **SQL Schema Statements** | **MongoDB Schema Statements** |
+下表展示了与表级操作相关的各种SQL语句以及相应的MongoDB语句。
+
+| SQL Schema语句 | MongoDB Schema语句 |
 | --- | --- |
-| **CREATE** **TABLE** people (<br />    id MEDIUMINT **NOT** **NULL**<br />        AUTO_INCREMENT,<br />    user_id Varchar(30),<br />    age Number,<br />    status char(1),<br />    **PRIMARY** **KEY** (id)<br />) | Implicitly created on first [insertOne()](https://docs.mongodb.com/manual/reference/method/db.collection.insertOne/#db.collection.insertOne) or [insertMany()](https://docs.mongodb.com/manual/reference/method/db.collection.insertMany/#db.collection.insertMany) operation. The primary key _id is automatically added if _id field is not specified.<br />db.people.insertOne( {<br />    user_id: "abc123",<br />    age: 55,<br />    status: "A"<br /> } )<br />However, you can also explicitly create a collection:<br />db.createCollection("people") |
+| **CREATE** **TABLE** people (<br />    id MEDIUMINT **NOT** **NULL**<br />        AUTO_INCREMENT,<br />    user_id Varchar(30),<br />    age Number,<br />    status char(1),<br />    **PRIMARY** **KEY** (id)<br />) | 隐式创建的第一个[`insertOne()`](https://docs.mongodb.com/master/reference/method/db.collection.insertOne/#db.collection.insertOne)或[`insertMany()`](https://docs.mongodb.com/master/reference/method/db.collection.insertMany/#db.collection.insertMany)操作。如果没有指定**_id**字段，则会自动添加主键_id。<br/>db.people.insertOne( {<br />    user_id: "abc123",<br />    age: 55,<br />    status: "A"<br /> } )<br />但是，您也可以显式地创建一个集合:<br />db.createCollection("people") |
 | **ALTER** **TABLE** people<br />**ADD** join_date DATETIME | 集合不描述或不强制其文件结构； 即在集合级别没有结构上的更改。<br />但是，在文档级别，[updateMany()](https://docs.mongodb.com/manual/reference/method/db.collection.updateMany/#db.collection.updateMany)操作可以使用[$set](https://docs.mongodb.com/manual/reference/operator/update/set/#up._S_set)运算符将字段添加到现有文档中。<br />db.people.updateMany(<br />    { },<br />    { $set: { join_date: **new** Date() } }<br />) |
 | **ALTER** **TABLE** people<br />**DROP** **COLUMN** join_date | 集合不描述或不强制其文件结构； 即在集合级别没有结构上的更改。<br />但是，在文档级别，[updateMany()](https://docs.mongodb.com/manual/reference/method/db.collection.updateMany/#db.collection.updateMany)操作可以使用[$unset](https://docs.mongodb.com/manual/reference/operator/update/unset/#up._S_unset)运算符将字段添加到现有文档中。<br />db.people.updateMany(<br />    { },<br />    { $unset: { "join_date": "" } }<br />) |
 | **CREATE** **INDEX** idx_user_id_asc<br />**ON** people(user_id) | db.people.createIndex( { user_id: 1 } ) |
@@ -75,19 +75,19 @@
 
 **另看：**
 
-- [Databases and Collections](https://docs.mongodb.com/manual/core/databases-and-collections/)(数据库和馆藏)
+- [Databases and Collections](https://docs.mongodb.com/manual/core/databases-and-collections/)
 
-- [Documents](https://docs.mongodb.com/manual/core/document/)(文件资料)
+- [Documents](https://docs.mongodb.com/manual/core/document/)
 
-- [Indexes](https://docs.mongodb.com/manual/indexes/)(指标)
+- [Indexes](https://docs.mongodb.com/manual/indexes/)
 
-- [Data Modeling Concepts](https://docs.mongodb.com/manual/core/data-models/)(数据建模概念)
+- [Data Modeling Concepts](https://docs.mongodb.com/manual/core/data-models/)
 
-**插入**
+#### 插入
 
 下表显示了与将记录插入表和相应的MongoDB语句有关的各种SQL语句。
 
-| **SQL INSERT Statements** | **MongoDB insertOne() Statements** |
+| SQL INSERT语句 | **MongoDB insertOne() Statements** |
 | --- | --- |
 | **INSERT** **INTO** people(user_id,<br />                  age,<br />                  status)<br />**VALUES** ("bcd001",<br />        45,<br />        "A") | db.people.insertOne(<br />   { user_id: "bcd001", age: 45, status: "A" }<br />) |
 
@@ -95,16 +95,18 @@
 
 也可以看看：
 
-- [Insert Documents](https://docs.mongodb.com/manual/tutorial/insert-documents/)(插入文件)
+- [`Insert Documents`](https://docs.mongodb.com/manual/tutorial/insert-documents/)
 - [`db.collection.insertMany()`](https://docs.mongodb.com/manual/reference/method/db.collection.insertMany/#db.collection.insertMany)
-- [Databases and Collections](https://docs.mongodb.com/manual/core/databases-and-collections/)(数据库和馆藏)
-- [Documents](https://docs.mongodb.com/manual/core/document/)(文件资料)
+- [`Databases and Collections`](https://docs.mongodb.com/manual/core/databases-and-collections/)
+- [`Documents`](https://docs.mongodb.com/manual/core/document/)
 
+#### 选择
 
+下表展示了与从表中读取记录相关的各种SQL语句以及相应的MongoDB语句。
 
-**选择**<br />下表显示了与从表中读取记录和相应的MongoDB语句有关的各种SQL语句。<br /> 
-
-> **注意**<br />除非通过投影明确排除，否则[find()](#)方法始终在返回的文档中包含**_id**字段。 下面的某些SQL查询可能包含一个**_id**字段来反映这一点，即使该字段未包含在相应的[find()](#)查询中也是如此。
+> **注意**
+>
+> 除非通过投影明确排除，否则[[`find()`](https://docs.mongodb.com/master/reference/method/db.collection.find/#db.collection.find)方法始终在返回的文档中包含**_id**字段。 下面的某些SQL查询可能包含一个**_id**字段来反映这一点，即使该字段未包含在相应的[`find()`](https://docs.mongodb.com/master/reference/method/db.collection.find/#db.collection.find)查询中也是如此。
 
 | SQL SELECT 语句 | MongoDB find() 语句 |
 | --- | --- |
@@ -146,11 +148,13 @@
 
 另看：
 
-- [Query Documents](https://docs.mongodb.com/manual/tutorial/query-documents/)(查看文件)
-- [Query and Projection Operators](https://docs.mongodb.com/manual/reference/operator/query/)(查询和投影运算符)
-- [mongo Shell Methods](https://docs.mongodb.com/manual/reference/method/)(mongo Shell 运算符)
+- [Query Documents](https://docs.mongodb.com/manual/tutorial/query-documents/)
+- [Query and Projection Operators](https://docs.mongodb.com/manual/reference/operator/query/)
+- [mongo Shell Methods](https://docs.mongodb.com/manual/reference/method/)
 
-**更新记录**<br />下表显示了与更新表中的现有记录和相应的MongoDB语句有关的各种SQL语句。
+#### 更新记录
+
+下表显示了与更新表中的现有记录和相应的MongoDB语句有关的各种SQL语句。
 
 | **SQL Update Statements** | **MongoDB updateMany() Statements** |
 | --- | --- |
@@ -166,31 +170,39 @@
 
 另看：
 
-- [Update Documents](https://docs.mongodb.com/manual/tutorial/update-documents/)(更新文件)
-- [Update Operators](https://docs.mongodb.com/manual/reference/operator/update/)(更新运算符)
+- [Update Documents](https://docs.mongodb.com/manual/tutorial/update-documents/)
+- [Update Operators](https://docs.mongodb.com/manual/reference/operator/update/)
 - [db.collection.updateOne()](https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/#db.collection.updateOne)
 - [db.collection.replaceOne()](https://docs.mongodb.com/manual/reference/method/db.collection.replaceOne/#db.collection.replaceOne)
 
-**删除记录**<br />下表显示了与从表中删除记录和相应的MongoDB语句有关的各种SQL语句。
+#### 删除记录
+
+下表显示了与从表中删除记录和相应的MongoDB语句有关的各种SQL语句。
 
 | **SQL Delete Statements** | **MongoDB deleteMany() Statements** |
 | --- | --- |
 | **DELETE** **FROM** people<br />**WHERE** status = "D" | db.people.deleteMany( { status: "D" } ) |
 | **DELETE** **FROM** people | db.people.deleteMany({}) |
 
-获得更多信息，请参见：[db.collection.deleteMany()](https://docs.mongodb.com/manual/reference/method/db.collection.deleteMany/#db.collection.deleteMany).<br />另看：
+获得更多信息，请参见：[db.collection.deleteMany()](https://docs.mongodb.com/manual/reference/method/db.collection.deleteMany/#db.collection.deleteMany).
 
-- [Delete Documents](https://docs.mongodb.com/manual/tutorial/remove-documents/)(删除文件)
+另看：
+
+- [Delete Documents](https://docs.mongodb.com/manual/tutorial/remove-documents/)
 - [db.collection.deleteOne()](https://docs.mongodb.com/manual/reference/method/db.collection.deleteOne/#db.collection.deleteOne)
 
 #### <span id="Reading">进一步阅读</span>
 
-如果您正在考虑将SQL应用程序迁移到MongoDB，请下载[《 MongoDB应用程序现代化指南》](https://www.mongodb.com/modernize?tck=docs_server)。<br />
+如果您正在考虑将SQL应用程序迁移到MongoDB，请下载[《 MongoDB应用程序现代化指南》](https://www.mongodb.com/modernize?tck=docs_server)。
 
 下载内容包括以下资源：
 
-* 演示使用MongoDB进行数据建模的方法<br />
-* 白皮书涵盖了从RDBMS数据模型迁移到MongoDB的最佳实践和注意事项<br />
-* 参考MongoDB模式及其等效RDBMS<br />
+* 演示使用MongoDB进行数据建模的方法
+* 白皮书涵盖了从RDBMS数据模型迁移到MongoDB的最佳实践和注意事项
+* 参考MongoDB模式及其等效RDBMS
 * 应用程序现代化记分卡
-  <a name="qJnCf"></a>
+  
+
+译者：杨帅
+
+校对：杨帅
