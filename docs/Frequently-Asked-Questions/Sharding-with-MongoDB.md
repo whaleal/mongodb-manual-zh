@@ -3,7 +3,7 @@
 
 # FAQ: Sharding with MongoDB
 
-# 常见问题：使用MongoDB分片
+# 常见问题解答：使用MongoDB分片
 
 On this page
 
