@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-
+* [The MongoDB Manual CN](docs/The-MongoDB-Manual-CN.md)
 
 * [Mongodb Introduction](docs/Mongo-Introduction.md)
 	* [Getting Started](docs/Mongo-Introduction/Getting-Started.md)
@@ -14,6 +14,18 @@
 		* [Comparison and Sort Order](docs/Mongo-Introduction/BSON-Types/Comparison-Sort-Order.md)
 		* [MongoDB Extended JSON (v2)](docs/Mongo-Introduction/BSON-Types/Extended-Json-v2.md)
 		* [MongoDB Extended JSON (v1)](docs/Mongo-Introduction/BSON-Types/Extended-Json-v1.md)
+* [Install mongodb](docs/Install-MongoDB.md)
+    * [Install MongoDB Community Edition](docs/Install-MongoDB/Install-MongoDB-Community-Edition.md)
+    * [Install on Linux](docs/Install-MongoDB/Install-on-Linux.md)
+    * [Install on macOS](docs/Install-MongoDB/Install-on-macOS.md)
+    * [Install on Windows](docs/Install-MongoDB/Install-on-Windows.md)
+    * [Install MongoDB Enterprise](docs/Install-MongoDB/Install-MongoDB-Enterprise.md)
+    * [Install on Linux Enterprise](docs/Install-MongoDB/Install-on-Linux-Enterprise.md)
+    * [Install on macOS Enterprise](docs/Install-MongoDB/Install-on-macOS-Enterprise.md)
+    * [Install on Windows Enterprise](docs/Install-MongoDB/Install-on-Windows-Enterprise.md)
+    * [Install with Docker Enterprise](docs/Install-MongoDB/Install-with-Docker-Enterprise.md)
+    * [Upgrade MongoDB Community to MongoDB Enterprise](docs/Install-MongoDB/Upgrade-MongoDB-Community-to-MongoDB-Enterprise.md)
+    * [Verify Integrity of MongoDB Packages](docs/Install-MongoDB/Verify-Integrity-of-MongoDB-Packages.md)
 * [The mongo Shell](docs/The-Mongo-Shell.md)
     * [Configure the mongo shell](docs/The-Mongo-Shell/Configure-the-mongo-shell.md)
     * [Access the mongo Shell Help](docs/The-Mongo-Shell/Access-the-mongo-Shell-Help.md)
@@ -90,13 +102,13 @@
         * [Variables in Aggregation Expressions](docs/Aggregation/Aggregation-Reference/Variables-in-Aggregation-Expressions.md)
         * [SQL to Aggregation Mapping Chart](docs/Aggregation/Aggregation-Reference/SQL-to-Aggregation-Mapping-Chart.md)
 * [Data Models]()
-	* [Data Modeling Introduction](docs/Data-Models/Data-Modeling-Introduction.md)
-	* [Schema Validation](docs/Data-Models/Schema-Validation.md)
+  * [Data Modeling Introduction](docs/Data-Models/Data-Modeling-Introduction.md)
+  * [Schema Validation](docs/Data-Models/Schema-Validation.md)
 * [Transcations](docs/Transactions.md)
-	* [Drivers API]()
-	* [Production Considerations]()
-	* [Production Considerations (Sharded Clusters)]()
-	* [Transactions and Operations](docs/Transactions/Transactions-and-Operations.md)
+  * [Drivers API]()
+  * [Production Considerations]()
+  * [Production Considerations (Sharded Clusters)]()
+  * [Transactions and Operations](docs/Transactions/Transactions-and-Operations.md)
 * [Indexes](docs/Indexes.md)
     * [Single Field Indexes](docs/Indexes/Single-Field-Indexes.md)
     * [Compound Indexes](docs/Indexes/Compound-Indexes.md)
@@ -149,14 +161,14 @@
         * [System Event Audit Messages](docs/Security/Audit/System-Event-Audit-Messages.md)
     * [Network and Configuration Hardening](docs/Security/Network-and-Configuration-Hardening.md)
     * [Security Reference](docs/Security/Security-Reference.md)
-		* [system.roles Collection](docs/Security/Security-Reference/system.rolesCollection.md)
-		* [system.users Collection](docs/Security/Security-Reference/system.usersCollection.md)
-		* [Resource Document](docs/Security/Security-Reference/Resource-Document.md)
-		* [Privilege Actions](docs/Security/Security-Reference/Privilege-Actions.md)
+    	* [system.roles Collection](docs/Security/Security-Reference/system.rolesCollection.md)
+    	* [system.users Collection](docs/Security/Security-Reference/system.usersCollection.md)
+    	* [Resource Document](docs/Security/Security-Reference/Resource-Document.md)
+    	* [Privilege Actions](docs/Security/Security-Reference/Privilege-Actions.md)
     * [Appendix](docs/Security/Appendix.md)
-		* [Appendix-A-OpenSSL CA Certificate for Testing](docs/Security/Appendix/Appendix-A-OpenSSL-CA-Certificate-for-Testing.md)
-		* [Appendix-B-OpenSSL-Server-Certificates-for-Testing](docs/Security/Appendix/Appendix-B-OpenSSL-Server-Certificates-for-Testing.md)
-		* [Appendix-C-OpenSSL Client Certificates for Testing](docs/Security/Appendix/Appendix-C-OpenSSL-Client-Certificates-for-Testing.md)
+    	* [Appendix-A-OpenSSL CA Certificate for Testing](docs/Security/Appendix/Appendix-A-OpenSSL-CA-Certificate-for-Testing.md)
+    	* [Appendix-B-OpenSSL-Server-Certificates-for-Testing](docs/Security/Appendix/Appendix-B-OpenSSL-Server-Certificates-for-Testing.md)
+    	* [Appendix-C-OpenSSL Client Certificates for Testing](docs/Security/Appendix/Appendix-C-OpenSSL-Client-Certificates-for-Testing.md)
 * [Change Streams](docs/Change-Streams.md)
     * [Change Streams Production Recommendations](docs/Change-Streams/Change-Streams-Production-Recommendations.md)
     * [Change Events](docs/Change-Streams/Change-Event.md)
@@ -179,29 +191,29 @@
     * [Data Partitioning with Chunks]()
         * [Split Chunks in a Sharded Cluster](docs/Sharding/Data-Partitioning-with-Chunks/Split-Chunks-in-a-Sharded-Cluster.md)
 * Administration
-	* [Production Notes](docs/Administration/Production-Notes.md)
-	* [Operations Checklist](docs/Administration/Operations-Checklist.md)
-	* [Development Checklist](docs/Administration/Development-Checklist.md)
-	* [Configuration and Maintenance](docs/Administration/Configuration-and-Maintenance.md)
-	* [Performance](docs/Administration/Performance.md)
-	* Configuration and Maintenance
-	* Data Center Awareness
-		* Workload Isolation in MongoDB Deployments
-		* Zones
-		* Manage Shard Zones
-		* Segmenting Data by Location
-		* Tiered Hardware for Varying SLA or SLO
-		* Segmenting Data by Application or Customer
-		* Distributed Local Writes for Insert Only Workloads
-		* Manage Shard Zones
-	* [MongoDB Backup Methods](docs/Administration/MongoDB-Backup-Methods.md)
+  * [Production Notes](docs/Administration/Production-Notes.md)
+  * [Operations Checklist](docs/Administration/Operations-Checklist.md)
+  * [Development Checklist](docs/Administration/Development-Checklist.md)
+  * [Configuration and Maintenance](docs/Administration/Configuration-and-Maintenance.md)
+  * [Performance](docs/Administration/Performance.md)
+  * Configuration and Maintenance
+  * Data Center Awareness
+  	* Workload Isolation in MongoDB Deployments
+  	* Zones
+  	* Manage Shard Zones
+  	* Segmenting Data by Location
+  	* Tiered Hardware for Varying SLA or SLO
+  	* Segmenting Data by Application or Customer
+  	* Distributed Local Writes for Insert Only Workloads
+  	* Manage Shard Zones
+  * [MongoDB Backup Methods](docs/Administration/MongoDB-Backup-Methods.md)
 * Storage
 
-	* Storage Engine
-		* [WiredTiger Storage Engine](docs/Storage/Storage-Engines/WiredTiger-Storage-Engine.md)
-		* [In-Memory Storage Engine](docs/Storage/Storage-Engines/In-Memory-Storage-Engine.md)
-	* Journaling
-		 * Manage Journaling
+  * Storage Engine
+  	* [WiredTiger Storage Engine](docs/Storage/Storage-Engines/WiredTiger-Storage-Engine.md)
+  	* [In-Memory Storage Engine](docs/Storage/Storage-Engines/In-Memory-Storage-Engine.md)
+  * Journaling
+  	 * Manage Journaling
     * GridFS
     * [FAQ:MongoDB Storage](docs/Storage/FAQ:MongoDB-Storage.md)
 * [Reference]()

@@ -1,14 +1,17 @@
 # 阅读关注
-在本页中
+**在本页面**
 
 - [阅读关注级别](#级别)
 - [ReadConcern 支持](#支持)
 - [注意事项](#注意)
 
-**阅读关注** 选项允许你控制从副本集和分片集读取数据的一致性和隔离性。<br />通过有效地使用[写关注](https://docs.mongodb.com/manual/reference/write-concern/)和读关注，你可以适当地调整一致性和可用性的保证级别，例如等待以保证更强的一致性，或放松一致性要求以提供更高的可用性。<br />将MongoDB驱动程序更新到MongoDB 3.2或更高版本以支持读关注。
-<a name="uUBI1"></a>
+**阅读关注** 选项允许你控制从复制集和分片集群读取数据的一致性和隔离性。
 
-### <span id="级别">阅读关注级别</span>
+通过有效地使用[写关注](https://docs.mongodb.com/manual/reference/write-concern/)和读关注，你可以适当地调整一致性和可用性的保证级别，例如等待以保证更强的一致性，或放松一致性要求以提供更高的可用性。
+
+将MongoDB驱动程序更新到MongoDB 3.2或更高版本以支持读关注。
+
+## <span id="级别">阅读关注级别</span>
 以下为可用的阅读关注级别：
 
 | `level` | Description |
@@ -58,7 +61,6 @@ db.collection.find().readConcern(<level>)
 ##### 因果一致的会话和阅读相关的担忧
 
 对于在[因果一致的会话](https://docs.mongodb.com/manual/core/read-isolation-consistency-recency/#causal-consistency)中的操作，[`"local"`](https://docs.mongodb.com/manual/reference/read-concern-local/#readconcern.%22local%22) h和 [`"majority"`](https://docs.mongodb.com/manual/reference/read-concern-majority/#readconcern.%22majority%22)级别可用。但是，为了保证因果一致性，你必须使用 [`"majority"`](https://docs.mongodb.com/manual/reference/read-concern-majority/#readconcern.%22majority%22)。有关详细信息，请参见 [因果一致性](https://docs.mongodb.com/manual/core/read-isolation-consistency-recency/#causal-consistency)。<br />如果多文档事务与因果一致的会话相关联，则[`"snapshot"`](https://docs.mongodb.com/manual/reference/read-concern-snapshot/#readconcern.%22snapshot%22) 也可用于该事务。
-<a name="dWFn7"></a>
 
 ##### 支持读关注的操作
 下列的操作支持读关注：
