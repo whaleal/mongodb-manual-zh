@@ -147,11 +147,11 @@ fork Github 项目并建立你的分支 branch（我们强烈建议这样做）�
 将译文放在 docs/  文件夹下；  
 commit 和 push 你的修改；  
 pull request。
-如果你还不熟练这个流程，请参阅 Github 入门指南。
+如果你还不熟练这个流程，请参阅 [Github 入门指南](https://docs.github.com/cn/github)。
 
 ### 四、工具推荐
 
-**Typora 文本编辑工具**
+[**Typora 文本编辑工具**](https://typora.io/)
 
 ###  五、 文件名称
 文件名称推荐英文命名,空格可以使用中横线`-`  或者 下横线表示`_` 因为生成的 html会被互相引用,空格等会影响字符识别。
