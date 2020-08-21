@@ -1,72 +1,105 @@
-# 数据库 & 集合
+# 数据库和集合
 
-本页索引
+在本页面
 
-* [数据库](#数据库)
-* [集合](#集合)
+- [数据库](https://docs.mongodb.com/v4.2/core/databases-and-collections/#databases)
+- [集合](https://docs.mongodb.com/v4.2/core/databases-and-collections/#collections)
 
-MongoDB 在 [集合](https://docs.mongodb.com/manual/reference/glossary/#term-collection) 中存储 [BSON 文档](https://docs.mongodb.com/manual/core/document/#bson-document-format)作为数据记录. 数据库中的集合:
+MongoDB将[BSON文档](https://docs.mongodb.com/v4.2/core/document/#bson-document-format)（即数据记录）存储在[集合中](https://docs.mongodb.com/v4.2/reference/glossary/#term-collection)；数据库中的集合。
 
-![](https://docs.mongodb.com/manual/_images/crud-annotated-collection.bakedsvg.svg "A collection of MongoDB documents.")
+
+
+![A collection of MongoDB documents.](https://docs.mongodb.com/v4.2/_images/crud-annotated-collection.bakedsvg.svg)
+
+
 
 ## 数据库
 
-在 MongoDB 中一个数据库对应多个集合, 一个集合对应多个文档.
+在MongoDB中，文档集合存在数据库中。
 
-要找一个数据库来用, 可以在 [`mongo`](https://docs.mongodb.com/manual/reference/program/mongo/#bin.mongo) shell 中使用 `use <db>` 语句, 如下例所示:
+要选择使用的数据库，请在[`mongo`](https://docs.mongodb.com/v4.2/reference/program/mongo/#bin.mongo)shell程序中发出 `use <db>` 语句，如下方示例：
 
-```bash
+复制
+
+```
 use myDB
 ```
 
-### 创建数据库 
 
-如果数据库不存在, MongoDB 在你第一次存储数据的时候默认帮你创建数据库. 例如, 你可以切换到一个不存在的数据库然后执行下例操作:
 
-```js
+### 创建数据库
+
+如果数据库不存在，则在您第一次为该数据库存储数据时，MongoDB会创建该数据库。这样，您可以切换到不存在的数据库并在[`mongo`](https://docs.mongodb.com/v4.2/reference/program/mongo/#bin.mongo)shell中执行以下操作 ：
+
+复制
+
+```
 use myNewDB
 
 db.myNewCollection1.insertOne( { x: 1 } )
 ```
 
-其中 [`insertOne()`](https://docs.mongodb.com/manual/reference/method/db.collection.insertOne/#db.collection.insertOne) 操作同时创建了名为 `myNewDB` 的数据库以及名为 `myNewCollection1` 的集合 (如果它们之前没有的话).
+该[`insertOne()`](https://docs.mongodb.com/v4.2/reference/method/db.collection.insertOne/#db.collection.insertOne)操作将同时创建数据库`myNewDB`和集合`myNewCollection1`（如果它们尚不存在）。确保数据库名称和集合名称均遵循MongoDB [命名限制](https://docs.mongodb.com/v4.2/reference/limits/#restrictions-on-db-names)。
 
-关于数据库名称的限制, 参阅 [Naming Restrictions](https://docs.mongodb.com/manual/reference/limits/#restrictions-on-db-names).
+
 
 ## 集合
 
-MongoDB 将文档存储在集合中. 集合类似关系型数据库中表的概念.
+MongoDB将文档存储在集合中。集合类似于关系数据库中的表。
 
 ### 创建集合
 
-如果集合不存在, MongoDB 会在你第一次存储数据到集合时默认创建.
+如果不存在集合，则在您第一次为该集合存储数据时，MongoDB会创建该集合。
 
-```js
+复制
+
+```
 db.myNewCollection2.insertOne( { x: 1 } )
 db.myNewCollection3.createIndex( { y: 1 } )
 ```
 
-不论是 [`insertOne()`](https://docs.mongodb.com/manual/reference/method/db.collection.insertOne/#db.collection.insertOne) 还是 [`createIndex()`](https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/#db.collection.createIndex) 操作都可以创建它们各自的集合 (如果集合不存在的话).
+如果[`insertOne()`](https://docs.mongodb.com/v4.2/reference/method/db.collection.insertOne/#db.collection.insertOne)和 [`createIndex()`](https://docs.mongodb.com/v4.2/reference/method/db.collection.createIndex/#db.collection.createIndex)操作都还不存在，则会创建它们各自的集合。确保集合名称遵循MongoDB [命名限制](https://docs.mongodb.com/v4.2/reference/limits/#restrictions-on-db-names)。
 
-关于集合名称的限制, 参阅 [Naming Restrictions](https://docs.mongodb.com/manual/reference/limits/#restrictions-on-collection-names).
+
 
 ### 显示创建
 
-MongoDB 还提供了 [`db.createCollection()`](https://docs.mongodb.com/manual/reference/method/db.createCollection/#db.createCollection) 方法来通过选项, 例如设置文档的最大大小或者验证规则, 显示地创建一个集合. 如果你不指定这些选项的花, 你其实不需要显示的创建集合, 毕竟 MongoDB 会在你第一次存储数据到集合时默认创建该集合.
+MongoDB提供了[`db.createCollection()`](https://docs.mongodb.com/v4.2/reference/method/db.createCollection/#db.createCollection)使用各种选项显式创建集合的方法，例如设置最大大小或文档验证规则。如果未指定这些选项，则无需显式创建集合，因为在首次存储集合数据时，MongoDB会创建新集合。
 
-如果要修改集合的选项, 参阅 [`collMod`](https://docs.mongodb.com/manual/reference/command/collMod/#dbcmd.collMod).
+要修改这些收集选项，请参见[`collMod`](https://docs.mongodb.com/v4.2/reference/command/collMod/#dbcmd.collMod)。
+
+
 
 ### 文档验证
 
-3.2 版本中的新功能.
+*3.2版中的新功能。*
 
-默认情况下, 一个集合不需要它的文档都是统一的结构 (schema); 即单个集合中的文档不需要包含同样的字段集以及指定字段的数据类型.
+默认情况下，集合不要求其文档具有相同的模式。也就是说，单个集合中的文档不需要具有相同的字段集，并且字段的数据类型可以在集合中的不同文档之间有所不同。
 
-从 MongoDB 3.2 开始, 你可以开启[文档验证规则](https://docs.mongodb.com/manual/core/document-validation/) 来确保集合的更新和插入操作. 更多参阅[文档验证](https://docs.mongodb.com/manual/core/document-validation/).
-
-### 修改文档结构[¶](#修改文档结构)
-
-修改一个集合中文档的结构, 例如添加新的字段, 删除存在的字段, 或者将字段的值修改为新的类型, 更新文档为新的结构等.
+但是，从MongoDB 3.2开始，您可以在更新和插入操作期间对集合强制执行[文档验证规则](https://docs.mongodb.com/v4.2/core/schema-validation/)。有关详细信息，请参见[模式验证](https://docs.mongodb.com/v4.2/core/schema-validation/)。
 
 
-译者 ：王恒
+
+### 修改文档结构
+
+要更改集合中文档的结构，例如添加新字段，删除现有字段或将字段值更改为新类型，请将文档更新为新结构。
+
+
+
+### 唯一标识符
+
+*3.6版的新功能。*
+
+注意
+
+在`featureCompatibilityVersion`必须设置为`"3.6"`或更大。有关更多信息，请参见[View FeatureCompatibilityVersion](https://docs.mongodb.com/v4.2/reference/command/setFeatureCompatibilityVersion/#view-fcv)。
+
+集合被分配了一个不变的UUID。副本集的所有成员和分片群集中的分片的集合UUID均相同。
+
+要检索集合的UUID，请运行 [listCollections](https://docs.mongodb.com/manual/reference/command/listCollections)命令或[`db.getCollectionInfos()`](https://docs.mongodb.com/v4.2/reference/method/db.getCollectionInfos/#db.getCollectionInfos)方法。
+
+
+
+原文链接：https://docs.mongodb.com/v4.2/core/databases-and-collections/
+
+译者：小芒果

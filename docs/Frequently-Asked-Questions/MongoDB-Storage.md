@@ -1,6 +1,6 @@
 # FAQ: MongoDB Storage
 
-# 常见问题：MongoDB存储
+# 常见问题解答：MongoDB存储
 
 On this page
 

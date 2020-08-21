@@ -1,6 +1,6 @@
 # FAQ: MongoDB Diagnostics
 
-# 常见问题：MongoDB诊断
+# 常见问题解答：MongoDB诊断
 
 On this page
 
