@@ -196,7 +196,6 @@
   * [Development Checklist](docs/Administration/Development-Checklist.md)
   * [Configuration and Maintenance](docs/Administration/Configuration-and-Maintenance.md)
   * [Performance](docs/Administration/Performance.md)
-  * Configuration and Maintenance
   * Data Center Awareness
   	* Workload Isolation in MongoDB Deployments
   	* Zones
