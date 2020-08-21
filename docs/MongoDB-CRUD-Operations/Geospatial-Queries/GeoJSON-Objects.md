@@ -1,12 +1,12 @@
-## GeoJSON-Objects对象
+# GeoJSON对象
 
-在本页面
+**在本页面**
 
-*   [概观](#概观)
+*   [总览](#概观)
 
-*   [点](#点)
+*   [`Point`](#点)
 
-*   [线串](#线串)
+*   [`LineString`](#线串)
 
 *   [多边形](#多边形)
 
@@ -18,40 +18,40 @@
 
 *   [GeometryCollection](#id3)
 
-## <span id="概观">概观</span>
+## <span id="概观">总览</span>
 
 MongoDB 支持此页面上列出的 GeoJSON object 类型。
 
 要指定 GeoJSON 数据，请使用嵌入式文档：
 
-*   一个名为`type`的字段，用于指定GeoJSON object 类型和
+*   一个名为`type`的字段，用于指定[GeoJSON对象类型](https://docs.mongodb.com/master/reference/geojson/#)
 
 *   一个名为`coordinates`的字段，用于指定 object 的坐标。
 
 如果指定纬度和经度坐标，请首先列出**经度**，然后列出**纬度**：
 
-*   有效的经度值介于`-180`和`180`之间(包括两者)。
+*   有效的经度值介于**[-180 180]**。
 
-* 有效纬度值介于`-90`和`90`之间(包括两者)。
+* 有效纬度值介于**[-90 90]**。
 
-```shell
+```powershell
 <field>: { type: <GeoJSON type> , coordinates: <coordinates> }
 ```
 
-GeoJSON objects 上的 MongoDB 地理空间查询在球体上计算; MongoDB 使用**WGS84** reference 系统对 GeoJSON objects 进行地理空间查询。
+GeoJSON objects 上的 MongoDB 地理空间查询在球体上计算; MongoDB 使用[`WGS84`](https://docs.mongodb.com/master/reference/glossary/#term-wgs84)参考系统对 GeoJSON objects 进行地理空间查询。
 
-## <span id="点">点</span>
+## <span id="点">`Point`</span>
 
-以下 example 指定了 GeoJSON 点：
+以下 example 指定了 GeoJSON [点](https://tools.ietf.org/html/rfc7946#section-3.1.2)：
 
 ```shell
 {type:"Point",coordinates:[40,5]}
 ```
 
 
-## <span id="线串">线串</span>
+## <span id="线串">`LineString`</span>
 
-以下 example 指定了 GeoJSON 线串：
+以下 example 指定了GeoJSON[LineString](https://tools.ietf.org/html/rfc7946#section-3.1.4)：
 
 ```shell
 { type: "LineString", coordinates: [ [ 40, 5 ], [ 41, 6 ] ] } 
@@ -101,12 +101,14 @@ GeoJSON objects 上的 MongoDB 地理空间查询在球体上计算; MongoDB 使
   }
 ```
 
+![Diagram of a Polygon with internal ring.](https://docs.mongodb.com/master/_images/index-2dsphere-polygon-with-ring.bakedsvg.svg)
+
 ## <span id="多点">多点</span>
 
-version 中新增 2.6：需要版本
-    
-GeoJSON 多点嵌入式文档编码点列表。
-    
+需要的[版本](https://docs.mongodb.com/master/core/2dsphere/#dsphere-v2)
+
+GeoJSON[MultiPoint](https://tools.ietf.org/html/rfc7946#section-3.1.3)嵌入式文档编码点列表。
+
 ```shell
 {
     type: "MultiPoint",
@@ -119,12 +121,12 @@ GeoJSON 多点嵌入式文档编码点列表。
     }
 ```
 
-## <span id="id1">MULTILINESTRING</span>
+## <span id="id1">`MultiLineString`</span>
 
-version 中新增 2.6：需要版本
-    
-以下 example 指定了 GeoJSON MULTILINESTRING：
-    
+需要的[版本](https://docs.mongodb.com/master/core/2dsphere/#dsphere-v2)
+
+以下 example 指定了 GeoJSON [MultiLineString](https://tools.ietf.org/html/rfc7946#section-3.1.5):
+
 ```shell
  {
   type: "MultiLineString",
@@ -137,12 +139,12 @@ version 中新增 2.6：需要版本
       }
 ```
 
-## <span id="id2">MultiPolygon</span>
+## <span id="id2">`MultiPolygon`</span>
 
-version 中新增 2.6：需要版本
-    
-以下 example 指定了 GeoJSON MultiPolygon：
-    
+需要的[版本](https://docs.mongodb.com/master/core/2dsphere/#dsphere-v2)
+
+以下 example 指定了GeoJSON[MultiPolygon](https://tools.ietf.org/html/rfc7946#section-3.1.7):
+
 ```shell
 {
   type: "MultiPolygon",
@@ -153,12 +155,12 @@ version 中新增 2.6：需要版本
     }
 ```
 
-## <span id="id3">GeometryCollection</span>
+## <span id="id3">`GeometryCollection`</span>
 
-version 中新增 2.6：需要版本
-    
-以下 example store GeoJSON 类型GeometryCollection的坐标：
-    
+需要的[版本](https://docs.mongodb.com/master/core/2dsphere/#dsphere-v2)
+
+以下 example store GeoJSON类型 [GeometryCollection](https://tools.ietf.org/html/rfc7946#section-3.1.8)的坐标:
+
 ```shell
 {
     type: "GeometryCollection",
@@ -187,8 +189,8 @@ version 中新增 2.6：需要版本
 
 ​    
 
+译者：杨帅
 
-
-
+校对：杨帅
 
  

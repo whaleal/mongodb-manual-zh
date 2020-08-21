@@ -1,6 +1,4 @@
-
-
-## 因果一致性和读写问题
+# 因果一致性和读写问题
 
 通过MongoDB的[因果一致性客户端会话](https://docs.mongodb.com/manual/core/read-isolation-consistency-recency/#sessions)，读写问题的不同组合可提供不同的 [因果一致性保证](https://docs.mongodb.com/manual/core/read-isolation-consistency-recency/#causal-consistency-guarantees)。如果定义因果一致性以表示耐久性，则下表列出了各种组合提供的特定保证：
 
@@ -13,40 +11,40 @@
 
 如果因果一致性表示持久性，那么从表中可以看出，只有具有[`"majority"`](https://docs.mongodb.com/manual/reference/read-concern-majority/#readconcern."majority")读关注度的读取操作和具有[`"majority"`](https://docs.mongodb.com/manual/reference/write-concern/#writeconcern."majority")写关注度的写入操作才能保证所有四个因果一致性保证。也就是说， [因果一致的客户端会话](https://docs.mongodb.com/manual/core/read-isolation-consistency-recency/#sessions)只能保证以下方面的因果一致性：
 
-- [`"majority"`](https://docs.mongodb.com/manual/reference/read-concern-majority/#readconcern."majority")关注阅读操作；也就是说，读取操作将返回大多数副本集成员已确认且持久的数据。
-- [`"majority"`](https://docs.mongodb.com/manual/reference/write-concern/#writeconcern."majority")关注写操作；也就是说，写操作要求确认该操作已应用于大多数副本集的有投票权的成员。
+- [`"majority"`](https://docs.mongodb.com/manual/reference/read-concern-majority/#readconcern."majority")关注阅读操作；也就是说，读取操作将返回大多数复制集成员已确认且持久的数据。
+- [`"majority"`](https://docs.mongodb.com/manual/reference/write-concern/#writeconcern."majority")关注写操作；也就是说，写操作要求确认该操作已应用于大多数复制集的有投票权的成员。
 
-如果因果一致性并不意味着持久性（即，写操作可能会回滚），则具有写顾虑的写操作也可以提供因果一致性。[`{ w: 1 }`](https://docs.mongodb.com/manual/reference/write-concern/#writeconcern.)
+如果因果一致性并不意味着持久性(即，写操作可能会回滚)，则具有写顾虑的写操作也可以提供因果一致性。[`{ w: 1 }`](https://docs.mongodb.com/manual/reference/write-concern/#writeconcern.)
 
-> 注意 
+> **[success] 注意** 
 >
-> 在某些情况下（但不一定在所有情况下），读和写关注点的其他组合也可以满足所有四个因果一致性保证。
+> 在某些情况下(但不一定在所有情况下)，读和写关注点的其他组合也可以满足所有四个因果一致性保证。
 
-读关注点[`"majority"`](https://docs.mongodb.com/manual/reference/read-concern-majority/#readconcern."majority")和写关注点 [`"majority"`](https://docs.mongodb.com/manual/reference/write-concern/#writeconcern."majority")确保即使在副本集中的两个成员*短暂地*认为它们是主要的[情况下（例如，使用网络分区）](https://docs.mongodb.com/manual/core/read-preference-use-cases/#edge-cases)，这四个因果一致性保证也成立 。尽管两个主数据库都可以完成写操作，但是只有一个主数据库能够完成写操作。[`{ w: 1 }`](https://docs.mongodb.com/manual/reference/write-concern/#writeconcern.)[`"majority"`](https://docs.mongodb.com/manual/reference/write-concern/#writeconcern."majority")
+读关注点[`"majority"`](https://docs.mongodb.com/manual/reference/read-concern-majority/#readconcern."majority")和写关注点 [`"majority"`](https://docs.mongodb.com/manual/reference/write-concern/#writeconcern."majority")确保即使在复制集中的两个成员*短暂地*认为它们是主要的[情况下(例如，使用网络分区)](https://docs.mongodb.com/manual/core/read-preference-use-cases/#edge-cases)，这四个因果一致性保证也成立 。尽管两个主数据库都可以完成写操作，但是只有一个主数据库能够完成写操作。[`{ w: 1 }`](https://docs.mongodb.com/manual/reference/write-concern/#writeconcern.)[`"majority"`](https://docs.mongodb.com/manual/reference/write-concern/#writeconcern."majority").
 
-例如，考虑网络分区划分五个成员副本集的情况：
+例如，考虑网络分区划分五个成员复制集的情况：
 
 ![网络分区：一侧选择了新的主节点，而旧的主节点尚未卸任。](https://docs.mongodb.com/manual/_images/network-partition-two-primaries.svg)
 
 <div class="section" id="scenarios">
 
-### 场景
+## 场景
 
-为了说明读写关注点要求，在以下情况下，客户端向客户端发出了一系列操作，并对副本集进行了读写关注点的各种组合：
+为了说明读写关注点要求，在以下情况下，客户端向客户端发出了一系列操作，并对复制集进行了读写关注点的各种组合：
 
 *   [阅读关注“多数”并写关注“多数”](https://docs.mongodb.com/manual/core/causal-consistency-read-write-concerns/#causal-rc-majority-wc-majority)
 *   [阅读关注“多数”并发表关注{w：1}](https://docs.mongodb.com/manual/core/causal-consistency-read-write-concerns/#causal-rc-majority-wc-1)
 *   [阅读关注“本地”，写关注“多数”](https://docs.mongodb.com/manual/core/causal-consistency-read-write-concerns/#causal-rc-local-wc-majority)
 *   [阅读关注“本地”并写关注{w：1}](https://docs.mongodb.com/manual/core/causal-consistency-read-write-concerns/#causal-rc-local-wc-1)
-<div class="section" id="read-concern-majority-and-write-concern-majority">
-<span id="causal-rc-majority-wc-majority"></span>
-### 读关注`"majority"`和写关注`"majority"`
+
+### 阅读关注`"majority"`和写关注`"majority"`
+
 
 在因果一致的会话中使用读取关注[`"majority"`](https://docs.mongodb.com/manual/reference/read-concern-majority/#readconcern."majority")和写入关注 [`"majority"`](https://docs.mongodb.com/manual/reference/write-concern/#writeconcern."majority")可提供以下因果一致性保证：
 
 ✅自己读✅单调读read单调写✅写跟随读
 
-##### 方案1（读关注“多数”和写关注“多数”）
+##### 方案1（读关注`"majority"`和写关注`"majority"`）
 
 在具有两个主操作的过渡期内，由于只有**P**<sub>new</sub>操作才能满足写关注的写操作，因此客户机会话可以成功发出以下操作序列：[`{ w: "majority" }`](https://docs.mongodb.com/manual/reference/write-concern/#writeconcern."majority")
 
@@ -72,11 +70,11 @@
 
 在这个序列中，read<sub>1</sub>在**P**<sub>old</sub>上的多数提交点提前之前不能返回。在**P**<sub>old</sub>和**S**<sub>1</sub>能够与复制集的其余部分通信之前，这是不可能发生的;此时，**P**<sub>old</sub>已经退出(如果还没有)，两个成员从副本集中的其他成员同步(包括write<sub>1</sub>)。
 
-| ✅ **自己写**   | read<sub>1</sub>反映了write1<sub>1</sub>之后的数据状态，尽管在网络分区已修复并且该成员已与副本集的其他成员进行同步之后。read<sub>2</sub>从**S**<sub>3</sub>读取数据，该数据反映了write1<sub>1</sub>之后是write<sub>2</sub>之后的状态。 |
-| -------------- | ------------------------------------------------------------ |
-| ✅ **单调读**   | read<sub>2</sub>从**S**<sub>3</sub>读取数据，该数据反映read<sub>1</sub>之后的状态（即，较早的状态反映在read<sub>1</sub>读取的数据中）。 |
-| ✅ **单调写**   | write<sub>2</sub>更新**P**<sub>new</sub>数据，以反映write<sub>1</sub>之后的状态。 |
-| ✅ **写跟随读** | write<sub>2</sub>更新**P**<sub>new</sub>数据，以反映read<sub>1</sub>之后的数据状态（即，较早的状态反映read<sub>1</sub>读取的数据）。 |
+| ✅ **自己写                      ** | read<sub>1</sub>反映了write1<sub>1</sub>之后的数据状态，尽管在网络分区已修复并且该成员已与副本集的其他成员进行同步之后。read<sub>2</sub>从**S**<sub>3</sub>读取数据，该数据反映了write1<sub>1</sub>之后是write<sub>2</sub>之后的状态。 |
+| ---------------------------------- | ------------------------------------------------------------ |
+| ✅ **单调读**                       | read<sub>2</sub>从**S**<sub>3</sub>读取数据，该数据反映read<sub>1</sub>之后的状态（即，较早的状态反映在read<sub>1</sub>读取的数据中）。 |
+| ✅ **单调写**                       | write<sub>2</sub>更新**P**<sub>new</sub>数据，以反映write<sub>1</sub>之后的状态。 |
+| ✅ **写跟随读**                     | write<sub>2</sub>更新**P**<sub>new</sub>数据，以反映read<sub>1</sub>之后的数据状态（即，较早的状态反映read<sub>1</sub>读取的数据）。 |
 
 #### 读关注`"majority"`和写关注`{w: 1}`
 
@@ -162,7 +160,7 @@
 
 | 序列                                                         | 例                                                           |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| 1.write<sub>1</sub>与写入关注 到 [`{ w: 1 }`](https://docs.mongodb.com/manual/reference/write-concern/#writeconcern.)**P**<sub>old</sub><br/>2.read<sub>1</sub>1与读关心[`"majority"`](https://docs.mongodb.com/manual/reference/read-concern-majority/#readconcern."majority")到**S**<sub>1</sub><br/>3.write<sub>2</sub>到新的关注[`{ w: 1 }`](https://docs.mongodb.com/manual/reference/write-concern/#writeconcern.)**P**<sub>new</sub> <br/>4.read<sub>2</sub>与读取关注[`"majority"`](https://docs.mongodb.com/manual/reference/read-concern-majority/#readconcern."majority")到**S**<sub>3</sub> | 对于项目`A`，更新`qty`为`50`。<br/>阅读项目`A`。对于`qty`小于或等于的项目`50`，<br/>更新`restock`到`true`。阅读项目`A`。 |
+| 1.write<sub>1</sub>与写入关注到 [`{ w: 1 }`](https://docs.mongodb.com/manual/reference/write-concern/#writeconcern.)**P**<sub>old</sub><br/>2.read<sub>1</sub>1与读关心[`"majority"`](https://docs.mongodb.com/manual/reference/read-concern-majority/#readconcern."majority")到**S**<sub>1</sub><br/>3.write<sub>2</sub>到新的关注[`{ w: 1 }`](https://docs.mongodb.com/manual/reference/write-concern/#writeconcern.)**P**<sub>new</sub> <br/>4.read<sub>2</sub>与读取关注[`"majority"`](https://docs.mongodb.com/manual/reference/read-concern-majority/#readconcern."majority")到**S**<sub>3</sub> | 对于项目`A`，更新`qty`为`50`。<br/>阅读项目`A`。对于`qty`小于或等于的项目`50`，<br/>更新`restock`到`true`。阅读项目`A`。 |
 
 ![使用读关注本地和写关注1的具有两个主数据的数据状态](https://docs.mongodb.com/manual/_images/causal-rc-local-wc-1.svg)
 
@@ -195,3 +193,9 @@
 | ❌单调读。         | read<sub>2</sub>从**S**<sub>3</sub>读取数据，该数据不反映read<sub>1</sub>之后的状态（即，较早的状态不反映read<sub>1</sub>读取的数据）。 |
 | ✅单调写           | write<sub>2</sub>更新**P**<sub>new</sub>数据，以反映write<sub>1</sub>之后的状态。 |
 | ❌写跟随阅读。     | write<sub>2</sub>更新**P**<sub>new</sub>的数据，该数据不反映read<sub>1</sub>之后的状态（即，较早的状态不反映read<sub>1</sub>读取的数据）。 |
+
+
+
+译者：杨帅
+
+校对：杨帅
