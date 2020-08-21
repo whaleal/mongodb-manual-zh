@@ -2938,19 +2938,6 @@
                 <span>
             
                     
-                    Configuration and Maintenance
-            
-                </span>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.15.7" >
-            
-                <span>
-            
-                    
                     Data Center Awareness
             
                 </span>
@@ -2960,7 +2947,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.15.7.1" >
+        <li class="chapter " data-level="1.15.6.1" >
             
                 <span>
             
@@ -2973,7 +2960,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.15.7.2" >
+        <li class="chapter " data-level="1.15.6.2" >
             
                 <span>
             
@@ -2986,7 +2973,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.15.7.3" >
+        <li class="chapter " data-level="1.15.6.3" >
             
                 <span>
             
@@ -2999,7 +2986,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.15.7.4" >
+        <li class="chapter " data-level="1.15.6.4" >
             
                 <span>
             
@@ -3012,7 +2999,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.15.7.5" >
+        <li class="chapter " data-level="1.15.6.5" >
             
                 <span>
             
@@ -3025,7 +3012,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.15.7.6" >
+        <li class="chapter " data-level="1.15.6.6" >
             
                 <span>
             
@@ -3038,7 +3025,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.15.7.7" >
+        <li class="chapter " data-level="1.15.6.7" >
             
                 <span>
             
@@ -3051,7 +3038,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.15.7.8" >
+        <li class="chapter " data-level="1.15.6.8" >
             
                 <span>
             
@@ -3069,7 +3056,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.15.8" data-path="../../Administration/MongoDB-Backup-Methods.html">
+        <li class="chapter " data-level="1.15.7" data-path="../../Administration/MongoDB-Backup-Methods.html">
             
                 <a href="../../Administration/MongoDB-Backup-Methods.html">
             
@@ -5100,30 +5087,31 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x9605;&#x8BFB;&#x5173;&#x6CE8;linearizable">&#x9605;&#x8BFB;&#x5173;&#x6CE8;&#x201C;linearizable&#x201D;</h2>
-<p>version 3.4 &#x4E2D;&#x7684;&#x65B0;&#x529F;&#x80FD;&#x3002;<br></p>
-<p>&#x67E5;&#x8BE2;&#x8FD4;&#x56DE;&#x53CD;&#x6620;&#x5728;&#x8BFB;&#x53D6;&#x64CD;&#x4F5C;&#x5F00;&#x59CB;&#x4E4B;&#x524D;&#x5B8C;&#x6210;&#x7684;&#x6240;&#x6709;&#x6210;&#x529F; majority-acknowledged &#x5199;&#x5165;&#x7684;&#x6570;&#x636E;&#x3002;&#x5728;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x4E4B;&#x524D;&#xFF0C;&#x67E5;&#x8BE2;&#x53EF;&#x4EE5;&#x7B49;&#x5F85;&#x5E76;&#x53D1;&#x6267;&#x884C;&#x5199;&#x5165;&#x4EE5;&#x4F20;&#x64AD;&#x5230;&#x5927;&#x591A;&#x6570;&#x526F;&#x672C;&#x96C6;&#x6210;&#x5458;&#x3002;</p>
-<p>&#x5982;&#x679C;&#x5927;&#x591A;&#x6570;&#x526F;&#x672C;&#x96C6;&#x6210;&#x5458;&#x5728;&#x8BFB;&#x53D6;&#x64CD;&#x4F5C;&#x540E;&#x5D29;&#x6E83;&#x5E76;&#x91CD;&#x65B0;&#x542F;&#x52A8;&#xFF0C;&#x5219;&#x5982;&#x679C;writeConcernMajorityJournalDefault&#x8BBE;&#x7F6E;&#x4E3A;<code>true</code>&#x7684;&#x9ED8;&#x8BA4; state&#xFF0C;&#x5219;&#x8BFB;&#x53D6;&#x64CD;&#x4F5C;&#x8FD4;&#x56DE;&#x7684;&#x6587;&#x6863;&#x662F;&#x6301;&#x4E45;&#x7684;&#x3002;</p>
-<p>&#x5F53;writeConcernMajorityJournalDefault&#x8BBE;&#x7F6E;&#x4E3A;<code>false</code>&#x65F6;&#xFF0C;MongoDB &#x4E0D;&#x4F1A;&#x7B49;&#x5F85;w&#xFF1A;&#x201C;&#x591A;&#x6570;&#x201D;&#x5199;&#x5165;&#x5728;&#x786E;&#x8BA4;&#x5199;&#x5165;&#x4E4B;&#x524D;&#x5199;&#x5165; on-disk &#x65E5;&#x5FD7;&#x3002;&#x56E0;&#x6B64;&#xFF0C;<code>majority</code>&#x5199;&#x64CD;&#x4F5C;&#x53EF;&#x80FD;&#x4F1A;&#x5728;&#x7ED9;&#x5B9A;&#x526F;&#x672C;&#x96C6;&#x4E2D;&#x7684;&#x5927;&#x591A;&#x6570;&#x8282;&#x70B9;&#x7684;&#x77AC;&#x65F6;&#x4E22;&#x5931;(e.g. &#x5D29;&#x6E83;&#x548C;&#x91CD;&#x542F;)&#x7684;&#x4E8B;&#x4EF6;&#x4E2D;&#x56DE;&#x6EDA;&#x3002;</p>
-<p>&#x60A8;&#x53EF;&#x4EE5;&#x4EC5;&#x4E3A;&#x4E3B;&#x6307;&#x5B9A;&#x8BFB;&#x53D6;&#x64CD;&#x4F5C;&#x7684;&#x7EBF;&#x6027;&#x5316;&#x8BFB;&#x53D6;&#x95EE;&#x9898;&#x3002;</p>
+                                <h1 id="&#x9605;&#x8BFB;&#x5173;&#x6CE8;linearizable">&#x9605;&#x8BFB;&#x5173;&#x6CE8;&#x201C;linearizable&#x201D;</h1>
+<p> 3.4&#x7248;&#x672C;&#x4E2D;&#x7684;&#x65B0;&#x529F;&#x80FD;&#x3002;</p>
+<p>&#x8BE5;&#x67E5;&#x8BE2;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x53CD;&#x6620;&#x4E86;&#x5728;&#x5F00;&#x59CB;&#x8BFB;&#x64CD;&#x4F5C;&#x4E4B;&#x524D;&#x5B8C;&#x6210;&#x7684;&#x6240;&#x6709;&#x6210;&#x529F;&#x7684;&#x7ECF;&#x8FC7;&#x591A;&#x6570;&#x786E;&#x8BA4;&#x7684;&#x5199;&#x64CD;&#x4F5C;&#x3002;&#x5728;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x4E4B;&#x524D;&#xFF0C;&#x67E5;&#x8BE2;&#x53EF;&#x4EE5;&#x7B49;&#x5F85;&#x5E76;&#x53D1;&#x6267;&#x884C;&#x7684;&#x5199;&#x4F20;&#x64AD;&#x5230;&#x5927;&#x591A;&#x6570;&#x590D;&#x5236;&#x96C6;&#x6210;&#x5458;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x5927;&#x591A;&#x6570;&#x590D;&#x5236;&#x96C6;&#x6210;&#x5458;&#x5728;&#x8BFB;&#x53D6;&#x64CD;&#x4F5C;&#x540E;&#x5D29;&#x6E83;&#x5E76;&#x91CD;&#x65B0;&#x542F;&#x52A8;&#xFF0C;&#x5219;&#x5982;&#x679C;<a href="https://docs.mongodb.com/master/reference/replica-configuration/#rsconf.writeConcernMajorityJournalDefault" target="_blank"><code>writeConcernMajorityJournalDefault</code></a>&#x8BBE;&#x7F6E;&#x4E3A;<code>true</code>&#x7684;&#x9ED8;&#x8BA4; state&#xFF0C;&#x5219;&#x8BFB;&#x53D6;&#x64CD;&#x4F5C;&#x8FD4;&#x56DE;&#x7684;&#x6587;&#x6863;&#x662F;&#x6301;&#x4E45;&#x7684;&#x3002;</p>
+<p>&#x5F53;<a href="https://docs.mongodb.com/master/reference/replica-configuration/#rsconf.writeConcernMajorityJournalDefault" target="_blank"><code>writeConcernMajorityJournalDefault</code></a>&#x8BBE;&#x7F6E;&#x4E3A;<code>false</code>&#x65F6;&#xFF0C;MongoDB &#x4E0D;&#x4F1A;&#x7B49;&#x5F85; <a href="https://docs.mongodb.com/master/reference/write-concern/#writeconcern.&quot;majority&quot;" target="_blank"><code>w: &quot;majority&quot;</code></a>&#x5199;&#x5165;&#x5728;&#x786E;&#x8BA4;&#x5199;&#x5165;&#x4E4B;&#x524D;&#x5199;&#x5165;&#x78C1;&#x76D8;&#x4E0A;&#x65E5;&#x5FD7;&#x3002;&#x56E0;&#x6B64;&#xFF0C;<code>majority</code>&#x5199;&#x64CD;&#x4F5C;&#x53EF;&#x80FD;&#x4F1A;&#x5728;&#x7ED9;&#x5B9A;&#x590D;&#x5236;&#x96C6;&#x4E2D;&#x7684;&#x5927;&#x591A;&#x6570;&#x8282;&#x70B9;&#x7684;&#x77AC;&#x65F6;&#x4E22;&#x5931;(&#x5373;. &#x5D29;&#x6E83;&#x548C;&#x91CD;&#x542F;)&#x7684;&#x4E8B;&#x4EF6;&#x4E2D;&#x56DE;&#x6EDA;&#x3002;</p>
+<p>&#x60A8;&#x53EF;&#x4EE5;&#x4EC5;&#x4E3A;&#x4E3B;&#x8282;&#x70B9;&#x4E0A;&#x7684;&#x8BFB;&#x64CD;&#x4F5C;&#x6307;&#x5B9A;&#x53EF;&#x7EBF;&#x6027;&#x5316;&#x7684;&#x8BFB;&#x5173;&#x6CE8;&#x3002;</p>
 <p>&#x53EF;&#x7EBF;&#x6027;&#x5316;&#x8BFB;&#x53D6;&#x5173;&#x6CE8;&#x4FDD;&#x8BC1;&#x4EC5;&#x5728;&#x8BFB;&#x53D6;&#x64CD;&#x4F5C;&#x6307;&#x5B9A;&#x552F;&#x4E00;&#x6807;&#x8BC6;&#x5355;&#x4E2A;&#x6587;&#x6863;&#x7684;&#x67E5;&#x8BE2;&#x8FC7;&#x6EE4;&#x5668;&#x65F6;&#x624D;&#x9002;&#x7528;&#x3002;</p>
 <blockquote>
 <p><strong>&#x63D0;&#x793A;</strong></p>
 <p>&#x5982;&#x679C;&#x5927;&#x591A;&#x6570;&#x6570;&#x636E;&#x627F;&#x8F7D;&#x6210;&#x5458;&#x4E0D;&#x53EF;&#x7528;&#xFF0C;&#x8BF7;&#x59CB;&#x7EC8;&#x4F7F;&#x7528;&#x5E26;&#x6709;&#x7EBF;&#x6027;&#x5316;&#x8BFB;&#x53D6;&#x95EE;&#x9898;&#x7684;<code>maxTimeMS</code>&#x3002; <code>maxTimeMS</code>&#x786E;&#x4FDD;&#x64CD;&#x4F5C;&#x4E0D;&#x4F1A;&#x65E0;&#x9650;&#x671F;&#x5730;&#x963B;&#x585E;&#xFF0C;&#x800C;&#x662F;&#x786E;&#x4FDD;&#x5728;&#x65E0;&#x6CD5;&#x6EE1;&#x8DB3;&#x8BFB;&#x53D6;&#x5173;&#x6CE8;&#x65F6;&#x64CD;&#x4F5C;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#x3002;</p>
 </blockquote>
-<h3 id="&#x56E0;&#x679C;&#x4E00;&#x81F4;&#x7684;&#x4F1A;&#x8BDD;">&#x56E0;&#x679C;&#x4E00;&#x81F4;&#x7684;&#x4F1A;&#x8BDD;</h3>
-<p>&#x5BF9;&#x4E8E;&#x56E0;&#x679C;&#x4E00;&#x81F4;&#x4F1A;&#x8BDD;&#xFF0C;Read concern linearizable&#x4E0D;&#x53EF;&#x7528;&#x3002;</p>
-<h3 id="&#x805A;&#x96C6;&#x9650;&#x5236;">&#x805A;&#x96C6;&#x9650;&#x5236;</h3>
-<p>&#x4E0D;&#x80FD;&#x5C06;<a href="#">$out</a>&#x6216;<a href="#">$merge</a>&#x9636;&#x6BB5;&#x4E0E;read&#x5173;&#x6CE8;&#x70B9;&#x201C;&#x7EBF;&#x6027;&#x5316;&#x201D;&#x7ED3;&#x5408;&#x4F7F;&#x7528;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x60A8;&#x4E3A;<a href="https://docs.mongodb.com/manual/reference/method/db.collection.aggregate/#db.collection.aggregate" target="_blank">db.collection.aggregate()</a>&#x6307;&#x5B9A;&#x4E86;<strong>&#x201C;linearizable&#x201D;</strong>read concern&#xFF0C;&#x5219;&#x4E0D;&#x80FD;&#x5728;&#x7BA1;&#x9053;&#x4E2D;&#x5305;&#x542B;&#x8FD9;&#x4E24;&#x4E2A;&#x9636;&#x6BB5;&#x3002;</p>
-<h3 id="&#x5B9E;&#x65F6;&#x8BA2;&#x5355;">&#x5B9E;&#x65F6;&#x8BA2;&#x5355;</h3>
+<h2 id="&#x56E0;&#x679C;&#x4E00;&#x81F4;&#x7684;&#x4F1A;&#x8BDD;">&#x56E0;&#x679C;&#x4E00;&#x81F4;&#x7684;&#x4F1A;&#x8BDD;</h2>
+<p>&#x5BF9;&#x4E8E;&#x56E0;&#x679C;&#x4E00;&#x81F4;&#x4F1A;&#x8BDD;&#xFF0C;&#x9605;&#x8BFB;&#x5173;&#x6CE8;<strong>linearizable</strong>&#x4E0D;&#x53EF;&#x7528;&#x3002;</p>
+<h2 id="&#x805A;&#x96C6;&#x9650;&#x5236;">&#x805A;&#x96C6;&#x9650;&#x5236;</h2>
+<p>&#x4E0D;&#x80FD;&#x5C06;<a href="https://docs.mongodb.com/master/reference/operator/aggregation/out/#pipe._S_out" target="_blank"><code>$out</code></a> &#x6216; <a href="https://docs.mongodb.com/master/reference/operator/aggregation/merge/#pipe._S_merge" target="_blank"><code>$merge</code></a> &#x9636;&#x6BB5;&#x4E0E;read&#x5173;&#x6CE8;&#x70B9;<a href="https://docs.mongodb.com/master/reference/read-concern-linearizable/#readconcern.&quot;linearizable&quot;" target="_blank"><code>&#x7EBF;&#x6027;&#x5316;</code></a>&#x7ED3;&#x5408;&#x4F7F;&#x7528;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x60A8;&#x4E3A;<a href="https://docs.mongodb.com/master/reference/method/db.collection.aggregate/#db.collection.aggregate" target="_blank"><code>db.collection.aggregate()</code></a>&#x6307;&#x5B9A;&#x4E86;<a href="https://docs.mongodb.com/master/reference/read-concern-linearizable/#readconcern.&quot;linearizable&quot;" target="_blank"><code>&quot;linearizable&quot;</code></a>&#x8BFB;&#x5173;&#x6CE8;&#xFF0C;&#x5219;&#x4E0D;&#x80FD;&#x5728;&#x7BA1;&#x9053;&#x4E2D;&#x5305;&#x542B;&#x8FD9;&#x4E24;&#x4E2A;&#x9636;&#x6BB5;&#x3002;</p>
+<h2 id="&#x5B9E;&#x65F6;&#x8BA2;&#x5355;">&#x5B9E;&#x65F6;&#x8BA2;&#x5355;</h2>
 <p>&#x7ED3;&#x5408;<a href="https://docs.mongodb.com/manual/reference/write-concern/#writeconcern.&quot;majority&quot;" target="_blank"><code>&quot;majority&quot;</code></a>&#x5199;&#x5173;&#x6CE8;&#xFF0C; <a href="https://docs.mongodb.com/manual/reference/read-concern-linearizable/#readconcern.&quot;linearizable&quot;" target="_blank"><code>&quot;linearizable&quot;</code></a>&#x8BFB;&#x5173;&#x6CE8;&#x4F7F;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x53EF;&#x4EE5;&#x5728;&#x5355;&#x4E2A;&#x6587;&#x6863;&#x4E0A;&#x6267;&#x884C;&#x8BFB;&#x5199;&#x64CD;&#x4F5C;&#xFF0C;&#x5C31;&#x597D;&#x50CF;&#x5355;&#x4E2A;&#x7EBF;&#x7A0B;&#x5B9E;&#x65F6;&#x6267;&#x884C;&#x4E86;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x4E00;&#x6837;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x8FD9;&#x4E9B;&#x8BFB;&#x5199;&#x7684;&#x76F8;&#x5E94;&#x8BA1;&#x5212;&#x88AB;&#x8BA4;&#x4E3A;&#x662F;&#x7EBF;&#x6027;&#x7684;&#x3002;</p>
-<h3 id="&#x9605;&#x8BFB;&#x4F60;&#x81EA;&#x5DF1;&#x7684;&#x5199;&#x4F5C;">&#x9605;&#x8BFB;&#x4F60;&#x81EA;&#x5DF1;&#x7684;&#x5199;&#x4F5C;</h3>
-<p>&#x66F4;&#x6539;&#x4E86; version 3.6.</p>
-<p>&#x4ECE; MongoDB 3.6 &#x5F00;&#x59CB;&#xFF0C;&#x5982;&#x679C;&#x5199;&#x8BF7;&#x6C42;&#x786E;&#x8BA4;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x56E0;&#x679C;&#x5173;&#x7CFB;&#x4E00;&#x81F4;&#x6765;&#x8BFB;&#x53D6;&#x60A8;&#x81EA;&#x5DF1;&#x7684;&#x5199;&#x5165;&#x3002;</p>
-<p>&#x5728;MongoDB 3.6&#x4E4B;&#x524D;&#xFF0C;&#x60A8;&#x5FC5;&#x987B;&#x53D1;&#x51FA;&#x5177;&#x6709;&#x5199;&#x5165;&#x5173;&#x6CE8;&#x70B9;&#x7684;&#x5199;&#x5165;&#x64CD;&#x4F5C;&#xFF0C; &#x7136;&#x540E; &#x5BF9;&#x8BFB;&#x53D6;&#x64CD;&#x4F5C;&#x4F7F;&#x7528;&#x6216;&#x5173;&#x6CE8;&#x8BFB;&#x53D6;&#xFF0C;&#x4EE5;&#x786E;&#x4FDD;&#x5355;&#x4E2A;&#x7EBF;&#x7A0B;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#x81EA;&#x5DF1;&#x7684;&#x5199;&#x5165;&#x3002;<a href="https://docs.mongodb.com/manual/reference/write-concern/#writeconcern.&quot;majority&quot;" target="_blank"><code>{ w: &quot;majority&quot; }</code></a><a href="https://docs.mongodb.com/manual/reference/read-concern-majority/#readconcern.&quot;majority&quot;" target="_blank"><code>&quot;majority&quot;</code></a><a href="https://docs.mongodb.com/manual/reference/read-concern-linearizable/#readconcern.&quot;linearizable&quot;" target="_blank"><code>&quot;linearizable&quot;</code></a></p>
-<h3 id="&#x6027;&#x80FD;&#x6BD4;&#x8F83;">&#x6027;&#x80FD;&#x6BD4;&#x8F83;</h3>
+<h2 id="&#x9605;&#x8BFB;&#x4F60;&#x81EA;&#x5DF1;&#x7684;&#x5199;&#x4F5C;">&#x9605;&#x8BFB;&#x4F60;&#x81EA;&#x5DF1;&#x7684;&#x5199;&#x4F5C;</h2>
+<p>&#x66F4;&#x6539;&#x4E86;3.6&#x7248;&#x672C;.</p>
+<p>&#x4ECE; MongoDB 3.6 &#x5F00;&#x59CB;&#xFF0C;&#x5982;&#x679C;&#x5199;&#x8BF7;&#x6C42;&#x786E;&#x8BA4;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <a href="https://docs.mongodb.com/master/core/read-isolation-consistency-recency/#sessions" target="_blank">&#x56E0;&#x679C;&#x5173;&#x7CFB;&#x4E00;&#x81F4;</a>&#x6765;&#x8BFB;&#x53D6;&#x60A8;&#x81EA;&#x5DF1;&#x7684;&#x5199;&#x5165;&#x3002;</p>
+<p>&#x5728;MongoDB 3.6&#x4E4B;&#x524D;&#xFF0C;&#x4F60;&#x5FC5;&#x987B;&#x4F7F;&#x7528; <a href="https://docs.mongodb.com/master/reference/write-concern/#writeconcern.&quot;majority&quot;" target="_blank"><code>{ w: &quot;majority&quot; }</code></a> &#x5199;&#x5173;&#x6CE8;&#x70B9;&#x6765;&#x53D1;&#x5E03;&#x5199;&#x64CD;&#x4F5C;&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528;<a href="https://docs.mongodb.com/master/reference/read-concern-majority/#readconcern.&quot;majority&quot;" target="_blank"><code>&quot;majority&quot;</code></a> &#x6216;<a href="https://docs.mongodb.com/master/reference/read-concern-linearizable/#readconcern.&quot;linearizable&quot;" target="_blank"><code>&quot;linearizable&quot;</code></a> &#x7684;&#x8BFB;&#x5173;&#x6CE8;&#x70B9;&#x6765;&#x6267;&#x884C;&#x8BFB;&#x64CD;&#x4F5C;&#xFF0C;&#x4EE5;&#x786E;&#x4FDD;&#x5355;&#x4E2A;&#x7EBF;&#x7A0B;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#x81EA;&#x5DF1;&#x7684;&#x5199;&#x64CD;&#x4F5C;&#x3002;</p>
+<h2 id="&#x6027;&#x80FD;&#x6BD4;&#x8F83;">&#x6027;&#x80FD;&#x6BD4;&#x8F83;</h2>
 <p>&#x4E0E;&#x201C;&#x591A;&#x6570;&#x201D;&#x4E0D;&#x540C;&#xFF0C;&#x201C;&#x53EF;&#x7EBF;&#x6027;&#x5316;&#x201D;&#x7684;&#x8BFB;&#x5173;&#x6CE8;&#x70B9;&#x5411;&#x8F85;&#x52A9;&#x6210;&#x5458;&#x786E;&#x8BA4;&#x8BFB;&#x64CD;&#x4F5C;&#x662F;&#x4ECE;&#x80FD;&#x591F;&#x7528; <a href="https://docs.mongodb.com/manual/reference/write-concern/#writeconcern.&quot;majority&quot;" target="_blank"><code>{ w: &quot;majority&quot; }</code></a> &#x5199;&#x5173;&#x6CE8;&#x70B9;&#x786E;&#x8BA4;&#x5199;&#x64CD;&#x4F5C;&#x7684;&#x4E3B;&#x6210;&#x5458;&#x8BFB;&#x53D6;&#x7684;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x7EBF;&#x6027;&#x5316;&#x7684;&#x8BFB;&#x53D6;&#x53EF;&#x80FD;&#x6BD4;&#x201C;&#x591A;&#x6570;&#x201D;&#x6216;&#x201C;&#x5C40;&#x90E8;&#x201D;&#x8BFB;&#x53D6;&#x8981;&#x6162;&#x5F97;&#x591A;&#x3002;</p>
-<p>&#x5982;&#x679C;&#x5927;&#x591A;&#x6570;&#x6570;&#x636E;&#x627F;&#x8F7D;&#x6210;&#x5458;&#x4E0D;&#x53EF;&#x7528;&#xFF0C;&#x8BF7;&#x59CB;&#x7EC8;&#x4F7F;&#x7528;&#x5E26;&#x6709;&#x7EBF;&#x6027;&#x5316;&#x8BFB;&#x53D6;&#x95EE;&#x9898;&#x7684;<code>maxTimeMS</code>&#x3002; <code>maxTimeMS</code>&#x786E;&#x4FDD;&#x64CD;&#x4F5C;&#x4E0D;&#x4F1A;&#x65E0;&#x9650;&#x671F;&#x5730;&#x963B;&#x585E;&#xFF0C;&#x800C;&#x662F;&#x786E;&#x4FDD;&#x5728;&#x65E0;&#x6CD5;&#x6EE1;&#x8DB3;&#x8BFB;&#x53D6;&#x5173;&#x6CE8;&#x65F6;&#x64CD;&#x4F5C;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#x3002;</p>
+<p>&#x4E0E;<a href="https://docs.mongodb.com/master/reference/read-concern-majority/#readconcern.&quot;majority&quot;" target="_blank"><code>&quot;majority&quot;</code></a>&#x4E0D;&#x540C;&#xFF0C;<a href="https://docs.mongodb.com/master/reference/read-concern-linearizable/#readconcern.&quot;linearizable&quot;" target="_blank"><code>&quot;linearizable&quot;</code></a>&#x7684;&#x8BFB;&#x5173;&#x6CE8;&#x70B9;&#x5411;&#x8F85;&#x52A9;&#x6210;&#x5458;&#x786E;&#x8BA4;&#x8BFB;&#x64CD;&#x4F5C;&#x662F;&#x4ECE;&#x80FD;&#x591F;&#x7528; <a href="https://docs.mongodb.com/master/reference/write-concern/#writeconcern.&quot;majority&quot;" target="_blank"><code>{ w: &quot;majority&quot; }</code></a>&#x5199;&#x5173;&#x6CE8;&#x70B9;&#x786E;&#x8BA4;&#x5199;&#x64CD;&#x4F5C;&#x7684;&#x4E3B;&#x6210;&#x5458;&#x8BFB;&#x53D6;&#x7684;&#x3002;<a href="https://docs.mongodb.com/master/reference/read-concern-linearizable/#edge-cases-2-primaries" target="_blank">[1]</a> &#x8FD9;&#x6837;&#xFF0C;&#x7EBF;&#x6027;&#x5316;&#x7684;&#x8BFB;&#x53D6;&#x53EF;&#x80FD;&#x6BD4; <a href="https://docs.mongodb.com/master/reference/read-concern-majority/#readconcern.&quot;majority&quot;" target="_blank"><code>&quot;majority&quot;</code></a> &#x6216; <a href="https://docs.mongodb.com/master/reference/read-concern-local/#readconcern.&quot;local&quot;" target="_blank"><code>&quot;local&quot;</code></a>&#x8BFB;&#x53D6;&#x8981;&#x6162;&#x5F97;&#x591A;&#x3002;</p>
+<p>&#x603B;&#x662F;&#x4F7F;&#x7528;&#x53EF;&#x7EBF;&#x6027;&#x5316;&#x8BFB;&#x53D6;&#x5173;&#x6CE8;&#x7684;maxTimeMS&#xFF0C;&#x4EE5;&#x9632;&#x5927;&#x591A;&#x6570;&#x6570;&#x636E;&#x627F;&#x8F7D;&#x6210;&#x5458;&#x4E0D;&#x53EF;&#x7528;&#x3002;maxTimeMS&#x786E;&#x4FDD;&#x4E86;&#x64CD;&#x4F5C;&#x4E0D;&#x4F1A;&#x65E0;&#x9650;&#x671F;&#x5730;&#x963B;&#x585E;&#xFF0C;&#x76F8;&#x53CD;&#xFF0C;&#x5B83;&#x786E;&#x4FDD;&#x4E86;&#x5982;&#x679C;&#x8BFB;&#x95EE;&#x9898;&#x4E0D;&#x80FD;&#x5B9E;&#x73B0;&#xFF0C;&#x64CD;&#x4F5C;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x3002;</p>
 <p>&#x4F8B;&#x5982;&#xFF1A;</p>
 <pre><code class="lang-shell">db.restaurants.find( { _id: 5 } ).readConcern(&quot;linearizable&quot;).maxTimeMS(10000)
 
@@ -5134,9 +5122,11 @@ db.runCommand( {
      maxTimeMS: 10000
 } )
 </code></pre>
-<p>&#x5728;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E00;&#x4E2A;&#x526F;&#x672C;&#x96C6;&#x4E2D;&#x7684;&#x4E24;&#x4E2A;&#x8282;&#x70B9;&#x53EF;&#x80FD;&#x6682;&#x65F6;&#x8BA4;&#x4E3A;&#x5B83;&#x4EEC;&#x662F;&#x4E3B;&#x8282;&#x70B9;&#xFF0C;&#x4F46;&#x5B83;&#x4EEC;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x6700;&#x591A;&#x80FD;&#x591F;&#x5B8C;&#x6210;<a href="https://docs.mongodb.com/manual/reference/write-concern/#writeconcern.&quot;majority&quot;" target="_blank"><code>{ w: &quot;majority&quot; }</code></a>&#x5199;&#x5173;&#x6CE8;&#x70B9;&#x7684;&#x5199;&#x64CD;&#x4F5C;&#x3002;&#x80FD;&#x591F;&#x5B8C;&#x6210;<a href="https://docs.mongodb.com/manual/reference/write-concern/#writeconcern.&quot;majority&quot;" target="_blank"><code>{ w: &quot;majority&quot; }</code></a>&#x5199;&#x64CD;&#x4F5C;&#x7684;&#x8282;&#x70B9;&#x662F;&#x5F53;&#x524D;&#x4E3B;&#x8282;&#x70B9;&#xFF0C;&#x800C;&#x53E6;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x662F;&#x524D;&#x4E3B;&#x8282;&#x70B9;&#xFF0C;&#x5B83;&#x8FD8;&#x6CA1;&#x6709;&#x610F;&#x8BC6;&#x5230;&#x964D;&#x7EA7;&#xFF0C;&#x901A;&#x5E38;&#x662F;&#x7531;&#x4E8E;&#x7F51;&#x7EDC;&#x5206;&#x533A;&#x3002;&#x5F53;&#x53D1;&#x751F;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x65F6;&#xFF0C;&#x8FDE;&#x63A5;&#x5230;&#x524D;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x7684;&#x5BA2;&#x6237;&#x673A;&#x53EF;&#x80FD;&#x4F1A;&#x89C2;&#x5BDF;&#x5230;&#x9648;&#x65E7;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5C3D;&#x7BA1;&#x5DF2;&#x7ECF;&#x8BF7;&#x6C42;&#x4E86;&#x8BFB;&#x9996;&#x9009;&#x9879;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5E76;&#x4E14;&#x5BF9;&#x524D;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x7684;&#x65B0;&#x5199;&#x64CD;&#x4F5C;&#x6700;&#x7EC8;&#x5C06;&#x56DE;&#x6EDA;&#x3002;</p>
+<p><a href="https://docs.mongodb.com/master/reference/read-concern-linearizable/#id1" target="_blank">[1]</a> &#x5728;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E00;&#x4E2A;&#x590D;&#x5236;&#x96C6;&#x4E2D;&#x7684;&#x4E24;&#x4E2A;&#x8282;&#x70B9;&#x53EF;&#x80FD;&#x6682;&#x65F6;&#x8BA4;&#x4E3A;&#x5B83;&#x4EEC;&#x662F;&#x4E3B;&#x8282;&#x70B9;&#xFF0C;&#x4F46;&#x5B83;&#x4EEC;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x6700;&#x591A;&#x80FD;&#x591F;&#x5B8C;&#x6210;<a href="https://docs.mongodb.com/manual/reference/write-concern/#writeconcern.&quot;majority&quot;" target="_blank"><code>{ w: &quot;majority&quot; }</code></a>&#x5199;&#x5173;&#x6CE8;&#x70B9;&#x7684;&#x5199;&#x64CD;&#x4F5C;&#x3002;&#x80FD;&#x591F;&#x5B8C;&#x6210;<a href="https://docs.mongodb.com/manual/reference/write-concern/#writeconcern.&quot;majority&quot;" target="_blank"><code>{ w: &quot;majority&quot; }</code></a>&#x5199;&#x64CD;&#x4F5C;&#x7684;&#x8282;&#x70B9;&#x662F;&#x5F53;&#x524D;&#x4E3B;&#x8282;&#x70B9;&#xFF0C;&#x800C;&#x53E6;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x662F;&#x524D;&#x4E3B;&#x8282;&#x70B9;&#xFF0C;&#x5B83;&#x8FD8;&#x6CA1;&#x6709;&#x610F;&#x8BC6;&#x5230;&#x964D;&#x7EA7;&#xFF0C;&#x901A;&#x5E38;&#x662F;&#x7531;&#x4E8E;&#x7F51;&#x7EDC;&#x5206;&#x533A;&#x3002;&#x5F53;&#x53D1;&#x751F;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x65F6;&#xFF0C;&#x8FDE;&#x63A5;&#x5230;&#x524D;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x7684;&#x5BA2;&#x6237;&#x673A;&#x53EF;&#x80FD;&#x4F1A;&#x89C2;&#x5BDF;&#x5230;&#x9648;&#x65E7;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5C3D;&#x7BA1;&#x5DF2;&#x7ECF;&#x8BF7;&#x6C42;&#x4E86;&#x8BFB;&#x9996;&#x9009;&#x9879;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5E76;&#x4E14;&#x5BF9;&#x524D;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x7684;&#x65B0;&#x5199;&#x64CD;&#x4F5C;&#x6700;&#x7EC8;&#x5C06;&#x56DE;&#x6EDA;&#x3002;</p>
+<p>&#x8BD1;&#x8005;&#xFF1A;&#x6768;&#x5E05;</p>
+<p>&#x6821;&#x5BF9;&#xFF1A;&#x6768;&#x5E05; </p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; &#x4E0A;&#x6D77;&#x9526;&#x6728;&#x4FE1;&#x606F;&#x6280;&#x672F;&#x6709;&#x9650;&#x516C;&#x53F8; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2020-08-20 11:17:59
+2020-08-21 17:09:44
 </span></footer>
                                 
                                 </section>
@@ -5180,7 +5170,7 @@ db.runCommand( {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Read Concern \"linearizable\"","level":"1.6.11.4","depth":3,"next":{"title":"Read Concern \"snapshot\"","level":"1.6.11.5","depth":3,"path":"docs/MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-snapshot.md","ref":"docs/MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-snapshot.md","articles":[]},"previous":{"title":"Read Concern \"majority\"","level":"1.6.11.3","depth":3,"path":"docs/MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-majority.md","ref":"docs/MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-majority.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","donate","tbfed-pagefooter","github-buttons","github","chapter-fold","expandable-chapters","pageview-count","edit-link","back-to-top-button","-lunr","-search","search-pro","splitter","page-toc-button","auto-scroll-table","flexible-alerts","alerts","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 上海锦木信息技术有限公司","modify_label":"文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/JinMuInfo/MongoDB-Manual-zh"},"livereload":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"donate":{"alipay":"https://jinmuinfo.github.io/MongoDB-Manual-zh/img/pay/alipay.jpeg","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"https://jinmuinfo.github.io/MongoDB-Manual-zh/img/pay/Wechatpay.jpeg","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":4,"minTocSize":4},"back-to-top-button":{},"pageview-count":{},"alerts":{},"github-buttons":{"buttons":[{"user":"JinMuInfo","repo":"MongoDB-Manual-zh","type":"star","count":true,"size":"small"}]},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"edit-link":{"label":"Edit This Page","base":"https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"hbnking","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MongoDB-Manual-zh","language":"zh-hans","gitbook":"*","description":"MongoDB-Manual-zh"},"file":{"path":"docs/MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-linearizable.md","mtime":"2020-08-20T03:17:59.195Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-20T07:01:47.438Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Read Concern \"linearizable\"","level":"1.6.11.4","depth":3,"next":{"title":"Read Concern \"snapshot\"","level":"1.6.11.5","depth":3,"path":"docs/MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-snapshot.md","ref":"docs/MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-snapshot.md","articles":[]},"previous":{"title":"Read Concern \"majority\"","level":"1.6.11.3","depth":3,"path":"docs/MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-majority.md","ref":"docs/MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-majority.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","donate","tbfed-pagefooter","github-buttons","github","chapter-fold","expandable-chapters","pageview-count","edit-link","back-to-top-button","-lunr","-search","search-pro","splitter","page-toc-button","auto-scroll-table","flexible-alerts","alerts","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 上海锦木信息技术有限公司","modify_label":"文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/JinMuInfo/MongoDB-Manual-zh"},"livereload":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"donate":{"alipay":"https://jinmuinfo.github.io/MongoDB-Manual-zh/img/pay/alipay.jpeg","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"https://jinmuinfo.github.io/MongoDB-Manual-zh/img/pay/Wechatpay.jpeg","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":4,"minTocSize":4},"back-to-top-button":{},"pageview-count":{},"alerts":{},"github-buttons":{"buttons":[{"user":"JinMuInfo","repo":"MongoDB-Manual-zh","type":"star","count":true,"size":"small"}]},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"edit-link":{"label":"Edit This Page","base":"https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"hbnking","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MongoDB-Manual-zh","language":"zh-hans","gitbook":"*","description":"MongoDB-Manual-zh"},"file":{"path":"docs/MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-linearizable.md","mtime":"2020-08-21T09:09:44.035Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-21T09:14:28.435Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
