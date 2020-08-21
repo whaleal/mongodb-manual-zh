@@ -102,6 +102,7 @@ db.stores.find(
 MongoDB支持多种语言的文本搜索。 有关支持的语言列表，请参见[文本搜索语言](https://docs.mongodb.com/manual/reference/text-search-languages/)。
 
 
+
 译者：杨帅
 
 校对：杨帅

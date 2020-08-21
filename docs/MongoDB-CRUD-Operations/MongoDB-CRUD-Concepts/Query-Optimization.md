@@ -1,6 +1,6 @@
-## 查询优化
+# 查询优化
 
-在本页面
+**在本页面**
 
 - [创建索引以支持读取操作](#创建)
 - [查询选择性](#查询)
@@ -8,28 +8,26 @@
 
 索引通过减少查询操作需要处理的数据量来提高读操作的效率。这简化了与在MongoDB中完成查询相关的工作。
 
-### <span id=" 创建">创建索引以支持读取操作</span>
+## <span id=" 创建">创建索引以支持读取操作</span>
 
-如果应用程序查询特定字段或字段集上的集合，那么查询字段上的[索引](https://docs.mongodb.com/manual/core/index-compound/)或字段集上的[复合索引](https://docs.mongodb.com/manual/core/index-compound/)可以防止查询扫描整个集合来查找和返回查询结果。有关索引的更多信息，请参阅[MongoDB中索引](https://docs.mongodb.com/manual/indexes/)的[完整文档](https://docs.mongodb.com/manual/indexes/)。
+如果应用程序查询特定字段或字段集上的集合，那么查询字段上的[索引](https://docs.mongodb.com/manual/core/index-compound/)或字段集上的[复合索引](https://docs.mongodb.com/manual/core/index-compound/)可以防止查询扫描整个集合来查找和返回查询结果。有关索引的更多信息，请参阅[MongoDB中索引中完整文档](https://docs.mongodb.com/manual/indexes/)。
 
 **例子**
 
-应用程序`inventory`在`type`现场查询集合 。该`type`字段的值是用户驱动的。
+应用程序查询类型字段上的库存集合。类型字段的值是用户驱动的。
 
-```shell
+```powershell
 var typeValue = <someUserInput>;
 db.inventory.find( { type: typeValue } );
 ```
 
-要提高此查询的性能，请向**type**字段上的**inventory**集合添加升序或降序索引。在mongo shell中，您可以使用[`db.collection.createIndex()`](https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/#db.collection.createIndex)方法创建索引:
+要提高此查询的性能，请向**type**字段上的**inventory**集合添加升序或降序索引。在[`mongo`](https://docs.mongodb.com/master/reference/program/mongo/#bin.mongo) shell中，您可以使用[`db.collection.createIndex()`](https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/#db.collection.createIndex)方法创建索引:
 
-```shell
+```powershell
 db.inventory.createIndex( { type: 1 } )
 ```
 
 这个索引可以防止上述类型查询扫描整个集合返回结果。
-
-
 
 要使用索引[分析查询的性能](https://docs.mongodb.com/manual/tutorial/analyze-query-plan/)，请参阅 [分析查询性能](https://docs.mongodb.com/manual/tutorial/analyze-query-plan/)。
 
@@ -37,11 +35,11 @@ db.inventory.createIndex( { type: 1 } )
 
 **对于单字段索引，升序和降序之间的选择并不重要。对于复合索引，选择很重要。有关更多详细信息，请参见[索引顺序](https://docs.mongodb.com/manual/core/index-compound/#index-ascending-and-descending)。**
 
-### <span id="查询">查询选择性</span>
+## <span id="查询">查询选择性</span>
 
 查询选择性指的是查询谓词排除或过滤集合中的文档的能力。查询选择性可以决定查询是否能够有效地使用索引，甚至根本不使用索引。
 
-选择性更强的查询匹配的文档比例更小。例如，惟一**_id**字段上的相等匹配具有很高的选择性，因为它最多只能匹配一个文档。
+选择性更强的查询匹配的文档比例更小。例如，唯一**_id**字段上的相等匹配具有很高的选择性，因为它最多只能匹配一个文档。
 
 选择性较低的查询匹配较大比例的文档。选择性较低的查询不能有效地使用索引，甚至根本不能使用索引。
 
@@ -49,7 +47,7 @@ db.inventory.createIndex( { type: 1 } )
 
 正则表达式的选择性取决于表达式本身。有关详细信息，请参见[正则表达式和索引使用](https://docs.mongodb.com/manual/reference/operator/query/regex/#regex-index-use)。[`regular expressions`](https://docs.mongodb.com/manual/reference/operator/query/regex/#op._S_regex)
 
-### <span id="覆盖">覆盖查询</span>
+## <span id="覆盖">覆盖查询</span>
 
 覆盖查询是可以使用索引完全满足而不需要检查任何文档的查询。当下列所有情况都适用时，索引将 [覆盖](https://docs.mongodb.com/manual/core/query-optimization/#indexes-covered-queries)查询：
 
@@ -135,3 +133,9 @@ db.userdata.find( { "user.login": "tester" }, { "user.login": 1, _id: 0 } )
 [`db.collection.explain()`](https://docs.mongodb.com/manual/reference/method/db.collection.explain/#db.collection.explain)提供有关其他操作执行的信息，例如[`db.collection.update()`](https://docs.mongodb.com/manual/reference/method/db.collection.update/#db.collection.update)。有关[`db.collection.explain()`](https://docs.mongodb.com/manual/reference/method/db.collection.explain/#db.collection.explain)详细信息，请参见 。
 
 有关更多信息，请参见[度量索引使用](https://docs.mongodb.com/manual/tutorial/measure-index-use/#indexes-measuring-use)。
+
+
+
+译者：杨帅
+
+校对：杨帅

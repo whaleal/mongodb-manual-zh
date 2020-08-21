@@ -20,3 +20,9 @@ MongoDB提供了以下方法来更新集合中的文档：
 - [db.collection.bulkWrite()](https://docs.mongodb.com/manual/reference/method/db.collection.bulkWrite/#db.collection.bulkWrite).
 
 有关更多方法和示例，请参见各个方法的参考页。
+
+
+
+译者：杨帅
+
+校对：杨帅

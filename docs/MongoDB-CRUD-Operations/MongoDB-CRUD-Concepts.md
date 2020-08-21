@@ -1,13 +1,11 @@
+# MongoDB CRUD 概念
 
-
-## MongoDB CRUD Concepts
-
-本部分包含有关与MongoDB中的CRUD操作相关的其他概念的信息。
+本节包含与MongoDB中的CRUD操作相关的其他概念的信息。
 
 **原子性，一致性和分布式操作**
 
-- [原子性和交易](https://docs.mongodb.com/manual/core/write-operations-atomicity/)
-- [阅读隔离度，一致性和新近度](https://docs.mongodb.com/manual/core/read-isolation-consistency-recency/)
+- [原子性和事务](https://docs.mongodb.com/manual/core/write-operations-atomicity/)
+- [阅读隔离度，一致性和近效性](https://docs.mongodb.com/manual/core/read-isolation-consistency-recency/)
 - [分布式查询](https://docs.mongodb.com/manual/core/distributed-queries/)
 - [通过findAndModify进行线性化读取](https://docs.mongodb.com/manual/tutorial/perform-findAndModify-linearizable-reads/)
 
@@ -20,9 +18,16 @@
 
 **其它**
 
-* [Tailable 游标](https://docs.mongodb.com/manual/core/tailable-cursors/)<br />
+* [Tailable 游标](https://docs.mongodb.com/manual/core/tailable-cursors/)
+
+  
 
   也可以看看：
+  
+  [事务](https://docs.mongodb.com/manual/core/transactions/)
 
-  [交易次数](https://docs.mongodb.com/manual/core/transactions/)
 
+
+译者：杨帅
+
+校对：杨帅
