@@ -1,4 +1,4 @@
-# 阅读关注“local”
+# 读关注“local”
 
 具有读取关注点的查询`local`从实例返回数据，但不保证数据已写入大多数复制集成员(即：可能会回滚)。
 
@@ -14,7 +14,7 @@
 
 读关注`local`可用于有或没有因果关系一致的会话和事务。
 
-## 阅读关注”local“和交易
+## 读关注”local“和事务
 
 您可以在事务级别上而不是在单个操作级别上设置读取关注。要设置事务的已读关注点，请参见[事务和已读关注点](https://docs.mongodb.com/manual/core/transactions/#transactions-read-concern)。
 
