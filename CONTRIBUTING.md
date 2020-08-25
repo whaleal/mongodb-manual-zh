@@ -5,8 +5,13 @@
 
 可能有用的链接：
 
-英文官网
-中文翻译
+[英文官网用户手册](https://docs.mongodb.com/manual/)<br/>
+[文档翻译认领列表](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md)<br/>
+[文档翻译贡献者名单](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/List-of-contributors.md)<br/>
+[在线阅读文档 github](https://jinmuinfo.github.io/MongoDB-Manual-zh/)<br/>
+[在线阅读文档 国内](http://gloden.gitee.io/mongodb-manual)<br/>
+
+
 ### 欢迎任何人参与和完善
 
 ### 一 翻译
