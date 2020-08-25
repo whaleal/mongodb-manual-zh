@@ -1,4 +1,4 @@
-# 阅读关注“majority”
+# 读关注“majority”
 
  **在本页面**
 
@@ -6,14 +6,14 @@
 *   [可用性](#可用性)
 *   [例子](#例子)
 *   [存储引擎支持](#支持)
-*   [阅读关注`"majority"`和交易](#交易)
+*   [阅读关注`"majority"`和事务](#事务)
 *   [阅读关注`"majority"`和汇总](总)
-*   [阅读你自己的写作](#写作)
-*   [禁用阅读关注多数](#禁用)
+*   [读取自己的写入](#写入)
+*   [禁用读关注多数](#禁用)
 
-对于[多文档交易](https://docs.mongodb.com/master/core/transactions/)中无关的读操作，阅读问题**“majority”**保证所读的数据得到了大多数复制集成员的认可(即，所读的文档是持久的，并且保证不会回滚)。
+对于[多文档事务](https://docs.mongodb.com/master/core/transactions/)中无关的读操作，阅读问题**“majority”**保证所读的数据得到了大多数复制集成员的认可(即，所读的文档是持久的，并且保证不会回滚)。
 
-对于[多文档交易](https://docs.mongodb.com/master/core/transactions/)中的操作，只有当事务以写关注点“多数”提交时，读关注点[`多数`](https://docs.mongodb.com/master/reference/read-concern-majority/#readconcern."majority")才提供保证。否则，“多数”读取关注不能保证在事务中读取的数据。
+对于[多文档事务](https://docs.mongodb.com/master/core/transactions/)中的操作，只有当事务以写关注点“多数”提交时，读关注点[`多数`](https://docs.mongodb.com/master/reference/read-concern-majority/#readconcern."majority")才提供保证。否则，“多数”读取关注不能保证在事务中读取的数据。
 
 不管读关注级别是什么，节点上的最新数据都可能不能反映系统中数据的最新版本。
 
@@ -25,7 +25,7 @@
 
 无论会话和事务是否一致，都可以使用读关注[`"majority"`](https://docs.mongodb.com/manual/reference/read-concern-majority/#readconcern."majority")。
 
-对于使用三成员`主-副-仲裁(PSA)`体系结构的部署，可以禁用读关注 [`"majority"`](https://docs.mongodb.com/master/reference/read-concern-majority/#readconcern."majority")”,然而，这对更改流(MongoDB 4.0和更早版本中只使用)和分片集群上的事务有影响。有关更多信息，请参见[禁用阅读关注多数](https://docs.mongodb.com/master/reference/read-concern-majority/#disable-read-concern-majority).。
+对于使用三成员`主-副-仲裁(PSA)`体系结构的部署，可以禁用读关注 [`"majority"`](https://docs.mongodb.com/master/reference/read-concern-majority/#readconcern."majority")”,然而，这对更改流(MongoDB 4.0和更早版本中只使用)和分片集群上的事务有影响。有关更多信息，请参见[禁用读关注多数](https://docs.mongodb.com/master/reference/read-concern-majority/#disable-read-concern-majority).。
 
 ## <span id="例子">例子</span>
 
@@ -119,11 +119,11 @@
 > 通常，除非必要，否则请避免禁用[`"majority"`](https://docs.mongodb.com/master/reference/read-concern-majority/#readconcern."majority") 读取问题。但是，如果您的 three-member 复制集具有 `主-副-仲裁(PSA)`体系结构 或带有 three-member PSA 分片的分片 cluster，请禁用以防止存储缓存压力导致部署无法运行。
 > 禁用“多数”读取问题会禁用对改变流的支持。
 
-**更改流**
+**变更流**
 
-禁用[`"majority"`](https://docs.mongodb.com/manual/reference/read-concern-majority/#readconcern."majority")读取关注会禁用对MongoDB 4.0及更早版本的[变更流的](https://docs.mongodb.com/manual/changeStreams/)支持。对于MongoDB 4.2+，禁用读取关注**"majority"**不会影响更改流的可用性。
+禁用[`"majority"`](https://docs.mongodb.com/manual/reference/read-concern-majority/#readconcern."majority")读取关注会禁用对MongoDB 4.0及更早版本的[变更流的](https://docs.mongodb.com/manual/changeStreams/)支持。对于MongoDB 4.2+，禁用读取关注**"majority"**不会影响变更流的可用性。
 
-**交易次数**
+**事务次数**
 
 禁用[`"majority"`](https://docs.mongodb.com/manual/reference/read-concern-majority/#readconcern."majority")读取关注会影响对分片群集上[事务的](https://docs.mongodb.com/manual/core/transactions/)支持 。特别：
 
