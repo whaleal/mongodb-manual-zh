@@ -1,4 +1,4 @@
-# 查询文件
+# 查询文档
 这个页面提供了使用[`mongo`](https://docs.mongodb.com/master/reference/program/mongo/#bin.mongo) shell中的[`db.collection.find()`](https://docs.mongodb.com/manual/reference/method/db.collection.find/#db.collection.find)方法的查询操作示例。此页上的示例使用**inventory**集合。要填充**inventory**集合，请运行以下操作:
 
 ```shell
@@ -144,7 +144,7 @@ SELECT * FROM inventory WHERE status = "A" AND ( qty < 30 OR item LIKE "p%")
 
 ## 行为
 
-### 光标
+### 游标
 
 [`db.collection.find()`](https://docs.mongodb.com/manual/reference/method/db.collection.find/#db.collection.find)方法将[游标](https://docs.mongodb.com/master/tutorial/iterate-a-cursor/) 返回到匹配的文档。
 
