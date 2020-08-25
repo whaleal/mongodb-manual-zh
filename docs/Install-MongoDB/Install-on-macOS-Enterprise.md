@@ -1,4 +1,4 @@
-# Install MongoDB Enterprise on macOS 在Mac OS安装MongoDB企业版
+# 在Mac OS安装MongoDB企业版
 
 
 
