@@ -1,4 +1,4 @@
-# Install MongoDB 安装 MongoDB
+# 安装 MongoDB
 
 在本页面
 
