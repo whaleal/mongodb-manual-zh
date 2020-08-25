@@ -106,8 +106,8 @@
   * [模式验证](docs/Data-Models/Schema-Validation.md)
 * [事务](docs/Transactions.md)
   * [驱动程序 API]()
-  * [产品说明]()
-  * [产品说明 (分片集群)]()
+  * [生产注意事项]()
+  * [生产注意事项 (分片集群)]()
   * [事务操作](docs/Transactions/Transactions-and-Operations.md)
 * [索引](docs/Indexes.md)
     * [单字段索引](docs/Indexes/Single-Field-Indexes.md)
@@ -181,44 +181,44 @@
     * [分片键](docs/Sharding/Shard-keys.md)
     * [哈希分片](docs/Sharding/Hashed-Sharding.md)
     * [范围分片](docs/Sharding/Ranged-Sharding.md)
-    * [Zones](docs/Sharding/Zones.md)
-        * Manage Shard Zones
-        * Segmenting Data by Location
-        * Tiered Hardware for Varying SLA or SLO
-        * Segmenting Data by Application or Customer
-        * Distributed Local Writes for Insert Only Workloads
-        * Manage Shard Zones
-    * [Data Partitioning with Chunks]()
+    * [区](docs/Sharding/Zones.md)
+        * 管理分片区
+        * 按位置细分数据
+        * 用于更改SLA或SLO的分层硬件
+        * 按应用或客户细分数据
+        * 仅插入工作负载的分布式本地写入
+        * 管理分片区
+    * [使用块进行数据分区]()
         * [在分片集群中拆分数据块](docs/Sharding/Data-Partitioning-with-Chunks/Split-Chunks-in-a-Sharded-Cluster.md)
-* Administration
-  * [Production Notes](docs/Administration/Production-Notes.md)
-  * [Operations Checklist](docs/Administration/Operations-Checklist.md)
-  * [Development Checklist](docs/Administration/Development-Checklist.md)
-  * [Configuration and Maintenance](docs/Administration/Configuration-and-Maintenance.md)
-  * [Performance](docs/Administration/Performance.md)
-  * Data Center Awareness
-  	* Workload Isolation in MongoDB Deployments
-  	* Zones
-  	* Manage Shard Zones
-  	* Segmenting Data by Location
-  	* Tiered Hardware for Varying SLA or SLO
-  	* Segmenting Data by Application or Customer
-  	* Distributed Local Writes for Insert Only Workloads
-  	* Manage Shard Zones
-  * [MongoDB Backup Methods](docs/Administration/MongoDB-Backup-Methods.md)
-* Storage
+* 管理
+  * [产品说明](docs/Administration/Production-Notes.md)
+  * [操作检查列表](docs/Administration/Operations-Checklist.md)
+  * [开发检查列表](docs/Administration/Development-Checklist.md)
+  * [配置和维护](docs/Administration/Configuration-and-Maintenance.md)
+  * [性能](docs/Administration/Performance.md)
+  * 数据中心意识
+  	* MongoDB部署中的工作负载隔离
+  	* 区
+        * 管理分片区
+        * 按位置细分数据
+        * 用于更改SLA或SLO的分层硬件
+        * 按应用或客户细分数据
+        * 仅插入工作负载的分布式本地写入
+        * 管理分片区
+  * [MongoDB备份方法](docs/Administration/MongoDB-Backup-Methods.md)
+* 存储
 
-  * Storage Engine
-  	* [WiredTiger Storage Engine](docs/Storage/Storage-Engines/WiredTiger-Storage-Engine.md)
-  	* [In-Memory Storage Engine](docs/Storage/Storage-Engines/In-Memory-Storage-Engine.md)
-  * Journaling
-  	 * Manage Journaling
+  * 存储引擎
+  	* [WiredTiger 存储引擎](docs/Storage/Storage-Engines/WiredTiger-Storage-Engine.md)
+  	* [内存存储引擎](docs/Storage/Storage-Engines/In-Memory-Storage-Engine.md)
+  * 日志记录
+  	 * 管理日志记录
     * GridFS
-    * [FAQ:MongoDB Storage](docs/Storage/FAQ:MongoDB-Storage.md)
-* [Reference]()
-    * [Operators]()
-        * [Query and Projection Operators](docs/Reference/Operators/Query-and-Projection-Operators.md)
-            * [Comparison Query Operators](docs/Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators.md)
+    * [FAQ:MongoDB 存储](docs/Storage/FAQ:MongoDB-Storage.md)
+* [参考]()
+    * [运算符]()
+        * [查询与映射运算符](docs/Reference/Operators/Query-and-Projection-Operators.md)
+            * [比较查询运算符](docs/Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators.md)
                 * [$eq](docs/Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/eq.md)
                 * [$gt](docs/Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/gt.md)
                 * [$gte](docs/Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/gte.md)
@@ -227,24 +227,24 @@
                 * [$lte](docs/Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/lte.md)
                 * [$ne](docs/Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/ne.md)
                 * [$nin](docs/Reference/Operators/Query-and-Projection-Operators/Comparison-Query-Operators/nin.md)
-            * [Logical Query Operators](docs/Reference/Operators/Query-and-Projection-Operators/Logical-Query-Operators.md)
+            * [逻辑查询运算符](docs/Reference/Operators/Query-and-Projection-Operators/Logical-Query-Operators.md)
                 * [$and](docs/Reference/Operators/Query-and-Projection-Operators/Logical-Query-Operators/and.md)
                 * [$not](docs/Reference/Operators/Query-and-Projection-Operators/Logical-Query-Operators/not.md)
                 * [$nor](docs/Reference/Operators/Query-and-Projection-Operators/Logical-Query-Operators/nor.md)
                 * [$or](docs/Reference/Operators/Query-and-Projection-Operators/Logical-Query-Operators/or.md)
-            * [Element Query Operators](docs/Reference/Operators/Query-and-Projection-Operators/Element-Query-Operators.md)
-            * [Evaluation Query Operators](docs/Reference/Operators/Query-and-Projection-Operators/Evaluation-Query-Operators.md)
-            * [Geospatial Query Operators](docs/Reference/Operators/Query-and-Projection-Operators/Geospatial-Query-Operators.md)
-            * [Array Query Operators](docs/Reference/Operators/Query-and-Projection-Operators/Array-Query-Operators.md)
-            * [Bitwise Query Operators](docs/Reference/Operators/Query-and-Projection-Operators/Bitwise-Query-Operators.md)
+            * [E元素查询运算符](docs/Reference/Operators/Query-and-Projection-Operators/Element-Query-Operators.md)
+            * [评估查询运算符](docs/Reference/Operators/Query-and-Projection-Operators/Evaluation-Query-Operators.md)
+            * [地理空间查询运算符](docs/Reference/Operators/Query-and-Projection-Operators/Geospatial-Query-Operators.md)
+            * [数组查询运算符](docs/Reference/Operators/Query-and-Projection-Operators/Array-Query-Operators.md)
+            * [按位查询运算符](docs/Reference/Operators/Query-and-Projection-Operators/Bitwise-Query-Operators.md)
             * [$comment](docs/Reference/Operators/Query-and-Projection-Operators/comment.md)
-            * Projection Operators
-        * [Update Operators](docs/Reference/Operators/Update-Operators.md)
-            * [Field Update Operators](docs/Reference/Operators/Update-Operators/Field-Update-Operators.md)
-            * [Array Update Operators](docs/Reference/Operators/Update-Operators/Array-Update-Operators.md)
-            * [Bitwise Update Operator](docs/Reference/Operators/Update-Operators/Bitwise-Update-Operator.md)
-        * [Aggregation Pipeline Stages](docs/Reference/Operators/Aggregation-Pipeline-Stages.md)
-        * [Aggregation Pipeline Operators](docs/Reference/Operators/Aggregation-Pipeline-Operators.md)
+            * 映射运算符
+        * [更新运算符](docs/Reference/Operators/Update-Operators.md)
+            * [字段更新运算符](docs/Reference/Operators/Update-Operators/Field-Update-Operators.md)
+            * [数组更新运算符](docs/Reference/Operators/Update-Operators/Array-Update-Operators.md)
+            * [按位更新运算符](docs/Reference/Operators/Update-Operators/Bitwise-Update-Operator.md)
+        * [聚合管道阶段](docs/Reference/Operators/Aggregation-Pipeline-Stages.md)
+        * [聚合管道操作符](docs/Reference/Operators/Aggregation-Pipeline-Operators.md)
             * [$abs (aggregation)](docs/Reference/Operators/Aggregation-Pipeline-Operators/abs-aggregation.md)
             * [$acos (aggregation)](docs/Reference/Operators/Aggregation-Pipeline-Operators/acos-aggregation.md)
             * [$acosh (aggregation)](docs/Reference/Operators/Aggregation-Pipeline-Operators/acosh-aggregation.md)
@@ -272,24 +272,24 @@
             * [$dateToParts (aggregation)](docs/Reference/Operators/Aggregation-Pipeline-Operators/dateToParts-aggregation.md)
             * [$dateFromString (aggregation)](docs/Reference/Operators/Aggregation-Pipeline-Operators/dateFromString-aggregation.md)
             * [$literal (aggregation)](docs/Reference/Operators/Aggregation-Pipeline-Operators/literal-aggregation.md)
-        * [Query Modifiers](docs/Reference/Operators/Query-Modifiers.md)
-    * [Database Commands](docs/Reference/Database-Commands.md)
-        * [Aggregation Commands](docs/Reference/Database-Commands/Aggregation-Commands.md)
-        * [Geospatial Commands](docs/Reference/Database-Commands/Geospatial-Commands.md)
-        * [Query and Write Operation Commands](docs/Reference/Database-Commands/Query-and-Write-Operation-Commands.md)
-        * [Query Plan Cache Commands](docs/Reference/Database-Commands/Query-Plan-Cache-Commands.md)
-        * [Authentication Commands](docs/Reference/Database-Commands/Authentication-Commands.md)
-        * [User Management Commands](docs/Reference/Database-Commands/User-Management-Commands.md)
-        * [Role Management Commands](docs/Reference/Database-Commands/Role-Management-Commands.md)
-        * [Replication Commands](docs/Reference/Database-Commands/Replication-Commands.md)
-        * [Sharding Commands](docs/Reference/Database-Commands/Sharding-Commands.md)
-        * [Sessions Commands](docs/Reference/Database-Commands/Sessions-Commands.md)
-        * [Administration Commands](docs/Reference/Database-Commands/Administration-Commands.md)
-        * [Diagnostic Commands](docs/Reference/Database-Commands/Diagnostic-Commands.md)
-        * [Free Monitoring Commands](docs/Reference/Database-Commands/Free-Monitoring-Commands.md)
-        * [System Events Auditing Commands](docs/Reference/Database-Commands/System-Events-Auditing-Commands.md)
-    * [mongo Shell Methods](docs/Reference/mongo-Shell-Methods.md)
-        * [Collection Methods](docs/Reference/mongo-Shell-Methods/Collection-Methods.md)
+        * [查询修饰符](docs/Reference/Operators/Query-Modifiers.md)
+    * [数据库命令](docs/Reference/Database-Commands.md)
+        * [聚合命令](docs/Reference/Database-Commands/Aggregation-Commands.md)
+        * [地理空间命令](docs/Reference/Database-Commands/Geospatial-Commands.md)
+        * [查询和写操作命令](docs/Reference/Database-Commands/Query-and-Write-Operation-Commands.md)
+        * [查询计划缓存命令](docs/Reference/Database-Commands/Query-Plan-Cache-Commands.md)
+        * [认证命令](docs/Reference/Database-Commands/Authentication-Commands.md)
+        * [用户管理命令](docs/Reference/Database-Commands/User-Management-Commands.md)
+        * [角色管理命令](docs/Reference/Database-Commands/Role-Management-Commands.md)
+        * [复制命令](docs/Reference/Database-Commands/Replication-Commands.md)
+        * [分片命令](docs/Reference/Database-Commands/Sharding-Commands.md)
+        * [会话命令](docs/Reference/Database-Commands/Sessions-Commands.md)
+        * [管理命令](docs/Reference/Database-Commands/Administration-Commands.md)
+        * [诊断命令](docs/Reference/Database-Commands/Diagnostic-Commands.md)
+        * [免费监控命令](docs/Reference/Database-Commands/Free-Monitoring-Commands.md)
+        * [系统事件审计命令](docs/Reference/Database-Commands/System-Events-Auditing-Commands.md)
+    * [mongo Shell 方法](docs/Reference/mongo-Shell-Methods.md)
+        * [集合方法](docs/Reference/mongo-Shell-Methods/Collection-Methods.md)
             * [db.collection.aggregate()](docs/Reference/mongo-Shell-Methods/Collection-Methods/db-collection-aggregate.md)
             * [db.collection.bulkWrite()](docs/Reference/mongo-Shell-Methods/Collection-Methods/db-collection-bulkWrite.md)
             * [db.collection.copyTo()](docs/Reference/mongo-Shell-Methods/Collection-Methods/db-collection-copyTo.md)
@@ -336,18 +336,18 @@
             * [db.collection.updateMany()](docs/Reference/mongo-Shell-Methods/Collection-Methods/db-collection-updateMany.md)
             * [db.collection.watch()](docs/Reference/mongo-Shell-Methods/Collection-Methods/db-collection-watch.md)
             * [db.collection.validate()](docs/Reference/mongo-Shell-Methods/Collection-Methods/db-collection-validate.md)
-    * [Glossary](docs/Reference/Glossary.md)
-    * [Default MongoDB Port](docs/Reference/Default-MongoDB-Port.md)
-    * [Default MongoDB Read Concerns Write Concerns](docs/Reference/Default-MongoDB-Read-Concerns-and-Write-Concerns.md)
-    * [Server Sessions](docs/Reference/Server-Sessions.md)
+    * [词汇表](docs/Reference/Glossary.md)
+    * [默认的MongoDB端口](docs/Reference/Default-MongoDB-Port.md)
+    * [默认的MongoDB读/写关注](docs/Reference/Default-MongoDB-Read-Concerns-and-Write-Concerns.md)
+    * [服务器会话](docs/Reference/Server-Sessions.md)
 * FAQ
-    * [FAQ: MongoDB Fundamentals](docs/Frequently-Asked-Questions/MongoDB-Fundamentals.md)
-    * [FAQ: Indexes](docs/Frequently-Asked-Questions/Indexes.md)
-    * [FAQ: Concurrency](docs/Frequently-Asked-Questions/Concurrency.md)
-    * [FAQ: Sharding with MongoDB](docs/Frequently-Asked-Questions/Sharding-with-MongoDB.md)
-    * [FAQ: Replication and Replica Sets](docs/Frequently-Asked-Questions/Replication-and-ReplicaSets.md)
-    * [FAQ: MongoDB Storage](docs/Frequently-Asked-Questions/MongoDB-Storage.md)
-    * [FAQ: MongoDB Diagnostics](docs/Frequently-Asked-Questions/MongoDB-Diagnostics.md)
+    * [FAQ: MongoDB基础知识](docs/Frequently-Asked-Questions/MongoDB-Fundamentals.md)
+    * [FAQ: 索引](docs/Frequently-Asked-Questions/Indexes.md)
+    * [FAQ: 并发](docs/Frequently-Asked-Questions/Concurrency.md)
+    * [FAQ: MongoDB 分片](docs/Frequently-Asked-Questions/Sharding-with-MongoDB.md)
+    * [FAQ: 复制和副本集](docs/Frequently-Asked-Questions/Replication-and-ReplicaSets.md)
+    * [FAQ: MongoDB 存储](docs/Frequently-Asked-Questions/MongoDB-Storage.md)
+    * [FAQ: MongoDB 诊断](docs/Frequently-Asked-Questions/MongoDB-Diagnostics.md)
 * 联系我们
     * [锦木信息](http://www.jinmuinfo.com/)
     * [MongoDB中文社区](https://mongoing.com/)
