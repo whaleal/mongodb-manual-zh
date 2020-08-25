@@ -1,4 +1,4 @@
-# The MongoDB 4.2 Manual MongoDB 4.2用户手册
+# MongoDB 4.2用户手册
 
 MONGODB 4.2发布于2019年8月13日
 
@@ -43,6 +43,8 @@ MongoDB 在以下版本中提供了“ [入门指南”](https://docs.mongodb.co
 
 如有疑问，讨论或常规技术支持，请访问 [MongoDB社区论坛](https://community.mongodb.com/)。MongoDB社区论坛是与其他MongoDB用户联系，提出问题并获得答案的集中场所。
 
+> 译者注：MongoDB中文社区提供MongoDB中文用户原创博客/文档翻译/技术问答/技术大会/线上活动等板块平台交流服务，访问MongoDB中文社区网站请点击：https://mongoing.com/
+> 进入技术交流社群请联系小芒果，微信ID：mongoingcom
 
 
 ### MongoDB Atlas或Cloud 
@@ -67,6 +69,8 @@ MongoDB 在以下版本中提供了“ [入门指南”](https://docs.mongodb.co
 
 参与MongoDB社区是与其他才华横溢，志趣相投的工程师建立关系，提高对正在从事的有趣工作的认识并提高技能的一种好方法。要了解MongoDB社区，请参阅 [参与MongoDB](http://www.mongodb.org/get-involved?tck=docs_server)。
 
+> 译者注：MongoDB中文社区提供MongoDB中文用户原创博客/文档翻译/技术问答/技术大会/线上活动等板块平台交流服务，访问MongoDB中文社区网站请点击：https://mongoing.com/
+> 进入技术交流社群请联系小芒果，微信ID：mongoingcom
 
 
 ## 学习
