@@ -7,7 +7,7 @@
 
 *   [分片集合作为输出](#sharded-collection-as-output)
 
-Map-reduce 支持对分片集合的操作，既可以作为输入也可以作为输出。本节介绍[MapReduce]()特定于分片集合的行为。
+Map-reduce 支持对分片集合的操作，既可以作为输入也可以作为输出。本节介绍[MapReduce]()特定于分片集合的操作。
 
 []()
 
