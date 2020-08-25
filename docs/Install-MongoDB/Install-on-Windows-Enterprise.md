@@ -1,4 +1,4 @@
-# Install MongoDB Enterprise Edition on Windows 在Windows安装MongoDB企业版
+# 在Windows安装MongoDB企业版
 
 在本页面
 
