@@ -97,3 +97,7 @@ WiredTiger内部缓存中的集合数据未经压缩，并使用与磁盘格式�
 
 要调整WiredTiger内部缓存的大小，请参阅storage.wiredTiger.engineConfig.cacheSizeGB和--wiredTigerCacheSizeGB。 避免将WiredTiger内部缓存的大小超过其默认值以上。<br />
 <br />
+
+译者：徐雷
+
+
