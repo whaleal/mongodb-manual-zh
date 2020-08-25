@@ -1,4 +1,4 @@
-# Upgrade MongoDB Community to MongoDB Enterprise 将社区版MongoDB升级到企业版MongoDB
+# 将社区版MongoDB升级到企业版MongoDB
 
 MongoDB企业版提供了MongoDB社区版中未提供的各种功能，例如：
 

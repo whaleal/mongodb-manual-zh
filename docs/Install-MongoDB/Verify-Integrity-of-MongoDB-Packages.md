@@ -1,4 +1,4 @@
-# Verify Integrity of MongoDB Packages 验证MongoDB软件包的完整性
+# 验证MongoDB软件包的完整性
 
 在本页面
 
