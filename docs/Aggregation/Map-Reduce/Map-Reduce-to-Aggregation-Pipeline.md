@@ -1,4 +1,4 @@
-# [ ](#)Map-Reduce to Aggregation Pipeline
+# [ ](#)Map-Reduce转换到聚合管道
 
 []()
 
