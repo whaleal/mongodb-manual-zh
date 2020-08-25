@@ -1,4 +1,4 @@
-# Install MongoDB Enterprise 安装MongoDB企业版
+# 安装MongoDB企业版
 
 这些文档提供了安装MongoDB企业版的说明。
 
