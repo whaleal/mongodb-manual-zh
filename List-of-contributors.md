@@ -2,7 +2,7 @@
 
 本贡献者名单按照中文手册章节翻译贡献进行编排，排名按照参与翻译&校对时间先后。
 
-注意：如果您想加入中文手册翻译行列，点击：[MongoDB中文用户手册翻译认领列表](  )按照要求进行翻译；
+注意：如果您想加入中文手册翻译行列，点击：[MongoDB中文用户手册翻译认领列表](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md)按照要求进行翻译；
 
 管理员根据翻译进度不定时更新此列表；将文档更新到最新版本，请[提issue](https://github.com/JinMuInfo/MongoDB-Manual-zh/issues/1)。
 
@@ -20,9 +20,9 @@
 | 1.1 MongoDB介绍                     | 锦木，小芒果 | 100% |
 | 1.2 MongoDB入门                             | 锦木，小芒果 | 100% |
 | 1.3 [Atlas免费层启动MongoDB集群](https://docs.atlas.mongodb.com/getting-started/) | ——     | ——   |
-| 1.4 MongoDB数据库与集合           | 锦木，小芒果 | [加入翻译](  ) |
+| 1.4 MongoDB数据库与集合           | 锦木，小芒果 | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |
 | 1.5 MongoDB文档                                    | 锦木，小芒果 | 100% |
-| 1.6 MongoDB BSON类型                             | 小芒果 | [加入翻译](  ) |
+| 1.6 MongoDB BSON类型                             | 小芒果 | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |
 | 2.1 安装MongoDB                             | 桂陈，小芒果 | 100% |
 | 2.2 安装社区版MongoDB     | 汪子豪，小芒果 | 100% |
 | 2.3 安装企业版MongoDB           | 小芒果 | 100% |
