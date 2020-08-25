@@ -1,4 +1,4 @@
-# Install MongoDB Community Edition on Windows 在Windows上安装MongoDB社区版
+# 在Windows上安装MongoDB社区版
 
 在本页面
 
