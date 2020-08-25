@@ -1,5 +1,5 @@
 
-# 阅读关注点"snapshot"
+# 读关注点"snapshot"
 
 版本4.0中的新功能
 
@@ -10,9 +10,9 @@
 
 ## 操作
 
-有关接受阅读关注的所有操作的列表，请参阅 [支持阅读关注的操作](https://docs.mongodb.com/manual/reference/read-concern/#read-concern-operations)。
+有关接受阅读关注的所有操作的列表，请参阅 [支持读关注的操作](https://docs.mongodb.com/manual/reference/read-concern/#read-concern-operations)。
 
-## 阅读关注和交易
+## 阅读关注和事务
 
 多文档事务支持阅读关注 [`"snapshot"`](https://docs.mongodb.com/manual/reference/read-concern-snapshot/#readconcern."snapshot")以及[`"local"`](https://docs.mongodb.com/manual/reference/read-concern-local/#readconcern."local")和 [`"majority"`](https://docs.mongodb.com/manual/reference/read-concern-majority/#readconcern."majority")。
 
