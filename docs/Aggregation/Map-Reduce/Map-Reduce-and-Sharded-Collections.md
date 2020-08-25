@@ -1,11 +1,11 @@
-# [ ](#)Map-Reduce 和 Sharded Collections
+# [ ](#)Map-Reduce 和分片集合
 []()
 
 在本页面
 
-*   [Sharded Collection 作为输入](#sharded-collection-as-input)
+*   [分片集合作为输入](#sharded-collection-as-input)
 
-*   [Sharded Collection as Output](#sharded-collection-as-output)
+*   [分片集合作为输出](#sharded-collection-as-output)
 
 Map-reduce 支持对分片集合的操作，既可以作为输入也可以作为输出。本节介绍[MapReduce]()特定于分片集合的行为。
 
@@ -21,7 +21,7 @@ Map-reduce 支持对分片集合的操作，既可以作为输入也可以作为
 
 ## <span id="sharded-collection-as-output">Sharded Collection as Output</span>
 
-如果[MapReduce]()的`out`字段具有`sharded` value，则 MongoDB 使用`_id`字段将输出集合分片为 shard key。
+如果[MapReduce]()的`out`字段具有`sharded` 值，则 MongoDB 使用`_id`字段将输出集合分片为分片键。
 
 要输出到分片集合：
 
@@ -48,4 +48,4 @@ Map-reduce 支持对分片集合的操作，既可以作为输入也可以作为
 
 译者：李冠飞
 
-校对：
+校对：小芒果
