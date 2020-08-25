@@ -1,5 +1,5 @@
 
-# 阅读关注“linearizable”
+# 读关注“linearizable”
 
 
  3.4版本中的新功能。
@@ -20,7 +20,7 @@
 
 ## 因果一致的会话
 
-对于因果一致会话，阅读关注**linearizable**不可用。
+对于因果一致会话，读关注**linearizable**不可用。
 
 ## 聚集限制
 
@@ -30,7 +30,7 @@
 
 结合[`"majority"`](https://docs.mongodb.com/manual/reference/write-concern/#writeconcern."majority")写关注， [`"linearizable"`](https://docs.mongodb.com/manual/reference/read-concern-linearizable/#readconcern."linearizable")读关注使多个线程可以在单个文档上执行读写操作，就好像单个线程实时执行了这些操作一样。也就是说，这些读写的相应计划被认为是线性的。
 
-## 阅读你自己的写作
+## 读取自己的写入
 
 更改了3.6版本.
 
