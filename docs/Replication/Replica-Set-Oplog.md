@@ -51,8 +51,7 @@ oplog中的每个操作都是[幂等的](https://docs.mongodb.com/manual/referen
 
 在 [`mongod`](https://docs.mongodb.com/manual/reference/program/mongod/#bin.mongod) 创建一个oplog前，您可以使用 [`oplogSizeMB`](https://docs.mongodb.com/manual/reference/configuration-options/#replication.oplogSizeMB) 选项来定义oplog的大小。一旦您第一次启动副本集成员后，可使用 [`replSetResizeOplog`](https://docs.mongodb.com/manual/reference/command/replSetResizeOplog/#dbcmd.replSetResizeOplog) 管理命令去改变oplog的大小。 [`replSetResizeOplog`](https://docs.mongodb.com/manual/reference/command/replSetResizeOplog/#dbcmd.replSetResizeOplog) 命令允许您动态调整oplog大小而无需重新启动 [`mongod`](https://docs.mongodb.com/manual/reference/program/mongod/#bin.mongod) 进程。
 
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [[1\]](https://docs.mongodb.com/manual/core/replica-set-oplog/#id2) | 从MongoDB 4.0开始，oplog可以超过其配置的大小限制，来避免删除[大多数提交点](https://docs.mongodb.com/manual/reference/command/replSetGetStatus/#replSetGetStatus.optimes.lastCommittedOpTime)。 |
+[[1\]](https://docs.mongodb.com/manual/core/replica-set-oplog/#id2) | 从MongoDB 4.0开始，oplog可以超过其配置的大小限制，来避免删除[大多数提交点](https://docs.mongodb.com/manual/reference/command/replSetGetStatus/#replSetGetStatus.optimes.lastCommittedOpTime)。 
 
 
 ## 可能需要更大日志大小的工作负载
