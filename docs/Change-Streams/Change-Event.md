@@ -90,7 +90,7 @@ invalidate Event
 
 该fullDocument文档表示插入时文档的版本。
 
-##update事件
+## update事件
 以下示例说明了一个update事件：
 ```
 {
@@ -142,9 +142,9 @@ invalidate Event
 ```
 该fullDocument文档代表了更新文档的最新多数批准版本。该fullDocument文档可能与更新操作时的文档有所不同，具体取决于在更新操作和文档查找之间发生的交错多数授权操作的数量。
 
-##replace事件
+## replace事件
 以下示例说明了一个replace事件：
-
+```
 {
    _id: { < Resume Token > },
    operationType: 'replace',
@@ -169,7 +169,7 @@ invalidate Event
 使用相同的插入新文档 documentkey
 在fullDocument一个的replace事件表示替换文件的插入后的文件。
 
-##delete事件
+## delete事件
 以下示例说明了一个delete事件：
 ```
 {
@@ -187,7 +187,7 @@ invalidate Event
 ```
 该fullDocument文档被省略，因为在更改流游标将delete事件发送到客户端时，该文档不再存在。
 
-##drop事件
+## drop事件
 版本4.0.1中的新功能。
 
 一个drop在集合从数据库中删除发生的事件。以下示例说明了一个drop事件：
@@ -205,7 +205,7 @@ invalidate Event
 ```
 一个drop事件导致一个无效事件 变革流张开攻击它的ns集合。
 
-##rename事件
+## rename事件
 版本4.0.1中的新功能。
 
 一个rename在集合重命名发生的事件。以下示例说明了一个rename事件：
@@ -226,7 +226,7 @@ invalidate Event
 ```
 一个rename事件导致一个 无效事件的流变化对打开的ns集合或to集合。
 
-##dropDatabase事件
+## dropDatabase事件
 版本4.0.1中的新功能。
 
 一个dropDatabase当数据库被丢弃发生的事件。以下示例说明了一个dropDatabase事件：
@@ -244,7 +244,7 @@ A dropDatabase command generates a drop event for each collection in the databas
 
 一个dropDatabase事件导致一个 无效事件的流变化对打开的ns.db数据库。
 
-##invalidate事件
+## invalidate事件
 以下示例说明了一个invalidate事件：
 
 ```
@@ -263,5 +263,3 @@ invalidate 事件关闭更改流游标。
 resumeAfter在无效事件（例如，集合删除或重命名）关闭流之后，您不能用来恢复更改 流。从MongoDB 4.2开始，您可以使用 startAfter在invalidate事件之后启动新的更改流。
 
 译者：wh
-
-```
