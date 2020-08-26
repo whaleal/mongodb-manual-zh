@@ -1,4 +1,4 @@
-## 通配符索引
+# 通配符索引
 
 **在本页面**
 
@@ -43,15 +43,15 @@ db.userData.find({ "userMetadata" : "inactive" })
 
 `userMetadata`上的非通配符索引只能支持对`userMetadata`的查询。
 
-> 重要
+> **[warning] 重要**
 >
-> 通配符索引并非旨在替代基于工作负载的索引计划。有关创建索引以支持查询的更多信息，请参见[创建索引以支持查询](https://docs.mongodb.com/master/tutorial/create-indexes-to-support-queries/#create-indexes-to-support-queries)。有关通配符索引限制的完整文档，请参阅 [通配符索引限制](https://docs.mongodb.com/master/reference/index-wildcard-restrictions/#wildcard-index-restrictions)。
+> 通配符索引并非旨在替代基于工作负载的索引计划。有关创建索引以支持查询的更多信息，请参见[创建索引以支持查询](https://docs.mongodb.com/master/tutorial/create-indexes-to-support-queries/#create-indexes-to-support-queries)。有关通配符索引限制的完整文档，请参阅[通配符索引限制](https://docs.mongodb.com/master/reference/index-wildcard-restrictions/#wildcard-index-restrictions)。
 
-### <span id="创建">创建通配符索引</span>
+## <span id="创建">创建通配符索引</span>
 
-> 重要
+> **[warning] 重要**
 >
-> 该[featureCompatibilityVersion](https://docs.mongodb.com/master/reference/command/setFeatureCompatibilityVersion/#view-fcv)必须创建通配符索引。有关设置fCV的说明，请参阅 [在MongoDB 4.4部署上设置功能兼容版本](https://docs.mongodb.com/master/reference/command/setFeatureCompatibilityVersion/#set-fcv)。[`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) `4.2`
+> 该[featureCompatibilityVersion](https://docs.mongodb.com/master/reference/command/setFeatureCompatibilityVersion/#view-fcv)必须创建通配符索引。有关设置fCV的说明，请[参阅MongoDB 4.4部署的特性兼容性版本](https://docs.mongodb.com/master/reference/command/setFeatureCompatibilityVersion/#set-fcv)。
 
 可以使用[`createIndexes`](https://docs.mongodb.com/master/reference/command/createIndexes/#dbcmd.createIndexes)数据库命令或其shell助手[`createIndex()`](https://docs.mongodb.com/master/reference/method/db.collection.createIndex/#db.collection.createIndex)或[`createIndexes()`](https://docs.mongodb.com/master/reference/method/db.collection.createIndexes/#db.collection.createIndexes)创建通配符索引。
 
@@ -107,13 +107,13 @@ db.products_catalog.find( { "product_attributes.material" : "Leather" } )
 db.products_catalog.find( { "product_attributes.secret_feature.name" : "laser" } )
 ```
 
-> 注意
+> **[success] 注意**
 >
-> 特定于路径的通配符索引语法与该`wildcardProjection`选项不兼容 。有关更多信息，请参见[通配符索引](https://docs.mongodb.com/master/reference/method/db.collection.createIndex/#createindex-method-wildcard-option)的[选项](https://docs.mongodb.com/master/reference/method/db.collection.createIndex/#createindex-method-wildcard-option)。
+> 特定于路径的通配符索引语法与该`wildcardProjection`选项不兼容 。有关更多信息，请参见[通配符索引的选项](https://docs.mongodb.com/master/reference/method/db.collection.createIndex/#createindex-method-wildcard-option)。
 
 有关示例，请参见[在单字段路径上创建通配符索引](https://docs.mongodb.com/master/reference/method/db.collection.createIndex/#createindex-method-wildcard-onepath)。
 
-#### 在所有字段上创建通配符索引
+### 在所有字段上创建通配符索引
 
 要索引文档中所有字段的值(不包括`_id`)，指定`“$**”`作为索引键:
 
@@ -125,11 +125,11 @@ db.collection.createIndex( { "$**" : 1 } )
 
 有关示例，请参见[在所有字段路径上创建通配符索引](https://docs.mongodb.com/master/reference/method/db.collection.createIndex/#createindex-method-wildcard-allpaths)。
 
-> 注意
+> **[success] 注意**
 >
-> `_id`默认情况下，通配符索引会忽略该字段。要将`_id`字段包括 在通配符索引中，必须在`wildcardProjection`文档中明确包含它。有关更多信息，请参见[通配符索引的选项](https://docs.mongodb.com/master/reference/method/db.collection.createIndex/#createindex-method-wildcard-option)。
+> 通配符索引默认情况下省略**_id**字段。要在通配符索引中包含**_id**字段，必须显式地将其包含在**wildcardProjection**文档中。有关更多信息，请参见[通配符索引选项](https://docs.mongodb.com/master/reference/method/db.collection.createIndex/#createindex-method-wildcard-option)。
 
-#### 在多个特定字段上创建通配符索引
+### 在多个特定字段上创建通配符索引
 
 索引一个文档中多个特定字段的值:
 
@@ -144,15 +144,15 @@ db.collection.createIndex(
 
 使用这个通配符索引，MongoDB为集合中每个文档的指定字段的所有值建立索引。如果给定字段是嵌套的文档或数组，通配符索引将递归到文档/数组中，并存储文档/数组中所有字段的值。
 
-> 注意
+> **[success] 注意**
 >
-> 通配符索引不支持在`wildcardProjection`文档中混合包含和排除语句，*除非*明确包含该`_id`字段。有关详细信息 `wildcardProjection`，请参阅[通配符索引选项](https://docs.mongodb.com/master/reference/method/db.collection.createIndex/#createindex-method-wildcard-option)。
+> 通配符索引不支持在`wildcardProjection`文档中混合包含和排除语句，除非明确包含该`_id`字段。有关详细信息 `wildcardProjection`，请参阅[通配符索引选项](https://docs.mongodb.com/master/reference/method/db.collection.createIndex/#createindex-method-wildcard-option)。
 
 有关示例，请参阅[在通配符索引覆盖范围中包括特定字段](https://docs.mongodb.com/master/reference/method/db.collection.createIndex/#createindex-method-wildcard-inclusion)。
 
-#### 创建排除多个特定字段的通配符索引
+### 创建排除多个特定字段的通配符索引
 
-要为文档中*除*特定字段路径*之外*的所有字段的字段建立索引，请执行以下操作 ：
+要为文档中除特定字段路径之外的所有字段的字段建立索引，请执行以下操作 ：
 
 ```powershell
 db.collection.createIndex(
@@ -167,11 +167,11 @@ db.collection.createIndex(
 
 有关示例，请参见[从通配符索引覆盖率中忽略特定字段](https://docs.mongodb.com/master/reference/method/db.collection.createIndex/#createindex-method-wildcard-exclusion)。
 
-> 注意
+> **[success] 注意**
 >
 > 通配符索引不支持在`wildcardProjection`文档中混合包含和排除语句，*除非*明确包含该`_id`字段。有关详细信息 `wildcardProjection`，请参阅[通配符索引选项](https://docs.mongodb.com/master/reference/method/db.collection.createIndex/#createindex-method-wildcard-option)。
 
-### <span id="注意">注意事项</span>
+## <span id="注意">注意事项</span>
 
 - 通配符索引可以在任何给定查询谓词中最多支持*一个*字段。有关通配符索引查询支持的更多信息，请参见[通配符索引查询/排序支持](https://docs.mongodb.com/master/core/index-wildcard/#wildcard-index-query-sort-support)。
 - 该[featureCompatibilityVersion](https://docs.mongodb.com/master/reference/command/setFeatureCompatibilityVersion/#view-fcv)必须创建通配符索引。有关设置fCV的说明，请参阅 [在MongoDB 4.4部署上设置功能兼容版本](https://docs.mongodb.com/master/reference/command/setFeatureCompatibilityVersion/#set-fcv)。[`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) `4.2`
@@ -180,17 +180,17 @@ db.collection.createIndex(
 - 通配符索引可能与集合中的其他索引覆盖相同的字段。
 - 通配符索引是[sparse索引](https://docs.mongodb.com/master/core/index-sparse/)，即使索引字段包含空值，也仅包含具有索引字段的文档的条目。
 
-### <span id="行为">行为</span>
+## <span id="行为">行为</span>
 
 通配符索引在索引对象(例如嵌入的文档)或数组字段时有特定的行为:
 
 - 如果该字段是对象，则通配符索引会下降到该对象中并为其内容建立索引。通配符索引继续下降到它遇到的任何其他嵌入式文档中。
 - 如果该字段是一个数组，则通配符索引将遍历该数组并索引每个元素：
   - 如果数组中的元素是对象，则通配符索引会下降到该对象中以如上所述索引其内容。
-  - 如果该元素是一个数组--也就是说，其被直接嵌入父阵列内的阵列-然后通配符指数并 *不能*遍历嵌入式阵列，但索引的整个阵列作为一个单一的值。
-- 对于所有其他字段，将原始（非对象/数组）值记录到索引中。
+  - 如果该元素是一个数组--也就是说，其被直接嵌入父阵列内的阵列-然后通配符指数并不能遍历嵌入式阵列，但索引的整个阵列作为一个单一的值。
+- 对于所有其他字段，将原始(非对象/数组)值记录到索引中。
 
-通配符索引将继续遍历任何其他嵌套对象或数组，直到达到原始值（即不是对象或数组的字段）为止。然后，它将索引此原始值以及该字段的完整路径。
+通配符索引将继续遍历任何其他嵌套对象或数组，直到达到原始值(即不是对象或数组的字段)为止。然后，它将索引此原始值以及该字段的完整路径。
 
 例如，考虑以下文档：
 
@@ -216,13 +216,13 @@ db.collection.createIndex(
 - `"parentField.nestedArray" : "nestedArrayElementOne"`
 - `"parentField.nestedArray" : ["nestedArrayElementTwo"]`
 
-注意，记录`parentField.nestedArray`不包含每个元素的数组位置。当将元素记录到索引中时，通配符索引会忽略数组元素的位置。通配符索引仍然可以支持包含显式数组索引的查询。有关更多信息，请参见 [具有显式数组索引的查询](https://docs.mongodb.com/master/core/index-wildcard/#wildcard-query-support-explicit-array-indices)。
+注意，记录`parentField.nestedArray`不包含每个元素的数组位置。当将元素记录到索引中时，通配符索引会忽略数组元素的位置。通配符索引仍然可以支持包含显式数组索引的查询。有关更多信息，请参见[具有显式数组索引的查询](https://docs.mongodb.com/master/core/index-wildcard/#wildcard-query-support-explicit-array-indices)。
 
 有关嵌套对象的通配符索引行为的更多信息，请参见[嵌套对象](https://docs.mongodb.com/master/core/index-wildcard/#wildcard-index-nested-objects)。
 
 有关嵌套数组的通配符索引行为的更多信息，请参见[嵌套数组](https://docs.mongodb.com/master/core/index-wildcard/#wildcard-index-nested-arrays)。
 
-#### 嵌套对象
+### 嵌套对象
 
 当通配符索引遇到嵌套对象时，它下降到该对象并对其内容进行索引。例如:
 
@@ -254,7 +254,7 @@ db.collection.createIndex(
 
 有关嵌套数组的通配符索引行为的更多信息，请参见[嵌套数组](https://docs.mongodb.com/master/core/index-wildcard/#wildcard-index-nested-arrays)。
 
-#### 嵌套数组
+### 嵌套数组
 
 当通配符索引遇到嵌套数组时，它尝试遍历该数组以索引其元素。如果数组本身是父数组(即嵌入式数组)中的一个元素，通配符索引会将整个数组记录为一个值，而不是遍历其内容。例如:
 
@@ -290,9 +290,9 @@ db.collection.createIndex(
 
 注意，记录`parentField.nestedArray`不包含每个元素的数组位置。当将元素记录到索引中时，通配符索引会忽略数组元素的位置。通配符索引仍然可以支持包含显式数组索引的查询。有关更多信息，请参见 [具有显式数组索引的查询](https://docs.mongodb.com/master/core/index-wildcard/#wildcard-query-support-explicit-array-indices)。
 
-也可以看看：[`Nested Depth for BSON Documents`](https://docs.mongodb.com/master/reference/limits/#Nested-Depth-for-BSON-Documents)
+也可以看看：[`Nested Depth for BSON Documents`](https://docs.mongodb.com/master/reference/limits/#Nested-Depth-for-BSON-Documents).
 
-### <span id="限制">限制条件</span>
+## <span id="限制">限制条件</span>
 
 - 您不能使用通配符索引来分片集合。在要分片的一个或多个字段上创建一个非通配符索引。有关分片键选择的更多信息，请参见[分片 键](https://docs.mongodb.com/master/core/sharding-shard-key/#sharding-shard-key)。
 - 您不能创建[复合](https://docs.mongodb.com/master/core/index-compound/)索引。
@@ -304,15 +304,15 @@ db.collection.createIndex(
   - [2dsphere（地理空间）](https://docs.mongodb.com/master/core/2dsphere/)
   - [Hashed](https://docs.mongodb.com/master/core/index-hashed/)
 
-> 重要
+> **[warning] 重要**
 >
 > 通配符索引与[通配符文本索引](https://docs.mongodb.com/master/core/index-text/#text-index-wildcard)不同并且不兼容 。通配符索引不能支持使用[`$text`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text)运算符的查询。
 
 有关通配符索引创建限制的完整文档，请参阅 [不兼容的索引类型或属性](https://docs.mongodb.com/master/reference/index-wildcard-restrictions/#wildcard-index-restrictions-create)。
 
-### <span id="查询">通配符索引查询/排序支持</span>
+## <span id="查询">通配符索引查询/排序支持</span>
 
-#### 覆盖查询
+### 覆盖查询
 
 仅当满足以下所有条件时，通配符索引才能支持[覆盖的查询](https://docs.mongodb.com/master/core/query-optimization/#covered-queries) ：
 
@@ -338,7 +338,7 @@ db.products.find(
 
 假设指定的`lastName`对象永远不是数组，MongoDB可以使用`$**`通配符索引来支持覆盖查询。
 
-#### 包含多个字段的查询谓词
+### 包含多个字段的查询谓词
 
 通配符索引最多可以支持一个查询谓词字段。那是：
 
@@ -348,7 +348,7 @@ db.products.find(
 
 但是，MongoDB可以使用相同的通配符索引来满足查询[`$or`](https://docs.mongodb.com/master/reference/operator/query/or/#op._S_or)或聚合 [`$or`](https://docs.mongodb.com/master/reference/operator/aggregation/or/#exp._S_or)运算符的每个独立参数。
 
-#### 查询和排序
+### 查询和排序
 
 MongoDB可以使用通配符索引来满足[`sort()`](https://docs.mongodb.com/master/reference/method/cursor.sort/#cursor.sort)，只有当所有这些都是真的:
 
@@ -376,7 +376,7 @@ db.products.find(
 
 假设指定的`price`对象永远不是数组，MongoDB可以使用`product_attributes.$**`通配符索引来满足[`find()`](https://docs.mongodb.com/master/reference/method/db.collection.find/#db.collection.find)和[`sort()`](https://docs.mongodb.com/master/reference/method/cursor.sort/#cursor.sort)。
 
-#### 不支持的查询模式
+### 不支持的查询模式
 
 - 通配符索引不支持查询条件，该条件检查字段是否不存在。
 - 通配符索引不支持查询条件，该条件检查字段是否等于文档或数组
@@ -384,7 +384,7 @@ db.products.find(
 
 有关详细信息，请参阅[不支持的查询和聚合模式](https://docs.mongodb.com/master/reference/index-wildcard-restrictions/#wildcard-index-restrictions-query-aggregation)。
 
-#### 用明确的数组索引查询
+### 用明确的数组索引查询
 
 MongoDB通配符索引不会在索引期间记录数组中任何给定元素的数组位置。但是，MongoDB仍然可以选择通配符索引来回答包含具有一个或多个显式数组索引（例如，`parentArray.0.nestedArray.0`）的字段路径的查询 。由于为每个连续的嵌套数组定义索引范围的复杂性越来越高，因此，如果该路径包含的`8`显式数组索引不多，MongoDB不会考虑使用通配符索引来回答查询中的给定字段路径。MongoDB仍然可以考虑使用通配符索引来回答查询中的其他字段路径。
 
@@ -418,3 +418,7 @@ MongoDB可以选择一个通配符索引，其中包括`parentObject`，以满�
 也可以看看
 
 [`Nested Depth for BSON Documents`](https://docs.mongodb.com/master/reference/limits/#Nested-Depth-for-BSON-Documents)
+
+
+
+译者：杨帅
