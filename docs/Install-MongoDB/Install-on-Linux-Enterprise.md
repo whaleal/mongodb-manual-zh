@@ -1,4 +1,4 @@
-# Install MongoDB Enterprise on Linux 在Linux上安装MongoDB企业版
+# 在Linux上安装MongoDB企业版
 
 此文档提供了为受支持的Linux系统安装MongoDB企业版的说明。
 

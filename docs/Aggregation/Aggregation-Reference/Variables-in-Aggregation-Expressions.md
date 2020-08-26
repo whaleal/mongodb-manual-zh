@@ -43,7 +43,7 @@ MongoDB 提供以下系统变量：
 
 > **也可以看看**
 >
-> $let]()，[$redact]()，[$map]()
+> [$let]()，[$redact]()，[$map]()
 
 
 

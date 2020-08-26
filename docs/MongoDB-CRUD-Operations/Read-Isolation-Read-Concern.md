@@ -1,18 +1,18 @@
-# 阅读关注
+# 读关注
 **在本页面**
 
-- [阅读关注级别](#级别)
+- [读关注级别](#级别)
 - [ReadConcern 支持](#支持)
 - [注意事项](#注意)
 
-**阅读关注** 选项允许你控制从复制集和分片集群读取数据的一致性和隔离性。
+**读关注** 选项允许你控制从复制集和分片集群读取数据的一致性和隔离性。
 
 通过有效地使用[写关注](https://docs.mongodb.com/manual/reference/write-concern/)和读关注，你可以适当地调整一致性和可用性的保证级别，例如等待以保证更强的一致性，或放松一致性要求以提供更高的可用性。
 
 将MongoDB驱动程序更新到MongoDB 3.2或更高版本以支持读关注。
 
 ## <span id="级别">阅读关注级别</span>
-以下为可用的阅读关注级别：
+以下为可用的读关注级别：
 
 | `level` | Description |
 | :--- | :--- |
@@ -33,7 +33,7 @@
 - [读关注 "snapshot"](https://docs.mongodb.com/manual/reference/read-concern-snapshot/)
 
 ## <span id="支持">ReadConcern 支持</span>
-### 阅读关注选项
+### 读关注选项
 
 对于不在[多文档事务](https://docs.mongodb.com/manual/core/transactions/)中的操作，你可以将 `readConcern` 级别指定为一个命令和方法的选项：
 

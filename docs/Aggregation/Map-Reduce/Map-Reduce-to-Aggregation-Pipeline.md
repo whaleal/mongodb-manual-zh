@@ -1,4 +1,4 @@
-# [ ](#)Map-Reduce to Aggregation Pipeline
+# [ ](#)Map-Reduce转换到聚合管道
 
 []()
 
@@ -31,6 +31,8 @@
 
 * `$project`中的`emit`字段可以被命名为其他名称。为了进行可视化比较，选择了字段名称emit。
 
+  
+  
   | Map-Reduce                                                   | Aggregation Pipeline                                         |
   | ------------------------------------------------------------ | ------------------------------------------------------------ |
   | db.collection.mapReduce(<br /> &lt;mapFunction&gt;,<br /> &lt;reduceFunction&gt;,<br /> {<br /> query: &lt;queryFilter&gt;,<br /> sort: &lt;sortOrder&gt;,<br /> limit: &lt;number&gt;,<br /> finalize: &lt;finalizeFunction&gt;,<br /> out: &lt;collection&gt;<br /> } ) | db.collection.aggregate( [<br /> { $match: &lt;queryFilter&gt; },<br /> { $sort: &lt;sortOrder&gt; },<br /> { $limit: &lt;number&gt; },<br /> { $project: {  emits: { k: &lt;expression&gt;, v: &lt;expression&gt; } } },<br /> { $unwind: “$emits” },<br /> { $group: { <br />  _id: “$emits.k”}, <br />  value: { $accumulator: {<br />   init: &lt;initCode&gt;,<br />   accumulate: &lt;reduceFunction&gt;,<br />   accumulateArgs: [ “$emit.v”],<br />   merge: &lt;reduceFunction&gt;,<br />   finalize: &lt;finalizeFunction&gt;,<br />   lang: “js” }}<br /> } },<br /> { $out: &lt;collection&gt; }<br />] ) |

@@ -1,5 +1,5 @@
 
-# 删除文件
+# 删除文档
 此页面使用以下[`mongo`](https://docs.mongodb.com/master/reference/program/mongo/#bin.mongo)  shell方法
 
 - [db.collection.deleteMany()](https://docs.mongodb.com/manual/reference/method/db.collection.deleteMany/#db.collection.deleteMany)
@@ -17,7 +17,7 @@ db.inventory.insertMany( [
 ] );
 ```
 
-## 删除所有文件
+## 删除所有文档
 
 要删除集合中的所有文档，请将空的[filter](https://docs.mongodb.com/master/core/document/#document-query-filter)文档{}传递给[`db.collection.deleteMany()`](https://docs.mongodb.com/master/reference/method/db.collection.deleteMany/#db.collection.deleteMany) 方法。
 

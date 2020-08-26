@@ -1,4 +1,4 @@
-# Install MongoDB Community Edition on macOS 在macOS上安装MongoDB社区版
+# 在macOS上安装MongoDB社区版
 
 
 

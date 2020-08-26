@@ -226,7 +226,7 @@ db.orders.aggregate([
    ] )
    ```
 
-1. 该[`$match`]()阶段仅选择`ord_date`大于或等于的那些文档。`new Date("2020-03-01")`
+1. 该[`$match`]()阶段仅选择`ord_date`大于或等于`new Date("2020-03-01")`的那些文档。
 
 2. 该`$unwinds`阶段按`items`数组字段细分文档，以输出每个数组元素的文档。例如：
 
