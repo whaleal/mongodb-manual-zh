@@ -14,7 +14,7 @@
 
 - [硬件注意事项](https://docs.mongodb.com/manual/administration/production-notes/#hardware-considerations)
 
-- [Architecture]架构(https://docs.mongodb.com/manual/administration/production-notes/#architecture)
+- [架构](https://docs.mongodb.com/manual/administration/production-notes/#architecture)
 
 - [压缩](https://docs.mongodb.com/manual/administration/production-notes/#compression)
 
