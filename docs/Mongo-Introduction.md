@@ -64,7 +64,7 @@ MongoDB支持丰富的查询语言以支持[读写操作（CRUD）](https://docs
 也可以看看
 
 - [SQL到MongoDB的映射图](https://docs.mongodb.com/v4.2/reference/sql-comparison/)
-- [SQL到聚合的映射图][SQL to Aggregation Mapping Chart]
+- [SQL到聚合的映射图](https://docs.mongodb.com/v4.2/reference/sql-aggregation-comparison/)
 
 
 

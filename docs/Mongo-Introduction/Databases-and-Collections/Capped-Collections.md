@@ -138,3 +138,8 @@ You can use a[tailable cursor](https://docs.mongodb.com/manual/reference/glossar
 
 See[Tailable Cursors](https://docs.mongodb.com/manual/core/tailable-cursors/)for information on creating a tailable cursor.
 
+
+原文链接：https://docs.mongodb.com/v4.2/core/capped-collections/
+
+
+

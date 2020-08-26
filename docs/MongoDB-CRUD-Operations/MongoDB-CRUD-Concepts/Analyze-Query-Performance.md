@@ -1,16 +1,14 @@
-
-
-## 分析查询性能
+# 分析查询性能
 
 **在本页面**
 
-* 评估查询的性能
+* [评估查询的性能](#评估)
 
 该 [`cursor.explain("executionStats")`](https://docs.mongodb.com/manual/reference/method/cursor.explain/#cursor.explain) 和[`db.collection.explain("executionStats")`](https://docs.mongodb.com/manual/reference/method/db.collection.explain/#db.collection.explain)方法提供了有关查询的性能统计信息。这些统计信息可用于衡量查询是否以及如何使用索引。
 
 [`db.collection.explain()`](https://docs.mongodb.com/manual/reference/method/db.collection.explain/#db.collection.explain) 提供关于其他操作(如[`db.collection.update()`](https://docs.mongodb.com/manual/reference/method/db.collection.update/#db.collection.update))执行的信息。详细信息请参见[`db.collection.explain()`](https://docs.mongodb.com/manual/reference/method/db.collection.explain/#db.collection.explain) 
 
-### 评估查询的性能
+## <span id="评估">评估查询的性能</span>
 
 考虑一个包含以下文件的收集清单:
 
@@ -27,7 +25,7 @@
 { "_id" : 10, "item" : "f4", type: "food", quantity: 75 }
 ```
 
-#### 没有索引的查询
+### 没有索引的查询
 
 以下查询检索的文档中，**quantity**字段的值在**100**到**200**之间，包括:
 
@@ -54,28 +52,28 @@ db.inventory.find(
 [`explain()`](https://docs.mongodb.com/manual/reference/method/cursor.explain/#cursor.explain) 返回以下结果：
 
 ```shell
-{ 
-   “ queryPlanner”  ： { 
-         “ plannerVersion”  ： 1 ，
-         ... 
-         “ winningPlan”  ： { 
-            “ stage”  ： “ COLLSCAN” ，
-            ... 
-         } 
-   }，
-   “ executionStats”  ： { 
-      “ executionSuccess”  ： true ，
-      “ nReturned”  ： 3 ，
-      “ executionTimeMillis”  ： 0 ，
-      “ totalKeysExamined”  ： 0 ，
-      “ totalDocsExamined”  ： 10 ，
-      “ executionStages”  ： { 
-         “阶段”  ： “ COLLSCAN” ，
-         ... 
-      }，
-      ... 
-   }，
-   ... 
+{
+   "queryPlanner" : {
+         "plannerVersion" : 1,
+         ...
+         "winningPlan" : {
+            "stage" : "COLLSCAN",
+            ...
+         }
+   },
+   "executionStats" : {
+      "executionSuccess" : true,
+      "nReturned" : 3,
+      "executionTimeMillis" : 0,
+      "totalKeysExamined" : 0,
+      "totalDocsExamined" : 10,
+      "executionStages" : {
+         "stage" : "COLLSCAN",
+         ...
+      },
+      ...
+   },
+   ...
 }
 ```
 
@@ -91,7 +89,7 @@ db.inventory.find(
 
 匹配文档的数量和检查文档的数量之间的差异可能表明，为了提高效率，查询可能会受益于索引的使用。
 
-#### 查询与索引
+### 查询与索引
 
 为了支持对**quantity**字段的查询，请在**quantity**字段上添加索引:
 
@@ -110,34 +108,34 @@ db.inventory.find(
 该[explain()](https://docs.mongodb.com/manual/reference/method/cursor.explain/#cursor.explain)方法返回以下结果:
 
 ```shell
-{ 
-   “ queryPlanner”  ： { 
-         “ plannerVersion”  ： 1 ，
-         ... 
-         “ winningPlan”  ： { 
-               “ stage”  ： “ FETCH” ，
-               “ inputStage”  ： { 
-                  “ stage”  ： “ IXSCAN” ，
-                  “ keyPattern”  ： { 
-                     “ quantity”  ： 1 
-                  }，
-                  ... 
-               } 
-         }，
-         “ rejectedPlans”  ： [  ] 
-   }，
-   “ executionStats”  ： { 
-         “ executionSuccess”  ： true ，
-         “ nReturned”  ： 3 ，
-         “ executionTimeMillis”  ： 0 ，
-         “ totalKeysExamined”  ： 3 ，
-         “ totalDocsExamined”  ： 3 ，
-         “ executionStages”  ： { 
-            ... 
-         }，
-         ... 
-   }，
-   ... 
+{
+   "queryPlanner" : {
+         "plannerVersion" : 1,
+         ...
+         "winningPlan" : {
+               "stage" : "FETCH",
+               "inputStage" : {
+                  "stage" : "IXSCAN",
+                  "keyPattern" : {
+                     "quantity" : 1
+                  },
+                  ...
+               }
+         },
+         "rejectedPlans" : [ ]
+   },
+   "executionStats" : {
+         "executionSuccess" : true,
+         "nReturned" : 3,
+         "executionTimeMillis" : 0,
+         "totalKeysExamined" : 3,
+         "totalDocsExamined" : 3,
+         "executionStages" : {
+            ...
+         },
+         ...
+   },
+   ...
 }
 ```
 
@@ -150,9 +148,9 @@ db.inventory.find(
 
 当使用索引运行时，查询扫描了**3**个索引项和**3**个文档，以返回**3**个匹配的文档，从而产生一个非常高效的查询。
 
-#### 比较索引的性能
+### 比较索引的性能
 
-要手动比较使用多个索引的查询的性能，可以将 [`hint()`](https://docs.mongodb.com/manual/reference/method/cursor.hint/#cursor.hint) 方法与[`explain()`](https://docs.mongodb.com/manual/reference/method/cursor.explain/#cursor.explain)方法结合使用。
+要手动比较使用多个索引的查询的性能，可以将 [`hint()`](https://docs.mongodb.com/manual/reference/method/cursor.hint/#cursor.hint)方法与[`explain()`](https://docs.mongodb.com/manual/reference/method/cursor.explain/#cursor.explain)方法结合使用。
 
 考虑以下查询:
 
@@ -273,3 +271,9 @@ MongoDB扫描了2个索引键([`executionStats.totalKeysExamined`](https://docs.
 ​	也可以看看
 
 ​	[查询优化](https://docs.mongodb.com/manual/core/query-optimization/)，[查询计划](https://docs.mongodb.com/manual/core/query-plans/)， [优化查询性能](https://docs.mongodb.com/manual/tutorial/optimize-query-performance-with-indexes-and-projections/)， [索引策略](https://docs.mongodb.com/manual/applications/indexes/)
+
+
+
+译者：杨帅
+
+校对：杨帅

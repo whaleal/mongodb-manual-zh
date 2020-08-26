@@ -1,18 +1,5 @@
-- [Frequently Asked Questions](https://docs.mongodb.com/manual/faq/) > 
-- FAQ: Sharding with MongoDB
+# 常见问题解答：使用MongoDB分片
 
-# FAQ: Sharding with MongoDB
-
-# 常见问题：使用MongoDB分片
-
-On this page
-
-- [Is sharding appropriate for a new deployment?](https://docs.mongodb.com/manual/faq/sharding/#is-sharding-appropriate-for-a-new-deployment)
-- [Can I select a different shard key after sharding a collection?](https://docs.mongodb.com/manual/faq/sharding/#can-i-select-a-different-shard-key-after-sharding-a-collection)
-- [Why are my documents not distributed across the shards?](https://docs.mongodb.com/manual/faq/sharding/#why-are-my-documents-not-distributed-across-the-shards)
-- [How does `mongos` detect changes in the sharded cluster configuration?](https://docs.mongodb.com/manual/faq/sharding/#how-does-mongos-detect-changes-in-the-sharded-cluster-configuration)
-- [What does `writebacklisten` in the log mean?](https://docs.mongodb.com/manual/faq/sharding/#what-does-writebacklisten-in-the-log-mean)
-- [How does `mongos` use connections?](https://docs.mongodb.com/manual/faq/sharding/#how-does-mongos-use-connections)
 
 在本页面
 
@@ -23,19 +10,8 @@ On this page
 - [日志中出现的`writebacklisten`是什么意思？](https://docs.mongodb.com/manual/faq/sharding/#what-does-writebacklisten-in-the-log-mean)
 - [`mongos`是如何使用连接的？](https://docs.mongodb.com/manual/faq/sharding/#how-does-mongos-use-connections)
 
-This document answers common questions about [Sharding](https://docs.mongodb.com/manual/sharding/). See also the [Sharding](https://docs.mongodb.com/manual/sharding/) section in the manual, which provides an [overview of sharding](https://docs.mongodb.com/manual/sharding/), including details on:
 
 本文档回答有关[分片](https://docs.mongodb.com/manual/sharding/)的常见问题。参见手册的[分片](https://docs.mongodb.com/manual/sharding/)章节，它提供了一个 [分片的概述](https://docs.mongodb.com/manual/sharding/)，包括如下细节：
-
-- [Shard Keys and Considerations for Shard Key Selection](https://docs.mongodb.com/manual/core/sharding-shard-key/)
-
-- [Query Routing](https://docs.mongodb.com/manual/core/sharded-cluster-query-router/)
-
-- [High Availability](https://docs.mongodb.com/manual/sharding/#sharding-availability)
-
-- [Data Partitioning with Chunks](https://docs.mongodb.com/manual/core/sharding-data-partitioning/) and [Chunk Migration Process](https://docs.mongodb.com/manual/core/sharding-balancer-administration/)
-
-- [Troubleshoot Sharded Clusters](https://docs.mongodb.com/manual/tutorial/troubleshoot-sharded-clusters/)
 
 - [片键和选择片键的注意事项](https://docs.mongodb.com/manual/core/sharding-shard-key/)
 
@@ -49,33 +25,19 @@ This document answers common questions about [Sharding](https://docs.mongodb.com
 
   
 
-## Is sharding appropriate for a new deployment?
-
 ## 新部署是否适合进行分片？[¶](https://docs.mongodb.com/manual/faq/sharding/#is-sharding-appropriate-for-a-new-deployment)
 
-Sometimes. However, if your data set fits on a single server, you should begin with an unsharded deployment as sharding while your data set is small provides *little advantage* .
 
 有时适合。但是，如果您的数据集适合放在一台服务器上，则应从非分片的部署开始，因为分片的数据集很小，*几乎没有优势*。
 
 
 
-## Can I select a different shard key after sharding a collection?
-
 ## 在对集合进行分片后是否可以更改片键？
 
-No.
-
-There is no automatic support in MongoDB for choosing a different shard key after sharding a collection. This reality underscores the importance of choosing a good [shard key](https://docs.mongodb.com/manual/core/sharding-shard-key/#shard-key). If you *must* change a shard key after sharding a collection, the best option is to:
 
 不可以。
 
 MongoDB中没有对集合进行分片后更改片键的自动支持。这一现实情况强调了选择好的[片键](https://docs.mongodb.com/manual/core/sharding-shard-key/#shard-key)的重要性。如果 *必须*在对集合进行分片之后更改片键，最佳选择是：
-
-- dump all data from MongoDB into an external format.
-- drop the original sharded collection.
-- configure sharding using a more ideal shard key.
-- [pre-split](https://docs.mongodb.com/manual/tutorial/create-chunks-in-sharded-cluster/) the shard key range to ensure initial even distribution.
-- restore the dumped data into MongoDB.
 
 - 将MongoDB中的所有数据转储为外部格式。
 - 删除原始分片集合。
@@ -83,15 +45,9 @@ MongoDB中没有对集合进行分片后更改片键的自动支持。这一现�
 - [预分割片键](https://docs.mongodb.com/manual/tutorial/create-chunks-in-sharded-cluster/)范围，以确保初始均匀分配。
 - 将转储的数据恢复到MongoDB中。
 
-Although you cannot select a different shard key for a sharded collection, starting in MongoDB 4.2, you can update a document’s shard key value unless the shard key field is the immutable `_id` field. For details on updating the shard key values, see [Change a Document’s Shard Key Value](https://docs.mongodb.com/manual/core/sharding-shard-key/#update-shard-key).
 
 尽管您不能为分片集合选择其他片键，但是从MongoDB 4.2开始，您可以更新文档的片键值，除非分片键字段是不可变`_id`字段。有关更新片键值的详细信息，请参阅“ [更改文档的片键值”](https://docs.mongodb.com/manual/core/sharding-shard-key/#update-shard-key)。
 
-Before MongoDB 4.2, a document’s shard key field value is immutable.
-
-SEE ALSO
-
-[Shard Keys](https://docs.mongodb.com/manual/core/sharding-shard-key/)
 
 在MongoDB 4.2之前，文档的片键字段值是不可变的。
 
@@ -99,25 +55,17 @@ SEE ALSO
 
 
 
-## Why are my documents not distributed across the shards?为什么文档没有分布在各个分片上？
+## 为什么文档没有分布在各个分片上？
 
-The balancer starts distributing data across the shards once the distribution of chunks has reached certain thresholds. See [Migration Thresholds](https://docs.mongodb.com/manual/core/sharding-balancer-administration/#sharding-migration-thresholds).
 
 一旦数据块的分布达到特定阈值，均衡器就开始在各个分片之间迁移均衡数据。请参阅 [迁移阈值](https://docs.mongodb.com/manual/core/sharding-balancer-administration/#sharding-migration-thresholds)。
-
-In addition, MongoDB cannot move a chunk if the number of documents in the chunk exceeds a certain number. See [Maximum Number of Documents Per Chunk to Migrate](https://docs.mongodb.com/manual/core/sharding-balancer-administration/#migration-chunk-size-limit) and [Indivisible/Jumbo Chunks](https://docs.mongodb.com/manual/core/sharding-data-partitioning/#jumbo-chunk).
 
 此外，如果块中的文档数超过一定数量，MongoDB将无法移动块。请参阅 [每个要迁移的块的最大文档数](https://docs.mongodb.com/manual/core/sharding-balancer-administration/#migration-chunk-size-limit)和[不可分割的块](https://docs.mongodb.com/manual/core/sharding-data-partitioning/#jumbo-chunk)。
 
 
 
-## How does `mongos` detect changes in the sharded cluster configuration?
-
 ## `mongos`如何检测分片群集配置中的更改？[¶](https://docs.mongodb.com/manual/faq/sharding/#how-does-mongos-detect-changes-in-the-sharded-cluster-configuration)
 
-[`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos) instances maintain a cache of the [config database](https://docs.mongodb.com/manual/reference/glossary/#term-config-database) that holds the metadata for the [sharded cluster](https://docs.mongodb.com/manual/reference/glossary/#term-sharded-cluster).
-
-[`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos) updates its cache lazily by issuing a request to a shard and discovering that its metadata is out of date. To force the [`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos) to reload its cache, you can run the [`flushRouterConfig`](https://docs.mongodb.com/manual/reference/command/flushRouterConfig/#dbcmd.flushRouterConfig) command against each [`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos) directly.
 
 [`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos)实例维护[配置数据库](https://docs.mongodb.com/manual/reference/glossary/#term-config-database)的缓存，该缓存包含分片[集群](https://docs.mongodb.com/manual/reference/glossary/#term-sharded-cluster)的元数据。
 
@@ -125,39 +73,32 @@ In addition, MongoDB cannot move a chunk if the number of documents in the chunk
 
 
 
-## What does `writebacklisten` in the log mean?日志中出现的`writebacklisten`是什么意思？
+## 日志中出现的`writebacklisten`是什么意思？
 
-The writeback listener is a process that opens a long poll to relay writes back from a [`mongod`](https://docs.mongodb.com/manual/reference/program/mongod/#bin.mongod) or [`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos) after migrations to make sure they have not gone to the wrong server. The writeback listener sends writes back to the correct server if necessary.
 
 回写监听器是一个进程，它打开一个长轮询，在迁移[`mongod`](https://docs.mongodb.com/manual/reference/program/mongod/#bin.mongod)或[`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos)后回写，以确保他们没有将其发送到错误的服务器。如果需要，回写监听器会将写入发送到正确的服务器。
-
-These messages are a key part of the sharding infrastructure and should not cause concern.
 
 这些消息是分片基础结构的关键部分，不需要引起关注。
 
 
 
-## How does `mongos` use connections?`mongos`是如何使用连接的？
+## `mongos`是如何使用连接的？
 
-Each [`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos) instance maintains a pool of connections to the members of the sharded cluster. Client requests use these connections one at a time; i.e. requests are not multiplexed or pipelined.
 
 每个[`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos)实例都维护一个与分片集群成员的连接池。客户端请求一次使用一个连接；即，请求不是多路复用或流水线的。
 
-When client requests complete, the [`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos) returns the connection to the pool. These pools do not shrink when the number of clients decreases. This can lead to an unused [`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos) with a large number of open connections. If the [`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos) is no longer in use, it is safe to restart the process to close existing connections.
 
 客户端请求完成后，[`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos)将连接返回到池中。当客户端数量减少时，这些池不会缩小。这可能会导致未使用的[`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos)占用大量打开的连接。如果[`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos)不再使用，则可以安全地重新启动进程以关闭现有连接。
 
-To return aggregated statistics related to all of the outgoing connection pools used by the [`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos), connect a [`mongo`](https://docs.mongodb.com/manual/reference/program/mongo/#bin.mongo) shell to the [`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos) with , and run the [`connPoolStats`](https://docs.mongodb.com/manual/reference/command/connPoolStats/#dbcmd.connPoolStats) command:
 
 要返回与[`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos)所使用的所有对外连接池相关的聚合统计信息，请将[`mongo`](https://docs.mongodb.com/manual/reference/program/mongo/#bin.mongo)shell 连接 到[`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos)，然后运行以下 [`connPoolStats`](https://docs.mongodb.com/manual/reference/command/connPoolStats/#dbcmd.connPoolStats)命令：
 
-copy  复制
+复制
 
 ```
 db.adminCommand("connPoolStats");
 ```
 
-See the [System Resource Utilization](https://docs.mongodb.com/manual/reference/ulimit/#system-resource-utilization) section of the [UNIX ulimit Settings](https://docs.mongodb.com/manual/reference/ulimit/) document.
 
 请参阅“ [UNIX ulimit设置”](https://docs.mongodb.com/manual/reference/ulimit/) 文档的“ [系统资源利用率”](https://docs.mongodb.com/manual/reference/ulimit/#system-resource-utilization)部分。
 

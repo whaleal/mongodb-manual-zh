@@ -1,4 +1,4 @@
-## 评估当前运营的绩效
+# 评估当前运营的绩效
 
 **在本页面**
 
@@ -8,7 +8,7 @@
 
 以下各节介绍了用于评估操作性能的技术。
 
-### <span id="操作">使用数据库分析器来计算针对数据库的操作</span>
+## <span id="操作">使用数据库分析器来计算针对数据库的操作</span>
 
 MongoDB提供了一个[数据库分析器](https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/)，它显示针对数据库的每个操作的性能特征。使用分析器定位任何运行缓慢的查询或写操作。例如，您可以使用此信息来确定要创建什么索引。
 
@@ -21,11 +21,11 @@ MongoDB提供了一个[数据库分析器](https://docs.mongodb.com/manual/tutor
 
 有关更多信息，请参见[Database Profiler](https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/)。
 
-### <span id="业务">使用`db.currentOp()`到评估`mongod`业务</span>
+## <span id="业务">使用`db.currentOp()`到评估`mongod`业务</span>
 
 该[`db.currentOp()`](https://docs.mongodb.com/manual/reference/method/db.currentOp/#db.currentOp)方法报告[`mongod`](https://docs.mongodb.com/manual/reference/program/mongod/#bin.mongod)实例上正在运行的当前操作。
 
-### <span id="性能">使用`explain`来评估查询性能</span>
+## <span id="性能">使用`explain`来评估查询性能</span>
 
 在[`cursor.explain()`](https://docs.mongodb.com/manual/reference/method/cursor.explain/#cursor.explain)与[`db.collection.explain()`](https://docs.mongodb.com/manual/reference/method/db.collection.explain/#db.collection.explain) 方法返回关于查询执行的信息，如MongoDB的选择以满足查询和执行统计数据的指标。您可以在[queryPlanner](https://docs.mongodb.com/manual/reference/method/db.collection.explain/#explain-method-queryplanner) 模式，[executionStats](https://docs.mongodb.com/manual/reference/method/db.collection.explain/#explain-method-executionstats)模式或 [allPlansExecution](https://docs.mongodb.com/manual/reference/method/db.collection.explain/#explain-method-allplansexecution)模式下运行这些方法，以控制返回的信息量。
 
@@ -45,3 +45,9 @@ db.records.find( { a: 1 } ).explain("executionStats")
 - [`planCacheKey`](https://docs.mongodb.com/manual/reference/explain-results/#explain.queryPlanner.planCacheKey)为深入了解[查询计划缓存](https://docs.mongodb.com/manual/core/query-plans/)提供慢速查询。
 
 欲了解更多信息，请参阅[解释结果](https://docs.mongodb.com/manual/reference/explain-results/)， [`cursor.explain()`](https://docs.mongodb.com/manual/reference/method/cursor.explain/#cursor.explain)，[`db.collection.explain()`](https://docs.mongodb.com/manual/reference/method/db.collection.explain/#db.collection.explain)，和 [分析查询性能](https://docs.mongodb.com/manual/tutorial/analyze-query-plan/)。
+
+
+
+译者：杨帅
+
+校对：杨帅
