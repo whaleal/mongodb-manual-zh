@@ -2,13 +2,13 @@
 # 聚合
 在本页面
 
-*   [聚合管道 Aggregation Pipeline](#aggregation-pipeline)
+*   [聚合管道](#aggregation-pipeline)
 
 *   [Map-Reduce](#map-reduce)
 
-*   [单用途聚合操作 Single Purpose Aggregation Operations](#single-purpose-aggregation-operations)
+*   [单用途聚合操作](#single-purpose-aggregation-operations)
 
-*   [其他 Features 和行为 Additional Features and Behaviors](#additional-features-and-behaviors)
+*   [附加功能和行为](#additional-features-and-behaviors)
 
 聚合操作处理数据记录和 return 计算结果。聚合操作将来自多个文档的值组合在一起，并且可以对分组数据执行各种操作以返回单个结果。 MongoDB 提供了三种执行聚合的方法：[聚合管道](#聚合管道)，[map-reduce function](#map-reduce)和[单一目的聚合方法](#单用途聚合操作)。
 
@@ -81,7 +81,7 @@ MongoDB 还提供  [db.collection.estimatedDocumentCount()](), [db.collection.co
 
 
 
-## <span id="additional-features-and-behaviors">其他 Features 和行为</span>
+## <span id="additional-features-and-behaviors">附加功能和行为</span>
 
 有关聚合管道 map-reduce 和特殊组功能的特性比较，请参阅[聚合命令比较](Aggregation/Aggregation-Reference/Aggregation-Commands-Commparison.md)。
 
