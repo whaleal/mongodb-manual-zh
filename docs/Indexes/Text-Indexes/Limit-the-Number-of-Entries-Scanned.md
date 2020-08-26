@@ -36,7 +36,7 @@ db.inventory.createIndex(
 db.inventory.find( { dept: "kitchen", $text: { $search: "green" } } )
 ```
 
-> 注意
+> **[success] 注意**
 >
 > * 复合`text`索引不能包含任何其他特殊索引类型，例如[多键](https://docs.mongodb.com/master/core/index-multikey/#index-type-multi-key)或 [地理空间](https://docs.mongodb.com/master/geospatial-queries/#index-feature-geospatial)索引字段。
 >
@@ -47,3 +47,7 @@ db.inventory.find( { dept: "kitchen", $text: { $search: "green" } } )
 也可以看看
 
 [文字索引](https://docs.mongodb.com/master/core/index-text/)
+
+
+
+译者：杨帅

@@ -1,4 +1,4 @@
-## 多键索引
+# 多键索引
 
 **在本页面**
 
@@ -8,13 +8,13 @@
 - [局限性](#局限)
 - [例子](#例子)
 
-为了索引包含数组值的字段，MongoDB为数组中的每个元素创建一个索引键。这些多键索引支持对数组字段的高效查询。多键索引可以在包含标量值[[1]](https://docs.mongodb.com/manual/core/index-multikey/#scalar)(例如字符串、数字)和嵌套文档的数组上构造。
+为了索引包含数组值的字段，MongoDB为数组中的每个元素创建一个索引键。这些多键索引支持对数组字段的高效查询。多键索引可以在包含标量值(例如字符串、数字)和嵌套文档的数组上构造。
 
 ![addr.zip字段上的多键索引图。 addr字段包含地址文档数组。 地址文档包含``zip''字段。](https://docs.mongodb.com/manual/_images/index-multikey.bakedsvg.svg)
 
 **标量值指的是既不是嵌入式文档也不是数组的值。**
 
-### <span id="创建">创建多键索引</span>
+## <span id="创建">创建多键索引</span>
 
 使用 [`db.collection.createIndex()`](https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/#db.collection.createIndex)方法创建一个多键索引:
 
@@ -28,11 +28,11 @@ MongoDB自动创建一个多键索引，如果任何索引字段是一个数组;
 
 从MongoDB 3.4开始，对于使用MongoDB 3.4或更高版本创建的多键索引，MongoDB会跟踪哪个索引字段或哪些字段导致一个索引成为多键索引。跟踪这些信息允许MongoDB查询引擎使用更紧密的索引边界。
 
-### <span id="界限">索引界限</span>
+## <span id="界限">索引界限</span>
 
 如果索引是多键的，那么索引边界的计算遵循特殊规则。有关多键索引边界的详细信息，请参见[多键索引边界](https://docs.mongodb.com/manual/core/multikey-index-bounds/)。
 
-### <span id="唯一">唯一多键索引</span>
+## <span id="唯一">唯一多键索引</span>
 
 对于[唯一](https://docs.mongodb.com/manual/core/index-unique/)索引，唯一约束适用于集合中的各个单独文档，而不是在单个文档中。
 
@@ -40,9 +40,9 @@ MongoDB自动创建一个多键索引，如果任何索引字段是一个数组;
 
 有关更多信息，请参见[跨单独文档的唯一约束](https://docs.mongodb.com/manual/core/index-unique/#unique-separate-documents)。
 
-### <span id="局限">局限性</span>
+## <span id="局限">局限性</span>
 
-#### 复合多键索引
+### 复合多键索引
 
 对于[复合](https://docs.mongodb.com/manual/core/index-compound/#index-type-compound)多键索引，每个索引文档最多只能有一个索引字段，其值是一个数组。那就是:
 
@@ -83,13 +83,13 @@ MongoDB自动创建一个多键索引，如果任何索引字段是一个数组;
 - [跨单独文档的唯一约束](https://docs.mongodb.com/manual/core/index-unique/#unique-separate-documents)
 - [单个字段上的唯一索引](https://docs.mongodb.com/manual/core/index-unique/#index-unique-index)
 
-#### 排序
+### 排序
 
 由于MongoDB 3.6中数组字段排序行为的改变，当对多键索引的数组排序时，查询计划包括一个阻塞排序阶段。新的排序行为可能会对性能产生负面影响。
 
 在阻塞排序中，在生成输出之前，排序步骤必须使用所有输入。在非阻塞排序或索引排序中，排序步骤扫描索引以按请求的顺序生成结果。
 
-#### 分片键
+### 分片键
 
 不能指定多键索引为分片键。
 
@@ -99,7 +99,7 @@ MongoDB自动创建一个多键索引，如果任何索引字段是一个数组;
 
 [Hashed](https://docs.mongodb.com/manual/core/index-hashed/)索引不能为多键。
 
-#### 覆盖查询
+### 覆盖查询
 
 [多键索引](https://docs.mongodb.com/manual/core/index-multikey/#index-type-multikey)不能覆盖对数组字段的查询。
 
@@ -107,7 +107,7 @@ MongoDB自动创建一个多键索引，如果任何索引字段是一个数组;
 
 **从4.2版本开始，MongoDB删除了已弃用的MMAPv1存储引擎。**
 
-#### 整体查询数组字段
+### 整体查询数组字段
 
 当一个查询过滤器为一个数组指定了一个精确的匹配，MongoDB可以使用**multikey**索引来查找查询数组的第一个元素，但是不能使用**multikey**索引扫描来查找整个数组。相反，在使用**multikey**索引查找查询数组的第一个元素之后，MongoDB检索相关的文档，并筛选其数组与查询中的数组匹配的文档。
 
@@ -139,9 +139,9 @@ MongoDB可以使用多键索引来查找**ratings**数组中任何位置有**5**
 
 [`$expr`](https://docs.mongodb.com/manual/reference/operator/query/expr/#op._S_expr) 不支持多键索引。
 
-### <span id="例子">例子</span>
+## <span id="例子">例子</span>
 
-#### 索引基本数组
+### 索引基本数组
 
 假设一个包含以下文档的`survey`集合:
 
@@ -161,7 +161,7 @@ db.survey.createIndex( { ratings: 1 } )
 - `5`，
 - `9`。
 
-#### 数组索引与嵌入式文件
+### 数组索引与嵌入式文件
 
 可以在包含嵌套对象的数组字段上创建多键索引。
 
@@ -206,7 +206,7 @@ db.survey.createIndex( { ratings: 1 } )
 db.inventory.createIndex( { "stock.size": 1, "stock.quantity": 1 } )
 ```
 
-复合多键索引可以支持具有谓词的查询，这些谓词既包括索引字段，也包括仅包括索引前缀**“stock”**的谓词。，如以下例子所示:
+复合多键索引可以支持具有谓词的查询，这些谓词既包括索引字段，也包括仅包括索引前缀**“stock.size”**的谓词。，如以下例子所示:
 
 ```powershell
 db.inventory.find( { "stock.size": "M" } )
@@ -224,3 +224,6 @@ db.inventory.find( { "stock.size": "M" } ).sort( { "stock.quantity": 1 } )
 
 有关复合索引和排序操作的行为的更多信息，请参见[使用索引对查询结果进行排序](https://docs.mongodb.com/manual/tutorial/sort-results-with-indexes/)。
 
+
+
+译者：杨帅

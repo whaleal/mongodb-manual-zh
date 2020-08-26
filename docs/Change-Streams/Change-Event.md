@@ -44,6 +44,26 @@ invalidate Event
 有些字段仅适用于某些操作，例如更新。下表描述了变更流响应文档中的每个字段：
 
 
+| Field                                                        | Type       | Description                                                  |
+| :----------------------------------------------------------- | :--------- | :----------------------------------------------------------- |
+| [_id](https://docs.mongodb.com/master/reference/change-events/#change-stream-event-id) | document   | Metadata related to the operation. Acts as the `resumeToken` for the `resumeAfter` parameter when resuming a change stream.copycopied`{   "_data" : <BinData|hex string> } `The `_data` type depends on the MongoDB versions and, in some cases, the feature compatibility version (fcv) at the time of the change stream’s opening/resumption. For details, see [Resume Tokens](https://docs.mongodb.com/master/changeStreams/#change-stream-resume-token). |
+| `operationType`                                              | string     | The type of operation that occurred. Can be any of the following values:`insert``delete``replace``update``drop``rename``dropDatabase``invalidate` |
+| `fullDocument`                                               | document   | The document created or modified by the `insert`, `replace`, `delete`, `update` operations (i.e. CRUD operations).For `insert` and `replace` operations, this represents the new document created by the operation.For `delete` operations, this field is omitted as the document no longer exists.For `update` operations, this field only appears if you configured the change stream with `fullDocument` set to `updateLookup`. This field then represents the most current majority-committed version of the document modified by the update operation. This document may differ from the changes described in `updateDescription` if other majority-committed operations modified the document between the original update operation and the full document lookup. |
+| `ns`                                                         | document   | The namespace (database and or collection) affected by the event. |
+| `ns.db`                                                      | string     | The name of the database.                                    |
+| `ns.coll`                                                    | string     | The name of the collection.For `dropDatabase` operations, this field is omitted. |
+| `to`                                                         | document   | When `operationType : rename`, this document displays the new name for the `ns` collection. This document is omitted for all other values of `operationType`. |
+| `to.db`                                                      | string     | The new name of the database.                                |
+| `to.coll`                                                    | string     | The new name of the collection.                              |
+| `documentKey`                                                | document   | A document that contains the `_id` of the document created or modified by the `insert`, `replace`, `delete`, `update` operations (i.e. CRUD operations). For sharded collections, also displays the full shard key for the document. The `_id` field is not repeated if it is already a part of the shard key. |
+| `updateDescription`                                          | document   | A document describing the fields that were updated or removed by the update operation.This document and its fields only appears if the `operationType` is `update`. |
+| `updateDescription.updatedFields`                            | document   | A document whose keys correspond to the fields that were modified by the update operation. The value of each field corresponds to the new value of those fields, rather than the operation that resulted in the new value. |
+| `updateDescription.removedFields`                            | array      | An array of fields that were removed by the update operation. |
+| `clusterTime`                                                | Timestamp  | The timestamp from the oplog entry associated with the event.For events that happened as part of a [multi-document transaction](https://docs.mongodb.com/master/core/transactions/), the associated change stream notifications will have the same `clusterTime` value, namely the time when the transaction was committed.On a sharded cluster, events that occur on different shards can have the same `clusterTime` but be associated with different transactions or even not be associcated with any transaction. To identify events for a single transaction, you can use the combination of `lsid` and `txnNumber` in the change stream event document.*New in version 4.0.* |
+| `txnNumber`                                                  | NumberLong | The transaction number.Only present if the operation is part of a [multi-document transaction](https://docs.mongodb.com/master/core/transactions/).*New in version 4.0.* |
+| `lsid`                                                       | Document   | The identifier for the session associated with the transaction.Only present if the operation is part of a [multi-document transaction](https://docs.mongodb.com/master/core/transactions/).*New in version 4.0.* |
+
+
 Field	Type	Description
 _id	document	Metadata related to the operation. Acts as the resumeToken for the resumeAfter parameter when resuming a change stream.
 copy
@@ -87,6 +107,7 @@ New in version 4.0.
 lsid	Document	The identifier for the session associated with the transaction.
 Only present if the operation is part of a multi-document transaction.
 New in version 4.0.
+
 
 
 
@@ -290,3 +311,5 @@ invalidate 事件关闭更改流游标。
 resumeAfter在无效事件（例如，集合删除或重命名）关闭流之后，您不能用来恢复更改 流。从MongoDB 4.2开始，您可以使用 startAfter在invalidate事件之后启动新的更改流。
 
 译者：wh
+
+```

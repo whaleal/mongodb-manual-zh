@@ -1,4 +1,4 @@
-## 文本索引
+# 文本索引
 
 **在本页面**
 
@@ -19,11 +19,11 @@
 >
 > [Atlas Search](https://docs.atlas.mongodb.com/atlas-search)可以很容易地在MongoDB数据上构建快速、基于相关性的搜索功能。在MongoDB Atlas上试试吧，这是我们的完全托管数据库服务。
 
-### <span id="概述">概述</span>
+## <span id="概述">概述</span>
 
 MongoDB提供[文本索引](https://docs.mongodb.com/master/core/index-text/#index-feature-text)以支持对字符串内容的文本搜索查询。`text`索引可以包含任何值为字符串或字符串元素数组的字段。
 
-### <span id="版本">版本</span>
+## <span id="版本">版本</span>
 
 | 文本索引版本 | 描述                                                         |
 | :----------- | :----------------------------------------------------------- |
@@ -31,13 +31,11 @@ MongoDB提供[文本索引](https://docs.mongodb.com/master/core/index-text/#ind
 | 版本2        | MongoDB 2.6引入了`text`索引的版本2 。版本2是`text`在MongoDB 2.6和3.0系列中创建的索引的默认版本。 |
 | 版本1        | MongoDB 2.4引入了`text`索引的版本1 。MongoDB 2.4仅支持版本`1`。 |
 
-要覆盖默认版本并指定其他版本，请在创建索引时包括该选项。`{ "textIndexVersion": <version> }`
-
 要覆盖默认版本并指定不同的版本，在创建索引时包括选项**{"textIndexVersion":` <version>`}**。
 
-### <span id="创建">创建文本索引</span>
+## <span id="创建">创建文本索引</span>
 
-> 重要
+> **[success] 重要**
 >
 > 一个集合最多可以有**一个** `text`索引。
 
@@ -60,9 +58,9 @@ db.reviews.createIndex(
 
 [复合索引](https://docs.mongodb.com/master/core/index-compound/)可以包含文本索引键和升序/降序索引键。有关更多信息，请参见[复合索引](https://docs.mongodb.com/master/core/index-compound/)。
 
-为了删除`text`索引，请使用索引名称。有关更多信息，请参见 [使用索引名称删除文本索引](https://docs.mongodb.com/master/tutorial/avoid-text-index-name-limit/#drop-text-index)。
+为了删除`text`索引，请使用索引名称。有关更多信息，请参见[使用索引名称删除文本索引](https://docs.mongodb.com/master/tutorial/avoid-text-index-name-limit/#drop-text-index)。
 
-#### 指定权重
+### 指定权重
 
 对于文本索引，索引字段的权重表示该字段相对于其他索引字段在文本搜索分数方面的重要性。
 
@@ -72,9 +70,9 @@ db.reviews.createIndex(
 
 有关使用权重控制文本搜索结果的更多信息，请参见[使用权重控制搜索结果](https://docs.mongodb.com/master/tutorial/control-results-of-text-search/)。
 
-#### 通配符文本索引
+### 通配符文本索引
 
-> 注意
+> **[succress] 注意**
 >
 > 通配符文本索引不同于[通配符索引](https://docs.mongodb.com/master/core/index-wildcard/#wildcard-index-core)。通配符索引不支持使用[`$text`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text)操作符的查询。
 >
@@ -98,11 +96,11 @@ db.collection.createIndex( { a: 1, "$**": "text" } )
 
 与所有[复合文本索引](https://docs.mongodb.com/master/core/index-text/#text-index-compound)一样，由于`a`位于文本索引键之前，为了使用该索引执行[`$text`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text)搜索，查询谓词必须包含一个相等匹配条件`a`。有关复合文本索引的信息，请参见[复合文本索引](https://docs.mongodb.com/master/core/index-text/#text-index-compound)。
 
-### <span id="不区分">不区分大小写</span>
+## <span id="不区分">不区分大小写</span>
 
 *在版本3.2中更改*
 
-版本3文本索引支持常用的``C语言、简单的`S`语言，对于土耳其语言，支持[Unicode 8.0字符数据库大小写](http://www.unicode.org/Public/8.0.0/ucd/CaseFolding.txt)折叠中指定的特殊**T**大小写折叠。
+版本3文本索引支持常用的`C`语言、简单的`S`语言，对于土耳其语言，支持[Unicode 8.0字符数据库大小写](http://www.unicode.org/Public/8.0.0/ucd/CaseFolding.txt)折叠中指定的特殊**T**大小写折叠。
 
 此案的大小写扩展文本索引包括字符不区分大小写的区分标志,如 `é`和`É`,从非拉丁字母和字符,如“И”和“и”西里尔字母。
 
@@ -110,7 +108,7 @@ db.collection.createIndex( { a: 1, "$**": "text" } )
 
 以前版本的文本索引只对[`A-z`]不区分大小写;例如，只对非变音符拉丁字符不区分大小写。对于所有其他字符，早期版本的文本索引将它们视为不同的字符。
 
-### <span id="不敏感">变音符号不敏感</span>
+## <span id="不敏感">变音符号不敏感</span>
 
 *在版本3.2中更改*
 
@@ -120,7 +118,7 @@ db.collection.createIndex( { a: 1, "$**": "text" } )
 
 `text`索引的早期版本将带变音符号的字符视为不同的字符。
 
-### <span id="分隔符">标记化分隔符</span>
+## <span id="分隔符">标记化分隔符</span>
 
 *在版本3.2中更改*
 
@@ -134,11 +132,11 @@ db.collection.createIndex( { a: 1, "$**": "text" } )
 
 该指数治疗的早期版本`«`作为术语的一部分 `"«était"`，and`»`作为长期的一部分`"monde»"`。
 
-### <span id="条目">索引条目</span>
+## <span id="条目">索引条目</span>
 
 文本索引对索引项的索引字段中的术语进行标记和词根处理。文本索引在集合中每个文档的每个索引字段中为每个唯一的词根项存储一个索引项。索引使用简单的[特定语言](https://docs.mongodb.com/master/core/index-text/#text-index-supported-languages)的后缀词干。
 
-### <span id="支持">支持的语言和停用词</span>
+## <span id="支持">支持的语言和停用词</span>
 
 MongoDB支持多种语言的文本搜索。`text`指数下降特定语言的停用词（如英语，`the`，`an`， `a`，`and`，等）和使用简单的语言特定的后缀而产生。有关支持的语言的列表，请参见[文本搜索语言](https://docs.mongodb.com/master/reference/text-search-languages/#text-search-languages)。
 
@@ -146,62 +144,64 @@ MongoDB支持多种语言的文本搜索。`text`指数下降特定语言的停�
 
 要为文本索引指定一种语言，请参见 [为文本索引指定语言](https://docs.mongodb.com/master/tutorial/specify-language-for-text-index/)。
 
-### <span id="sparse">`sparse`属性</span>
+## <span id="sparse">`sparse`属性</span>
 
 `text`索引总是[`sparse`](https://docs.mongodb.com/master/core/index-sparse/)并且忽略 [`sparse`](https://docs.mongodb.com/master/core/index-sparse/)选项。如果文档缺少`text`索引字段（或者该字段是`null`或为空数组），则MongoDB不会将文档条目添加到`text`索引中。对于插入，MongoDB会插入文档，但不会添加到`text`索引中。
 
 对于包含`text`索引键和其他类型的键的复合索引，只有`text`索引字段才能确定索引是否引用文档。其他键不能确定索引是否引用文档。
 
-### <span id="限制">限制条件</span>
+## <span id="限制">限制条件</span>
 
-#### 每个集合有一个文本索引
+### 每个集合有一个文本索引
 
 一个集合最多可以有**一个** `text`索引。
 
-#### 文字搜索和提示
+### 文字搜索和提示
 
 如果查询包含[`$text`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text)查询表达式，则不能使用[`hint()`](https://docs.mongodb.com/master/reference/method/cursor.hint/#cursor.hint)。
 
-#### 文本索引和排序
+### 文本索引和排序
 
 排序操作无法从`text`索引获得排序顺序，即使从[复合文本索引](https://docs.mongodb.com/master/core/index-text/#text-index-compound)也无法获得排序顺序；即排序操作不能使用文本索引中的顺序。
 
-#### 复合索引
+### 复合索引
 
 [复合索引](https://docs.mongodb.com/master/core/index-compound/)可以包含文本索引键和升序/降序索引键。但是，这些复合索引有以下限制:
 
-- 复合文本索引不能包含任何其他特殊索引类型，例如[多键](https://docs.mongodb.com/master/core/index-multikey/#index-type-multi-key)或 [地理空间](https://docs.mongodb.com/master/geospatial-queries/#index-feature-geospatial)索引字段。
+- 复合文本索引不能包含任何其他特殊索引类型，例如[多键](https://docs.mongodb.com/master/core/index-multikey/#index-type-multi-key)或[地理空间](https://docs.mongodb.com/master/geospatial-queries/#index-feature-geospatial)索引字段。
 - 如果复合文本索引在文本索引键之前包含键，那么要执行[`$text`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text)搜索，查询谓词必须包含前面键的相等匹配条件。
 - 在创建复合文本索引时，必须在索引规范文档中邻接列出所有文本索引键。
 
 另请参见[文本索引和排序](https://docs.mongodb.com/master/core/index-text/#text-index-and-sort)。
 
-有关复合文本索引的示例，请参见 [限制扫描的条目数](https://docs.mongodb.com/master/tutorial/limit-number-of-items-scanned-for-text-search/)。
+有关复合文本索引的示例，请参见[限制扫描的条目数](https://docs.mongodb.com/master/tutorial/limit-number-of-items-scanned-for-text-search/)。
 
-#### 删除文本索引
+### 删除文本索引
 
 要删除`text`索引，请将索引*名称*传递给 [`db.collection.dropIndex()`](https://docs.mongodb.com/master/reference/method/db.collection.dropIndex/#db.collection.dropIndex)方法。要获取索引的名称，请运行该[`db.collection.getIndexes()`](https://docs.mongodb.com/master/reference/method/db.collection.getIndexes/#db.collection.getIndexes)方法。
 
-有关`text`索引的默认命名方案以及覆盖默认名称的信息，请参见 [为文本Index指定名称](https://docs.mongodb.com/master/tutorial/avoid-text-index-name-limit/)。
+有关`text`索引的默认命名方案以及覆盖默认名称的信息，请参见[指定文本索引的名称](https://docs.mongodb.com/master/tutorial/avoid-text-index-name-limit/)。
 
-#### 排序选项
+### 排序选项
 
-`text`索引仅支持简单的二进制比较，不支持[排序规则](https://docs.mongodb.com/master/reference/bson-type-comparison-order/#collation)。
+`text`索引仅支持简单的二进制比较，不支持[排序](https://docs.mongodb.com/master/reference/bson-type-comparison-order/#collation)。
 
 要在具有非简单排序规则的集合上创建文本索引，必须在创建索引时显式指定`{collation: {locale: "simple"}}`。
 
-### <span id="成本">存储要求和性能成本</span>
+## <span id="成本">存储要求和性能成本</span>
 
 文本索引有以下存储要求和性能成本:
 
 - `text`索引可以很大。对于每个插入的文档，每个索引字段中的每个唯一后词形词都包含一个索引条目。
-- 构建`text`索引与构建大型多键索引非常相似，并且比在相同数据上构建简单的有序（标量）索引要花更长的时间。
+- 构建`text`索引与构建大型多键索引非常相似，并且比在相同数据上构建简单的有序(标量)索引要花更长的时间。
 - 在`text`现有集合上建立较大索引时，请确保对打开文件描述符的限制足够高。请参阅[建议的设置](https://docs.mongodb.com/master/reference/ulimit/)。
 - `text` 索引会影响插入吞吐量，因为MongoDB必须在每个新源文档的每个索引字段中为每个唯一的词干词添加一个索引条目。
 - 此外，`text`索引不存储短语或有关文档中单词接近度的信息。结果，当整个集合放入RAM中时，短语查询将更有效地运行。
 
-### <span id="搜索">文本搜索支持</span>
+## <span id="搜索">文本搜索支持</span>
 
-该`text`指数支持[`$text`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text)查询操作。有关文本搜索的示例，请参见。有关聚合管道中操作的示例，请参见聚合管道中的 [文本搜索](https://docs.mongodb.com/master/tutorial/text-search-in-aggregation/)。[`$text reference page`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text)[`$text`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text)
+文本索引支持[`$text`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text)查询操作。有关文本搜索的示例，请参见[`$text引用页面`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text)。有关聚合管道中的[`$text`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text) 操作示例，请参见[聚合管道中的文本搜索](https://docs.mongodb.com/master/tutorial/text-search-in-aggregation/)。
 
-文本索引支持$text查询操作。有关文本搜索的示例，请参见 [`$text reference page`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text)。有关聚合管道中的[`$text`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text)操作示例，请参见[聚合管道中的文本搜索](https://docs.mongodb.com/master/tutorial/text-search-in-aggregation/)。
+
+
+译者：杨帅

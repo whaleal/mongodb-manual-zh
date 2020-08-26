@@ -1,15 +1,15 @@
-## 为文本索引指定语言
+# 为文本索引指定语言
 
 **在本页面**
 
 - [指定`text`索引的默认语言](#语言)
-- [`text`为多种语言的集合创建索引](#索引)
+- [用多种语言为集合创建文本索引](#索引)
 
 本教程描述了如何[指定与文本索引关联的默认语言](https://docs.mongodb.com/master/tutorial/specify-language-for-text-index/#specify-default-language-text-index)，以及如何为[包含不同语言文档的集合创建文本索引](https://docs.mongodb.com/master/tutorial/specify-language-for-text-index/#select-from-multiple-languages-for-text-index)。
 
-### <span id="语言">指定`text`索引的默认语言</span>
+## <span id="语言">指定`text`索引的默认语言</span>
 
-与索引数据相关联的默认语言决定了解析词根(即词干分析)和忽略停止词的规则。索引数据的默认语言是英语。
+与索引数据相关联的默认语言决定了解析词根(即：词干分析)和忽略停止词的规则。索引数据的默认语言是英语。
 
 要指定不同的语言，请在创建文本索引时使用`default_language`选项。有关`default_language`可用的语言，请参阅[文本搜索语言](https://docs.mongodb.com/master/reference/text-search-languages/#text-search-languages)。
 
@@ -22,9 +22,9 @@ db.quotes.createIndex(
 )
 ```
 
-### <span id="索引">`text`为多种语言的集合创建索引</span>
+## <span id="索引">用多种语言为集合创建文本索引</span>
 
-#### 指定文档内的索引语言
+### 指定文档内的索引语言
 
 如果集合包含使用不同语言的文档或嵌入文档，则在文档或嵌入文档中包含名为`language`的字段，并将该文档或嵌入文档的语言指定为其值。
 
@@ -96,7 +96,7 @@ db.quotes.createIndex( { original: "text", "translation.quote": "text" } )
 
 对于不包含该`language`字段的文档，索引使用默认语言，即英语。
 
-#### 使用任何字段来指定文档的语言
+### 使用任何字段来指定文档的语言
 
 要使用非语言名称的字段，请在创建索引时包含`language_override`选项。
 
@@ -115,3 +115,6 @@ db.quotes.createIndex( { quote : "text" },
 { _id: 3, idioma: "english", quote: "is this a dagger which I see before me" }
 ```
 
+
+
+译者：杨帅
