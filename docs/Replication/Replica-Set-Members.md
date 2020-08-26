@@ -60,8 +60,7 @@ MongoDB 的副本集是一组提供冗余和高可用性的[`mongod`](https://do
 - 防止应用程序从它读取数据，适用于在该节点上运行需要与正常流量分离的应用程序。请参考[隐藏副本集成员](https://docs.mongodb.com/manual/core/replica-set-hidden-member/)。
 - 保持一个运行的“历史”快照，以便在从某些错误(如无意中删除的数据库)恢复时使用。请参考[延迟副本集成员](https://docs.mongodb.com/manual/core/replica-set-delayed-member/)。
 
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [[1\]](https://docs.mongodb.com/manual/core/replica-set-members/#id2) | **从4.2版本开始（从4.0.6也支持），副本集的副本成员会记录oplog中应用时间超过慢操作阈值的慢操作条目。这些慢oplog信息被记录在从节点的[诊断日志](https://docs.mongodb.com/manual/reference/program/mongod/#cmdoption-mongod-logpath) 中，其路径位于[`REPL`](https://docs.mongodb.com/manual/reference/log-messages/#REPL) 组件的文本`applied op: took ms`中。这些慢日志条目仅仅依赖于慢操作阈值。它们不依赖于日志级别（无论是系统还是组件级别）、过滤级别，或者慢操作采样比例。过滤器不会捕获慢日志条目。** |
+ [[1\]](https://docs.mongodb.com/manual/core/replica-set-members/#id2) | **从4.2版本开始（从4.0.6也支持），副本集的副本成员会记录oplog中应用时间超过慢操作阈值的慢操作条目。这些慢oplog信息被记录在从节点的[诊断日志](https://docs.mongodb.com/manual/reference/program/mongod/#cmdoption-mongod-logpath) 中，其路径位于[`REPL`](https://docs.mongodb.com/manual/reference/log-messages/#REPL) 组件的文本`applied op: took ms`中。这些慢日志条目仅仅依赖于慢操作阈值。它们不依赖于日志级别（无论是系统还是组件级别）、过滤级别，或者慢操作采样比例。过滤器不会捕获慢日志条目。** 
 
 
 ## 仲裁节点[¶](https://docs.mongodb.com/manual/core/replica-set-members/#arbiter)
@@ -81,8 +80,7 @@ MongoDB 的副本集是一组提供冗余和高可用性的[`mongod`](https://do
 使用仲裁节点时的注意事项，请参考[副本集仲裁节点](https://docs.mongodb.com/manual/core/replica-set-arbiter/)。
 
 
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [[2\]](https://docs.mongodb.com/manual/core/replica-set-members/#id1) | **在 [某些场景下](https://docs.mongodb.com/manual/core/read-preference-use-cases/#edge-cases), 一个副本集中的两个节点可能会认为它们是主节点，但至多，他们中的一个将能够完成写关心级别为[`{ w: "majority" }`](https://docs.mongodb.com/manual/reference/write-concern/#writeconcern."majority")的写操作。 可以完成 [`{ w: "majority" }`](https://docs.mongodb.com/manual/reference/write-concern/#writeconcern."majority") 写的节点是当前主节点，而另一个节点是原先的主节点，通常是由于[网络分区](https://docs.mongodb.com/manual/reference/glossary/#term-network-partition)导致它还没有意识到自己的降级。当这种情况发生时，连接到原先主节点的客户端尽管已经请求了读偏好[`primary`](https://docs.mongodb.com/manual/core/read-preference/#primary)，但可能还会观察到过时的数据，并且对原先主节点新写的操作最终将回滚掉。** |
+[[2\]](https://docs.mongodb.com/manual/core/replica-set-members/#id1) | **在 [某些场景下](https://docs.mongodb.com/manual/core/read-preference-use-cases/#edge-cases), 一个副本集中的两个节点可能会认为它们是主节点，但至多，他们中的一个将能够完成写关心级别为[`{ w: "majority" }`](https://docs.mongodb.com/manual/reference/write-concern/#writeconcern."majority")的写操作。 可以完成 [`{ w: "majority" }`](https://docs.mongodb.com/manual/reference/write-concern/#writeconcern."majority") 写的节点是当前主节点，而另一个节点是原先的主节点，通常是由于[网络分区](https://docs.mongodb.com/manual/reference/glossary/#term-network-partition)导致它还没有意识到自己的降级。当这种情况发生时，连接到原先主节点的客户端尽管已经请求了读偏好[`primary`](https://docs.mongodb.com/manual/core/read-preference/#primary)，但可能还会观察到过时的数据，并且对原先主节点新写的操作最终将回滚掉。** 
 
 随附副本集主节点、从节点和仲裁节点的参看链接：
 
