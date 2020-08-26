@@ -157,13 +157,10 @@ sh.shardCollection( namespace, key )
 
 值单调增加或减少的分片键更有可能将插入内容分布到集群中的单个分片上。
 
-This occurs because every cluster has a chunk that captures a range with an upper bound of [maxKey](https://docs.mongodb.com/manual/reference/bson-types/). **maxKey** always compares as higher than all other values. Similarly, there is a chunk that captures a range with a lower bound of [minKey](https://docs.mongodb.com/manual/reference/bson-types/). **minKey** always compares as lower than all other values.<br>
 发生这种情况是因为每个集群都有一个大数据块，该大数据块捕获具有`maxKey`上限的范围。 `maxKey`始终比所有其他值更高。 类似地，有一个块用`minKey`的下限捕获范围。 `minKey`总是比所有其他值都低。
 
-If the shard key value is always increasing, all new inserts are routed to the chunk with `maxKey` as the upper bound. If the shard key value is always decreasing, all new inserts are routed to the chunk with `minKey` as the lower bound. The shard containing that chunk becomes the bottleneck for write operations.<br>
 如果分片键值始终在增加，则所有新插入都将路由到以`maxKey`为上限的块。 如果分片键值始终在减小，则所有新插入都将路由到以`minKey`为下限的块。 包含该块的分片将成为写操作的瓶颈。
 
-The following image illustrates a sharded cluster using the field `X` as the shard key. If the values for `X` are monotonically increasing, the distribution of inserts may look similar to the following:<br>
 下图说明了使用字段`X`作为分片键的分片群集。 如果`X`的值单调增加，则插入的分布可能类似于以下内容：
 
 ![sharded-cluster-monotonic-distribution](https://docs.mongodb.com/manual/_images/sharded-cluster-monotonic-distribution.bakedsvg.svg)
