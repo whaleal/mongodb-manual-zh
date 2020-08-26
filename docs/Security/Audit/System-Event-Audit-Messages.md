@@ -87,7 +87,7 @@
 | [`shutdown`](https://docs.mongodb.com/manual/reference/privilege-actions/#shutdown) | `{ }`Indicates commencement of database shutdown. 指明数据库开始关闭 | `0` - Success                                                |
 | [`applicationMessage`](https://docs.mongodb.com/manual/reference/privilege-actions/#applicationMessage) | `{ msg:}`请查看[logApplicationMessage](https://docs.mongodb.com/manual/reference/command/logApplicationMessage/#dbcmd.logApplicationMessage). | `0` - Success                                                |
 
-[[1]](#id1) Enabling [`auditAuthorizationSuccess`](../parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess") degrades performance more than logging only the authorization failures.
+
 [[1]](#id1)启用[审计授权成功](../parameters/#param.auditAuthorizationSuccess "auditAuthorizationSuccess")与仅记录授权失败相比，启用会使性能下降更多。
 
 
