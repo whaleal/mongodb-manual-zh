@@ -299,7 +299,7 @@
 
 > **[success] 可以看看**
 >
-> db.collection.aggregate()]()中的[说明]()选项
+> [db.collection.aggregate()]()中的[说明]()选项
 
 
 
