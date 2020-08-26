@@ -240,7 +240,6 @@ invalidate Event
    }
 }
 ```
-A dropDatabase command generates a drop event for each collection in the database before generating a dropDatabase event for the database.
 
 一个dropDatabase事件导致一个 无效事件的流变化对打开的ns.db数据库。
 
