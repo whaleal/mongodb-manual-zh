@@ -168,13 +168,10 @@ The following image illustrates a sharded cluster using the field `X` as the sha
 
 ![sharded-cluster-monotonic-distribution](https://docs.mongodb.com/manual/_images/sharded-cluster-monotonic-distribution.bakedsvg.svg)
 
-If the shard key value was monotonically decreasing, then all inserts would route to `Chunk A` instead.<br>
 如果分片键值单调递减，则所有插入都将路由到`数据块A`。
 
-A shard key that does not change monotonically does not guarantee even distribution of data across the sharded cluster. The [cardinality](https://docs.mongodb.com/manual/core/sharding-shard-key/#shard-key-cardinality) and [frequency](https://docs.mongodb.com/manual/core/sharding-shard-key/#shard-key-frequency) of the shard key also contributes to data distribution. Consider each factor when choosing a shard key.<br>
 不能单调更改的分片键不能保证整个分片群集中的数据均匀分布。 分片键的`基数`和`频率`也有助于数据分配。 选择分片键时，请考虑每一个因素。
 
-If your data model requires sharding on a key that changes monotonically, consider using [Hashed Sharding](https://docs.mongodb.com/manual/core/hashed-sharding/).<br>
 如果您的数据模型需要对单调更改的键进行分片，请考虑使用`哈希分片`。
 
 
@@ -182,3 +179,4 @@ If your data model requires sharding on a key that changes monotonically, consid
 原文链接：https://docs.mongodb.com/manual/core/sharding-shard-key/
 
 译者：刘翔
+
