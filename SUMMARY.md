@@ -155,7 +155,7 @@
     * [安全检查列表](docs/Security/Security-Checklist.md)
     * [启用访问控制](docs/Security/Enable-Access-Control.md)
     * [身份验证](docs/Security/Authentication.md)
-    * [审计](docs/Security/Audit.md)
+    * [审计](docs/Security/Auditing.md)
         * [配置审计过滤器](docs/Security/Audit/Configure-Audit-Filters.md)
         * [配置审计](docs/Security/Audit/configure-Auditing.md)
         * [系统事件审计消息](docs/Security/Audit/System-Event-Audit-Messages.md)
