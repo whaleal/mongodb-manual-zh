@@ -125,6 +125,9 @@ _3.4 版本新功能_
 |  | [`db.getCollection()`](https://docs.mongodb.com/manual/reference/method/db.getCollection/#db.getCollection) <br> [`db.getCollectionInfos()`](https://docs.mongodb.com/manual/reference/method/db.getCollectionInfos/#db.getCollectionInfos) <br> [`db.getCollectionNames()`](https://docs.mongodb.com/manual/reference/method/db.getCollectionNames/#db.getCollectionNames) |
 | [`find`](https://docs.mongodb.com/manual/reference/command/find/#dbcmd.find) <br> [`distinct`](https://docs.mongodb.com/manual/reference/command/distinct/#dbcmd.distinct) <br> [`count`](https://docs.mongodb.com/manual/reference/command/count/#dbcmd.count) | [`db.collection.aggregate()`](https://docs.mongodb.com/manual/reference/method/db.collection.aggregate/#db.collection.aggregate) <br> [`db.collection.find()`](https://docs.mongodb.com/manual/reference/method/db.collection.find/#db.collection.find) <br> [`db.collection.findOne()`](https://docs.mongodb.com/manual/reference/method/db.collection.findOne/#db.collection.findOne) <br> [`db.collection.count()`](https://docs.mongodb.com/manual/reference/method/db.collection.count/#db.collection.count) <br> [`db.collection.distinct()`](https://docs.mongodb.com/manual/reference/method/db.collection.distinct/#db.collection.distinct) |
 
+
+原文链接：https://docs.mongodb.com/v4.2/core/views/
+
 译者 ：王恒
 
 

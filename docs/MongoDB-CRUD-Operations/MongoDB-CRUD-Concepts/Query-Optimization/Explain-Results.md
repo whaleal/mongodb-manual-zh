@@ -1,4 +1,4 @@
-## 解释结果
+# 解释结果
 
 **在本页面**
 
@@ -45,7 +45,7 @@
 - `SHARD_MERGE` 用于合并分片的结果
 - `SHARDING_FILTER` 用于从分片中筛选出孤立文档
 
-### <span id="1">解释输出</span>
+## <span id="1">解释输出</span>
 
 以下各节列出了该`explain`操作返回的一些关键字段。
 
@@ -54,7 +54,7 @@
 > - 字段列表并不意味着详尽无遗，而只是强调了早期解释版本中的一些关键字段更改。
 > - 输出格式在各个发行版之间可能有所更改。
 
-#### <span id="11">`queryPlanner`</span>
+### <span id="11">`queryPlanner`</span>
 
 [`queryPlanner`](https://docs.mongodb.com/manual/reference/explain-results/#explain.queryPlanner)信息详细说明了[查询优化器](https://docs.mongodb.com/manual/core/query-plans/)选择的计划。
 
@@ -109,7 +109,7 @@
 
 ​		查询优化器考虑和拒绝的候选计划的数组。如果没有其他候选计划，则该数组可以为空。
 
-#### <span id="12">`executionStats`</span>
+### <span id="12">`executionStats`</span>
 
 返回的[`executionStats`](https://docs.mongodb.com/manual/reference/explain-results/#explain.executionStats)信息详细说明了获胜计划的执行情况。为了包括 `executionStats`在结果中，您必须在以下任一位置运行解释：
 
@@ -193,7 +193,7 @@ db.keys.find( { x : { $in : [ 3, 4, 50, 74, 75, 90 ] } } ).explain( "executionSt
 
 ​			包含在计划选择阶段捕获的胜出计划和被否决计划的部分执行信息。只有当explain在所有计划执行冗长模式下运行时，该字段才			会出现。
 
-#### <span id="13">`serverInfo`</span>
+### <span id="13">`serverInfo`</span>
 
 - 未分片集合
 - 分片集合
@@ -240,13 +240,11 @@ db.keys.find( { x : { $in : [ 3, 4, 50, 74, 75, 90 ] } } ).explain( "executionSt
 }
 ```
 
-
-
-### <span id="2">3.0格式变更</span>
+## <span id="2">3.0格式变更</span>
 
 从MongoDB 3.0开始，结果的格式和字段`explain` 与以前的版本已更改。以下列出了一些主要区别。
 
-#### <span id="21">集合扫描与索引使用</span>
+### <span id="21">集合扫描与索引使用</span>
 
 如果查询计划者选择了集合扫描，则解释结果将包括一个`COLLSCAN`阶段。
 
@@ -259,7 +257,7 @@ db.keys.find( { x : { $in : [ 3, 4, 50, 74, 75, 90 ] } } ).explain( "executionSt
 
 有关收集扫描和索引扫描的执行统计信息的更多信息，请参见[分析查询性能](https://docs.mongodb.com/manual/tutorial/analyze-query-plan/)。
 
-#### <span id="22">覆盖查询</span>
+### <span id="22">覆盖查询</span>
 
 当索引涵盖查询时，MongoDB既可以匹配查询条件**，也**可以仅使用索引键返回结果；即MongoDB无需检查集合中的文档即可返回结果。
 
@@ -267,7 +265,7 @@ db.keys.find( { x : { $in : [ 3, 4, 50, 74, 75, 90 ] } } ).explain( "executionSt
 
 在MongoDB的早期版本中，`cursor.explain()`返回该 `indexOnly`字段以指示索引是否覆盖查询。
 
-#### <span id="23">索引交集</span>
+### <span id="23">索引交集</span>
 
 对于[索引交叉计划](https://docs.mongodb.com/manual/core/index-intersection/)，结果将包括一个`AND_SORTED`阶段或一个`AND_HASH` 包含[`inputStages`](https://docs.mongodb.com/manual/reference/explain-results/#explain.queryPlanner.winningPlan.inputStages)详细描述索引的数组的阶段。例如：
 
@@ -289,7 +287,7 @@ db.keys.find( { x : { $in : [ 3, 4, 50, 74, 75, 90 ] } } ).explain( "executionSt
 
 在以前的MongoDB版本中，`cursor.explain()`返回`cursor`值为index交集的 字段。`Complex Plan`
 
-#### <span id="24">`$or`表达式</span>
+### <span id="24">`$or`表达式</span>
 
 如果MongoDB对[`$or`](https://docs.mongodb.com/manual/reference/operator/query/or/#op._S_or)表达式使用索引，则结果将包括`OR`带有`inputStages`详细索引的数组的阶段 ；例如：
 
@@ -314,10 +312,14 @@ db.keys.find( { x : { $in : [ 3, 4, 50, 74, 75, 90 ] } } ).explain( "executionSt
 
 在MongoDB的早期版本中，`cursor.explain()`返回`clauses`详细说明索引的 数组。
 
-
-
 #### 分类阶段
 
 如果MongoDB可以使用索引扫描来获取请求的排序顺序，则结果将**不**包含`SORT`阶段。否则，如果MongoDB无法使用索引进行排序，则`explain`结果将包括一个 `SORT`阶段。
 
 在MongoDB 3.0之前，`cursor.explain()`返回此 `scanAndOrder`字段以指定MongoDB是否可以使用索引顺序返回排序的结果。
+
+
+
+译者：杨帅
+
+校对：杨帅
