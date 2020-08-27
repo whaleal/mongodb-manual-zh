@@ -264,4 +264,4 @@ MongoDB可以使用[索引](https://docs.mongodb.com/manual/core/index-intersect
 
 
 
-译者：杨帅
+译者：杨帅  莫薇
