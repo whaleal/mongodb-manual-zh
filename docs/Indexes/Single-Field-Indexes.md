@@ -105,4 +105,5 @@ db.records.find( { location: { city: "New York", state: "NY" } } )
 
 
 
-译者：杨帅
+译者：杨帅 莫薇
+
