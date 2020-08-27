@@ -28,12 +28,10 @@
 ### A. 创建OpenSSL配置文件
 
 
-1. 使用以下内容为您的服务器创建一个**测试**配置文件`openssl-test-server.cnf`：
+1. 使用以下内容为您的服务器创建一个**测试**配置文件`openssl-test-server.cnf`： 
 
    ```
    # NOT FOR PRODUCTION USE. OpenSSL configuration file for testing.
-   
-   
    [ req ]
    default_bits = 4096
    default_keyfile = myTestServerCertificateKey.pem    ## The default private key file name.
@@ -48,7 +46,7 @@
    nsComment = "OpenSSL Generated Certificate for TESTING only.  NOT FOR PRODUCTION USE."
    extendedKeyUsage  = serverAuth, clientAuth
    subjectAltName = @alt_names
-   
+
    [ alt_names ]
    DNS.1 =         ##TODO: Enter the DNS names. The DNS names should match the server names.
    DNS.2 =         ##TODO: Enter the DNS names. The DNS names should match the server names.
@@ -80,44 +78,27 @@
    commonName = Common Name (eg, YOUR name)
    commonName_max = 64
    ```
-   
-
 2. 在该`[alt_names]`部分中，输入适合MongoDB服务器的DNS名称和/或IP地址。您可以为MongoDB服务器指定多个DNS名称。
-
    对于OpenSSL SAN标识符，MongoDB支持：
-   
    - DNS名称和/或
    - IP地址字段（从MongoDB 4.2开始)
-
-
 3. *可选*。你可以更新默认的专有名称(DN)值
 
 
 提示
-
   - 为至少一个下列属性指定一个非空值：组织 (`O`)、组织单元 (`OU`)或者域组件 (`DC`)
-
   - 为内部成员身份验证创建**测试**服务器证书，如果指定了下面的属性，则在成员证书之间必须完全匹配：组织 (`O`)、组织单元 (`OU`)、域组件 (`DC`)。
-
-  
   有关内部成员身份验证要求的更多信息，请查阅[成员身份验证](https://docs.mongodb.com/manual/core/security-internal-authentication/#internal-auth-x509)。
-
-
 ### B. 为服务器生成测试PEM文件[¶](https://docs.mongodb.com/manual/appendix/security/appendixB-openssl-server/#b-generate-the-test-pem-file-for-server)
 
 
 重要
 
-
 在继续之前，请确保在配置文件`openssl-test-server.cnf`中的`[alt_names]`部分输入了适当的DNS名称。
-
-
 1. 创建**测试**密钥文件`mongodb-test-server1.key`。
-
-   ```
+```
    openssl genrsa -out mongodb-test-server1.key 4096
-   ```
-
+```
 2. 创建测试的证书签名请求`mongodb-test-server1.csr`。
 
    当要求提供专有名称值时，为您的测试证书输入适当的值：
@@ -126,7 +107,6 @@
    - 为内部成员身份验证创建**测试**服务器证书时，如果指定了以下属性，则这些属性必须在成员证书之间完全匹配：组织(`O`)、组织单位(`OU`)、域组件(`DC`)。
    
    复制
-
    ```
    openssl req -new -key mongodb-test-server1.key -out mongodb-test-server1.csr -config openssl-test-server.cnf
    ```
