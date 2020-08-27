@@ -61,7 +61,7 @@
 | 7.2 MongoDB驱动程序API                          | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |      |
 | 7.3 MongoDB生产注意事项           | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |      |
 | 7.4 MongoDB生产注意事项（分片集群） | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |      |
-| 7.5 MongoDB事务与操作           | 王金铷 | 100% |
+| 7.5 MongoDB事务操作           | 王金铷 | 100% |
 | 8.1 MongoDB索引                                     | 莫薇 | 100% |
 | 8.2 MongoDB单字段索引                  | 莫薇 | 100% |
 | 8.3 MongoDB复合索引                        | 莫薇 | 100% |
