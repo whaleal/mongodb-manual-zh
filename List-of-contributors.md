@@ -93,9 +93,9 @@
 | 9.12 MongoDB安全参考                     | 谢伟成 | 100% |
 | 9.13 MongoDB创建漏洞报告      | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |      |
 | 9.14 MongoDB安全附录                                 | 谢伟成 | 100% |
-| 10.1 Change Streams 变更流                                  | 锦木 | 100% |
+| 10.1 Change Streams 变更流                                  | 王恒 | 100% |
 | 10.2 Change Streams变更流生产建议 | 刘翔 | 100% |
-| 10.3 MongoDB变更事件                          | 锦木 | 100% |
+| 10.3 MongoDB变更事件                          | 王恒 | 100% |
 | 11.1 MongoDB复制                                | 李正洋 | 100% |
 | 11.2 MongoDB副本集成员                  | 李正洋 | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |
 | 11.3 MongoDB副本集日志                    | 李正洋 | 100% |
@@ -139,9 +139,9 @@
 | 15.5 常见问题解答：MongoDB复制和副本集 | 钟秋，小芒果 | 100% |
 | 15.6 常见问题解答：MongoDB存储         | 钟秋，小芒果 | 100% |
 | 15.7 常见问题解答：MongoDB诊断     | 钟秋，小芒果 | 100% |
-| 16.1 参考 - MongoDB运算符             | 锦木 | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |
-| 16.2 参考 - MongoDB数据库命令 | 锦木 | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |
-| 16.3 参考 - `mongo` Shell方法 | 锦木 | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |
+| 16.1 参考 - MongoDB运算符             | 李冠飞 | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |
+| 16.2 参考 - MongoDB数据库命令 | 李冠飞 | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |
+| 16.3 参考 - `mongo` Shell方法 | 李冠飞 | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |
 | 16.4 参考 - MongoDB软件包组件 | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |      |
 | 16.5 参考 - MongoDB配置文件选项               | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md)        |          |
 | 16.6 参考 - MongoDB服务器参数 | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |      |
@@ -153,10 +153,10 @@
 | 16.12 参考 - MongoDB Wire协议 | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |      |
 | 16.13 参考 - MongoDB日志消息       | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |      |
 | 16.14 参考 - 退出代码和状态 | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |      |
-| 16.15 参考 - MongoDB词汇表             | 锦木 | 100% |
-| 16.16 参考 - 默认的MongoDB端口 | 锦木 | 100% |
-| 16.17 参考 - 默认的MongoDB读关注/写关注 | 锦木 | 100% |
-| 16.18 参考 - MongoDB服务器会话  | 锦木 | 100% |
+| 16.15 参考 - MongoDB词汇表             | 李冠飞 | 100% |
+| 16.16 参考 - 默认的MongoDB端口 | 李冠飞 | 100% |
+| 16.17 参考 - 默认的MongoDB读关注/写关注 | 李冠飞 | 100% |
+| 16.18 参考 - MongoDB服务器会话  | 李冠飞 | 100% |
 | 17.1 MongoDB 4.2发行说明      | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |      |
 | 17.2 MongoDB 4.0发行说明 | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |      |
 | 17.3 MongoDB 3.6发行说明 |[加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md)||
