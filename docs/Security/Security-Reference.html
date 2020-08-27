@@ -5105,20 +5105,14 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="security-reference">Security Reference</h1>
-<h1 id="&#x5B89;&#x5168;&#x53C2;&#x8003;">&#x5B89;&#x5168;&#x53C2;&#x8003;</h1>
-<p>On this page</p>
+                                <h1 id="&#x5B89;&#x5168;&#x53C2;&#x8003;">&#x5B89;&#x5168;&#x53C2;&#x8003;</h1>
+<p>&#x5728;&#x672C;&#x9875;</p>
 <ul>
-<li><a href="https://docs.mongodb.com/manual/reference/security/#security-methods-in-the-mongo-shell" target="_blank">Security Methods in the <code>mongo</code> Shell</a></li>
 <li><a href="(https:/docs.mongodb.com/manual/reference/security#security-methods-in-the-mongo-shell">mongo shell&#x4E2D;&#x7684;&#x5B89;&#x5168;&#x76F8;&#x5173;&#x65B9;&#x6CD5;</a>)</li>
-<li><a href="https://docs.mongodb.com/manual/reference/security/#security-reference-documentation" target="_blank">Security Reference Documentation</a></li>
 <li><a href="https://docs.mongodb.com/manual/reference/security/#security-reference-documentation" target="_blank">&#x5B89;&#x5168;&#x53C2;&#x8003;&#x6587;&#x6863;</a></li>
 </ul>
-<p>The following lists the security related methods available in the <code>mongo</code> shell as well as additional <a href="https://docs.mongodb.com/manual/reference/security/#security-reference-materials" target="_blank">security reference   material</a>.</p>
 <p>&#x4E0B;&#x9762;&#x5217;&#x4E3E;&#x4E86;mongo shell &#x4E2D;&#x53EF;&#x7528;&#x7684;&#x4E0E;&#x5B89;&#x5168;&#x76F8;&#x5173;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4EE5;&#x53CA;&#x5176;&#x4ED6;<a href="https://docs.mongodb.com/manual/reference/security/#security-reference-materials" target="_blank">&#x5B89;&#x5168;&#x76F8;&#x5173;&#x6750;&#x6599;</a>&#x3002;</p>
-<h2 id="security-methods-in-the-mongo-shell">Security Methods in the mongo Shell</h2>
 <h2 id="mongo-shell&#x4E2D;&#x7684;&#x5B89;&#x5168;&#x76F8;&#x5173;&#x65B9;&#x6CD5;">mongo shell&#x4E2D;&#x7684;&#x5B89;&#x5168;&#x76F8;&#x5173;&#x65B9;&#x6CD5;</h2>
-<h3 id="user-management-and-authentication-methods">User Management and Authentication Methods</h3>
 <h3 id="&#x7528;&#x6237;&#x7BA1;&#x7406;&#x548C;&#x8BA4;&#x8BC1;&#x65B9;&#x6CD5;">&#x7528;&#x6237;&#x7BA1;&#x7406;&#x548C;&#x8BA4;&#x8BC1;&#x65B9;&#x6CD5;</h3>
 <table>
 <thead>
@@ -5130,55 +5124,54 @@
 <tbody>
 <tr>
 <td style="text-align:left"><a href="https://docs.mongodb.com/manual/reference/method/db.auth/#db.auth" target="_blank"><code>db.auth()</code></a></td>
-<td style="text-align:left">Authenticates a user to a database. &#x5411;&#x6570;&#x636E;&#x5E93;&#x9A8C;&#x8BC1;&#x7528;&#x6237;</td>
+<td style="text-align:left">&#x5411;&#x6570;&#x636E;&#x5E93;&#x9A8C;&#x8BC1;&#x7528;&#x6237;</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://docs.mongodb.com/manual/reference/method/db.changeUserPassword/#db.changeUserPassword" target="_blank"><code>db.changeUserPassword()</code></a></td>
-<td style="text-align:left">Changes an existing user&#x2019;s password.&#x6539;&#x53D8;&#x7528;&#x6237;&#x7684;&#x5BC6;&#x7801;</td>
+<td style="text-align:left">&#x6539;&#x53D8;&#x7528;&#x6237;&#x7684;&#x5BC6;&#x7801;</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://docs.mongodb.com/manual/reference/method/db.createUser/#db.createUser" target="_blank"><code>db.createUser()</code></a></td>
-<td style="text-align:left">Creates a new user. &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7528;&#x6237;</td>
+<td style="text-align:left">&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7528;&#x6237;</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://docs.mongodb.com/manual/reference/method/db.dropUser/#db.dropUser" target="_blank"><code>db.dropUser()</code></a></td>
-<td style="text-align:left">Removes a single user.&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x7528;&#x6237;</td>
+<td style="text-align:left">&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x7528;&#x6237;</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://docs.mongodb.com/manual/reference/method/db.dropAllUsers/#db.dropAllUsers" target="_blank"><code>db.dropAllUsers()</code></a></td>
-<td style="text-align:left">Deletes all users associated with a database.&#x5220;&#x9664;&#x4E0E;&#x6570;&#x636E;&#x5E93;&#x76F8;&#x5173;&#x7684;&#x7528;&#x6237;</td>
+<td style="text-align:left">&#x5220;&#x9664;&#x4E0E;&#x6570;&#x636E;&#x5E93;&#x76F8;&#x5173;&#x7684;&#x7528;&#x6237;</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://docs.mongodb.com/manual/reference/method/db.getUser/#db.getUser" target="_blank"><code>db.getUser()</code></a></td>
-<td style="text-align:left">Returns information about the specified user.&#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x7528;&#x6237;&#x4FE1;&#x606F;</td>
+<td style="text-align:left">&#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x7528;&#x6237;&#x4FE1;&#x606F;</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://docs.mongodb.com/manual/reference/method/db.getUsers/#db.getUsers" target="_blank"><code>db.getUsers()</code></a></td>
-<td style="text-align:left">Returns information about all users associated with a database.&#x8FD4;&#x56DE;&#x6240;&#x6709;&#x4E0E;&#x6570;&#x636E;&#x5E93;&#x76F8;&#x5173;&#x7684;&#x7528;&#x6237;&#x4FE1;&#x606F;</td>
+<td style="text-align:left">&#x8FD4;&#x56DE;&#x6240;&#x6709;&#x4E0E;&#x6570;&#x636E;&#x5E93;&#x76F8;&#x5173;&#x7684;&#x7528;&#x6237;&#x4FE1;&#x606F;</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://docs.mongodb.com/manual/reference/method/db.grantRolesToUser/#db.grantRolesToUser" target="_blank"><code>db.grantRolesToUser()</code></a></td>
-<td style="text-align:left">Grants a role and its privileges to a user.&#x6388;&#x4E88;&#x7528;&#x6237;&#x89D2;&#x8272;&#x548C;&#x89D2;&#x8272;&#x5305;&#x542B;&#x7684;&#x6743;&#x9650;</td>
+<td style="text-align:left">&#x6388;&#x4E88;&#x7528;&#x6237;&#x89D2;&#x8272;&#x548C;&#x89D2;&#x8272;&#x5305;&#x542B;&#x7684;&#x6743;&#x9650;</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://docs.mongodb.com/manual/reference/method/db.removeUser/#db.removeUser" target="_blank"><code>db.removeUser()</code></a></td>
-<td style="text-align:left">Deprecated. Removes a user from a database.&#x5F03;&#x7528;&#xFF0C;&#x4ECE;&#x6570;&#x636E;&#x5E93;&#x5220;&#x9664;&#x7528;&#x6237;</td>
+<td style="text-align:left">&#x5F03;&#x7528;&#xFF0C;&#x4ECE;&#x6570;&#x636E;&#x5E93;&#x5220;&#x9664;&#x7528;&#x6237;</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://docs.mongodb.com/manual/reference/method/db.revokeRolesFromUser/#db.revokeRolesFromUser" target="_blank"><code>db.revokeRolesFromUser()</code></a></td>
-<td style="text-align:left">Removes a role from a user.&#x5220;&#x9664;&#x7528;&#x6237;&#x7684;&#x89D2;&#x8272;</td>
+<td style="text-align:left">&#x5220;&#x9664;&#x7528;&#x6237;&#x7684;&#x89D2;&#x8272;</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://docs.mongodb.com/manual/reference/method/db.updateUser/#db.updateUser" target="_blank"><code>db.updateUser()</code></a></td>
-<td style="text-align:left">Updates user data.&#x66F4;&#x65B0;&#x7528;&#x6237;&#x6570;&#x636E;</td>
+<td style="text-align:left">&#x66F4;&#x65B0;&#x7528;&#x6237;&#x6570;&#x636E;</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://docs.mongodb.com/manual/reference/method/passwordPrompt/#passwordPrompt" target="_blank"><code>passwordPrompt()</code></a></td>
-<td style="text-align:left">Prompts for the password as an alternative to specifying passwords directly in various <a href="https://docs.mongodb.com/manual/reference/program/mongo/#bin.mongo" target="_blank"><code>mongo</code></a> shell user authentication/management methods.&#x63D0;&#x793A;&#x8F93;&#x5165;&#x5BC6;&#x7801;&#xFF0C;&#x4F5C;&#x4E3A;&#x5728;&#x5404;&#x79CD;mongo shell&#x7528;&#x6237;&#x7BA1;&#x7406;&#x65B9;&#x6CD5;&#x4E2D;&#x76F4;&#x63A5;&#x6307;&#x5B9A;&#x5BC6;&#x7801;&#x7684;&#x66FF;&#x4EE3;&#x65B9;&#x6CD5;</td>
+<td style="text-align:left">&#x63D0;&#x793A;&#x8F93;&#x5165;&#x5BC6;&#x7801;&#xFF0C;&#x4F5C;&#x4E3A;&#x5728;&#x5404;&#x79CD;mongo shell&#x7528;&#x6237;&#x7BA1;&#x7406;&#x65B9;&#x6CD5;&#x4E2D;&#x76F4;&#x63A5;&#x6307;&#x5B9A;&#x5BC6;&#x7801;&#x7684;&#x66FF;&#x4EE3;&#x65B9;&#x6CD5;</td>
 </tr>
 </tbody>
 </table>
-<h3 id="role-management-methods">Role Management Methods</h3>
 <h3 id="&#x89D2;&#x8272;&#x7BA1;&#x7406;&#x65B9;&#x6CD5;">&#x89D2;&#x8272;&#x7BA1;&#x7406;&#x65B9;&#x6CD5;</h3>
 <table>
 <thead>
@@ -5190,70 +5183,65 @@
 <tbody>
 <tr>
 <td style="text-align:left"><a href="https://docs.mongodb.com/manual/reference/method/db.createRole/#db.createRole" target="_blank"><code>db.createRole()</code></a></td>
-<td style="text-align:left">Creates a role and specifies its privileges.&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x89D2;&#x8272;&#x548C;&#x6307;&#x5B9A;&#x5176;&#x6743;&#x9650;</td>
+<td style="text-align:left">&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x89D2;&#x8272;&#x548C;&#x6307;&#x5B9A;&#x5176;&#x6743;&#x9650;</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://docs.mongodb.com/manual/reference/method/db.dropRole/#db.dropRole" target="_blank"><code>db.dropRole()</code></a></td>
-<td style="text-align:left">Deletes a user-defined role.&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x89D2;&#x8272;</td>
+<td style="text-align:left">&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x89D2;&#x8272;</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://docs.mongodb.com/manual/reference/method/db.dropAllRoles/#db.dropAllRoles" target="_blank"><code>db.dropAllRoles()</code></a></td>
-<td style="text-align:left">Deletes all user-defined roles associated with a database.&#x5220;&#x9664;&#x4E0E;&#x6570;&#x636E;&#x5E93;&#x5173;&#x8054;&#x7684;&#x6240;&#x6709;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x89D2;&#x8272;</td>
+<td style="text-align:left">&#x5220;&#x9664;&#x4E0E;&#x6570;&#x636E;&#x5E93;&#x5173;&#x8054;&#x7684;&#x6240;&#x6709;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x89D2;&#x8272;</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://docs.mongodb.com/manual/reference/method/db.getRole/#db.getRole" target="_blank"><code>db.getRole()</code></a></td>
-<td style="text-align:left">Returns information for the specified role.&#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x89D2;&#x8272;&#x7684;&#x4FE1;&#x606F;</td>
+<td style="text-align:left">&#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x89D2;&#x8272;&#x7684;&#x4FE1;&#x606F;</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://docs.mongodb.com/manual/reference/method/db.getRoles/#db.getRoles" target="_blank"><code>db.getRoles()</code></a></td>
-<td style="text-align:left">Returns information for all the user-defined roles in a database.&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x6240;&#x6709;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x89D2;&#x8272;&#x7684;&#x4FE1;&#x606F;</td>
+<td style="text-align:left">&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x6240;&#x6709;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x89D2;&#x8272;&#x7684;&#x4FE1;&#x606F;</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://docs.mongodb.com/manual/reference/method/db.grantPrivilegesToRole/#db.grantPrivilegesToRole" target="_blank"><code>db.grantPrivilegesToRole()</code></a></td>
-<td style="text-align:left">Assigns privileges to a user-defined role.&#x7ED9;&#x6307;&#x5B9A;&#x7528;&#x6237;&#x5206;&#x914D;&#x6743;&#x9650;</td>
+<td style="text-align:left">&#x7ED9;&#x6307;&#x5B9A;&#x7528;&#x6237;&#x5206;&#x914D;&#x6743;&#x9650;</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://docs.mongodb.com/manual/reference/method/db.revokePrivilegesFromRole/#db.revokePrivilegesFromRole" target="_blank"><code>db.revokePrivilegesFromRole()</code></a></td>
-<td style="text-align:left">Removes the specified privileges from a user-defined role.&#x4ECE;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x89D2;&#x8272;&#x4E2D;&#x5220;&#x9664;&#x6307;&#x5B9A;&#x6743;&#x9650;</td>
+<td style="text-align:left">&#x4ECE;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x89D2;&#x8272;&#x4E2D;&#x5220;&#x9664;&#x6307;&#x5B9A;&#x6743;&#x9650;</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://docs.mongodb.com/manual/reference/method/db.grantRolesToRole/#db.grantRolesToRole" target="_blank"><code>db.grantRolesToRole()</code></a></td>
-<td style="text-align:left">Specifies roles from which a user-defined role inherits privileges.&#x6307;&#x5B9A;&#x7528;&#x6237;&#x5B9A;&#x4E49;&#x7684;&#x89D2;&#x8272;&#x4ECE;&#x54EA;&#x4E9B;&#x89D2;&#x8272;&#x7EE7;&#x627F;&#x7279;&#x6743;&#x3002;</td>
+<td style="text-align:left">&#x6307;&#x5B9A;&#x7528;&#x6237;&#x5B9A;&#x4E49;&#x7684;&#x89D2;&#x8272;&#x4ECE;&#x54EA;&#x4E9B;&#x89D2;&#x8272;&#x7EE7;&#x627F;&#x7279;&#x6743;&#x3002;</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://docs.mongodb.com/manual/reference/method/db.revokeRolesFromRole/#db.revokeRolesFromRole" target="_blank"><code>db.revokeRolesFromRole()</code></a></td>
-<td style="text-align:left">Removes inherited roles from a role.&#x4ECE;&#x89D2;&#x8272;&#x4E2D;&#x5220;&#x9664;&#x7EE7;&#x627F;&#x7684;&#x89D2;&#x8272;</td>
+<td style="text-align:left">&#x4ECE;&#x89D2;&#x8272;&#x4E2D;&#x5220;&#x9664;&#x7EE7;&#x627F;&#x7684;&#x89D2;&#x8272;</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://docs.mongodb.com/manual/reference/method/db.updateRole/#db.updateRole" target="_blank"><code>db.updateRole()</code></a></td>
-<td style="text-align:left">Updates a user-defined role.&#x66F4;&#x65B0;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x89D2;&#x8272;&#x3002;</td>
+<td style="text-align:left">&#x66F4;&#x65B0;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x89D2;&#x8272;&#x3002;</td>
 </tr>
 </tbody>
 </table>
-<h2 id="security-reference-documentation">Security Reference Documentation</h2>
 <h3 id="&#x5B89;&#x5168;&#x76F8;&#x5173;&#x6587;&#x6863;">&#x5B89;&#x5168;&#x76F8;&#x5173;&#x6587;&#x6863;</h3>
 <ul>
 <li><p><a href="https://docs.mongodb.com/manual/reference/system-roles-collection/" target="_blank">system.roles Collection</a></p>
-<p>Describes the content of the collection that stores user-defined roles.</p>
 <p>&#x63CF;&#x8FF0;&#x5B58;&#x50A8;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x89D2;&#x8272;&#x7684;&#x96C6;&#x5408;&#x7684;&#x5185;&#x5BB9;&#x3002;</p>
 </li>
 <li><p><a href="https://docs.mongodb.com/manual/reference/system-users-collection/" target="_blank">system.users Collection</a></p>
-<p>Describes the content of the collection that stores users&#x2019; credentials and role assignments.</p>
 <p>&#x63CF;&#x8FF0;&#x5B58;&#x50A8;&#x7528;&#x6237;&#x51ED;&#x636E;&#x548C;&#x89D2;&#x8272;&#x5206;&#x914D;&#x7684;&#x96C6;&#x5408;&#x7684;&#x5185;&#x5BB9;&#x3002;</p>
 </li>
 <li><p><a href="https://docs.mongodb.com/manual/reference/resource-document/" target="_blank">Resource Document</a></p>
-<p>Describes the resource document for roles.</p>
 <p>&#x63CF;&#x8FF0;&#x89D2;&#x8272;&#x7684;&#x8D44;&#x6E90;&#x6587;&#x6863;&#x3002;</p>
 </li>
 <li><p><a href="https://docs.mongodb.com/manual/reference/privilege-actions/" target="_blank">Privilege Actions</a></p>
-<p>List of the actions available for privileges.</p>
 <p>&#x53EF;&#x7528;&#x4E8E;&#x6743;&#x9650;&#x7684;&#x64CD;&#x4F5C;&#x5217;&#x8868;&#x3002;</p>
 </li>
 </ul>
 <p>&#x539F;&#x6587;&#x94FE;&#x63A5;&#xFF1A;<a href="https://docs.mongodb.com/manual/reference/security/" target="_blank">https://docs.mongodb.com/manual/reference/security/</a></p>
 <p>&#x8BD1;&#x8005;&#xFF1A;&#x8C22;&#x4F1F;&#x6210;</p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; &#x4E0A;&#x6D77;&#x9526;&#x6728;&#x4FE1;&#x606F;&#x6280;&#x672F;&#x6709;&#x9650;&#x516C;&#x53F8; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2020-08-27 14:04:40
+2020-08-27 15:36:43
 </span></footer>
                                 
                                 </section>
@@ -5297,7 +5285,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"安全参考","level":"1.11.6","depth":2,"next":{"title":"system.roles集合","level":"1.11.6.1","depth":3,"path":"docs/Security/Security-Reference/system.rolesCollection.md","ref":"docs/Security/Security-Reference/system.rolesCollection.md","articles":[]},"previous":{"title":"网络和配置强化","level":"1.11.5","depth":2,"path":"docs/Security/Network-and-Configuration-Hardening.md","ref":"docs/Security/Network-and-Configuration-Hardening.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","donate","tbfed-pagefooter","github-buttons","github","chapter-fold","expandable-chapters","pageview-count","edit-link","back-to-top-button","-lunr","-search","search-pro","splitter","page-toc-button","auto-scroll-table","flexible-alerts","alerts","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 上海锦木信息技术有限公司","modify_label":"文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/JinMuInfo/MongoDB-Manual-zh"},"livereload":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"donate":{"alipay":"https://jinmuinfo.github.io/MongoDB-Manual-zh/img/pay/alipay.jpeg","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"https://jinmuinfo.github.io/MongoDB-Manual-zh/img/pay/Wechatpay.jpeg","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":4,"minTocSize":4},"back-to-top-button":{},"pageview-count":{},"alerts":{},"github-buttons":{"buttons":[{"user":"JinMuInfo","repo":"MongoDB-Manual-zh","type":"star","count":true,"size":"small"}]},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"edit-link":{"label":"Edit This Page","base":"https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"hbnking","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MongoDB-Manual-zh","language":"zh-hans","gitbook":"*","description":"MongoDB-Manual-zh"},"file":{"path":"docs/Security/Security-Reference.md","mtime":"2020-08-27T06:04:40.716Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-27T06:59:10.501Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"安全参考","level":"1.11.6","depth":2,"next":{"title":"system.roles集合","level":"1.11.6.1","depth":3,"path":"docs/Security/Security-Reference/system.rolesCollection.md","ref":"docs/Security/Security-Reference/system.rolesCollection.md","articles":[]},"previous":{"title":"网络和配置强化","level":"1.11.5","depth":2,"path":"docs/Security/Network-and-Configuration-Hardening.md","ref":"docs/Security/Network-and-Configuration-Hardening.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","donate","tbfed-pagefooter","github-buttons","github","chapter-fold","expandable-chapters","pageview-count","edit-link","back-to-top-button","-lunr","-search","search-pro","splitter","page-toc-button","auto-scroll-table","flexible-alerts","alerts","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 上海锦木信息技术有限公司","modify_label":"文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/JinMuInfo/MongoDB-Manual-zh"},"livereload":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"donate":{"alipay":"https://jinmuinfo.github.io/MongoDB-Manual-zh/img/pay/alipay.jpeg","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"https://jinmuinfo.github.io/MongoDB-Manual-zh/img/pay/Wechatpay.jpeg","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":4,"minTocSize":4},"back-to-top-button":{},"pageview-count":{},"alerts":{},"github-buttons":{"buttons":[{"user":"JinMuInfo","repo":"MongoDB-Manual-zh","type":"star","count":true,"size":"small"}]},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"edit-link":{"label":"Edit This Page","base":"https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"hbnking","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MongoDB-Manual-zh","language":"zh-hans","gitbook":"*","description":"MongoDB-Manual-zh"},"file":{"path":"docs/Security/Security-Reference.md","mtime":"2020-08-27T07:36:43.792Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-27T08:53:13.036Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
