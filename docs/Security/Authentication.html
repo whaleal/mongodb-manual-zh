@@ -102,7 +102,7 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="Audit.md" />
+    <link rel="next" href="Auditing.html" />
     
     
     <link rel="prev" href="Enable-Access-Control.html" />
@@ -2358,9 +2358,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.4" data-path="Audit.md">
+        <li class="chapter " data-level="1.11.4" data-path="Auditing.html">
             
-                <span>
+                <a href="Auditing.html">
             
                     
                     审计
@@ -5105,74 +5105,43 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="authentication">Authentication</h1>
-<h1 id="&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;">&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;</h1>
-<p>On this page</p>
-<ul>
-<li><a href="https://docs.mongodb.com/manual/core/authentication/#authentication-methods" target="_blank">Authentication Methods</a></li>
-<li><a href="https://docs.mongodb.com/manual/core/authentication/#authentication-mechanisms" target="_blank">Authentication Mechanisms</a></li>
-<li><a href="https://docs.mongodb.com/manual/core/authentication/#internal-authentication" target="_blank">Internal Authentication</a></li>
-<li><a href="https://docs.mongodb.com/manual/core/authentication/#authentication-on-sharded-clusters" target="_blank">Authentication on Sharded Clusters</a></li>
-</ul>
+                                <h1 id="&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;">&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;</h1>
 <p>&#x5728;&#x672C;&#x9875;&#x9762;</p>
 <ul>
-<li>&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x65B9;&#x6CD5;</li>
-<li>&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x673A;&#x5236;</li>
-<li>&#x5185;&#x90E8;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;</li>
-<li>&#x5206;&#x7247;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;</li>
+<li><a href="https://docs.mongodb.com/manual/core/authentication/#authentication-methods" target="_blank">&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x65B9;&#x6CD5;</a></li>
+<li><a href="https://docs.mongodb.com/manual/core/authentication/#authentication-mechanisms" target="_blank">&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x673A;&#x5236;</a></li>
+<li><a href="https://docs.mongodb.com/manual/core/authentication/#internal-authentication" target="_blank">&#x5185;&#x90E8;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;</a></li>
+<li><a href="https://docs.mongodb.com/manual/core/authentication/#authentication-on-sharded-clusters" target="_blank">&#x5206;&#x7247;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;</a></li>
 </ul>
-<p>Authentication is the process of verifying the identity of a client. When access control, i.e. <a href="https://docs.mongodb.com/manual/core/authorization/" target="_blank">authorization</a>, is enabled, MongoDB requires all clients to authenticate themselves in order to determine their access.</p>
 <p>&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x662F;&#x9A8C;&#x8BC1;&#x5BA2;&#x6237;&#x7AEF;&#x8EAB;&#x4EFD;&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x5F53;&#x8BBF;&#x95EE;&#x63A7;&#x5236;&#xFF08;&#x5373;&#x6388;&#x6743;&#xFF09;&#x5F00;&#x542F;&#x7684;&#x65F6;&#x5019;&#xFF0C;MongoDB&#x8981;&#x6C42;&#x6240;&#x6709;&#x5BA2;&#x6237;&#x7AEF;&#x8FDB;&#x884C;&#x8EAB;&#x4EFD;&#x8BA4;&#x8BC1;&#xFF0C;&#x4EE5;&#x786E;&#x5B9A;&#x4ED6;&#x4EEC;&#x7684;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x3002;</p>
-<p>Although authentication and <a href="https://docs.mongodb.com/manual/core/authorization/" target="_blank">authorization</a> are closely connected, authentication is distinct from authorization. Authentication verifies the identity of a user; authorization determines the verified user&#x2019;s access to resources and operations.</p>
 <p>&#x5C3D;&#x7BA1;&#x8EAB;&#x4EFD;&#x8BA4;&#x8BC1;&#x548C;&#x6388;&#x6743;&#x7D27;&#x5BC6;&#x76F8;&#x8FDE;&#xFF0C;&#x4F46;&#x662F;&#x8EAB;&#x4EFD;&#x8BA4;&#x8BC1;&#x548C;&#x6388;&#x6743;&#x662F;&#x4E0D;&#x540C;&#x7684;&#x3002;&#x8EAB;&#x4EFD;&#x8BA4;&#x8BC1;&#x662F;&#x9A8C;&#x8BC1;&#x7528;&#x6237;&#x7684;&#x8EAB;&#x4EFD;&#xFF0C;&#x6388;&#x6743;&#x51B3;&#x5B9A;&#x5DF2;&#x901A;&#x8FC7;&#x9A8C;&#x8BC1;&#x7684;&#x7528;&#x6237;&#x5BF9;&#x8D44;&#x6E90;&#x548C;&#x64CD;&#x4F5C;&#x7684;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x3002;</p>
-<h2 id="authentication-methods">Authentication Methods</h2>
 <h2 id="&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x7684;&#x65B9;&#x6CD5;">&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x7684;&#x65B9;&#x6CD5;</h2>
-<p>To authenticate as a user, you must provide a username, password, and the <a href="https://docs.mongodb.com/manual/reference/program/mongo/#mongo-shell-authentication-options" target="_blank">authentication database</a> associated with that user.</p>
 <p>&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#x8981;&#x8FDB;&#x884C;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#xFF0C;&#x4F60;&#x5FC5;&#x987B;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#x540D;&#x3001;&#x5BC6;&#x7801;&#x548C;&#x5173;&#x8054;&#x8FD9;&#x4E2A;&#x7528;&#x6237;&#x7684;&#x8BA4;&#x8BC1;&#x6570;&#x636E;&#x5E93;&#x3002;</p>
-<p>To authenticate using the <a href="https://docs.mongodb.com/manual/reference/program/mongo/#bin.mongo" target="_blank"><code>mongo</code></a> shell, either:</p>
-<ul>
-<li>Use the <a href="https://docs.mongodb.com/manual/reference/program/mongo/#bin.mongo" target="_blank"><code>mongo</code></a> command-line authentication options (<a href="https://docs.mongodb.com/manual/reference/program/mongo/#cmdoption-mongo-username" target="_blank"><code>--username</code></a>, <a href="https://docs.mongodb.com/manual/reference/program/mongo/#cmdoption-mongo-password" target="_blank"><code>--password</code></a>, and <a href="https://docs.mongodb.com/manual/reference/program/mongo/#cmdoption-mongo-authenticationdatabase" target="_blank"><code>--authenticationDatabase</code></a>) when connecting to the <a href="https://docs.mongodb.com/manual/reference/program/mongod/#bin.mongod" target="_blank"><code>mongod</code></a> or <a href="https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos" target="_blank"><code>mongos</code></a> instance, or</li>
-<li>Connect first to the <a href="https://docs.mongodb.com/manual/reference/program/mongod/#bin.mongod" target="_blank"><code>mongod</code></a> or <a href="https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos" target="_blank"><code>mongos</code></a> instance, and then run the <a href="https://docs.mongodb.com/manual/reference/command/authenticate/#dbcmd.authenticate" target="_blank"><code>authenticate</code></a> command or the <a href="https://docs.mongodb.com/manual/reference/method/db.auth/#db.auth" target="_blank"><code>db.auth()</code></a> method against the <a href="https://docs.mongodb.com/manual/reference/program/mongo/#mongo-shell-authentication-options" target="_blank">authentication database</a>.</li>
-</ul>
 <p>&#x4F7F;&#x7528;mongo shell &#x8FDB;&#x884C;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#xFF0C;&#x53EF;&#x4EE5;&#xFF1A;</p>
 <ul>
 <li>&#x5F53;&#x8FDE;&#x63A5;mongod&#x6216;&#x8005;mongos&#x5B9E;&#x4F8B;&#x65F6;&#xFF0C;&#x4F7F;&#x7528;mongo&#x547D;&#x4EE4;&#x884C;&#x8BA4;&#x8BC1;&#x9009;&#x9879;&#xFF08;--username&#x3001;--password&#x548C;--authenticationDatabase&#xFF09;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;</li>
 <li>&#x5148;&#x8FDE;&#x63A5;mongod&#x6216;&#x8005;mongos&#x5B9E;&#x4F8B;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x8BA4;&#x8BC1;&#x6570;&#x636E;&#x5E93;&#x4E0A;&#x8FD0;&#x884C;authenticate&#x547D;&#x4EE4;&#x6216;&#x8005;db.auth()&#x65B9;&#x6CD5;&#x3002;</li>
 </ul>
 <blockquote>
-<p>IMPORTANT:</p>
-<p>Authenticating multiple times as different users does <strong>not</strong> drop the credentials of previously-authenticated users. This may lead to a connection having more permissions than intended by the user, and causes operations within a <a href="https://docs.mongodb.com/manual/reference/server-sessions/" target="_blank">logical session</a> to raise an error.</p>
 <p>&#x91CD;&#x8981;&#xFF1A;</p>
 <p>&#x5F53;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x7528;&#x6237;&#x8FDB;&#x884C;&#x591A;&#x6B21;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x65F6;&#xFF0C;&#x4E0D;&#x4F1A;&#x5220;&#x9664;&#x5DF2;&#x7ECF;&#x901A;&#x8FC7;&#x8EAB;&#x4EFD;&#x8BA4;&#x8BC1;&#x7684;&#x7528;&#x6237;&#x7684;&#x51ED;&#x8BC1;&#x3002;&#x8FD9;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x8FD9;&#x4E2A;&#x8FDB;&#x884C;&#x8FC7;&#x591A;&#x4E2A;&#x7528;&#x6237;&#x8EAB;&#x4EFD;&#x8BA4;&#x8BC1;&#x7684;&#x8FDE;&#x63A5;&#x5177;&#x6709;&#x6BD4;&#x7528;&#x6237;&#x9884;&#x671F;&#x66F4;&#x591A;&#x7684;&#x6743;&#x9650;&#xFF0C;&#x5E76;&#x5BFC;&#x81F4;&#x5728;&#x4E00;&#x4E2A;&#x903B;&#x8F91;&#x4F1A;&#x8BDD;&#x4E2D;&#x7684;&#x64CD;&#x4F5C;&#x5F15;&#x53D1;&#x9519;&#x8BEF;&#x3002;</p>
 </blockquote>
-<p>For examples of authenticating using a MongoDB driver, see the <a href="https://docs.mongodb.com/ecosystem/drivers/" target="_blank">driver documentation</a>.</p>
 <p>&#x5173;&#x4E8E;&#x4F7F;&#x7528;MongoDB&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x8FDB;&#x884C;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x7684;&#x793A;&#x4F8B;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x6587;&#x6863;&#x3002;</p>
-<h2 id="authentication-mechanisms">Authentication Mechanisms</h2>
 <h2 id="&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x673A;&#x5236;">&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x673A;&#x5236;</h2>
-<p>MongoDB supports a number of <a href="https://docs.mongodb.com/manual/core/authentication-mechanisms/#security-authentication-mechanisms" target="_blank">authentication mechanisms</a> that clients can use to verify their identity. These mechanisms allow MongoDB to integrate into your existing authentication system.</p>
 <p>MongoDB&#x652F;&#x6301;&#x8BB8;&#x591A;&#x8EAB;&#x4EFD;&#x8BA4;&#x8BC1;&#x673A;&#x5236;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x8EAB;&#x4EFD;&#x8BA4;&#x8BC1;&#x673A;&#x5236;&#x6765;&#x9A8C;&#x8BC1;&#x81EA;&#x5DF1;&#x7684;&#x8EAB;&#x4EFD;&#x3002;MongoDB&#x5141;&#x8BB8;&#x96C6;&#x6210;&#x8FD9;&#x4E9B;&#x673A;&#x5236;&#x5230;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x7684;&#x8EAB;&#x4EFD;&#x8BA4;&#x8BC1;&#x7CFB;&#x7EDF;&#x3002;</p>
-<p>MongoDB supports multiple authentication mechanisms:</p>
-<ul>
-<li><a href="https://docs.mongodb.com/manual/core/security-scram/#authentication-scram" target="_blank">SCRAM</a> (<em>Default</em>)</li>
-<li><a href="https://docs.mongodb.com/manual/core/security-x.509/#security-auth-x509" target="_blank">x.509 Certificate Authentication</a>.</li>
-</ul>
 <p>MongoDB&#x652F;&#x6301;&#x591A;&#x79CD;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x673A;&#x5236;&#xFF1A;</p>
 <ul>
-<li>SCRAM&#xFF08;&#x9ED8;&#x8BA4;&#x7684;&#xFF09;</li>
-<li>x.509&#x8BC1;&#x4E66;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;</li>
+<li><a href="https://docs.mongodb.com/manual/core/security-scram/#authentication-scram" target="_blank">SCRAM</a> (<em>&#x9ED8;&#x8BA4;&#x7684;</em>)</li>
+<li><a href="https://docs.mongodb.com/manual/core/security-x.509/#security-auth-x509" target="_blank">x.509&#x8BC1;&#x4E66;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;</a>.</li>
 </ul>
-<h2 id="internal-authentication">Internal Authentication</h2>
 <h2 id="&#x5185;&#x90E8;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;">&#x5185;&#x90E8;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;</h2>
-<p>In addition to verifying the identity of a client, MongoDB can require members of replica sets and sharded clusters to <a href="https://docs.mongodb.com/manual/core/security-internal-authentication/#inter-process-auth" target="_blank">authenticate their membership</a> to their respective replica set or sharded cluster. See <a href="https://docs.mongodb.com/manual/core/security-internal-authentication/#inter-process-auth" target="_blank">Internal/Membership Authentication</a> for more information.</p>
 <p>&#x9664;&#x4E86;&#x9A8C;&#x8BC1;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8EAB;&#x4EFD;&#x4E4B;&#x5916;&#xFF0C;MongoDB&#x80FD;&#x8981;&#x6C42;&#x526F;&#x672C;&#x96C6;&#x548C;&#x5206;&#x7247;&#x96C6;&#x7FA4;&#x7684;&#x6210;&#x5458;&#x5BF9;&#x5176;&#x5404;&#x81EA;&#x7684;&#x526F;&#x672C;&#x96C6;&#x6216;&#x8005;&#x5206;&#x7247;&#x96C6;&#x7FA4;&#x7684;&#x6210;&#x5458;&#x8D44;&#x683C;&#x8FDB;&#x884C;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x3002;&#x66F4;&#x591A;&#x7684;&#x4FE1;&#x606F;&#x8BF7;&#x53C2;&#x9605;&#xFF1A;&#x5185;&#x90E8;/&#x6210;&#x5458;&#x8EAB;&#x4EFD;&#x8BA4;&#x8BC1;&#x3002;</p>
-<h2 id="authentication-on-sharded-clusters">Authentication on Sharded Clusters</h2>
 <h2 id="&#x5206;&#x7247;&#x96C6;&#x7FA4;&#x7684;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;">&#x5206;&#x7247;&#x96C6;&#x7FA4;&#x7684;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;</h2>
-<p>In sharded clusters, clients generally authenticate directly to the <a href="https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos" target="_blank"><code>mongos</code></a> instances. However, some maintenance operations may require authenticating directly to a specific shard. For more information on authentication and sharded clusters, see <a href="https://docs.mongodb.com/manual/core/security-users/#sharding-security" target="_blank">Sharded Cluster Users</a>.</p>
-<p>&#x5728;&#x5206;&#x7247;&#x96C6;&#x7FA4;&#x4E2D;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x901A;&#x5E38;&#x76F4;&#x63A5;&#x5411;mongos&#x5B9E;&#x4F8B;&#x8FDB;&#x884C;&#x8EAB;&#x4EFD;&#x8BA4;&#x8BC1;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x4E00;&#x4E9B;&#x7EF4;&#x62A4;&#x64CD;&#x4F5C;&#x53EF;&#x80FD;&#x8981;&#x6C42;&#x5BF9;&#x7279;&#x5B9A;&#x7684;&#x5206;&#x7247;&#x8FDB;&#x884C;&#x8BA4;&#x8BC1;&#x3002;&#x66F4;&#x591A;&#x5173;&#x4E8E;&#x8EAB;&#x4EFD;&#x8BA4;&#x8BC1;&#x548C;&#x5206;&#x7247;&#x96C6;&#x7FA4;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x5206;&#x7247;&#x96C6;&#x7FA4;&#x7528;&#x6237;&#x3002;</p>
+<p>&#x5728;&#x5206;&#x7247;&#x96C6;&#x7FA4;&#x4E2D;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x901A;&#x5E38;&#x76F4;&#x63A5;&#x5411;mongos&#x5B9E;&#x4F8B;&#x8FDB;&#x884C;&#x8EAB;&#x4EFD;&#x8BA4;&#x8BC1;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x4E00;&#x4E9B;&#x7EF4;&#x62A4;&#x64CD;&#x4F5C;&#x53EF;&#x80FD;&#x8981;&#x6C42;&#x5BF9;&#x7279;&#x5B9A;&#x7684;&#x5206;&#x7247;&#x8FDB;&#x884C;&#x8BA4;&#x8BC1;&#x3002;&#x66F4;&#x591A;&#x5173;&#x4E8E;&#x8EAB;&#x4EFD;&#x8BA4;&#x8BC1;&#x548C;&#x5206;&#x7247;&#x96C6;&#x7FA4;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;<a href="https://docs.mongodb.com/manual/core/security-users/#sharding-security" target="_blank">&#x5206;&#x7247;&#x96C6;&#x7FA4;&#x7528;&#x6237;</a>&#x3002;</p>
 <p>&#x539F;&#x6587;&#x94FE;&#x63A5;&#xFF1A;<a href="https://docs.mongodb.com/manual/core/authentication/" target="_blank">https://docs.mongodb.com/manual/core/authentication/</a></p>
 <p>&#x8BD1;&#x8005;&#xFF1A;&#x5085;&#x7ACB;</p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; &#x4E0A;&#x6D77;&#x9526;&#x6728;&#x4FE1;&#x606F;&#x6280;&#x672F;&#x6709;&#x9650;&#x516C;&#x53F8; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2020-08-25 20:14:46
+2020-08-26 19:30:55
 </span></footer>
                                 
                                 </section>
@@ -5205,7 +5174,7 @@
                 </a>
                 
                 
-                <a href="Audit.md" class="navigation navigation-next " aria-label="Next page: 审计">
+                <a href="Auditing.html" class="navigation navigation-next " aria-label="Next page: 审计">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -5216,7 +5185,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"身份验证","level":"1.11.3","depth":2,"next":{"title":"审计","level":"1.11.4","depth":2,"path":"docs/Security/Audit.md","ref":"docs/Security/Audit.md","articles":[{"title":"配置审计过滤器","level":"1.11.4.1","depth":3,"path":"docs/Security/Audit/Configure-Audit-Filters.md","ref":"docs/Security/Audit/Configure-Audit-Filters.md","articles":[]},{"title":"配置审计","level":"1.11.4.2","depth":3,"path":"docs/Security/Audit/configure-Auditing.md","ref":"docs/Security/Audit/configure-Auditing.md","articles":[]},{"title":"系统事件审计消息","level":"1.11.4.3","depth":3,"path":"docs/Security/Audit/System-Event-Audit-Messages.md","ref":"docs/Security/Audit/System-Event-Audit-Messages.md","articles":[]}]},"previous":{"title":"启用访问控制","level":"1.11.2","depth":2,"path":"docs/Security/Enable-Access-Control.md","ref":"docs/Security/Enable-Access-Control.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","donate","tbfed-pagefooter","github-buttons","github","chapter-fold","expandable-chapters","pageview-count","edit-link","back-to-top-button","-lunr","-search","search-pro","splitter","page-toc-button","auto-scroll-table","flexible-alerts","alerts","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 上海锦木信息技术有限公司","modify_label":"文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/JinMuInfo/MongoDB-Manual-zh"},"livereload":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"donate":{"alipay":"https://jinmuinfo.github.io/MongoDB-Manual-zh/img/pay/alipay.jpeg","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"https://jinmuinfo.github.io/MongoDB-Manual-zh/img/pay/Wechatpay.jpeg","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":4,"minTocSize":4},"back-to-top-button":{},"pageview-count":{},"alerts":{},"github-buttons":{"buttons":[{"user":"JinMuInfo","repo":"MongoDB-Manual-zh","type":"star","count":true,"size":"small"}]},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"edit-link":{"label":"Edit This Page","base":"https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"hbnking","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MongoDB-Manual-zh","language":"zh-hans","gitbook":"*","description":"MongoDB-Manual-zh"},"file":{"path":"docs/Security/Authentication.md","mtime":"2020-08-25T12:14:46.144Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-25T12:17:21.183Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"身份验证","level":"1.11.3","depth":2,"next":{"title":"审计","level":"1.11.4","depth":2,"path":"docs/Security/Auditing.md","ref":"docs/Security/Auditing.md","articles":[{"title":"配置审计过滤器","level":"1.11.4.1","depth":3,"path":"docs/Security/Audit/Configure-Audit-Filters.md","ref":"docs/Security/Audit/Configure-Audit-Filters.md","articles":[]},{"title":"配置审计","level":"1.11.4.2","depth":3,"path":"docs/Security/Audit/configure-Auditing.md","ref":"docs/Security/Audit/configure-Auditing.md","articles":[]},{"title":"系统事件审计消息","level":"1.11.4.3","depth":3,"path":"docs/Security/Audit/System-Event-Audit-Messages.md","ref":"docs/Security/Audit/System-Event-Audit-Messages.md","articles":[]}]},"previous":{"title":"启用访问控制","level":"1.11.2","depth":2,"path":"docs/Security/Enable-Access-Control.md","ref":"docs/Security/Enable-Access-Control.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","donate","tbfed-pagefooter","github-buttons","github","chapter-fold","expandable-chapters","pageview-count","edit-link","back-to-top-button","-lunr","-search","search-pro","splitter","page-toc-button","auto-scroll-table","flexible-alerts","alerts","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 上海锦木信息技术有限公司","modify_label":"文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/JinMuInfo/MongoDB-Manual-zh"},"livereload":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"donate":{"alipay":"https://jinmuinfo.github.io/MongoDB-Manual-zh/img/pay/alipay.jpeg","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"https://jinmuinfo.github.io/MongoDB-Manual-zh/img/pay/Wechatpay.jpeg","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":4,"minTocSize":4},"back-to-top-button":{},"pageview-count":{},"alerts":{},"github-buttons":{"buttons":[{"user":"JinMuInfo","repo":"MongoDB-Manual-zh","type":"star","count":true,"size":"small"}]},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"edit-link":{"label":"Edit This Page","base":"https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"hbnking","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MongoDB-Manual-zh","language":"zh-hans","gitbook":"*","description":"MongoDB-Manual-zh"},"file":{"path":"docs/Security/Authentication.md","mtime":"2020-08-26T11:30:55.050Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-27T01:56:44.490Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

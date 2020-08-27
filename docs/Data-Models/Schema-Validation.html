@@ -2358,9 +2358,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.4" data-path="../Security/Audit.md">
+        <li class="chapter " data-level="1.11.4" data-path="../Security/Auditing.html">
             
-                <span>
+                <a href="../Security/Auditing.html">
             
                     
                     审计
@@ -5105,19 +5105,10 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="schema-validation-&#x6A21;&#x5F0F;&#x9A8C;&#x8BC1;">Schema Validation &#x6A21;&#x5F0F;&#x9A8C;&#x8BC1;</h1>
-<p>On this page &#x5728;&#x672C;&#x9875;&#x4E2D;</p>
+                                <h1 id="&#x6A21;&#x5F0F;&#x9A8C;&#x8BC1;">&#x6A21;&#x5F0F;&#x9A8C;&#x8BC1;</h1>
+<p>&#x5728;&#x672C;&#x9875;&#x4E2D;</p>
 <ul>
-<li><a href="https://docs.mongodb.com/manual/core/schema-validation/#specify-validation-rules" target="_blank">Specify Validation Rules</a></li>
-<li><a href="https://docs.mongodb.com/manual/core/schema-validation/#json-schema" target="_blank">JSON Schema</a></li>
-<li><a href="https://docs.mongodb.com/manual/core/schema-validation/#other-query-expressions" target="_blank">Other Query Expressions</a></li>
-<li><a href="https://docs.mongodb.com/manual/core/schema-validation/#behavior" target="_blank">Behavior</a></li>
-<li><a href="https://docs.mongodb.com/manual/core/schema-validation/#restrictions" target="_blank">Restrictions</a></li>
-<li><a href="https://docs.mongodb.com/manual/core/schema-validation/#bypass-document-validation" target="_blank">Bypass Document Validation</a></li>
-<li><a href="https://docs.mongodb.com/manual/core/schema-validation/#additional-information" target="_blank">Additional Information</a></li>
-<li></li>
-<li><p><a href="https://docs.mongodb.com/manual/core/schema-validation/#specify-validation-rules" target="_blank">&#x6307;&#x5B9A;&#x9A8C;&#x8BC1;&#x89C4;&#x5219;</a></p>
-</li>
+<li><a href="https://docs.mongodb.com/manual/core/schema-validation/#specify-validation-rules" target="_blank">&#x6307;&#x5B9A;&#x9A8C;&#x8BC1;&#x89C4;&#x5219;</a></li>
 <li><a href="https://docs.mongodb.com/manual/core/schema-validation/#json-schema" target="_blank">JSON&#x6A21;&#x5F0F;</a></li>
 <li><a href="https://docs.mongodb.com/manual/core/schema-validation/#other-query-expressions" target="_blank">&#x5176;&#x4ED6;&#x67E5;&#x8BE2;&#x8868;&#x8FBE;&#x5F0F;</a></li>
 <li><a href="https://docs.mongodb.com/manual/core/schema-validation/#behavior" target="_blank">&#x884C;&#x4E3A;</a></li>
@@ -5125,19 +5116,9 @@
 <li><a href="https://docs.mongodb.com/manual/core/schema-validation/#bypass-document-validation" target="_blank">&#x7ED5;&#x8FC7;&#x6587;&#x6863;&#x9A8C;&#x8BC1;</a></li>
 <li><a href="https://docs.mongodb.com/manual/core/schema-validation/#additional-information" target="_blank">&#x9644;&#x52A0;&#x4FE1;&#x606F;</a></li>
 </ul>
-<p><em>New in version 3.2.</em></p>
-<p>MongoDB provides the capability to perform schema validation during updates and insertions.</p>
 <p><em>&#x7248;&#x672C;3.2&#x4E2D;&#x7684;&#x65B0;&#x529F;&#x80FD;</em></p>
 <p>MongoDB&#x63D0;&#x4F9B;&#x4E86;&#x5728;&#x66F4;&#x65B0;&#x548C;&#x63D2;&#x5165;&#x671F;&#x95F4;&#x6267;&#x884C;&#x6A21;&#x5F0F;&#x9A8C;&#x8BC1;&#x7684;&#x529F;&#x80FD;&#x3002;</p>
-<h2 id="specify-validation-rules-&#x6307;&#x5B9A;&#x9A8C;&#x8BC1;&#x89C4;&#x5219;">Specify Validation Rules &#x6307;&#x5B9A;&#x9A8C;&#x8BC1;&#x89C4;&#x5219;</h2>
-<p>Validation rules are on a per-collection basis.</p>
-<p>To specify validation rules when creating a new collection, use <a href="https://docs.mongodb.com/manual/reference/method/db.createCollection/#db.createCollection" target="_blank"><code>db.createCollection()</code></a> with the <code>validator</code> option.</p>
-<p>To add document validation to an existing collection, use <a href="https://docs.mongodb.com/manual/reference/command/collMod/#dbcmd.collMod" target="_blank"><code>collMod</code></a> command with the <code>validator</code> option.</p>
-<p>MongoDB also provides the following related options:</p>
-<ul>
-<li><code>validationLevel</code> option, which determines how strictly MongoDB applies validation rules to existing documents during an update, and</li>
-<li><code>validationAction</code> option, which determines whether MongoDB should <code>error</code> and reject documents that violate the validation rules or <code>warn</code> about the violations in the log but allow invalid documents.</li>
-</ul>
+<h2 id="&#x6307;&#x5B9A;&#x9A8C;&#x8BC1;&#x89C4;&#x5219;">&#x6307;&#x5B9A;&#x9A8C;&#x8BC1;&#x89C4;&#x5219;</h2>
 <p>&#x9A8C;&#x8BC1;&#x89C4;&#x5219;&#x57FA;&#x4E8E;&#x6BCF;&#x4E2A;&#x96C6;&#x5408;&#x3002;</p>
 <p>&#x8981;&#x5728;&#x521B;&#x5EFA;&#x65B0;&#x96C6;&#x5408;&#x65F6;&#x6307;&#x5B9A;&#x9A8C;&#x8BC1;&#x89C4;&#x5219;&#xFF0C;&#x8BF7;&#x4F7F;&#x7528;<a href="https://docs.mongodb.com/manual/reference/method/db.createCollection/#db.createCollection" target="_blank"><code>db.createCollection()</code></a>&#x4F7F;&#x7528;<code>validator</code>&#x9009;&#x9879;&#x3002;</p>
 <p>&#x82E5;&#x8981;&#x5C06;&#x6587;&#x6863;&#x9A8C;&#x8BC1;&#x6DFB;&#x52A0;&#x5230;&#x73B0;&#x6709;&#x96C6;&#x5408;&#xFF0C;&#x8BF7;&#x4F7F;&#x7528;<a href="https://docs.mongodb.com/manual/reference/command/collMod/#dbcmd.collMod" target="_blank"><code>collMod</code></a>&#x5E26;&#x6709; <code>validator</code> &#x9009;&#x9879;&#x7684;&#x547D;&#x4EE4;&#x3002;</p>
@@ -5146,14 +5127,7 @@
 <li><code>validationLevel</code> &#x9009;&#x9879;&#xFF0C;&#x8BE5;&#x9009;&#x9879;&#x786E;&#x5B9A;MongoDB&#x5728;&#x66F4;&#x65B0;&#x671F;&#x95F4;&#x5BF9;&#x73B0;&#x6709;&#x6587;&#x6863;&#x5E94;&#x7528;&#x9A8C;&#x8BC1;&#x89C4;&#x5219;&#x7684;&#x4E25;&#x683C;&#x7A0B;&#x5EA6;&#xFF0C;&#x4EE5;&#x53CA;</li>
 <li><code>validationAction</code> &#x9009;&#x9879;&#xFF0C;&#x8BE5;&#x9009;&#x9879;&#x786E;&#x5B9A;MongoDB&#x662F;&#x5426;&#x5E94;&#x663E;&#x793A;&#x9519;&#x8BEF;&#x5E76;&#x62D2;&#x7EDD;&#x8FDD;&#x53CD;&#x9A8C;&#x8BC1;&#x89C4;&#x5219;&#x7684;&#x6587;&#x6863;&#xFF0C;&#x6216; <code>warn</code> &#x65E5;&#x5FD7;&#x4E2D;&#x7684;&#x8FDD;&#x53CD;&#x884C;&#x4E3A;&#xFF0C;&#x4F46;&#x5141;&#x8BB8;&#x65E0;&#x6548;&#x6587;&#x6863;&#x3002;</li>
 </ul>
-<h2 id="json-schema--json&#x6A21;&#x5F0F;">JSON Schema  JSON&#x6A21;&#x5F0F;</h2>
-<p><em>New in version 3.6.</em></p>
-<p>Starting in version 3.6, MongoDB supports JSON Schema validation. To specify JSON Schema validation, use the <a href="https://docs.mongodb.com/manual/reference/operator/query/jsonSchema/#op._S_jsonSchema" target="_blank"><code>$jsonSchema</code></a> operator in your <code>validator</code> expression.</p>
-<blockquote>
-<p>NOTE</p>
-<p>JSON Schema is the recommended means of performing schema validation.</p>
-<p>For example, the following example specifies validation rules using JSON schema:</p>
-</blockquote>
+<h2 id="json&#x6A21;&#x5F0F;">JSON&#x6A21;&#x5F0F;</h2>
 <p><em>&#x7248;&#x672C;3.6&#x4E2D;&#x7684;&#x65B0;&#x529F;&#x80FD;</em></p>
 <p>&#x4ECE;3.6&#x7248;&#x5F00;&#x59CB;&#xFF0C;MongoDB&#x652F;&#x6301;JSON&#x6A21;&#x5F0F;&#x9A8C;&#x8BC1;&#x3002;&#x8981;&#x6307;&#x5B9A;JSON&#x6A21;&#x5F0F;&#x9A8C;&#x8BC1;&#xFF0C;&#x8BF7;&#x4F7F;&#x7528; <a href="https://docs.mongodb.com/manual/reference/operator/query/jsonSchema/#op._S_jsonSchema" target="_blank"><code>$jsonSchema</code></a> &#x64CD;&#x4F5C;<code>validator</code>&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x7684;&#x8FD0;&#x7B97;&#x7B26;&#x3002;</p>
 <blockquote>
@@ -5203,11 +5177,8 @@
       }
    }
 })
-</code></pre><p>For more information, see <a href="https://docs.mongodb.com/manual/reference/operator/query/jsonSchema/#op._S_jsonSchema" target="_blank"><code>$jsonSchema</code></a>.</p>
-<p>&#x6709;&#x5173;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x89C1; <a href="https://docs.mongodb.com/manual/reference/operator/query/jsonSchema/#op._S_jsonSchema" target="_blank"><code>$jsonSchema</code></a>&#x3002;</p>
-<h2 id="other-query-expressions-&#x5176;&#x4ED6;&#x67E5;&#x8BE2;&#x8868;&#x8FBE;&#x5F0F;">Other Query Expressions &#x5176;&#x4ED6;&#x67E5;&#x8BE2;&#x8868;&#x8FBE;&#x5F0F;</h2>
-<p>In addition to JSON Schema validation that uses the <a href="https://docs.mongodb.com/manual/reference/operator/query/jsonSchema/#op._S_jsonSchema" target="_blank"><code>$jsonSchema</code></a> query operator, MongoDB supports validation with <a href="https://docs.mongodb.com/manual/reference/operator/query/#query-selectors" target="_blank">other query operators</a>, with the exception of the <a href="https://docs.mongodb.com/manual/reference/operator/query/near/#op._S_near" target="_blank"><code>$near</code></a>, <a href="https://docs.mongodb.com/manual/reference/operator/query/nearSphere/#op._S_nearSphere" target="_blank"><code>$nearSphere</code></a>, <a href="https://docs.mongodb.com/manual/reference/operator/query/text/#op._S_text" target="_blank"><code>$text</code></a>, and <a href="https://docs.mongodb.com/manual/reference/operator/query/where/#op._S_where" target="_blank"><code>$where</code></a> operators.</p>
-<p>For example, the following example specifies validator rules using the query expression:</p>
+</code></pre><p>&#x6709;&#x5173;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x89C1; <a href="https://docs.mongodb.com/manual/reference/operator/query/jsonSchema/#op._S_jsonSchema" target="_blank"><code>$jsonSchema</code></a>&#x3002;</p>
+<h2 id="&#x5176;&#x4ED6;&#x67E5;&#x8BE2;&#x8868;&#x8FBE;&#x5F0F;">&#x5176;&#x4ED6;&#x67E5;&#x8BE2;&#x8868;&#x8FBE;&#x5F0F;</h2>
 <p>&#x9664;&#x4E86;&#x4F7F;&#x7528;<a href="https://docs.mongodb.com/manual/reference/operator/query/jsonSchema/#op._S_jsonSchema" target="_blank"><code>$jsonSchema</code></a> &#x64CD;&#x4F5C;&#x67E5;&#x8BE2;&#x8FD0;&#x7B97;&#x7B26;&#xFF0C;MongoDB&#x652F;&#x6301;&#x4F7F;&#x7528; <a href="https://docs.mongodb.com/manual/reference/operator/query/#query-selectors" target="_blank">&#x5176;&#x4ED6;&#x67E5;&#x8BE2;&#x8FD0;&#x7B97;&#x7B26;</a> &#x67E5;&#x8BE2;&#x9009;&#x62E9;&#x5668;&#xFF0C;&#x9664;&#x4E86;<a href="https://docs.mongodb.com/manual/reference/operator/query/near/#op._S_near" target="_blank"><code>$near</code></a>&#xFF0C;<a href="https://docs.mongodb.com/manual/reference/operator/query/nearSphere/&apos;35&#xFF1B;&#x64CD;&#x4F5C;/u nearSphere" target="_blank">$nearSphere</a>&#xFF0C; <a href="https://docs.mongodb.com/manual/reference/operator/query/text/#op._S_text" target="_blank"><code>$text</code></a>&#xFF0C;&#x548C; <a href="https://docs.mongodb.com/manual/reference/operator/query/where/#op._S_where" target="_blank"><code>$where</code></a> &#x8FD0;&#x7B97;&#x7B26;&#x3002;</p>
 <p>&#x4F8B;&#x5982;&#xFF0C;&#x4EE5;&#x4E0B;&#x793A;&#x4F8B;&#x4F7F;&#x7528;&#x67E5;&#x8BE2;&#x8868;&#x8FBE;&#x5F0F;&#x6307;&#x5B9A;&#x9A8C;&#x8BC1;&#x5668;&#x89C4;&#x5219;&#xFF1A;</p>
 <pre><code>db.createCollection( &quot;contacts&quot;,
@@ -5219,20 +5190,11 @@
       ]
    }
 } )
-</code></pre><p>SEE ALSO</p>
-<p><a href="https://docs.mongodb.com/manual/reference/operator/query/#query-selectors" target="_blank">query operators</a></p>
-<p>&#x53E6;&#x8BF7;&#x53C2;&#x89C1;</p>
+</code></pre><p>&#x53E6;&#x8BF7;&#x53C2;&#x89C1;</p>
 <p><a href="https://docs.mongodb.com/manual/reference/operator/query/#query-selectors" target="_blank">&#x67E5;&#x8BE2;&#x8FD0;&#x7B97;&#x7B26;</a></p>
-<h2 id="behavior-&#x884C;&#x4E3A;">Behavior &#x884C;&#x4E3A;</h2>
-<p>Validation occurs during updates and inserts. When you add validation to a collection, existing documents do not undergo validation checks until modification.</p>
+<h2 id="&#x884C;&#x4E3A;">&#x884C;&#x4E3A;</h2>
 <p>&#x5728;&#x66F4;&#x65B0;&#x548C;&#x63D2;&#x5165;&#x671F;&#x95F4;&#x8FDB;&#x884C;&#x9A8C;&#x8BC1;&#x3002;&#x5C06;&#x9A8C;&#x8BC1;&#x6DFB;&#x52A0;&#x5230;&#x96C6;&#x5408;&#x65F6;&#xFF0C;&#x73B0;&#x6709;&#x6587;&#x6863;&#x5728;&#x4FEE;&#x6539;&#x4E4B;&#x524D;&#x4E0D;&#x4F1A;&#x8FDB;&#x884C;&#x9A8C;&#x8BC1;&#x68C0;&#x67E5;&#x3002;</p>
-<h3 id="existing-documents-&#x73B0;&#x6709;&#x6587;&#x6863;">Existing Documents &#x73B0;&#x6709;&#x6587;&#x6863;</h3>
-<p>The <code>validationLevel</code> option determines which operations MongoDB applies the validation rules:</p>
-<ul>
-<li>If the <code>validationLevel</code> is <code>strict</code> (the default), MongoDB applies validation rules to all inserts and updates.</li>
-<li>If the <code>validationLevel</code> is <code>moderate</code>, MongoDB applies validation rules to inserts and to updates to existing documents that already fulfill the validation criteria. With the <code>moderate</code> level, updates to existing documents that do not fulfill the validation criteria are not checked for validity.</li>
-</ul>
-<p>For example, create a <code>contacts</code> collection with the following documents:</p>
+<h3 id="&#x73B0;&#x6709;&#x6587;&#x6863;">&#x73B0;&#x6709;&#x6587;&#x6863;</h3>
 <p><code>validationLevel</code> &#x9009;&#x9879;&#x786E;&#x5B9A;MongoDB&#x5E94;&#x7528;&#x9A8C;&#x8BC1;&#x89C4;&#x5219;&#x7684;&#x64CD;&#x4F5C;&#xFF1A;</p>
 <ul>
 <li>&#x5982;&#x679C; <code>validationLevel</code> &#x662F; <code>strict</code>&#xFF08;&#x9ED8;&#x8BA4;&#x503C;&#xFF09;&#xFF0C;MongoDB&#x4F1A;&#x5BF9;&#x6240;&#x6709;&#x63D2;&#x5165;&#x548C;&#x66F4;&#x65B0;&#x5E94;&#x7528;&#x9A8C;&#x8BC1;&#x89C4;&#x5219;&#x3002;</li>
@@ -5243,8 +5205,7 @@
    { &quot;_id&quot;: 1, &quot;name&quot;: &quot;Anne&quot;, &quot;phone&quot;: &quot;+1 555 123 456&quot;, &quot;city&quot;: &quot;London&quot;, &quot;status&quot;: &quot;Complete&quot; },
    { &quot;_id&quot;: 2, &quot;name&quot;: &quot;Ivan&quot;, &quot;city&quot;: &quot;Vancouver&quot; }
 ])
-</code></pre><p>Issue the following command to add a validator to the <code>contacts</code> collection:</p>
-<p>&#x53D1;&#x51FA;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x5C06;&#x9A8C;&#x8BC1;&#x5668;&#x6DFB;&#x52A0;&#x5230; <code>contacts</code> &#x96C6;&#x5408;&#xFF1A;</p>
+</code></pre><p>&#x53D1;&#x51FA;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x5C06;&#x9A8C;&#x8BC1;&#x5668;&#x6DFB;&#x52A0;&#x5230; <code>contacts</code> &#x96C6;&#x5408;&#xFF1A;</p>
 <pre><code>db.runCommand( {
    collMod: &quot;contacts&quot;,
    validator: { $jsonSchema: {
@@ -5263,25 +5224,13 @@
    } },
    validationLevel: &quot;moderate&quot;
 } )
-</code></pre><p>The <code>contacts</code> collection now has a validator with the <code>moderate</code> validationLevel:</p>
-<ul>
-<li>If you attempted to update the document with <code>_id</code> of <code>1</code>, MongoDB would apply the validation rules since the existing document matches the criteria.</li>
-<li>In contrast, MongoDB will not apply validation rules to updates to the document with <code>_id</code> of <code>2</code> as it does not meet the validation rules.</li>
-</ul>
-<p>To disable validation entirely, you can set <code>validationLevel</code> to <code>off</code>.</p>
-<p>&#x8FD9; <code>contacts</code> &#x96C6;&#x5408;&#x73B0;&#x5728;&#x6709;&#x4E00;&#x4E2A;&#x4F7F;&#x7528; <code>moderate</code> &#x9A8C;&#x8BC1;&#x7EA7;&#x522B;&#x7684;&#x9A8C;&#x8BC1;&#x5668;&#xFF1A;</p>
+</code></pre><p>&#x8FD9; <code>contacts</code> &#x96C6;&#x5408;&#x73B0;&#x5728;&#x6709;&#x4E00;&#x4E2A;&#x4F7F;&#x7528; <code>moderate</code> &#x9A8C;&#x8BC1;&#x7EA7;&#x522B;&#x7684;&#x9A8C;&#x8BC1;&#x5668;&#xFF1A;</p>
 <ul>
 <li>&#x5982;&#x679C;&#x8BD5;&#x56FE;&#x66F4;&#x65B0; <code>_id</code>&#x4E3A;1, MongoDB&#x5C06;&#x5E94;&#x7528;&#x9A8C;&#x8BC1;&#x89C4;&#x5219;&#xFF0C;&#x56E0;&#x4E3A;&#x73B0;&#x6709;&#x6587;&#x6863;&#x4E0E;&#x6761;&#x4EF6;&#x5339;&#x914D;&#x3002;</li>
 <li>&#x76F8;&#x53CD;&#xFF0C;MongoDB&#x4E0D;&#x4F1A;&#x5BF9;<code>_id</code>&#x4E3A;2&#x7684;&#x6587;&#x6863;&#x5E94;&#x7528;&#x9A8C;&#x8BC1;&#x89C4;&#x5219;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4E0D;&#x7B26;&#x5408;&#x9A8C;&#x8BC1;&#x89C4;&#x5219;&#x3002;</li>
 </ul>
 <p>&#x8981;&#x5B8C;&#x5168;&#x7981;&#x7528;&#x9A8C;&#x8BC1;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;<code>validationLevel</code>&#x8BBE;&#x7F6E;&#x4E3A;<code>off</code>&#x3002;</p>
-<h3 id="accept-or-reject-invalid-documents-&#x63A5;&#x53D7;&#x6216;&#x62D2;&#x7EDD;&#x65E0;&#x6548;&#x6587;&#x6863;">Accept or Reject Invalid Documents &#x63A5;&#x53D7;&#x6216;&#x62D2;&#x7EDD;&#x65E0;&#x6548;&#x6587;&#x6863;</h3>
-<p>The <code>validationAction</code> option determines how MongoDB handles documents that violate the validation rules:</p>
-<ul>
-<li>If the <code>validationAction</code> is <code>error</code> (the default), MongoDB rejects any insert or update that violates the validation criteria.</li>
-<li>If the <code>validationAction</code> is <code>warn</code>, MongoDB logs any violations but allows the insertion or update to proceed.</li>
-</ul>
-<p>For example, create a <code>contacts2</code> collection with the following JSON Schema validator:</p>
+<h3 id="&#x63A5;&#x53D7;&#x6216;&#x62D2;&#x7EDD;&#x65E0;&#x6548;&#x6587;&#x6863;">&#x63A5;&#x53D7;&#x6216;&#x62D2;&#x7EDD;&#x65E0;&#x6548;&#x6587;&#x6863;</h3>
 <p><code>validationAction</code>&#x9009;&#x9879;&#x786E;&#x5B9A;MongoDB&#x5982;&#x4F55;&#x5904;&#x7406;&#x8FDD;&#x53CD;&#x9A8C;&#x8BC1;&#x89C4;&#x5219;&#x7684;&#x6587;&#x6863;&#xFF1A;</p>
 <ul>
 <li>&#x5982;&#x679C;<code>validationAction</code> &#x4E3A;<code>error</code> &#xFF08;&#x9ED8;&#x8BA4;&#x503C;&#xFF09;&#xFF0C;MongoDB&#x5C06;&#x62D2;&#x7EDD;&#x4EFB;&#x4F55;&#x8FDD;&#x53CD;&#x9A8C;&#x8BC1;&#x6761;&#x4EF6;&#x7684;&#x63D2;&#x5165;&#x6216;&#x66F4;&#x65B0;&#x3002;</li>
@@ -5310,31 +5259,15 @@
    } },
    validationAction: &quot;warn&quot;
 } )
-</code></pre><p>With the <code>warn</code> <a href="https://docs.mongodb.com/manual/reference/command/collMod/#validationAction" target="_blank"><code>validationAction</code></a>, MongoDB logs any violations but allows the insertion or update to proceed.</p>
-<p>&#x4F7F;&#x7528;<code>warn</code> <a href="https://docs.mongodb.com/manual/reference/command/collMod/#validationAction" target="_blank"><code>validationAction</code></a>&#xFF0C;MongoDB&#x4F1A;&#x8BB0;&#x5F55;&#x4EFB;&#x4F55;&#x51B2;&#x7A81;&#xFF0C;&#x4F46;&#x5141;&#x8BB8;&#x7EE7;&#x7EED;&#x63D2;&#x5165;&#x6216;&#x66F4;&#x65B0;&#x3002;</p>
-<p>For example, the following insert operation violates the validation rule:</p>
+</code></pre><p>&#x4F7F;&#x7528;<code>warn</code> <a href="https://docs.mongodb.com/manual/reference/command/collMod/#validationAction" target="_blank"><code>validationAction</code></a>&#xFF0C;MongoDB&#x4F1A;&#x8BB0;&#x5F55;&#x4EFB;&#x4F55;&#x51B2;&#x7A81;&#xFF0C;&#x4F46;&#x5141;&#x8BB8;&#x7EE7;&#x7EED;&#x63D2;&#x5165;&#x6216;&#x66F4;&#x65B0;&#x3002;</p>
 <p>&#x4F8B;&#x5982;&#xFF0C;&#x4EE5;&#x4E0B;&#x63D2;&#x5165;&#x64CD;&#x4F5C;&#x8FDD;&#x53CD;&#x4E86;&#x9A8C;&#x8BC1;&#x89C4;&#x5219;&#xFF1A;</p>
 <pre><code>db.contacts2.insert( { name: &quot;Amanda&quot;, status: &quot;Updated&quot; } )
-</code></pre><p>However, since the <code>validationAction</code> is <code>warn</code> only, MongoDB only logs the validation violation message and allows the operation to proceed:</p>
-<p>&#x4E0D;&#x8FC7;&#xFF0C;&#x7531;&#x4E8E;<code>validationAction</code> &#x4EC5;&#x4E3A;<code>warn</code> &#xFF0C;MongoDB&#x53EA;&#x8BB0;&#x5F55;&#x9A8C;&#x8BC1;&#x51B2;&#x7A81;&#x6D88;&#x606F;&#x5E76;&#x5141;&#x8BB8;&#x64CD;&#x4F5C;&#x7EE7;&#x7EED;&#xFF1A;</p>
+</code></pre><p>&#x4E0D;&#x8FC7;&#xFF0C;&#x7531;&#x4E8E;<code>validationAction</code> &#x4EC5;&#x4E3A;<code>warn</code> &#xFF0C;MongoDB&#x53EA;&#x8BB0;&#x5F55;&#x9A8C;&#x8BC1;&#x51B2;&#x7A81;&#x6D88;&#x606F;&#x5E76;&#x5141;&#x8BB8;&#x64CD;&#x4F5C;&#x7EE7;&#x7EED;&#xFF1A;</p>
 <pre><code>2017-12-01T12:31:23.738-0500 W STORAGE  [conn1] Document would fail validation collection: example.contacts2 doc: { _id: ObjectId(&apos;5a2191ebacbbfc2bdc4dcffc&apos;), name: &quot;Amanda&quot;, status: &quot;Updated&quot; }
-</code></pre><h2 id="restrictions-&#x9650;&#x5236;">Restrictions &#x9650;&#x5236;</h2>
-<p>You cannot specify a validator for collections in the <code>admin</code>, <code>local</code>, and <code>config</code> databases.</p>
-<p>You cannot specify a validator for <code>system.*</code> collections.</p>
+</code></pre><h2 id="&#x9650;&#x5236;">&#x9650;&#x5236;</h2>
 <p>&#x4E0D;&#x80FD;&#x4E3A;<code>admin</code>&#x3001;<code>local</code>&#x548C;<code>config</code> &#x6570;&#x636E;&#x5E93;&#x4E2D;&#x7684;&#x96C6;&#x5408;&#x6307;&#x5B9A;&#x9A8C;&#x8BC1;&#x5668;&#x3002;</p>
 <p>&#x4E0D;&#x80FD;&#x4E3A; <code>system.*</code>&#x96C6;&#x5408;&#x6307;&#x5B9A;&#x9A8C;&#x8BC1;&#x5668;&#x3002;</p>
-<h2 id="bypass-document-validation--&#x7ED5;&#x8FC7;&#x6587;&#x6863;&#x9A8C;&#x8BC1;">Bypass Document Validation  &#x7ED5;&#x8FC7;&#x6587;&#x6863;&#x9A8C;&#x8BC1;</h2>
-<p>Users can bypass document validation using the <code>bypassDocumentValidation</code> option.</p>
-<p>The following commands can bypass validation per operation using the new option <code>bypassDocumentValidation</code>:</p>
-<ul>
-<li><a href="https://docs.mongodb.com/manual/reference/command/applyOps/#dbcmd.applyOps" target="_blank"><code>applyOps</code></a> command</li>
-<li><a href="https://docs.mongodb.com/manual/reference/command/findAndModify/#dbcmd.findAndModify" target="_blank"><code>findAndModify</code></a> command and <a href="https://docs.mongodb.com/manual/reference/method/db.collection.findAndModify/#db.collection.findAndModify" target="_blank"><code>db.collection.findAndModify()</code></a> method</li>
-<li><a href="https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce" target="_blank"><code>mapReduce</code></a> command and <a href="https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#db.collection.mapReduce" target="_blank"><code>db.collection.mapReduce()</code></a> method</li>
-<li><a href="https://docs.mongodb.com/manual/reference/command/insert/#dbcmd.insert" target="_blank"><code>insert</code></a> command</li>
-<li><a href="https://docs.mongodb.com/manual/reference/command/update/#dbcmd.update" target="_blank"><code>update</code></a> command</li>
-<li><a href="https://docs.mongodb.com/manual/reference/operator/aggregation/out/#pipe._S_out" target="_blank"><code>$out</code></a> and <a href="https://docs.mongodb.com/manual/reference/operator/aggregation/merge/#pipe._S_merge" target="_blank"><code>$merge</code></a> stages for the <a href="https://docs.mongodb.com/manual/reference/command/aggregate/#dbcmd.aggregate" target="_blank"><code>aggregate</code></a> command and <a href="https://docs.mongodb.com/manual/reference/method/db.collection.aggregate/#db.collection.aggregate" target="_blank"><code>db.collection.aggregate()</code></a> method</li>
-</ul>
-<p>For deployments that have enabled access control, to bypass document validation, the authenticated user must have <a href="https://docs.mongodb.com/manual/reference/privilege-actions/#bypassDocumentValidation" target="_blank"><code>bypassDocumentValidation</code></a> action. The built-in roles <a href="https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin" target="_blank"><code>dbAdmin</code></a> and <a href="https://docs.mongodb.com/manual/reference/built-in-roles/#restore" target="_blank"><code>restore</code></a> provide this action.</p>
+<h2 id="&#x7ED5;&#x8FC7;&#x6587;&#x6863;&#x9A8C;&#x8BC1;">&#x7ED5;&#x8FC7;&#x6587;&#x6863;&#x9A8C;&#x8BC1;</h2>
 <p>&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>bypassDocumentValidation</code> &#x9009;&#x9879;&#x7ED5;&#x8FC7;&#x6587;&#x6863;&#x9A8C;&#x8BC1;&#x3002;</p>
 <p>&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x65B0;&#x9009;&#x9879;<code>bypassDocumentValidation</code>&#x8DF3;&#x8FC7;&#x6BCF;&#x4E2A;&#x64CD;&#x4F5C;&#x7684;&#x9A8C;&#x8BC1;&#xFF1A;</p>
 <ul>
@@ -5346,17 +5279,14 @@
 <li>&#x4E3A;<a href="https://docs.mongodb.com/manual/reference/command/aggregate/#dbcmd.aggregate" target="_blank"><code>&#x805A;&#x5408;</code></a> &#x547D;&#x4EE4;&#x548C; <a href="https://docs.mongodb.com/manual/reference/method/db.collection.aggregate/#db.collection.aggregate" target="_blank"><code>db.collection.aggregate()</code></a> &#x65B9;&#x6CD5;&#x63D0;&#x4F9B;&#x7684;&#x8FC7;&#x7A0B;&#x547D;&#x4EE4;<a href="https://docs.mongodb.com/manual/reference/operator/aggregation/out/#pipe._S_out" target="_blank"><code>$out</code></a> &#x548C; <a href="https://docs.mongodb.com/manual/reference/operator/aggregation/merge/#pipe._S_merge" target="_blank"><code>$merge</code></a> </li>
 </ul>
 <p>&#x5BF9;&#x4E8E;&#x5DF2;&#x542F;&#x7528;&#x8BBF;&#x95EE;&#x63A7;&#x5236;&#x7684;&#x90E8;&#x7F72;&#xFF0C;&#x82E5;&#x8981;&#x7ED5;&#x8FC7;&#x6587;&#x6863;&#x9A8C;&#x8BC1;&#xFF0C;&#x7ECF;&#x8FC7;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x7684;&#x7528;&#x6237;&#x5FC5;&#x987B;&#x5177;&#x6709;<a href="https://docs.mongodb.com/manual/reference/privilege-actions/#bypassDocumentValidation" target="_blank"><code>bypassDocumentValidation</code></a>&#x884C;&#x52A8;&#x3002;&#x5185;&#x7F6E;&#x89D2;&#x8272;<a href="https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin" target="_blank"><code>dbAdmin</code></a> &#x548C; <a href="https://docs.mongodb.com/manual/reference/built-in-roles/#restore" target="_blank"><code>restore</code></a> &#x63D0;&#x4F9B;&#x6B64;&#x64CD;&#x4F5C;&#x3002;</p>
-<h2 id="additional-information-&#x9644;&#x52A0;&#x4FE1;&#x606F;">Additional Information &#x9644;&#x52A0;&#x4FE1;&#x606F;</h2>
-<p>SEE ALSO</p>
-<p><a href="https://docs.mongodb.com/manual/reference/command/collMod/#dbcmd.collMod" target="_blank"><code>collMod</code></a>, <a href="https://docs.mongodb.com/manual/reference/method/db.createCollection/#db.createCollection" target="_blank"><code>db.createCollection()</code></a>, <a href="https://docs.mongodb.com/manual/reference/method/db.getCollectionInfos/#db.getCollectionInfos" target="_blank"><code>db.getCollectionInfos()</code></a>.</p>
+<h2 id="&#x9644;&#x52A0;&#x4FE1;&#x606F;">&#x9644;&#x52A0;&#x4FE1;&#x606F;</h2>
 <p>&#x53E6;&#x8BF7;&#x53C2;&#x89C1;</p>
 <p><a href="https://docs.mongodb.com/manual/reference/command/collMod/#dbcmd.collMod" target="_blank"><code>collMod</code></a>, <a href="https://docs.mongodb.com/manual/reference/method/db.createCollection/#db.createCollection" target="_blank"><code>db.createCollection()</code></a>, <a href="https://docs.mongodb.com/manual/reference/method/db.getCollectionInfos/#db.getCollectionInfos" target="_blank"><code>db.getCollectionInfos()</code></a>&#x3002;</p>
-<p>&#x2190;  <a href="https://docs.mongodb.com/manual/core/data-modeling-introduction/" target="_blank">Data Modeling Introduction</a>  <a href="https://docs.mongodb.com/manual/core/data-models/" target="_blank">Data Modeling Concepts</a> &#x2192;</p>
 <p>&#x2190;  <a href="https://docs.mongodb.com/manual/core/data-modeling-introduction/" target="_blank">&#x6570;&#x636E;&#x5EFA;&#x6A21;&#x7B80;&#x4ECB;</a>  <a href="https://docs.mongodb.com/manual/core/data-models/" target="_blank">&#x6570;&#x636E;&#x5EFA;&#x6A21;&#x6982;&#x5FF5;</a> &#x2192;</p>
 <p>&#x8BD1;&#x8005;&#xFF1A;&#x5F20;&#x9E4F;</p>
 <p>&#x539F;&#x6587;&#x94FE;&#x63A5;&#xFF1A;<a href="https://docs.mongodb.com/manual/core/schema-validation/" target="_blank">https://docs.mongodb.com/manual/core/schema-validation/</a></p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; &#x4E0A;&#x6D77;&#x9526;&#x6728;&#x4FE1;&#x606F;&#x6280;&#x672F;&#x6709;&#x9650;&#x516C;&#x53F8; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2020-08-25 20:14:46
+2020-08-26 19:30:54
 </span></footer>
                                 
                                 </section>
@@ -5400,7 +5330,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"模式验证","level":"1.8.2","depth":2,"next":{"title":"事务","level":"1.9","depth":1,"path":"docs/Transactions.md","ref":"docs/Transactions.md","articles":[{"title":"驱动程序 API","level":"1.9.1","depth":2,"ref":"","articles":[]},{"title":"生产注意事项","level":"1.9.2","depth":2,"ref":"","articles":[]},{"title":"生产注意事项 (分片集群)","level":"1.9.3","depth":2,"ref":"","articles":[]},{"title":"事务操作","level":"1.9.4","depth":2,"path":"docs/Transactions/Transactions-and-Operations.md","ref":"docs/Transactions/Transactions-and-Operations.md","articles":[]}]},"previous":{"title":"数据建模介绍","level":"1.8.1","depth":2,"path":"docs/Data-Models/Data-Modeling-Introduction.md","ref":"docs/Data-Models/Data-Modeling-Introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","donate","tbfed-pagefooter","github-buttons","github","chapter-fold","expandable-chapters","pageview-count","edit-link","back-to-top-button","-lunr","-search","search-pro","splitter","page-toc-button","auto-scroll-table","flexible-alerts","alerts","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 上海锦木信息技术有限公司","modify_label":"文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/JinMuInfo/MongoDB-Manual-zh"},"livereload":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"donate":{"alipay":"https://jinmuinfo.github.io/MongoDB-Manual-zh/img/pay/alipay.jpeg","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"https://jinmuinfo.github.io/MongoDB-Manual-zh/img/pay/Wechatpay.jpeg","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":4,"minTocSize":4},"back-to-top-button":{},"pageview-count":{},"alerts":{},"github-buttons":{"buttons":[{"user":"JinMuInfo","repo":"MongoDB-Manual-zh","type":"star","count":true,"size":"small"}]},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"edit-link":{"label":"Edit This Page","base":"https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"hbnking","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MongoDB-Manual-zh","language":"zh-hans","gitbook":"*","description":"MongoDB-Manual-zh"},"file":{"path":"docs/Data-Models/Schema-Validation.md","mtime":"2020-08-25T12:14:46.072Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-25T12:17:21.183Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"模式验证","level":"1.8.2","depth":2,"next":{"title":"事务","level":"1.9","depth":1,"path":"docs/Transactions.md","ref":"docs/Transactions.md","articles":[{"title":"驱动程序 API","level":"1.9.1","depth":2,"ref":"","articles":[]},{"title":"生产注意事项","level":"1.9.2","depth":2,"ref":"","articles":[]},{"title":"生产注意事项 (分片集群)","level":"1.9.3","depth":2,"ref":"","articles":[]},{"title":"事务操作","level":"1.9.4","depth":2,"path":"docs/Transactions/Transactions-and-Operations.md","ref":"docs/Transactions/Transactions-and-Operations.md","articles":[]}]},"previous":{"title":"数据建模介绍","level":"1.8.1","depth":2,"path":"docs/Data-Models/Data-Modeling-Introduction.md","ref":"docs/Data-Models/Data-Modeling-Introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","donate","tbfed-pagefooter","github-buttons","github","chapter-fold","expandable-chapters","pageview-count","edit-link","back-to-top-button","-lunr","-search","search-pro","splitter","page-toc-button","auto-scroll-table","flexible-alerts","alerts","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 上海锦木信息技术有限公司","modify_label":"文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/JinMuInfo/MongoDB-Manual-zh"},"livereload":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"donate":{"alipay":"https://jinmuinfo.github.io/MongoDB-Manual-zh/img/pay/alipay.jpeg","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"https://jinmuinfo.github.io/MongoDB-Manual-zh/img/pay/Wechatpay.jpeg","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":4,"minTocSize":4},"back-to-top-button":{},"pageview-count":{},"alerts":{},"github-buttons":{"buttons":[{"user":"JinMuInfo","repo":"MongoDB-Manual-zh","type":"star","count":true,"size":"small"}]},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"edit-link":{"label":"Edit This Page","base":"https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"hbnking","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MongoDB-Manual-zh","language":"zh-hans","gitbook":"*","description":"MongoDB-Manual-zh"},"file":{"path":"docs/Data-Models/Schema-Validation.md","mtime":"2020-08-26T11:30:54.972Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-27T01:56:44.490Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

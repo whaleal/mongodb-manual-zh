@@ -1,56 +1,54 @@
 # Configuration File Options
 
-On this page
+在本页面
 
-- Configuration File
-  - [File Format](https://docs.mongodb.com/master/reference/configuration-options/#file-format)
-  - [Use the Configuration File](https://docs.mongodb.com/master/reference/configuration-options/#use-the-configuration-file)
-- Core Options
-  - [`systemLog` Options](https://docs.mongodb.com/master/reference/configuration-options/#systemlog-options)
-  - [`processManagement` Options](https://docs.mongodb.com/master/reference/configuration-options/#processmanagement-options)
-  - [`cloud` Options](https://docs.mongodb.com/master/reference/configuration-options/#cloud-options)
-  - [`net` Options](https://docs.mongodb.com/master/reference/configuration-options/#net-options)
-  - [`security` Options](https://docs.mongodb.com/master/reference/configuration-options/#security-options)
-  - [`setParameter` Option](https://docs.mongodb.com/master/reference/configuration-options/#setparameter-option)
-  - [`storage` Options](https://docs.mongodb.com/master/reference/configuration-options/#storage-options)
-  - [`operationProfiling` Options](https://docs.mongodb.com/master/reference/configuration-options/#operationprofiling-options)
-  - [`replication` Options](https://docs.mongodb.com/master/reference/configuration-options/#replication-options)
-  - [`sharding` Options](https://docs.mongodb.com/master/reference/configuration-options/#sharding-options)
-  - [`auditLog` Options](https://docs.mongodb.com/master/reference/configuration-options/#auditlog-options)
-  - [`snmp` Options](https://docs.mongodb.com/master/reference/configuration-options/#snmp-options)
-- [`mongos`-only Options](https://docs.mongodb.com/master/reference/configuration-options/#mongos-only-options)
-- [Windows Service Options](https://docs.mongodb.com/master/reference/configuration-options/#windows-service-options)
-- [Removed MMAPv1 Options](https://docs.mongodb.com/master/reference/configuration-options/#removed-mmapv1-options)
+- [配置文件](#configuration-file)
+  - [文件格式](#file-format)
+  - [配置文件的使用](#use-the-configuration-file)
+- [核心选项](#core-options)
+  - [`systemLog` 选项](#systemlog-options)
+  - [`processManagement` 选项](#processmanagement-options)
+  - [`cloud` 选项](#cloud-options)
+  - [`net` 选项](#net-options)
+  - [`security` 选项](#security-options)
+  - [`setParameter` 选项](#setparameter-option)
+  - [`storage` 选项](#storage-options)
+  - [`operationProfiling` 选项](#operationprofiling-options)
+  - [`replication` 选项](#replication-options)
+  - [`sharding` 选项](#sharding-options)
+  - [`auditLog` 选项](#auditlog-options)
+  - [`snmp` 选项](#snmp-options)
+- [`mongos`-only 选项](#mongos-only-options)
+- [Windows Service 选项](#windows-service-options)
+- [Removed MMAPv1 选项](#removed-mmapv1-options)
 
-The following page describes the configuration options available in MongoDB 4.4. For configuration file options for other versions of MongoDB, see the appropriate version of the MongoDB Manual.
+下面的页面描述了MongoDB 4.4中可用的配置选项。有关其他版本MongoDB的配置文件选项，请参阅相应版本的MongoDB手册。
 
 
 
-## Configuration File
+## <span id="configuration-file">配置文件</span>
 
-You can configure [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) and [`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos) instances at startup using a configuration file. The configuration file contains settings that are equivalent to the [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) and [`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos) command-line options. See [Configuration File Settings and Command-Line Options Mapping](https://docs.mongodb.com/master/reference/configuration-file-settings-command-line-options-mapping/#conf-file-command-line-mapping).
+您可以在启动时使用配置文件配置[`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod)和[`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos) 实例。配置文件包含的设置相当于[`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod)和[`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos)命令行选项。参见[配置文件设置和命令行选项映射](https://docs.mongodb.com/master/reference/configuration-file-settings-command-line-options-mapping/#conf-file-command-line-mapping)。
 
-Using a configuration file makes managing [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) and [`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos) options easier, especially for large-scale deployments. You can also add comments to the configuration file to explain the server’s settings.
+使用配置文件使管理[`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod)和[`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos)选项更容易，特别是对于大规模部署。您还可以向配置文件添加注释，以解释服务器的设置。
 
-DEFAULT CONFIGURATION FILE
+> **[success] 默认配置文件**
+>
+> * 在Linux上，当使用包管理器安装MongoDB时，会包含一个默认的`/etc/mongod.conf`配置文件。
+> * 在Windows上，安装过程中会包含一个默认的`<install directory>/bin/mongod.cfg` 配置文件。
+> * 在macOS上，当从MongoDB的官方自制程序安装时，会包含一个默认的`/usr/local/etc/mongod.conf`配置文件。
 
-- On Linux, a default `/etc/mongod.conf` configuration file is included when using a package manager to install MongoDB.
-- On Windows, a default `<install directory>/bin/mongod.cfg` configuration file is included during the installation.
-- On macOS, a default `/usr/local/etc/mongod.conf` configuration file is included when installing from MongoDB’s official Homebrew tap.
+### <span id="file-format">文件格式</span>
 
-### File Format
+MongoDB配置文件使用[YAML](http://www.yaml.org/)格式[[1\]](https://docs.mongodb.com/master/reference/configuring-options/# yaml-json)。
 
-MongoDB configuration files use the [YAML](http://www.yaml.org/) format [[1\]](https://docs.mongodb.com/master/reference/configuration-options/#yaml-json).
+以下示例配置文件包含几个[`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod)设置，您可以适应您的本地配置:
 
-The following sample configuration file contains several [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) settings that you may adapt to your local configuration:
+> **[success] 注意**
+>
+> YAML不支持制表符缩进：使用空格代替。
 
-NOTE
-
-YAML does not support tab characters for indentation: use spaces instead.
-
-copycopied
-
-```
+```powershell
 systemLog:
    destination: file
    path: "/var/log/mongodb/mongod.log"
@@ -68,73 +66,65 @@ setParameter:
 ...
 ```
 
-The Linux package init scripts included in the official MongoDB packages depend on specific values for [`systemLog.path`](https://docs.mongodb.com/master/reference/configuration-options/#systemLog.path), [`storage.dbPath`](https://docs.mongodb.com/master/reference/configuration-options/#storage.dbPath), and [`processManagement.fork`](https://docs.mongodb.com/master/reference/configuration-options/#processManagement.fork). If you modify these settings in the default configuration file, [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) may not start.
+Linux包init脚本包含在官方MongoDB包依赖于特定的值[`systemLog.path`](https://docs.mongodb.com/master/reference/configuration-options/ # systemLog.path)，[`storage.dbPath`](https://docs.mongodb.com/master/reference/configuration-options/ # storage.dbPath)，和[`processManagement.fork`](https://docs.mongodb.com/master/reference/configuration-options/ # processManagement.fork)。如果您在默认配置文件中修改这些设置，[`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod)可能不会启动。
 
-| [[1\]](https://docs.mongodb.com/master/reference/configuration-options/#id1) | YAML is a superset of [JSON](https://docs.mongodb.com/master/reference/glossary/#term-json). |
+| <br />                                                       |                                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-|                                                              |                                                              |
+| [[1\]](https://docs.mongodb.com/master/reference/configuration-options/#id1) | YAML是[JSON](https://docs.mongodb.com/master/reference/glossary/#term-json)的超集。 |
 
-#### Externally Sourced Values
+#### 外部来源的值
 
-*New in version 4.2:* MongoDB supports using [expansion directives](https://docs.mongodb.com/master/reference/expansion-directives/#expansion-directives) in configuration files to load externally sourced values. Expansion directives can load values for specific [configuration file options](https://docs.mongodb.com/master/reference/configuration-options/#configuration-options) *or* load the entire configuration file.
+*4.2版本中的新功能*： MongoDB支持在配置文件中使用[扩展指令](https://docs.mongodb.com/master/reference/expans-directives/ # expan- directives)来加载外部源值。扩展指令可以加载特定的[配置文件选项](https://docs.mongodb.com/master/reference/configuring-options/#configuring-options) *或*加载整个配置文件。
 
-The following expansion directives are available:
+可以使用以下扩展指令:
 
-| Expansion Directive                                          | Description                                                  |
+| 扩展指令                                                     | 描述                                                         |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| [`__rest`](https://docs.mongodb.com/master/reference/expansion-directives/#configexpansion.__rest) | Allows users to specify a `REST` endpoint as the external source for configuration file options *or* the full configuration file.If the configuration file includes the [`__rest`](https://docs.mongodb.com/master/reference/expansion-directives/#configexpansion.__rest) expansion, on Linux/macOS, the read access to the configuration file must be limited to the user running the [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod)/[`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos) process only. |
-| [`__exec`](https://docs.mongodb.com/master/reference/expansion-directives/#configexpansion.__exec) | Allows users to specify a shell or terminal command as the external source for configuration file options *or* the full configuration file.If the configuration file includes the [`__exec`](https://docs.mongodb.com/master/reference/expansion-directives/#configexpansion.__exec) expansion, on Linux/macOS, the write access to the configuration file must be limited to the user running the [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod)/[`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos) process only. |
+| [`__rest`](https://docs.mongodb.com/master/reference/expansion-directives/#configexpansion.__rest) | 允许用户指定一个`REST`端点作为配置文件选项*或*完整配置文件的外部源。<br />如果配置文件包括[`__rest`](https://docs.mongodb.com/master/reference/expansion-directives/ # configexpansion.__rest)扩展,在Linux / macOS对配置文件的读访问必须是仅限于运行[`mongod`](https://docs.mongodb.com/master/reference/program/mongod/ bin.mongod)/[`mongos`](https://docs.mongodb.com/master/reference/program/mongos/ bin.mongos)进程的用户。 |
+| [`__exec`](https://docs.mongodb.com/master/reference/expansion-directives/#configexpansion.__exec) | 允许用户指定一个shell或终端命令作为配置文件选项*或*完整配置文件的外部源。<br />如果配置文件包括[`__exec`](https://docs.mongodb.com/master/reference/expansion-directives/ # configexpansion.__exec)扩展,在Linux / macOS对配置文件的写访问必须是仅限于运行[`mongod`](https://docs.mongodb.com/master/reference/program/mongod/ bin.mongod)/[`mongos`](https://docs.mongodb.com/master/reference/program/mongos/ bin.mongos)过程的用户。 |
 
-For complete documentation, see [Externally Sourced Configuration File Values](https://docs.mongodb.com/master/reference/expansion-directives/#externally-sourced-values).
+要获得完整的文档，请参见[外部来源的配置文件值](https://docs.mongodb.com/master/reference/expans-directives/ #external -sourced-values)。
 
-### Use the Configuration File
+### <span id="use-the-configuration-file">配置文件的使用</span>
 
-To configure [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) or [`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos) using a config file, specify the config file with the `--config` option or the `-f` option, as in the following examples:
+使用配置文件配置[`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod)或[`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos)，使用`--config`选项或`-f`选项指定一个或多个配置文件，如下例所示:
 
-For example, the following uses [`mongod --config `](https://docs.mongodb.com/master/reference/program/mongod/#cmdoption-mongod-config) [`mongos --config `](https://docs.mongodb.com/master/reference/program/mongos/#cmdoption-mongos-config):
+例如，下面使用 [`mongod --config <configuration file>`](https://docs.mongodb.com/master/reference/program/mongod/#cmdoption-mongod-config) [`mongos --config <configuration file>`](https://docs.mongodb.com/master/reference/program/mongos/#cmdoption-mongos-config):
 
-copycopied
-
-```
+```powershell
 mongod --config /etc/mongod.conf
 
 mongos --config /etc/mongos.conf
 ```
 
-You can also use the `-f` alias to specify the configuration file, as in the following:
+您还可以使用`-f`别名来指定配置文件，如下所示：
 
-copycopied
-
-```
+```powershell
 mongod -f /etc/mongod.conf
 
 mongos -f /etc/mongos.conf
 ```
 
-If you installed from a package and have started MongoDB using your system’s [init script](https://docs.mongodb.com/master/reference/glossary/#term-init-script), you are already using a configuration file.
+如果您从包中安装并使用系统的[init脚本](https://docs.mongodb.com/master/reference/glossary/#term-init-script)启动了MongoDB，那么您已经使用了一个配置文件。
 
-#### Expansion Directives and `--configExpand`
+#### 扩展指令和 `--configExpand`
 
-If you are using [expansion directives](https://docs.mongodb.com/master/reference/expansion-directives/#expansion-directives) in the configuration file, you must include the [`--configExpand`](https://docs.mongodb.com/master/reference/program/mongod/#cmdoption-mongod-configexpand) option when starting the [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) or [`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos). For example:
-
-copycopied
+如果您正在使用[扩展指令](https://docs.mongodb.com/master/reference/expansion-directives/expansion-directives)配置文件,您必须包括[`——configExpand`](https://docs.mongodb.com/master/reference/program/mongod/ cmdoption-mongod-configexpand)选项时启动[`mongod`](https://docs.mongodb.com/master/reference/program/mongod/ bin.mongod)或[`mongos`](https://docs.mongodb.com/master/reference/program/mongos/ # bin.mongos)。例如:
 
 ```
 mongod --config /etc/mongod.conf  --configExpand "rest,exec"
 mongos --config /etc/mongos.conf  --configExpand "rest,exec"
 ```
 
-If the configuration file includes an expansion directive and you start the [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod)/[`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos) without specifying that directive in the [`--configExpand`](https://docs.mongodb.com/master/reference/program/mongod/#cmdoption-mongod-configexpand) option, the [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod)/[`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos) fails to start.
+如果配置文件包括一个扩展指令启动[`mongod`](https://docs.mongodb.com/master/reference/program/mongod/ bin.mongod) /[`mongos`](https://docs.mongodb.com/master/reference/program/mongos/ # bin.mongos)没有指定的指令[`——configExpand`](https://docs.mongodb.com/master/reference/program/mongod/ # cmdoption-mongod-configexpand)选项,[`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod)/[`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos)启动失败。
 
-For complete documentation, see [Externally Sourced Configuration File Values](https://docs.mongodb.com/master/reference/expansion-directives/#externally-sourced-values).
+要获得完整的文档，请参见[外部来源的配置文件值](https://docs.mongodb.com/master/reference/expans-directives/ #external -sourced-values)。
 
-## Core Options
+## <span id="core-options">核心选项</span>
 
 
 
-### `systemLog` Options
-
-copycopied
+### <span id="systemlog-options">`systemLog` 选项</span>
 
 ```
 systemLog:
@@ -156,45 +146,106 @@ systemLog:
       # COMMENT additional component verbosity settings omitted for brevity
 ```
 
-- `systemLog.``verbosity`
+- `systemLog.verbosity`
 
-  *Type*: integer*Default*: 0The default [log message](https://docs.mongodb.com/master/reference/log-messages/) verbosity level for [components](https://docs.mongodb.com/master/reference/log-messages/#log-message-components). The verbosity level determines the amount of [Informational and Debug](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels) messages MongoDB outputs. [[2\]](https://docs.mongodb.com/master/reference/configuration-options/#log-message)The verbosity level can range from `0` to `5`:`0` is the MongoDB’s default log verbosity level, to include [Informational](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels) messages.`1` to `5` increases the verbosity level to include [Debug](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels) messages.To use a different verbosity level for a named component, use the component’s verbosity setting. For example, use the [`systemLog.component.accessControl.verbosity`](https://docs.mongodb.com/master/reference/configuration-options/#systemLog.component.accessControl.verbosity) to set the verbosity level specifically for [`ACCESS`](https://docs.mongodb.com/master/reference/log-messages/#ACCESS) components.See the `systemLog.component.<name>.verbosity` settings for specific component verbosity settings.For various ways to set the log verbosity level, see [Configure Log Verbosity Levels](https://docs.mongodb.com/master/reference/log-messages/#log-messages-configure-verbosity).[[2\]](https://docs.mongodb.com/master/reference/configuration-options/#id3)Starting in version 4.2, MongoDB includes the Debug verbosity level (1-5) in the [log messages](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels). For example, if the verbosity level is 2, MongoDB logs `D2`. In previous versions, MongoDB log messages only specified `D` for Debug level.
+  *Type*：integer
 
-- `systemLog.``quiet`
+  *Default*：0
+  [components](https://docs.mongodb.com/master/reference/log-messages/#log-message-components)的默认[log message](https://docs.mongodb.com/master/reference/log-messages/)详细程度级别。详细级别决定了MongoDB输出的[Informational and Debug](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels)消息的数量。[[2\]](https://docs.mongodb.com/master/reference/configuration-options/#log-message)详细程度可以从`0`到`5`：
 
-  *Type*: booleanRun [`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos) or [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) in a quiet mode that attempts to limit the amount of output.[`systemLog.quiet`](https://docs.mongodb.com/master/reference/configuration-options/#systemLog.quiet) is **not** recommended for production systems as it may make tracking problems during particular connections much more difficult.
+  * `0`是MongoDB的默认日志详细程度，包括[Informational](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels)消息。
+  * `1`到`5`增加了包含[Debug](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels)消息的详细级别。
 
-- `systemLog.``traceAllExceptions`
+  若要为命名组件使用不同的详细级别，请使用组件的详细设置。例如，使用[`systemLog.component.accessControl.verbosity`](https://docs.mongodb.com/master/reference/configuration-options/#systemLog.component.accessControl.verbosity)为[`ACCESS`](https://docs.mongodb.com/master/reference/log-messages/#ACCESS)组件设置详细级别。
 
-  *Type*: booleanPrint verbose information for debugging. Use for additional logging for support-related troubleshooting.
+  请参阅`systemLog.component.<name>.verbosity`设置以获得特定组件的详细设置。
 
-- `systemLog.``syslogFacility`
+  有关设置日志详细级别的各种方法，请参阅[配置日志详细级别](https://docs.mongodb.com/master/reference/log-messages/#log-messages-configure-verbosity)。
 
-  *Type*: string*Default*: userThe facility level used when logging messages to syslog. The value you specify must be supported by your operating system’s implementation of syslog. To use this option, you must set [`systemLog.destination`](https://docs.mongodb.com/master/reference/configuration-options/#systemLog.destination) to `syslog`.
+  | <br />                                                       |                                                              |
+  | ------------------------------------------------------------ | ------------------------------------------------------------ |
+  | [[2\]](https://docs.mongodb.com/master/reference/configuration-options/#id3) | 从4.2版本开始，MongoDB在[log messages](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels)中包含了调试详细级别(1-5)。例如，如果详细级别是2,MongoDB记录的日志是`D2`。在以前的版本中，MongoDB日志消息只指定`D`作为调试级别。 |
 
-- `systemLog.``path`
+- `systemLog.quiet`
 
-  *Type*: stringThe path of the log file to which [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) or [`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos) should send all diagnostic logging information, rather than the standard output or the host’s [syslog](https://docs.mongodb.com/master/reference/glossary/#term-syslog). MongoDB creates the log file at the specified path.The Linux package init scripts do not expect [`systemLog.path`](https://docs.mongodb.com/master/reference/configuration-options/#systemLog.path) to change from the defaults. If you use the Linux packages and change [`systemLog.path`](https://docs.mongodb.com/master/reference/configuration-options/#systemLog.path), you will have to use your own init scripts and disable the built-in scripts.
+  *Type*: boolean
 
-- `systemLog.``logAppend`
+  运行[`mongos`](https://docs.mongodb.com/master/reference/program/mongos/ bin.mongos)或[`mongod`](https://docs.mongodb.com/master/reference/program/mongod/ # bin.mongod)在一个安静的模式,试图限制输出。[`systemLog.quiet`](https://docs.mongodb.com/master/reference/configuration-options/#systemLog.quiet) *不*推荐给生产系统,因为它可能使跟踪问题特定的连接更加困难。
 
-  *Type*: boolean*Default*: falseWhen `true`, [`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos) or [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) appends new entries to the end of the existing log file when the [`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos) or [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) instance restarts. Without this option, [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) will back up the existing log and create a new file.
+- `systemLog.traceAllExceptions`
 
-- `systemLog.``logRotate`
+  *Type*: boolean
 
-  *Type*: string*Default*: renameThe behavior for the [`logRotate`](https://docs.mongodb.com/master/reference/command/logRotate/#dbcmd.logRotate) command. Specify either `rename` or `reopen`:`rename` renames the log file.`reopen` closes and reopens the log file following the typical Linux/Unix log rotate behavior. Use `reopen` when using the Linux/Unix logrotate utility to avoid log loss.If you specify `reopen`, you must also set [`systemLog.logAppend`](https://docs.mongodb.com/master/reference/configuration-options/#systemLog.logAppend) to `true`.
+  打印详细信息以便调试。用于附加日志，用于与支持相关的故障排除。
 
-- `systemLog.``destination`
+- `systemLog.syslogFacility`
 
-  *Type*: stringThe destination to which MongoDB sends all log output. Specify either `file` or `syslog`. If you specify `file`, you must also specify [`systemLog.path`](https://docs.mongodb.com/master/reference/configuration-options/#systemLog.path).If you do not specify [`systemLog.destination`](https://docs.mongodb.com/master/reference/configuration-options/#systemLog.destination), MongoDB sends all log output to standard output.WARNINGThe `syslog` daemon generates timestamps when it logs a message, not when MongoDB issues the message. This can lead to misleading timestamps for log entries, especially when the system is under heavy load. We recommend using the `file` option for production systems to ensure accurate timestamps.
+  *Type*: string
 
-- `systemLog.``timeStampFormat`
+  *Default*: user
 
-  *Type*: string*Default*: iso8601-localThe time format for timestamps in log messages. Specify one of the following values:ValueDescription`iso8601-utc`Displays timestamps in Coordinated Universal Time (UTC) in the ISO-8601 format. For example, for New York at the start of the Epoch: `1970-01-01T00:00:00.000Z``iso8601-local`Displays timestamps in local time in the ISO-8601 format. For example, for New York at the start of the Epoch: `1969-12-31T19:00:00.000-05:00`NOTEStarting in MongoDB 4.4, [`systemLog.timeStampFormat`](https://docs.mongodb.com/master/reference/configuration-options/#systemLog.timeStampFormat) no longer supports `ctime`. An example of `ctime` formatted date is: `Wed Dec 31 18:17:54.811`.
+  将消息记录到syslog时使用的设施级别。您指定的值必须由您的操作系统的syslog实现支持。要使用此选项，必须将[`systemLog.destination`](https://docs.mongodb.com/master/reference/configuration-options/#systemLog.destination)设置为`syslog`。
 
-#### `systemLog.component` Options
+- `systemLog.path`
 
-copycopied
+  *Type*: string
+
+  日志文件的路径,[`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod)或[`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos)应该发送诊断日志记录所有信息,而不是标准输出或主机的[syslog](https://docs.mongodb.com/master/reference/glossary/#term-syslog)。MongoDB在指定的路径上创建日志文件。
+
+  Linux软件包的初始化脚本不希望[`systemLog.path`](https://docs.mongodb.com/manual/reference/configuration-options/#systemLog.path)更改默认值。如果您使用Linux包并更改[`systemLog.path`](https://docs.mongodb.com/master/reference/configuring-options/#systemlog.path)，您将不得不使用自己的init脚本并禁用内置脚本。
+
+- `systemLog.logAppend`
+
+  *Type*: boolean
+
+  *Default*: false
+
+  当为`true`的时候，[`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos)或[`mongod`](https://docs.mongodb.com/manual/reference/program/mongod/#bin.mongod)追加新的条目到现有的日志文件时，结束[`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos)或[`mongod`](https://docs.mongodb.com/manual/reference/program/mongod/#bin.mongod) 实例重新启动。如果没有此选项，[`mongod`](https://docs.mongodb.com/manual/reference/program/mongod/#bin.mongod)将备份现有日志并创建一个新文件。
+
+- `systemLog.logRotate`
+
+  *Type*: string
+
+  *Default*: rename
+
+  命令的行为。指定`rename`或`reopen`：
+
+  * `rename` 重命名日志文件。
+
+  * `reopen`按照典型的Linux / Unix日志轮换行为，关闭并重新打开日志文件。使用`reopen`的Linux / Unix logrotate的工具，以避免日志丢失时。
+
+    如果指定`reopen`，则还必须设置[`systemLog.logAppend`](https://docs.mongodb.com/manual/reference/configuration-options/#systemLog.logAppend)为`true`。
+
+- `systemLog.destination`
+
+  *Type*: string
+
+  MongoDB将所有日志输出发送到的目标。指定 `file`或`syslog`。如果指定`file`，则还必须指定 [`systemLog.path`](https://docs.mongodb.com/manual/reference/configuration-options/#systemLog.path)。
+
+  如果未指定[`systemLog.destination`](https://docs.mongodb.com/manual/reference/configuration-options/#systemLog.destination)，则MongoDB将所有日志输出发送到标准输出。
+
+  > **[warning] 警告**
+  >
+  > `syslog`守护进程在记录消息时生成时间戳，而不是在MongoDB发出消息时生成。这可能会导致日志条目的时间戳出现错误，特别是在系统处于高负载时。我们建议在生产系统中使用`file`选项，以确保准确的时间戳。
+
+- `systemLog.timeStampFormat`
+
+  *Type*: string
+  
+  *Default*: iso8601-local
+  
+  日志消息中时间戳的时间格式。指定以下值之一:
+  
+  | 值              | 描述                                                         |
+  | --------------- | ------------------------------------------------------------ |
+  | `iso8601-utc`   | 以ISO-8601格式的协调世界时(UTC)显示时间戳。例如，对于纪元之初的纽约:`1970-01-01T00:00:00.000Z` |
+  | `iso8601-local` | 以ISO-8601格式本地时间显示时间戳。例如，对于纪元初期的纽约:`1969-12-31T19:00:00.000-05:00` |
+  
+  > **[success] 注意**
+  >
+  > 从MongoDB 4.4开始，[`systemLog.timeStampFormat`](https://docs.mongodb.com/master/reference/configuration-options/#systemLog.timeStampFormat)不再支持`ctime`。`ctime`格式化的日期的一个例子是:`Wed Dec 31 18:17:54.811`。
+
+#### `systemLog.component` 选项
 
 ```
 systemLog:
@@ -226,37 +277,102 @@ systemLog:
          verbosity: <int>
 ```
 
-NOTE
+> **[success] 注意**
+>
+> 从4.2版本开始，MongoDB在[log messages](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels)中包含了调试详细级别(1-5)。例如，如果冗余级别是2,MongoDB记录的日志是`D2`。在以前的版本中，MongoDB日志消息只指定`D`作为调试级别。
 
-Starting in version 4.2, MongoDB includes the Debug verbosity level (1-5) in the [log messages](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels). For example, if the verbosity level is 2, MongoDB logs `D2`. In previous versions, MongoDB log messages only specified `D` for Debug level.
+- `systemLog.component.accessControl.verbosity`
 
-- `systemLog.component.accessControl.``verbosity`
+  *Type*: integer
 
-  *Type*: integer*Default*: 0The log message verbosity level for components related to access control. See [`ACCESS`](https://docs.mongodb.com/master/reference/log-messages/#ACCESS) components.The verbosity level can range from `0` to `5`:`0` is the MongoDB’s default log verbosity level, to include [Informational](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels) messages.`1` to `5` increases the verbosity level to include [Debug](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels) messages.
+  *Default*: 0
 
-- `systemLog.component.command.``verbosity`
+  与访问控制相关的组件的日志消息详细程度级别。查看[`ACCESS`](https://docs.mongodb.com/master/reference/log-messages/#ACCESS)组件。
 
-  *Type*: integer*Default*: 0The log message verbosity level for components related to commands. See [`COMMAND`](https://docs.mongodb.com/master/reference/log-messages/#COMMAND) components.The verbosity level can range from `0` to `5`:`0` is the MongoDB’s default log verbosity level, to include [Informational](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels) messages.`1` to `5` increases the verbosity level to include [Debug](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels) messages.
+  详细程度可以从`0`到`5`:
 
-- `systemLog.component.control.``verbosity`
+  * `0`是MongoDB的默认日志冗余级别，用于包含 [Informational](https://docs.mongodb.com/manual/reference/log-messages/#log-severity-levels)信息。
+  * `1`到`5`增加了包含[Debug](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels)消息的冗余级别。
 
-  *Type*: integer*Default*: 0The log message verbosity level for components related to control operations. See [`CONTROL`](https://docs.mongodb.com/master/reference/log-messages/#CONTROL) components.The verbosity level can range from `0` to `5`:`0` is the MongoDB’s default log verbosity level, to include [Informational](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels) messages.`1` to `5` increases the verbosity level to include [Debug](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels) messages.
+- `systemLog.component.command.verbosity`
 
-- `systemLog.component.ftdc.``verbosity`
+  *Type*: integer
 
-  *Type*: integer*Default*: 0*New in version 3.2.*The log message verbosity level for components related to diagnostic data collection operations. See [`FTDC`](https://docs.mongodb.com/master/reference/log-messages/#FTDC) components.The verbosity level can range from `0` to `5`:`0` is the MongoDB’s default log verbosity level, to include [Informational](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels) messages.`1` to `5` increases the verbosity level to include [Debug](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels) messages.
+  *Default*: 0
 
-- `systemLog.component.geo.``verbosity`
+  与命令相关的组件的日志消息详细级别。查看[`COMMAND`](https://docs.mongodb.com/manual/reference/log-messages/#COMMAND)组件。
 
-  *Type*: integer*Default*: 0The log message verbosity level for components related to geospatial parsing operations. See [`GEO`](https://docs.mongodb.com/master/reference/log-messages/#GEO) components.The verbosity level can range from `0` to `5`:`0` is the MongoDB’s default log verbosity level, to include [Informational](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels) messages.`1` to `5` increases the verbosity level to include [Debug](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels) messages.
+  详细程度的范围为`0`到`5`：
 
-- `systemLog.component.index.``verbosity`
+  * `0`是MongoDB的默认日志级别，包括  [Informational](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels) 信息。
+  * `1`到`5`增加详细级别，以包括 [Debug](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels)消息。
 
-  *Type*: integer*Default*: 0The log message verbosity level for components related to indexing operations. See [`INDEX`](https://docs.mongodb.com/master/reference/log-messages/#INDEX) components.The verbosity level can range from `0` to `5`:`0` is the MongoDB’s default log verbosity level, to include [Informational](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels) messages.`1` to `5` increases the verbosity level to include [Debug](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels) messages.
+- `systemLog.component.control.verbosity`
 
-- `systemLog.component.network.``verbosity`
+  *Type*: integer
 
-  *Type*: integer*Default*: 0The log message verbosity level for components related to networking operations. See [`NETWORK`](https://docs.mongodb.com/master/reference/log-messages/#NETWORK) components.The verbosity level can range from `0` to `5`:`0` is the MongoDB’s default log verbosity level, to include [Informational](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels) messages.`1` to `5` increases the verbosity level to include [Debug](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels) messages.
+  *Default*: 0
+
+  与控制操作相关的组件的日志消息详细级别。查看[`CONTROL`](https://docs.mongodb.com/manual/reference/log-messages/#CONTROL)组件。
+
+  详细程度的范围为`0`到`5`：
+
+  * `0`是MongoDB的默认日志级别，包括[Informational](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels)信息。
+  * `1`到`5`增加详细级别，以包括 [Debug](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels)消息。
+
+- `systemLog.component.ftdc.verbosity`
+
+  *Type*: integer
+
+  *Default*: 0
+
+  *version 3.2中的新功能。*
+
+  与诊断数据收集操作相关的组件的日志消息详细级别。查看[`FTDC`](https://docs.mongodb.com/manual/reference/log-messages/#FTDC)组件。
+
+  详细程度的范围为`0`到`5`：
+
+  * `0`是MongoDB的默认日志级别，包括 [Informational](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels)信息。
+  * `1`到`5`增加详细级别，以包括 [Debug](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels)消息。
+
+- `systemLog.component.geo.verbosity`
+
+  *Type*: integer
+
+  *Default*: 0
+
+  与地理空间解析操作相关的组件的日志消息详细级别。查看[`GEO`](https://docs.mongodb.com/manual/reference/log-messages/#GEO)组件。
+
+  详细程度的范围为`0`到`5`：
+
+  * `0`是MongoDB的默认日志级别，包括[Informational](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels)信息。
+  * `1`到`5`增加详细级别，以包括[Debug](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels)信息。
+
+- `systemLog.component.index.verbosity`
+
+  *Type*: integer
+
+  *Default*: 0
+
+  与索引操作相关的组件的日志消息详细级别。查看[`INDEX`](https://docs.mongodb.com/manual/reference/log-messages/#INDEX)组件。
+
+  详细程度的范围为`0`到`5`：
+
+  * `0`是MongoDB的默认日志级别，包括 [Informational](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels) 消息。
+  * `1`到`5`增加详细级别，以包括[Debug](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels) 消息。
+
+- `systemLog.component.network.verbosity`
+
+  *Type*: integer
+
+  *Default*: 0
+
+  与联网操作相关的组件的日志消息详细级别。查看[`NETWORK`](https://docs.mongodb.com/manual/reference/log-messages/#NETWORK)组件。
+
+  详细程度的范围为`0`到`5`：
+
+  * `0`是MongoDB的默认日志级别，包括 [Informational](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels)消息。
+  * `1`到`5`增加详细级别，以包括 [Debug](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels)消息。
 
 - `systemLog.component.query.``verbosity`
 
@@ -306,7 +422,7 @@ Starting in version 4.2, MongoDB includes the Debug verbosity level (1-5) in the
 
   *Type*: integer*Default*: 0The log message verbosity level for components related to write operations. See [`WRITE`](https://docs.mongodb.com/master/reference/log-messages/#WRITE) components.The verbosity level can range from `0` to `5`:`0` is the MongoDB’s default log verbosity level, to include [Informational](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels) messages.`1` to `5` increases the verbosity level to include [Debug](https://docs.mongodb.com/master/reference/log-messages/#log-severity-levels) messages.
 
-### `processManagement` Options
+### <span id="processmanagement-options">`processManagement` 选项</span>
 
 copycopied
 
@@ -331,7 +447,7 @@ processManagement:
 
 
 
-### `cloud` Options
+### <span id="cloud-options">`cloud` 选项</span>
 
 *New in version 4.0.*
 
@@ -353,7 +469,7 @@ cloud:
 
   *Type*: string*New in version 4.0:* Available for MongoDB Community Edition.Optional tag to describe environment context. The tag can be sent as part of the [free MongoDB Cloud monitoring](https://docs.mongodb.com/master/administration/free-monitoring/) registration at start up.For the corresponding command-line option, see [`--freeMonitoringTag`](https://docs.mongodb.com/master/reference/program/mongod/#cmdoption-mongod-freemonitoringtag).
 
-### `net` Options
+### <span id="net-options">`net` 选项</span>
 
 *Changed in version 4.2:* MongoDB 4.2 deprecates `ssl` options in favor of `tls` options with identical functionality.
 
@@ -416,7 +532,7 @@ net:
 
   *Type*: boolean*Default*: falseSet [`net.ipv6`](https://docs.mongodb.com/master/reference/configuration-options/#net.ipv6) to `true` to enable IPv6 support. [`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos)/[`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) disables IPv6 support by default.Setting [`net.ipv6`](https://docs.mongodb.com/master/reference/configuration-options/#net.ipv6) does *not* direct the [`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos)/[`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) to listen on any local IPv6 addresses or interfaces. To configure the [`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos)/[`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) to listen on an IPv6 interface, you must either:Configure [`net.bindIp`](https://docs.mongodb.com/master/reference/configuration-options/#net.bindIp) with one or more IPv6 addresses or hostnames that resolve to IPv6 addresses, **or**Set [`net.bindIpAll`](https://docs.mongodb.com/master/reference/configuration-options/#net.bindIpAll) to `true`.
 
-#### `net.unixDomainSocket` Options
+#### `net.unixDomainSocket` 选项
 
 copycopied
 
@@ -440,13 +556,13 @@ net:
 
   *Type*: int*Default*: `0700`Sets the permission for the UNIX domain socket file.[`net.unixDomainSocket.filePermissions`](https://docs.mongodb.com/master/reference/configuration-options/#net.unixDomainSocket.filePermissions) applies only to Unix-based systems.
 
-#### `net.http` Options
+#### `net.http` 选项
 
 *Changed in version 3.6:* MongoDB 3.6 removes the deprecated `net.http` options. The options have been deprecated since version 3.2.
 
 
 
-#### `net.tls` Options
+#### `net.tls` 选项
 
 *New in version 4.2:* The `tls` options provide identical functionality as the previous `ssl` options.
 
@@ -534,7 +650,7 @@ net:
 
 
 
-#### `net.ssl` Options
+#### `net.ssl` 选项
 
 IMPORTANT
 
@@ -627,7 +743,7 @@ net:
 
   *Type*: boolean*Deprecated since version 4.2:* Use [`net.tls.FIPSMode`](https://docs.mongodb.com/master/reference/configuration-options/#net.tls.FIPSMode) instead.Enable or disable the use of the FIPS mode of the TLS/SSL library for the [`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos) or [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod). Your system must have a FIPS compliant library to use the [`net.ssl.FIPSMode`](https://docs.mongodb.com/master/reference/configuration-options/#net.ssl.FIPSMode) option.NOTEFIPS-compatible TLS/SSL is available only in [MongoDB Enterprise](http://www.mongodb.com/products/mongodb-enterprise-advanced?tck=docs_server). See [Configure MongoDB for FIPS](https://docs.mongodb.com/master/tutorial/configure-fips/) for more information.
 
-#### `net.compression` Option
+#### `net.compression` 选项
 
 copycopied
 
@@ -645,7 +761,7 @@ net:
 
   *Type*: string*Default*: synchronous*New in version 3.6.*Determines the threading and execution model [`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos) or [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) uses to execute client requests. The `--serviceExecutor` option accepts one of the following values:ValueDescription`synchronous`The [`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos) or [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) uses synchronous networking and manages its networking thread pool on a per connection basis. Previous versions of MongoDB managed threads in this way.`adaptive`The [`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos) or [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) uses the new experimental asynchronous networking mode with an adaptive thread pool which manages threads on a per request basis. This mode should have more consistent performance and use less resources when there are more inactive connections than database requests.
 
-### `security` Options
+### <span id="security-options">`security` 选项</span>
 
 copycopied
 
@@ -723,7 +839,7 @@ security:
 
 
 
-#### Key Management Configuration Options
+#### 密钥管理配置选项
 
 copycopied
 
@@ -799,7 +915,7 @@ security:
 
 
 
-#### `security.sasl` Options
+#### `security.sasl` 选项
 
 copycopied
 
@@ -825,7 +941,7 @@ security:
 
 
 
-#### `security.ldap` Options
+#### `security.ldap` 选项
 
 copycopied
 
@@ -891,13 +1007,13 @@ security:
 
   *Type*: boolean*Default*: true*Available in MongoDB Enterprise*A flag that determines if the [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) or [`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos) instance checks the availability of the [`LDAP server(s)`](https://docs.mongodb.com/master/reference/configuration-options/#security.ldap.servers) as part of its startup:If `true`, the [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) or [`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos) instance performs the availability check and only continues to start up if the LDAP server is available.If `false`, the [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) or [`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos) instance skips the availability check; i.e. the instance starts up even if the LDAP server is unavailable.
 
-### `setParameter` Option
+### <span id="setparameter-option">`setParameter` 选项</span>
 
 - `setParameter`
 
   Set MongoDB parameter or parameters described in [MongoDB Server Parameters](https://docs.mongodb.com/master/reference/parameters/)To set parameters in the YAML configuration file, use the following format:copycopied`setParameter:   <parameter1>: <value1>   <parameter2>: <value2> `For example, to specify the [`enableLocalhostAuthBypass`](https://docs.mongodb.com/master/reference/parameters/#param.enableLocalhostAuthBypass) in the configuration file:copycopied`setParameter:   enableLocalhostAuthBypass: false `
 
-#### LDAP Parameters
+#### LDAP参数
 
 - `setParameter.``ldapUserCacheInvalidationInterval`
 
@@ -910,7 +1026,7 @@ setParameter:
    ldapUserCacheInvalidationInterval: <int>
 ```
 
-### `storage` Options
+### <span id="storage-options">`storage` 选项</span>
 
 STARTING IN VERSION 4.4
 
@@ -972,7 +1088,7 @@ storage:
 
   *Type*: double*New in version 4.4:* Specifies the minimum number of hours to preserve an oplog entry, where the decimal values represent the fractions of an hour. For example, a value of `1.5` represents one hour and thirty minutes.The value must be greater than or equal to `0`. A value of `0` indicates that the [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) should truncate the oplog starting with the oldest entries to maintain the configured maximum oplog size.Defaults to `0`.A [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) started with `oplogMinRetentionHours` only removes an oplog entry *if*:The oplog has reached the maximum configured oplog size *and*The oplog entry is older than the configured number of hours based on the host system clock.The [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) has the following behavior when configured with a minimum oplog retention period:The oplog can grow without constraint so as to retain oplog entries for the configured number of hours. This may result in reduction or exhaustion of system disk space due to a combination of high write volume and large retention period.If the oplog grows beyond its maximum size, the [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) may continue to hold that disk space even if the oplog returns to its maximum size *or* is configured for a smaller maximum size. See [Reducing Oplog Size Does Not Immediately Return Disk Space](https://docs.mongodb.com/master/reference/command/replSetResizeOplog/#replsetresizeoplog-cmd-compact).The [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) compares the system wall clock to an oplog entries creation wall clock time when enforcing oplog entry retention. Clock drift between cluster components may result in unexpected oplog retention behavior. See [Clock Synchronization](https://docs.mongodb.com/master/administration/production-notes/#production-notes-clock-synchronization) for more information on clock synchronization across cluster members.To change the minimum oplog retention period after starting the [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod), use [`replSetResizeOplog`](https://docs.mongodb.com/master/reference/command/replSetResizeOplog/#dbcmd.replSetResizeOplog). [`replSetResizeOplog`](https://docs.mongodb.com/master/reference/command/replSetResizeOplog/#dbcmd.replSetResizeOplog) enables you to resize the oplog dynamically without restarting the [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) process. To persist the changes made using [`replSetResizeOplog`](https://docs.mongodb.com/master/reference/command/replSetResizeOplog/#dbcmd.replSetResizeOplog) through a restart, update the value of [`oplogMinRetentionHours`](https://docs.mongodb.com/master/reference/configuration-options/#storage.oplogMinRetentionHours).
 
-#### `storage.wiredTiger` Options
+#### `storage.wiredTiger` 选项
 
 copycopied
 
@@ -1014,7 +1130,7 @@ storage:
 
   *Default*: trueEnables or disables [prefix compression](https://docs.mongodb.com/master/reference/glossary/#term-prefix-compression) for index data.Specify `true` for [`storage.wiredTiger.indexConfig.prefixCompression`](https://docs.mongodb.com/master/reference/configuration-options/#storage.wiredTiger.indexConfig.prefixCompression) to enable [prefix compression](https://docs.mongodb.com/master/reference/glossary/#term-prefix-compression) for index data, or `false` to disable prefix compression for index data.The [`storage.wiredTiger.indexConfig.prefixCompression`](https://docs.mongodb.com/master/reference/configuration-options/#storage.wiredTiger.indexConfig.prefixCompression) setting affects all indexes created. If you change the value of [`storage.wiredTiger.indexConfig.prefixCompression`](https://docs.mongodb.com/master/reference/configuration-options/#storage.wiredTiger.indexConfig.prefixCompression) on an existing MongoDB deployment, all new indexes will use prefix compression. Existing indexes are not affected.
 
-#### `storage.inmemory` Options
+#### `storage.inmemory` 选项
 
 copycopied
 
@@ -1031,7 +1147,7 @@ storage:
 
 
 
-### `operationProfiling` Options
+### <span id="operationprofiling-options">`operationProfiling` 选项</span>
 
 copycopied
 
@@ -1062,7 +1178,7 @@ operationProfiling:
 
 
 
-### `replication` Options
+### <span id="replication-options">`replication` 选项</span>
 
 copycopied
 
@@ -1085,7 +1201,7 @@ replication:
 
   *Default*: trueStarting in MongoDB 3.6, MongoDB enables support for [`"majority"`](https://docs.mongodb.com/master/reference/read-concern-majority/#readconcern."majority") read concern by default.You can disable read concern [`"majority"`](https://docs.mongodb.com/master/reference/read-concern-majority/#readconcern."majority") to prevent the storage cache pressure from immobilizing a deployment with a three-member primary-secondary-arbiter (PSA) architecture. For more information about disabling read concern [`"majority"`](https://docs.mongodb.com/master/reference/read-concern-majority/#readconcern."majority"), see [Disable Read Concern Majority](https://docs.mongodb.com/master/reference/read-concern-majority/#disable-read-concern-majority).To disable, set [`replication.enableMajorityReadConcern`](https://docs.mongodb.com/master/reference/configuration-options/#replication.enableMajorityReadConcern) to false. [`replication.enableMajorityReadConcern`](https://docs.mongodb.com/master/reference/configuration-options/#replication.enableMajorityReadConcern) has no effect for MongoDB versions: 4.0.0, 4.0.1, 4.0.2, 3.6.0.IMPORTANTIn general, avoid disabling [`"majority"`](https://docs.mongodb.com/master/reference/read-concern-majority/#readconcern."majority") read concern unless necessary. However, if you have a three-member replica set with a primary-secondary-arbiter (PSA) architecture or a sharded cluster with a three-member PSA shards, disable to prevent the storage cache pressure from immobilizing the deployment.Disabling [`"majority"`](https://docs.mongodb.com/master/reference/read-concern-majority/#readconcern."majority") read concern affects support for [transactions](https://docs.mongodb.com/master/core/transactions/) on sharded clusters. Specifically:A transaction cannot use read concern [`"snapshot"`](https://docs.mongodb.com/master/reference/read-concern-snapshot/#readconcern."snapshot") if the transaction involves a shard that has [disabled read concern “majority”](https://docs.mongodb.com/master/reference/read-concern-majority/#disable-read-concern-majority).A transaction that writes to multiple shards errors if any of the transaction’s read or write operations involves a shard that has disabled read concern [`"majority"`](https://docs.mongodb.com/master/reference/read-concern-majority/#readconcern."majority").However, it does not affect [transactions](https://docs.mongodb.com/master/core/transactions/) on replica sets. For transactions on replica sets, you can specify read concern [`"majority"`](https://docs.mongodb.com/master/reference/read-concern-majority/#readconcern."majority") (or [`"snapshot"`](https://docs.mongodb.com/master/reference/read-concern-snapshot/#readconcern."snapshot") or [`"local"`](https://docs.mongodb.com/master/reference/read-concern-local/#readconcern."local") ) for multi-document transactions even if read concern [`"majority"`](https://docs.mongodb.com/master/reference/read-concern-majority/#readconcern."majority") is disabled.Disabling [`"majority"`](https://docs.mongodb.com/master/reference/read-concern-majority/#readconcern."majority") read concern prevents [`collMod`](https://docs.mongodb.com/master/reference/command/collMod/#dbcmd.collMod) commands which modify an index from [rolling back](https://docs.mongodb.com/master/core/replica-set-rollbacks/#replica-set-rollbacks). If such an operation needs to be rolled back, you must resync the affected nodes with the [primary](https://docs.mongodb.com/master/reference/glossary/#term-primary) node.Disabling [`"majority"`](https://docs.mongodb.com/master/reference/read-concern-majority/#readconcern."majority") read concern disables support for [Change Streams](https://docs.mongodb.com/master/changeStreams/) for MongoDB 4.0 and earlier. For MongoDB 4.2+, disabling read concern `"majority"` has no effect on change streams availability.
 
-### `sharding` Options
+### <span id="sharding-options">`sharding` 选项</span>
 
 copycopied
 
@@ -1103,7 +1219,7 @@ sharding:
 
   *Type*: boolean*Changed in version 3.2:* Starting in 3.2, MongoDB uses `false` as the default.During chunk migration, a shard does not save documents migrated from the shard.
 
-### `auditLog` Options
+### <span id="auditlog-options">`auditLog` 选项</span>
 
 NOTE
 
@@ -1135,7 +1251,7 @@ auditLog:
 
   *Type*: string representation of a documentThe filter to limit the [types of operations](https://docs.mongodb.com/master/reference/audit-message/#audit-action-details-results) the [audit system](https://docs.mongodb.com/master/core/auditing/) records. The option takes a string representation of a query document of the form:copycopied`{ <field1>: <expression1>, ... } `The `<field>` can be [any field in the audit message](https://docs.mongodb.com/master/reference/audit-message/), including fields returned in the [param](https://docs.mongodb.com/master/reference/audit-message/#audit-action-details-results) document. The `<expression>` is a [query condition expression](https://docs.mongodb.com/master/reference/operator/query/#query-selectors).To specify an audit filter, enclose the filter document in single quotes to pass the document as a string.To specify the audit filter in a [configuration file](https://docs.mongodb.com/master/reference/configuration-options/#), you must use the YAML format of the configuration file.NOTEAvailable only in [MongoDB Enterprise](http://www.mongodb.com/products/mongodb-enterprise-advanced?tck=docs_server) and [MongoDB Atlas](https://cloud.mongodb.com/user#/atlas/login).
 
-### `snmp` Options
+### <span id="snmp-options">`snmp` 选项</span>
 
 NOTE
 
@@ -1168,7 +1284,7 @@ SEE ALSO
 - [Monitor MongoDB Windows with SNMP](https://docs.mongodb.com/master/tutorial/monitor-with-snmp-on-windows/)
 - [Troubleshoot SNMP](https://docs.mongodb.com/master/tutorial/troubleshoot-snmp/)
 
-## `mongos`-only Options
+## <span id="mongos-only-options">`mongos`-only 选项</span>
 
 *Changed in version 3.4:* MongoDB 3.4 removes `sharding.chunkSize` and `sharding.autoSplit` settings.
 
@@ -1190,7 +1306,7 @@ sharding:
 
   *Type*: string*Changed in version 3.2.*The [configuration servers](https://docs.mongodb.com/master/core/sharded-cluster-config-servers/#sharding-config-server) for the [sharded cluster](https://docs.mongodb.com/master/reference/glossary/#term-sharded-cluster).Starting in MongoDB 3.2, config servers for sharded clusters can be deployed as a [replica set](https://docs.mongodb.com/master/replication/). The replica set config servers must run the [WiredTiger storage engine](https://docs.mongodb.com/master/core/wiredtiger/). MongoDB 3.2 deprecates the use of three mirrored [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) instances for config servers.Specify the config server replica set name and the hostname and port of at least one of the members of the config server replica set.copycopied`sharding:  configDB: <configReplSetName>/cfg1.example.net:27019, cfg2.example.net:27019,... `The [`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos) instances for the sharded cluster must specify the same config server replica set name but can specify hostname and port of different members of the replica set.
 
-## Windows Service Options
+## <span id="windows-service-options">Windows Service 选项</span>
 
 copycopied
 
@@ -1224,7 +1340,7 @@ processManagement:
 
   *Type*: stringThe password for `<user>` for [`mongos`](https://docs.mongodb.com/master/reference/program/mongos/#bin.mongos) or [`mongod`](https://docs.mongodb.com/master/reference/program/mongod/#bin.mongod) when running with the [`processManagement.windowsService.serviceUser`](https://docs.mongodb.com/master/reference/configuration-options/#processManagement.windowsService.serviceUser) option.You must use [`processManagement.windowsService.servicePassword`](https://docs.mongodb.com/master/reference/configuration-options/#processManagement.windowsService.servicePassword) in conjunction with the `--install` option.
 
-## Removed MMAPv1 Options
+## <span id="removed-mmapv1-options">Removed MMAPv1 选项</span>
 
 Starting in version 4.2, MongoDB removes the deprecated MMAPv1 storage engine and the MMAPv1-specific configuration options:
 
