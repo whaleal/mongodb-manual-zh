@@ -149,3 +149,4 @@ MongoDB 4.2索引生成过程的开始和结束时获取正在索引的集合的
 | 将索引标记为就绪 | [`mongod`](../reference/program/mongod.html#bin.mongod)将索引元数据更新为可使用状态。 |
 | Lock | [`mongod`](../reference/program/mongod.html#bin.mongod)进程释放该索引集合的独占`X`锁。 |
 
+译者：程哲欣
