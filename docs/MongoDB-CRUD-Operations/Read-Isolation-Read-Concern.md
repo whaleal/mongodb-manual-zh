@@ -170,6 +170,6 @@ MongoDB 3.6引入了对[因果一致会话](https://docs.mongodb.com/manual/core
 
 
 
-译者：杨帅
+译者：杨帅 张琦
 
 校对：杨帅
