@@ -128,3 +128,5 @@ MongoDB还可以使用索引来支持对`item`和 `stock`字段的查询，因�
 在索引构建期间，应用程序可能会遇到性能下降，包括对集合的读/写访问受限。有关索引构建过程的更多信息，，请参见 [“填充集合上的索引构建”](https://docs.mongodb.com/manual/core/index-creation/#index-operations-replicated-build)，包括“ [复制环境中的索引构建”](https://docs.mongodb.com/manual/core/index-creation/#index-operations-replicated-build)部分。
 
 一些驱动程序可能使用`NumberLong(1)`而不是 `1`将规范指定为索引。这对结果索引没有任何影响。
+
+译者：莫薇
