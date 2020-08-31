@@ -232,7 +232,7 @@
                 * [$not](docs/Reference/Operators/Query-and-Projection-Operators/Logical-Query-Operators/not.md)
                 * [$nor](docs/Reference/Operators/Query-and-Projection-Operators/Logical-Query-Operators/nor.md)
                 * [$or](docs/Reference/Operators/Query-and-Projection-Operators/Logical-Query-Operators/or.md)
-            * [E元素查询运算符](docs/Reference/Operators/Query-and-Projection-Operators/Element-Query-Operators.md)
+            * [元素查询运算符](docs/Reference/Operators/Query-and-Projection-Operators/Element-Query-Operators.md)
             * [评估查询运算符](docs/Reference/Operators/Query-and-Projection-Operators/Evaluation-Query-Operators.md)
             * [地理空间查询运算符](docs/Reference/Operators/Query-and-Projection-Operators/Geospatial-Query-Operators.md)
             * [数组查询运算符](docs/Reference/Operators/Query-and-Projection-Operators/Array-Query-Operators.md)

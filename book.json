@@ -6,6 +6,7 @@
     "root": ".",
 
     "plugins": [
+      "hide-element",
 	"-sharing",
         "donate",
 	"tbfed-pagefooter",
@@ -29,6 +30,9 @@
     ],
 
     "pluginsConfig": {
+      "hide-element": {
+            "elements": [".gitbook-link"]
+        },
         "donate": {
             "wechat": "https://docs.jinmu.info/MongoDB-Manual-zh/img/pay/Wechatpay.jpeg",
             "alipay": "https://docs.jinmu.info/MongoDB-Manual-zh/img/pay/alipay.jpeg",
