@@ -48,10 +48,10 @@
 | 4.12 MongoDB读关注             | 张琦，锦木 | 100% |
 | 4.13 MongoDB写关注     | 张琦 | 100% |
 | 4.14 MongoDB CRUD概念                 | 张琦，锦木 | 100% |
-| 5.1 MongoDB聚合                                 | 锦木 | 100% |
-| 5.2 MongoDB聚合管道                    | 刘翔，锦木 | 100% |
-| 5.3 Map-Reduce                                               | 锦木 | 100% |
-| 5.4 MongoDB聚合参考                   | 锦木 | 100% |
+| 5.1 MongoDB聚合                                 | 李冠飞 | 100% |
+| 5.2 MongoDB聚合管道                    | 刘翔，李冠飞 | 100% |
+| 5.3 Map-Reduce                                               | 李冠飞 | 100% |
+| 5.4 MongoDB聚合参考                   | 李冠飞 | 100% |
 | 6.1 MongoDB数据建模介绍          | 张鹏 | 100% |
 | 6.2 MongoDB模式验证                       | 张鹏 | 100% |
 | 6.3 MongoDB数据建模设计                | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |      |
