@@ -63,3 +63,4 @@ db.people.find(
 | 在[`collStats`](https://docs.mongodb.com/manual/reference/command/collStats/#dbcmd.collStats)输出结果中 | [`totalIndexSize`](https://docs.mongodb.com/manual/reference/command/collStats/#collStats.totalIndexSize)和[`indexSizes`](https://docs.mongodb.com/manual/reference/command/collStats/#collStats.indexSizes) |
 | 在[`dbStats`](https://docs.mongodb.com/manual/reference/command/dbStats/#dbcmd.dbStats)输出结果中 | [`dbStats.indexes`](https://docs.mongodb.com/manual/reference/command/dbStats/#dbStats.indexes)和[`dbStats.indexSize`](https://docs.mongodb.com/manual/reference/command/dbStats/#dbStats.indexSize) |
 
+译者：程哲欣

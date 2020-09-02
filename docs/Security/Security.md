@@ -11,3 +11,5 @@ MongoD提供了各种各样的功能让你安全地部署MongoDB，诸如：身�
 | :----------------------------------------------------------- | :----------------------------------------------------------- | :--- |
 | [Kerberos 验证](https://docs.mongodb.com/manual/core/kerberos/)  [LDAP 代理验证](https://docs.mongodb.com/manual/core/security-ldap/)  [静态加密](https://docs.mongodb.com/manual/core/security-encryption-at-rest/)  [审计](https://docs.mongodb.com/manual/core/auditing/) | [客户端字段级加密](https://docs.mongodb.com/manual/core/security-client-side-encryption/) |      |
 
+
+译者：傅立

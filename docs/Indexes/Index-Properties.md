@@ -17,3 +17,5 @@
 索引的[TTL](https:_docs.mongodb.com_manual_core_index-ttl)特性，允许MongoDB在一定时间后自动从集合中移除文档。这非常适合某些类型的信息，例如：机器生成的事件数据、日志和会话信息，这些信息只需要在数据库中保留有限的时间。
 
 有关实现说明，请参见：[Expire Data from Collections by Setting TTL](https:_docs.mongodb.com_manual_tutorial_expire-data)
+
+译者：程哲欣

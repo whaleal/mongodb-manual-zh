@@ -282,6 +282,6 @@ db.myCollection.c<Tab>
 
 
 
-译者：王恒
+译者：王恒  金江
 
 校对：杨帅

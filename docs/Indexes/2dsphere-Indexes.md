@@ -87,4 +87,4 @@ db.places.createIndex( { category : 1 , loc : "2dsphere" } )
 
 
 
-译者：杨帅
+译者：杨帅 周正

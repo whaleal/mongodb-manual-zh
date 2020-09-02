@@ -115,16 +115,9 @@ Windows 10，Server 2016和Server 2019上的用户不需要此更新。
      - MongoDB
      
      以下内容将MongoDB安装并配置为Windows服务。
-     
-     从MongoDB 4.0开始，您可以在安装过程中将MongoDB配置和启动为Windows服务，并在成功安装后启动MongoDB服务。
-     
-     
-     
-     ![Image of the MongoDB Installer wizard - Service Configuration.](https://docs.mongodb.com/v4.2/_images/windows-installer.png)
-     
-     
-     
-     - 选择“ **将MongoD作为服务安装”**。
+     从MongoDB 4.0开始，您可以在安装过程中将MongoDB配置和启动为Windows服务，并在成功安装后启动MongoDB服务。  
+ ![Image of the MongoDB Installer wizard - Service Configuration.](https://docs.mongodb.com/v4.2/_images/windows-installer.png)
+     - 选择“ **将MongoDB作为服务安装”**。
      
      - 选择以下任一项：
      
@@ -150,12 +143,7 @@ Windows 10，Server 2016和Server 2019上的用户不需要此更新。
    
 4. 准备就绪后，点击**安装**。
 
-
-
-
 ### 如果您将MongoDB安装为Windows服务
-
-
 
 成功安装后将启动MongoDB服务[[1\]](https://docs.mongodb.com/v4.2/tutorial/install-mongodb-on-windows/#cfg)。
 
