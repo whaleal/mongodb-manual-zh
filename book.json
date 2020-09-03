@@ -1,5 +1,5 @@
 {
-    "title": "MongoDB-Manual-zh",
+    "title": "MongoDB中文手册|官方文档中文版",
     "description": "MongoDB-Manual-zh",
     "author": "hbnking",
     "language": "zh-hans",
@@ -17,16 +17,16 @@
 	"pageview-count",
 	"edit-link",
 	"back-to-top-button",
-	"-lunr", 
-          "-search", 
+	"-lunr",
+          "-search",
           "search-pro",
 	"splitter",
 	"page-toc-button",
 	"auto-scroll-table",
 	"flexible-alerts",
-	"alerts"	
+	"alerts"
 
-			
+
     ],
 
     "pluginsConfig": {
@@ -69,7 +69,6 @@
             "minTocSize": 4
            }
 	}
-	    
-	
-}
 
+
+}

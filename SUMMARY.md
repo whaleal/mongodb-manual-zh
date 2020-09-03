@@ -340,6 +340,9 @@
     * [默认的MongoDB端口](docs/Reference/Default-MongoDB-Port.md)
     * [默认的MongoDB读/写关注](docs/Reference/Default-MongoDB-Read-Concerns-and-Write-Concerns.md)
     * [服务器会话](docs/Reference/Server-Sessions.md)
+* [MongoDB驱动](docs/MONGODB-DRIVERS.md)
+	 * [MongoDB的Scala驱动](docs/MONGODB-DRIVERS/MongoDB-Scala-Driver.md) 
+
 * FAQ
     * [FAQ: MongoDB基础知识](docs/Frequently-Asked-Questions/MongoDB-Fundamentals.md)
     * [FAQ: 索引](docs/Frequently-Asked-Questions/Indexes.md)
