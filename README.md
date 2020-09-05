@@ -35,7 +35,7 @@ MongoDB是专为可扩展性，高性能和高可用性而设计的数据库。�
 ## 贡献者名单
 
 [文档翻译贡献者名单](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/List-of-contributors.md)<br/>
-[申请加入MongoDB汉化小组]()
+[申请加入MongoDB汉化小组](https://github.com/orgs/JinMuInfo/teams/mongodb-manual-zh/members)  
 点击[文档翻译认领列表](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md)参与翻译。
 
 ## 其他
