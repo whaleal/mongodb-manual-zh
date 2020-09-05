@@ -22,7 +22,7 @@ MongoDB是专为可扩展性，高性能和高可用性而设计的数据库。�
 
 ## 项目协议
 
-本项目为署名-非商业性使用-相同方式共享 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)。
+本项目为署名-非商业性使用-相同方式共享 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)  
 请务必遵循如下条件：
 
 署名：必须提到原作者，提供指向此许可协议的链接，表明是否有做修改  
