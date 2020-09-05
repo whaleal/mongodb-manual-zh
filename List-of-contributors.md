@@ -14,26 +14,26 @@
 
 | 章节                                                         | 贡献者         | 进度 |
 | ------------------------------------------------------------ | -------------- | ---- |
-| 0. MongoDB 4.2用户手册说明                                   | 锦木，小芒果   | 100% |
-| 1.1 MongoDB介绍                     | 锦木，小芒果 | 100% |
-| 1.2 MongoDB入门                             | 锦木，小芒果 | 100% |
+| 0. MongoDB 4.2用户手册说明                                   | 杨帅，小芒果 | 100% |
+| 1.1 MongoDB介绍                     | 杨帅，小芒果 | 100% |
+| 1.2 MongoDB入门                             | 杨帅，小芒果 | 100% |
 | 1.3 [Atlas免费层启动MongoDB集群](https://docs.atlas.mongodb.com/getting-started/) | ——     | ——   |
-| 1.4 MongoDB数据库与集合           | 锦木，小芒果 | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |
-| 1.5 MongoDB文档                                    | 锦木，小芒果 | 100% |
+| 1.4 MongoDB数据库与集合           | 杨帅，小芒果 | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |
+| 1.5 MongoDB文档                                    | 杨帅，小芒果 | 100% |
 | 1.6 MongoDB BSON类型                             | 小芒果 | [加入翻译](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md) |
 | 2.1 安装MongoDB                             | 桂陈，小芒果 | 100% |
 | 2.2 安装社区版MongoDB     | 汪子豪，小芒果 | 100% |
 | 2.3 安装企业版MongoDB           | 小芒果 | 100% |
 | 2.4 将MongoDB社区版升级到企业版 | 小芒果 | 100% |
 | 2.5 验证MongoDB软件包的完整性 | 小芒果 | 100% |
-| 3.1 The `mongo` Shell                                        | 金江 | 100% |
-| 3.2 配置`mongo` Shell          | 金江 | 100% |
-| 3.3 访问`mongo` Shell帮助     | 金江 | 100% |
-| 3.4 为`mongo` Shell编写脚本 | 杨帅 | 100% |
-| 3.5  `mongo` Shell中的数据类型 | 锦木 | 100% |
-| 3.6  `mongo` Shell快速参考     | 锦木 | 100% |
+| 3.1 The `mongo` Shell                                        | 金江，王恒 | 100% |
+| 3.2 配置`mongo` Shell          | 金江，王恒 | 100% |
+| 3.3 访问`mongo` Shell帮助     | 金江，王恒 | 100% |
+| 3.4 为`mongo` Shell编写脚本 | 杨帅，王恒 | 100% |
+| 3.5  `mongo` Shell中的数据类型 | 杨帅，王恒 | 100% |
+| 3.6  `mongo` Shell快速参考     | 杨帅，王恒 | 100% |
 | 4.1 MongoDB CRUD操作               | 刘翔 | 100% |
-| 4.2 MongoDB插入文档                        | 锦木 | 100% |
+| 4.2 MongoDB插入文档                        | 杨帅 | 100% |
 | 4.3 MongoDB查询文档                         | 杨帅 | 100% |
 | 4.4 MongoDB更新文档                        | 杨帅 | 100% |
 | 4.5 MongoDB删除文档                        | 杨帅 | 100% |
@@ -43,9 +43,9 @@
 | 4.9 SQL到MongoDB的映射图表     | 杨帅 | 100% |
 | 4.10 MongoDB文本搜索                            | 杨帅 | 100% |
 | 4.11 MongoDB地理空间查询                 | 杨帅 | 100% |
-| 4.12 MongoDB读关注             | 张琦，锦木 | 100% |
+| 4.12 MongoDB读关注             | 张琦，杨帅 | 100% |
 | 4.13 MongoDB写关注     | 张琦  ，杨帅 | 100% |
-| 4.14 MongoDB CRUD概念                 | 张琦，锦木 | 100% |
+| 4.14 MongoDB CRUD概念                 | 张琦，杨帅 | 100% |
 | 5.1 MongoDB聚合                                 | 李冠飞 | 100% |
 | 5.2 MongoDB聚合管道                    | 刘翔，李冠飞 | 100% |
 | 5.3 Map-Reduce                                               | 李冠飞 | 100% |
