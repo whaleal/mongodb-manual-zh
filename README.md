@@ -22,7 +22,12 @@ MongoDB是专为可扩展性，高性能和高可用性而设计的数据库。�
 
 ## 项目协议
 
-本项目为 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)。
+本项目为署名-非商业性使用-相同方式共享 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)  
+请务必遵循如下条件：
+
+署名：必须提到原作者，提供指向此许可协议的链接，表明是否有做修改  
+非商业性使用：不能对本作品进行任何形式的商业性使用  
+相同方式共享：若对本作品进行了修改，必须以相同的许可协议共享  
 
 ## 报告问题  
 在我们的Github [MongoDB-Manual-zh/issues](https://github.com/JinMuInfo/MongoDB-Manual-zh/issues)上提 issue.    
@@ -35,6 +40,7 @@ MongoDB是专为可扩展性，高性能和高可用性而设计的数据库。�
 ## 贡献者名单
 
 [文档翻译贡献者名单](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/List-of-contributors.md)<br/>
+[申请加入MongoDB汉化小组](https://github.com/orgs/JinMuInfo/teams/mongodb/members)  
 点击[文档翻译认领列表](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md)参与翻译。
 
 ## 其他

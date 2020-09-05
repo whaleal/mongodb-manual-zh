@@ -40,7 +40,7 @@ if __name__ == "__main__":
         else:
             filename = "docs/%s/node_modules/gitbook-plugin-tbfed-pagefooter/index.js" % version
         str1 = "powered by Gitbook"
-        str2 = "由 MongoDB中文社区 提供技术支持"
+        str2 = "由 MongoDB汉化小组 提供技术支持"
 
     
     # 状态为 True 就进行替换

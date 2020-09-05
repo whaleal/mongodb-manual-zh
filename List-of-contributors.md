@@ -6,7 +6,7 @@
 
 管理员根据翻译进度不定时更新此列表；将文档更新到最新版本，请[提issue](https://github.com/JinMuInfo/MongoDB-Manual-zh/issues/1)。
 
-申请加入[中文手册翻译小组](https://github.com/orgs/JinMuInfo/teams/mongodb-manual-zh/members)请直接点击链接申请即可
+申请加入[中文手册翻译小组](https://github.com/orgs/JinMuInfo/teams/mongodb/members)请直接点击链接申请即可
 
 
 > #### 翻译贡献者名单
