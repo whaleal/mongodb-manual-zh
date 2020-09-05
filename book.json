@@ -24,7 +24,8 @@
 	"page-toc-button",
 	"auto-scroll-table",
 	"flexible-alerts",
-	"alerts"
+	"alerts",
+  "insert-logo"
 
 
     ],
@@ -67,6 +68,10 @@
 	 "page-toc-button": {
             "maxTocDepth": 4,
             "minTocSize": 4
+          },
+    "insert-logo": {
+             "url": "img/logo/jmlogo.png",
+             "style": "background: none; max-height: 30px; min-height: 30px"
            }
 	}
 
