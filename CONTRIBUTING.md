@@ -161,8 +161,9 @@ fork Github 项目并建立你的分支 branch（我们强烈建议这样做）�
 将译文放在 docs/  文件夹下；  
 commit 和 push 你的修改；  
 pull request。
-如果你还不熟练这个流程，请参阅 [Github 入门指南](https://docs.github.com/cn/github)。
-建议 ** 你在提交的时候 同时修改贡献者名单 ** 。 我们非常重视每一个贡献者的付出 。
+如果你还不熟练这个流程，请参阅 [Github 入门指南](https://docs.github.com/cn/github)。  
+建议 ** 你在提交的时候 同时修改贡献者名单 ** 。  
+我们非常重视每一个贡献者的付出 。  
 
 ### 四、工具推荐
 
