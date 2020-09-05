@@ -9,10 +9,19 @@
 [文档翻译认领列表](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md)<br/>
 [文档翻译贡献者名单](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/List-of-contributors.md)<br/>
 [在线阅读文档 github](https://jinmuinfo.github.io/MongoDB-Manual-zh/)<br/>
-[在线阅读文档 国内](http://gloden.gitee.io/mongodb-manual)<br/>
+
 
 
 ### 欢迎任何人参与和完善
+你可以做的事  
+翻译文档  
+校对文档  
+润色文档  
+格式调整  
+链接引用调整  
+项目管理等  
+包括但不限于以上种种  
+
 
 ### 一 翻译
 请将你的文档转为 markdown  格式。  
@@ -152,7 +161,9 @@ fork Github 项目并建立你的分支 branch（我们强烈建议这样做）�
 将译文放在 docs/  文件夹下；  
 commit 和 push 你的修改；  
 pull request。
-如果你还不熟练这个流程，请参阅 [Github 入门指南](https://docs.github.com/cn/github)。
+如果你还不熟练这个流程，请参阅 [Github 入门指南](https://docs.github.com/cn/github)。  
+建议 ** 你在提交的时候 同时修改贡献者名单 ** 。  
+我们非常重视每一个贡献者的付出 。  
 
 ### 四、工具推荐
 
