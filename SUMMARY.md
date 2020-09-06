@@ -208,13 +208,13 @@
         * 仅插入工作负载的分布式本地写入
         * 管理分片区
   * [MongoDB备份方法](docs/24-Administration/MongoDB-Backup-Methods.md)
-* [存储]()
-* [存储引擎]()
-  	* [WiredTiger 存储引擎](docs/25-Storage/Storage-Engines/WiredTiger-Storage-Engine.md)
-  	* [内存存储引擎](docs/25-Storage/Storage-Engines/In-Memory-Storage-Engine.md)
-  * [日志记录]()
-  	 * 管理日志记录
-    * GridFS
+* [存储](docs/30-Storage.md)
+	* [存储引擎](docs/25-Storage/Storage-Engines.md)
+  		* [WiredTiger 存储引擎](docs/25-Storage/Storage-Engines/WiredTiger-Storage-Engine.md)
+  		* [内存存储引擎](docs/25-Storage/Storage-Engines/In-Memory-Storage-Engine.md)
+  	* [日志记录]()
+  	 	* 管理日志记录
+    	* GridFS
     * [FAQ:MongoDB 存储](docs/25-Storage/FAQ:MongoDB-Storage.md)
 * [参考]()
     * [运算符]()
