@@ -70,7 +70,7 @@
             "minTocSize": 4
           },
     "insert-logo": {
-             "url": "img/logo/MongoLogoBlack.png",
+             "url": "https://docs.jinmu.info/MongoDB-Manual-zh/img/logo/MongoLogoBlack.png",
              "style": "background: none; max-height: 30px; min-height: 30px"
            }
 	}
