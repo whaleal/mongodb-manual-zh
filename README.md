@@ -1,4 +1,4 @@
-#  [MongoDB 中文手册 | 官方文档 中文版](https://docs.jinmu.info/MongoDB-Manual-zh/)
+#  [MongoDB 中文手册 | MongoDb 文档 中文版](https://docs.jinmu.info/MongoDB-Manual-zh/)
 
 
 
@@ -13,7 +13,7 @@
 
 MongoDB 是专为可扩展性，高性能和高可用性而设计的数据库。它可以从单服务器部署扩展到大型、复杂的多数据中心架构。利用内存计算的优势，MongoDB能够提供高性能的数据读写操作。 MongoDB 的本地复制和自动故障转移功能使您的应用程序具有企业级的可靠性和操作灵活性。  
 
-本项目为 MongoDB 操作手册 中文版,与[MongoDB 官方文档](https://docs.mongodb.com/manual/)保持同步。  
+本项目为 MongoDB 中文手册(中文文档),与[MongoDB 英文文档](https://docs.mongodb.com/manual/)保持同步。  
 
 项目地址  
 [维护地址](https://github.com/JinMuInfo/MongoDB-Manual-zh)  
