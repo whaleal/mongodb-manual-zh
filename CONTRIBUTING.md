@@ -75,9 +75,19 @@ powershell
 
     链接到文件项目本身。
 
+    
+
   * 图片
 
     图片链接到文件项目本身
+
+    例子:
+
+    ```powershell
+    src="../../img/docs/06-Aggregation/agg-pipeline.mp4"  比如这个路径 最好也是填上绝对路径
+    ```
+
+    
 
   * 已被废弃的版本
 
