@@ -1,4 +1,4 @@
-#  [MongoDB 中文手册 | 官方文档中文版](https://docs.jinmu.info/MongoDB-Manual-zh/)
+#  [MongoDB 中文手册 | 官方文档 中文版](https://docs.jinmu.info/MongoDB-Manual-zh/)
 
 
 
