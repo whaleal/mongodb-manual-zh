@@ -13,10 +13,11 @@
 <iframe 
     height=450 
     width=800 
-    src="../../img/docs/Aggregation/agg-pipeline.mp4" 
+    src="../../img/docs/06-Aggregation/agg-pipeline.mp4" 
     frameborder=0 
     allowfullscreen>
 </iframe>
+
 
 在这个例子中
 
@@ -30,10 +31,6 @@ db.orders.aggregate([
 **第一阶段**：[`$match`]()阶段按`status`字段过滤文档，并将`status`等于`"A"`的文档传递到下一阶段。
 
 **第二阶段**：[`$group`]()阶段按`cust_id`字段将文档分组，以计算每个`cust_id`唯一值的金额总和。
-
-[]()
-
-[]()
 
 ## <span id="pipeline">管道</span>
 
@@ -56,10 +53,6 @@ MongoDB 在[mongo](../docs/Reference/MongoDB-Package-Components/mongo.md) shell 
 >
 > [聚合管道更新]()
 
-[]()
-
-[]()
-
 ## <span id="pipeline-expressions">管道表达式</span>
 
 某些管道阶段将管道表达式作为操作数。管道表达式指定要应用于输入文档的转换。表达式具有[文档](../Introduction-to-MongoDB/Documents.md)结构，可以包含其他[表达式](Aggregation-Reference/Aggregation-Pipeline-Quick-Reference.md)。
@@ -74,17 +67,9 @@ Mongodb 3.2的变化：[$project]()阶段有一些累加器可用;但是，在[$
 
 有关表达式的更多信息，请参阅[表达式](Aggregation-Reference/Aggregation-Pipeline-Quick-Reference.md)。
 
-[]()
-
-[]()
-
 ## <span id="aggregation-pipeline-behavior">聚合管道行为</span>
 
 在 MongoDB 中，[管道]()命令在单个集合上运行，从逻辑上将整个集合传递到聚合管道。为了尽可能优化操作，请使用以下策略以避免扫描整个集合。
-
-[]()
-
-[]()
 
 ### 管道运算符和索引
 
@@ -117,8 +102,6 @@ MongoDB的[query planner]()分析聚合管道，以确定是否可以使用[索�
   [`$geoNear`]()管道运算符利用地理空间索引。在使用时[`$geoNear`]()， [`$geoNear`]()管道操作必须出现在聚合管道的第一阶段出现。
 
 > Mongodb 3.2 版本的改变：从MongoDB 3.2开始，索引可以覆盖聚合管道。在MongoDB 2.6和3.0中，索引无法覆盖聚合管道，因为即使管道使用索引，聚合仍需要访问实际文档。
-
-[]()
 
 ### []()早期过滤
 

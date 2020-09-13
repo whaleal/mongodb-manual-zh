@@ -12,22 +12,18 @@
 
 聚合操作处理数据记录和 return 计算结果。聚合操作将来自多个文档的值组合在一起，并且可以对分组数据执行各种操作以返回单个结果。 MongoDB 提供了三种执行聚合的方法：[聚合管道](#聚合管道)，[map-reduce function](#map-reduce)和[单一目的聚合方法](#单用途聚合操作)。
 
-[]()
-
-[]()
-
 ## <span id="aggregation-pipeline">聚合管道</span>
 
 MongoDB 的[Aggregation framework](Aggregation/Aggregation-Pipeline.md)是以数据处理管道的概念为蓝本的。文档进入多阶段管道，将文档转换为聚合结果。例如：
 
-
 <iframe 
     height=450 
     width=800 
-    src="../img/docs/Aggregation/agg-pipeline.mp4" 
+    src="../img/docs/06-Aggregation/agg-pipeline.mp4" 
     frameborder=0 
     allowfullscreen>
 </iframe>
+
 在这个例子中：
 
 ```powershell
@@ -51,10 +47,6 @@ db.orders.aggregate([
 
 聚合管道可以使用索引来改善其某些阶段的性能。此外，聚合管道具有内部优化阶段。有关详细信息，请参阅[管道操作和索引](Aggregation/Aggregation-Pipeline.md)和[聚合管道优化](Aggregation/Aggregation-Pipeline/Aggregation-Pipeline-Optimization.md)。
 
-[]()
-
-[]()
-
 ## <span id="map-reduce">Map-Reduce</span>
 
 MongoDB 还提供[map-reduce](Aggregation/Map-Reduce.md)操作来执行聚合。通常，map-reduce 操作有两个阶段：一个 map 阶段，它处理每个文档并为每个输入文档发出一个或多个对象，以及将map操作的输出组合在一起的*reduce*阶段。可选地，map-reduce 可以具有最终化阶段以对结果进行最终修改。与其他聚合操作一样，map-reduce 可以指定查询条件以选择输入文档以及对结果排序和限制。
@@ -67,7 +59,7 @@ Map-reduce 可以在[分片集合 sharded collection]()上运行。 Map-reduce �
 >
 > 从 MongoDB 2.4 开始，在 map-reduce 操作中无法访问某些mongoshell 函数和属性。 MongoDB 2.4 还支持多个 JavaScript 操作以在同一时间运行。在 MongoDB 2.4 之前，JavaScript code 在单个线程中执行，引发了 map-reduce 的并发问题。
 
-![带注释的 map-reduce 操作图](../img/docs/Aggregation/map-reduce.bakedsvg.svg)
+![带注释的 map-reduce 操作图](../img/docs/06-Aggregation/map-reduce.bakedsvg.svg)
 
 
 
@@ -77,7 +69,7 @@ MongoDB 还提供  [db.collection.estimatedDocumentCount()](), [db.collection.co
 
 所有这些操作都聚合来自单个集合的文档。虽然这些操作提供了对常见聚合过程的简单访问，但它们缺乏聚合管道和 map-reduce 的灵活性和功能。
 
-![带注释的不同操作的图表](../img/docs/Aggregation/distinct.bakedsvg.svg)
+![带注释的不同操作的图表](../img/docs/06-Aggregation/distinct.bakedsvg.svg)
 
 
 
