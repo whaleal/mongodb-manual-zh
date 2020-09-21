@@ -29,11 +29,7 @@ if __name__ == "__main__":
         if version == "home":
             filename = "book.json"
             tag = False
-        else:
-            filename = "docs/%s/book.json" % version
-            str1 = "https://github.com/apachecn/sklearn-doc-zh/blob/master"
-            str2 = "https://github.com/apachecn/sklearn-doc-zh/blob/master/docs/%s" % version
-
+                          
     elif u_type == "powered":
         if version == "home":
             filename = "node_modules/gitbook-plugin-tbfed-pagefooter/index.js"

@@ -1,7 +1,7 @@
 # Summary
 
 * [MongoDB官方文档中文版](README.md)
-* [MongoDB用户手册说明](docs/01-The-MongoDB-Manual-CN.md)
+* [MongoDB中文手册说明](docs/01-The-MongoDB-Manual-CN.md)
 * [MongoDB简介](docs/03-Mongo-Introduction.md)
 	* [MongoDB历史](docs/02-Mongo-Introduction/MongoDB-history.md)
 	* [MongoDB特点](docs/02-Mongo-Introduction/MongoDB-characteristic.md)
