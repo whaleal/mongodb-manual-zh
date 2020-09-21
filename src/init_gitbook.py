@@ -8,7 +8,7 @@ def init_data(versions):
     vs = versions.split(" ")
     for v in vs:
         src = "node_modules"
-        dst = "docs/%s/node_modules" % v
+        dst = "MongoDB-Manual-zh/%s/node_modules" % v
         if not os.path.exists(dst):
             shutil.copytree(src, dst)
 

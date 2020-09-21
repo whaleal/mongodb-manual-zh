@@ -15,19 +15,19 @@ for version in $versions;do
     loginfo "==========================================================="
     loginfo "开始",  "版本编译"
 
-    echo "cp book.json docs/${version}"
-    cp book.json docs/${version}
+    echo "cp book.json MongoDB-Manual-zh/${version}"
+    cp book.json MongoDB-Manual-zh/${version}
 
     # 替换 book.json 的编辑地址
     echo "python3 src/script.py ${version} book"
     python3 src/script.py ${version} "book"
 
-    echo "cp -r node_modules docs/${version}"
-    rm -rf docs/${version}/node_modules
-    cp -r node_modules docs/${version}
+    echo "cp -r node_modules MongoDB-Manual-zh/${version}"
+    rm -rf MongoDB-Manual-zh/${version}/node_modules
+    cp -r node_modules MongoDB-Manual-zh/${version}
 
-    echo "gitbook install docs/${version}"
-    gitbook install docs/${version}
+    echo "gitbook install MongoDB-Manual-zh/${version}"
+    gitbook install MongoDB-Manual-zh/${version}
 
     echo "python3 src/script.py ${version} powered"
     python3 src/script.py ${version} "powered"
@@ -35,8 +35,8 @@ for version in $versions;do
     echo "python3 src/script.py ${version} gitalk"
     python3 src/script.py ${version} "gitalk"
 
-    echo "gitbook build docs/${version} _book/docs/${version}"
-    gitbook build docs/${version} _book/docs/${version}
+    echo "gitbook build MongoDB-Manual-zh/${version} _book/MongoDB-Manual-zh/${version}"
+    gitbook build MongoDB-Manual-zh/${version} _book/MongoDB-Manual-zh/${version}
 
 
 done

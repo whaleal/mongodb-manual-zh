@@ -30,15 +30,15 @@ if __name__ == "__main__":
             filename = "book.json"
             tag = False
         else:
-            filename = "docs/%s/book.json" % version
+            filename = "MongoDB-Manual-zh/%s/book.json" % version
             str1 = "https://github.com/apachecn/sklearn-doc-zh/blob/master"
-            str2 = "https://github.com/apachecn/sklearn-doc-zh/blob/master/docs/%s" % version
+            str2 = "https://github.com/apachecn/sklearn-doc-zh/blob/master/MongoDB-Manual-zh/%s" % version
 
     elif u_type == "powered":
         if version == "home":
             filename = "node_modules/gitbook-plugin-tbfed-pagefooter/index.js"
         else:
-            filename = "docs/%s/node_modules/gitbook-plugin-tbfed-pagefooter/index.js" % version
+            filename = "MongoDB-Manual-zh/%s/node_modules/gitbook-plugin-tbfed-pagefooter/index.js" % version
         str1 = "powered by Gitbook"
         str2 = "由 MongoDB汉化小组 提供技术支持"
 
