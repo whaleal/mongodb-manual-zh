@@ -185,7 +185,16 @@ commit 和 push 你的修改；
 pull request。
 如果你还不熟练这个流程，请参阅 [Github 入门指南](https://docs.github.com/cn/github)。  
 建议**你在提交的时候 同时修改贡献者名单** 。  
-我们非常重视每一个贡献者的付出 。  
+我们非常重视每一个贡献者的付出。  
+文末格式  
+期待在文末看到你的名字  
+```
+译者：你的名字
+校对：你的名字
+本文链接：https://docs.jinmu.info/MongoDB-Manual-zh
+原文链接: https://docs.jinmu.info/MongoDB-Manual-zh
+最后更新时间：2020-01-01
+```
 
 ### 四、工具推荐
 
