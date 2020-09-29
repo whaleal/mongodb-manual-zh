@@ -69,7 +69,7 @@
         * [读关注 "snapshot"](docs/08-MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-snapshot.md)
     * [写关注](docs/08-MongoDB-CRUD-Operations/Write-Acknowledgement-Write-concern.md)
     * [MongoDB CRUD 概念](docs/08-MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts.md)
-        * [原子性和事务](docs/08-MongoDB-CRUD-Operations/MOngoDB-CRUD-Concepts/Atomicity-and-Transactions.md)
+        * [原子性和事务](docs/08-MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Atomicity-and-Transactions.md)
         * [读隔离性，一致性和近因性](docs/08-MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Read-Isolation-Consistency-and-Recency.md)
             * [因果一致性和读写关注](docs/08-MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Read-Isolation-Consistency-and-Recency/Causal-Consistency-and-Read-and-Write-Concerns.md)
         * [分布式查询](docs/08-MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Distributed-Queries.md)
