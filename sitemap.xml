@@ -69,7 +69,7 @@
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/08-MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-snapshot.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/08-MongoDB-CRUD-Operations/Write-Acknowledgement-Write-concern.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/08-MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
-<url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/08-MongoDB-CRUD-Operations/MOngoDB-CRUD-Concepts/Atomicity-and-Transactions.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/08-MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Atomicity-and-Transactions.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/08-MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Read-Isolation-Consistency-and-Recency.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/08-MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Read-Isolation-Consistency-and-Recency/Causal-Consistency-and-Read-and-Write-Concerns.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/08-MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Distributed-Queries.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
