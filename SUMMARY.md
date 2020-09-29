@@ -353,5 +353,10 @@
     * [FAQ: MongoDB 诊断](docs/29-Frequently-Asked-Questions/MongoDB-Diagnostics.md)
 * 联系我们
     * [锦木信息](http://www.jinmuinfo.com/)
+    * [加入汉化小组]
     * [项目负责人-杨帅](https://github.com/ys17513628804)
+*  更多资料  
+
+    
+
 
