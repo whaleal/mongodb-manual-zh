@@ -7,7 +7,6 @@
   "plugins": [
     "hide-element",
     "-sharing",
-    "donate",
     "tbfed-pagefooter",
     "github-buttons",
     "github",
@@ -32,14 +31,6 @@
       "elements": [
         ".gitbook-link"
       ]
-    },
-    "donate": {
-      "wechat": "https://docs.jinmu.info/MongoDB-Manual-zh/img/pay/Wechatpay.jpeg",
-      "alipay": "https://docs.jinmu.info/MongoDB-Manual-zh/img/pay/alipay.jpeg",
-      "title": "",
-      "button": "打赏",
-      "alipayText": "支付宝打赏",
-      "wechatText": "微信打赏"
     },
     "github-buttons": {
       "buttons": [
