@@ -24,7 +24,8 @@
     "flexible-alerts",
     "alerts",
     "insert-logo",
-    "sitemap"
+    "sitemap-general",
+    "push-bd"
   ],
   "pluginsConfig": {
     "hide-element": {
@@ -63,8 +64,8 @@
       "url": "https://docs.jinmu.info/MongoDB-Manual-zh/img/logo/MongoLogoBlack.png",
       "style": "background: none; max-height: 30px; min-height: 30px"
     },
-    "sitemap": {
-      "hostname": "https://docs.jinmu.info/MongoDB-Manual-zh/"
-    }
+    "sitemap-general": {
+            "prefix": "https://docs.jinmu.info/MongoDB-Manual-zh/"
+   }
   }
 }
