@@ -2,9 +2,9 @@
 
 
 
-<img src="img/logo/MongoLogoBlack.png" width="50%" height="50%">
-<img src="img/logo/mongoChina.png" width="50%" height="50%">
-<img src="img/logo/jmlogo.png" width="50%" height="50%">
+<img src="https://docs.jinmu.info/MongoDB-Manual-zh/img/logo/MongoLogoBlack.png" width="50%" height="50%">
+<img src="https://docs.jinmu.info/MongoDB-Manual-zh/img/logo/mongoChina.png" width="50%" height="50%">
+<img src="https://docs.jinmu.info/MongoDB-Manual-zh/img/logo/jmlogo.png" width="50%" height="50%">
 
 
 

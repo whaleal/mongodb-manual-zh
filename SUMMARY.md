@@ -69,7 +69,7 @@
         * [读关注 "snapshot"](docs/08-MongoDB-CRUD-Operations/Read-Isolation-Read-Concern/Read-Concern-snapshot.md)
     * [写关注](docs/08-MongoDB-CRUD-Operations/Write-Acknowledgement-Write-concern.md)
     * [MongoDB CRUD 概念](docs/08-MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts.md)
-        * [原子性和事务](docs/08-MongoDB-CRUD-Operations/MOngoDB-CRUD-Concepts/Atomicity-and-Transactions.md)
+        * [原子性和事务](docs/08-MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Atomicity-and-Transactions.md)
         * [读隔离性，一致性和近因性](docs/08-MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Read-Isolation-Consistency-and-Recency.md)
             * [因果一致性和读写关注](docs/08-MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Read-Isolation-Consistency-and-Recency/Causal-Consistency-and-Read-and-Write-Concerns.md)
         * [分布式查询](docs/08-MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Distributed-Queries.md)
@@ -353,5 +353,15 @@
     * [FAQ: MongoDB 诊断](docs/29-Frequently-Asked-Questions/MongoDB-Diagnostics.md)
 * 联系我们
     * [锦木信息](http://www.jinmuinfo.com/)
+    * [加入汉化小组]
     * [项目负责人-杨帅](https://github.com/ys17513628804)
+*  更多资料  
+    * [快学Mongo]
+    * [Mongo问题讨论区]
+    * [Mongo 驱动使用手册]
+
+
+   
+    
+
 
