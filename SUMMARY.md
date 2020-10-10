@@ -34,7 +34,7 @@
     * [为mongo Shell编写脚本](docs/04-The-Mongo-Shell/Write-Scripts-for-the-mongo-Shell.md)
     * [mongo Shell中的数据类型](docs/04-The-Mongo-Shell/Data-Types-in-the-mongo-Shell.md)
     * [mongo Shell 快速参考](docs/04-The-Mongo-Shell/mongo-Shell-Quick-Reference.md)
-* [MongoDB CRUD 操作](docs/09-MongoDB-CRUD-Operations.md)
+* [MongoDB CRUD 操作](docs/05-MongoDB-CRUD-Operations.md)
     * [插入文档](docs/05-MongoDB-CRUD-Operations/Insert-Documents.md)
         * [插入方法](docs/05-MongoDB-CRUD-Operations/Insert-Documents/Insert-Methods.md)
     * [查询文档](docs/05-MongoDB-CRUD-Operations/Query-Documents.md)
