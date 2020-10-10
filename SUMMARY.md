@@ -82,7 +82,7 @@
             * [说明结果](docs/05-MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Query-Optimization/Explain-Results.md)
         * [分析查询表现](docs/05-MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Analyze-Query-Performance.md)
         * [Tailable 游标](docs/05-MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Tailable-Cursors.md)
-* [聚合](docs/11-Aggregation.md)
+* [聚合](docs/06-Aggregation.md)
     * [聚合管道](docs/06-Aggregation/Aggregation-Pipeline.md)
         * [聚合管道优化](docs/06-Aggregation/Aggregation-Pipeline/Aggregation-Pipeline-Optimization.md)
         * [聚合管道限制](docs/06-Aggregation/Aggregation-Pipeline/Aggregation-Pipeline-Limits.md)
