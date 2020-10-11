@@ -117,7 +117,11 @@ Thumbs.db
 
 # custom
 docs/README.md
+<<<<<<< HEAD
 src/
 src
 *.sh
 /.idea
+=======
+MongoDB-Manual-zh/README.md
+>>>>>>> master
