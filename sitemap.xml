@@ -34,6 +34,7 @@
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/04-The-Mongo-Shell/Write-Scripts-for-the-mongo-Shell.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/04-The-Mongo-Shell/Data-Types-in-the-mongo-Shell.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/04-The-Mongo-Shell/mongo-Shell-Quick-Reference.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/05-MongoDB-CRUD-Operations.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/05-MongoDB-CRUD-Operations/Insert-Documents.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/05-MongoDB-CRUD-Operations/Insert-Documents/Insert-Methods.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/05-MongoDB-CRUD-Operations/Query-Documents.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
@@ -81,6 +82,7 @@
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/05-MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Query-Optimization/Explain-Results.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/05-MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Analyze-Query-Performance.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/05-MongoDB-CRUD-Operations/MongoDB-CRUD-Concepts/Tailable-Cursors.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/06-Aggregation.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/06-Aggregation/Aggregation-Pipeline.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/06-Aggregation/Aggregation-Pipeline/Aggregation-Pipeline-Optimization.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/06-Aggregation/Aggregation-Pipeline/Aggregation-Pipeline-Limits.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
@@ -436,6 +438,7 @@
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/17-Reference/Default-MongoDB-Port.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/17-Reference/Default-MongoDB-Read-Concerns-and-Write-Concerns.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/17-Reference/Server-Sessions.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/27-MONGODB-DRIVERS.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/27-MONGODB-DRIVERS/MongoDB-Scala-Driver.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/16-Frequently-Asked-Questions/MongoDB-Fundamentals.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://docs.jinmu.info/MongoDB-Manual-zh/docs/16-Frequently-Asked-Questions/Indexes.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
