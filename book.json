@@ -25,7 +25,8 @@
     "alerts",
     "insert-logo",
     "sitemap-general",
-    "push-bd"
+    "push-bd",
+    "baidu-tongji"	
   ],
   "pluginsConfig": {
     "hide-element": {
@@ -66,6 +67,9 @@
     },
     "sitemap-general": {
             "prefix": "https://docs.jinmu.info/MongoDB-Manual-zh/"
-   }
+   },
+    "baidu-tongji": {
+        "token": "be45b1d7857fe784feb39634ff071d08"
+    }
   }
 }
