@@ -347,7 +347,7 @@
   	* [日志记录]()
   	 	* 管理日志记录
     	* GridFS
-    * [FAQ:MongoDB 存储](docs/15-Storage/FAQ:MongoDB-Storage.md)
+    * [FAQ:MongoDB 存储](docs/15-Storage/FAQ-MongoDB-Storage.md)
 * [参考]()
     * [运算符]()
         * [查询与映射运算符](docs/17-Reference/Operators/Query-and-Projection-Operators.md)
