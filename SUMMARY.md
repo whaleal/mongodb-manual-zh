@@ -309,7 +309,7 @@
       * [对复制集进行故障排除](docs/21-Replication/Replication-Reference/Troubleshoot-Replica-Sets.md)
       * [本地数据库](docs/21-Replication/Replication-Reference/The-local-Database.md)
       * [复制集成员](docs/21-Replication/Replication-Reference/Replica-Set-Member-States.md)
-* [分片]()
+* [分片](docs/31-Sharding)
     * [分片键](docs/23-Sharding/Shard-keys.md)
     * [哈希分片](docs/23-Sharding/Hashed-Sharding.md)
     * [范围分片](docs/23-Sharding/Ranged-Sharding.md)
@@ -485,7 +485,7 @@
     * [锦木信息](http://www.jinmuinfo.com/)
     * [加入汉化小组]
     * [项目负责人-杨帅](https://github.com/ys17513628804)
-*  更多资料  
+* 更多资料  
     * [快学Mongo]
     * [Mongo问题讨论区]
     * [Mongo 驱动使用手册]
