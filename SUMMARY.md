@@ -484,7 +484,6 @@
 * 联系我们
     * [锦木信息](http://www.jinmuinfo.com/)
     * [加入汉化小组]
-    * [项目负责人-杨帅](https://github.com/ys17513628804)
 * 更多资料  
     * [快学Mongo]
     * [Mongo问题讨论区]
