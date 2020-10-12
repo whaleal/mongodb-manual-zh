@@ -31,7 +31,7 @@
 		* [使用Docker安装MongoDB企业版](docs/03-Install-MongoDB/Install-with-Docker-Enterprise.md)
     * [将社区版MongoDB升级到企业版MongoDB](docs/03-Install-MongoDB/Upgrade-MongoDB-Community-to-MongoDB-Enterprise.md)
     * [验证MongoDB软件包的完整性](docs/03-Install-MongoDB/Verify-Integrity-of-MongoDB-Packages.md)
-* [The mongo Shell](docs/07-The-Mongo-Shell.md)
+* [The mongo Shell](docs/04-The-Mongo-Shell.md)
     * [配置mongo Shell](docs/04-The-Mongo-Shell/Configure-the-mongo-shell.md)
     * [使用 mongo Shell帮助](docs/04-The-Mongo-Shell/Access-the-mongo-Shell-Help.md)
     * [为mongo Shell编写脚本](docs/04-The-Mongo-Shell/Write-Scripts-for-the-mongo-Shell.md)
@@ -473,8 +473,8 @@
     * [默认的MongoDB端口](docs/17-Reference/Default-MongoDB-Port.md)
     * [默认的MongoDB读/写关注](docs/17-Reference/Default-MongoDB-Read-Concerns-and-Write-Concerns.md)
     * [服务器会话](docs/17-Reference/Server-Sessions.md)
-* [MongoDB驱动](docs/27-MONGODB-DRIVERS.md)
-	 * [MongoDB的Scala驱动](docs/27-MONGODB-DRIVERS/MongoDB-Scala-Driver.md) 
+* [MongoDB驱动](docs/20-MONGODB-DRIVERS.md)
+	 * [MongoDB的Scala驱动](docs/20-MONGODB-DRIVERS/MongoDB-Scala-Driver.md) 
 * [FAQ]()
     * [FAQ: MongoDB基础知识](docs/16-Frequently-Asked-Questions/MongoDB-Fundamentals.md)
     * [FAQ: 索引](docs/16-Frequently-Asked-Questions/Indexes.md)
@@ -485,7 +485,7 @@
     * [FAQ: MongoDB 诊断](docs/16-Frequently-Asked-Questions/MongoDB-Diagnostics.md)
 * 联系我们
     * [锦木信息](http://www.jinmuinfo.com/)
-    * [加入汉化小组]](https://github.com/orgs/JinMuInfo/teams/mongodb/members)
+    * [加入汉化小组](https://github.com/orgs/JinMuInfo/teams/mongodb/members)
 *  更多资料  
     * [Mongo问题讨论区]
     * [Mongo 驱动使用手册]
