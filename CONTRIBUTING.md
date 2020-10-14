@@ -212,7 +212,7 @@ pull request。
 3. [x] 自动根据中文文档的内容，取首行作为标题，生成中文版目录。
 4. [x] 自动在文档末尾添加原文链接，方便对照翻译
 5. [ ] 由于文档数量太多，目前(20201014) 还没完成全部迁移，故现在目录处于冗余状态，下一步需要使用 BCompare 手动合并多出来的文档、并清理空文档，目测会由我在接下来的几天内完成。
-6. [x] 出于第5点，现在只提交到了 dev 分支。
+6. [x] 出于第5点，现在只提交到了 dev 分支。 [JinMuInfo/MongoDB-Manual-zh at dev]( https://github.com/JinMuInfo/MongoDB-Manual-zh/tree/dev )
 7. [ ] 已知问题：用户原来收藏的链接会变成 404，不知能否通过自动搜索相近名称来重定向。
 7. [ ] 已知问题：例如 `20-mongodb-drivers/*.md` 存在而 `20-mongodb-drivers.md` 不存在时，在生成目录时 20 会错误地对齐到 `18-support/*.md` 里，此bug尚待修理
 8. [ ] 有疑问请提 issue 或联系 snomiao@gmail.com 。
