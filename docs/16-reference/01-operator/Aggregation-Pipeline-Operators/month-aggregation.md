@@ -1,2 +1,0 @@
-# [ ](#)$month (aggregation)
-[]()

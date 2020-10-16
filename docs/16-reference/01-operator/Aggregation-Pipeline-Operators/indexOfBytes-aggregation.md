@@ -1,2 +1,0 @@
-# [ ](#)$indexOfBytes (aggregation)
-[]()

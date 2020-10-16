@@ -1,2 +1,0 @@
-# [ ](#)$stdDevSamp (aggregation)
-[]()

@@ -1,2 +1,0 @@
-# [ ](#)$year (aggregation)
-[]()

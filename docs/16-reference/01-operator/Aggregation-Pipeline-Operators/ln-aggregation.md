@@ -1,2 +1,0 @@
-# [ ](#)$ln (aggregation)
-[]()

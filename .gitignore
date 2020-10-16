@@ -134,3 +134,7 @@ docs/README.md
 MongoDB-Manual-zh/README.md
 
 debug/
+official/
+docs_template/
+src/docs-template.txt
+src/docs.txt
