@@ -1,2 +1,0 @@
-# [ ](#)$regexFindAll (aggregation)
-[]()

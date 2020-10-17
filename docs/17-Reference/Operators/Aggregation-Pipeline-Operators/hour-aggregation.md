@@ -1,2 +1,0 @@
-# [ ](#)$hour (aggregation)
-[]()

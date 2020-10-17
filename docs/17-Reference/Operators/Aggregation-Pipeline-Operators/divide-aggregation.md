@@ -1,2 +1,0 @@
-# [ ](#)$divide (aggregation)
-[]()

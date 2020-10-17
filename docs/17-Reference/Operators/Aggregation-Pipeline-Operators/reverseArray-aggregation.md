@@ -1,2 +1,0 @@
-# [ ](#)$reverseArray (aggregation)
-[]()

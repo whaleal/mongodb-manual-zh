@@ -1,2 +1,0 @@
-# [ ](#)$toBool (aggregation)
-[]()

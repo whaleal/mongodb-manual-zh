@@ -1,2 +1,0 @@
-# [ ](#)$strcasecmp (aggregation)
-[]()

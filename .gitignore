@@ -4,7 +4,7 @@
 # production  打包文件
 /build
 
-# misc 
+# misc
 .DS_Store
 
 /.idea
@@ -119,6 +119,8 @@ _book
 
 # node.js
 node_modules
+package-lock.json
+
 
 # windows
 Thumbs.db
@@ -130,3 +132,9 @@ Thumbs.db
 # custom
 docs/README.md
 MongoDB-Manual-zh/README.md
+
+debug/
+official/
+docs_template/
+src/docs-template.txt
+src/docs.txt

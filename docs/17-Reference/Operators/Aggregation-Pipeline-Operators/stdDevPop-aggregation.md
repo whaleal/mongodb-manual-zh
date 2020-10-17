@@ -1,2 +1,0 @@
-# [ ](#)$stdDevPop (aggregation)
-[]()

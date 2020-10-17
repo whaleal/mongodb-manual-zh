@@ -1,2 +1,0 @@
-# [ ](#)$indexOfCP (aggregation)
-[]()

@@ -1,2 +1,0 @@
-# [ ](#)$reduce (aggregation)
-[]()

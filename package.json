@@ -1,0 +1,30 @@
+{
+  "name": "mongodb-manual-zh",
+  "version": "1.0.0",
+  "description": "mongodb-manual-zh",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JinMuInfo/MongoDB-Manual-zh.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JinMuInfo/MongoDB-Manual-zh/issues"
+  },
+  "homepage": "https://github.com/JinMuInfo/MongoDB-Manual-zh#readme",
+  "dependencies": {
+    "crawler": "^1.2.2",
+    "directory-tree": "^2.2.5",
+    "fast-levenshtein": "^3.0.0",
+    "firstline": "^2.0.2",
+    "gitbook-cli": "^2.3.2",
+    "jsdom": "^16.4.0"
+  }
+}

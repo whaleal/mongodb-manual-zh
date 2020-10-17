@@ -1,2 +1,0 @@
-# [ ](#)$toDouble(aggregation)
-[]()
