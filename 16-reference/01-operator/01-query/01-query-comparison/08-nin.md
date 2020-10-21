@@ -1,4 +1,4 @@
-# [ ](#)$nin
+ [ ]()$nin
 
 []()
 
@@ -43,7 +43,7 @@ db.inventory.update( { tags: { $nin: [ "appliances", "school" ] } }, { $set: { s
 
 校对：
 
-## 参见
+ 参见
 
 原文 - [$nin]( https://docs.mongodb.com/manual/reference/operator/query/nin/ )
 

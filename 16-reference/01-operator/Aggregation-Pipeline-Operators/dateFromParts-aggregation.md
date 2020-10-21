@@ -1,14 +1,14 @@
-# [ ](#)$dateFromParts (aggregation)
+ [ ]()$dateFromParts (aggregation)
 []()
 在本页面
 
-*   [定义](#definition)
+*   [定义](definition)
 
-*   [行为](#behavior)
+*   [行为](behavior)
 
-*   [例子](#example)
+*   [例子](example)
 
-## <span id="definition">定义</span>
+ <span id="definition">定义</span>
 
 **$dateFromParts**
 
@@ -60,13 +60,13 @@
 | millisecond  | 可选                                | `<millisecond>`。可以是任何计算结果为数字的表达式。<br />默认为`0`。<br />值范围： `0`-`999`<br />从MongoDB 4.0开始，如果指定的数字超出此范围，则会`$dateFromParts`在日期计算中纳入差异。有关示例，请参见值范围。 |
 | timezone     | 可选                                | `<timezone>`可以是任何表达式，其值是字符串，其值可以是：<br />一个奥尔森时区标识符，例如`"Europe/London"`或`"America/New_York"`<br />UTC偏移量，格式为：<br />1. `+/-[hh]:[mm]`，例如`"+04:45"`<br />2. `+/-[hh][mm]`，例如`"-0530"`<br />3. `+/-[hh]`例如`"+03"`<br />有关表达式的更多信息，请参见 表达式。 |
 
-## <span id="behavior">行为</span>
+ <span id="behavior">行为</span>
 
-### 值范围
+ 值范围
 
 在MongoDB中4.0开始，如果比其它字段中指定的值 `year`，`isoYear`和`timezone`是在有效范围之外， `$dateFromParts`携带或减去从其它日期的差来计算的日期。
 
-### 值大于范围
+ 值大于范围
 
 考虑以下`$dateFromParts`表达式，其中`month`字段值为`14`，比12个月（或1年）的最大值大2个月：
 
@@ -80,7 +80,7 @@
 ISODate("2018-02-01T12:00:00Z")
 ```
 
-### 值小于的范围
+ 值小于的范围
 
 考虑以下`$dateFromParts`表达式，其中`month`字段值为`0`，比最小值1个月小1个月：
 
@@ -94,7 +94,7 @@ ISODate("2018-02-01T12:00:00Z")
 ISODate("2016-12-01T12:00:00Z")
 ```
 
-### 时区
+ 时区
 
 在`<timezone>` 字段中使用Olson时区标识符时，如果适用于指定的时区，MongoDB将应用DST偏移量。
 
@@ -151,7 +151,7 @@ db.sales.aggregate([
 }
 ```
 
-## <span id="example">例子</span>
+ <span id="example">例子</span>
 
 以下聚合用于`$dateFromParts`从提供的输入字段构造三个日期对象：
 

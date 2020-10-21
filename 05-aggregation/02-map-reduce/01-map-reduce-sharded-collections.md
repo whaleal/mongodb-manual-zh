@@ -1,11 +1,11 @@
-# [ ](#)Map-Reduce 和分片集合
+ [ ]()Map-Reduce 和分片集合
 []()
 
 在本页面
 
-*   [分片集合作为输入](#sharded-collection-as-input)
+*   [分片集合作为输入](sharded-collection-as-input)
 
-*   [分片集合作为输出](#sharded-collection-as-output)
+*   [分片集合作为输出](sharded-collection-as-output)
 
 Map-reduce 支持对分片集合的操作，既可以作为输入也可以作为输出。本节介绍[MapReduce]()特定于分片集合的操作。
 
@@ -13,13 +13,13 @@ Map-reduce 支持对分片集合的操作，既可以作为输入也可以作为
 
 []()
 
-## <span id="sharded-collection-as-input">分片集合作为输入</span>
+ <span id="sharded-collection-as-input">分片集合作为输入</span>
 
 当使用分片集合作为 map-reduce 操作的输入时，[mongos]()将自动将 map-reduce job 分派给 parallel 中的每个分片。不需要特殊选项。 [mongos]()将等待所有分片上的作业完成。
 
 []()
 
-## <span id="sharded-collection-as-output">分片集合作为输出</span>
+ <span id="sharded-collection-as-output">分片集合作为输出</span>
 
 如果[MapReduce]()的`out`字段具有`sharded` 值，则 MongoDB 使用`_id`字段将输出集合分片为分片键。
 
@@ -51,7 +51,7 @@ Map-reduce 支持对分片集合的操作，既可以作为输入也可以作为
 校对：小芒果
 
 
-## 参见
+ 参见
 
 原文 - [Map-Reduce and Sharded Collections]( https://docs.mongodb.com/manual/core/map-reduce-sharded-collections/ )
 

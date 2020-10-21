@@ -1,4 +1,4 @@
-# 将社区版MongoDB升级到企业版MongoDB
+ 将社区版MongoDB升级到企业版MongoDB
 
 MongoDB企业版提供了MongoDB社区版中未提供的各种功能，例如：
 
@@ -14,7 +14,7 @@ MongoDB企业版提供了MongoDB社区版中未提供的各种功能，例如：
 
 重要
 
-不要使用这些说明升级到另一个发行版本。要升级发行版本，请参阅相应的发行升级说明，例如[Upgrade to MongoDB 4.2](https://docs.mongodb.com/v4.2/release-notes/4.2/#upgrade)。
+不要使用这些说明升级到另一个发行版本。要升级发行版本，请参阅相应的发行升级说明，例如[Upgrade to MongoDB 4.2](https://docs.mongodb.com/v4.2/release-notes/4.2/upgrade)。
 
 | 部署方式 | 教程                                                         |
 | :------- | :----------------------------------------------------------- |
@@ -31,7 +31,7 @@ MongoDB企业版提供了MongoDB社区版中未提供的各种功能，例如：
 译者：小芒果
 
 
-## 参见
+ 参见
 
 原文 - [Upgrade MongoDB Community to MongoDB Enterprise]( https://docs.mongodb.com/manual/administration/upgrade-community-to-enterprise/ )
 

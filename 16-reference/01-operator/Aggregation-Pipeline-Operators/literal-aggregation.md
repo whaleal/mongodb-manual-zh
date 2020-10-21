@@ -1,18 +1,18 @@
-# [ ](#)$literal (aggregation)
+ [ ]()$literal (aggregation)
 
 []()
 
 在本页面
 
-*   [定义](#definition)
+*   [定义](definition)
 
-*   [行为](#behavior)
+*   [行为](behavior)
 
-*   [例子](#example)
+*   [例子](example)
 
 []()
 
-## <span id="definition">定义</span>
+ <span id="definition">定义</span>
 
 **$literal**
 
@@ -23,7 +23,7 @@ $literal表达式具有以下语法：
     { $literal: <value> }
 
 
-## <span id="behavior">行为</span>
+ <span id="behavior">行为</span>
 
 如果`<value>`是表达，$literal不会计算表达式，而是返回未解析的表达式。
 
@@ -32,9 +32,9 @@ $literal表达式具有以下语法：
 | `{ $literal: { $add: [ 2, 3 ] } }` | `{ “$add“ : [ 2, 3 ] }` |
 | `{ $literal: { $literal: 1 } }`    | `{ “$literal“ : 1 }`    |
 
-## <span id="example">例子</span>
+ <span id="example">例子</span>
 
-### 将$视为文字
+ 将$视为文字
 
 在表达中，美元符号`$`评估为字段路径; 即：提供对该字段的访问。对于 example，`$eq` expression `$eq: [ “$price“, “$1“ ]`在名为`price`的字段中的 value 与文档中名为`1`的字段中的 value 之间执行相等性检查。
 
@@ -62,7 +62,7 @@ db.records.aggregate( [
 { “_id“ : 3, “costsOneDollar“ : true }
 ```
 
-### 使用 Value 1 投影新字段
+ 使用 Value 1 投影新字段
 
 $project阶段使用表达式`<field>: 1`在输出中包含`<field>`。以下 example 使用$literal来_return 将新字段设置为`1`的 value。
 

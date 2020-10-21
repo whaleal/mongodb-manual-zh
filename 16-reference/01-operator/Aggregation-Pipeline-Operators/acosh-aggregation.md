@@ -1,12 +1,12 @@
-# [ ](#)$acosh (aggregation)
+ [ ]()$acosh (aggregation)
 
 []()
 
 在本页面
 
-*   [行为](#behavior)
+*   [行为](behavior)
 
-*   [例子](#examples)
+*   [例子](examples)
 
 **$acosh**
 
@@ -28,9 +28,9 @@
 
 有关表达式的更多信息，请参见 表达式。
 
-## 行为
+ 行为
 
-### `null`，`NaN`和`+/- Infinity`
+ `null`，`NaN`和`+/- Infinity`
 
 如果参数解析为的值`null`或指向缺少的字段，则`$acosh`返回`null`。如果参数解析为`NaN`，则`$acosh`返回`NaN`。如果参数解析为负无穷大， `$acosh`则会引发错误。如果参数解析为`Infinity`，则`$acosh`返回`Infinity`。如果参数解析为包含`[-1, Infinity]`范围之外的值 ，则`$acosh`会引发错误。 
 
@@ -41,7 +41,7 @@
 | { $acosh : Infinity} | `Infinity`                                                   |
 | { $acosh : 0 }       | 引发类似于以下格式化输出的错误消息：<br />"errmsg" :   "Failed to optimize pipeline :: caused by :: cannot   apply $acosh to -inf, value must in (1,inf)" |
 
-## 例子
+ 例子
 
 **度数的反双曲余弦值**
 

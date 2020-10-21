@@ -1,4 +1,4 @@
-# 启用访问控制
+ 启用访问控制
 
 在页面上
 
@@ -8,19 +8,19 @@
 - 其他注意事项
 
 
-## 概述
+ 概述
 
 在MongoDB部署时启用访问控制可以加强身份验证，要求用户表明自己的身份。当访问一个在部署时开启了访问控制的MongoDB时，用户只能执行由其角色决定的操作。
 
 下面的教程在一个独立的mongod实例上启用了访问控制并且使用默认的身份验证机制。对于所有支持的身份验证机制，请参阅身份验证机制。
 
 
-## 用户管理员
+ 用户管理员
 
 启用访问控制时，确认你已经有一个具有userAdmin或者userAdminAnyDatabase角色的用户在admin数据库中。这个用户能管理用户和角色，例如：创建用户、授予或者撤销用户的角色、创建或者修改角色。
 
 
-## 配置过程
+ 配置过程
 
 
 下面的过程首先将一个管理员用户添加到一个运行时没有开启访问控制的MongoDB实例中，然后启用访问控制。
@@ -30,7 +30,7 @@
 > 这个示例的MongoDB实例，使用27017端口和/var/lib/mongodb目录作为数据目录。这个示例中假设存在/var/lib/mongodb这个数据目录。可以根据需要指定不同的数据目录。
 
 
-### 1 没开启访问控制时启动MongoDB
+ 1 没开启访问控制时启动MongoDB
 
 
 没开启访问控制时启动独立的mongod实例。
@@ -42,7 +42,7 @@ mongod --port 27017 --dbpath /var/lib/mongodb
 ```
 
 
-### 2 连接这个实例
+ 2 连接这个实例
 
 
 例如，打开一个新的终端并且使用mongo shell连接到mongod实例：
@@ -54,7 +54,7 @@ mongo --port
 适当地指定其他的命令行选项，将mongo shell 连接到你部署的mongod 实例，诸如 --host。
 
 
-### 3 创建一个用户管理员
+ 3 创建一个用户管理员
 
 
 通过mongo shell 在admin数据库中增加一个有userAdminAnyDatabase 角色的用户。包括此用户需要的其他角色。例如，下面在admin数据库中创建用户myUserAdmin，此用户有userAdminAnyDatabase和readWriteAnyDatabase角色。
@@ -79,7 +79,7 @@ db.creatUser(
 > 你在其中创建用户的数据库（在这个示例中是 admin）就是这个用户的身份认证数据库。尽管用户将向此数据库进行身份认证，但用户可以在其他数据库中具有角色；即用户的身份认证数据库不会限制用户的权限。
 
 
-### 4 开启访问控制后重启MongoDB实例
+ 4 开启访问控制后重启MongoDB实例
 
 
 a. 关闭mongod 实例。例如，通过mongo shell 输入下面的命令：
@@ -108,7 +108,7 @@ security:
 连接到此实例的客户端现在必须使用MongoDB的用户来认证自己。客户端只能执行其使用的MongoDB 用户所具有的角色指定的操作。
 
 
-### 5 连接并作为用户管理员进行身份认证
+ 5 连接并作为用户管理员进行身份认证
 
 使用mongo shell，你可以：
 
@@ -148,7 +148,7 @@ db.auth("myUserAdmin",  "abc123")
 ```
 
 
-### 6 根据你的部署需要创建其他用户
+ 6 根据你的部署需要创建其他用户
 
 
 一旦身份验证为用户管理员，就能使用db.createUser()来创建其他用户。你可以将任务内置角色或用户自定义的角色分配给用户。
@@ -176,7 +176,7 @@ db.createUser(
 执行完上面操作即创建完其他用户之后，断开和mongo shell 的连接。
 
 
-### 7 连接到实例并且使用myTester用户进行身份验证。
+ 7 连接到实例并且使用myTester用户进行身份验证。
 
 
 将用户myUserAdmin从mongo shell断开连接后，使用myTester用户重连时，你可以：
@@ -214,7 +214,7 @@ db.auth("myTester",  "xyz123")
 ```
 
 
-### 8 使用用户myTester插入一个文档
+ 8 使用用户myTester插入一个文档
 
 
 作为用户myTester，你有在test数据库读写的权限和在reporting数据库读的权限。一旦使用myTester用户进行身份认证通过后，就可以在test数据库中插入一个文档到集合里面。例如，你可以在test数据库中做如下的插入操作：
@@ -227,14 +227,14 @@ db.foo.insert( { x: 1, y: 1 } )
 也可以参阅：[管理用户和角色](https://docs.mongodb.com/v4.0/tutorial/manage-users-and-roles/).
 
 
-## 其他的注意事项
+ 其他的注意事项
 
-### 副本集和分片集群
+ 副本集和分片集群
 
 副本集和分片集群开启访问控制后，要求成员之间进行内部身份认证。更多详情，请参阅 [内部身份认证](https://docs.mongodb.com/v4.0/core/security-internal-authentication/).。
 
 
-### 本地主机Localhost异常
+ 本地主机Localhost异常
 
 
 你可以在启动访问控制之前或之后创建用户。如果你在创建用户之前开启了访问控制，MongoDB提供了一个localhost 异常，它允许你在admin数据库创建一个用户管理员。创建之后，你必须使用这个用户管理员进行身份认证后，才能根据需要创建其他用户。

@@ -1,16 +1,16 @@
-# 分片键
+ 分片键
 
 > 本页面中
-> - [分片键格式](https://docs.mongodb.com/manual/core/sharding-shard-key/#shard-key-specification)
-> - [改变一个文档的分片键值](https://docs.mongodb.com/manual/core/sharding-shard-key/#change-a-document-s-shard-key-value)
-> - [分片键索引](https://docs.mongodb.com/manual/core/sharding-shard-key/#shard-key-indexes)
-> - [选择一个分片键](https://docs.mongodb.com/manual/core/sharding-shard-key/#choosing-a-shard-key)
+> - [分片键格式](https://docs.mongodb.com/manual/core/sharding-shard-key/shard-key-specification)
+> - [改变一个文档的分片键值](https://docs.mongodb.com/manual/core/sharding-shard-key/change-a-document-s-shard-key-value)
+> - [分片键索引](https://docs.mongodb.com/manual/core/sharding-shard-key/shard-key-indexes)
+> - [选择一个分片键](https://docs.mongodb.com/manual/core/sharding-shard-key/choosing-a-shard-key)
 
 分片键决定了集合内的文档如何在集群的多个分片间的分布状况。分片键要么是一个索引字段，要么是一个存在于集合内所有文档中的复合索引字段。
 
 MongoDB使用分片键值范围对集合中的数据进行分区。每个范围都定义了一个分片键值的非重叠范围，并且与一个chunk(数据块，下同)相关联。
 
-MongoDB尝试在集群中的各个分片之间平均分配数据块。 分片键与数据块分配的有效性直接相关。 请参阅[选择分片键](https://docs.mongodb.com/manual/core/sharding-shard-key/#sharding-shard-key-selection)。
+MongoDB尝试在集群中的各个分片之间平均分配数据块。 分片键与数据块分配的有效性直接相关。 请参阅[选择分片键](https://docs.mongodb.com/manual/core/sharding-shard-key/sharding-shard-key-selection)。
 
 ![shard key](https://docs.mongodb.com/manual/_images/sharding-range-based.bakedsvg.svg)
 
@@ -21,7 +21,7 @@ MongoDB尝试在集群中的各个分片之间平均分配数据块。 分片键
 在MongoDB4.2之前的版本，文档的分片键字段值是不可变的。
 
 
-## 分片键格式
+ 分片键格式
 
 
 为了将一个集合分片，你必须在`sh.shardCollection（）`方法中指定目标集合和分片键：
@@ -36,7 +36,7 @@ sh.shardCollection( namespace, key )
 有关使用散列或范围分片策略对集合进行分片的说明，请参阅【对集合进行分片】。
 
 
-## 改变一个文档的分片键值
+ 改变一个文档的分片键值
 
 
 更新分片键时
@@ -48,12 +48,12 @@ sh.shardCollection( namespace, key )
 
 | 命令  | 方法  |
 | :------------ |:---------------|
-| [update](https://docs.mongodb.com/manual/reference/command/update/#dbcmd.update) with `multi: false`  | [db.collection.replaceOne()](https://docs.mongodb.com/manual/reference/method/db.collection.replaceOne/#db.collection.replaceOne)<br>[db.collection.updateOne()](https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/#db.collection.updateOne)<br>[db.collection.update()](https://docs.mongodb.com/manual/reference/method/db.collection.update/#db.collection.update) with `multi: false` |
-| [findAndModify](https://docs.mongodb.com/manual/reference/command/findAndModify/#dbcmd.findAndModify)     | [db.collection.findOneAndReplace()](https://docs.mongodb.com/manual/reference/method/db.collection.findOneAndReplace/#db.collection.findOneAndReplace)<br>[db.collection.findOneAndUpdate()](https://docs.mongodb.com/manual/reference/method/db.collection.findOneAndUpdate/#db.collection.findOneAndUpdate)<br>[db.collection.findAndModify()](https://docs.mongodb.com/manual/reference/method/db.collection.findAndModify/#db.collection.findAndModify)   |
-| | [db.collection.bulkWrite()](https://docs.mongodb.com/manual/reference/method/db.collection.bulkWrite/#db.collection.bulkWrite)<br>[Bulk.find.updateOne()](https://docs.mongodb.com/manual/reference/method/Bulk.find.updateOne/#Bulk.find.updateOne)<br>如果分片键修改导致将文档移动到另一个分片，则在批量操作中不能指定多个分片键修改；即批量大小为`1`。<br><br>如果分片键修改不会导致将文档移动到另一个分片，则可以在批量操作中指定多个分片键修改。 |
+| [update](https://docs.mongodb.com/manual/reference/command/update/dbcmd.update) with `multi: false`  | [db.collection.replaceOne()](https://docs.mongodb.com/manual/reference/method/db.collection.replaceOne/db.collection.replaceOne)<br>[db.collection.updateOne()](https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/db.collection.updateOne)<br>[db.collection.update()](https://docs.mongodb.com/manual/reference/method/db.collection.update/db.collection.update) with `multi: false` |
+| [findAndModify](https://docs.mongodb.com/manual/reference/command/findAndModify/dbcmd.findAndModify)     | [db.collection.findOneAndReplace()](https://docs.mongodb.com/manual/reference/method/db.collection.findOneAndReplace/db.collection.findOneAndReplace)<br>[db.collection.findOneAndUpdate()](https://docs.mongodb.com/manual/reference/method/db.collection.findOneAndUpdate/db.collection.findOneAndUpdate)<br>[db.collection.findAndModify()](https://docs.mongodb.com/manual/reference/method/db.collection.findAndModify/db.collection.findAndModify)   |
+| | [db.collection.bulkWrite()](https://docs.mongodb.com/manual/reference/method/db.collection.bulkWrite/db.collection.bulkWrite)<br>[Bulk.find.updateOne()](https://docs.mongodb.com/manual/reference/method/Bulk.find.updateOne/Bulk.find.updateOne)<br>如果分片键修改导致将文档移动到另一个分片，则在批量操作中不能指定多个分片键修改；即批量大小为`1`。<br><br>如果分片键修改不会导致将文档移动到另一个分片，则可以在批量操作中指定多个分片键修改。 |
 
 
-## 分片键索引
+ 分片键索引
 
 
 所有分片集合都`必须`具有支持分片键的索引。 即索引可以是分片键的索引;也可以是复合索引，其中分片键是索引的前缀。
@@ -63,7 +63,7 @@ sh.shardCollection( namespace, key )
 
 如果你删除了分片键的最后一个有效索引，请通过仅在分片键上重新创建索引来恢复。
 
-### 唯一索引
+ 唯一索引
 
 您不能在哈希索引上指定唯一约束。
 
@@ -96,7 +96,7 @@ sh.shardCollection( namespace, key )
 尽管可以有一个唯一的复合索引，其中分片键是一个前缀，但是如果使用unique参数，则集合必须在分片键上具有唯一索引。
 
 
-## 选择一个分片键
+ 选择一个分片键
 
 
 分片键的选择会影响可用分片中数据块的创建和分布。 这会影响分片群集内操作的整体效率和性能。
@@ -110,18 +110,18 @@ sh.shardCollection( namespace, key )
 至少要综合考虑潜在分片键的`基数`，`频率`和`变化率`等指标。
 
 
-### 限制
+ 限制
 
-有关分片键的限制，请参阅[分片键限制](https://docs.mongodb.com/manual/reference/limits/#limits-shard-keys)。
+有关分片键的限制，请参阅[分片键限制](https://docs.mongodb.com/manual/reference/limits/limits-shard-keys)。
 
-### 集合大小
+ 集合大小
 
-在对一个不为空的集合进行分片时，分片键只能为初始分片操作限制最大支持的集合大小。 请参阅[分片现有集合数据大小](https://docs.mongodb.com/manual/reference/limits/#Sharding-Existing-Collection-Data-Size)。
+在对一个不为空的集合进行分片时，分片键只能为初始分片操作限制最大支持的集合大小。 请参阅[分片现有集合数据大小](https://docs.mongodb.com/manual/reference/limits/Sharding-Existing-Collection-Data-Size)。
 
 > 重要<br>
 > 一个分片集合在成功分片之后就可以增长到任意大小，没有上限。
 
-### 分片键基数
+ 分片键基数
 
 
 分片键的基数确定平衡器可以创建的最大数据块的数目。这会降低或消除集群中水平缩放的有效性。
@@ -139,7 +139,7 @@ sh.shardCollection( namespace, key )
 如果您的数据模型需要在具有低基数的键上分片，请考虑使用具有较高相对基数的字段的`复合索引`。
 
 
-### 分片键频率
+ 分片键频率
 
 
 考虑一个代表分片键值范围的集合-分片键的频率代表给定值在数据中出现的频率。 如果大多数文档仅包含这些值的子集，那么存储这些文档的数据块将成为群集中的瓶颈。 此外，随着这些数据块的增长，它们可能会变成`不可分割的数据块`，因为它们无法进一步拆分。 这将降低或消除群集内水平扩展的有效性。
@@ -152,7 +152,7 @@ sh.shardCollection( namespace, key )
 
 如果您的数据模型需要在具有高频值的键上分片，请考虑使用具有唯一或低频值的`复合索引`。
 
-### 单调变化的分片键
+ 单调变化的分片键
 
 
 值单调增加或减少的分片键更有可能将插入内容分布到集群中的单个分片上。

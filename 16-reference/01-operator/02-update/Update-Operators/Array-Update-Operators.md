@@ -1,17 +1,17 @@
-# [ ](#)数组更新运算符
+ [ ]()数组更新运算符
 
 []()
 
 在本页面
 
-*   [更新运算符](#update-operators)
-*   [更新运算符修饰符](#update-operator-modifiers)
+*   [更新运算符](update-operators)
+*   [更新运算符修饰符](update-operator-modifiers)
 
 > **注意**
 >
 > 有关特定运算符的详细信息，包括语法和示例，请单击特定运算符以转到其参考页。
 
-## <span id="update-operators">更新运算符</span>
+ <span id="update-operators">更新运算符</span>
 
 | 名称                  | 描述                                                         |
 | --------------------- | ------------------------------------------------------------ |
@@ -24,7 +24,7 @@
 | [`$push`]()           | 将项目添加到数组。                                           |
 | [`$pullAll`]()        | 从数组中删除所有匹配的值。                                   |
 
-## <span id="update-operator-modifiers">更新运算符修饰符</span>
+ <span id="update-operator-modifiers">更新运算符修饰符</span>
 
 | 名称            | 描述                                                       |
 | --------------- | ---------------------------------------------------------- |

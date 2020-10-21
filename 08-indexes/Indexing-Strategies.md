@@ -1,4 +1,4 @@
-## 索引策略
+ 索引策略
 
 应用程序的最佳索引必须考虑许多因素，包括预期的查询类型、读写比率和系统上的空闲内存量。
 
@@ -6,7 +6,7 @@
 
 设计索引的最佳总体策略是使用与您将在生产环境中运行的数据集相似的数据集来分析各种索引配置，以查看哪种配置性能最佳。检查为您的集合创建的当前索引，以确保它们支持您当前和计划中的查询。如果不再使用索引，请删除该索引。
 
-通常，MongoDB只使用一个索引来完成大多数查询。然而，一个[`$or`](https://docs.mongodb.com/master/reference/operator/query/or/#op._S_or)查询的每个子句可能使用一个不同的索引，此外，MongoDB可以使用多个索引的[交集](https://docs.mongodb.com/master/core/index-intersection/)。
+通常，MongoDB只使用一个索引来完成大多数查询。然而，一个[`$or`](https://docs.mongodb.com/master/reference/operator/query/or/op._S_or)查询的每个子句可能使用一个不同的索引，此外，MongoDB可以使用多个索引的[交集](https://docs.mongodb.com/master/core/index-intersection/)。
 
 下面的文档介绍了索引策略:
 

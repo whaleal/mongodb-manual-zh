@@ -1,10 +1,10 @@
-# [ ](#)聚合命令比较
+ [ ]()聚合命令比较
 
 []()
 
 在本页面
 
-*   [聚合命令比较表](#aggregation-commands-comparison-table)
+*   [聚合命令比较表](aggregation-commands-comparison-table)
 
 > **[success] 建议**
 >
@@ -12,7 +12,7 @@
 >
 > 即使是4.4版本之前，一些map-reduce表达式也可以使用改写[其他聚合管道运算符]()，如[`$group`]()， [`$merge`]()等。
 
-## <span id="aggregation-commands-comparison-table">聚合命令比较表</span>
+ <span id="aggregation-commands-comparison-table">聚合命令比较表</span>
 
 以下表格简要概述了 MongoDB 聚合命令的特点。
 
@@ -35,7 +35,7 @@
 
 校对：李冠飞
 
-## 参见
+ 参见
 
 原文 - [Aggregation Commands Comparison]( https://docs.mongodb.com/manual/reference/aggregation-commands-comparison/ )
 

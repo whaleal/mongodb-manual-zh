@@ -1,4 +1,4 @@
-# WiredTiger 存储引擎
+ WiredTiger 存储引擎
 
 从MongoDB 3.2开始，WiredTiger存储引擎开始作为默认的存储引擎。 对于现有部署，如果未指定参数--storageEngine或storage.engine设置，则版本3.2+ mongod实例可以自动确定用于在--dbpath或storage.dbPath中创建数据文件的存储引擎。 请参阅默认存储引擎配置参数更改文档。<br />
 
@@ -103,7 +103,7 @@ WiredTiger内部缓存中的集合数据未经压缩，并使用与磁盘格式�
 
 
 
-## 参见
+ 参见
 
 原文 - [WiredTiger Storage Engine]( https://docs.mongodb.com/manual/core/wiredtiger/ )
 

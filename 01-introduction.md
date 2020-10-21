@@ -1,9 +1,9 @@
-# MongoDB简介
+ MongoDB简介
 
 在本页
 
-- [文档数据库](https://docs.mongodb.com/v4.2/introduction/#document-database)
-- [主要特性](https://docs.mongodb.com/v4.2/introduction/#key-features)
+- [文档数据库](https://docs.mongodb.com/v4.2/introduction/document-database)
+- [主要特性](https://docs.mongodb.com/v4.2/introduction/key-features)
 
 
 
@@ -16,7 +16,7 @@ MongoDB提供数据库的*社区*版和*企业*版：
 
 
 
-## 文档数据库
+ 文档数据库
 
 MongoDB中的记录是一个文档，它是由字段和值对组成的数据结构。MongoDB文档类似于JSON对象。字段的值可以包括其他文档，数组和文档数组。
 
@@ -30,9 +30,9 @@ MongoDB中的记录是一个文档，它是由字段和值对组成的数据结�
 
 
 
-### 集合/视图/按需实例化视图
+ 集合/视图/按需实例化视图
 
-MongoDB将文档存储在[集合中](https://docs.mongodb.com/v4.2/core/databases-and-collections/#collections)。集合类似于关系数据库中的表。
+MongoDB将文档存储在[集合中](https://docs.mongodb.com/v4.2/core/databases-and-collections/collections)。集合类似于关系数据库中的表。
 
 除集合外，MongoDB还支持：
 
@@ -41,9 +41,9 @@ MongoDB将文档存储在[集合中](https://docs.mongodb.com/v4.2/core/database
 
 
 
-## 主要特性
+ 主要特性
 
-### 高性能
+ 高性能
 
 MongoDB提供高性能的数据持久化。特别是，
 
@@ -52,7 +52,7 @@ MongoDB提供高性能的数据持久化。特别是，
 
 
 
-### 丰富的查询语言
+ 丰富的查询语言
 
 MongoDB支持丰富的查询语言以支持[读写操作（CRUD）](https://docs.mongodb.com/v4.2/crud/)以及：
 
@@ -68,7 +68,7 @@ MongoDB支持丰富的查询语言以支持[读写操作（CRUD）](https://docs
 
 
 
-### 高可用
+ 高可用
 
 MongoDB的复制工具（称为[副本集](https://docs.mongodb.com/v4.2/replication/)）提供：
 
@@ -79,16 +79,16 @@ MongoDB的复制工具（称为[副本集](https://docs.mongodb.com/v4.2/replica
 
 
 
-### 水平拓展
+ 水平拓展
 
 MongoDB提供水平可伸缩性作为其*核心* 功能的一部分：
 
-- [分片](https://docs.mongodb.com/v4.2/sharding/#sharding-introduction)将数据分布在一个集群的机器上。
-- 从3.4开始，MongoDB支持基于[分片键](https://docs.mongodb.com/v4.2/reference/glossary/#term-shard-key)创建数据[区域](https://docs.mongodb.com/v4.2/core/zone-sharding/#zone-sharding)。在平衡群集中，MongoDB仅将区域覆盖的读写定向到区域内的那些分片。有关 更多信息，请参见[区域](https://docs.mongodb.com/v4.2/core/zone-sharding/#zone-sharding)章节。
+- [分片](https://docs.mongodb.com/v4.2/sharding/sharding-introduction)将数据分布在一个集群的机器上。
+- 从3.4开始，MongoDB支持基于[分片键](https://docs.mongodb.com/v4.2/reference/glossary/term-shard-key)创建数据[区域](https://docs.mongodb.com/v4.2/core/zone-sharding/zone-sharding)。在平衡群集中，MongoDB仅将区域覆盖的读写定向到区域内的那些分片。有关 更多信息，请参见[区域](https://docs.mongodb.com/v4.2/core/zone-sharding/zone-sharding)章节。
 
 
 
-### 支持多种存储引擎
+ 支持多种存储引擎
 
 MongoDB支持[多个存储引擎](https://docs.mongodb.com/v4.2/core/storage-engines/)：
 
@@ -108,7 +108,7 @@ MongoDB支持[多个存储引擎](https://docs.mongodb.com/v4.2/core/storage-eng
 译者：小芒果
 
 
-## 参见
+ 参见
 
 原文 - [Introduction]( https://docs.mongodb.com/manual/introduction/ )
 

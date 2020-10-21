@@ -1,16 +1,16 @@
-# [ ](#)$and (aggregation)
+ [ ]()$and (aggregation)
 
 []()
 
 在本页面
 
-*   [定义](#definition)
+*   [定义](definition)
 
-*   [行为](#behavior)
+*   [行为](behavior)
 
-*   [例子](#examples)
+*   [例子](examples)
 
-## <span id="definition">定义</span>
+ <span id="definition">定义</span>
 
 **$and**
 
@@ -24,7 +24,7 @@
 
 有关表达式的更多信息，请参见 表达式。
 
-## <span id="behavior">行为</span>
+ <span id="behavior">行为</span>
 
 `$and`使用短路逻辑：遇到第一个`false`表达式后，运算将停止评估。
 
@@ -38,7 +38,7 @@
 | { $and: [ null, true ] }                 | true |
 | { $and: [ 0, true ] }                    | true |
 
-## <span id="examples">例子</span>
+ <span id="examples">例子</span>
 
 `inventory`使用以下文档创建示例集合：
 

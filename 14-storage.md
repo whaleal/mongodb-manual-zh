@@ -5,7 +5,7 @@ The journal is a log that helps the database recover in the event of a hard shut
 
 GridFS is a versatile storage system that is suited to handling large files, such as those exceeding the 16 MB document size limit.
 
-## 参见
+ 参见
 
 原文 - [Storage]( https://docs.mongodb.com/manual/storage/ )
 

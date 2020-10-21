@@ -1,6 +1,6 @@
-## 限制扫描条目的数量
+ 限制扫描条目的数量
 
-本教程描述了如何创建索引来限制对包含[`$text`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text)表达式和相等条件的查询扫描的索引条目的数量。
+本教程描述了如何创建索引来限制对包含[`$text`](https://docs.mongodb.com/master/reference/operator/query/text/op._S_text)表达式和相等条件的查询扫描的索引条目的数量。
 
 集合`inventory`包含以下文档：
 
@@ -38,9 +38,9 @@ db.inventory.find( { dept: "kitchen", $text: { $search: "green" } } )
 
 > **[success] 注意**
 >
-> * 复合`text`索引不能包含任何其他特殊索引类型，例如[多键](https://docs.mongodb.com/master/core/index-multikey/#index-type-multi-key)或 [地理空间](https://docs.mongodb.com/master/geospatial-queries/#index-feature-geospatial)索引字段。
+> * 复合`text`索引不能包含任何其他特殊索引类型，例如[多键](https://docs.mongodb.com/master/core/index-multikey/index-type-multi-key)或 [地理空间](https://docs.mongodb.com/master/geospatial-queries/index-feature-geospatial)索引字段。
 >
-> * 如果复合`text`索引在 索引键之前包含键，则要`text`执行[`$text`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text)搜索，查询谓词必须在前面的键上包含**相等匹配条件**。
+> * 如果复合`text`索引在 索引键之前包含键，则要`text`执行[`$text`](https://docs.mongodb.com/master/reference/operator/query/text/op._S_text)搜索，查询谓词必须在前面的键上包含**相等匹配条件**。
 >
 > * 创建复合`text`索引时，所有`text`索引键必须在索引规范文档中相邻列出。
 

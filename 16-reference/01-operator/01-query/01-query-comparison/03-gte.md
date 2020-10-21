@@ -1,4 +1,4 @@
-# [ ](#)$gte
+ [ ]()$gte
 
 []()
 
@@ -36,7 +36,7 @@ db.inventory.update( { "carrier.fee": { $gte: 2 } }, { $set: { price: 9.99 } } )
 
 校对：
 
-## 参见
+ 参见
 
 原文 - [$gte]( https://docs.mongodb.com/manual/reference/operator/query/gte/ )
 

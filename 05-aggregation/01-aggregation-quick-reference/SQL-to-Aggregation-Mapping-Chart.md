@@ -1,10 +1,10 @@
-# [ ](#)SQL 到聚合映射图表
+ [ ]()SQL 到聚合映射图表
 
 []()
 
 在本页面
 
-*   [例子](#examples)
+*   [例子](examples)
 
 [聚合管道](../Aggregation-Pipeline.md)允许 MongoDB 提供与 SQL 中许多 common 数据聚合操作相对应的本机聚合功能。
 
@@ -33,7 +33,7 @@
 
 []()
 
-## <span id="examples">例子</span>
+ <span id="examples">例子</span>
 
 以下 table 提供了 SQL 聚合 statements 和相应的 MongoDB statements 的快速 reference。 table 中的示例假定以下条件：
 

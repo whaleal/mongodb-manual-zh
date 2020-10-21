@@ -1,14 +1,14 @@
-# 模式验证
+ 模式验证
 
 在本页中
 
-- [指定验证规则](https://docs.mongodb.com/manual/core/schema-validation/#specify-validation-rules)
-- [JSON模式](https://docs.mongodb.com/manual/core/schema-validation/#json-schema)
-- [其他查询表达式](https://docs.mongodb.com/manual/core/schema-validation/#other-query-expressions)
-- [行为](https://docs.mongodb.com/manual/core/schema-validation/#behavior)
-- [限制](https://docs.mongodb.com/manual/core/schema-validation/#restrictions)
-- [绕过文档验证](https://docs.mongodb.com/manual/core/schema-validation/#bypass-document-validation)
-- [附加信息](https://docs.mongodb.com/manual/core/schema-validation/#additional-information)
+- [指定验证规则](https://docs.mongodb.com/manual/core/schema-validation/specify-validation-rules)
+- [JSON模式](https://docs.mongodb.com/manual/core/schema-validation/json-schema)
+- [其他查询表达式](https://docs.mongodb.com/manual/core/schema-validation/other-query-expressions)
+- [行为](https://docs.mongodb.com/manual/core/schema-validation/behavior)
+- [限制](https://docs.mongodb.com/manual/core/schema-validation/restrictions)
+- [绕过文档验证](https://docs.mongodb.com/manual/core/schema-validation/bypass-document-validation)
+- [附加信息](https://docs.mongodb.com/manual/core/schema-validation/additional-information)
 
 
 *版本3.2中的新功能*
@@ -17,14 +17,14 @@ MongoDB提供了在更新和插入期间执行模式验证的功能。
 
 
 
-## 指定验证规则
+ 指定验证规则
 
 
 验证规则基于每个集合。
 
-要在创建新集合时指定验证规则，请使用[`db.createCollection()`](https://docs.mongodb.com/manual/reference/method/db.createCollection/#db.createCollection)使用`validator`选项。
+要在创建新集合时指定验证规则，请使用[`db.createCollection()`](https://docs.mongodb.com/manual/reference/method/db.createCollection/db.createCollection)使用`validator`选项。
 
-若要将文档验证添加到现有集合，请使用[`collMod`](https://docs.mongodb.com/manual/reference/command/collMod/#dbcmd.collMod)带有 `validator` 选项的命令。
+若要将文档验证添加到现有集合，请使用[`collMod`](https://docs.mongodb.com/manual/reference/command/collMod/dbcmd.collMod)带有 `validator` 选项的命令。
 
 MongoDB还提供了以下相关选项：
 
@@ -33,12 +33,12 @@ MongoDB还提供了以下相关选项：
 
 
 
-## JSON模式
+ JSON模式
 
 
 *版本3.6中的新功能*
 
-从3.6版开始，MongoDB支持JSON模式验证。要指定JSON模式验证，请使用 [`$jsonSchema`](https://docs.mongodb.com/manual/reference/operator/query/jsonSchema/#op._S_jsonSchema) 操作`validator`表达式中的运算符。
+从3.6版开始，MongoDB支持JSON模式验证。要指定JSON模式验证，请使用 [`$jsonSchema`](https://docs.mongodb.com/manual/reference/operator/query/jsonSchema/op._S_jsonSchema) 操作`validator`表达式中的运算符。
 
 > 注意
 >
@@ -93,14 +93,14 @@ db.createCollection("students", {
 ```
 
 
-有关详细信息，请参见 [`$jsonSchema`](https://docs.mongodb.com/manual/reference/operator/query/jsonSchema/#op._S_jsonSchema)。
+有关详细信息，请参见 [`$jsonSchema`](https://docs.mongodb.com/manual/reference/operator/query/jsonSchema/op._S_jsonSchema)。
 
 
 
-## 其他查询表达式
+ 其他查询表达式
 
 
-除了使用[`$jsonSchema`](https://docs.mongodb.com/manual/reference/operator/query/jsonSchema/#op._S_jsonSchema) 操作查询运算符，MongoDB支持使用 [其他查询运算符](https://docs.mongodb.com/manual/reference/operator/query/#query-selectors) 查询选择器，除了[`$near`](https://docs.mongodb.com/manual/reference/operator/query/near/#op._S_near)，[$nearSphere](https://docs.mongodb.com/manual/reference/operator/query/nearSphere/'35；操作/u nearSphere)， [`$text`](https://docs.mongodb.com/manual/reference/operator/query/text/#op._S_text)，和 [`$where`](https://docs.mongodb.com/manual/reference/operator/query/where/#op._S_where) 运算符。
+除了使用[`$jsonSchema`](https://docs.mongodb.com/manual/reference/operator/query/jsonSchema/op._S_jsonSchema) 操作查询运算符，MongoDB支持使用 [其他查询运算符](https://docs.mongodb.com/manual/reference/operator/query/query-selectors) 查询选择器，除了[`$near`](https://docs.mongodb.com/manual/reference/operator/query/near/op._S_near)，[$nearSphere](https://docs.mongodb.com/manual/reference/operator/query/nearSphere/'35；操作/u nearSphere)， [`$text`](https://docs.mongodb.com/manual/reference/operator/query/text/op._S_text)，和 [`$where`](https://docs.mongodb.com/manual/reference/operator/query/where/op._S_where) 运算符。
 
 例如，以下示例使用查询表达式指定验证器规则：
 
@@ -119,18 +119,18 @@ db.createCollection( "contacts",
 
 另请参见
 
-[查询运算符](https://docs.mongodb.com/manual/reference/operator/query/#query-selectors)
+[查询运算符](https://docs.mongodb.com/manual/reference/operator/query/query-selectors)
 
 
 
-## 行为
+ 行为
 
 
 在更新和插入期间进行验证。将验证添加到集合时，现有文档在修改之前不会进行验证检查。
 
 
 
-### 现有文档
+ 现有文档
 
 
 `validationLevel` 选项确定MongoDB应用验证规则的操作：
@@ -179,7 +179,7 @@ db.runCommand( {
 要完全禁用验证，可以将`validationLevel`设置为`off`。
 
 
-### 接受或拒绝无效文档
+ 接受或拒绝无效文档
 
 
 `validationAction`选项确定MongoDB如何处理违反验证规则的文档：
@@ -215,7 +215,7 @@ db.createCollection( "contacts2", {
 ```
 
 
-使用`warn` [`validationAction`](https://docs.mongodb.com/manual/reference/command/collMod/#validationAction)，MongoDB会记录任何冲突，但允许继续插入或更新。
+使用`warn` [`validationAction`](https://docs.mongodb.com/manual/reference/command/collMod/validationAction)，MongoDB会记录任何冲突，但允许继续插入或更新。
 
 
 
@@ -233,7 +233,7 @@ db.contacts2.insert( { name: "Amanda", status: "Updated" } )
 ```
 
 
-## 限制
+ 限制
 
 
 不能为`admin`、`local`和`config` 数据库中的集合指定验证器。
@@ -242,30 +242,30 @@ db.contacts2.insert( { name: "Amanda", status: "Updated" } )
 
 
 
-## 绕过文档验证
+ 绕过文档验证
 
 
 用户可以使用`bypassDocumentValidation` 选项绕过文档验证。
 
 以下命令可以使用新选项`bypassDocumentValidation`跳过每个操作的验证：
 
-- [`applyOps`](https://docs.mongodb.com/manual/reference/command/applyOps/#dbcmd.applyOps) 命令
-- [`findAndModify`](https://docs.mongodb.com/manual/reference/command/findAndModify/#dbcmd.findAndModify) 命令和 [`db.collection.findAndModify()`](https://docs.mongodb.com/manual/reference/method/db.collection.findAndModify/#db.collection.findAndModify) 方法
-- [`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/#dbcmd.mapReduce) 命令和 [`db.collection.mapReduce()`](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/#db.collection.mapReduce) 方法
-- [`insert`](https://docs.mongodb.com/manual/reference/command/insert/#dbcmd.insert) 命令
-- [`update`](https://docs.mongodb.com/manual/reference/command/update/#dbcmd.update) 命令
--  为[`聚合`](https://docs.mongodb.com/manual/reference/command/aggregate/#dbcmd.aggregate) 命令和 [`db.collection.aggregate()`](https://docs.mongodb.com/manual/reference/method/db.collection.aggregate/#db.collection.aggregate) 方法提供的过程命令[`$out`](https://docs.mongodb.com/manual/reference/operator/aggregation/out/#pipe._S_out) 和 [`$merge`](https://docs.mongodb.com/manual/reference/operator/aggregation/merge/#pipe._S_merge) 
+- [`applyOps`](https://docs.mongodb.com/manual/reference/command/applyOps/dbcmd.applyOps) 命令
+- [`findAndModify`](https://docs.mongodb.com/manual/reference/command/findAndModify/dbcmd.findAndModify) 命令和 [`db.collection.findAndModify()`](https://docs.mongodb.com/manual/reference/method/db.collection.findAndModify/db.collection.findAndModify) 方法
+- [`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/dbcmd.mapReduce) 命令和 [`db.collection.mapReduce()`](https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/db.collection.mapReduce) 方法
+- [`insert`](https://docs.mongodb.com/manual/reference/command/insert/dbcmd.insert) 命令
+- [`update`](https://docs.mongodb.com/manual/reference/command/update/dbcmd.update) 命令
+-  为[`聚合`](https://docs.mongodb.com/manual/reference/command/aggregate/dbcmd.aggregate) 命令和 [`db.collection.aggregate()`](https://docs.mongodb.com/manual/reference/method/db.collection.aggregate/db.collection.aggregate) 方法提供的过程命令[`$out`](https://docs.mongodb.com/manual/reference/operator/aggregation/out/pipe._S_out) 和 [`$merge`](https://docs.mongodb.com/manual/reference/operator/aggregation/merge/pipe._S_merge) 
 
-对于已启用访问控制的部署，若要绕过文档验证，经过身份验证的用户必须具有[`bypassDocumentValidation`](https://docs.mongodb.com/manual/reference/privilege-actions/#bypassDocumentValidation)行动。内置角色[`dbAdmin`](https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin) 和 [`restore`](https://docs.mongodb.com/manual/reference/built-in-roles/#restore) 提供此操作。
+对于已启用访问控制的部署，若要绕过文档验证，经过身份验证的用户必须具有[`bypassDocumentValidation`](https://docs.mongodb.com/manual/reference/privilege-actions/bypassDocumentValidation)行动。内置角色[`dbAdmin`](https://docs.mongodb.com/manual/reference/built-in-roles/dbAdmin) 和 [`restore`](https://docs.mongodb.com/manual/reference/built-in-roles/restore) 提供此操作。
 
 
 
-## 附加信息
+ 附加信息
 
 
 另请参见
 
-[`collMod`](https://docs.mongodb.com/manual/reference/command/collMod/#dbcmd.collMod), [`db.createCollection()`](https://docs.mongodb.com/manual/reference/method/db.createCollection/#db.createCollection), [`db.getCollectionInfos()`](https://docs.mongodb.com/manual/reference/method/db.getCollectionInfos/#db.getCollectionInfos)。
+[`collMod`](https://docs.mongodb.com/manual/reference/command/collMod/dbcmd.collMod), [`db.createCollection()`](https://docs.mongodb.com/manual/reference/method/db.createCollection/db.createCollection), [`db.getCollectionInfos()`](https://docs.mongodb.com/manual/reference/method/db.getCollectionInfos/db.getCollectionInfos)。
 
 
 
@@ -278,7 +278,7 @@ db.contacts2.insert( { name: "Amanda", status: "Updated" } )
 原文链接：https://docs.mongodb.com/manual/core/schema-validation/
 
 
-## 参见
+ 参见
 
 原文 - [Schema Validation]( https://docs.mongodb.com/manual/core/schema-validation/ )
 

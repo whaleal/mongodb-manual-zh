@@ -1,4 +1,4 @@
-# [ ](#)聚合管道和分片集合
+ [ ]()聚合管道和分片集合
 
 []()
 
@@ -6,15 +6,15 @@
 
 在本页面
 
-*   [行为](#behavior)
+*   [行为](behavior)
 
-*   [优化](#optimization)
+*   [优化](optimization)
 
 聚合管道支持对[分片]()集合的操作。本节介绍特定于[聚合管道](../Aggregation-Pipeline.md)和分片集合的行为。
 
 []()
 
-## <span id="behavior">行为</span>
+ <span id="behavior">行为</span>
 
 Mongodb 3.2 版本的改变
 
@@ -24,7 +24,7 @@ Mongodb 3.2 版本的改变
 
 []()
 
-## <span id="optimization">优化</span>
+ <span id="optimization">优化</span>
 
 在将聚合管道分成两部分时，管道被拆分以确保分片在考虑优化的情况下执行尽可能多的阶段。
 
@@ -38,7 +38,7 @@ Mongodb 3.2 版本的改变
 
 校对：李冠飞
 
-## 参见
+ 参见
 
 原文 - [Aggregation Pipeline and Sharded Collections]( https://docs.mongodb.com/manual/core/aggregation-pipeline-sharded-collections/ )
 

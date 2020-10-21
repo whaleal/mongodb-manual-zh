@@ -1,4 +1,4 @@
-# [ ](#)mongo Shell 方法
+ [ ]()mongo Shell 方法
 
 []()
 > **注意**

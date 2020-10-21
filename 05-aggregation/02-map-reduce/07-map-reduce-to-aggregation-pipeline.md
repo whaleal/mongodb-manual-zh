@@ -1,4 +1,4 @@
-# [ ](#)Map-Reduce转换到聚合管道
+ [ ]()Map-Reduce转换到聚合管道
 
 []()
 
@@ -10,7 +10,7 @@
 >
 > 例如，请参见map-reduce示例。
 
-## Map-Reduce到聚合管道转换表
+ Map-Reduce到聚合管道转换表
 
 这张表只是粗略的翻译。例如，该表显示了使用`$project`的`mapFunction`的近似转换。
 
@@ -41,11 +41,11 @@
   | db.collection.mapReduce(<br/> &lt;mapFunction&gt;,<br/> &lt;reduceFunction&gt;,<br/> {<br/>  query: &lt;queryFilter&gt;,<br/>  sort: &lt;sortOrder&gt;,<br/>  limit: &lt;number&gt;,<br/>  finalize: &lt;finalizeFunction&gt;,<br/>  out: { merge: &lt;collection&gt;, db: &lt;db&gt; }<br/> }<br/>) | db.collection.aggregate( [<br/> { $match: &lt;queryFilter&gt; },<br/> { $sort: &lt;sortOrder&gt; },<br/> { $limit: &lt;number&gt; },<br/> { $project: { emits: { k: &lt;expression&gt;, v: &lt;expression&gt; } } },<br/> { $unwind: “$emits” },<br/> { $group: {<br/>  \_id: “$emits.k”},<br/>  value: { $accumulator: {<br/>   init: &lt;initCode&gt;,<br/>   accumulate: &lt;reduceFunction&gt;,<br/>   accumulateArgs: [ “$emit.v”],<br/>   merge: &lt;reduceFunction&gt;,<br/>   finalize: &lt;finalizeFunction&gt;,<br/>   lang: “js” }}<br/> } },<br/> { $merge: {<br/>  into: { db: &lt;db&gt;, coll: &lt;collection&gt; },<br/>  on: “\_id”<br/>  whenMatched: [<br/>   { $project: {<br/>    value: { $function: {<br/>     body: &lt;reduceFunction&gt;,<br/>     args: [<br/>      “$_id”,<br/>      [ “$value”, “$$new.value” ]<br/>     ],<br/>     lang: “js”<br/>    } }<br/>   } }<br/>  ]<br/>  whenNotMatched: “insert”<br/> } },<br/>] ) |
   | db.collection.mapReduce(<br/> &lt;mapFunction&gt;,<br/> &lt;reduceFunction&gt;,<br/> {<br/>  query: &lt;queryFilter&gt;,<br/>  sort: &lt;sortOrder&gt;,<br/>  limit: &lt;number&gt;,<br/>  finalize: &lt;finalizeFunction&gt;,<br/>  out: { inline: 1 }<br/> }<br/>) | db.collection.aggregate( [<br/> { $match: &lt;queryFilter&gt; },<br/> { $sort: &lt;sortOrder&gt; },<br/> { $limit: &lt;number&gt; },<br/> { $project: { emits: { k: &lt;expression&gt;, v: &lt;expression&gt; } } },<br/> { $unwind: “$emits” },<br/> { $group: {<br/>  _id: “$emits.k”},<br/>  value: { $accumulator: {<br/>  init: &lt;initCode&gt;,<br/>  accumulate: &lt;reduceFunction&gt;,<br/>  accumulateArgs: [ “$emit.v”],<br/>  merge: &lt;reduceFunction&gt;,<br/>  finalize: &lt;finalizeFunction&gt;,<br/>  lang: “js” }}<br/> } }<br/>] ) |
 
-## 例子
+ 例子
 
 可以使用聚合管道操作符(如`$group`、`$merge`等)重写各种map-reduce表达式，而不需要自定义函数。但是，为了说明目的，下面的例子提供了两种选择。
 
-### 示例1
+ 示例1
 
 通过`cust_id`对订单集合组执行以下`map-reduce`操作，并计算每个`cust_id`的价格总和:
 
@@ -123,7 +123,7 @@ db.orders.aggregate( [
 
 3. 最后，`$out`将输出写入集合`agg_alternative_2`。或者，您可以使用`$merge`而不是`$out`。
 
-### 示例2
+ 示例2
 
 以下字段对`orders`集合组的map-reduce操作，`item.sku`并计算每个sku的订单数量和总订购量。然后，该操作将为每个sku值计算每个订单的平均数量，并将结果合并到输出集合中。
 
@@ -267,7 +267,7 @@ db.orders.aggregate( [
 校对：
 
 
-## 参见
+ 参见
 
 原文 - [Map-Reduce to Aggregation Pipeline]( https://docs.mongodb.com/manual/reference/map-reduce-to-aggregation-pipeline/ )
 

@@ -1,19 +1,19 @@
-# [ ](#)聚合命令
+ [ ]()聚合命令
 
 []()
 
 在本页面
 
-*   [聚合命令](#id1)
+*   [聚合命令](id1)
 
-*   [聚合方法](#aggregation-methods)
+*   [聚合方法](aggregation-methods)
 > **[success] 注意**
 >
 > 有关特定运算符的详细信息，包括语法和示例，请单击特定的运算符以转到其参考页面。
 
 []()
 
-## <span id="id1">聚合命令</span>
+ <span id="id1">聚合命令</span>
 
 | 名称          | 描述                                                 |
 | ------------- | ---------------------------------------------------- |
@@ -24,7 +24,7 @@
 
 []()
 
-## <span id="aggregation-methods">聚合方法</span>
+ <span id="aggregation-methods">聚合方法</span>
 
 | 名称                                                         | 描述                                                 |
 | ------------------------------------------------------------ | ---------------------------------------------------- |
@@ -37,7 +37,7 @@
 
 校对：李冠飞
 
-## 参见
+ 参见
 
 原文 - [SQL to Aggregation Mapping Chart]( https://docs.mongodb.com/manual/reference/sql-aggregation-comparison/ )
 

@@ -1,13 +1,13 @@
-# [ ](#)$cond (aggregation)
+ [ ]()$cond (aggregation)
 []()
 
 在本页面
 
-*   [定义](#definition)
+*   [定义](definition)
 
-*   [例子](#example)
+*   [例子](example)
 
-## <span id="definition">定义</span>
+ <span id="definition">定义</span>
 
 **$cond**
 
@@ -35,7 +35,7 @@ or
 > 
 > `$switch`
 
-## <span id="example">例子</span>
+ <span id="example">例子</span>
 
 以下示例将`inventory`集合与以下文档一起使用：
 

@@ -1,4 +1,4 @@
-# 读关注“available”
+ 读关注“available”
 
 version 3.6 中的新内容。
 
@@ -6,21 +6,21 @@ version 3.6 中的新内容。
 
 如果读操作不与因果一致的会话相关联，那么读关注“available”是对次要操作的默认读操作。
 
-**对于分片 cluster**，[`"available"`](https://docs.mongodb.com/master/reference/read-concern-available/#readconcern."available") 读取问题为分区提供了更大的容忍度，因为它不会等待以确保一致性保证。但是，如果分片正在进行大块迁移，那么带有 [`"available"`](https://docs.mongodb.com/master/reference/read-concern-available/#readconcern."available")读取问题的查询可能会return孤立文档，因为“本地”读取问题与“本地”读取问题不同，它不会联系分片的主服务器或配置服务器以更新元数据。
+**对于分片 cluster**，[`"available"`](https://docs.mongodb.com/master/reference/read-concern-available/readconcern."available") 读取问题为分区提供了更大的容忍度，因为它不会等待以确保一致性保证。但是，如果分片正在进行大块迁移，那么带有 [`"available"`](https://docs.mongodb.com/master/reference/read-concern-available/readconcern."available")读取问题的查询可能会return孤立文档，因为“本地”读取问题与“本地”读取问题不同，它不会联系分片的主服务器或配置服务器以更新元数据。
 
-**对于unsharded集合**(包括独立部署或复制集部署中的集合)，[`"local"`](https://docs.mongodb.com/master/reference/read-concern-local/#readconcern."local") 和 [`"available"`](https://docs.mongodb.com/master/reference/read-concern-available/#readconcern."available") 读取问题的行为相同。
+**对于unsharded集合**(包括独立部署或复制集部署中的集合)，[`"local"`](https://docs.mongodb.com/master/reference/read-concern-local/readconcern."local") 和 [`"available"`](https://docs.mongodb.com/master/reference/read-concern-available/readconcern."available") 读取问题的行为相同。
 
-不管[read concern](https://docs.mongodb.com/master/reference/glossary/#term-read-concern)级别，节点上的最新数据可能不能反映系统中数据的最新版本。
+不管[read concern](https://docs.mongodb.com/master/reference/glossary/term-read-concern)级别，节点上的最新数据可能不能反映系统中数据的最新版本。
 
 > **也可以看看**
 >
-> [`orphanCleanupDelaySecs`](https://docs.mongodb.com/master/reference/parameters/#param.orphanCleanupDelaySecs)
+> [`orphanCleanupDelaySecs`](https://docs.mongodb.com/master/reference/parameters/param.orphanCleanupDelaySecs)
 
-## 可用行
+ 可用行
 
 读关注 **available**对于因果一致的会话和事务不可用。
 
-## 例子
+ 例子
 
 考虑写入操作 Write<sub>0</sub> 到三个成员复制集的以下时间轴：
 
@@ -64,7 +64,7 @@ version 3.6 中的新内容。
 校对：杨帅
 
 
-## 参见
+ 参见
 
 原文 - [Read Concern "available"]( https://docs.mongodb.com/manual/reference/read-concern-available/ )
 

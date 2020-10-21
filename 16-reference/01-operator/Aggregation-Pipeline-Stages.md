@@ -1,12 +1,12 @@
-# [ ](#)聚合管道阶段
+ [ ]()聚合管道阶段
 
 []()
 
 在`db.collection.aggregate`和`db.aggregate`方法中 ，管道阶段出现在列表中。文档按顺序通过各个阶段。
 
-## 阶段
+ 阶段
 
-### db.collection.aggregate()阶段
+ db.collection.aggregate()阶段
 
 除了[`$out`]()、[`$merge`]()和[`$geoNear`]()阶段之外，所有阶段都可以在管道中出现多次。
 
@@ -50,7 +50,7 @@ db.collection.aggregate( [ { <stage> }, ... ] )
 
 对于要在管道阶段使用的聚合表达式运算符，请参阅聚合管道操作符。
 
-### db.aggregate()阶段
+ db.aggregate()阶段
 
 从 version 3.6 开始，MongoDB 还提供了db.aggregate方法：
 
@@ -65,7 +65,7 @@ db.aggregate( [ { <stage> }, ... ] )
 | [$currentOp]()         | 返回有关 MongoDB 部署的活动 and/or 休眠操作的信息。          |
 | [$listLocalSessions]() | 列出最近在当前连接的mongos或mongod实例上使用的所有 active 会话。这些会话可能尚未传播到`system.sessions`集合。 |
 
-### 阶段可用于更新
+ 阶段可用于更新
 
 从MongoDB 4.2开始，您可以使用聚合管道在以下位置进行更新：
 
@@ -80,7 +80,7 @@ db.aggregate( [ { <stage> }, ... ] )
 - [`$project`]() 及其别名 [`$unset`]()
 - [`$replaceRoot`]()及其别名[`$replaceWith`]()。
 
-## 按字母顺序排列的阶段列表
+ 按字母顺序排列的阶段列表
 
 | 阶段                   | 描述                                                         |
 | ---------------------- | ------------------------------------------------------------ |

@@ -1,18 +1,18 @@
-# 聚合
+ 聚合
 
 在本页面
 
-*   [聚合管道](#aggregation-pipeline)
+*   [聚合管道](aggregation-pipeline)
 
-*   [Map-Reduce](#map-reduce)
+*   [Map-Reduce](map-reduce)
 
-*   [单用途聚合操作](#single-purpose-aggregation-operations)
+*   [单用途聚合操作](single-purpose-aggregation-operations)
 
-*   [附加功能和行为](#additional-features-and-behaviors)
+*   [附加功能和行为](additional-features-and-behaviors)
 
-聚合操作处理数据记录和 return 计算结果。聚合操作将来自多个文档的值组合在一起，并且可以对分组数据执行各种操作以返回单个结果。 MongoDB 提供了三种执行聚合的方法：[聚合管道](#聚合管道)，[map-reduce function](#map-reduce)和[单一目的聚合方法](#单用途聚合操作)。
+聚合操作处理数据记录和 return 计算结果。聚合操作将来自多个文档的值组合在一起，并且可以对分组数据执行各种操作以返回单个结果。 MongoDB 提供了三种执行聚合的方法：[聚合管道](聚合管道)，[map-reduce function](map-reduce)和[单一目的聚合方法](单用途聚合操作)。
 
-## <span id="aggregation-pipeline">聚合管道</span>
+ <span id="aggregation-pipeline">聚合管道</span>
 
 MongoDB 的[Aggregation framework](Aggregation/Aggregation-Pipeline.md)是以数据处理管道的概念为蓝本的。文档进入多阶段管道，将文档转换为聚合结果。例如：
 
@@ -47,7 +47,7 @@ db.orders.aggregate([
 
 聚合管道可以使用索引来改善其某些阶段的性能。此外，聚合管道具有内部优化阶段。有关详细信息，请参阅[管道操作和索引](Aggregation/Aggregation-Pipeline.md)和[聚合管道优化](Aggregation/Aggregation-Pipeline/Aggregation-Pipeline-Optimization.md)。
 
-## <span id="map-reduce">Map-Reduce</span>
+ <span id="map-reduce">Map-Reduce</span>
 
 MongoDB 还提供[map-reduce](Aggregation/Map-Reduce.md)操作来执行聚合。通常，map-reduce 操作有两个阶段：一个 map 阶段，它处理每个文档并为每个输入文档发出一个或多个对象，以及将map操作的输出组合在一起的*reduce*阶段。可选地，map-reduce 可以具有最终化阶段以对结果进行最终修改。与其他聚合操作一样，map-reduce 可以指定查询条件以选择输入文档以及对结果排序和限制。
 
@@ -63,7 +63,7 @@ Map-reduce 可以在[分片集合 sharded collection]()上运行。 Map-reduce �
 
 
 
-## <span id="single-purpose-aggregation-operations">单用途聚合操作</span>
+ <span id="single-purpose-aggregation-operations">单用途聚合操作</span>
 
 MongoDB 还提供  [db.collection.estimatedDocumentCount()](), [db.collection.count()](Reference/mongo-Shell-Methods/Collection-Methods/db-collection-count.md)和[db.collection.distinct()](Reference/mongo-Shell-Methods/Collection-Methods/db-collection-distinct.md)。
 
@@ -73,7 +73,7 @@ MongoDB 还提供  [db.collection.estimatedDocumentCount()](), [db.collection.co
 
 
 
-## <span id="additional-features-and-behaviors">附加功能和行为</span>
+ <span id="additional-features-and-behaviors">附加功能和行为</span>
 
 有关聚合管道 map-reduce 和特殊组功能的特性比较，请参阅[聚合命令比较](Aggregation/Aggregation-Reference/Aggregation-Commands-Commparison.md)。
 
@@ -83,7 +83,7 @@ MongoDB 还提供  [db.collection.estimatedDocumentCount()](), [db.collection.co
 
 校对：李冠飞
 
-## 参见
+ 参见
 
 原文 - [Aggregation]( https://docs.mongodb.com/manual/aggregation/ )
 

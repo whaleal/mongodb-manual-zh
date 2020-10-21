@@ -1,4 +1,4 @@
-# 安装MongoDB社区版
+ 安装MongoDB社区版
 
 下方文档提供了安装MongoDB社区版的说明。
 
@@ -25,7 +25,7 @@
 译者：小芒果
 
 
-## 参见
+ 参见
 
 原文 - [Install MongoDB Community Edition]( https://docs.mongodb.com/manual/administration/install-community/ )
 

@@ -1,14 +1,14 @@
-# [ ](#)聚合表达式中的变量
+ [ ]()聚合表达式中的变量
 
 []()
 
 在本页面
 
-*   [用户变量](#user-variables)
+*   [用户变量](user-variables)
 
-*   [系统变量](#system-variables)
+*   [系统变量](system-variables)
 
-[聚合表达式](meta-aggregation-quick-reference.html#aggregation-expressions)可以同时使用 user-defined 和系统变量。
+[聚合表达式](meta-aggregation-quick-reference.htmlaggregation-expressions)可以同时使用 user-defined 和系统变量。
 
 变量可以容纳任何[BSON 类型数据](reference-bson-types.html)。要访问变量的 value，请使用带有前缀为 double 美元符号(`$$`)的变量 name 的 string。
 
@@ -18,7 +18,7 @@
 
 []()
 
-## <span id="user-variables">用户变量</span>
+ <span id="user-variables">用户变量</span>
 
 用户变量名称可以包含 ascii 字符`[_a-zA-Z0-9]`和任何 non-ascii 字符。
 
@@ -28,7 +28,7 @@
 
 []()
 
-## <span id="system-variables">系统变量</span>
+ <span id="system-variables">系统变量</span>
 
 MongoDB 提供以下系统变量：
 

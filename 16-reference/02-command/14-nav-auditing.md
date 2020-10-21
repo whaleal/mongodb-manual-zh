@@ -1,4 +1,4 @@
-# [ ](#)数据库命令
+ [ ]()数据库命令
 
 []()
 
@@ -16,7 +16,7 @@
 
 校对：
 
-## 参见
+ 参见
 
 原文 - [System Events Auditing Commands]( https://docs.mongodb.com/manual/reference/command/nav-auditing/ )
 

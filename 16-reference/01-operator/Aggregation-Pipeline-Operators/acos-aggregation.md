@@ -1,12 +1,12 @@
-# [ ](#)$acos (aggregation)
+ [ ]()$acos (aggregation)
 
 []()
 
 在本页面
 
-*   [行为](#behavior)
+*   [行为](behavior)
 
-*   [例子](#examples)
+*   [例子](examples)
 
 **$acos**
 
@@ -28,7 +28,7 @@
 
 有关表达式的更多信息，请参见 表达式。
 
-## <span id="behavior">行为</span>
+ <span id="behavior">行为</span>
 
 如果参数解析为`null`的值或指向缺少的字段，则`$acos`返回`null`。如果参数解析为`NaN`，则`$acos`返回`NaN`。如果参数解析为包含`[-1, 1]` 范围之外的值 ，则`$acos`会引发错误。。
 
@@ -38,7 +38,7 @@
 | { $acos: null }                                        | `null`                                                       |
 | { $acos : Infinity}<br />or<br />{ $acos : -Infinity } | 引发类似于以下格式化输出的错误消息：<br />"errmsg" :   "Failed to optimize pipeline :: caused by :: cannot   apply $acos to -inf, value must in [-1,1]" |
 
-## <span id="examples">例子</span>
+ <span id="examples">例子</span>
 
 **度数的反余弦值**
 

@@ -1,4 +1,4 @@
-# 附录 A - 用于测试的 OpenSSl CA 证书
+ 附录 A - 用于测试的 OpenSSl CA 证书
 
 
 免责声明
@@ -10,19 +10,19 @@
 * 请勿将这些证书用于生产。相反，请遵循您的安全策略。
 * 有关 OpenSSL 的信息，请参考官方的 OpenSSL 文档。尽管本教程使用的是 OpenSSL，但不应将本材料当作 OpenSSL 的权威参考。
 
-## 程序
+ 程序
 
 以下过程概述了创建**测试** CA PEM 文件的步骤。该过程同时创建 CA PEM 文件和中间授权证书以及用于签署服务器/客户端**测试**证书的密钥文件。
 
-### A.创建OpenSSL配置文件
+ A.创建OpenSSL配置文件
 
 1. 创建具有以下内容的配置文件 `openssl-test-ca.cnf`：
    ```
-   # NOT FOR PRODUCTION USE. OpenSSL configuration file for testing.
-   # 不用于生产用途。用于测试的OpenSSL配置文件。
+    NOT FOR PRODUCTION USE. OpenSSL configuration file for testing.
+    不用于生产用途。用于测试的OpenSSL配置文件。
    
-   # For the CA policy
-   # 对于CA策略
+    For the CA policy
+    对于CA策略
    
    [ policy_match ]
    countryName = match
@@ -34,13 +34,13 @@
    
    [ req ]
    default_bits = 4096
-   default_keyfile = myTestCertificateKey.pem    ## The default private key file name. 
-                                                 ## 默认私钥文件名
-   default_md = sha256                           ## Use SHA-256 for Signatures
-                                                 ## 使用SHA-256签名
+   default_keyfile = myTestCertificateKey.pem     The default private key file name. 
+                                                  默认私钥文件名
+   default_md = sha256                            Use SHA-256 for Signatures
+                                                  使用SHA-256签名
    distinguished_name = req_dn
    req_extensions = v3_req
-   x509_extensions = v3_ca # The extentions to add to the self signed cert
+   x509_extensions = v3_ca  The extentions to add to the self signed cert
    
    [ v3_req ]
    subjectKeyIdentifier  = hash
@@ -75,15 +75,15 @@
    commonName_max = 64
    
    [ v3_ca ]
-   # Extensions for a typical CA
-   # 典型CA的扩展
+    Extensions for a typical CA
+    典型CA的扩展
    subjectKeyIdentifier=hash
    basicConstraints = critical,CA:true
    authorityKeyIdentifier=keyid:always,issuer:always
    ```
    2. 可选。您可以更新默认专有名称(DN)值。
 
-### B. 生成测试 CA PEM 文件
+ B. 生成测试 CA PEM 文件
 
 
 1. 创建**测试** CA 密钥文件 `mongodb-test-ca.key`。
@@ -120,14 +120,14 @@
    ```
 6. 从测试的 CA 证书 `mongod-test-ca.crt` 和测试的中间证书 `mongodb-test-ia.crt` 创建测试的 CA PEM 文件。
 
-   你可以使用测试的 PEM 文件为 TLS/SSL 测试配置[`mongod`](https://docs.mongodb.com/manual/reference/program/mongod/#bin.mongod)， [`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos)或者[`mongo`](https://docs.mongodb.com/manual/reference/program/mongo/#bin.mongo)。
+   你可以使用测试的 PEM 文件为 TLS/SSL 测试配置[`mongod`](https://docs.mongodb.com/manual/reference/program/mongod/bin.mongod)， [`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/bin.mongos)或者[`mongo`](https://docs.mongodb.com/manual/reference/program/mongo/bin.mongo)。
    您可以使用**测试**中间权限来为服务器和客户端签署**测试**证书。单个机构必须为客户端和服务器都颁发证书。
 
 也可以看看
 
-* [附录B-用于测试的OpenSSL服务器证书](https://docs.mongodb.com/manual/appendix/security/appendixB-openssl-server/#appendix-server-certificate)
+* [附录B-用于测试的OpenSSL服务器证书](https://docs.mongodb.com/manual/appendix/security/appendixB-openssl-server/appendix-server-certificate)
 
-- [附录C-用于测试的OpenSSL客户端证书](https://docs.mongodb.com/manual/appendix/security/appendixC-openssl-client/#appendix-client-certificate) 
+- [附录C-用于测试的OpenSSL客户端证书](https://docs.mongodb.com/manual/appendix/security/appendixC-openssl-client/appendix-client-certificate) 
 
 
 译者：谢伟成

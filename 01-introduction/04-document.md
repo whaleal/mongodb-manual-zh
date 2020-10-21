@@ -1,20 +1,20 @@
-# 文档
+ 文档
 
 在本页面
 
-- [文档结构](https://docs.mongodb.com/v4.2/core/document/#document-structure)
-- [点符号](https://docs.mongodb.com/v4.2/core/document/#dot-notation)
-- [文档限制](https://docs.mongodb.com/v4.2/core/document/#document-limitations)
-- [文档结构的其他用途](https://docs.mongodb.com/v4.2/core/document/#other-uses-of-the-document-structure)
-- [更多阅读](https://docs.mongodb.com/v4.2/core/document/#further-reading)
+- [文档结构](https://docs.mongodb.com/v4.2/core/document/document-structure)
+- [点符号](https://docs.mongodb.com/v4.2/core/document/dot-notation)
+- [文档限制](https://docs.mongodb.com/v4.2/core/document/document-limitations)
+- [文档结构的其他用途](https://docs.mongodb.com/v4.2/core/document/other-uses-of-the-document-structure)
+- [更多阅读](https://docs.mongodb.com/v4.2/core/document/further-reading)
 
-MongoDB将数据记录存储为BSON文档。BSON是[JSON](https://docs.mongodb.com/v4.2/reference/glossary/#term-json)文档的二进制表示[形式](https://docs.mongodb.com/v4.2/reference/glossary/#term-json)，尽管它包含比JSON更多的数据类型。有关BSON规范，请参见[bsonspec.org](http://bsonspec.org/)。另请参阅[BSON类型](https://docs.mongodb.com/v4.2/reference/bson-types/)。
+MongoDB将数据记录存储为BSON文档。BSON是[JSON](https://docs.mongodb.com/v4.2/reference/glossary/term-json)文档的二进制表示[形式](https://docs.mongodb.com/v4.2/reference/glossary/term-json)，尽管它包含比JSON更多的数据类型。有关BSON规范，请参见[bsonspec.org](http://bsonspec.org/)。另请参阅[BSON类型](https://docs.mongodb.com/v4.2/reference/bson-types/)。
 
 ![A MongoDB document.](https://docs.mongodb.com/v4.2/_images/crud-annotated-document.bakedsvg.svg)
 
 
 
-## 文档结构
+ 文档结构
 
 MongoDB文档由字段和值对组成，并具有以下结构：
 
@@ -47,7 +47,7 @@ var mydoc = {
 
 上面的字段具有以下数据类型：
 
-- `_id`拥有一个[ObjectId](https://docs.mongodb.com/v4.2/reference/bson-types/#objectid)。
+- `_id`拥有一个[ObjectId](https://docs.mongodb.com/v4.2/reference/bson-types/objectid)。
 
 - `name`包含一个包含字段`first`和`last`的*嵌入式文档*。
 
@@ -60,11 +60,11 @@ var mydoc = {
 
 
 
-### 字段名称
+ 字段名称
 
 字段名称是字符串。
 
-[文档](https://docs.mongodb.com/v4.2/core/document/#)对字段名称有以下限制：
+[文档](https://docs.mongodb.com/v4.2/core/document/)对字段名称有以下限制：
 
 - 字段名称`_id`保留用作主键；它的值在集合中必须是唯一的，不可变的，并且可以是数组以外的任何类型。
 
@@ -88,19 +88,19 @@ BSON文档可能有多个具有相同名称的字段。但是，大多数[MongoD
 
 
 
-### 字段值限制
+ 字段值限制
 
-- MongoDB 2.6至MongoDB版本，[并将featureCompatibilityVersion](https://docs.mongodb.com/v4.2/reference/command/setFeatureCompatibilityVersion/#view-fcv)（[fCV](https://docs.mongodb.com/v4.2/reference/command/setFeatureCompatibilityVersion/#view-fcv)）设置为`"4.0"`或更早版本
+- MongoDB 2.6至MongoDB版本，[并将featureCompatibilityVersion](https://docs.mongodb.com/v4.2/reference/command/setFeatureCompatibilityVersion/view-fcv)（[fCV](https://docs.mongodb.com/v4.2/reference/command/setFeatureCompatibilityVersion/view-fcv)）设置为`"4.0"`或更早版本
 
-  对于[索引集合](https://docs.mongodb.com/v4.2/indexes/)，索引字段的值有一个最大索引键长度限制。有关详细信息，请参见[`Maximum Index Key Length`](https://docs.mongodb.com/v4.2/reference/limits/#Index-Key-Limit)。
+  对于[索引集合](https://docs.mongodb.com/v4.2/indexes/)，索引字段的值有一个最大索引键长度限制。有关详细信息，请参见[`Maximum Index Key Length`](https://docs.mongodb.com/v4.2/reference/limits/Index-Key-Limit)。
 
   
 
-## 点符号
+ 点符号
 
 MongoDB使用*点符号*访问数组的元素并访问嵌入式文档的字段。
 
-### 数组
+ 数组
 
 要通过从零开始的索引位置指定或访问数组的元素，请将数组名称与点（`.`）和从零开始的索引位置连接起来，并用引号引起来：
 
@@ -137,15 +137,15 @@ MongoDB使用*点符号*访问数组的元素并访问嵌入式文档的字段�
 
 - `$[/<identifier/>]` 过滤后的位置运算符，用于更新操作，
 
-- [`$`](https://docs.mongodb.com/v4.2/reference/operator/update/positional/#up._S_) 用于更新操作的位置运算符，
+- [`$`](https://docs.mongodb.com/v4.2/reference/operator/update/positional/up._S_) 用于更新操作的位置运算符，
 
-- [`$`](https://docs.mongodb.com/v4.2/reference/operator/projection/positional/#proj._S_) 数组索引位置未知时的投影运算符
+- [`$`](https://docs.mongodb.com/v4.2/reference/operator/projection/positional/proj._S_) 数组索引位置未知时的投影运算符
 
-- [在数组中查询带数组](https://docs.mongodb.com/v4.2/tutorial/query-arrays/#read-operations-arrays)的点符号示例。
+- [在数组中查询带数组](https://docs.mongodb.com/v4.2/tutorial/query-arrays/read-operations-arrays)的点符号示例。
 
   
 
-### 嵌入式文档
+ 嵌入式文档
 
 要使用点符号指定或访问嵌入式文档的字段，请将嵌入式文档名称与点（`.`）和字段名称连接在一起，并用引号引起来：
 
@@ -180,35 +180,35 @@ MongoDB使用*点符号*访问数组的元素并访问嵌入式文档的字段�
 
 
 
-## 文件限制[¶](https://docs.mongodb.com/v4.2/core/document/#document-limitations)
+ 文件限制[¶](https://docs.mongodb.com/v4.2/core/document/document-limitations)
 
 文档具有以下属性：
 
 
 
-### 文档大小限制
+ 文档大小限制
 
 BSON文档的最大大小为16 MB。
 
-最大文档大小有助于确保单个文档不会使用过多的RAM或在传输过程中占用过多的带宽。要存储大于最大大小的文档，MongoDB提供了GridFS API。有关GridFS的更多信息，请参见[`mongofiles`](https://docs.mongodb.com/v4.2/reference/program/mongofiles/#bin.mongofiles)和[驱动程序](https://docs.mongodb.com/ecosystem/drivers)的文档。
+最大文档大小有助于确保单个文档不会使用过多的RAM或在传输过程中占用过多的带宽。要存储大于最大大小的文档，MongoDB提供了GridFS API。有关GridFS的更多信息，请参见[`mongofiles`](https://docs.mongodb.com/v4.2/reference/program/mongofiles/bin.mongofiles)和[驱动程序](https://docs.mongodb.com/ecosystem/drivers)的文档。
 
 
 
-### 文档字段顺序
+ 文档字段顺序
 
 *除*以下情况*外*，MongoDB会在执行写操作后保留文档字段的顺序：
 
 - 该`_id`字段始终是文档中的第一个字段。
 
-- 包含[`renaming`](https://docs.mongodb.com/v4.2/reference/operator/update/rename/#up._S_rename)字段名称的更新可能会导致文档中字段的重新排序。
+- 包含[`renaming`](https://docs.mongodb.com/v4.2/reference/operator/update/rename/up._S_rename)字段名称的更新可能会导致文档中字段的重新排序。
 
   
 
-### `_id`字段
+ `_id`字段
 
-在MongoDB中，存储在集合中的每个文档都需要一个唯一的 [_id](https://docs.mongodb.com/v4.2/reference/glossary/#term-id)字段作为[主键](https://docs.mongodb.com/v4.2/reference/glossary/#term-primary-key)。如果插入的文档省略了该`_id`字段，则MongoDB驱动程序会自动为该`_id`字段生成一个[ObjectId](https://docs.mongodb.com/v4.2/reference/bson-types/#objectid)。
+在MongoDB中，存储在集合中的每个文档都需要一个唯一的 [_id](https://docs.mongodb.com/v4.2/reference/glossary/term-id)字段作为[主键](https://docs.mongodb.com/v4.2/reference/glossary/term-primary-key)。如果插入的文档省略了该`_id`字段，则MongoDB驱动程序会自动为该`_id`字段生成一个[ObjectId](https://docs.mongodb.com/v4.2/reference/bson-types/objectid)。
 
-这也适用于通过使用[upsert：true](https://docs.mongodb.com/v4.2/reference/method/db.collection.update/#upsert-parameter)更新操作插入的文档。
+这也适用于通过使用[upsert：true](https://docs.mongodb.com/v4.2/reference/method/db.collection.update/upsert-parameter)更新操作插入的文档。
 
 该`_id`字段具有以下行为和约束：
 
@@ -224,7 +224,7 @@ BSON文档的最大大小为16 MB。
 
 以下是用于存储值的常用选项`_id`：
 
-- 使用一个[ObjectId](https://docs.mongodb.com/v4.2/reference/bson-types/#objectid)。
+- 使用一个[ObjectId](https://docs.mongodb.com/v4.2/reference/bson-types/objectid)。
 
 - 使用自然的唯一标识符（如果有）。这样可以节省空间并避免附加索引。
 
@@ -243,17 +243,17 @@ BSON文档的最大大小为16 MB。
 
 注意
 
-大多数MongoDB驱动程序客户端将包括该`_id`字段，并`ObjectId`在将插入操作发送到MongoDB之前生成一个；但是，如果客户发送的文档中没有`_id` 字段，则[`mongod`](https://docs.mongodb.com/v4.2/reference/program/mongod/#bin.mongod)会添加该`_id`字段并生成`ObjectId`。
+大多数MongoDB驱动程序客户端将包括该`_id`字段，并`ObjectId`在将插入操作发送到MongoDB之前生成一个；但是，如果客户发送的文档中没有`_id` 字段，则[`mongod`](https://docs.mongodb.com/v4.2/reference/program/mongod/bin.mongod)会添加该`_id`字段并生成`ObjectId`。
 
 
 
-## 文档结构的其他用途
+ 文档结构的其他用途
 
-除了定义数据记录外，MongoDB还在整个文档结构中使用，包括但不限于：[查询过滤器](https://docs.mongodb.com/v4.2/core/document/#document-query-filter)，[更新规范文档](https://docs.mongodb.com/v4.2/core/document/#document-update-specification)和[索引规范文档](https://docs.mongodb.com/v4.2/core/document/#document-index-specification)。
+除了定义数据记录外，MongoDB还在整个文档结构中使用，包括但不限于：[查询过滤器](https://docs.mongodb.com/v4.2/core/document/document-query-filter)，[更新规范文档](https://docs.mongodb.com/v4.2/core/document/document-update-specification)和[索引规范文档](https://docs.mongodb.com/v4.2/core/document/document-index-specification)。
 
 
 
-### 查询过滤器文档
+ 查询过滤器文档
 
 查询过滤器文档指定确定用于选择哪些记录以进行读取，更新和删除操作的条件。
 
@@ -278,9 +278,9 @@ BSON文档的最大大小为16 MB。
 
 
 
-### 更新规范文档
+ 更新规范文档
 
-更新规范文档使用[更新运算符](https://docs.mongodb.com/v4.2/reference/operator/update/#id1)来指定要在[`db.collection.update()`](https://docs.mongodb.com/v4.2/reference/method/db.collection.update/#db.collection.update)操作期间在特定字段上执行的数据修改。
+更新规范文档使用[更新运算符](https://docs.mongodb.com/v4.2/reference/operator/update/id1)来指定要在[`db.collection.update()`](https://docs.mongodb.com/v4.2/reference/method/db.collection.update/db.collection.update)操作期间在特定字段上执行的数据修改。
 
 复制
 
@@ -292,11 +292,11 @@ BSON文档的最大大小为16 MB。
 }
 ```
 
-有关示例，请参阅[更新规范](https://docs.mongodb.com/v4.2/tutorial/update-documents/#update-documents-modifiers)。
+有关示例，请参阅[更新规范](https://docs.mongodb.com/v4.2/tutorial/update-documents/update-documents-modifiers)。
 
 
 
-### 索引规范文档
+ 索引规范文档
 
 索引规范文档定义了要索引的字段和索引类型：
 
@@ -310,14 +310,14 @@ BSON文档的最大大小为16 MB。
 
 
 
-## 进一步阅读
+ 进一步阅读
 
 有关MongoDB文档模型的更多信息，请下载 [MongoDB应用程序现代化指南](https://www.mongodb.com/modernize?tck=docs_server)。
 
 下载内容包括以下资源：
 
 - 演示使用MongoDB进行数据建模的方法
-- 白皮书涵盖了从[RDBMS](https://docs.mongodb.com/v4.2/reference/glossary/#term-rdbms)数据模型迁移到MongoDB的最佳实践和注意事项
+- 白皮书涵盖了从[RDBMS](https://docs.mongodb.com/v4.2/reference/glossary/term-rdbms)数据模型迁移到MongoDB的最佳实践和注意事项
 - 参考MongoDB模式及其等效RDBMS
 - 应用程序现代化记分卡
 
@@ -327,7 +327,7 @@ BSON文档的最大大小为16 MB。
 
 译者：小芒果
 
-## 参见
+ 参见
 
 原文 - [Documents]( https://docs.mongodb.com/manual/core/document/ )
 

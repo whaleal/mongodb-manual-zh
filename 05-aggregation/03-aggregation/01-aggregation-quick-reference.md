@@ -1,25 +1,25 @@
-# [ ](#)聚合管道快速参考
+ [ ]()聚合管道快速参考
 
 []()
 
 在本页面
 
-*   [阶段](#stages)
+*   [阶段](stages)
 
-*   [表达式](#expressions)
+*   [表达式](expressions)
 
-*   [运算符表达式](#operator-expressions)
+*   [运算符表达式](operator-expressions)
 
-*   [表达式运算符的索引](#index-of-expression-operators)
+*   [表达式运算符的索引](index-of-expression-operators)
 > 有关特定运算符的详细信息，包括语法和示例，请单击特定的运算符以转到其参考页面。
 
 []()
 
-## <span id="stages">阶段</span>
+ <span id="stages">阶段</span>
 
 []()
 
-### 阶段(db.collection.aggregate)
+ 阶段(db.collection.aggregate)
 
 在[db.collection.aggregate](../../Reference/mongo-Shell-Methods/Collection-Methods/db-collection-aggregate.md)方法中，管道阶段出现在数组中。文档按顺序通过各个阶段。除[$out](), [$merge]()和[$geoNear]()阶段之外的所有阶段都可以在管道中多次出现。
 
@@ -61,7 +61,7 @@ db.collection.aggregate( [ { <stage> }, ... ] )
 
 []()
 
-### 阶段(db.aggregate)
+ 阶段(db.aggregate)
 
 从 version 3.6 开始，MongoDB 也提供了[db.aggregate]()方法：
 
@@ -76,7 +76,7 @@ db.aggregate( [ { <stage> }, ... ] )
 | [$currentOp]()         | 返回有关 MongoDB 部署的活动 and/or 休眠操作的信息。          |
 | [$listLocalSessions]() | 列出当前连接的[mongos]()或[mongod]()实例上正在使用的所有活动会话。这些会话可能尚未传播到`system.sessions`集合。 |
 
-### 阶段可用更新
+ 阶段可用更新
 
 从MongoDB 4.2开始，你可以使用聚合管道更新:
 
@@ -98,13 +98,13 @@ db.aggregate( [ { <stage> }, ... ] )
 []()
 []()
 
-## <span id="expressions">表达式</span>
+ <span id="expressions">表达式</span>
 
 表达式可以包括[字段路径]()，[Literals]()，[系统变量]()，[表达对象]()和[表达式操作符]()。表达式可以嵌套。
 []()
 []()
 
-### 字段路径
+ 字段路径
 
 聚合表达式使用[字段路径]()来访问输入文档中的字段。要指定字段路径，请在字段名或虚线字段名(如果字段在嵌入的文档中)前加上美元符号$。例如，“`$user`”指定用户字段的字段路径，“`$user.name`”指定“`user.name`”字段的字段路径。
 
@@ -113,7 +113,7 @@ db.aggregate( [ { <stage> }, ... ] )
 []()
 []()
 
-### 聚合变量
+ 聚合变量
 
 MongoDB提供了在表达式中使用的各种聚合[系统变量]()。要访问变量，请在变量名前加上`$$`。例如:
 
@@ -133,13 +133,13 @@ MongoDB提供了在表达式中使用的各种聚合[系统变量]()。要访问
 []()
 []()
 
-### Literals
+ Literals
 
 Literals 可以是任何类型。但是，MongoDB将以美元符号`$`开头的字符串字面值作为字段的路径，并将表达式对象中的数值/布尔字面值作为投影标志。为了避免解析文字，可以使用[$literal]()表达式。
 []()
 []()
 
-### 表达式对象
+ 表达式对象
 
 表达式对象具有以下形式：
 
@@ -151,29 +151,29 @@ Literals 可以是任何类型。但是，MongoDB将以美元符号`$`开头的�
 []()
 []()
 
-## <span id="operator-expressions">运算符表达式</span>
+ <span id="operator-expressions">运算符表达式</span>
 
 []()
 在这个部分
 
-*   [算数表达式运算符](#arithmetic-expression-operators)
-*   [数组表达式运算符](#array-expression-operators)
-*   [布尔表达式运算符](#boolean-expression-operators)
-*   [比较表达式运算符](#comparison-expression-operators)
-*   [条件表达式运算符](#conditional-expression-operators)
-*   [自定义聚合表达式运算符](#custom-aggregation-expression-operators)
-*   [数据大小表达式运算符](#data-size-expression-operators)
-*   [日期表达式运算符](#date-expression-operators)
-*   [文字表达式运算符](#literal-expression-operator)
-*   [对象表达式运算符](#object-expression-operators)
-*   [集合表达式运算符](#set-expression-operators)
-*   [字符串表达式运算符](#string-expression-operators)
-*   [文本表达式运算符](#text-expression-operator)
-*   [角度表达式运算符](#trigonometry-expression-operators)
-*   [类型表达式运算符](#type-expression-operators)
-*   [累加器($group)](#accumulators-group)
-*   [累加器($project 和$addFields)](#accumulators-project-addfields)
-*   [变量表达式运算符](#variable-expression-operators)
+*   [算数表达式运算符](arithmetic-expression-operators)
+*   [数组表达式运算符](array-expression-operators)
+*   [布尔表达式运算符](boolean-expression-operators)
+*   [比较表达式运算符](comparison-expression-operators)
+*   [条件表达式运算符](conditional-expression-operators)
+*   [自定义聚合表达式运算符](custom-aggregation-expression-operators)
+*   [数据大小表达式运算符](data-size-expression-operators)
+*   [日期表达式运算符](date-expression-operators)
+*   [文字表达式运算符](literal-expression-operator)
+*   [对象表达式运算符](object-expression-operators)
+*   [集合表达式运算符](set-expression-operators)
+*   [字符串表达式运算符](string-expression-operators)
+*   [文本表达式运算符](text-expression-operator)
+*   [角度表达式运算符](trigonometry-expression-operators)
+*   [类型表达式运算符](type-expression-operators)
+*   [累加器($group)](accumulators-group)
+*   [累加器($project 和$addFields)](accumulators-project-addfields)
+*   [变量表达式运算符](variable-expression-operators)
 
 运算符表达式与采用带参数的函数类似。通常，这些表达式有一个数组参数 并具有以下形式：
 
@@ -191,7 +191,7 @@ Literals 可以是任何类型。但是，MongoDB将以美元符号`$`开头的�
 
 []()
 
-### <span id="arithmetic-expression-operators">算数表达式运算符</span>
+ <span id="arithmetic-expression-operators">算数表达式运算符</span>
 
 算术表达式对数字执行数学运算。一些算术表达式也可以支持日期算术。
 
@@ -216,7 +216,7 @@ Literals 可以是任何类型。但是，MongoDB将以美元符号`$`开头的�
 
 []()
 
-### <span id="array-expression-operators">数组表达式运算符</span>
+ <span id="array-expression-operators">数组表达式运算符</span>
 
 | 名称                                                         | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -240,7 +240,7 @@ Literals 可以是任何类型。但是，MongoDB将以美元符号`$`开头的�
 
 []()
 
-### <span id="boolean-expression-operators">布尔表达式运算符</span>
+ <span id="boolean-expression-operators">布尔表达式运算符</span>
 
 Boolean 表达式将其参数表达式计算为布尔值，并返回一个boolean值作为结果。
 
@@ -254,7 +254,7 @@ Boolean 表达式将其参数表达式计算为布尔值，并返回一个boolea
 
 []()
 
-### <span id="comparison-expression-operators">比较表达式运算符</span>
+ <span id="comparison-expression-operators">比较表达式运算符</span>
 
 比较表达式返回一个布尔值，除了[$cmp]()，它返回一个数字。
 
@@ -272,7 +272,7 @@ Boolean 表达式将其参数表达式计算为布尔值，并返回一个boolea
 
 []()
 
-### <span id="conditional-expression-operators">条件表达式运算符</span>
+ <span id="conditional-expression-operators">条件表达式运算符</span>
 
 | 名称                                                         | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -282,7 +282,7 @@ Boolean 表达式将其参数表达式计算为布尔值，并返回一个boolea
 
 []()
 
-### <span id="custom-aggregation-expression-operators">自定义聚合表达式运算符</span>
+ <span id="custom-aggregation-expression-operators">自定义聚合表达式运算符</span>
 
 | 名称                                                         | 描述                                             |
 | ------------------------------------------------------------ | ------------------------------------------------ |
@@ -291,7 +291,7 @@ Boolean 表达式将其参数表达式计算为布尔值，并返回一个boolea
 
 []()
 
-### <span id="data-size-expression-operators">数据大小表达式运算符</span>
+ <span id="data-size-expression-operators">数据大小表达式运算符</span>
 
 以下运算符返回数据元素的大小:
 
@@ -302,7 +302,7 @@ Boolean 表达式将其参数表达式计算为布尔值，并返回一个boolea
 
 []()
 
-### <span id="date-expression-operators">日期表达式运算符</span>
+ <span id="date-expression-operators">日期表达式运算符</span>
 
 以下操作符返回 date 对象或 date 对象的组件：
 
@@ -336,7 +336,7 @@ Boolean 表达式将其参数表达式计算为布尔值，并返回一个boolea
 
 []()
 
-### <span id="literal-expression-operator">文字表达式运算符</span>
+ <span id="literal-expression-operator">文字表达式运算符</span>
 
 | 名称                                                         | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -344,7 +344,7 @@ Boolean 表达式将其参数表达式计算为布尔值，并返回一个boolea
 
 []()
 
-### <span id="object-expression-operators">对象表达式运算符</span>
+ <span id="object-expression-operators">对象表达式运算符</span>
 
 | 名称                                                         | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -353,7 +353,7 @@ Boolean 表达式将其参数表达式计算为布尔值，并返回一个boolea
 
 []()
 
-### <span id="set-expression-operators">集合表达式运算符</span>
+ <span id="set-expression-operators">集合表达式运算符</span>
 
 Set 表达式对数组执行 set 操作，将数组视为集合。 Set 表达式忽略每个输入数组中的重复条目和元素的顺序。
 
@@ -374,7 +374,7 @@ Set 表达式对数组执行 set 操作，将数组视为集合。 Set 表达式
 
 []()
 
-### <span id="string-expression-operators">字符串表达式运算符</span>
+ <span id="string-expression-operators">字符串表达式运算符</span>
 
 除了[$concat]()之外，字符串表达式只对ASCII字符的字符串具有定义良好的行为。
 
@@ -389,17 +389,17 @@ Set 表达式对数组执行 set 操作，将数组视为集合。 Set 表达式
 | [$indexOfCP]()      | 搜索 string 以查找子字符串的出现并返回第一次出现的 UTF-8 code 点索引。如果找不到子字符串，则返回`-1` |
 | [$split]()          | 根据分隔符将 string 拆分为子字符串。返回子字符串的 array。如果在 string 中找不到分隔符，则返回包含原始 string 的 array。 |
 | [$strLenBytes]()    | 返回 string 中 UTF-8 编码字节的数量。                        |
-| [$strLenCP]()       | 返回 string 中 UTF-8 [code 点](http://www.unicode.org/glossary/#exp._S_strLenBytes)的数量。 |
+| [$strLenCP]()       | 返回 string 中 UTF-8 [code 点](http://www.unicode.org/glossary/exp._S_strLenBytes)的数量。 |
 | [$strcasecmp]()     | 执行 case-insensitive string 比较并返回：如果两个 strings 相等则返回`0`，如果第一个 string 大于第二个，则返回`1`，如果第一个 string 小于第二个，则返回`-1`。 |
 | [$substr]()         | 已过时。使用[$substrBytes]()或[$substrCP]()。                |
 | [$substrBytes]()    | 返回 string 的子字符串。从 string 中指定的 UTF-8 字节索引(zero-based)处的字符开始，并继续指定的字节数。 |
-| [$substrCP]()       | 返回 string 的子字符串。从 string 中指定的 UTF-8 [code point(CP)](http://www.unicode.org/glossary/#exp._S_substrBytes)索引(zero-based)处的字符开始，并继续指定的 code 点数。 |
+| [$substrCP]()       | 返回 string 的子字符串。从 string 中指定的 UTF-8 [code point(CP)](http://www.unicode.org/glossary/exp._S_substrBytes)索引(zero-based)处的字符开始，并继续指定的 code 点数。 |
 | [$toLower]()        | 将 string 转换为小写。接受单个参数表达式。                   |
 | [$toUpper]()        | 将 string 转换为大写。接受单个参数表达式。                   |
 
 []()
 
-### <span id="text-expression-operator">文本表达式运算符</span>
+ <span id="text-expression-operator">文本表达式运算符</span>
 
 | 名称      | 描述                 |
 | --------- | -------------------- |
@@ -407,7 +407,7 @@ Set 表达式对数组执行 set 操作，将数组视为集合。 Set 表达式
 
 []()
 
-### <span id="trigonometry-expression-operators">角度表达式运算符</span>
+ <span id="trigonometry-expression-operators">角度表达式运算符</span>
 
 | 名称      | 描述                         |
 | --------- | ---------------------------- |
@@ -416,7 +416,7 @@ Set 表达式对数组执行 set 操作，将数组视为集合。 Set 表达式
 
 [](s
 
-### <span id="accumulators-group">累加器($group)</span>
+ <span id="accumulators-group">累加器($group)</span>
 
 可以在[$group]()阶段使用，累加器是 operators，它们在文档通过管道时保持其 state(例： 总计，最大值，最小值和相关数据)。
 
@@ -438,7 +438,7 @@ Set 表达式对数组执行 set 操作，将数组视为集合。 Set 表达式
 
 []()
 
-### <span id="accumulators-project-addfields">累加器($project 和$addFields)</span>
+ <span id="accumulators-project-addfields">累加器($project 和$addFields)</span>
 
 一些可用作[$group]()阶段累加器的运算符也可用于[$project]()和[$addFields]()阶段，但不能用作累加器。在[$project]()和[$addFields]()阶段使用时，这些 operators 不会维护它们的 state，并且可以将单个参数或多个 arguments 作为输入。
 
@@ -458,7 +458,7 @@ Set 表达式对数组执行 set 操作，将数组视为集合。 Set 表达式
 
 []()
 
-### <span id="variable-expression-operators">变量表达式运算符</span>
+ <span id="variable-expression-operators">变量表达式运算符</span>
 
 | 名称     | 描述                                                         |
 | -------- | ------------------------------------------------------------ |
@@ -467,7 +467,7 @@ Set 表达式对数组执行 set 操作，将数组视为集合。 Set 表达式
 
 []()
 
-## <span id="index-of-expression-operators">表达式运算符的索引</span>
+ <span id="index-of-expression-operators">表达式运算符的索引</span>
 
 | <br />                                                       |                                                              |                                                              |                                                              |                                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -479,7 +479,7 @@ Set 表达式对数组执行 set 操作，将数组视为集合。 Set 表达式
 
 校对：
 
-## 参见
+ 参见
 
 原文 - [Aggregation Pipeline Quick Reference]( https://docs.mongodb.com/manual/meta/aggregation-quick-reference/ )
 

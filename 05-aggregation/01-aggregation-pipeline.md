@@ -1,12 +1,12 @@
-# [ ](#)聚合管道
+ [ ]()聚合管道
 []()
 
 在本页面
 
-*   [管道](#pipeline)
-*   [管道表达式](#pipeline-expressions)
-*   [聚合管道行为](#aggregation-pipeline-behavior)
-*   [注意事项 ](#considerations)
+*   [管道](pipeline)
+*   [管道表达式](pipeline-expressions)
+*   [聚合管道行为](aggregation-pipeline-behavior)
+*   [注意事项 ](considerations)
 
 聚合管道是用于数据聚合的框架，其模型基于数据处理管道的概念。文档进入多阶段管道，将文档转换为聚合结果。例如：
 
@@ -32,7 +32,7 @@ db.orders.aggregate([
 
 **第二阶段**：[`$group`]()阶段按`cust_id`字段将文档分组，以计算每个`cust_id`唯一值的金额总和。
 
-## <span id="pipeline">管道</span>
+ <span id="pipeline">管道</span>
 
 MongoDB 聚合管道由多个[阶段](../Reference/Operators/Aggregation-Pipeline-Stages.md)组成。每个阶段在文档通过管道时转换文档。管道阶段不需要为每个输入文档生成一个输出文档; 如：某些阶段可能会生成新文档或过滤掉文档。
 
@@ -53,7 +53,7 @@ MongoDB 在[mongo](../docs/Reference/MongoDB-Package-Components/mongo.md) shell 
 >
 > [聚合管道更新]()
 
-## <span id="pipeline-expressions">管道表达式</span>
+ <span id="pipeline-expressions">管道表达式</span>
 
 某些管道阶段将管道表达式作为操作数。管道表达式指定要应用于输入文档的转换。表达式具有[文档](../Introduction-to-MongoDB/Documents.md)结构，可以包含其他[表达式](Aggregation-Reference/Aggregation-Pipeline-Quick-Reference.md)。
 
@@ -67,13 +67,13 @@ Mongodb 3.2的变化：[$project]()阶段有一些累加器可用;但是，在[$
 
 有关表达式的更多信息，请参阅[表达式](Aggregation-Reference/Aggregation-Pipeline-Quick-Reference.md)。
 
-## <span id="aggregation-pipeline-behavior">聚合管道行为</span>
+ <span id="aggregation-pipeline-behavior">聚合管道行为</span>
 
 在 MongoDB 中，[管道]()命令在单个集合上运行，从逻辑上将整个集合传递到聚合管道。为了尽可能优化操作，请使用以下策略以避免扫描整个集合。
 
-### 管道运算符和索引
+ 管道运算符和索引
 
-MongoDB的[query planner]()分析聚合管道，以确定是否可以使用[索引](https://docs.mongodb.com/manual/indexes/#indexes)来改善管道性能。例如，以下管道阶段可以利用索引：
+MongoDB的[query planner]()分析聚合管道，以确定是否可以使用[索引](https://docs.mongodb.com/manual/indexes/indexes)来改善管道性能。例如，以下管道阶段可以利用索引：
 
 > **[success] 注意**
 >
@@ -103,15 +103,15 @@ MongoDB的[query planner]()分析聚合管道，以确定是否可以使用[索�
 
 > Mongodb 3.2 版本的改变：从MongoDB 3.2开始，索引可以覆盖聚合管道。在MongoDB 2.6和3.0中，索引无法覆盖聚合管道，因为即使管道使用索引，聚合仍需要访问实际文档。
 
-### []()早期过滤
+ []()早期过滤
 
 如果聚合操作仅需要集合中的数据子集，请使用[$match]()，[$limit]()和[$skip]()阶段来限制在管道开头输入的文档。当放置在管道的开头时，[$match]()操作使用合适的索引来仅扫描集合中的匹配文档。
 
-在管道的开头放置[$match](reference-operator-aggregation-match.html#pipe._S_match)管道阶段后跟[$sort](reference-operator-aggregation-sort.html#pipe._S_sort)阶段在逻辑上等同于具有排序的单个查询并且可以使用索引。如果可能，将[$match](reference-operator-aggregation-match.html#pipe._S_match) 操作符放在管道的开头。
+在管道的开头放置[$match](reference-operator-aggregation-match.htmlpipe._S_match)管道阶段后跟[$sort](reference-operator-aggregation-sort.htmlpipe._S_sort)阶段在逻辑上等同于具有排序的单个查询并且可以使用索引。如果可能，将[$match](reference-operator-aggregation-match.htmlpipe._S_match) 操作符放在管道的开头。
 
 []()
 
-### 附加功能
+ 附加功能
 聚合管道具有内部优化阶段，为 operators 的某些序列提供改进的 performance。有关详细信息，请参阅[聚合管道优化](Aggregation-Pipeline/Aggregation-Pipeline-Optimization.md)。
 
 聚合管道支持对分片集合的操作。见[聚合管道和分片集合](Aggregation-Pipeline/Aggregation-Pipeline-and-Sharded-Collections.md)。
@@ -126,15 +126,15 @@ MongoDB的[query planner]()分析聚合管道，以确定是否可以使用[索�
 
 *   [Example with User Preference Data](Aggregation-Pipeline/Example-with-User-Preference-Data.md)
 
-## <span id="considerations">注意事项</span>
-### 分片集合
+ <span id="considerations">注意事项</span>
+ 分片集合
 聚合管道支持对分片集合的操作。请参阅[聚合管道和分片集合](Aggregation-Pipeline/Aggregation-Pipeline-and-Sharded-Collections.md)。  
-### 聚合管道与Map-Reduce的比较
+ 聚合管道与Map-Reduce的比较
 聚合管道为[map-reduce]()提供了一种替代方案，并且对于map-reduce的复杂性可能没有保障的聚合任务，它可能是首选的解决方案。
-### 限制
+ 限制
 聚合管道对值类型和结果大小有一些限制。有关聚合管道的限制和限制的详细信息，请参见[聚合管道限制](Aggregation-Pipeline/Aggregation-Pipeline-Limits.md)。
 
-### 管道优化
+ 管道优化
 
 管道优化聚合管道具有内部优化阶段，可为某些操作符序列提供改进的性能。有关详细信息，请参阅[聚合管道优化](Aggregation-Pipeline/Aggregation-Pipeline-Optimization.md)。
 
@@ -145,7 +145,7 @@ MongoDB的[query planner]()分析聚合管道，以确定是否可以使用[索�
 校对：李冠飞
 
 
-## 参见
+ 参见
 
 原文 - [Aggregation Pipeline]( https://docs.mongodb.com/manual/core/aggregation-pipeline/ )
 

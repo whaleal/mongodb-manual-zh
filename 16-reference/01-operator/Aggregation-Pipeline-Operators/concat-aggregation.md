@@ -1,13 +1,13 @@
-# [ ](#)$concat (aggregation)
+ [ ]()$concat (aggregation)
 []()
 
 在本页面
 
-*   [定义](#definition)
+*   [定义](definition)
 
-*   [例子](#example)
+*   [例子](example)
 
-## <span id="definition">定义</span>
+ <span id="definition">定义</span>
 
 **$concat**
 
@@ -23,7 +23,7 @@
 
 如果参数解析为的值`null`或指向缺少的字段，则`$concat`返回`null`。
 
-## <span id="example">例子</span>
+ <span id="example">例子</span>
 
 考虑`inventory`包含以下文档的集合：
 

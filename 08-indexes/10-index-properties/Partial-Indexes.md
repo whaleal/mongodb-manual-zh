@@ -1,25 +1,25 @@
-## 部分索引
+ 部分索引
 
 **在本页面**
 
-- [创建部分索引](#部分)
-- [行为](#行为)
-- [限制](#限制)
-- [例子](#例子)
+- [创建部分索引](部分)
+- [行为](行为)
+- [限制](限制)
+- [例子](例子)
 
 *新版本3.2.*
 
 部分索引只索引集合中满足指定筛选器表达式的文档。通过索引集合中文档的子集，部分索引可以降低存储需求，并降低创建和维护索引的性能成本。
 
-### <span id="部分">创建部分索引</span>
+ <span id="部分">创建部分索引</span>
 
-使用[db.collection.createIndex()](https://docs.mongodb.com/master/reference/db.collection.createindex/ #db.collection.createIndex)方法和**'partialFilterExpression'**选项。**“partialFilterExpression”**选项接受指定筛选条件的文档，使用:
+使用[db.collection.createIndex()](https://docs.mongodb.com/master/reference/db.collection.createindex/ db.collection.createIndex)方法和**'partialFilterExpression'**选项。**“partialFilterExpression”**选项接受指定筛选条件的文档，使用:
 
-- 等式表达式（即 运算符），`field: value`[`$eq`](https://docs.mongodb.com/master/reference/operator/query/eq/#op._S_eq)
-- [`$exists: true`](https://docs.mongodb.com/master/reference/operator/query/exists/#op._S_exists) 表达，
-- [`$gt`](https://docs.mongodb.com/master/reference/operator/query/gt/#op._S_gt)，[`$gte`](https://docs.mongodb.com/master/reference/operator/query/gte/#op._S_gte)，[`$lt`](https://docs.mongodb.com/master/reference/operator/query/lt/#op._S_lt)，[`$lte`](https://docs.mongodb.com/master/reference/operator/query/lte/#op._S_lte)表情，
-- [`$type`](https://docs.mongodb.com/master/reference/operator/query/type/#op._S_type) 表达式，
-- [`$and`](https://docs.mongodb.com/master/reference/operator/query/and/#op._S_and) 只在顶层操作符
+- 等式表达式（即 运算符），`field: value`[`$eq`](https://docs.mongodb.com/master/reference/operator/query/eq/op._S_eq)
+- [`$exists: true`](https://docs.mongodb.com/master/reference/operator/query/exists/op._S_exists) 表达，
+- [`$gt`](https://docs.mongodb.com/master/reference/operator/query/gt/op._S_gt)，[`$gte`](https://docs.mongodb.com/master/reference/operator/query/gte/op._S_gte)，[`$lt`](https://docs.mongodb.com/master/reference/operator/query/lt/op._S_lt)，[`$lte`](https://docs.mongodb.com/master/reference/operator/query/lte/op._S_lte)表情，
+- [`$type`](https://docs.mongodb.com/master/reference/operator/query/type/op._S_type) 表达式，
+- [`$and`](https://docs.mongodb.com/master/reference/operator/query/and/op._S_and) 只在顶层操作符
 
 例如，下面的操作创建一个复合索引，该索引只对“**rating**”字段大于**5**的文档进行索引。
 
@@ -30,11 +30,11 @@ db.restaurants.createIndex(
 )
 ```
 
-你可以为所有的MongoDB[索引类型](https://docs.mongodb.com/master/indexes/#index-types),指定一个**partialFilterExpression**选项.
+你可以为所有的MongoDB[索引类型](https://docs.mongodb.com/master/indexes/index-types),指定一个**partialFilterExpression**选项.
 
-### <span id="行为">行为</span>
+ <span id="行为">行为</span>
 
-#### 查询范围
+ 查询范围
 
 如果使用索引导致结果集不完整，则MongoDB不会将部分索引用于查询或排序操作。
 
@@ -67,7 +67,7 @@ db.restaurants.find( { cuisine: "Italian", rating: { $lt: 8 } } )
 db.restaurants.find( { cuisine: "Italian" } )
 ```
 
-#### 与“sparse”索引进行比较
+ 与“sparse”索引进行比较
 
 > 提示
 >
@@ -111,7 +111,7 @@ db.contacts.find( { name: "xyz", email: { $regex: /\.org$/ } } )
 db.contacts.find( { name: "xyz", email: { $exists: false } } )
 ```
 
-### <span id="限制">限制</span>
+ <span id="限制">限制</span>
 
 在MongoDB中，您不能创建仅在选项上有所不同的多个索引版本。因此，您不能创建仅因过滤器表达式而不同的多个部分索引。
 
@@ -123,9 +123,9 @@ MongoDB 3.0或更早版本不支持部分索引。要使用部分索引，必须
 
 分片键索引不能是部分索引。
 
-### <span id="例子">例子</span>
+ <span id="例子">例子</span>
 
-#### 在集合上创建部分索引
+ 在集合上创建部分索引
 
 考虑包含类似于以下文档的集合**restaurants**
 
@@ -173,9 +173,9 @@ db.restaurants.find( { borough: "Bronx", 'rating.grade': "A" } )
 db.restaurants.find( { borough: "Bronx", cuisine: "Bakery" } )
 ```
 
-#### 具有唯一约束的部分索引
+ 具有唯一约束的部分索引
 
-部分索引仅索引集合中符合指定过滤器表达式的文档。如果同时指定 `partialFilterExpression`和[约束](https://docs.mongodb.com/master/core/index-unique/#index-type-unique)，则唯一约束仅适用于满足过滤器表达式的文档。如果文档不符合过滤条件，则具有唯一约束的部分索引不会阻止插入不符合唯一约束的文档。
+部分索引仅索引集合中符合指定过滤器表达式的文档。如果同时指定 `partialFilterExpression`和[约束](https://docs.mongodb.com/master/core/index-unique/index-type-unique)，则唯一约束仅适用于满足过滤器表达式的文档。如果文档不符合过滤条件，则具有唯一约束的部分索引不会阻止插入不符合唯一约束的文档。
 
 例如，集合**users**包含以下文档:
 
@@ -185,7 +185,7 @@ db.restaurants.find( { borough: "Bronx", cuisine: "Bakery" } )
 { "_id" : ObjectId("56424fe2fa0358a27fa1f99c"), "username" : "rajiv", "age" : 57 }
 ```
 
-下面的操作创建了一个索引，该索引在**“username”**字段上指定了一个[unique constraint](https://docs.mongodb.com/master/core/index-unique/#index-type-unique)和一个部分过滤表达式`age: {$gte: 21}`。
+下面的操作创建了一个索引，该索引在**“username”**字段上指定了一个[unique constraint](https://docs.mongodb.com/master/core/index-unique/index-type-unique)和一个部分过滤表达式`age: {$gte: 21}`。
 
 ```powershell
 db.users.createIndex(

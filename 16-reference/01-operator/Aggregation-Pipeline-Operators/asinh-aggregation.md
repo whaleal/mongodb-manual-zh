@@ -1,16 +1,16 @@
-# [ ](#)$asinh (aggregation)
+ [ ]()$asinh (aggregation)
 
 []()
 
 在本页面
 
-*   [定义](#definition)
+*   [定义](definition)
 
-*   [行为](#behavior)
+*   [行为](behavior)
 
-*   [例子](#examples)
+*   [例子](examples)
 
-## <span id="definition">定义</span>
+ <span id="definition">定义</span>
 
 **$asinh**
 
@@ -32,9 +32,9 @@
 
 有关表达式的更多信息，请参见 表达式。
 
-## <span id="behavior">行为</span>
+ <span id="behavior">行为</span>
 
-### `null`，`NaN`和`+/- Infinity`
+ `null`，`NaN`和`+/- Infinity`
 
 如果参数解析为的值`null`或指向缺少的字段，则`$asinh`返回`null`。如果参数解析为`NaN`，则`$asinh`返回`NaN`。如果参数解析为负无穷大或正无穷大，则`$asinh`分别返回负无穷大或正无穷大。
 
@@ -45,7 +45,7 @@
 | { $asinh : Infinity}   | Infinity  |
 | { $asinh : -Infinity } | -Infinity |
 
-## <span id="examples">例子</span>
+ <span id="examples">例子</span>
 
 **度数的反双曲正弦值**
 

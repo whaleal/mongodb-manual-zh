@@ -1,23 +1,23 @@
-# [ ](#)mongo Shell 方法
+ [ ]()mongo Shell 方法
 
 []()
 
 在本页面
 
-*   [集合](#collection)
-*   [游标](#cursor)
-*   [数据库](#database)
-*   [查询计划缓存](#query-plan-cache)
-*   [批量写入操作](#bulk-write-operation)
-*   [用户管理](#user-management)
-*   [角色管理](#role-management)
-*   [复制](#replication)
-*   [分片](#sharding)
-*   [Free监控](#free-monitoring)
-*   [构造函数](#constructors)
-*   [连接](#connection)
-*   [本机](#native)
-*   [客户端字段级加密](#client-side-field-level-encryption)
+*   [集合](collection)
+*   [游标](cursor)
+*   [数据库](database)
+*   [查询计划缓存](query-plan-cache)
+*   [批量写入操作](bulk-write-operation)
+*   [用户管理](user-management)
+*   [角色管理](role-management)
+*   [复制](replication)
+*   [分片](sharding)
+*   [Free监控](free-monitoring)
+*   [构造函数](constructors)
+*   [连接](connection)
+*   [本机](native)
+*   [客户端字段级加密](client-side-field-level-encryption)
 > **MONGODB 中的 JAVASCRIPT**
 > 
 > 虽然这些方法使用 JavaScript，但大多数与 MongoDB 的交互都不使用 JavaScript，而是在交互 application 的语言中使用惯用的司机。
@@ -28,7 +28,7 @@
 > 
 > 有关特定方法(包括语法和示例)的详细信息，请单击特定方法以转到其 reference 页面。
 
-## <span id="collection">集合</span>
+ <span id="collection">集合</span>
 
 | 名称                                 | 描述                                                         |
 | ------------------------------------ | ------------------------------------------------------------ |
@@ -78,7 +78,7 @@
 | db.collection.watch()                | 在集合上建立变更流。                                         |
 | db.collection.validate()             | 对集合执行诊断操作。                                         |
 
-## <span id="cursor">游标</span>
+ <span id="cursor">游标</span>
 
 | 名称                     | 描述                                                         |
 | ------------------------ | ------------------------------------------------------------ |
@@ -115,7 +115,7 @@
 | cursor.tailable()        | 将光标标记为 tailable。仅适用于超过上限集合的游标。          |
 | cursor.toArray()         | 返回包含游标返回的所有文档的 array。                         |
 
-## <span id="database">数据库</span>
+ <span id="database">数据库</span>
 
 | 名称                           | 描述                                                         |
 | ------------------------------ | ------------------------------------------------------------ |
@@ -167,7 +167,7 @@
 | db.stats()                     | 返回报告当前数据库的 state 的文档。                          |
 | db.version()                   | 返回mongod实例的 version。                                   |
 
-## <span id="query-plan-cache">查询计划缓存</span>
+ <span id="query-plan-cache">查询计划缓存</span>
 
 | 名称                          | 描述                                                         |
 | ----------------------------- | ------------------------------------------------------------ |
@@ -178,7 +178,7 @@
 | PlanCache.help()              | 显示集合的查询计划缓存可用的方法。可通过特定集合的计划缓存 object 访问，即：`db.collection.getPlanCache().help()`。 |
 | PlanCache.listQueryShapes()   | 显示存在缓存查询计划的查询形状。可通过特定集合的计划缓存 object 访问，即：`db.collection.getPlanCache().listQueryShapes()`。 |
 
-## <span id="bulk-write-operation">批量写入操作</span>
+ <span id="bulk-write-operation">批量写入操作</span>
 
 | 名称                                      | 描述                                                         |
 | ----------------------------------------- | ------------------------------------------------------------ |
@@ -200,7 +200,7 @@
 | Bulk.tojson()                             | 返回一个 JSON 文档，其中包含Bulk() operations object 中的操作数和批处理数。 |
 | Bulk.toString()                           | 将Bulk.tojson()结果作为 string 返回。                        |
 
-## <span id="user-management">用户管理</span>
+ <span id="user-management">用户管理</span>
 
 | 名称                     | 描述                                   |
 | ------------------------ | -------------------------------------- |
@@ -216,7 +216,7 @@
 | db.revokeRolesFromUser() | 从用户中删除角色。                     |
 | db.updateUser()          | 更新用户数据。                         |
 
-## <span id="role-management">角色管理</span>
+ <span id="role-management">角色管理</span>
 
 | 名称                          | 描述                                       |
 | ----------------------------- | ------------------------------------------ |
@@ -231,7 +231,7 @@
 | db.revokeRolesFromRole()      | 从角色中删除继承的角色。                   |
 | db.updateRole()               | 更新 user-defined 角色。                   |
 
-## <span id="replication">复制</span>
+ <span id="replication">复制</span>
 
 | 名称                           | 描述                                                         |
 | ------------------------------ | ------------------------------------------------------------ |
@@ -250,7 +250,7 @@
 | rs.stepDown()                  | 导致当前主成为强制选举的辅助。                               |
 | rs.syncFrom()                  | 设置此副本集成员将同步的成员，覆盖默认同步目标选择逻辑。     |
 
-## <span id="sharding">分片</span>
+ <span id="sharding">分片</span>
 
 | 名称                     | 描述                                                         |
 | ------------------------ | ------------------------------------------------------------ |
@@ -284,7 +284,7 @@
 | sh.waitForPingChange()   | 内部。等待从分片 cluster 中的mongos之一更改 ping state。     |
 | sh.updateZoneKeyRange()  | 将一系列分片键与 zone 关联。支持在分片群集中配置zones。      |
 
-## <span id="free-monitoring">Free监控</span>
+ <span id="free-monitoring">Free监控</span>
 
 | 名称                         | 描述                   |
 | ---------------------------- | ---------------------- |
@@ -292,7 +292,7 @@
 | db.disableFreeMonitoring()   | 在运行时禁用Free监控。 |
 | db.getFreeMonitoringStatus() | 返回空闲监视状态。     |
 
-## <span id="constructors">构造函数</span>
+ <span id="constructors">构造函数</span>
 
 | 名称                               | 描述                                                         |
 | ---------------------------------- | ------------------------------------------------------------ |
@@ -307,7 +307,7 @@
 | WriteResult.hasWriteError()        | 返回一个 boolean，指定结果是否包含WriteResult.writeError。   |
 | WriteResult.hasWriteConcernError() | 返回一个 boolean，指定结果是否包含WriteResult.writeConcernError。 |
 
-## <span id="connection">连接</span>
+ <span id="connection">连接</span>
 
 | 名称                         | 描述                                        |
 | ---------------------------- | ------------------------------------------- |
@@ -324,7 +324,7 @@
 | session                      | session object。                            |
 | SessionOptions               | 选项 object 为 session。                    |
 
-## <span id="native">本机</span>
+ <span id="native">本机</span>
 
 | 名称              | 描述                                                         |
 | ----------------- | ------------------------------------------------------------ |
@@ -351,7 +351,7 @@
 | _rand()           | 返回`0`和`1`之间的随机数。                                   |
 | _srand()          | 供内部使用。                                                 |
 
-## <span id="client-side-field-level-encryption">客户端字段级加密</span>
+ <span id="client-side-field-level-encryption">客户端字段级加密</span>
 
 > **注意**
 >
@@ -379,7 +379,7 @@
 
 
 
-## 参见
+ 参见
 
 原文 - [mongo Shell Methods]( https://docs.mongodb.com/manual/reference/method/ )
 

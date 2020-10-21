@@ -1,18 +1,18 @@
-# [ ](#)聚合管道限制
+ [ ]()聚合管道限制
 
 []()
 
 在本页面
 
-*   [结果大小限制](#result-size-restrictions)
+*   [结果大小限制](result-size-restrictions)
 
-*   [Memory 限制](#memory-restrictions)
+*   [Memory 限制](memory-restrictions)
 
 使用[聚合]()命令的聚合操作具有以下限制。
 
 []()
 
-## <span id="result-size-restrictions">结果大小限制</span>
+ <span id="result-size-restrictions">结果大小限制</span>
 
  Mongodb 3.6版本的改变：MongoDB 3.6 删除[聚合]()命令以将其结果作为单个文档返回的选项。
 
@@ -22,7 +22,7 @@
 
 []()
 
-## <span id="memory-restrictions">Memory 限制</span>
+ <span id="memory-restrictions">Memory 限制</span>
 
 管道阶段的 RAM 限制为 100M（100\*1024\*1024字节）。如果某个阶段超出此限制，MongoDB 将产生错误。要允许处理大型数据集，可以在`aggregate()`方法中设置`allowDiskUse`选项。`allowDiskUse`选项允许大多数聚合管道操作可以将数据写入临时文件。 以下聚合操作是`allowDiskUse`选项的例外； 这些操作必须在内存限制内：
 

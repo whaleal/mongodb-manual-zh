@@ -1,14 +1,14 @@
-# [ ](#)$dateFromString (aggregation)
+ [ ]()$dateFromString (aggregation)
 []()
 
 在本页面
 
-*   [定义](#definition)
-*   [行为](#behavior)
-*   [格式说明](#format-specifiers)
-*   [例子](#example)
+*   [定义](definition)
+*   [行为](behavior)
+*   [格式说明](format-specifiers)
+*   [例子](example)
 
-## <span id="definition">定义</span>
+ <span id="definition">定义</span>
 
 **$dateFromString**
 
@@ -42,7 +42,7 @@
 > 
 > `$toDate`和 `$convert`
 
-## <span id="behavior">行为</span>
+ <span id="behavior">行为</span>
 
 | 例子                                                         | 结果                                |
 | ------------------------------------------------------------ | ----------------------------------- |
@@ -52,7 +52,7 @@
 | { $dateFromString: {      dateString: "06-15-2018",      format: "%m-%d-%Y" } } | ISODate("2018-06-15T00:00:00Z")     |
 | { $dateFromString: {      dateString: "15-06-2018",      format: "%d-%m-%Y" } } | ISODate("2018-06-15T00:00:00Z")     |
 
-## <span id="format-specifiers">格式说明</span>
+ <span id="format-specifiers">格式说明</span>
 
 以下格式说明符可用于 `<formatString>`：
 
@@ -72,9 +72,9 @@
 | %Z     | 分钟数从UTC偏移为数字。例如，如果时区偏移量（`+/-[hhmm]`）为`+0445`，则分钟偏移量为`+285`。 | +/-mmm         |
 | %%     | 文字字符百分比                                               | %              |
 
-## <span id="example">例子</span>
+ <span id="example">例子</span>
 
-### 转换日期
+ 转换日期
 
 考虑一个`logmessages`包含以下带有日期的文档的集合。
 
@@ -136,7 +136,7 @@ db.logmessages.aggregate( [ {
 { "_id" : 5, "date" : ISODate("2017-02-08T22:05:02.055Z") }
 ```
 
-### `onError`
+ `onError`
 
 如果您的集合包含带有`$dateFromString`无法解析的日期字符串的文档， 除非您向可选参数提供聚合表达式， 否则将引发错误 `onError`。
 
@@ -170,7 +170,7 @@ db.dates.aggregate( [ {
 { "_id" : 2, "date" : "20177-02-09T03:35:02.055" }
 ```
 
-### `onNull`
+ `onNull`
 
 如果您的集合包含带有`null`日期字符串的文档，则 `$dateFromString`返回`null`，除非您为可选的`onNull`参数的聚合表达式。
 

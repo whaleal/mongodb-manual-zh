@@ -1,16 +1,16 @@
-# [ ](#)$arrayToObject (aggregation)
+ [ ]()$arrayToObject (aggregation)
 
 []()
 
 在本页面
 
-*   [定义](#definition)
+*   [定义](definition)
 
-*   [行为](#behavior)
+*   [行为](behavior)
 
-*   [例子](#examples)
+*   [例子](examples)
 
-## <span id="definition">定义</span>
+ <span id="definition">定义</span>
 
 **$arrayToObject**
 
@@ -45,7 +45,7 @@
 
 有关表达式的更多信息，请参见 表达式。
 
-## <span id="behavior">行为</span>
+ <span id="behavior">行为</span>
 
 如果字段名称在数组中重复，
 
@@ -59,9 +59,9 @@
 | { $arrayToObject: { $literal:  [    [ "item", "abc123"], [ "qty", 25 ] ] } } | { "item" : "abc123", "qty" : 25 }                            |
 | { $arrayToObject: { $literal: [    { "k": "item", "v": "123abc"},    { "k": "item", "v": "abc123" } ] } } | { "item" : "abc123" }<br />从版本4.0.5+（3.6.10+和3.4.19+）开始，如果字段名称在数组中重复，则`$arrayToObject` 使用该字段的最后一个值。 |
 
-## <span id="examples">例子</span>
+ <span id="examples">例子</span>
 
-### `$arrayToObject` 例子
+ `$arrayToObject` 例子
 
 考虑`inventory`包含以下文档的集合：
 
@@ -96,7 +96,7 @@ db.inventory.aggregate(
 
 从版本4.0.5+（3.6.10+和3.4.19+）开始，如果字段名称在数组中重复，则`$arrayToObject`使用该字段的最后一个值。
 
-### `$objectToArray`+ `$arrayToObject`示例
+ `$objectToArray`+ `$arrayToObject`示例
 
 考虑`inventory`包含以下文档的集合：
 

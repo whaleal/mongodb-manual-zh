@@ -1,18 +1,18 @@
-# 入门
+ 入门
 
-下方页面提供了在MongoDB Shell中进行查询的各种示例。有关使用MongoDB驱动程序的示例，请参阅“ [其他示例”](https://docs.mongodb.com/v4.2/tutorial/getting-started/#gs-additional-examples)部分中的链接。
+下方页面提供了在MongoDB Shell中进行查询的各种示例。有关使用MongoDB驱动程序的示例，请参阅“ [其他示例”](https://docs.mongodb.com/v4.2/tutorial/getting-started/gs-additional-examples)部分中的链接。
 
 
 
-## 示例
+ 示例
 
 <iframe class="mws-root" allowfullscreen="" sandbox="allow-scripts allow-same-origin" width="100%" height="320" src="https://mws.mongodb.com/?version=4.2" style="box-sizing: border-box; border: 0px;"></iframe>
 
-在 [shell](https://docs.mongodb.com/v4.2/tutorial/getting-started/#mongo-web-shell)内单击以进行连接。连接后，您可以在上面的 [shell](https://docs.mongodb.com/v4.2/tutorial/getting-started/#mongo-web-shell)中运行示例。
+在 [shell](https://docs.mongodb.com/v4.2/tutorial/getting-started/mongo-web-shell)内单击以进行连接。连接后，您可以在上面的 [shell](https://docs.mongodb.com/v4.2/tutorial/getting-started/mongo-web-shell)中运行示例。
 
-##### 切换数据库
+ 切换数据库
 
-在[shell中](https://docs.mongodb.com/v4.2/tutorial/getting-started/#mongo-web-shell)，`db`是指您当前的数据库。键入`db`以显示当前数据库。
+在[shell中](https://docs.mongodb.com/v4.2/tutorial/getting-started/mongo-web-shell)，`db`是指您当前的数据库。键入`db`以显示当前数据库。
 
 复制
 
@@ -32,7 +32,7 @@ use examples
 
 切换之前您无需创建数据库。当您第一次在数据库中存储数据时（例如在数据库中创建第一个集合），MongoDB会创建数据库。
 
-要验证您的数据库现在是`examples`，在上面的[shell中](https://docs.mongodb.com/v4.2/tutorial/getting-started/#mongo-web-shell)键入`db`。
+要验证您的数据库现在是`examples`，在上面的[shell中](https://docs.mongodb.com/v4.2/tutorial/getting-started/mongo-web-shell)键入`db`。
 
 复制
 
@@ -48,19 +48,19 @@ db
 
 
 
-## 下一步
+ 下一步
 
-### 建立自己的部署
+ 建立自己的部署
 
 要设置自己的部署：
 
 | MongoDB Atlas免费套餐集群 | MongoDB Atlas是一种快速，便捷，免费的MongoDB入门途径。要了解更多信息，请参阅 [Atlas入门](https://docs.atlas.mongodb.com/getting-started/)教程。 |
 | ------------------------- | ------------------------------------------------------------ |
-| 本地MongoDB安装           | 有关在本地安装MongoDB的更多信息，请参阅 [安装MongoDB](https://docs.mongodb.com/v4.2/installation/#tutorial-installation)。 |
+| 本地MongoDB安装           | 有关在本地安装MongoDB的更多信息，请参阅 [安装MongoDB](https://docs.mongodb.com/v4.2/installation/tutorial-installation)。 |
 
 
 
-### 其他示例
+ 其他示例
 
 有关其他示例，包括MongoDB驱动程序特定的示例（Python，Java，Node.js等），请参阅：
 
@@ -71,7 +71,7 @@ db
 
 
 
-### 其他主题
+ 其他主题
 
 | 介绍                                                         | 开发者                                                       | 管理员                                                       | 参考                                                         |
 | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
@@ -86,7 +86,7 @@ db
 译者：小芒果
 
 
-## 参见
+ 参见
 
 原文 - [Getting Started]( https://docs.mongodb.com/manual/tutorial/getting-started/ )
 

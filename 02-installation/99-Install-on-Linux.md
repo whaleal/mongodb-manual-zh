@@ -1,10 +1,10 @@
-# 在Linux上安装MongoDB社区版
+ 在Linux上安装MongoDB社区版
 
 这些文档提供了为受支持的Linux系统安装MongoDB社区版的说明。
 
 
 
-## 推荐
+ 推荐
 
 为了获得最佳的安装体验，MongoDB提供了适用于流行Linux发行版的软件包。这些软件包是运行MongoDB的首选方式。以下指南详细介绍了这些系统的安装过程：
 

@@ -1,16 +1,16 @@
-# [ ](#)$allElementsTrue (aggregation)
+ [ ]()$allElementsTrue (aggregation)
 
 []()
 
 在本页面
 
-*   [定义](#definition)
+*   [定义](definition)
 
-*   [行为](#behavior)
+*   [行为](behavior)
 
-*   [例子](#examples)
+*   [例子](examples)
 
-## <span id="definition">定义</span>
+ <span id="definition">定义</span>
 
 **$allElementsTrue**
 
@@ -24,7 +24,7 @@ $allElementsTrue具有以下语法：
 
 `<expression>`本身必须解析为 array，与表示参数列表的外部 array 分开。有关表达式的更多信息，请参阅表达式。
 
-## <span id="behavior">行为</span>
+ <span id="behavior">行为</span>
 
 如果集合包含嵌套的 array 元素，则$allElementsTrue不会降级到嵌套的 array 中，而是在 top-level 处计算 array。
 
@@ -38,7 +38,7 @@ $allElementsTrue具有以下语法：
 | `{ $allElementsTrue: [ [ null, false, 0 ] ] }`        | `true` |
 
 
-## <span id="examples">例子</span>
+ <span id="examples">例子</span>
 
 考虑带有以下文档的`survey`集合：
 
@@ -86,7 +86,7 @@ db.survey.aggregate(
 
 校对：
 
-## 参见
+ 参见
 
 原文 - [$allElementsTrue (aggregation)]( https://docs.mongodb.com/manual/reference/operator/aggregation/allElementsTrue/ )
 

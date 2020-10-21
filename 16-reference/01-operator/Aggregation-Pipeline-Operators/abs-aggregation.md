@@ -1,16 +1,16 @@
-# [ ](#)$abs (aggregation)
+ [ ]()$abs (aggregation)
 
 []()
 
 在本页面
 
-*   [定义](#definition)
+*   [定义](definition)
 
-*   [行为](#behavior)
+*   [行为](behavior)
 
-*   [例子](#example)
+*   [例子](example)
 
-## <span id="definition">定义</span>
+ <span id="definition">定义</span>
 
 **$abs**
 
@@ -26,7 +26,7 @@ version 3.2 中的新内容。
 
 `<number>`表达式可以是任何有效的表达，因为它解析为数字。有关表达式的更多信息，请参阅表达式。
 
-## <span id="behavior">行为</span>
+ <span id="behavior">行为</span>
 
 如果参数解析为的值或引用缺少的字段，则`$abs`返回`null`。如果参数解析为`NaN`，则`$abs`返回`NaN`。
 
@@ -36,7 +36,7 @@ version 3.2 中的新内容。
 | `{ $abs: 1 }`    | `1`    |
 | `{ $abs: null }` | `null` |
 
-## <span id="example">例子</span>
+ <span id="example">例子</span>
 
 集合`ratings`包含以下文档：
 

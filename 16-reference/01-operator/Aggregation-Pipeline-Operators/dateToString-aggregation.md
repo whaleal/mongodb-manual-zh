@@ -1,15 +1,15 @@
-# [ ](#)$dateToString (aggregation)
+ [ ]()$dateToString (aggregation)
 []()
 
 在本页面
 
-*   [定义](#definition)
+*   [定义](definition)
 
-*   [格式说明符](#format-specifiers)
+*   [格式说明符](format-specifiers)
 
-*   [例子](#example)
+*   [例子](example)
 
-## <span id="definition">定义</span>
+ <span id="definition">定义</span>
 
 **$dateToString**
 
@@ -39,7 +39,7 @@
 > 
 > `$toString`和 `$convert`
 
-## <span id="format-specifiers">格式说明符</span>
+ <span id="format-specifiers">格式说明符</span>
 
 以下格式说明符可用于 `<formatString>`：
 
@@ -62,7 +62,7 @@
 | %Z     | 分钟数从UTC偏移为数字。例如，如果时区偏移量（`+/-[hhmm]`）为`+0445`，则分钟偏移量为`+285`。<br />*3.6版的新功能。* | +/-mmm         |
 | %%     | 文字字符百分比                                               | %              |
 
-## <span id="example">例子</span>
+ <span id="example">例子</span>
 
 考虑`sales`包含以下文档的集合：
 

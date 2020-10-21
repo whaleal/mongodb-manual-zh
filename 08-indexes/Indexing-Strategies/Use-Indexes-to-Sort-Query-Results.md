@@ -1,18 +1,18 @@
-## 使用索引对查询结果进行排序
+ 使用索引对查询结果进行排序
 
 **在本页面**
 
-- [使用单个字段索引排序](#单个)
-- [对多个字段上排序](#多个)
-- [索引使用和排序](#使用)
+- [使用单个字段索引排序](单个)
+- [对多个字段上排序](多个)
+- [索引使用和排序](使用)
 
 由于索引包含有序的记录，MongoDB可以从包含排序字段的索引中获得排序结果。MongoDB 可能使用多个索引来支持排序操作如果排序使用相同的索引作为查询谓词。
 
 如果MongoDB不能使用一个或多个索引来获取排序顺序，MongoDB必须对数据执行阻塞排序操作。阻塞排序表示MongoDB在返回结果之前必须使用和处理所有输入文档。阻塞排序不会阻塞对集合或数据库的并发操作。
 
-如果MongoDB要求对阻塞排序操作使用超过100 MB的系统内存，则除非查询指定[`cursor.allowDiskUse()`](https://docs.mongodb.com/master/reference/method/cursor.allowDiskUse/#cursor.allowDiskUse)（MongoDB 4.4中的New），否则MongoDB返回错误。 [`allowDiskUse()`](https://docs.mongodb.com/master/reference/method/cursor.allowDiskUse/#cursor.allowDiskUse)允许MongoDB在处理阻塞排序操作时使用磁盘上的临时文件存储超过100兆字节系统内存限制的数据。
+如果MongoDB要求对阻塞排序操作使用超过100 MB的系统内存，则除非查询指定[`cursor.allowDiskUse()`](https://docs.mongodb.com/master/reference/method/cursor.allowDiskUse/cursor.allowDiskUse)（MongoDB 4.4中的New），否则MongoDB返回错误。 [`allowDiskUse()`](https://docs.mongodb.com/master/reference/method/cursor.allowDiskUse/cursor.allowDiskUse)允许MongoDB在处理阻塞排序操作时使用磁盘上的临时文件存储超过100兆字节系统内存限制的数据。
 
-使用索引的排序操作通常比阻塞排序具有更好的性能。有关创建索引以支持排序操作的更多信息，请参见[使用索引对查询结果排序](https://docs.mongodb.com/master/tutorial/sort-results-with-indexes/# soring-with-indexes)。
+使用索引的排序操作通常比阻塞排序具有更好的性能。有关创建索引以支持排序操作的更多信息，请参见[使用索引对查询结果排序](https://docs.mongodb.com/master/tutorial/sort-results-with-indexes/ soring-with-indexes)。
 
 > 注意
 >
@@ -20,7 +20,7 @@
 >
 > 在阻塞排序中，在生成输出之前，排序步骤必须使用所有输入。在非阻塞排序或索引排序中，排序步骤扫描索引以按请求的顺序生成结果。
 
-### <span id="单个">使用单个字段索引排序</span>
+ <span id="单个">使用单个字段索引排序</span>
 
 如果在单个字段上有升序或降序索引，则字段上的排序操作可以是任意方向的。
 
@@ -42,15 +42,15 @@ db.records.find().sort( { a: 1 } )
 db.records.find().sort( { a: -1 } )
 ```
 
-### <span id="多个">对多个字段进行排序</span>
+ <span id="多个">对多个字段进行排序</span>
 
-创建一个[复合索引](https://docs.mongodb.com/master/core/index-compound/#index-type-compound)来支持在多个字段上排序。
+创建一个[复合索引](https://docs.mongodb.com/master/core/index-compound/index-type-compound)来支持在多个字段上排序。
 
 可以对索引的所有键或子集指定排序;但是，排序键必须按照它们在索引中出现的相同顺序列出。例如，一个索引键模式`{a: 1, b: 1}`可以支持` {a: 1, b: 1} `上的排序，但不支持` {b: 1, a: 1} `上的排序。
 
-为一个查询使用复合索引排序,指定的排序方向所有键[`cursor.sort ()`](https://docs.mongodb.com/master/reference/method/cursor.sort/ # cursor.sort)文件必须匹配索引键模式*或*匹配索引键的反模式。例如，索引键模式`{a: 1, b: -1}`可以支持对`{a: 1, b: -1}`和`{a: -1, b: 1}`的排序，但对`{a: -1, b: -1}`或`{a: 1, b: 1}`的排序不支持。
+为一个查询使用复合索引排序,指定的排序方向所有键[`cursor.sort ()`](https://docs.mongodb.com/master/reference/method/cursor.sort/  cursor.sort)文件必须匹配索引键模式*或*匹配索引键的反模式。例如，索引键模式`{a: 1, b: -1}`可以支持对`{a: 1, b: -1}`和`{a: -1, b: 1}`的排序，但对`{a: -1, b: -1}`或`{a: 1, b: 1}`的排序不支持。
 
-#### 排序和索引前缀
+ 排序和索引前缀
 
 如果排序键对应于索引键或索引前缀，MongoDB可以使用索引对查询结果排序。复合索引的**prefix**是由索引键模式开头的一个或多个键组成的子集。
 
@@ -87,7 +87,7 @@ db.data.find( { a: { $gt: 4 } } ).sort( { a: 1, b: 1 } )
 
 在这种情况下，MongoDB可以使用索引来按照排序指定的顺序检索文档。如示例所示，查询谓词中的索引前缀可以与排序中的前缀不同。
 
-#### 索引的排序和非前缀子集
+ 索引的排序和非前缀子集
 
 索引可以支持对索引键模式的非前缀子集进行排序操作。为此，查询必须在排序键之前的所有前缀键上包含**相等**条件。
 
@@ -116,7 +116,7 @@ db.data.find( { c: 5 } ).sort( { c: 1 } )
 
 这些操作不能有效地使用索引`{a: 1, b: 1, c: 1, d: 1}`，甚至不能使用索引来检索文档。
 
-### <span id="使用">索引的使用和排序</span>
+ <span id="使用">索引的使用和排序</span>
 
 若要使用索引进行字符串比较，操作还必须指定相同的排序规则。也就是说，如果索引指定了不同的排序规则，则具有排序规则的索引不能支持对索引字段执行字符串比较的操作。
 

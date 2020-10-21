@@ -1,8 +1,8 @@
-# Tailable游标
+ Tailable游标
 
 默认情况下，当客户端使用完游标中的所有结果时，MongoDB将自动关闭游标。但是，对于有上限的集合，您可以使用一个可定制的游标，该游标在客户端穷尽初始游标的结果后保持打开状态。可跟踪游标在概念上等同于带-f选项的tail Unix命令(即“follow”模式)。在客户端向有上限的集合中插入新的额外文档之后，可定制游标将继续检索文档。
 
-在具有高写量的有上限集合上使用可定制游标，因为索引不实用。例如，MongoDB复制使用可跟踪的游标跟踪主服务器的[oplog](https://docs.mongodb.com/manual/reference/glossary/#term-oplog).
+在具有高写量的有上限集合上使用可定制游标，因为索引不实用。例如，MongoDB复制使用可跟踪的游标跟踪主服务器的[oplog](https://docs.mongodb.com/manual/reference/glossary/term-oplog).
 
 > **[success] 注意**
 >
@@ -33,7 +33,7 @@
 
 校对：杨帅
 
-## 参见
+ 参见
 
 原文 - [Tailable Cursors]( https://docs.mongodb.com/manual/core/tailable-cursors/ )
 

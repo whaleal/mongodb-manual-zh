@@ -1,4 +1,4 @@
-# Change Events
+ Change Events
 
 **在本页面**
 
@@ -14,7 +14,7 @@ dropDatabase Event
 invalidate Event  
 
 
-## Change Events  
+ Change Events  
 以下文档表示变更流响应文档可以具有的所有可能的字段。
 ```
 {
@@ -47,7 +47,7 @@ invalidate Event
 
 | Field                                                        | Type       | Description                                                  |
 | :----------------------------------------------------------- | :--------- | :----------------------------------------------------------- |
-| [_id](https://docs.mongodb.com/master/reference/change-events/#change-stream-event-id) | document   | Metadata related to the operation. Acts as the `resumeToken` for the `resumeAfter` parameter when resuming a change stream.copycopied`{   "_data" : <BinData|hex string> } `The `_data` type depends on the MongoDB versions and, in some cases, the feature compatibility version (fcv) at the time of the change stream’s opening/resumption. For details, see [Resume Tokens](https://docs.mongodb.com/master/changeStreams/#change-stream-resume-token). |
+| [_id](https://docs.mongodb.com/master/reference/change-events/change-stream-event-id) | document   | Metadata related to the operation. Acts as the `resumeToken` for the `resumeAfter` parameter when resuming a change stream.copycopied`{   "_data" : <BinData|hex string> } `The `_data` type depends on the MongoDB versions and, in some cases, the feature compatibility version (fcv) at the time of the change stream’s opening/resumption. For details, see [Resume Tokens](https://docs.mongodb.com/master/changeStreams/change-stream-resume-token). |
 | `operationType`                                              | string     | The type of operation that occurred. Can be any of the following values:`insert``delete``replace``update``drop``rename``dropDatabase``invalidate` |
 | `fullDocument`                                               | document   | The document created or modified by the `insert`, `replace`, `delete`, `update` operations (i.e. CRUD operations).For `insert` and `replace` operations, this represents the new document created by the operation.For `delete` operations, this field is omitted as the document no longer exists.For `update` operations, this field only appears if you configured the change stream with `fullDocument` set to `updateLookup`. This field then represents the most current majority-committed version of the document modified by the update operation. This document may differ from the changes described in `updateDescription` if other majority-committed operations modified the document between the original update operation and the full document lookup. |
 | `ns`                                                         | document   | The namespace (database and or collection) affected by the event. |
@@ -64,7 +64,7 @@ invalidate Event
 | `txnNumber`                                                  | NumberLong | The transaction number.Only present if the operation is part of a [multi-document transaction](https://docs.mongodb.com/master/core/transactions/).*New in version 4.0.* |
 | `lsid`                                                       | Document   | The identifier for the session associated with the transaction.Only present if the operation is part of a [multi-document transaction](https://docs.mongodb.com/master/core/transactions/).*New in version 4.0.* |
 
-## insert事件
+ insert事件
 以下示例说明了一个insert事件：
 ```
 {
@@ -90,7 +90,7 @@ invalidate Event
 
 该fullDocument文档表示插入时文档的版本。
 
-## update事件
+ update事件
 以下示例说明了一个update事件：
 ```
 {
@@ -142,7 +142,7 @@ invalidate Event
 ```
 该fullDocument文档代表了更新文档的最新多数批准版本。该fullDocument文档可能与更新操作时的文档有所不同，具体取决于在更新操作和文档查找之间发生的交错多数授权操作的数量。
 
-## replace事件
+ replace事件
 以下示例说明了一个replace事件：
 ```
 {
@@ -169,7 +169,7 @@ invalidate Event
 使用相同的插入新文档 documentkey
 在fullDocument一个的replace事件表示替换文件的插入后的文件。
 
-## delete事件
+ delete事件
 以下示例说明了一个delete事件：
 ```
 {
@@ -187,7 +187,7 @@ invalidate Event
 ```
 该fullDocument文档被省略，因为在更改流游标将delete事件发送到客户端时，该文档不再存在。
 
-## drop事件
+ drop事件
 版本4.0.1中的新功能。
 
 一个drop在集合从数据库中删除发生的事件。以下示例说明了一个drop事件：
@@ -205,7 +205,7 @@ invalidate Event
 ```
 一个drop事件导致一个无效事件 变革流张开攻击它的ns集合。
 
-## rename事件
+ rename事件
 版本4.0.1中的新功能。
 
 一个rename在集合重命名发生的事件。以下示例说明了一个rename事件：
@@ -226,7 +226,7 @@ invalidate Event
 ```
 一个rename事件导致一个 无效事件的流变化对打开的ns集合或to集合。
 
-## dropDatabase事件
+ dropDatabase事件
 版本4.0.1中的新功能。
 
 一个dropDatabase当数据库被丢弃发生的事件。以下示例说明了一个dropDatabase事件：
@@ -243,7 +243,7 @@ invalidate Event
 
 一个dropDatabase事件导致一个 无效事件的流变化对打开的ns.db数据库。
 
-## invalidate事件
+ invalidate事件
 以下示例说明了一个invalidate事件：
 
 ```
@@ -264,7 +264,7 @@ resumeAfter在无效事件（例如，集合删除或重命名）关闭流之后
 译者：wh
 
 
-## 参见
+ 参见
 
 原文 - [Change Events]( https://docs.mongodb.com/manual/reference/change-events/ )
 

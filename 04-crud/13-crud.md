@@ -1,4 +1,4 @@
-# MongoDB CRUD 概念
+ MongoDB CRUD 概念
 
 本节包含与MongoDB中的CRUD操作相关的其他概念的信息。
 
@@ -32,7 +32,7 @@
 
 校对：杨帅
 
-## 参见
+ 参见
 
 原文 - [MongoDB CRUD Concepts]( https://docs.mongodb.com/manual/core/crud/ )
 

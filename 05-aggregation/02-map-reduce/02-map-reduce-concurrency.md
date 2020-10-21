@@ -1,4 +1,4 @@
-# [ ](#)Map-Reduce 并发
+ [ ]()Map-Reduce 并发
 
 []()
 
@@ -23,7 +23,7 @@ map-reduce 操作由许多任务组成，包括从输入集合中读取，执行
 
 校对：
 
-## 参见
+ 参见
 
 原文 - [Map-Reduce Concurrency]( https://docs.mongodb.com/manual/core/map-reduce-concurrency/ )
 

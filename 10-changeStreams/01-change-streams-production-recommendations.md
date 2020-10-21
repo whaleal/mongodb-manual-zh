@@ -1,9 +1,9 @@
-# 变更流生产建议
+ 变更流生产建议
 
 > **在本页面中**
 
-- [副本集](https://docs.mongodb.com/manual/administration/change-streams-production-recommendations/?spm=a2c6h.12873639.0.0.df414f31UJF939#replica-sets)
-- [分片集群](https://docs.mongodb.com/manual/administration/change-streams-production-recommendations/?spm=a2c6h.12873639.0.0.df414f31UJF939#sharded-clusters)
+- [副本集](https://docs.mongodb.com/manual/administration/change-streams-production-recommendations/?spm=a2c6h.12873639.0.0.df414f31UJF939replica-sets)
+- [分片集群](https://docs.mongodb.com/manual/administration/change-streams-production-recommendations/?spm=a2c6h.12873639.0.0.df414f31UJF939sharded-clusters)
 
 如果您删除或重命名集合或数据库，并为其打开了变更流，则变更流游标在操作日志中前进到该点时将关闭。使用带**`fullDocument：updateLookup`**选项的变更流游标可能会为查找文档返回**null**。
 
@@ -13,9 +13,9 @@
 
 
 
-## 副本集
+ 副本集
 
-对于具有[仲裁成员](https://docs.mongodb.com/manual/reference/glossary/#term-arbiter)的副本集，如果没有足够的数据承载成员导致操作不能满足大多数的条件，则更改流可能会一直保持空闲状态。
+对于具有[仲裁成员](https://docs.mongodb.com/manual/reference/glossary/term-arbiter)的副本集，如果没有足够的数据承载成员导致操作不能满足大多数的条件，则更改流可能会一直保持空闲状态。
 
 例如，考虑一个具有两个数据承载节点和一个仲裁成员的3-成员副本集。如果从节点发生故障（例如由于故障或升级的原因），则写入操作不能满足大多数的条件。变更流将保持打开的状态，但不发送任何通知。
 
@@ -25,7 +25,7 @@
 
 
 
-## 分片集群
+ 分片集群
 
 变更流通过利用全局逻辑时钟提供了整个分片上变更的总体排序。 MongoDB确保更改的顺序得以保留，并且更改流通知可以按接收到的顺序安全地解释。例如，针对3个分片集群打开的更改流游标会返回更改通知，该通知遵循所有三个分片中这些更改的总顺序。
 
@@ -44,7 +44,7 @@
 译者：刘翔
 
 
-## 参见
+ 参见
 
 原文 - [Change Streams Production Recommendations]( https://docs.mongodb.com/manual/administration/change-streams-production-recommendations/ )
 

@@ -1,13 +1,13 @@
-# [ ](#)$cmp (aggregation)
+ [ ]()$cmp (aggregation)
 []()
 
 在本页面
 
-*   [定义](#definition)
+*   [定义](definition)
 
-*   [例子](#example)
+*   [例子](example)
 
-## <span id="definition">定义</span>
+ <span id="definition">定义</span>
 
 **$cmp**
 
@@ -27,7 +27,7 @@
 
 有关表达式的更多信息，请参见表达式。
 
-## <span id="example">例子</span>
+ <span id="example">例子</span>
 
 考虑包含`inventory`以下文档的集合：
 

@@ -13,7 +13,7 @@ In MongoDB Enterprise, WiredTiger also supports Encryption at Rest. See Encrypte
 ➤ In-Memory Storage Engine
 In-Memory Storage Engine is available in MongoDB Enterprise. Rather than storing documents on-disk, it retains them in-memory for more predictable data latencies.
 
-## 参见
+ 参见
 
 原文 - [Storage Engines]( https://docs.mongodb.com/manual/core/storage-engines/ )
 

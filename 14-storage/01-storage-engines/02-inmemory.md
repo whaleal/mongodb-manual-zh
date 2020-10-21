@@ -1,11 +1,11 @@
-# 内存存储引擎
+ 内存存储引擎
 
 从MongoDB Enterprise 3.2.6开始，In-Memory内存存储引擎是64位版本中通用可用性（GA）的一部分。 除某些元数据和诊断数据外，In-Memory内存存储引擎不维护任何磁盘上的数据，包括配置数据、索引、用户凭据等。<br />
 
 通过避免磁盘I / O，内存中存储引擎使数据库操作的延迟更可预测。<br />
 
 
-## **指定In-Memory存储引擎**
+ **指定In-Memory存储引擎**
 
 要选择in-memory内存存储引擎，配置启动参数即可：<br />
 
@@ -27,12 +27,12 @@
 > 进程关闭后，内存中存储引擎不会保留数据。
 
 
-## 并发
+ 并发
 
 in-memory内存存储引擎将文档级并发控制用于写入操作。 因此，多个客户端可以同时修改集合的不同文档。
 
 
-## 内存使用
+ 内存使用
 
 
 内存存储引擎要求其所有数据（包括索引，oplog（如果mongod实例是副本集的一部分）等）必须适合指定的--inMemorySizeGB命令行选项或中的storage.inMemory.engineConfig.inMemorySizeGB设置。 YAML配置文件。<br />
@@ -47,7 +47,7 @@ in-memory内存存储引擎将文档级并发控制用于写入操作。 因此�
 > mongod --storageEngine inMemory --dbpath  --inMemorySizeGB
 
 
-## Durability 持久性
+ Durability 持久性
 
 
 内存中存储引擎是非持久性的，不会将数据写入持久性存储。 非持久数据包括应用程序数据和系统数据，例如用户，权限，索引，副本集配置，分片群集配置等。<br />
@@ -63,7 +63,7 @@ in-memory内存存储引擎将文档级并发控制用于写入操作。 因此�
 立即记录指定日记记录的写关注点的写操作。 当mongod实例由于shutdown命令或由于系统错误而关闭时，无法恢复内存中的数据。
 
 
-## 事务
+ 事务
 
 
 从MongoDB 4.2开始，副本集和分片群集上支持事务，其中：<br />
@@ -76,14 +76,14 @@ in-memory内存存储引擎将文档级并发控制用于写入操作。 因此�
 > 您无法在具有将writeConcernMajorityJournalDefault设置为false的分片的分片群集上运行事务，例如，具有使用in-memory 内存存储引擎的投票成员的分片集群。
 
 
-## 部署架构
+ 部署架构
 
 
 除了独立运行外，使用in-memory内存存储引擎的mongod实例还可以作为副本集的一部分或分片群集的一部分运行。
 
 
 
-### 复制集
+ 复制集
 
 
 可以部署将in-memory内存存储引擎用作副本集一部分的mongod实例。 例如，作为三副本集的一部分，您可能需要修改配置：
@@ -98,7 +98,7 @@ in-memory内存存储引擎将文档级并发控制用于写入操作。 因此�
 > In-memory内存存储引擎要求其所有数据（如果mongod是副本集的一部分，则包括oplog等）都应适合指定的--inMemorySizeGB命令行选项或storage.inMemory.engineConfig.inMemorySizeGB设置。 请参阅内存使用。
 
 
-### 分片集群
+ 分片集群
 
 
 可以将使用内存存储引擎的mongod实例部署为分片群集的一部分。 例如，在分片群集中，您可以拥有一个由以下副本集组成的分片：
@@ -136,7 +136,7 @@ sh.addShardTag("shardB", "persisted")
 
 
 
-## 参见
+ 参见
 
 原文 - [In-Memory Storage Engine]( https://docs.mongodb.com/manual/core/inmemory/ )
 

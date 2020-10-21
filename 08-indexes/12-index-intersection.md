@@ -1,10 +1,10 @@
-## 索引交集
+ 索引交集
 
 **在本页面**
 
-- [索引前缀交集](#交集)
-- [索引交集和复合索引](#复合)
-- [索引交集和排序](#排序)
+- [索引前缀交集](交集)
+- [索引交集和复合索引](复合)
+- [索引交集和排序](排序)
 
 MongoDB可以使用多个索引的交集来完成查询。通常，每个索引交集涉及两个索引。但是，MongoDB可以使用多个/嵌套索引交集来解析查询。
 
@@ -21,9 +21,9 @@ MongoDB可以使用两个索引的交集来支持以下查询：
 db.orders.find( { item: "abc123", qty: { $gt: 15 } } )
 ```
 
-要确定MongoDB是否使用了索引交集，运行 [`explain()`](https://docs.mongodb.com/manual/reference/method/cursor.explain/#cursor.explain);`explain()`的结果将包括`AND_SORTED`阶段或`AND_HASH`阶段。
+要确定MongoDB是否使用了索引交集，运行 [`explain()`](https://docs.mongodb.com/manual/reference/method/cursor.explain/cursor.explain);`explain()`的结果将包括`AND_SORTED`阶段或`AND_HASH`阶段。
 
-### <span id="交集">索引前缀交集</span>
+ <span id="交集">索引前缀交集</span>
 
 使用索引交集，MongoDB可以使用整个索引或索引前缀的交集。索引前缀是复合索引的子集，由一个或多个从索引开头开始的键组成。
 
@@ -40,9 +40,9 @@ db.orders.find( { item: "abc123", qty: { $gt: 15 } } )
 db.orders.find( { qty: { $gt: 10 } , status: "A" } )
 ```
 
-### <span id="复合">索引交集和复合索引</span>
+ <span id="复合">索引交集和复合索引</span>
 
-索引交集并不能消除创建[复合索引](https://docs.mongodb.com/manual/core/index-compound/)的需要 。但是，由于[复合索引中](https://docs.mongodb.com/manual/core/index-compound/)的列表顺序（即，键在索引中的列出顺序）和排序顺序（即，升序或降序）都很重要 ，因此复合索引可能不支持不包含以下内容的查询条件：该[指数的前缀键](https://docs.mongodb.com/manual/core/index-compound/#compound-index-prefix)，或者指定一个不同的排序顺序。
+索引交集并不能消除创建[复合索引](https://docs.mongodb.com/manual/core/index-compound/)的需要 。但是，由于[复合索引中](https://docs.mongodb.com/manual/core/index-compound/)的列表顺序（即，键在索引中的列出顺序）和排序顺序（即，升序或降序）都很重要 ，因此复合索引可能不支持不包含以下内容的查询条件：该[指数的前缀键](https://docs.mongodb.com/manual/core/index-compound/compound-index-prefix)，或者指定一个不同的排序顺序。
 
 例如，如果一个集合`orders`具有以下复合索引，且该`status`字段在字段之前列出`ord_date`：
 
@@ -82,11 +82,11 @@ db.orders.find( { } ).sort( { ord_date: 1 } )
 
 也可以看看
 
-[复合索引](https://docs.mongodb.com/manual/core/index-compound/)， [创建复合索引以支持多个不同的查询](https://docs.mongodb.com/manual/tutorial/create-indexes-to-support-queries/#compound-key-indexes)
+[复合索引](https://docs.mongodb.com/manual/core/index-compound/)， [创建复合索引以支持多个不同的查询](https://docs.mongodb.com/manual/tutorial/create-indexes-to-support-queries/compound-key-indexes)
 
-### <span id="排序">索引交集和排序</span>
+ <span id="排序">索引交集和排序</span>
 
-当[`sort()`](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort) 操作要求索引与查询谓词完全分开时，索引交集不适用。
+当[`sort()`](https://docs.mongodb.com/manual/reference/method/cursor.sort/cursor.sort) 操作要求索引与查询谓词完全分开时，索引交集不适用。
 
 例如，该`orders`集合具有以下索引：
 
@@ -113,7 +113,7 @@ db.orders.find( { qty: { $gt: 10 } } ).sort( { status: 1 } )
 db.orders.find( { qty: { $gt: 10 } , status: "A" } ).sort( { ord_date: -1 } )
 ```
 
-## 参见
+ 参见
 
 原文 - [Index Intersection]( https://docs.mongodb.com/manual/core/index-intersection/ )
 

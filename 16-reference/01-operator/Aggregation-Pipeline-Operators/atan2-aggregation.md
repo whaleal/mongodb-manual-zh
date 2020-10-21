@@ -1,16 +1,16 @@
-# [ ](#)$atan2 (aggregation)
+ [ ]()$atan2 (aggregation)
 
 []()
 
 在本页面
 
-*   [定义](#definition)
+*   [定义](definition)
 
-*   [行为](#behavior)
+*   [行为](behavior)
 
-*   [例子](#examples)
+*   [例子](examples)
 
-## <span id="definition">定义</span>
+ <span id="definition">定义</span>
 
 **$atan2**
 
@@ -32,9 +32,9 @@
 
 有关表达式的更多信息，请参见 表达式。
 
-## <span id="behavior">行为</span>
+ <span id="behavior">行为</span>
 
-### `null`和`NaN`
+ `null`和`NaN`
 
 如果的第一个参数`$atan2`是`null`，则 `$atan2`返回`null`。如果的第一个参数 `$atan2`是`NaN`，则`$atan2`返回`NaN`。如果第一个参数解析为数字*，*第二个参数解析为`NaN`或`null`， `$atan2`则分别返回`NaN`或`null`。
 
@@ -43,7 +43,7 @@
 | { $atan2: [ NaN, &lt;value&gt; ] }<br />or<br />{ $atan2: [ &lt;value&gt;, NaN ] } | NaN  |
 | { $atan2: [ null, &lt;value&gt; ] }<br />or<br />{ $atan2: [ &lt;value&gt;, null ] } | null |
 
-## <span id="examples">例子</span>
+ <span id="examples">例子</span>
 
 **度数的反正切值**
 

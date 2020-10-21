@@ -1,13 +1,13 @@
-# [ ](#)Map-Reduce
+ [ ]()Map-Reduce
 
 []()
 
 在本页面
 
-*   [Map-Reduce JavaScript 函数](#map-reduce-javascript-functions)
-*   [Map-Reduce 行为](#map-reduce-results)
-*   [分片集合](#sharded-collections)
-*   [视图](#views)
+*   [Map-Reduce JavaScript 函数](map-reduce-javascript-functions)
+*   [Map-Reduce 行为](map-reduce-results)
+*   [分片集合](sharded-collections)
+*   [视图](views)
 
 Map-reduce 是一种数据处理范式，用于将大量数据压缩为有用的聚合结果。对于 map-reduce 操作，MongoDB 提供[MapReduce]()数据库命令。
 
@@ -32,7 +32,7 @@ MongoDB 中的所有 map-reduce 函数都是JavaScript，在mongod进程中运�
 
 []()
 
-## <span id="map-reduce-javascript-functions">Map-Reduce JavaScript 函数</span>
+ <span id="map-reduce-javascript-functions">Map-Reduce JavaScript 函数</span>
 
 在 MongoDB 中，map-reduce 操作使用自定义 JavaScript 函数将值映射或关联到一个键。如果一个键有多个值映射到它，则操作会将 键的值减少为单个对象。
 
@@ -42,13 +42,13 @@ MongoDB 中的所有 map-reduce 函数都是JavaScript，在mongod进程中运�
 
 []()
 
-## <span id="map-reduce-results">Map-Reduce 行为</span>
+ <span id="map-reduce-results">Map-Reduce 行为</span>
 
 在 MongoDB 中，map-reduce 操作可以将结果写入集合或内联返回结果。如果将 map-reduce 输出写入集合，则可以对同一输入集合执行后续 map-reduce 操作，这些集合将替换，合并或reduce新结果与先前结果合并。有关详细信息和示例，请参阅[MapReduce]()和[执行增量 Map-Reduce]()。
 
 在内联返回 map-reduce 操作的结果时，结果文档必须在[BSON 文件大小]()限制范围内，当前为 16 兆字节。有关 map-reduce 操作的限制和限制的其他信息，请参阅[MapReduce 参考]() 页面。
 
-## <span id="sharded-collections">分片集合</span>
+ <span id="sharded-collections">分片集合</span>
 
 MongoDB 支持[分片集合]()上的 map-reduce 操作。
 
@@ -56,7 +56,7 @@ MongoDB 支持[分片集合]()上的 map-reduce 操作。
 
 见[Map-Reduce and Sharded Collections](Map-Reduce/Map-Reduce-and-Sharded-Collections.md)。
 
-## <span id="views">视图</span>
+ <span id="views">视图</span>
 
 [视图]()不支持 map-reduce 操作。
 
@@ -66,7 +66,7 @@ MongoDB 支持[分片集合]()上的 map-reduce 操作。
 
 校对：李冠飞
 
-## 参见
+ 参见
 
 原文 - [Map-Reduce]( https://docs.mongodb.com/manual/core/map-reduce/ )
 

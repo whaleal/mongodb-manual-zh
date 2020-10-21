@@ -1,14 +1,14 @@
-# [ ](#)排除 Reduce Function 问题
+ [ ]()排除 Reduce Function 问题
 
 []()
 
 在本页面
 
-*   [确认输出类型](#confirm-output-type)
+*   [确认输出类型](confirm-output-type)
 
-*   [确保对映射值的 Order 不敏感](#ensure-insensitivity-to-the-order-of-mapped-values)
+*   [确保对映射值的 Order 不敏感](ensure-insensitivity-to-the-order-of-mapped-values)
 
-*   [确保减少 Function Idempotence](#ensure-reduce-function-idempotence)
+*   [确保减少 Function Idempotence](ensure-reduce-function-idempotence)
 
 `reduce` function 是一个 JavaScript function，它在[map-reduce]()操作期间“减少”到单个 object 与特定 key 关联的所有值。 `reduce` function 必须满足各种要求。本教程有助于验证`reduce` function 是否符合以下条件：
 
@@ -22,7 +22,7 @@
 
 []()
 
-## <span id="confirm-output-type">确认输出类型</span>
+ <span id="confirm-output-type">确认输出类型</span>
 
 您可以测试`reduce` function 返回的 value 与`map` function 发出的 value 的类型相同。
 
@@ -84,7 +84,7 @@
 
 []()
     
-## <span id="ensure-insensitivity-to-the-order-of-mapped-values">确保对映射值的 Order 不敏感</span>
+ <span id="ensure-insensitivity-to-the-order-of-mapped-values">确保对映射值的 Order 不敏感</span>
 
 `reduce` function 以`key`和`values` array 为参数。您可以测试`reduce` function 的结果不依赖于`values` array 中元素的 order。
     
@@ -129,7 +129,7 @@
 
 []()
 
-## <span id="ensure-reduce-function-idempotence">确保减少 Function Idempotence</span>
+ <span id="ensure-reduce-function-idempotence">确保减少 Function Idempotence</span>
 
 因为 map-reduce 操作可能会为同一个 key 多次调用`reduce`，并且不会为工作集中的 key 的单个实例调用`reduce`，`reduce` function 必须 return 与从该值发出的 value 相同类型的 value。 `map` function。您可以测试`reduce` function process“减少”值而不影响最终的 value。
     
@@ -187,7 +187,7 @@
 
 校对：
 
-## 参见
+ 参见
 
 原文 - [Troubleshoot the Reduce Function]( https://docs.mongodb.com/manual/tutorial/troubleshoot-reduce-function/ )
 

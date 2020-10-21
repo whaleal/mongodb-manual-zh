@@ -1,8 +1,8 @@
-## 创建Haystack索引
+ 创建Haystack索引
 
 > 弃用
 >
-> MongoDB 4.4不支持[geoHaystack](https://docs.mongodb.com/master/core/geohaystack/)索引和地理搜索命令。使用[`$geoNear`](https://docs.mongodb.com/master/reference/operator/aggregation/geoNear/#pipe._S_geoNear)或[`$geoWithin`](https://docs.mongodb.com/master/reference/operator/query/geoWithin/#op._S_geoWithin) 的2d索引。
+> MongoDB 4.4不支持[geoHaystack](https://docs.mongodb.com/master/core/geohaystack/)索引和地理搜索命令。使用[`$geoNear`](https://docs.mongodb.com/master/reference/operator/aggregation/geoNear/pipe._S_geoNear)或[`$geoWithin`](https://docs.mongodb.com/master/reference/operator/query/geoWithin/op._S_geoWithin) 的2d索引。
 
 **haystack**索引必须引用两个字段:位置字段和第二个字段。第二个字段用于精确匹配。**Haystack**索引基于位置和对单个附加条件的精确匹配返回文档。这些索引不一定适合于将最近的文档返回到特定位置。
 
@@ -38,6 +38,6 @@ db.places.createIndex( { pos : "geoHaystack", type : 1 } ,
 - 在包含**“_id”**字段值为**“100”**的文档的bucket中
 - 在包含**“_id”**字段值为**“300”**的文档的bucket中
 
-要使用haystack索引进行查询，可以使用[ geoSearch ](https://docs.mongodb.com/master/reference/command/geoSearch/#dbcmd.geoSearch) 命令。参见[查询Haystack索引](https://docs.mongodb.com/master/tutorial/query-a-geohaystack-index/#geospatial-indexes-haystack-queries).
+要使用haystack索引进行查询，可以使用[ geoSearch ](https://docs.mongodb.com/master/reference/command/geoSearch/dbcmd.geoSearch) 命令。参见[查询Haystack索引](https://docs.mongodb.com/master/tutorial/query-a-geohaystack-index/geospatial-indexes-haystack-queries).
 默认情况下，使用haystack索引的查询返回50个文档。
 

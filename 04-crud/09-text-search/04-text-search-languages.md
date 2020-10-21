@@ -1,5 +1,5 @@
-# 文本搜索语言
-[文本索引](https://docs.mongodb.com/master/core/index-text/#index-feature-text) 和[`$text`](https://docs.mongodb.com/master/reference/operator/query/text/#op._S_text) 运算符可用于下列语言，并接受两个字母的ISO 639-1语言代码或语言名称的长形式:
+ 文本搜索语言
+[文本索引](https://docs.mongodb.com/master/core/index-text/index-feature-text) 和[`$text`](https://docs.mongodb.com/master/reference/operator/query/text/op._S_text) 运算符可用于下列语言，并接受两个字母的ISO 639-1语言代码或语言名称的长形式:
 
 | 语言名称     | ISO 639-1(双字母代码) |
 | :----------- | :-------------------- |
@@ -32,7 +32,7 @@
 
 校对：杨帅
 
-## 参见
+ 参见
 
 原文 - [Text Search Languages]( https://docs.mongodb.com/manual/reference/text-search-languages/ )
 

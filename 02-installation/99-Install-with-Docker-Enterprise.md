@@ -1,4 +1,4 @@
-# 使用Docker安装MongoDB企业版
+ 使用Docker安装MongoDB企业版
 
 重要
 
@@ -19,7 +19,7 @@
 
 
 
-## 注意事项
+ 注意事项
 
 [Docker](https://docs.docker.com/)的完整描述超出了本文档的范围。本页面假定您具有Docker的先验知识。
 
@@ -33,9 +33,9 @@
 
 
 
-## 使用企业版MongoDB创建Docker镜像
+ 使用企业版MongoDB创建Docker镜像
 
-### 1. 下载用于企业版MongoDB的Docker构建文件。
+ 1. 下载用于企业版MongoDB的Docker构建文件。
 
 安装 [Docker](https://docs.docker.com/install/)并设置 [Docker Hub](https://hub.docker.com/)帐户后， 使用以下命令从[Docker Hub mongo项目](https://github.com/docker-library/mongo)下载构建文件 。设置`MONGODB_VERSION`为您选择的主要版本。
 
@@ -52,7 +52,7 @@ curl -O --remote-name-all https://raw.githubusercontent.com/docker-library/mongo
 
 
 
-### 2. 构建Docker容器。
+ 2. 构建Docker容器。
 
 使用下载的构建文件来创建围绕企业版MongoDB的Docker容器镜像。将您的Docker Hub用户名设置为`DOCKER_USERNAME`。
 
@@ -66,7 +66,7 @@ docker build --build-arg MONGO_PACKAGE=mongodb-enterprise --build-arg MONGO_REPO
 
 
 
-### 3. 测试您的镜像。
+ 3. 测试您的镜像。
 
 在Docker容器中本地运行mongod并检查版本，使用以下命令：
 
@@ -83,13 +83,13 @@ docker exec -it mymongo /usr/bin/mongo --eval "db.version()"
 
 
 
-## 将镜像推送到Docker Hub
+ 将镜像推送到Docker Hub
 
-（可选）您可以将Docker镜像推送到远程存储库（例如Docker Hub），以在其他主机上使用该镜像。如果将镜像推送到Docker Hub，则可以在要通过Docker安装企业版MongoDB的每台主机上运行`docker pull`。有关使用`docker pull`的完整指导，请在[此处](https://docs.docker.com/engine/reference/commandline/pull/#examples)参考其文档 。
+（可选）您可以将Docker镜像推送到远程存储库（例如Docker Hub），以在其他主机上使用该镜像。如果将镜像推送到Docker Hub，则可以在要通过Docker安装企业版MongoDB的每台主机上运行`docker pull`。有关使用`docker pull`的完整指导，请在[此处](https://docs.docker.com/engine/reference/commandline/pull/examples)参考其文档 。
 
 
 
-### 1. 检查您的本地镜像。
+ 1. 检查您的本地镜像。
 
 以下命令显示您的本地Docker镜像：
 
@@ -99,11 +99,11 @@ docker exec -it mymongo /usr/bin/mongo --eval "db.version()"
 docker images
 ```
 
-您应该在命令输出中看到您的企业版MongoDB镜像。如果不这样做，请尝试[使用企业版MongoDB创建Docker镜像](https://docs.mongodb.com/v4.2/tutorial/install-mongodb-enterprise-with-docker/#create-docker-image-enterprise)。
+您应该在命令输出中看到您的企业版MongoDB镜像。如果不这样做，请尝试[使用企业版MongoDB创建Docker镜像](https://docs.mongodb.com/v4.2/tutorial/install-mongodb-enterprise-with-docker/create-docker-image-enterprise)。
 
 
 
-### 2. 推送至Docker Hub。
+ 2. 推送至Docker Hub。
 
 将您的本地企业版MongoDB镜像推送到您的远程Docker Hub帐户。
 

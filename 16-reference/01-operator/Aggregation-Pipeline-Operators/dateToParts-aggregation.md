@@ -1,15 +1,15 @@
-# [ ](#)$dateToParts (aggregation)
+ [ ]()$dateToParts (aggregation)
 []()
 
 在本页面
 
-*   [定义](#definition)
+*   [定义](definition)
 
-*   [行为](#behavior)
+*   [行为](behavior)
 
-*   [例子](#example)
+*   [例子](example)
 
-## <span id="definition">定义</span>
+ <span id="definition">定义</span>
 
 **$dateToParts**
 
@@ -39,7 +39,7 @@
 | timezone | 可选      | 用于格式化日期的时区。默认情况下， `$dateToParts`使用UTC。<br />`<timezone>`可以是任何表达式，该表达式的值可以是:<br />1. 一个奥尔森时区标识符，例如`"Europe/London"`或`"America/New_York"`，<br />2. UTC偏移量，格式为：<br />a. `+/-[hh]:[mm]`，例如`"+04:45"`<br />b. `+/-[hh][mm]`，例如`"-0530"`<br />c. `+/-[hh]`例如`"+03"`<br />有关表达式的更多信息，请参见 表达式。 |
 | iso8601  | 可选      | 如果设置为`true`，则修改输出文档以使用ISO周日期字段。默认为`false`。 |
 
-## <span id="behavior">行为</span>
+ <span id="behavior">行为</span>
 
 在`<timezone>` 字段中使用Olson时区标识符时，如果适用于指定的时区，MongoDB将应用DST偏移量。
 
@@ -96,7 +96,7 @@ db.sales.aggregate([
 }
 ```
 
-## <span id="example">例子</span>
+ <span id="example">例子</span>
 
 考虑`sales`包含以下文档的集合：
 

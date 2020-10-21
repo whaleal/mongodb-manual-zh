@@ -1,16 +1,16 @@
-# [ ](#)$anyElementTrue (aggregation)
+ [ ]()$anyElementTrue (aggregation)
 
 []()
 
 在本页面
 
-*   [定义](#definition)
+*   [定义](definition)
 
-*   [行为](#behavior)
+*   [行为](behavior)
 
-*   [例子](#examples)
+*   [例子](examples)
 
-## <span id="definition">定义</span>
+ <span id="definition">定义</span>
 
 **$anyElementTrue**
 
@@ -24,7 +24,7 @@
 
 `<expression>`本身必须解析为一个阵列，分离从表示参数列表中的外部阵列。有关表达式的更多信息，请参见表达式。
 
-## <span id="behavior">行为</span>
+ <span id="behavior">行为</span>
 
 如果集合包含嵌套数组元素，`$anyElementTrue`则*不会*降级到嵌套数组中，而是在顶级对数组进行求值。
 
@@ -37,7 +37,7 @@
 | { $anyElementTrue: [ [ null, false, 0 ] ] } | false |
 | { $anyElementTrue: [ [ ] ] }                | false |
 
-## <span id="examples">例子</span>
+ <span id="examples">例子</span>
 
 创建一个示例集合，其名称`survey`包含以下文档：
 

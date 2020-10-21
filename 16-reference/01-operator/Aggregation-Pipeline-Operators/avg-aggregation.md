@@ -1,15 +1,15 @@
-# [ ](#)$avg (aggregation)
+ [ ]()$avg (aggregation)
 []()
 
 在本页面
 
-*   [定义](#definition)
+*   [定义](definition)
 
-*   [行为](#behavior)
+*   [行为](behavior)
 
-*   [例子](#examples)
+*   [例子](examples)
 
-## <span id="definition">定义</span>
+ <span id="definition">定义</span>
 
 **$avg**
 
@@ -49,13 +49,13 @@
 
 有关表达式的更多信息，请参见 表达式。
 
-## <span id="behavior">行为</span>
+ <span id="behavior">行为</span>
 
-### 非数值或缺失值
+ 非数值或缺失值
 
 `$avg`忽略非数字值，包括缺失值。如果平均值的所有操作数均为非数值，则由于未定义零值的平均值，因此`$avg`返回 `null`。
 
-### 数组操作数
+ 数组操作数
 
 在此`$group`阶段，如果表达式解析为数组，`$avg`则将操作数视为非数值。
 
@@ -64,9 +64,9 @@
 - 使用单个表达式作为其操作数，如果表达式解析为数组，则`$avg`遍历数组以对数组的数字元素进行操作以返回单个值。
 - 使用表达式列表作为其操作数，如果任何表达式都解析为数组，`$avg`则**不会**遍历数组，而是将数组视为非数字值。
 
-## <span id="examples">例子</span>
+ <span id="examples">例子</span>
 
-### 在`$group`阶段上使用
+ 在`$group`阶段上使用
 
 考虑`sales`包含以下文档的集合：
 
@@ -103,7 +103,7 @@ db.sales.aggregate(
 { "_id" : "abc", "avgAmount" : 60, "avgQuantity" : 6 }
 ```
 
-### 在`$project`阶段上使用
+ 在`$project`阶段上使用
 
 集合`students`包含以下文档：
 

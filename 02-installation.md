@@ -1,13 +1,13 @@
-# 安装 MongoDB
+ 安装 MongoDB
 
 在本页面
 
 
 
-- [MongoDB社区版安装教程](https://docs.mongodb.com/v4.2/installation/#mongodb-community-edition-installation-tutorials)
-- [MongoDB企业版安装教程](https://docs.mongodb.com/v4.2/installation/#mongodb-enterprise-edition-installation-tutorials)
-- [将社区版升级到企业版教程](https://docs.mongodb.com/v4.2/installation/#upgrade-community-edition-to-enterprise-edition-tutorials)
-- [支持平台](https://docs.mongodb.com/v4.2/installation/#supported-platforms)
+- [MongoDB社区版安装教程](https://docs.mongodb.com/v4.2/installation/mongodb-community-edition-installation-tutorials)
+- [MongoDB企业版安装教程](https://docs.mongodb.com/v4.2/installation/mongodb-enterprise-edition-installation-tutorials)
+- [将社区版升级到企业版教程](https://docs.mongodb.com/v4.2/installation/upgrade-community-edition-to-enterprise-edition-tutorials)
+- [支持平台](https://docs.mongodb.com/v4.2/installation/supported-platforms)
 
 
 
@@ -23,12 +23,12 @@ MONGODB ATLAS
 
 手册的这部分包含有关安装MongoDB的信息。
 
-- 有关将当前部署升级到MongoDB 4.2的说明，请参阅[升级过程](https://docs.mongodb.com/v4.2/release-notes/4.2/#upgrade)。
+- 有关将当前部署升级到MongoDB 4.2的说明，请参阅[升级过程](https://docs.mongodb.com/v4.2/release-notes/4.2/upgrade)。
 - 有关升级到当前版本的最新修补程序版本的说明，请参阅[升级到MongoDB的最新版本](https://docs.mongodb.com/v4.2/tutorial/upgrade-revision/)。
 
 
 
-## MongoDB社区版安装教程
+ MongoDB社区版安装教程
 
 MongoDB社区版安装教程包括：
 
@@ -40,7 +40,7 @@ MongoDB社区版安装教程包括：
 
 
 
-## MongoDB企业版安装教程
+ MongoDB企业版安装教程
 
 MongoDB企业版安装教程包括：
 
@@ -53,11 +53,11 @@ MongoDB企业版安装教程包括：
 
 
 
-## 将社区版升级到企业版教程
+ 将社区版升级到企业版教程
 
 重要
 
-不要使用这些说明升级到另一个发行版本。要升级发行版本，请参阅相应的发行升级说明，例如[Upgrade to MongoDB 4.2](https://docs.mongodb.com/v4.2/release-notes/4.2/#upgrade)。
+不要使用这些说明升级到另一个发行版本。要升级发行版本，请参阅相应的发行升级说明，例如[Upgrade to MongoDB 4.2](https://docs.mongodb.com/v4.2/release-notes/4.2/upgrade)。
 
 - [升级到MongoDB企业版（单节点）](https://docs.mongodb.com/v4.2/tutorial/upgrade-to-enterprise-standalone/)
 - [升级到MongoDB企业版（副本集）](https://docs.mongodb.com/v4.2/tutorial/upgrade-to-enterprise-replica-set/)
@@ -65,11 +65,11 @@ MongoDB企业版安装教程包括：
 
 
 
-## 支持的平台
+ 支持的平台
 
 *在版本3.4中进行了更改：* MongoDB不再支持32位x86平台。
 
-### x86_64
+ x86_64
 
 平台支持停产通知
 
@@ -94,9 +94,9 @@ MongoDB企业版安装教程包括：
 | Debian 10                                                    |      4.2.1+       |                   |                   |                   |
 | Debian 9                                                     |         ✓         |         ✓         |      3.6.5+       |                   |
 | Debian 8                                                     |                   |         ✓         |         ✓         |         ✓         |
-| RHEL / CentOS / Oracle Linux [[1\]](https://docs.mongodb.com/v4.2/installation/#oracle-linux) 8.0及更高版本 |      4.2.1+       |      4.0.14+      |      3.6.17+      |                   |
-| RHEL / CentOS / Oracle Linux [[1\]](https://docs.mongodb.com/v4.2/installation/#oracle-linux) 7.0及更高版本 |         ✓         |         ✓         |         ✓         |         ✓         |
-| RHEL / CentOS / Oracle Linux [[1\]](https://docs.mongodb.com/v4.2/installation/#oracle-linux) 6.2及更高版本 |         ✓         |         ✓         |         ✓         |         ✓         |
+| RHEL / CentOS / Oracle Linux [[1\]](https://docs.mongodb.com/v4.2/installation/oracle-linux) 8.0及更高版本 |      4.2.1+       |      4.0.14+      |      3.6.17+      |                   |
+| RHEL / CentOS / Oracle Linux [[1\]](https://docs.mongodb.com/v4.2/installation/oracle-linux) 7.0及更高版本 |         ✓         |         ✓         |         ✓         |         ✓         |
+| RHEL / CentOS / Oracle Linux [[1\]](https://docs.mongodb.com/v4.2/installation/oracle-linux) 6.2及更高版本 |         ✓         |         ✓         |         ✓         |         ✓         |
 | SLES 15                                                      |      4.2.1+       |                   |                   |                   |
 | SLES 12                                                      |         ✓         |         ✓         |         ✓         |         ✓         |
 | Solaris 11 64位                                              |                   |                   |                   |     仅社区版      |
@@ -114,7 +114,7 @@ MongoDB企业版安装教程包括：
 | macOS 10.11                                                  |                   |         ✓         |         ✓         |         ✓         |
 | macOS 10.10                                                  |                   |                   |         ✓         |         ✓         |
 
-| [1]  | *（[1](https://docs.mongodb.com/v4.2/installation/#id1)，[2](https://docs.mongodb.com/v4.2/installation/#id2)，[3](https://docs.mongodb.com/v4.2/installation/#id3)）*的MongoDB仅支持运行Red Hat Compatible Kernel (RHCK)的Oracle的Linux。MongoDB不支持Unbreakable Enterprise Kernel (UEK)。 |
+| [1]  | *（[1](https://docs.mongodb.com/v4.2/installation/id1)，[2](https://docs.mongodb.com/v4.2/installation/id2)，[3](https://docs.mongodb.com/v4.2/installation/id3)）*的MongoDB仅支持运行Red Hat Compatible Kernel (RHCK)的Oracle的Linux。MongoDB不支持Unbreakable Enterprise Kernel (UEK)。 |
 | ---- | ------------------------------------------------------------ |
 |      |                                                              |
 
@@ -122,7 +122,7 @@ MongoDB企业版安装教程包括：
 
 
 
-### ARM64 
+ ARM64 
 
 平台支持停产通知
 
@@ -137,7 +137,7 @@ MongoDB企业版安装教程包括：
 
 
 
-### PPC64LE（MongoDB企业版）
+ PPC64LE（MongoDB企业版）
 
 平台支持停产通知
 
@@ -153,7 +153,7 @@ MongoDB企业版安装教程包括：
 
 
 
-### s390x 
+ s390x 
 
 | 平台            | 4.2社区版与企业版 | 4.0企业版 |    3.6企业版     |    3.4企业版     |
 | :-------------- | :---------------: | :-------: | :--------------: | :--------------: |
@@ -173,7 +173,7 @@ MongoDB企业版安装教程包括：
 Update：小芒果
 
 
-## 参见
+ 参见
 
 原文 - [Installation]( https://docs.mongodb.com/manual/installation/ )
 

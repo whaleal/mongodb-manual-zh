@@ -1,16 +1,16 @@
-# [ ](#)$addToSet (aggregation)
+ [ ]()$addToSet (aggregation)
 
 []()
 
 在本页面
 
-*   [定义](#definition)
+*   [定义](definition)
 
-*   [行为](#behavior)
+*   [行为](behavior)
 
-*   [例子](#examples)
+*   [例子](examples)
 
-## <span id="definition">定义</span>
+ <span id="definition">定义</span>
 
 **$addToSet**
 
@@ -26,23 +26,23 @@ $addToSet仅在$group阶段可用。
 
 有关表达式的更多信息，请参阅表达式。
 
-## <span id="behavior">行为</span>
+ <span id="behavior">行为</span>
 
-### 数组表达式
+ 数组表达式
 
 如果表达式的 value 是 array，则$addToSet将整个 array 作为单个元素追加。
 
-### 文档表达
+ 文档表达
 
 如果表达式的值是一个文档，则如果数组中的另一个文档与要添加的文档完全匹配，则MongoDB将确定该文档是重复的。也就是说，现有文档具有完全相同的字段和值，并且顺序完全相同
 
-### 内存限制
+ 内存限制
 
 从版本4.2.3（和4.0.14、3.6.17）开始， `$addToSet`内存限制也为100 MiB（100 * 1024 * 1024），即使`db.collection.aggregate()`使用allowDiskUse：true运行 。
 
 有关更多信息，请参见聚集管道限制。
 
-## <span id="examples">例子</span>
+ <span id="examples">例子</span>
 
 考虑带有以下文档的`sales`集合：
 

@@ -1,9 +1,9 @@
-# 验证MongoDB软件包的完整性
+ 验证MongoDB软件包的完整性
 
 在本页面
 
-- [验证Linux / macOS软件包](https://docs.mongodb.com/v4.2/tutorial/verify-mongodb-packages/#verify-linux-macos-packages)
-- [验证Windows软件包](https://docs.mongodb.com/v4.2/tutorial/verify-mongodb-packages/#verify-windows-packages)
+- [验证Linux / macOS软件包](https://docs.mongodb.com/v4.2/tutorial/verify-mongodb-packages/verify-linux-macos-packages)
+- [验证Windows软件包](https://docs.mongodb.com/v4.2/tutorial/verify-mongodb-packages/verify-windows-packages)
 
 MongoDB版本团队对所有软件包进行数字签名，以证明特定的MongoDB软件包是有效且未更改的MongoDB版本。在安装MongoDB之前，您应该使用提供的PGP签名或SHA-256校验和来验证软件包。
 
@@ -13,15 +13,15 @@ MongoDB版本团队对所有软件包进行数字签名，以证明特定的Mong
 
 
 
-## 验证的Linux / MacOS的包
+ 验证的Linux / MacOS的包
 
-### 使用PGP / GPG 
+ 使用PGP / GPG 
 
 MongoDB使用不同的PGP密钥在每个发行分支上签名。自MongoDB 2.2起，每个发行分支的公钥文件都可以从[密钥服务器](https://www.mongodb.org/static/pgp/) 以文本`.asc`和二进制`.pub`格式下载。
 
 
 
-### 1. 下载MongoDB安装文件。
+ 1. 下载MongoDB安装文件。
 
 根据您的环境从[MongoDB下载中心](https://www.mongodb.com/try/download?tck=docs_server)下载二进制文件。
 
@@ -35,7 +35,7 @@ curl -LO https://fastdl.mongodb.org/osx/mongodb-macos-x86_64-4.2.8.tgz
 
 
 
-### 2. 下载公共签名文件。
+ 2. 下载公共签名文件。
 
 复制
 
@@ -45,7 +45,7 @@ curl -LO https://fastdl.mongodb.org/osx/mongodb-macos-x86_64-4.2.8.tgz.sig
 
 
 
-### 3. 下载然后导入密钥文件。
+ 3. 下载然后导入密钥文件。
 
 如果尚未下载并导入MongoDB 4.2公钥，请运行以下命令：
 
@@ -68,7 +68,7 @@ gpg:               imported: 1
 
 
 
-### 4. 验证MongoDB安装文件。
+ 4. 验证MongoDB安装文件。
 
 运行以下命令：
 
@@ -116,11 +116,11 @@ gpg: Can't check signature: public key not found
 
 
 
-### 使用SHA-256
+ 使用SHA-256
 
 
 
-### 1. 下载MongoDB安装文件。
+ 1. 下载MongoDB安装文件。
 
 根据您的环境从[MongoDB下载中心](https://www.mongodb.com/try/download?tck=docs_server)下载二进制文件。
 
@@ -134,7 +134,7 @@ curl -LO https://fastdl.mongodb.org/osx/mongodb-macos-x86_64-4.2.8.tgz
 
 
 
-### 2. 下载SHA256文件。
+ 2. 下载SHA256文件。
 
 复制
 
@@ -144,7 +144,7 @@ curl -LO https://fastdl.mongodb.org/osx/mongodb-macos-x86_64-4.2.8.tgz.sha256
 
 
 
-### 3. 使用SHA-256校验和验证MongoDB软件包文件。
+ 3. 使用SHA-256校验和验证MongoDB软件包文件。
 
 计算软件包文件的校验和：
 
@@ -166,13 +166,13 @@ mongodb-macos-x86_64-4.2.8.tgz: OK
 
 
 
-## 验证Windows软件包
+ 验证Windows软件包
 
 这将根据其SHA256密钥验证MongoDB二进制文件。
 
 
 
-### 1. 下载安装程序。
+ 1. 下载安装程序。
 
 下载MongoDB `.msi`安装程序。例如，要下载最新版本的社区版MongoDB：
 
@@ -185,7 +185,7 @@ mongodb-macos-x86_64-4.2.8.tgz: OK
 
 
 
-### 2. 获取公共签名文件。
+ 2. 获取公共签名文件。
 
 获取您的MongoDB版本的公共签名文件。
 
@@ -196,7 +196,7 @@ mongodb-macos-x86_64-4.2.8.tgz: OK
 
 
 
-### 3. 将签名文件与MongoDB installer hash进行比较。
+ 3. 将签名文件与MongoDB installer hash进行比较。
 
 要将签名文件与MongoDB二进制文件的哈希值进行比较，请调用以下Powershell脚本：
 
@@ -236,7 +236,7 @@ True
 译者：小芒果
 
 
-## 参见
+ 参见
 
 原文 - [Verify Integrity of MongoDB Packages]( https://docs.mongodb.com/manual/tutorial/verify-mongodb-packages/ )
 

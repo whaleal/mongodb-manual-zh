@@ -1,4 +1,4 @@
-# [ ](#)免费监控命令
+ [ ]()免费监控命令
 
 []()
 
@@ -17,7 +17,7 @@
 
 校对：
 
-## 参见
+ 参见
 
 原文 - [Free Monitoring Commands]( https://docs.mongodb.com/manual/reference/command/nav-free-monitoring/ )
 

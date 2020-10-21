@@ -1,4 +1,4 @@
-# [ ](#)聚合管道操作符
+ [ ]()聚合管道操作符
 > **注意：**
 >
 > 有关特定运算符的详细信息，包括语法和示例，请单击特定运算符以转到其参考页。
@@ -7,30 +7,30 @@
 
 []()
 
-## 表达式运算符
+ 表达式运算符
 
 []()
 
 在这个部分
 
-*   [算术表达式运算符](#arithmetic-expression-operators)
-*   [列表表达式运算符](#array-expression-operators)
-*   [布尔表达式运算符](#boolean-expression-operators)
-*   [比较表达式运算符](#comparison-expression-operators)
-*   [条件表达式运算符](#conditional-expression-operators)
-*   [日期表达式运算符](#date-expression-operators)
-*   [文字表达式运算符](#literal-expression-operator)
-*   [对象表达式运算符](#object-expression-operators)
-*   [集合表达式运算符](#set-expression-operators)
-*   [字符串表达式运算符](#string-expression-operators)
-*   [文本表达式运算符](#text-expression-operator)
-*   [三角表达式运算符](#trigonometry-expression-operators)
-*   [类型表达式运算符](#type-expression-operators)
-*   [累加器($group)](#accumulators-group)
-*   [累加器(处于其他阶段)](#accumulators-in-other-stages)
-*   [变量表达式运算符](#variable-expression-operators)
+*   [算术表达式运算符](arithmetic-expression-operators)
+*   [列表表达式运算符](array-expression-operators)
+*   [布尔表达式运算符](boolean-expression-operators)
+*   [比较表达式运算符](comparison-expression-operators)
+*   [条件表达式运算符](conditional-expression-operators)
+*   [日期表达式运算符](date-expression-operators)
+*   [文字表达式运算符](literal-expression-operator)
+*   [对象表达式运算符](object-expression-operators)
+*   [集合表达式运算符](set-expression-operators)
+*   [字符串表达式运算符](string-expression-operators)
+*   [文本表达式运算符](text-expression-operator)
+*   [三角表达式运算符](trigonometry-expression-operators)
+*   [类型表达式运算符](type-expression-operators)
+*   [累加器($group)](accumulators-group)
+*   [累加器(处于其他阶段)](accumulators-in-other-stages)
+*   [变量表达式运算符](variable-expression-operators)
 
-这些表达式运算符可用于构造[表达式](../../Aggregation/Aggregation-Reference/Aggregation-Pipeline-Quick-Reference.md#表达式)以在[聚合管道阶段](Aggregation-Pipeline-Stages.md)中使用。
+这些表达式运算符可用于构造[表达式](../../Aggregation/Aggregation-Reference/Aggregation-Pipeline-Quick-Reference.md表达式)以在[聚合管道阶段](Aggregation-Pipeline-Stages.md)中使用。
 
 运算符表达式类似于带有参数的函数。通常，这些表达式采用参数数组并具有以下形式：
 
@@ -49,7 +49,7 @@
 
 []()
 
-### <span id="arithmetic-expression-operators">算术表达式运算符</span>
+ <span id="arithmetic-expression-operators">算术表达式运算符</span>
 
 算术表达式对 numbers 执行数学运算。一些算术表达式也可以支持 date 算术。
 
@@ -74,7 +74,7 @@
 
 []()
 
-### <span id="array-expression-operators">列表表达式运算符</span>
+ <span id="array-expression-operators">列表表达式运算符</span>
 
 | 名称               | 描述                                                         |
 | ------------------ | ------------------------------------------------------------ |
@@ -96,7 +96,7 @@
 
 []()
 
-### <span id="boolean-expression-operators">布尔表达式运算符</span>
+ <span id="boolean-expression-operators">布尔表达式运算符</span>
 
 布尔表达式将其参数表达式计算为布尔值，并返回布尔值作为结果。
 
@@ -111,11 +111,11 @@
 
 []()
 
-### <span id="comparison-expression-operators">比较表达式运算符</span>
+ <span id="comparison-expression-operators">比较表达式运算符</span>
 
-比较表达式返回一个布尔值，但[$cmp](reference-operator-aggregation-cmp.html#exp._S_cmp)返回一个数字。
+比较表达式返回一个布尔值，但[$cmp](reference-operator-aggregation-cmp.htmlexp._S_cmp)返回一个数字。
 
-比较表达式采用两个参数表达式并比较 value 和 type，使用[指定的 BSON 比较顺序](reference-bson-type-comparison-order.html#bson-types-comparison-order)表示不同类型的值。
+比较表达式采用两个参数表达式并比较 value 和 type，使用[指定的 BSON 比较顺序](reference-bson-type-comparison-order.htmlbson-types-comparison-order)表示不同类型的值。
 
 | 名称     | 描述                                                         |
 | -------- | ------------------------------------------------------------ |
@@ -130,7 +130,7 @@
 
 []()
 
-### <span id="conditional-expression-operators">条件表达式运算符</span>
+ <span id="conditional-expression-operators">条件表达式运算符</span>
 
 | 名称        | 描述                                                         |
 | ----------- | ------------------------------------------------------------ |
@@ -140,7 +140,7 @@
 
 []()
 
-### <span id="date-expression-operators">日期表达式运算符</span>
+ <span id="date-expression-operators">日期表达式运算符</span>
 
 以下运算符返回日期对象或日期对象的组成部分：
 
@@ -175,7 +175,7 @@
 
 []()
 
-### <span id="literal-expression-operator">文字表达式运算符</span>
+ <span id="literal-expression-operator">文字表达式运算符</span>
 
 | 名称         | 描述                                                         |
 | ------------ | ------------------------------------------------------------ |
@@ -184,7 +184,7 @@
 
 []()
 
-### <span id="object-expression-operators">对象表达式运算符</span>
+ <span id="object-expression-operators">对象表达式运算符</span>
 
 | 名称               | 描述                                                         |
 | ------------------ | ------------------------------------------------------------ |
@@ -194,7 +194,7 @@
 
 []()
 
-### <span id="set-expression-operators">集合表达式运算符</span>
+ <span id="set-expression-operators">集合表达式运算符</span>
 
 Set 表达式对数组执行 set 操作，将数组视为 sets。 Set 表达式忽略每个输入数组中的重复条目和元素的顺序。
 
@@ -215,11 +215,11 @@ Set 表达式对数组执行 set 操作，将数组视为 sets。 Set 表达式�
 
 []()
 
-### <span id="string-expression-operators">字符串表达式运算符</span>
+ <span id="string-expression-operators">字符串表达式运算符</span>
 
-字符串表达式（除外 [`$concat`](reference-operator-aggregation-concat.html#exp._S_concat)）仅对ASCII字符字符串具有明确定义的行为。
+字符串表达式（除外 [`$concat`](reference-operator-aggregation-concat.htmlexp._S_concat)）仅对ASCII字符字符串具有明确定义的行为。
 
-[`$concat`](reference-operator-aggregation-concat.html#exp._S_concat) 行为是明确定义的，与所使用的字符无关。
+[`$concat`](reference-operator-aggregation-concat.htmlexp._S_concat) 行为是明确定义的，与所使用的字符无关。
 
 | 名称                | 描述                                                         |
 | ------------------- | ------------------------------------------------------------ |
@@ -235,11 +235,11 @@ Set 表达式对数组执行 set 操作，将数组视为 sets。 Set 表达式�
 | [$rtrim]()          | 从字符串末尾删除空格或指定的字符。<br />*版本4.0中的新功能。* |
 | [$split]()          | 根据分隔符将 string 拆分为子字符串。返回子字符串的 array。如果在 string 中找不到分隔符，则返回包含原始 string 的 array。 |
 | [$strLenBytes]()    | 返回 string 中 UTF-8 编码字节的数量。                        |
-| [$strLenCP]()       | 返回 string 中 UTF-8 [code 点](http://www.unicode.org/glossary/#code_point)的数量。 |
+| [$strLenCP]()       | 返回 string 中 UTF-8 [code 点](http://www.unicode.org/glossary/code_point)的数量。 |
 | [$strcasecmp]()     | 执行 case-insensitive string 比较并返回：如果两个 strings 相等则返回`0`，如果第一个 string 大于第二个，则返回`1`，如果第一个 string 小于第二个，则返回`-1`。 |
-| [$substr]()         | 已过时。使用[$substrBytes](reference-operator-aggregation-substrBytes.html#exp._S_substrBytes)或[$substrCP](reference-operator-aggregation-substrCP.html#exp._S_substrCP)。 |
+| [$substr]()         | 已过时。使用[$substrBytes](reference-operator-aggregation-substrBytes.htmlexp._S_substrBytes)或[$substrCP](reference-operator-aggregation-substrCP.htmlexp._S_substrCP)。 |
 | [$substrBytes]()    | 返回 string 的子字符串。从 string 中指定的 UTF-8 字节索引(zero-based)处的字符开始，并继续指定的字节数。 |
-| [$substrCP]()       | 返回 string 的子字符串。从 string 中指定的 UTF-8 [code point(CP)](http://www.unicode.org/glossary/#code_point)索引(zero-based)处的字符开始，并继续指定的 code 点数。 |
+| [$substrCP]()       | 返回 string 的子字符串。从 string 中指定的 UTF-8 [code point(CP)](http://www.unicode.org/glossary/code_point)索引(zero-based)处的字符开始，并继续指定的 code 点数。 |
 | [$toLower]()        | 将 string 转换为小写。接受单个参数表达式。                   |
 | [$toString]()       | 将值转换为字符串。<br />*版本4.0中的新功能。*                |
 | [$trim]()           | 从字符串的开头和结尾删除空格或指定的字符。<br />*版本4.0中的新功能。* |
@@ -247,7 +247,7 @@ Set 表达式对数组执行 set 操作，将数组视为 sets。 Set 表达式�
 
 []()
 
-### <span id="text-expression-operator">文本表达式运算符</span>
+ <span id="text-expression-operator">文本表达式运算符</span>
 
 | 名称      | 描述                 |
 | --------- | -------------------- |
@@ -255,7 +255,7 @@ Set 表达式对数组执行 set 操作，将数组视为 sets。 Set 表达式�
 
 []()
 
-### 三角表达式运算符
+ 三角表达式运算符
 
 三角表达式对数字执行三角运算。表示角度的值始终以弧度为单位输入或输出。使用 `$degreesToRadians`和`$radiansToDegrees`在度和弧度测量之间转换。
 
@@ -276,7 +276,7 @@ Set 表达式对数组执行 set 操作，将数组视为 sets。 Set 表达式�
 
 []()
 
-### 类型表达式运算符
+ 类型表达式运算符
 
 | 名称            | 描述                                              |
 | --------------- | ------------------------------------------------- |
@@ -293,7 +293,7 @@ Set 表达式对数组执行 set 操作，将数组视为 sets。 Set 表达式�
 
 []()
 
-### <span id="accumulators-group">累加器($group)</span>
+ <span id="accumulators-group">累加器($group)</span>
 
 累加器是可以在[$group]()阶段使用的运算符，它们在文档通过管道时保持其状态(例如： 总计，最大值，最小值和相关数据)。
 
@@ -315,7 +315,7 @@ Set 表达式对数组执行 set 操作，将数组视为 sets。 Set 表达式�
 
 []()
 
-### <span id="accumulators-in-other-stages">累加器(处于其他阶段)</span>
+ <span id="accumulators-in-other-stages">累加器(处于其他阶段)</span>
 
 一些可用作[$group]()阶段累加器的运算符也可用于[$project]()阶段，但不能用作累加器。在[$project]()阶段使用时，这些 operator 不会维护它们的 state，并且可以将单个参数或多个 arguments 作为输入。
 
@@ -335,7 +335,7 @@ Set 表达式对数组执行 set 操作，将数组视为 sets。 Set 表达式�
 
 []()
 
-### <span id="variable-expression-operators">变量表达式运算符</span>
+ <span id="variable-expression-operators">变量表达式运算符</span>
 
 | 名称     | 描述                                                         |
 | -------- | ------------------------------------------------------------ |
@@ -344,7 +344,7 @@ Set 表达式对数组执行 set 操作，将数组视为 sets。 Set 表达式�
 
 []()
 
-## 表达式运算符的字母顺序列表
+ 表达式运算符的字母顺序列表
 
 | 名称                  | 描述                                                         |
 | --------------------- | ------------------------------------------------------------ |
@@ -441,16 +441,16 @@ Set 表达式对数组执行 set 操作，将数组视为 sets。 Set 表达式�
 | [$slice]()            | 返回 array 的子集。                                          |
 | [$split]()            | 根据分隔符将 string 拆分为子字符串。返回子字符串的 array。如果在 string 中找不到分隔符，则返回包含原始 string 的 array。 |
 | [$sqrt]()             | 计算平方根。                                                 |
-| [$stdDevPop]()        | 返回输入值的总体标准偏差。 <br/>在 version 3.2 中更改：在[$group](reference-operator-aggregation-group.html#pipe._S_group)和[$project](reference-operator-aggregation-project.html#pipe._S_project)阶段均可用。 |
-| [$stdDevSamp]()       | 返回输入值的样本标准偏差。 <br/>在 version 3.2 中更改：在[$group](reference-operator-aggregation-group.html#pipe._S_group)和[$project](reference-operator-aggregation-project.html#pipe._S_project)阶段均可用。 |
+| [$stdDevPop]()        | 返回输入值的总体标准偏差。 <br/>在 version 3.2 中更改：在[$group](reference-operator-aggregation-group.htmlpipe._S_group)和[$project](reference-operator-aggregation-project.htmlpipe._S_project)阶段均可用。 |
+| [$stdDevSamp]()       | 返回输入值的样本标准偏差。 <br/>在 version 3.2 中更改：在[$group](reference-operator-aggregation-group.htmlpipe._S_group)和[$project](reference-operator-aggregation-project.htmlpipe._S_project)阶段均可用。 |
 | [$strcasecmp]()       | 执行不区分大小写的字符串比较并返回：如果两个字符串相等则返回`0`，如果第一个字符串大于第二个，则返回`1`，如果第一个字符串小于第二个，则返回`-1`。 |
 | [$strLenBytes]()      | 返回 string 中 UTF-8 编码字节的数量。                        |
-| [$strLenCP]()         | 返回 string 中 UTF-8 [code 点](http://www.unicode.org/glossary/#code_point)的数量。 |
-| [$substr]()           | 已过时。使用[$substrBytes](reference-operator-aggregation-substrBytes.html#exp._S_substrBytes)或[$substrCP](reference-operator-aggregation-substrCP.html#exp._S_substrCP)。 |
+| [$strLenCP]()         | 返回 string 中 UTF-8 [code 点](http://www.unicode.org/glossary/code_point)的数量。 |
+| [$substr]()           | 已过时。使用[$substrBytes](reference-operator-aggregation-substrBytes.htmlexp._S_substrBytes)或[$substrCP](reference-operator-aggregation-substrCP.htmlexp._S_substrCP)。 |
 | [$substrBytes]()      | 返回 string 的子字符串。从 string 中指定的 UTF-8 字节索引(从零开始)处的字符开始，并继续指定的字节数。 |
-| [$substrCP]()         | 返回 string 的子字符串。从 string 中指定的 UTF-8 [code point(CP)](http://www.unicode.org/glossary/#code_point)索引(从零开始)处的字符开始，并继续指定的 code 点数 |
+| [$substrCP]()         | 返回 string 的子字符串。从 string 中指定的 UTF-8 [code point(CP)](http://www.unicode.org/glossary/code_point)索引(从零开始)处的字符开始，并继续指定的 code 点数 |
 | [$subtract]()         | 返回从第一个中减去第二个 value 的结果。如果这两个值是数字，返回差值。如果这两个值是日期，则返回差值(以毫秒为单位)。如果这两个值是 date 和一个以毫秒为单位的数字，则返回结果 date。接受两个参数表达式。如果这两个值是 date 和数字，请首先指定 date 参数，因为从数字中减去 date 没有意义。 |
-| [$sum]()              | 返回数值的总和。忽略非数字值。 <br/>在 version 3.2 中更改：在[$group](reference-operator-aggregation-group.html#pipe._S_group)和[$project](reference-operator-aggregation-project.html#pipe._S_project)阶段均可用。 |
+| [$sum]()              | 返回数值的总和。忽略非数字值。 <br/>在 version 3.2 中更改：在[$group](reference-operator-aggregation-group.htmlpipe._S_group)和[$project](reference-operator-aggregation-project.htmlpipe._S_project)阶段均可用。 |
 | [$switch]()           | 计算一系列案例表达。当它找到一个计算结果为`true`的表达式时，`$switch`执行一个指定的表达式并退出控制流。 |
 | [$tan]()              | 返回以弧度为单位的值的切线。                                 |
 | [$toBool]()           | 将值转换为布尔值。                                           |

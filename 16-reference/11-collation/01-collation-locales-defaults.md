@@ -1,16 +1,16 @@
-## 排序区域和默认参数
+ 排序区域和默认参数
 
 **在本页面**
 
-- [行为](#行为)
-- [支持的语言和语言环境](#支持)
-- [排序默认参数](#参数)
+- [行为](行为)
+- [支持的语言和语言环境](支持)
+- [排序默认参数](参数)
 
 *3.4版本新增.*
 
 [Collation](https://docs.mongodb.com/master/reference/collation/)允许用户为字符串比较指定特定于语言的规则，比如字母大小写和重音符号的规则。
 
-### 行为
+ 行为
 
 一些排序区域有变体，它们使用特定于语言的规则。要指定语言环境变量，请使用以下语法:
 
@@ -26,7 +26,7 @@
 
 查看[排序规则页面](https://docs.mongodb.com/master/reference/collation/)获取排序行为和语法的完整描述。
 
-### <span id="支持">支持的语言和语言环境</span>
+ <span id="支持">支持的语言和语言环境</span>
 
 MongoDB的[排序特性](https://docs.mongodb.com/master/reference/collation/)支持以下语言。下表列出了[ICU语言环境ID](http://userguide.icu-project.org/locale)所定义的受支持的语言和相关的语言环境。
 
@@ -150,9 +150,9 @@ MongoDB的[排序特性](https://docs.mongodb.com/master/reference/collation/)�
 >
 > 要显式指定简单二进制比较，请将`locale`值指定为`simple`。
 
-### <span id="参数">排序默认参数</span>
+ <span id="参数">排序默认参数</span>
 
-除了必需的**locale**参数外，一个排序文档还包含几个[可选参数](https://docs.mongodb.com/master/reference/collation/#coll-document-fields)。根据您使用的“locale”，默认参数可能会有所不同。查看[排序页面](https://docs.mongodb.com/master/reference/collation/)获取排序语法的完整描述。
+除了必需的**locale**参数外，一个排序文档还包含几个[可选参数](https://docs.mongodb.com/master/reference/collation/coll-document-fields)。根据您使用的“locale”，默认参数可能会有所不同。查看[排序页面](https://docs.mongodb.com/master/reference/collation/)获取排序语法的完整描述。
 
 以下默认参数在所有地区都是一致的:
 
@@ -317,7 +317,7 @@ MongoDB的[排序特性](https://docs.mongodb.com/master/reference/collation/)�
 | `yo`                        | `off`     | `non-ignorable` | `TRUE`        | `FALSE`   |
 | `zu`                        | `off`     | `non-ignorable` | `FALSE`       | `FALSE`   |
 
-## 参见
+ 参见
 
 原文 - [Collation Locales and Default Parameters]( https://docs.mongodb.com/manual/reference/collation-locales-defaults/ )
 

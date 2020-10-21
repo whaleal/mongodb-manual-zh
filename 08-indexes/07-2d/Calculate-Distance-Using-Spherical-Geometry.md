@@ -1,4 +1,4 @@
-## 使用球面几何计算距离
+ 使用球面几何计算距离
 
 > 警告
 >
@@ -12,14 +12,14 @@
 >
 > 虽然“2d”索引支持使用球面距离的基本查询，但如果您的数据主要是经度和纬度，请考虑移动到“2dsphere”索引。
 
-- [`$nearSphere`](https://docs.mongodb.com/manual/reference/operator/query/nearSphere/#op._S_nearSphere)
-- [`$centerSphere`](https://docs.mongodb.com/manual/reference/operator/query/centerSphere/#op._S_centerSphere)
-- [`$near`](https://docs.mongodb.com/manual/reference/operator/query/near/#op._S_near)
-- [`$geoNear`](https://docs.mongodb.com/manual/reference/operator/aggregation/geoNear/#pipe._S_geoNear)带有选择的流水线级`spherical: true`
+- [`$nearSphere`](https://docs.mongodb.com/manual/reference/operator/query/nearSphere/op._S_nearSphere)
+- [`$centerSphere`](https://docs.mongodb.com/manual/reference/operator/query/centerSphere/op._S_centerSphere)
+- [`$near`](https://docs.mongodb.com/manual/reference/operator/query/near/op._S_near)
+- [`$geoNear`](https://docs.mongodb.com/manual/reference/operator/aggregation/geoNear/pipe._S_geoNear)带有选择的流水线级`spherical: true`
 
 > 重要
 >
-> 上述操作使用弧度表示距离。其他球形查询操作符则不是这样，比如[' $geoWithin '](https://docs.mongodb.com/master/reference/operator/query/geoWithin/#op._S_geoWithin)。
+> 上述操作使用弧度表示距离。其他球形查询操作符则不是这样，比如[' $geoWithin '](https://docs.mongodb.com/master/reference/operator/query/geoWithin/op._S_geoWithin)。
 >
 > 要使球形查询运算符正常运行，必须将距离转换为弧度，并将弧度转换为应用程序使用的距离单位。
 >

@@ -1,15 +1,15 @@
-# [ ](#)$convert (aggregation)
+ [ ]()$convert (aggregation)
 []()
 
 在本页面
 
-*   [定义](#definition)
+*   [定义](definition)
 
-*   [行为](#behavior)
+*   [行为](behavior)
 
-*   [例子](#example)
+*   [例子](example)
 
-## <span id="definition">定义</span>
+ <span id="definition">定义</span>
 
 **$convert**
 
@@ -62,9 +62,9 @@
 * $toObjectId
 * $toString
 
-## <span id="behavior">行为</span>
+ <span id="behavior">行为</span>
 
-### 转换为布尔值
+ 转换为布尔值
 
 下表列出了可以转换为布尔值的输入类型：
 
@@ -99,7 +99,7 @@
 > 
 > `$toBool`
 
-### 转换为整数
+ 转换为整数
 
 下表列出了可以转换为整数的输入类型：
 
@@ -132,7 +132,7 @@
 > 
 > `$toInt`操作符。
 
-### 转换为十进制
+ 转换为十进制
 
 下表列出了可以转换为十进制的输入类型：
 
@@ -162,7 +162,7 @@
 > 
 > `$toDecimal`
 
-### 转换为Double
+ 转换为Double
 
 下表列出了可以转换为双精度型的输入类型：
 
@@ -194,7 +194,7 @@
 > 
 > `$toDouble`
 
-### 转换为Long
+ 转换为Long
 
 下表列出了可以转换为long的输入类型：
 
@@ -228,7 +228,7 @@
 > 
 > `$toLong`
 
-### 转换为日期
+ 转换为日期
 
 下表列出了可以转换为日期的输入类型：
 
@@ -258,7 +258,7 @@
 > 
 > `$toDate`操作符， `$dateFromString`
 
-### 转换成的ObjectId 
+ 转换成的ObjectId 
 
 下表列出了可以转换为ObjectId的输入类型：
 
@@ -278,7 +278,7 @@
 > 
 > `$toObjectId`操作符。
 
-### 转换为字符串
+ 转换为字符串
 
 下表列出了可以转换为字符串的输入类型：
 
@@ -309,7 +309,7 @@
 > 
 > `$toString`操作符。 `$dateToString`
 
-## <span id="example">例子</span>
+ <span id="example">例子</span>
 
 `orders`使用以下文档创建一个集合：
 

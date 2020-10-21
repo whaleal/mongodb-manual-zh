@@ -1,4 +1,4 @@
-# [ ](#)认证命令
+ [ ]()认证命令
 
 []()
 
@@ -18,7 +18,7 @@
 
 校对：
 
-## 参见
+ 参见
 
 原文 - [Authentication Commands]( https://docs.mongodb.com/manual/reference/command/nav-authentication/ )
 

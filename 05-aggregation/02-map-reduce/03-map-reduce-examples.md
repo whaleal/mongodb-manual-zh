@@ -1,12 +1,12 @@
-# [ ](#)Map-Reduce 例子
+ [ ]()Map-Reduce 例子
 
 []()
 
 在本页面
 
-*   [返回每位客户的总价格](#return-the-total-price-per-customer)
+*   [返回每位客户的总价格](return-the-total-price-per-customer)
 
-*   [用每个项目的平均数量计算订单和总数量](#calculate-order-and-total-quantity-with-average-quantity-per-item)
+*   [用每个项目的平均数量计算订单和总数量](calculate-order-and-total-quantity-with-average-quantity-per-item)
 
 在[mongo]() shell 中，[db.collection.mapReduce()]()方法是[MapReduce]()命令周围的 wrapper。以下示例使用[db.collection.mapReduce()]()方法：
 
@@ -38,7 +38,7 @@ db.orders.insertMany([
 []()
     
 
-## <span id="return-the-total-price-per-customer">返回每位客户的总价格</span>
+ <span id="return-the-total-price-per-customer">返回每位客户的总价格</span>
 
 对`orders`集合执行map-reduce操作，以对进行分组`cust_id`，并计算`price`每个的 的总和`cust_id`：
 
@@ -91,7 +91,7 @@ db.map_reduce_example.find().sort( { _id: 1 } )
 { "_id" : "Don Quis", "value" : 155 }
 ```
 
-### 聚合替代
+ 聚合替代
 
 使用可用的聚合管道运算符，您可以重写map-reduce操作，而无需定义自定义函数：
 
@@ -130,7 +130,7 @@ db.orders.aggregate([
    { "_id" : "Don Quis", "value" : 155 }
    ```
 
-## <span id="calculate-order-and-total-quantity-with-average-quantity-per-item">用每个项目的平均数量计算订单和总数量</span>
+ <span id="calculate-order-and-total-quantity-with-average-quantity-per-item">用每个项目的平均数量计算订单和总数量</span>
 
 在此示例中，您将对值大于或等于的`orders`所有文档在集合上执行map-reduce操作 。工序按字段分组 ，并计算每个的订单数量和总订购量。然后，该操作将为每个值计算每个订单的平均数量，并将结果合并到输出集合中。合并结果时，如果现有文档的密钥与新结果相同，则该操作将覆盖现有文档。如果不存在具有相同密钥的文档，则该操作将插入该文档。
 
@@ -212,7 +212,7 @@ db.orders.aggregate([
    { "_id" : "pears", "value" : { "count" : 1, "qty" : 10, "avg" : 10 } }
    ```
 
-## 聚合替代
+ 聚合替代
 
    使用可用的聚合管道运算符，您可以重写map-reduce操作，而无需定义自定义函数：
 
@@ -293,7 +293,7 @@ db.orders.aggregate([
 
 校对：
 
-## 参见
+ 参见
 
 原文 - [Map-Reduce Examples]( https://docs.mongodb.com/manual/tutorial/map-reduce-examples/ )
 

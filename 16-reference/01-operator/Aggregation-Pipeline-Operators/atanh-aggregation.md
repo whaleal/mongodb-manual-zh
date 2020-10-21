@@ -1,15 +1,15 @@
-# [ ](#)$atanh (aggregation)
+ [ ]()$atanh (aggregation)
 []()
 
 在本页面
 
-*   [定义](#definition)
+*   [定义](definition)
 
-*   [行为](#behavior)
+*   [行为](behavior)
 
-*   [例子](#examples)
+*   [例子](examples)
 
-## <span id="definition">定义</span>
+ <span id="definition">定义</span>
 
 **$asinh**
 
@@ -31,9 +31,9 @@
 
 有关表达式的更多信息，请参见 表达式。
 
-## <span id="behavior">行为</span>
+ <span id="behavior">行为</span>
 
-### `null`，`NaN`和`+/- Infinity`
+ `null`，`NaN`和`+/- Infinity`
 
 如果参数解析为的值`null`或指向缺少的字段，则`$atanh`返回`null`。如果参数解析为`NaN`，则`$atanh`返回`NaN`。如果参数解析为负无穷大或正无穷大， `$atanh`则会引发错误。如果参数解析为 `+1`或`-1`，则分别`$atanh`返回`Infinity`和 `-Infinity`。
 
@@ -45,7 +45,7 @@
 | { $atanh: -1}                                            | -Infinity                                                    |
 | { $atanh : Infinity}<br />or<br />{ $atanh : -Infinity } | 引发类似于以下格式化输出的错误消息：<br />"errmsg" :   "Failed to optimize pipeline :: caused by :: cannot   apply $atanh to -inf, value must in (-inf,inf)" |
 
-## <span id="examples">例子</span>
+ <span id="examples">例子</span>
 
 **度数的反双曲正切值**
 

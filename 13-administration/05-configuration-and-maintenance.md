@@ -1,4 +1,4 @@
-# [配置和维护](https://docs.mongodb.com/v4.2/administration/configuration-and-maintenance/#configuration-and-maintenance )
+ [配置和维护](https://docs.mongodb.com/v4.2/administration/configuration-and-maintenance/configuration-and-maintenance )
 
 本节介绍常规管理操作，包括更新MongoDB部署的配置。
 
@@ -12,11 +12,11 @@
 
 - [管理mongod进程](https://docs.mongodb.com/v4.2/tutorial/manage-mongodb-processes/)
 
-  启动、配置和管理运行 [mongod](https://docs.mongodb.com/v4.2/reference/program/mongod/#bin.mongod) 进程。
+  启动、配置和管理运行 [mongod](https://docs.mongodb.com/v4.2/reference/program/mongod/bin.mongod) 进程。
 
 - [终止运行操作](https://docs.mongodb.com/v4.2/tutorial/terminate-running-operations/)
 
-  使用[`db.killOp()`](https://docs.mongodb.com/v4.2/reference/method/db.killOp/#db.killOp)和[`maxTimeMS()`](https://docs.mongodb.com/v4.2/reference/method/cursor.maxTimeMS/#cursor.maxTimeMS)停止正在进行的MongoDB客户端操作。
+  使用[`db.killOp()`](https://docs.mongodb.com/v4.2/reference/method/db.killOp/db.killOp)和[`maxTimeMS()`](https://docs.mongodb.com/v4.2/reference/method/cursor.maxTimeMS/cursor.maxTimeMS)停止正在进行的MongoDB客户端操作。
 
 - [轮转日志文件](https://docs.mongodb.com/v4.2/tutorial/rotate-log-files/)
 
@@ -24,7 +24,7 @@
 
 
 
-## 附：
+ 附：
 
 运行时数据库配置：https://docs.mongodb.com/v4.2/administration/configuration/
 
@@ -36,7 +36,7 @@
 
 轮转日志文件：https://docs.mongodb.com/v4.2/tutorial/rotate-log-files/
 
-原文链接：https://docs.mongodb.com/v4.2/administration/configuration-and-maintenance/#configuration-and-maintenance
+原文链接：https://docs.mongodb.com/v4.2/administration/configuration-and-maintenance/configuration-and-maintenance
 
 
 
@@ -44,7 +44,7 @@
 
 校对：徐扬
 
-## 参见
+ 参见
 
 原文 - [Configuration and Maintenance]( https://docs.mongodb.com/manual/administration/configuration-and-maintenance/ )
 

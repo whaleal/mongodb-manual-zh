@@ -1,4 +1,4 @@
-# 安装MongoDB企业版
+ 安装MongoDB企业版
 
 这些文档提供了安装MongoDB企业版的说明。
 
@@ -35,7 +35,7 @@ MongoDB企业版可供MongoDB企业版订户使用，并包括其他一些功能
 译者：小芒果
 
 
-## 参见
+ 参见
 
 原文 - [Install MongoDB Enterprise]( https://docs.mongodb.com/manual/administration/install-enterprise/ )
 

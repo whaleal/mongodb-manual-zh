@@ -1,4 +1,4 @@
-# Zone
+ Zone
 
 本页内容
 
@@ -16,15 +16,15 @@
 
 ![Diagram of data distribution based on zones in a sharded cluster](https://docs.mongodb.com/manual/_images/sharded-cluster-zones.bakedsvg.svg)
 
-## 行为和操作
+ 行为和操作
 
-### 范围
+ 范围
 
 每个区域设计一个或多个 [*shard key*]() 值范围。每个区域覆盖的每个范围一般包含其下界，不包含其上界。
 
 区域不能共享范围，它们也不能有交叉的范围。
 
-### 均衡器
+ 均衡器
 
 The [*balancer*]() attempts to evenly distribute a sharded collection’s chunks across all shards in the cluster.
 
@@ -36,7 +36,7 @@ The [*balancer*]() attempts to evenly distribute a sharded collection’s chunks
 
 一旦配置完成后，均衡器将在 [*balancing rounds*]() 中重新检查区域。
 
-### 片键
+ 片键
 
 在定义一个区域覆盖的新范围时，您必须使用包含在 [*shard key*]() 中的字段。如果使用一个 [*compound*]片键，则该范围必须包含该片键的前缀。
 
@@ -46,7 +46,7 @@ The [*balancer*]() attempts to evenly distribute a sharded collection’s chunks
 
 为集合选择分片键时，请考虑您可能要用于配置区域的字段。有关[选择分片键]()的注意事项，请参阅选择分片键。
 
-### 哈希片键和区域
+ 哈希片键和区域
 
 当在哈希片键上使用区域时，每个区域覆盖 *哈希* 片键值。给定一个片键值 `{ a : 1 }` 和区域一个下界为 `1` 上界为 `5` 的区域 `alpha` ，边界表示 `a` 的 *哈希* 值，而不是真实值。因此，并不能保证 MongoDB将 `a`值为 `1` 到 `5` 之间的文档路由到 `alpha` 区域。MongoDB将任何 *哈希* 片键值落入到 `1` 到 `5` 范围内的文档路由到区域 `alpha` 内的分片上。
 
@@ -54,7 +54,7 @@ The [*balancer*]() attempts to evenly distribute a sharded collection’s chunks
 
 可以通过使用 `minkey` 和 `maxkey` 创建覆盖片键值整个范围的区域，以保证MongoDB将某个特定集合的所有数据控制存储在该区域的一个分片或几个分片上。
 
-### 分片区域边界
+ 分片区域边界
 
 区域范围一般包含下界，不包含上界。
 

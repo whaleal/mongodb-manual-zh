@@ -1,14 +1,14 @@
-# [ ](#)执行增量 Map-Reduce
+ [ ]()执行增量 Map-Reduce
 
 []()
 
 在本页面
 
-*   [数据设置](#data-setup)
+*   [数据设置](data-setup)
 
-*   [当前集合的初始 Map-Reduce](#initial-map-reduce-of-current-collection)
+*   [当前集合的初始 Map-Reduce](initial-map-reduce-of-current-collection)
 
-*   [后续增量 Map-Reduce](#subsequent-incremental-map-reduce)
+*   [后续增量 Map-Reduce](subsequent-incremental-map-reduce)
 
 Map-reduce 操作可以处理复杂的聚合任务。要执行 map-reduce 操作，MongoDB 提供[MapReduce]()命令，并在[mongo]() shell 中提供[db.collection.mapReduce()]() wrapper 方法。
 
@@ -28,7 +28,7 @@ Map-reduce 操作可以处理复杂的聚合任务。要执行 map-reduce 操作
 
 []()
 
-## <span id="data-setup">数据设置</span>
+ <span id="data-setup">数据设置</span>
 
 `sessions`集合包含 log 用户每天会话的文档，例如：
 
@@ -46,7 +46,7 @@ db.sessions.save( { userid: "d", ts: ISODate('2011-11-04 15:37:00'), length: 65 
 
 []()
 
-## <span id="initial-map-reduce-of-current-collection">当前集合的初始 Map-Reduce</span>
+ <span id="initial-map-reduce-of-current-collection">当前集合的初始 Map-Reduce</span>
 
 运行第一个 map-reduce 操作如下：
 
@@ -125,7 +125,7 @@ db.sessions.save( { userid: "d", ts: ISODate('2011-11-04 15:37:00'), length: 65 
 
 []()
 
-## <span id="subsequent-incremental-map-reduce">后续增量 Map-Reduce</span>
+ <span id="subsequent-incremental-map-reduce">后续增量 Map-Reduce</span>
 
 之后，随着`sessions`集合的增长，您可以运行其他 map-reduce 操作。对于 example，将新文档添加到`sessions`集合：
 
@@ -165,7 +165,7 @@ db.session_stats.find().sort( { _id: 1 } )
 { "_id" : "d", "value" : { "total_time" : 210, "count" : 3, "avg_time" : 70 } }
 ```
 
-## 聚合替代
+ 聚合替代
 
 前提条件：将集合设置为原始状态：
 
@@ -326,7 +326,7 @@ db.usersessions.aggregate([
 
 校对：
 
-## 参见
+ 参见
 
 原文 - [Perform Incremental Map-Reduce]( https://docs.mongodb.com/manual/tutorial/perform-incremental-map-reduce/ )
 

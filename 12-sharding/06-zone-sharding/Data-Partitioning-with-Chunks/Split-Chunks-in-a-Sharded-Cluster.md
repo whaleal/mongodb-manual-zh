@@ -1,4 +1,4 @@
-# 在分片集群中拆分数据块
+ 在分片集群中拆分数据块
 
 通常，如果某个数据块超过最大块大小，则MongoDB会在插入后对数据块进行拆分。但是，在以下情况下，您可能需要手动拆分数据块：
 
@@ -7,7 +7,7 @@
 
 > 注意
 >
-> MongoDB提供了 [`mergeChunks`](https://docs.mongodb.com/manual/reference/command/mergeChunks/#dbcmd.mergeChunks) 命令以将连续的块范围合并为一个块。有关更多信息，请参考[在分片群集中合并数据块](https://docs.mongodb.com/manual/tutorial/merge-chunks-in-sharded-cluster/)。
+> MongoDB提供了 [`mergeChunks`](https://docs.mongodb.com/manual/reference/command/mergeChunks/dbcmd.mergeChunks) 命令以将连续的块范围合并为一个块。有关更多信息，请参考[在分片群集中合并数据块](https://docs.mongodb.com/manual/tutorial/merge-chunks-in-sharded-cluster/)。
 
 如果移动有利于接下来的插入，则`平衡器`可以立即将最近拆分的数据块迁移到新的分片上。平衡器不会区分是手动拆分的数据块还是系统自动拆分的数据块。
 
@@ -49,7 +49,7 @@
 
 
 
-另请参考[空集合](https://docs.mongodb.com/manual/core/sharding-data-partitioning/#initial-chunks-empty-collection)<br>
+另请参考[空集合](https://docs.mongodb.com/manual/core/sharding-data-partitioning/initial-chunks-empty-collection)<br>
 
 
 

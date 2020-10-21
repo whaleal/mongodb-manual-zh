@@ -1,4 +1,4 @@
-# MongoDB 4.2用户手册
+ MongoDB 4.2用户手册
 
 MONGODB 4.2发布于2019年8月13日
 
@@ -17,7 +17,7 @@ MongoDB还提供 [Atlas](https://www.mongodb.com/cloud/atlas?tck=docs_server)（
 
 
 
-## 入门
+ 入门
 
 MongoDB 在以下版本中提供了“ [入门指南”](https://docs.mongodb.com/getting-started/shell)。
 
@@ -37,9 +37,9 @@ MongoDB 在以下版本中提供了“ [入门指南”](https://docs.mongodb.co
 
 
 
-## 支持
+ 支持
 
-### MongoDB社区
+ MongoDB社区
 
 如有疑问，讨论或常规技术支持，请访问 [MongoDB社区论坛](https://community.mongodb.com/)。MongoDB社区论坛是与其他MongoDB用户联系，提出问题并获得答案的集中场所。
 
@@ -47,25 +47,25 @@ MongoDB 在以下版本中提供了“ [入门指南”](https://docs.mongodb.co
 > 进入技术交流社群请联系小芒果，微信ID：mongoingcom
 
 
-### MongoDB Atlas或Cloud 
+ MongoDB Atlas或Cloud 
 
 如有技术支持问题，请登录您的[MongoDB Cloud帐户](https://cloud.mongodb.com/user)并打开工单。
 
 
 
-### MongoDB Enterprise或Ops Manager
+ MongoDB Enterprise或Ops Manager
 
 如有技术支持问题，请通过[MongoDB支持门户](https://support.mongodb.com/)提交工单 。
 
 
 
-## 问题
+ 问题
 
 有关如何为MongoDB服务或相关项目之一提交JIRA工单的说明，请参阅 https://github.com/mongodb/mongo/wiki/Submit-Bug-Reports。
 
 
 
-## 社区
+ 社区
 
 参与MongoDB社区是与其他才华横溢，志趣相投的工程师建立关系，提高对正在从事的有趣工作的认识并提高技能的一种好方法。要了解MongoDB社区，请参阅 [参与MongoDB](http://www.mongodb.org/get-involved?tck=docs_server)。
 
@@ -73,7 +73,7 @@ MongoDB 在以下版本中提供了“ [入门指南”](https://docs.mongodb.co
 > 进入技术交流社群请联系小芒果，微信ID：mongoingcom
 
 
-## 学习
+ 学习
 
 除了文档外，还有许多学习使用MongoDB的方法。您可以：
 
@@ -86,7 +86,7 @@ MongoDB 在以下版本中提供了“ [入门指南”](https://docs.mongodb.co
 
 
 
-## 许可
+ 许可
 
 该手册已根据[知识共享署名-非商业性-相同方式共享3.0美国许可证进行了许可](http://creativecommons.org/licenses/by-nc-sa/3.0/us/)
 
@@ -94,7 +94,7 @@ MongoDB 在以下版本中提供了“ [入门指南”](https://docs.mongodb.co
 
 
 
-## 其他资源
+ 其他资源
 
 - [MongoDB，Inc.](https://www.mongodb.com/?tck=docs_server)
 

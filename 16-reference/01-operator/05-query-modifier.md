@@ -1,4 +1,4 @@
-# [ ](#)查询修饰符
+ [ ]()查询修饰符
 
 []()
 
@@ -17,9 +17,9 @@ db.collection.find( { <query> } )._addSpecial( <option> )
 db.collection.find( { $query: { <query> }, <option> } )
 ```
 
-## 运算符
+ 运算符
 
-### 修饰符
+ 修饰符
 
 > **注意**
 >
@@ -40,7 +40,7 @@ db.collection.find( { $query: { <query> }, <option> } )
 | [`$returnKey`]()   | 强制游标仅返回索引中包含的字段。                             |
 | [`$showDiskLoc`]() | 修改返回的文档以包括对每个文档在磁盘上位置的引用。           |
 
-### 排序顺序
+ 排序顺序
 
 | 名称           | 描述                                                     |
 | -------------- | -------------------------------------------------------- |
@@ -52,7 +52,7 @@ db.collection.find( { $query: { <query> }, <option> } )
 
 校对：
 
-## 参见
+ 参见
 
 原文 - [Query Modifiers]( https://docs.mongodb.com/manual/reference/operator/query-modifier/ )
 

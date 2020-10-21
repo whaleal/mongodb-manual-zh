@@ -1,21 +1,21 @@
-## 管理索引
+ 管理索引
 
 - **Mongo Shell**
 
 **在本页面**
 
-- [查看现有索引](#查看)
-- [删除索引](#删除)
-- [修改索引](#修改)
-- [在分片中查找不一致的索引](#不一致)
+- [查看现有索引](查看)
+- [删除索引](删除)
+- [修改索引](修改)
+- [在分片中查找不一致的索引](不一致)
 
 此页显示如何管理现有索引。有关创建索引的说明，请参阅特定索引类型页。
 
-### <span id="查看">查看现有索引</span>
+ <span id="查看">查看现有索引</span>
 
 以下部分提供了查看集合或整个数据库上现有索引的方法。
 
-#### 列出集合上的所有索引
+ 列出集合上的所有索引
 
 要返回一个集合上所有索引的列表，使用[`db. collections . getindexes ()`](https://docs.mongodb.com/master/reference/method/db.collection.getindexes)方法或类似的[驱动程序的方法](https://docs.mongodb.com/drivers/)。
 
@@ -25,9 +25,9 @@
 db.people.getIndexes()
 ```
 
-#### 列出数据库的所有索引
+ 列出数据库的所有索引
 
-在[` mongo`](https://docs.mongodb.com/master/reference/program/mongo/#bin.mongo) shell中,可以使用以下操作列出数据库中所有的集合索引:
+在[` mongo`](https://docs.mongodb.com/master/reference/program/mongo/bin.mongo) shell中,可以使用以下操作列出数据库中所有的集合索引:
 
 ```powershell
 db.getCollectionNames().forEach(function(collection) {
@@ -39,9 +39,9 @@ db.getCollectionNames().forEach(function(collection) {
 
 从3.0版本开始，MongoDB不再支持对系统的直接访问。索引集合，以前用于列出数据库中的所有索引。
 
-#### 列出特定类型的索引
+ 列出特定类型的索引
 
-列出所有索引的类型(例如[散列](https://docs.mongodb.com/master/core/index-hashed/),[文本](https://docs.mongodb.com/master/core/index-text/))集合在所有数据库,您可以使用以下操作在[`mongo`](https://docs.mongodb.com/manual/reference/program/mongo/#bin.mongo)shell:
+列出所有索引的类型(例如[散列](https://docs.mongodb.com/master/core/index-hashed/),[文本](https://docs.mongodb.com/master/core/index-text/))集合在所有数据库,您可以使用以下操作在[`mongo`](https://docs.mongodb.com/manual/reference/program/mongo/bin.mongo)shell:
 
 ```powershell
 // The following finds all hashed indexes
@@ -62,16 +62,16 @@ db.adminCommand("listDatabases").databases.forEach(function(d){
 });
 ```
 
-### <span id="删除">删除索引</span>
+ <span id="删除">删除索引</span>
 
 MongoDB提供了两种方法从集合中删除索引:
 
-- [`db.collection.dropIndex()`](https://docs.mongodb.com/master/reference/method/db.collection.dropIndex/#db.collection.dropIndex)
-- [`db.collection.dropIndexes()`](https://docs.mongodb.com/master/reference/method/db.collection.dropIndexes/#db.collection.dropIndexes)
+- [`db.collection.dropIndex()`](https://docs.mongodb.com/master/reference/method/db.collection.dropIndex/db.collection.dropIndex)
+- [`db.collection.dropIndexes()`](https://docs.mongodb.com/master/reference/method/db.collection.dropIndexes/db.collection.dropIndexes)
 
-#### 删除特定的指数
+ 删除特定的指数
 
-要删除一个索引，使用[`db.collection.dropIndex()`](https://docs.mongodb.com/master/reference/method/db.collection.dropIndex/#db.collection.dropIndex)方法。
+要删除一个索引，使用[`db.collection.dropIndex()`](https://docs.mongodb.com/master/reference/method/db.collection.dropIndex/db.collection.dropIndex)方法。
 
 例如，下面的操作删除了 **accounts** 集合中的 **tax-id** 字段的升序索引:
 
@@ -87,15 +87,15 @@ db.accounts.dropIndex( { "tax-id": 1 } )
 
 其中`nIndexesWas`的值反映了*在删除这个索引之前*的索引数量。
 
-对于[文本](https://docs.mongodb.com/manual/core/index-text/)索引，将索引名称传递给 [`db.collection.dropIndex()`](https://docs.mongodb.com/manual/reference/method/db.collection.dropIndex/#db.collection.dropIndex)方法。有关详细信息，请参见[使用索引名称删除文本索引](https://docs.mongodb.com/manual/tutorial/avoid-text-index-name-limit/#drop-text-index)。
+对于[文本](https://docs.mongodb.com/manual/core/index-text/)索引，将索引名称传递给 [`db.collection.dropIndex()`](https://docs.mongodb.com/manual/reference/method/db.collection.dropIndex/db.collection.dropIndex)方法。有关详细信息，请参见[使用索引名称删除文本索引](https://docs.mongodb.com/manual/tutorial/avoid-text-index-name-limit/drop-text-index)。
 
 > 注意
 >
-> 从MongoDB 4.2开始，[' db.collection.dropIndexes() '](https://docs.mongodb.com/master/reference/method/db.collection.dropIndexes/#db.collection.dropIndexes)可以接受一个索引名称数组。
+> 从MongoDB 4.2开始，[' db.collection.dropIndexes() '](https://docs.mongodb.com/master/reference/method/db.collection.dropIndexes/db.collection.dropIndexes)可以接受一个索引名称数组。
 
-#### 删除所有索引
+ 删除所有索引
 
-你也可以使用[`db. collections . dropindexes () `](https://docs.mongodb.com/master/reference/method/db.collection.dropIndexes/#db.collection.dropIndexes)从一个集合中删除[_id索引](https://docs.mongodb.com/master/indexes/#index-type-id)之外的所有索引。
+你也可以使用[`db. collections . dropindexes () `](https://docs.mongodb.com/master/reference/method/db.collection.dropIndexes/db.collection.dropIndexes)从一个集合中删除[_id索引](https://docs.mongodb.com/master/indexes/index-type-id)之外的所有索引。
 
 例如，下面的命令从 **accounts** 集合中删除所有索引:
 
@@ -103,22 +103,22 @@ db.accounts.dropIndex( { "tax-id": 1 } )
 db.accounts.dropIndexes()
 ```
 
-这些shell助手提供了[`dropIndexes 数据库命令`](https://docs.mongodb.com/master/reference/glossary/# term-databs-command)的包装器。您的[客户端库](https://docs.mongodb.com/ecostem/drivers)可能有一个不同的或额外的接口用于这些操作。
+这些shell助手提供了[`dropIndexes 数据库命令`](https://docs.mongodb.com/master/reference/glossary/ term-databs-command)的包装器。您的[客户端库](https://docs.mongodb.com/ecostem/drivers)可能有一个不同的或额外的接口用于这些操作。
 
-### <span id="修改">修改索引</span>
+ <span id="修改">修改索引</span>
 
-要修改现有索引，您需要删除并重新创建索引。[TTL索引](https://docs.mongodb.com/manual/core/index-ttl/)是该规则的例外 ，可以通过[`collMod`](https://docs.mongodb.com/manual/reference/command/collMod/#dbcmd.collMod)命令与[`index`](https://docs.mongodb.com/manual/reference/command/collMod/#index)收集标志一起 对其进行修改。
+要修改现有索引，您需要删除并重新创建索引。[TTL索引](https://docs.mongodb.com/manual/core/index-ttl/)是该规则的例外 ，可以通过[`collMod`](https://docs.mongodb.com/manual/reference/command/collMod/dbcmd.collMod)命令与[`index`](https://docs.mongodb.com/manual/reference/command/collMod/index)收集标志一起 对其进行修改。
 
-### <span id="不一致">在分片中查找不一致的索引</span>
+ <span id="不一致">在分片中查找不一致的索引</span>
 
 如果分片集合在每个包含该分片块的分片上没有完全相同的索引（包括索引选项），则该集合具有不一致的索引。虽然在正常操作中不应该出现索引不一致的情况，但也会出现索引不一致的情况，例如:
 
 - 当用户创建具有`unique`键约束的索引并且一个分片包含具有重复文档的块时。在这种情况下，创建索引操作可能会在没有重复的分片上成功，但在没有重复的分片上不会成功。
 - 当用户创建一个索引碎片在对面(滚动的方式[(即手动构建跨多个碎片索引一个接一个地)](https://docs.mongodb.com/master/tutorial/build-indexes-on-sharded-clusters/)但是无论未能构建相关碎片或是不正确的索引构建索引与不同的规范。
 
-从MongoDB 4.2.6,[配置服务器](https://docs.mongodb.com/master/core/sharded-cluster-config-servers/)主,默认情况下,检查索引不一致在分片的碎片集合,和命令[("serverStatus")](https://docs.mongodb.com/master/reference/command/serverStatus/ # dbcmd.serverStatus),主要配置服务器上运行时,返回字段[`shardedIndexConsistency`](https://docs.mongodb.com/master/reference/command/serverStatus/#serverstatus.shardedIndexConsistency)来报告索引不一致的分片集合的数量。
+从MongoDB 4.2.6,[配置服务器](https://docs.mongodb.com/master/core/sharded-cluster-config-servers/)主,默认情况下,检查索引不一致在分片的碎片集合,和命令[("serverStatus")](https://docs.mongodb.com/master/reference/command/serverStatus/  dbcmd.serverStatus),主要配置服务器上运行时,返回字段[`shardedIndexConsistency`](https://docs.mongodb.com/master/reference/command/serverStatus/serverstatus.shardedIndexConsistency)来报告索引不一致的分片集合的数量。
 
-如果[`shardedIndexConsistency`](https://docs.mongodb.com/manual/reference/command/serverStatus/#serverstatus.shardedIndexConsistency)报告任何索引不一致，则可以对分片集合运行以下管道，直到找到不一致为止。
+如果[`shardedIndexConsistency`](https://docs.mongodb.com/manual/reference/command/serverStatus/serverstatus.shardedIndexConsistency)报告任何索引不一致，则可以对分片集合运行以下管道，直到找到不一致为止。
 
 > 注意
 >
@@ -208,7 +208,7 @@ db.getSiblingDB("test").reviews.aggregate(pipeline)
 
   或者
 
-- 从一个[`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos) 实例发出一个索引构建 [`db.collection.createIndex()`](https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/#db.collection.createIndex)。该操作仅在没有索引的分片上构建集合的索引。
+- 从一个[`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/bin.mongos) 实例发出一个索引构建 [`db.collection.createIndex()`](https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/db.collection.createIndex)。该操作仅在没有索引的分片上构建集合的索引。
 
 **要解决索引属性在各个分片之间的差异**
 
@@ -218,6 +218,6 @@ db.getSiblingDB("test").reviews.aggregate(pipeline)
 
   或者
 
-* 从一个[`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/#bin.mongos) 实例发出一个索引构建 [`db.collection.createIndex()`](https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/#db.collection.createIndex)。该操作仅在没有索引的碎片上构建集合的索引。
+* 从一个[`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/bin.mongos) 实例发出一个索引构建 [`db.collection.createIndex()`](https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/db.collection.createIndex)。该操作仅在没有索引的碎片上构建集合的索引。
 
-或者，如果不一致是该`expireAfterSeconds`属性，则可以运行[`collMod`](https://docs.mongodb.com/manual/reference/command/collMod/#dbcmd.collMod)命令以更新秒数，而不是删除并重建索引。
+或者，如果不一致是该`expireAfterSeconds`属性，则可以运行[`collMod`](https://docs.mongodb.com/manual/reference/command/collMod/dbcmd.collMod)命令以更新秒数，而不是删除并重建索引。

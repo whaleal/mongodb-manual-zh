@@ -1,4 +1,4 @@
-## 安全
+ 安全
 
 MongoD提供了各种各样的功能让你安全地部署MongoDB，诸如：身份认证、访问控制、加密。一些关键的安全功能包括：
 
@@ -15,7 +15,7 @@ MongoD提供了各种各样的功能让你安全地部署MongoDB，诸如：身�
 译者：傅立
 
 
-## 参见
+ 参见
 
 原文 - [Security]( https://docs.mongodb.com/manual/security/ )
 

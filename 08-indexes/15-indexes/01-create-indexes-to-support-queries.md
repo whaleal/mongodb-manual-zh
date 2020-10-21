@@ -1,16 +1,16 @@
-## 创建索引来支持查询
+ 创建索引来支持查询
 
 **在本页面**
 
-- [如果所有查询都使用相同的单键，则创建单键索引](#id1)
-- [创建复合索引以支持几种不同的查询](#id2)
-- [索引使用和排序](#id3)
+- [如果所有查询都使用相同的单键，则创建单键索引](id1)
+- [创建复合索引以支持几种不同的查询](id2)
+- [索引使用和排序](id3)
 
 当索引包含查询扫描的所有字段时，索引就支持查询。查询扫描的是索引而不是集合。创建支持查询的索引可以极大地提高查询性能。
 
 本文档描述创建支持查询的索引的策略。
 
-### <span id="id1">如果所有查询使用相同的单键，则创建单键索引</span>
+ <span id="id1">如果所有查询使用相同的单键，则创建单键索引</span>
 
 如果只查询给定集合中的单个键，则只需为该集合创建一个单键索引。例如，您可以在**product**集合中创建**category**索引:
 
@@ -18,7 +18,7 @@
 db.products.createIndex( { "category": 1 } )
 ```
 
-### <span id="id2">创建复合索引来支持几个不同的查询</span>
+ <span id="id2">创建复合索引来支持几个不同的查询</span>
 
 如果有时只查询一个键，而有时又查询该键和第二个键的组合，那么创建复合索引比创建单键索引更有效。MongoDB将对两个查询使用复合索引。例如，您可以在`category`和两者上创建索引`item`。
 
@@ -26,7 +26,7 @@ db.products.createIndex( { "category": 1 } )
 db.products.createIndex( { "category": 1, "item": 1 } )
 ```
 
-这允许您两个选择。您可以只查询`category`，也可以与`category`组合查询`item`。多个字段上的单个[复合索引](https://docs.mongodb.com/master/core/index-compound/#index-type-compound)可以支持所有搜索这些字段的“前缀”子集的查询。
+这允许您两个选择。您可以只查询`category`，也可以与`category`组合查询`item`。多个字段上的单个[复合索引](https://docs.mongodb.com/master/core/index-compound/index-type-compound)可以支持所有搜索这些字段的“前缀”子集的查询。
 
 > 例子
 >
@@ -57,11 +57,11 @@ db.products.createIndex( { "category": 1, "item": 1 } )
 db.collection.find( { x: 5 } ).sort( { z: 1} )
 ```
 
-`{x: 1, z: 1}`索引同时支持查询和排序操作，而`{x: 1, y: 1, z: 1}`索引只支持查询。有关排序的更多信息，请参见[使用索引对查询结果排序](https://docs.mongodb.com/master/tutorial/sort-results-with-indexes/# soring-with-indexes)。
+`{x: 1, z: 1}`索引同时支持查询和排序操作，而`{x: 1, y: 1, z: 1}`索引只支持查询。有关排序的更多信息，请参见[使用索引对查询结果排序](https://docs.mongodb.com/master/tutorial/sort-results-with-indexes/ soring-with-indexes)。
 
-从2.6版本开始，MongoDB可以使用[索引交集](https://docs.mongodb.com/master/core/index-intersection/)来完成查询。是创建支持查询的复合索引，还是依赖索引交集，这取决于系统的具体情况。更多细节请参见[索引交集和复合索引](https://docs.mongodb.com/master/core/index-intersection/#index-intersec-compound-indexes)。
+从2.6版本开始，MongoDB可以使用[索引交集](https://docs.mongodb.com/master/core/index-intersection/)来完成查询。是创建支持查询的复合索引，还是依赖索引交集，这取决于系统的具体情况。更多细节请参见[索引交集和复合索引](https://docs.mongodb.com/master/core/index-intersection/index-intersec-compound-indexes)。
 
-### <span id="id3">索引的使用和排序</span>
+ <span id="id3">索引的使用和排序</span>
 
 若要使用索引进行字符串比较，操作还必须指定相同的排序规则。也就是说，如果索引指定了不同的排序规则，则具有排序规则的索引不能支持对索引字段执行字符串比较的操作。
 
@@ -108,7 +108,7 @@ db.myColl.find( { score: 5, category: "cafe" } )
 
 
 
-## 参见
+ 参见
 
 原文 - [Create Indexes to Support Your Queries]( https://docs.mongodb.com/manual/tutorial/create-indexes-to-support-queries/ )
 

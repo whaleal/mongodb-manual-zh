@@ -1,4 +1,4 @@
-# [ ](#)查询计划缓存命令
+ [ ]()查询计划缓存命令
 
 []()
 
@@ -21,7 +21,7 @@
 
 校对：
 
-## 参见
+ 参见
 
 原文 - [Query Plan Cache Commands]( https://docs.mongodb.com/manual/reference/command/nav-plan-cache/ )
 

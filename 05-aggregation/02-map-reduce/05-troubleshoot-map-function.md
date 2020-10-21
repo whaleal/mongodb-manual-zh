@@ -1,4 +1,4 @@
-# [ ](#)对 Map Function 进行故障排除
+ [ ]()对 Map Function 进行故障排除
 
 `map` function 是一个 JavaScript function，它将 value 与 key 关联或“maps”，并在[map-reduce]()操作期间发出 key 和 value 对。
 
@@ -72,7 +72,7 @@
 
 校对：
 
-## 参见
+ 参见
 
 原文 - [Troubleshoot the Map Function]( https://docs.mongodb.com/manual/tutorial/troubleshoot-map-function/ )
 
