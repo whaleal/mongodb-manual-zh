@@ -13,7 +13,7 @@
 <iframe 
     height=450 
     width=800 
-    src="../../img/docs/06-Aggregation/agg-pipeline.mp4" 
+    src="../images/agg-pipeline.mp4" 
     frameborder=0 
     allowfullscreen>
 </iframe>

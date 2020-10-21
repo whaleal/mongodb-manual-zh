@@ -1,9 +1,7 @@
- Summary
-
 <!-- 请不要直接修改 SUMMARY.md 此文件由 summary-generate.js 生成 -->
 
 * [MongoDB官方文档中文版](README.md)
-* [MongoDB 4.2用户手册](00-The-MongoDB-Manual.md)
+* [MongoDB用户手册](00-The-MongoDB-Manual.md)
 * [MongoDB简介]( 01-introduction.md )
   * [入门]( 01-introduction/01-getting-started.md )
   * [Create an Atlas Free Tier Cluster]( 01-introduction/02-getting-started.md )
