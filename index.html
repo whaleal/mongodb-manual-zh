@@ -6,6 +6,7 @@
   <meta name="description" content="Mongodb中文手册，教材，分享MongoDB 常见问题 ">
   <meta name="keywords" content="doc,docs,MongoDB,手册,中文,翻译，在线预览">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+ <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
 </head>
 <body>
@@ -236,4 +237,23 @@ var _hmt = _hmt || [];
 </script>
 <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+    room: 'docsifyjs/Lobby'
+  };
+  </script>
+
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: '4b8a9a6069259e5a1f3f',
+    clientSecret: '31209273b6661eb31734cc3cb64cd2eaad3288c7',
+    repo: 'Discussion-for-MongoDB',
+    owner: 'HbnKing',
+    admin: ['HbnKing'],
+    distractionFreeMode: false
+  })
+</script>
+
 </html>
