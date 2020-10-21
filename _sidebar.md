@@ -470,7 +470,7 @@
   * [MogoDB 备份方法]( 13-administration/MongoDB-Backup-Methods.md )
   * [操作检查表]( 13-administration/Operations-Checklist.md )
   * [MongoDB性能]( 13-administration/Performance.md )
-* [Storage.md]( 14-storage.md )
+* [Storage]( 14-storage.md )
   * [storage-engines]( 14-storage/01-storage-engines.md )
     * [WiredTiger 存储引擎]( 14-storage/01-storage-engines/01-wiredtiger.md )
       * [Change Standalone to WiredTiger]( 14-storage/01-storage-engines/01-wiredtiger/01-change-standalone-wiredtiger.md )
