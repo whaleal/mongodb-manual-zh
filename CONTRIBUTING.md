@@ -143,13 +143,24 @@ powershell
 
  图片问题
 
-**在翻译的问题中涉及到的图片问题**，首先将图片下载下来，然后将图片保存到文档中的`img`文件的`docs`的文件中，`docs`文件夹中有和mongo文档对应的文件夹，请将图片放在对应的文件夹中，然后将图片文件链接更新在文档中。
+**在翻译的问题中涉及到的图片问题**，首先将图片下载下来，然后将图片保存到文档中的`img`文件的`docs`的文件中，`docs`文件夹中有和mongo文档对应的文件夹，请将图片放置在images目录中，然后将图片文件链接更新在文档中。
 
 例子：图片路径格式
 
 ```powershell
 img/docs/06-Aggregation/distinct.bakedsvg.svg
 ```
+比如设置成为 
+```
+https://docs.jinmu.info/images/agg-pipeline.mp4
+```
+视屏问题 
+视屏推荐使用video  标签
+例子： 视屏格式 
+```
+<video style="width:100%;" src="https://docs.jinmu.info/MongoDB-Manual-zh/images/agg-pipeline.mp4" controls> </video>
+```
+
 
 
 
@@ -180,7 +191,7 @@ img/docs/06-Aggregation/distinct.bakedsvg.svg
 提交的时候不要改动文件名称，即使它跟章节标题不一样也不要改，因为文件名和原文的链接是对应的！！！
 
 fork Github 项目并建立你的分支 branch（我们强烈建议这样做）；  
-将译文放在 docs/  文件夹下；  
+将译文放在 对应的章节的 文件夹下；  
 commit 和 push 你的修改；  
 pull request。
 如果你还不熟练这个流程，请参阅 [Github 入门指南](https://docs.github.com/cn/github)。  
@@ -205,18 +216,3 @@ pull request。
 
  六、其他
 
- (20201014) 目录结构大升级
-
-1. [x] 使用脚本获取官方文档目录
-2. [x] 自动维护对应文档树，使用2位前导数字序号排序
-3. [x] 自动根据中文文档的内容，取首行作为标题，生成中文版目录。
-4. [x] 自动在文档末尾添加原文链接，方便对照翻译
-5. [ ] 由于文档数量太多，目前(20201014) 还没完成全部迁移，故现在目录处于冗余状态，下一步需要使用 BCompare 手动合并多出来的文档、并清理空文档，目测会由我在接下来的几天内完成。
-6. [x] 出于第5点，现在只提交到了 dev 分支。 [JinMuInfo/MongoDB-Manual-zh at dev]( https://github.com/JinMuInfo/MongoDB-Manual-zh/tree/dev )
-7. [ ] 已知问题：用户原来收藏的链接会变成 404，不知能否通过自动搜索相近名称来重定向。
-7. [ ] 已知问题：例如 `20-mongodb-drivers/*.md` 存在而 `20-mongodb-drivers.md` 不存在时，在生成目录时 20 会错误地对齐到 `18-support/*.md` 里，此bug尚待修理
-8. [ ] 有疑问请提 issue 或联系 snomiao@gmail.com 。
-
-构建方法：
-1. 运行 `node src/offical-TOC-fetch.js` 实现自动同步官方目录
-2. 运行 `node src/summary-generate.js` 实现自动生成本书对应中文目录
