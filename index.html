@@ -12,6 +12,7 @@
 <body>
   <div id="app"></div>
 </body>
+<script src="//unpkg.com/docsify-edit-on-github/index.js"></script>
 <script type="text/javascript">
 window.$docsify = {
   name: '《MongoDB中文手册》',
@@ -20,6 +21,9 @@ window.$docsify = {
   subMaxLevel: 2,
   formatUpdated: '{YYYY}-{MM}-{DD} {HH}:{mm}',
   executeScript: true,
+   plugins: [
+      EditOnGithubPlugin.create('https://github.com/JinMuInfo/MongoDB-Manual-zh/tree/dev/')
+ ],
   alias: {
 '/01-introduction/_sidebar.md': '/_sidebar.md',
   '/01-introduction/03-databases-and-collections/_sidebar.md': '/_sidebar.md',
@@ -249,5 +253,4 @@ var _hmt = _hmt || [];
     distractionFreeMode: false
   })
 </script>
-
 </html>
