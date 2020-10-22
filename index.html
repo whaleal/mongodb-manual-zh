@@ -64,10 +64,10 @@ var _hmt = _hmt || [];
     repo: 'MongoDB-Manual-zh',
     owner: 'JinMuInfo',
     admin: ['HbnKing','ys17513628804'],
-    id: md5('md5'+location.hash +location.href),
+    id: hex_md5(location.hash),
     distractionFreeMode: false,
     title: document.title,
-    body:  '文章链接：'+ decodeURIComponent(location.origin+location.pathname),
+    body:  '文章链接：'+ decodeURIComponent(location.href),
   })
 </script>
 </html>
