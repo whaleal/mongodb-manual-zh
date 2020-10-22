@@ -208,7 +208,20 @@ window.$docsify = {
   '/17-release-notes/09-2.4/_sidebar.md': '/_sidebar.md',
   '/20-mongodb-drivers/_sidebar.md': '/_sidebar.md',
   '/images/_sidebar.md': '/_sidebar.md'
-  }
+  },
+  plugins: [
+      EditOnGithubPlugin.create(
+    'https://github.com/JinMuInfo/MongoDB-Manual-zh/tree/dev',
+    null,
+    function(file) {
+      if (file.indexOf('en') === -1) {
+        return '编辑'
+      } else {
+        return 'edit on git'
+      }
+    }
+  )
+ ]
 }
 </script>
 <script type="text/javascript" src="//unpkg.com/docsify/lib/docsify.min.js"></script>
@@ -249,5 +262,7 @@ var _hmt = _hmt || [];
     distractionFreeMode: false
   })
 </script>
+  
+<script src="//cdn.jsdelivr.net/npm/docsify-edit-on-github"></script>
 
 </html>
