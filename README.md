@@ -49,6 +49,7 @@ MongoDB中文文档翻译贡献者名单
 | :----------------------------------------------------------: | :------------------------------------------------- | --------------------------------------------- |
 | ![](https://avatars1.githubusercontent.com/u/54669302?s=460&u=0db6f40be0809b55ee92018a5c13690ad1e002a3&v=4) | [@ys17513628804](https://github.com/ys17513628804)           | [shuai.yang@jinmuinfo.com](shuai.yang@jinmuinfo.com)       |
 | ![](https://avatars3.githubusercontent.com/u/7323030) | [@snomiao]( https://github.com/snomiao )           | [snomiao@gmail.com]( mailto:snomiao@gmail.com )       |
+|![](https://avatars3.githubusercontent.com/u/22213280) | [@hbnKing](https://github.com/hbnKing) |---|
 
 
  文档生成
