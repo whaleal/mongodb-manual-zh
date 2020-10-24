@@ -50,7 +50,7 @@ MongoDB中文文档翻译贡献者名单
 | ![](https://avatars1.githubusercontent.com/u/54669302) | [@ys17513628804](https://github.com/ys17513628804) | [shuai.yang@jinmuinfo.com](shuai.yang@jinmuinfo.com)       |
 | ![](https://avatars3.githubusercontent.com/u/7323030) | [@snomiao]( https://github.com/snomiao )           | [snomiao@gmail.com]( mailto:snomiao@gmail.com )       |
 |![](https://avatars3.githubusercontent.com/u/22213280) | [@hbnKing](https://github.com/hbnKing) |---|
-|![](https://avatars1.githubusercontent.com/u/66020918?s=460&v=4)|[@littlemongoing]littlemongoing|  中文社区领头的mongoer|
+|![](https://avatars1.githubusercontent.com/u/66020918?s=460&v=4)|[@littlemongoing]（https://github.com/littlemongoing)|  中文社区领头的mongoer|
 
 
  文档生成
