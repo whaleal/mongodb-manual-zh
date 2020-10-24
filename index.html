@@ -65,7 +65,7 @@ var _hmt = _hmt || [];
     repo: 'MongoDB-Manual-zh',
     owner: 'JinMuInfo',
     admin: ['HbnKing','ys17513628804','liguanfei'],
-    id: md5(location.hash),
+    id: md5(location.hash.indexOf("?")>0? location.hash.substring(0,location.hash.indexOf("?")):location.hash),
     distractionFreeMode: false,
     title: document.title,
     body:  '文章链接：'+ decodeURIComponent(location.href),
