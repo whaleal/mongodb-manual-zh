@@ -119,7 +119,7 @@
     * [Tailable游标]( 04-crud/13-crud/08-tailable-cursors.md )
 * [聚合]( 05-aggregation.md )
   * [聚合管道]( 05-aggregation/01-aggregation-pipeline.md )
-    * [聚合管道优化]( 05-aggregation/01-aggregation-pipeline/01-aggregation-pipeline-optimization.md )
+    * [聚合管道优化]( 05-aggregation/01-aggregation-pipeline/01-aggregation-pipeline-optimization.md)
     * [Aggregation Pipeline Limits]( 05-aggregation/01-aggregation-pipeline/02-aggregation-pipeline-limits.md )
     * [聚合管道和分片集合]( 05-aggregation/01-aggregation-pipeline/03-aggregation-pipeline-sharded-collections.md )
     * [使用 Zip Code 数据集进行聚合]( 05-aggregation/01-aggregation-pipeline/04-aggregation-zip-code-data-set.md )
