@@ -192,7 +192,9 @@ MongoDB支持两种分片策略，用于在分片集群之间分发数据。
 ## 参见
 
 原文 - [Sharding]( https://docs.mongodb.com/manual/sharding/ )
+
 译者：雪星 ([snomiao@gmail.com](mailto:snomiao@gmail.com)) 于 2020 秋
+
 校对：征集中！
 
 ## ！本页校对征集中！
