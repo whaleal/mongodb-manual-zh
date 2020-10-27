@@ -131,6 +131,10 @@ Thumbs.db
 
 # custom
 docs/README.md
+src/
+src
+*.sh
+/.idea
 MongoDB-Manual-zh/README.md
 
 debug/
