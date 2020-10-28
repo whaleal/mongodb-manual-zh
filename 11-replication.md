@@ -1,4 +1,4 @@
- 复制[¶](https://docs.mongodb.com/manual/replication/replication)
+# 复制
 
 在本页
 
