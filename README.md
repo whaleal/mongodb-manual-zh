@@ -1,8 +1,8 @@
 # [MongoDB 中文手册 | MongoDB 中文文档 | 官方手册中文版翻译](https://docs.jinmu.info/MongoDB-Manual-zh/)
 
-![mongo_logo](images/logo/mongodb.png){:width="100px"}
-![mongoing_logo](images/logo/mongoing.png){:width="100px"}
-![jinmu_logo](images/logo/jinmu.png){:width="100px"}
+<img src="./images/logo/mongodb.png" width="300px" alt="MongoDB Logo">
+<img src="./images/logo/mongoing.png" width="300px" alt="Mongoing Logo">
+<img src="./images/logo/jinmu.png" width="310px" alt="Jinmu Logo">
 
 ## 项目介绍
 
@@ -41,13 +41,13 @@ MongoDB 是专为可扩展性，高性能和高可用性而设计的数据库。
 
 感谢以下翻译贡献者：
 
-<!-- |                                        Avatar                                        | GItHub                                               | Email                                                |
-| :----------------------------------------------------------------------------------: | :--------------------------------------------------- | ---------------------------------------------------- |
-|            ![sy](https://avatars1.githubusercontent.com/u/54669302 =100x)            | [@ys17513628804](https://github.com/ys17513628804)   | [shuai.yang@jinmuinfo.com](shuai.yang@jinmuinfo.com) |
-|          ![snomiao](https://avatars3.githubusercontent.com/u/7323030 =100x)          | [@snomiao](https://github.com/snomiao)               | [snomiao@gmail.com](mailto:snomiao@gmail.com)        |
-|         ![hbnKing](https://avatars3.githubusercontent.com/u/22213280 =100x)          | [@hbnKing](https://github.com/hbnKing)               | ---                                                  |
-| ![littlemongoing](https://avatars1.githubusercontent.com/u/66020918?s=460&v=4 =100x) | [@littlemongoing](https://github.com/littlemongoing) | 中文社区领头的 mongoer                               |
-| ![aojie654](https://avatars1.githubusercontent.com/u/66020918?s=460&v=4 =100x) | [@aojie654](https://github.com/littlemongoing) | 中文社区领头的 mongoer                               | -->
+| Avatar                                                                                                 | GItHub                                               | Email                                                |
+| ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------- | ---------------------------------------------------- |
+| <img src="images/avatar/shuai.yang.jpeg" width="100px" alt="shuai.yang">           | [@ys17513628804](https://github.com/ys17513628804)   | [shuai.yang@jinmuinfo.com](shuai.yang@jinmuinfo.com) |
+| <img src="images/avatar/snomiao.png" width="100px" alt="snomiao">               | [@snomiao](https://github.com/snomiao)               | [snomiao@gmail.com](mailto:snomiao@gmail.com)        |
+| <img src="images/avatar/hbking.gif" width="100px" alt="hbking">           | [@hbnKing](https://github.com/hbnKing)               | ---                                                  |
+| <img src="images/avatar/littlemongoing.png" width="100px" alt="littlemongoing"> | [@littlemongoing](https://github.com/littlemongoing) | 中文社区领头的 mongoer                               |
+| <img src="images/avatar/sja.jpg" width="100px" alt="aojie654"> | [@aojie654](https://github.com/aojie654) | aojie654@live.cn                            |
 <!-- ALL-CONTRIBUTORS-LIST: START - Do not remove or modify this section -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
