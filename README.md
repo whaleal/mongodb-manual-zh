@@ -1,8 +1,8 @@
 # [MongoDB 中文手册 | MongoDB 中文文档 | 官方手册中文版翻译](https://docs.jinmu.info/MongoDB-Manual-zh/)
 
-![mongo_logo](images/logo/mongodb.png =300x)
-![mongoing_logo](images/logo/mongoing.png =300x)
-![jinmu_logo](images/logo/jinmu.png =310x)
+![mongo_logo](images/logo/mongodb.png){:width="100px"}
+![mongoing_logo](images/logo/mongoing.png){:width="100px"}
+![jinmu_logo](images/logo/jinmu.png){:width="100px"}
 
 ## 项目介绍
 
