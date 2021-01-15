@@ -1,8 +1,8 @@
 # [MongoDB 中文手册 | MongoDB 中文文档 | 官方手册中文版翻译](https://docs.jinmu.info/MongoDB-Manual-zh/)
 
-<img src="./images/logo/mongodb.png" width="300px" alt="MongoDB Logo">
-<img src="./images/logo/mongoing.png" width="300px" alt="Mongoing Logo">
-<img src="./images/logo/jinmu.png" width="310px" alt="Jinmu Logo">
+<img src="./images/logo/mongodb.png" width="300px" alt="MongoDB Logo">  
+<img src="./images/logo/mongoing.png" width="300px" alt="Mongoing Logo">  
+<img src="./images/logo/jinmu.png" width="310px" alt="Jinmu Logo">  
 
 ## 项目介绍
 
@@ -12,7 +12,8 @@ MongoDB 是专为可扩展性，高性能和高可用性而设计的数据库。
 
 项目地址  
 [维护地址](https://github.com/JinMuInfo/MongoDB-Manual-zh)  
-[在线阅读](https://docs.jinmu.info/MongoDB-Manual-zh/)
+[在线阅读](https://docs.jinmu.info/MongoDB-Manual-zh/)  
+[在线阅读备用地址](https://docs.jinmu.info/MongoDB-Manual-zh/docs)  
 
 ## 项目协议
 
