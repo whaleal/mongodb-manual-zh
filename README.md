@@ -13,6 +13,7 @@ MongoDB 是专为可扩展性，高性能和高可用性而设计的数据库。
 项目地址  
 [维护地址](https://github.com/JinMuInfo/MongoDB-Manual-zh)  
 [在线阅读](https://docs.jinmu.info/MongoDB-Manual-zh/)
+[在线阅读备用地址](https://docs.jinmu.info/MongoDB-Manual-zh/docs)
 
 ## 项目协议
 
