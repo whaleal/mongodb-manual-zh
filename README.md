@@ -11,9 +11,9 @@ MongoDB 是专为可扩展性，高性能和高可用性而设计的数据库。
 本项目为 MongoDB 中文手册(中文文档),与[MongoDB 英文文档](https://docs.mongodb.com/manual/)保持同步。
 
 项目地址  
-[维护地址](https://github.com/JinMuInfo/MongoDB-Manual-zh)  
-[在线阅读](https://docs.jinmu.info/MongoDB-Manual-zh/)  
-[在线阅读备用地址](https://docs.jinmu.info/MongoDB-Manual-zh/docs)  
+[维护地址](https://github.com/whaleal/mongodb-manual-zh)  
+[在线阅读](https://docs.whaleal.com/mongodb-manual-zh/)  
+[在线阅读备用地址](https://docs.whaleal.com/mongodb-manual-zh/docs)  
 
 ## 项目协议
 
@@ -26,17 +26,17 @@ MongoDB 是专为可扩展性，高性能和高可用性而设计的数据库。
 
 ## 报告问题
 
-在我们的 Github [MongoDB-Manual-zh/issues](https://github.com/JinMuInfo/MongoDB-Manual-zh/issues)上提 issue.
+在我们的 Github [MongoDB-Manual-zh/issues](www.whaleal.com)上提 issue.
 
 ## 贡献翻译
 
 请您勇敢地去翻译和改进翻译。虽然我们追求卓越，但我们并不要求您做到十全十美，因此请不要担心因为翻译上犯错——在大部分情况下，我们的服务器已经记录所有的翻译，因此您不必担心会因为您的失误遭到无法挽回的破坏。（改编自维基百科）
 
-翻译贡献者可以参考[翻译贡献指南](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/CONTRIBUTING.md)以获取更多帮助。
+翻译贡献者可以参考[翻译贡献指南](https://github.com/whaleal/MongoDB-Manual-zh/blob/master/CONTRIBUTING.md)以获取更多帮助。
 
-[文档翻译贡献者名单](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/List-of-contributors.md)
+[文档翻译贡献者名单](https://github.com/whaleal/MongoDB-Manual-zh/blob/master/List-of-contributors.md)
 
-[申请加入 MongoDB 汉化小组](https://github.com/orgs/JinMuInfo/teams/mongodb/members) 作为贡献者 你享有署名权
+[申请加入 MongoDB 汉化小组](https://github.com/orgs/whaleal/teams/mongodb/members) 作为贡献者 你享有署名权
 
 ## MongoDB 中文文档翻译贡献者名单
 
