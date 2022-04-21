@@ -32,11 +32,11 @@ MongoDB 是专为可扩展性，高性能和高可用性而设计的数据库。
 
 请您勇敢地去翻译和改进翻译。虽然我们追求卓越，但我们并不要求您做到十全十美，因此请不要担心因为翻译上犯错——在大部分情况下，我们的服务器已经记录所有的翻译，因此您不必担心会因为您的失误遭到无法挽回的破坏。（改编自维基百科）
 
-翻译贡献者可以参考[翻译贡献指南](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/CONTRIBUTING.md)以获取更多帮助。
+翻译贡献者可以参考[翻译贡献指南](https://github.com/whaleal/MongoDB-Manual-zh/blob/master/CONTRIBUTING.md)以获取更多帮助。
 
-[文档翻译贡献者名单](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/List-of-contributors.md)
+[文档翻译贡献者名单](https://github.com/whaleal/MongoDB-Manual-zh/blob/master/List-of-contributors.md)
 
-[申请加入 MongoDB 汉化小组](https://github.com/orgs/JinMuInfo/teams/mongodb/members) 作为贡献者 你享有署名权
+[申请加入 MongoDB 汉化小组](https://github.com/orgs/whaleal/teams/mongodb/members) 作为贡献者 你享有署名权
 
 ## MongoDB 中文文档翻译贡献者名单
 
