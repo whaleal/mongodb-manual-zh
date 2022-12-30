@@ -1,10 +1,4 @@
- 副本集部署架构
-
-在本页
-
-- [策略](https://docs.mongodb.com/manual/core/replica-set-architectures/strategies)
-- [副本集命名](https://docs.mongodb.com/manual/core/replica-set-architectures/replica-set-naming)
-- [部署方式](https://docs.mongodb.com/manual/core/replica-set-architectures/deployment-patterns)
+# 副本集部署架构
 
 副本集的架构影响副本集的容量和性能。本文档提供了副本集部署的策略，并描述了常见的体系结构。
 
