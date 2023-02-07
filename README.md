@@ -1,8 +1,8 @@
 # [MongoDB 中文手册 | MongoDB 中文文档 | 官方手册中文版翻译](https://docs.jinmu.info/MongoDB-Manual-zh/)
 
-<img src="./images/logo/mongodb.png" width="300px" alt="MongoDB Logo">  
-<img src="./images/logo/mongoing.png" width="300px" alt="Mongoing Logo">  
 <img src="./images/logo/jinmu.png" width="310px" alt="Jinmu Logo">  
+<img src="./images/logo/mongodb.png" width="300px" alt="MongoDB Logo">  
+
 
 ## 项目介绍
 
@@ -26,7 +26,7 @@ MongoDB 是专为可扩展性，高性能和高可用性而设计的数据库。
 
 ## 报告问题
 
-在我们的 Github [MongoDB-Manual-zh/issues](www.whaleal.com)上提 issue.
+在我们的 Github [MongoDB-Manual-zh/issues](http://www.whaleal.com)上提 issue.
 
 ## 贡献翻译
 
@@ -38,19 +38,6 @@ MongoDB 是专为可扩展性，高性能和高可用性而设计的数据库。
 
 [申请加入 MongoDB 汉化小组](https://github.com/orgs/whaleal/teams/mongodb/members) 作为贡献者 你享有署名权
 
-## MongoDB 中文文档翻译贡献者名单
-
-感谢以下翻译贡献者：
-
-| Avatar                                                                                                 | GItHub                                               | Email                                                |
-| ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------- | ---------------------------------------------------- |
-| <img src="images/avatar/shuai.yang.jpeg" width="100px" alt="shuai.yang">           | [@ys17513628804](https://github.com/ys17513628804)   | [shuai.yang@jinmuinfo.com](shuai.yang@jinmuinfo.com) |
-| <img src="images/avatar/snomiao.png" width="100px" alt="snomiao">               | [@snomiao](https://github.com/snomiao)               | [snomiao@gmail.com](mailto:snomiao@gmail.com)        |
-| <img src="images/avatar/hbking.gif" width="100px" alt="hbking">           | [@hbnKing](https://github.com/hbnKing)               | ---                                                  |
-| <img src="images/avatar/littlemongoing.png" width="100px" alt="littlemongoing"> | [@littlemongoing](https://github.com/littlemongoing) | 中文社区领头的 mongoer                               |
-| <img src="images/avatar/sja.jpg" width="100px" alt="aojie654"> | [@aojie654](https://github.com/aojie654) | aojie654@live.cn                            |
-<!-- ALL-CONTRIBUTORS-LIST: START - Do not remove or modify this section -->
-<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## 文档生成
 
@@ -60,6 +47,10 @@ MongoDB 是专为可扩展性，高性能和高可用性而设计的数据库。
 
 按章节查看完成度
 
+## whaleal社区
+
+欢迎大家在[whaleal社区](https://www.whaleal.com)中学习讨论MongoDB及相关知识。
+
 ## 其他
 
 欢迎任何人参与和完善：一个人可以走的很快，但是一群人却可以走的更远。  
@@ -67,6 +58,9 @@ MongoDB 是专为可扩展性，高性能和高可用性而设计的数据库。
 
 ## 免责声明
 
-锦木信息& MongoDB 中文社区 纯粹出于学习目的与个人兴趣翻译本手册，不追求任何经济利益。
+锦木信息纯粹出于学习目的与个人兴趣翻译本手册，不追求任何经济利益。
 
 本译文只供学习研究参考之用，不得用于商业用途。我方将保留对此版本译文的署名权及其它相关权利。
+
+
+<p align="right"> <span style="font-size:5px">最新更新时间：2023-02-07</span></p>
