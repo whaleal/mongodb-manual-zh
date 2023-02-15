@@ -1,4 +1,4 @@
-#  文档
+ 文档
 
 在本页面
 
@@ -14,11 +14,13 @@ MongoDB将数据记录存储为BSON文档。BSON是[JSON](https://docs.mongodb.c
 
 
 
-##  文档结构
+ 文档结构
 
- MongoDB文档由字段和值对组成，结构如下:
+MongoDB文档由字段和值对组成，并具有以下结构：
 
-```javascript
+复制
+
+```
 {
    field1: value1,
    field2: value2,
@@ -30,7 +32,9 @@ MongoDB将数据记录存储为BSON文档。BSON是[JSON](https://docs.mongodb.c
 
 字段的值可以是任何BSON [数据类型](https://docs.mongodb.com/v4.2/reference/bson-types/)，包括其他文档，数组和文档数组。例如，以下文档包含各种类型的值：
 
-```javascript
+复制
+
+```
 var mydoc = {
                _id: ObjectId("5099803df3f4948bd2f98391"),
                name: { first: "Alan", last: "Turing" },
@@ -41,56 +45,76 @@ var mydoc = {
             }
 ```
 
- 上述字段的数据类型如下:
+上面的字段具有以下数据类型：
 
-- `_id`拥有一个[`ObjectId`](https://docs.mongodb.com/v4.2/reference/bson-types/objectid)。
+- `_id`拥有一个[ObjectId](https://docs.mongodb.com/v4.2/reference/bson-types/objectid)。
 
 - `name`包含一个包含字段`first`和`last`的*嵌入式文档*。
 
-- `birth`和`death`保留*`Date`*类型的值。
+- `birth`和`death`保留*Date*类型的值。
 
-- `contribs`拥有字符串数组。
+- `contribs`拥有*字符串数组*。
 
-- `views`拥有`NumberLong`类型的值。
+- `views`拥有*NumberLong*类型的值。
 
-###  字段名称
+
+
+
+ 字段名称
 
 字段名称是字符串。
 
 [文档](https://docs.mongodb.com/v4.2/core/document/)对字段名称有以下限制：
 
-- 字段名称`_id`保留作主键使用;它的值在集合中必须是唯一的，是不可变的，并且可以是数组以外的任何类型。如果`_id`包含子字段，子字段名不能以(`$`)符号开头。
+- 字段名称`_id`保留用作主键；它的值在集合中必须是唯一的，不可变的，并且可以是数组以外的任何类型。
+
 - 字段名称**不能**包含`null`字符。
-- 服务器允许存储包含点（即`.`）和美元符号（即 `$`）的字段名称。
--  `MongodB 5.0`增加了在字段名中使用(`$`)和(`.`)的改进支持。有一些限制。有关详细信息，请参阅[Field Name Considerations](https://www.mongodb.com/docs/v6.0/core/dot-dollar-considerations/#std-label-crud-concepts-dot-dollar-considerations)。
 
-`BSON`文档可能有多个相同名称的字段，但是,大多数[MongoDB interfaces](https://www.mongodb.com/docs/drivers/)，不支持重复字段名的结构(例如`hash`表)来表示`MongoDB`。 如果需要操作具有多个同名字段的文档，请参见[driver documentation](https://www.mongodb.com/docs/drivers/) .
+- 顶级字段名称**不能**以美元符号（`$`）字符开头。
 
-由`MongoDB`内部进程创建的一些文档可能有重复的字段，但没有`MongoDB`进程会向现有的用户文档添加重复的字段。
-
-###  字段值限制
-
- `MongoDB 2.6`到`MongoDB`版本的[featureCompatibilityVersion](https://www.mongodb.com/docs/v6.0/reference/command/setFeatureCompatibilityVersion/#std-label-view-fcv) (`fCV`)设置为“`4.0`”或更早版本
-
-对于[索引集合](https://www.mongodb.com/docs/v6.0/indexes/)，索引字段的值具有[最大索引键长度](https://www.mongodb.com/docs/v6.0/reference/limits/#mongodb-limit-Index-Key-Limit)。有关详细信息，请参阅 [最大索引键长度](https://www.mongodb.com/docs/v6.0/reference/limits/#mongodb-limit-Index-Key-Limit)。
+  否则，从MongoDB 3.6开始，服务器允许存储包含点（即`.`）和美元符号（即 `$`）的字段名称。
 
 
 
-## 点符号
+重要
 
-MongoDB使用点符号来访问数组的元素和访问嵌入文档的字段。
+MongoDB查询语言不能总是有效地表达对字段名称包含这些字符的文档的查询（请参阅[SERVER-30575](https://jira.mongodb.org/browse/SERVER-30575)）。
 
-### 数组
+在查询语句中添加支持之前，不推荐在字段名称中使用`$`和 `.`，官方MongoDB的驱动程序不支持。
 
-要通过从零开始的索引位置指定或访问数组中的元素，请将数组名称与点(`.`)和从零开始的索引位置连接起来，并将引号括起来:
+BSON文档可能有多个具有相同名称的字段。但是，大多数[MongoDB接口](https://docs.mongodb.com/ecosystem/drivers)都使用不支持重复字段名称的结构（例如，哈希表）来表示MongoDB。如果需要处理具有多个同名字段的[文档](https://docs.mongodb.com/ecosystem/drivers)，请参见[驱动程序文档](https://docs.mongodb.com/ecosystem/drivers)。
+
+内部MongoDB流程创建的某些文档可能具有重复的字段，但是*任何* MongoDB流程都*不会*向现有的用户文档添加重复的字段。
+
+
+
+ 字段值限制
+
+- MongoDB 2.6至MongoDB版本，[并将featureCompatibilityVersion](https://docs.mongodb.com/v4.2/reference/command/setFeatureCompatibilityVersion/view-fcv)（[fCV](https://docs.mongodb.com/v4.2/reference/command/setFeatureCompatibilityVersion/view-fcv)）设置为`"4.0"`或更早版本
+
+  对于[索引集合](https://docs.mongodb.com/v4.2/indexes/)，索引字段的值有一个最大索引键长度限制。有关详细信息，请参见[`Maximum Index Key Length`](https://docs.mongodb.com/v4.2/reference/limits/Index-Key-Limit)。
+
+  
+
+ 点符号
+
+MongoDB使用*点符号*访问数组的元素并访问嵌入式文档的字段。
+
+ 数组
+
+要通过从零开始的索引位置指定或访问数组的元素，请将数组名称与点（`.`）和从零开始的索引位置连接起来，并用引号引起来：
+
+复制
 
 ```
 "<array>.<index>"
 ```
 
-例如，给定文档中的以下字段:
+例如，给定文档中的以下字段：
 
-```javascript
+复制
+
+```
 {
    ...
    contribs: [ "Turing machine", "Turing test", "Turingery" ],
@@ -98,34 +122,44 @@ MongoDB使用点符号来访问数组的元素和访问嵌入文档的字段。
 }
 ```
 
- 要指定`contribs`数组中的第三个元素，请使用点符号"`contribs.2`"。
+要指定`contribs`数组中的第三个元素，请使用点符号`"contribs.2"`。
 
-查询数组的示例请参见:
+有关查询数组的示例，请参见：
 
-- [Query an Array](https://www.mongodb.com/docs/v6.0/tutorial/query-arrays/)
-- [Query an Array of Embedded Documents](https://www.mongodb.com/docs/v6.0/tutorial/query-array-of-documents/)
+- [查询数组](https://docs.mongodb.com/v4.2/tutorial/query-arrays/)
+- [查询嵌入式文档数组](https://docs.mongodb.com/v4.2/tutorial/query-array-of-documents/)
 
-```javascript
-Tip:
-	参见：
-		 1. $[]所有用于更新操作的位置运算符
-		 2. $[<identifier>] 用于更新操作的过滤位置运算符
-		 3. $  用于更新操作的位置运算符
-     4. $  当数组下标位置未知时的投影运算符
-     5. `Query an Array` 对于带有数组的点符号的例子
-```
 
-### 嵌入式文档
 
-要使用点符号指定或访问嵌入文档的字段，将嵌入的文档名称与点(`.`)和字段名称连接起来，并用引号括起来:
+也可以看看
+
+- `$[\]`用于更新操作的所有位置运算符，
+
+- `$[/<identifier/>]` 过滤后的位置运算符，用于更新操作，
+
+- [`$`](https://docs.mongodb.com/v4.2/reference/operator/update/positional/up._S_) 用于更新操作的位置运算符，
+
+- [`$`](https://docs.mongodb.com/v4.2/reference/operator/projection/positional/proj._S_) 数组索引位置未知时的投影运算符
+
+- [在数组中查询带数组](https://docs.mongodb.com/v4.2/tutorial/query-arrays/read-operations-arrays)的点符号示例。
+
+  
+
+ 嵌入式文档
+
+要使用点符号指定或访问嵌入式文档的字段，请将嵌入式文档名称与点（`.`）和字段名称连接在一起，并用引号引起来：
+
+复制
 
 ```
 "<embedded document>.<field>"
 ```
 
- 例如，给定文档中的以下字段:
+例如，给定文档中的以下字段：
 
-```javascript
+复制
+
+```
 {
    ...
    name: { first: "Alan", last: "Turing" },
@@ -137,102 +171,97 @@ Tip:
 - 要指定在字段中命名`last`的`name`字段，请使用点符号`"name.last"`。
 - 要在字段`number`中的`phone`文档中 指定`contact`，请使用点号`"contact.phone.number"`。
 
-有关查询嵌入式文档的示例，请参见:
+有关查询嵌入式文档的示例，请参见：
 
-- [Query on Embedded/Nested Documents](https://www.mongodb.com/docs/v6.0/tutorial/query-embedded-documents/)
-- [Query an Array of Embedded Documents](https://www.mongodb.com/docs/v6.0/tutorial/query-array-of-documents/)
-
-##  
-
-## 文档的限制
-
-文档有以下属性:
-
-### 文档大小限制
-
- 最大`BSON`文档大小为`16`兆字节(MB)。
-
-最大文档大小有助于确保单个文档不会使用过多的RAM或在传输过程中使用过多的带宽。为了存储大于最大大小的文档，`MongoDB`提供了`GridFS API`。查看[`mongofiles`](https://www.mongodb.com/docs/database-tools/mongofiles/#mongodb-binary-bin.mongofiles)和你的[driver](https://www.mongodb.com/docs/drivers/)文档了解有关`GridFS`的更多信息。
+- [查询嵌入/嵌套文档](https://docs.mongodb.com/v4.2/tutorial/query-embedded-documents/)
+- [查询嵌入式文档数组](https://docs.mongodb.com/v4.2/tutorial/query-array-of-documents/)
 
 
 
-### 文档字段顺序
 
-与`JavaScript`对象不同，`BSON`文档中的字段是有序的。
 
-#### 查询中的字段顺序
+ 文件限制[¶](https://docs.mongodb.com/v4.2/core/document/document-limitations)
 
-对于查询，字段顺序行为如下:
-
-- 在比较文档时，字段顺序非常重要。例如，当在查询文档中比较字段`a`和`b`时:
-  - ·`{a: 1, b: 1}` 等于 `{a: 1, b: 1}`
-  - {a: 1, b: 1}` 不等于 `{b: 1, a: 1}`
-
-- 为了有效地执行查询，查询引擎可以在查询处理期间对字段重新排序。在其他情况下，当处理这些投影运算符时，可能会发生重新排序字段:[`$project`](https://www.mongodb.com/docs/v6.0/reference/operator/aggregation/project/#mongodb-pipeline-pipe.-project), [`$addFields`](https://www.mongodb.com/docs/v6.0/reference/operator/aggregation/addFields/#mongodb-pipeline-pipe.-addFields), [`$set`](https://www.mongodb.com/docs/v6.0/reference/operator/aggregation/set/#mongodb-pipeline-pipe.-set), 和 [`$unset`.](https://www.mongodb.com/docs/v6.0/reference/operator/aggregation/unset/#mongodb-pipeline-pipe.-unset)
-  - 字段重新排序可能发生在中间结果以及查询返回的最终结果中。
-  -  由于某些操作可能会对字段重新排序，因此在使用前面列出的投影运算符的查询返回的结果中，不应依赖特定的字段排序。
-
-#### 写操作中的字段顺序
-
- 对于写操作，`MongoDB`保持文档字段的顺序，但以下情况除外:
-
--  `_id`字段总是文档中的第一个字段。 
-- 包含[`renaming`](https://www.mongodb.com/docs/v6.0/reference/operator/update/rename/#mongodb-update-up.-rename)字段名称的更新可能会导致文档中的字段重新排序。
+文档具有以下属性：
 
 
 
-###  `_id`字段
+ 文档大小限制
 
-在`MongoDB`中，存储在集合中的每个文档都需要一个唯一的[_id](https://www.mongodb.com/docs/v6.0/reference/glossary/#std-term-_id) 字段作为[主键](https://www.mongodb.com/docs/v6.0/reference/glossary/#std-term-primary-key)。 如果插入的文档遗漏了`_id`字段，`MongoDB`驱动会自动为`_id`字段生成一个[ObjectId](https://www.mongodb.com/docs/v6.0/reference/bson-types/#std-label-objectid) 。
+BSON文档的最大大小为16 MB。
 
-这也适用于通过 [upsert: true](https://www.mongodb.com/docs/v6.0/reference/method/db.collection.update/#std-label-upsert-parameter)的更新操作插入的文档。
+最大文档大小有助于确保单个文档不会使用过多的RAM或在传输过程中占用过多的带宽。要存储大于最大大小的文档，MongoDB提供了GridFS API。有关GridFS的更多信息，请参见[`mongofiles`](https://docs.mongodb.com/v4.2/reference/program/mongofiles/bin.mongofiles)和[驱动程序](https://docs.mongodb.com/ecosystem/drivers)的文档。
 
-` _id`字段有以下行为和约束:
 
--  默认情况下，`MongoDB`在创建集合时在`_id`字段上创建一个唯一的索引。
-- ` _id`字段总是文档中的第一个字段。如果服务器首先接收到一个没有`_id`字段的文档，那么服务器将把这个字段移到最开始。
 
-####  _`if`_`id`中包含子字段，则子字段名不能开头
+ 文档字段顺序
 
-带有 ( `$`) 符号
+*除*以下情况*外*，MongoDB会在执行写操作后保留文档字段的顺序：
 
-- 该`_id`字段可能包含任何[BSON 数据类型](https://www.mongodb.com/docs/v6.0/reference/bson-types/)的值，除了数组、正则表达式或未定义。
+- 该`_id`字段始终是文档中的第一个字段。
 
-```javascript
-**WARNING**
-	为了确保复制功能正常，不要在`_id`字段中存储`BSON`正则表达式类型的值。
+- 包含[`renaming`](https://docs.mongodb.com/v4.2/reference/operator/update/rename/up._S_rename)字段名称的更新可能会导致文档中字段的重新排序。
+
+  
+
+ `_id`字段
+
+在MongoDB中，存储在集合中的每个文档都需要一个唯一的 [_id](https://docs.mongodb.com/v4.2/reference/glossary/term-id)字段作为[主键](https://docs.mongodb.com/v4.2/reference/glossary/term-primary-key)。如果插入的文档省略了该`_id`字段，则MongoDB驱动程序会自动为该`_id`字段生成一个[ObjectId](https://docs.mongodb.com/v4.2/reference/bson-types/objectid)。
+
+这也适用于通过使用[upsert：true](https://docs.mongodb.com/v4.2/reference/method/db.collection.update/upsert-parameter)更新操作插入的文档。
+
+该`_id`字段具有以下行为和约束：
+
+- 默认情况下，MongoDB 在创建集合期间会在`_id`字段上创建唯一索引。
+- 该`_id`字段始终是文档中的第一个字段。如果服务器首先接收到没有该`_id`字段的文档，则服务器会将字段移到开头。
+- 该`_id`字段可以包含除数组之外的任何[BSON数据类型的](https://docs.mongodb.com/v4.2/reference/bson-types/)值。
+
+警告
+
+为确保复制正常进行，请勿在`_id` 字段中存储BSON正则表达式类型的值。
+
+
+
+以下是用于存储值的常用选项`_id`：
+
+- 使用一个[ObjectId](https://docs.mongodb.com/v4.2/reference/bson-types/objectid)。
+
+- 使用自然的唯一标识符（如果有）。这样可以节省空间并避免附加索引。
+
+- 生成一个自动递增的数字。
+
+- 在您的应用程序代码中生成一个UUID。为了在集合和`_id` 索引中更有效地存储UUID值，请将UUID存储为BSON `BinData`类型的值。
+
+  在以下情况下，`BinData`更有效地将类型为索引的键存储在索引中：
+
+  - 二进制子类型的值在0-7或128-135的范围内，并且
+  - 字节数组的长度为：0、1、2、3、4、5、6、7、8、10、12、14、16、20、24或32。
+
+- 使用驱动程序的BSON UUID工具生成UUID。请注意，驱动程序实现可能会以不同的方式实现UUID序列化和反序列化逻辑，这可能与其他驱动程序不完全兼容。有关UUID互操作性的信息，请参阅[驱动程序文档](https://docs.mongodb.com/drivers/)。
+
+  
+
+注意
+
+大多数MongoDB驱动程序客户端将包括该`_id`字段，并`ObjectId`在将插入操作发送到MongoDB之前生成一个；但是，如果客户发送的文档中没有`_id` 字段，则[`mongod`](https://docs.mongodb.com/v4.2/reference/program/mongod/bin.mongod)会添加该`_id`字段并生成`ObjectId`。
+
+
+
+ 文档结构的其他用途
+
+除了定义数据记录外，MongoDB还在整个文档结构中使用，包括但不限于：[查询过滤器](https://docs.mongodb.com/v4.2/core/document/document-query-filter)，[更新规范文档](https://docs.mongodb.com/v4.2/core/document/document-update-specification)和[索引规范文档](https://docs.mongodb.com/v4.2/core/document/document-index-specification)。
+
+
+
+ 查询过滤器文档
+
+查询过滤器文档指定确定用于选择哪些记录以进行读取，更新和删除操作的条件。
+
+您可以使用 `<field>:<value>` 表达式指定相等条件和[查询运算符](https://docs.mongodb.com/v4.2/reference/operator/query/) 表达式。
+
+复制
+
 ```
-
- 以下是用于存储`_id`值的常用选项:
-
-- 使用一个[ObjectId](https://www.mongodb.com/docs/v6.0/reference/bson-types/#std-label-objectid)。
--  如果可用，使用自然唯一标识符。这样可以节省空间并避免额外的索引。
--  生成一个自动递增的数字。
--  在应用程序代码中生成`UUID`。 为了更有效地存储集合和`_id`索引中的`UUID`值，请将`UUID`存储为`BSON` `BinData`类型的值。 如果满足以下条件，`BinData`类型的索引键将更有效地存储在索引中:
-  -  二进制子类型取值范围为`0 ~ 7`或`128 ~ 135`
-  - 字节数组的长度为：`0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 14, 16, 20, 24, 或 32`
--  使用驱动程序的`BSON UUID`工具来生成`UUID`。 注意驱动程序实现可能以不同的方式实现`UUID`序列化和反序列化逻辑 这可能与其他驱动程序不完全兼容。
-
-```javascript
-**NOTE**
-	大多数`MongoDB`驱动客户端都会包含`_id`字段，并在将插入操作发送给`MongoDB之`前生成一个`ObjectId`. 然而，如果客户端发送一个没有`_id`字段的文档，`mongod`将添加`_id`字段并生成`ObjectId`。
-```
-
-
-
-## 文档结构的其他用途
-
-除了定义数据记录外，`MongoDB`还自始至终使用文档结构,包括但不限于:[query filters](https://www.mongodb.com/docs/v6.0/core/document/#std-label-document-query-filter), [update specifications documents](https://www.mongodb.com/docs/v6.0/core/document/#std-label-document-update-specification), and [index specification documents](https://www.mongodb.com/docs/v6.0/core/document/#std-label-document-index-specification).
-
-
-
-### 查询过滤文档
-
- 查询筛选器文档指定了确定要选择哪些记录进行读取、更新和删除操作的条件。
-
-可以使用<field>:<value>表达式指定相等条件和[query operator](https://www.mongodb.com/docs/v6.0/reference/operator/query/)表达式。
-
-```javascript
 {
   <field1>: <value1>,
   <field2>: { <operator>: <value> },
@@ -240,20 +269,22 @@ Tip:
 }
 ```
 
- 见下文例子:
+有关示例，请参见：
 
-- [Query Documents](https://www.mongodb.com/docs/v6.0/tutorial/query-documents/)
-- [Query on Embedded/Nested Documents](https://www.mongodb.com/docs/v6.0/tutorial/query-embedded-documents/)
-- [Query an Array](https://www.mongodb.com/docs/v6.0/tutorial/query-arrays/)
-- [Query an Array of Embedded Documents](https://www.mongodb.com/docs/v6.0/tutorial/query-array-of-documents/)
+- [查询文档](https://docs.mongodb.com/v4.2/tutorial/query-documents/)
+- [查询嵌入/嵌套文档](https://docs.mongodb.com/v4.2/tutorial/query-embedded-documents/)
+- [查询数组](https://docs.mongodb.com/v4.2/tutorial/query-arrays/)
+- [查询嵌入式文档数组](https://docs.mongodb.com/v4.2/tutorial/query-array-of-documents/)
 
 
 
-### 更新规范文档
+ 更新规范文档
 
- 更新规范文档使用[update operators](https://www.mongodb.com/docs/v6.0/reference/operator/update/#std-label-update-operators) 指定在更新操作期间对特定字段执行的数据修改。
+更新规范文档使用[更新运算符](https://docs.mongodb.com/v4.2/reference/operator/update/id1)来指定要在[`db.collection.update()`](https://docs.mongodb.com/v4.2/reference/method/db.collection.update/db.collection.update)操作期间在特定字段上执行的数据修改。
 
-```javascript
+复制
+
+```
 {
   <operator1>: { <field1>: <value1>, ... },
   <operator2>: { <field2>: <value2>, ... },
@@ -261,35 +292,42 @@ Tip:
 }
 ```
 
-有关示例，请参见[Update specifications.](https://www.mongodb.com/docs/v6.0/tutorial/update-documents/#std-label-update-documents-modifiers)。
+有关示例，请参阅[更新规范](https://docs.mongodb.com/v4.2/tutorial/update-documents/update-documents-modifiers)。
 
-###  
 
-### 索引规范文档
 
-索引规范文档定义了要索引的字段和索引类型:
+ 索引规范文档
 
-```javas
+索引规范文档定义了要索引的字段和索引类型：
+
+复制
+
+```
 { <field1>: <type1>, <field2>: <type2>, ...  }
 ```
 
 
 
-## 补充说明
-
- 有关`MongoDB`文档模型的更多信息，下载[MongoDB Application Modernization Guide](https://www.mongodb.com/modernize?tck=docs_server).
-
- 下载包括以下资源:
-
--  关于`MongoDB`数据建模方法的介绍
-- 白皮书涵盖了从[RDBMS](https://www.mongodb.com/docs/v6.0/reference/glossary/#std-term-RDBMS) 数据模型迁移到MongoDB的最佳实践和注意事项
--  引用`MongoDB`模式与它的`RDBMS`等价
--  应用现代化记分卡
 
 
+ 进一步阅读
+
+有关MongoDB文档模型的更多信息，请下载 [MongoDB应用程序现代化指南](https://www.mongodb.com/modernize?tck=docs_server)。
+
+下载内容包括以下资源：
+
+- 演示使用MongoDB进行数据建模的方法
+- 白皮书涵盖了从[RDBMS](https://docs.mongodb.com/v4.2/reference/glossary/term-rdbms)数据模型迁移到MongoDB的最佳实践和注意事项
+- 参考MongoDB模式及其等效RDBMS
+- 应用程序现代化记分卡
 
 
 
-原文链接：https://www.mongodb.com/docs/v6.0/core/document/
+原文链接：https://docs.mongodb.com/v4.2/core/document/
 
-译者：杨帅
+译者：小芒果
+
+ 参见
+
+原文 - [Documents]( https://docs.mongodb.com/manual/core/document/ )
+
