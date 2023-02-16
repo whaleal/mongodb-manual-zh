@@ -1309,12 +1309,12 @@
       * [Downgrade 6.0 Standalone to 5.0](17-release-notes/02-6.0/02-6.0-downgrade/01-6.0-downgrade-standalone.md)
       * [Downgrade 6.0 Replica Set to 5.0](17-release-notes/02-6.0/02-6.0-downgrade/02-6.0-downgrade-replica-set.md)
       * [Downgrade 6.0 Sharded Cluster to 5.0](17-release-notes/02-6.0/02-6.0-downgrade/03-6.0-downgrade-sharded-cluster.md)
-  
+
     * [Upgrade 5.0 to 6.0]()
       * [Upgrade a Standalone to 6.0](17-release-notes/02-6.0/03-6.0-upgrade/01-6.0-upgrade-standalone.md)
       * [Upgrade a Replica Set to 6.0](17-release-notes/02-6.0/03-6.0-upgrade/02-6.0-upgrade-replica-set.md)
       * [Upgrade a Sharded Cluster to 6.0](17-release-notes/02-6.0/03-6.0-upgrade/03-6.0-upgrade-sharded-cluste.md)
-  
+
     * [6.0 Changelog](17-release-notes/02-6.0/04-6.0-changelog.md)
   * [Release Notes for MongoDB 5.3](17-release-notes/03-5.3.md)
     * [Compatibility Changes in MongoDB 5.3](17-release-notes/03-5.3/01-5.3-compatibility.md)
@@ -1364,9 +1364,6 @@
     * [4.0 Changelog]( 17-release-notes/09-4.0/08-4.0-changelog.md )
   * [Release Notes for MongoDB 3.6]( 17-release-notes/10-3.6.md )
     * [3.6 Changelog]( 17-release-notes/04-3.6/01-3.6-changelog.md )
-
-
-
     * [Compatibility Changes in MongoDB 3.6]( 17-release-notes/10-3.6/02-3.6-compatibility.md )
     * [Upgrade a Standalone to 3.6]( 17-release-notes/10-3.6/03-3.6-upgrade-standalone.md )
     * [Upgrade a Replica Set to 3.6]( 17-release-notes/10-3.6/04-3.6-upgrade-replica-set.md )
@@ -1414,7 +1411,21 @@
   * [Release Notes for MongoDB 1.4]( 17-release-notes/20-1.4.md )
   * [Release Notes for MongoDB 1.2.x]( 17-release-notes/21-1.2.md )
   * [MongoDB Versioning]( 17-release-notes/22-versioning.md )
+
  * [时间序列](21-Time-series.md)
+   * [Create and Query a Time Series Collection](21-Time-series/01-Create-and-Query-a-Time-Series-Collection.md)
+   * [List Time Series Collections in a Database](21-Time-series/02-List-Time-Series-Collections-in-a-Database.md)
+   * [Set up Automatic Removal for Time Series Collections (TTL)](21-Time-series/03-Set-up-Automatic-Removal-for-Time-Series-Collections (TTL).md)
+   * [Set Granularity for Time Series Data](21-Time-series/04-Set-Granularity-for-Time-Series-Data.md)
+   * [Add Secondary Indexes to Time Series Collections](21-Time-series/05-Add-Secondary-Indexes-to-Time-Series-Collections.md)
+   * [Migrate Data into a Time Series Collection](21-Time-series/06-Migrate-Data-into-a-Time-Series-Collection.md)
+   * [Build Materialized Views on Top of Time Series Data](21-Time-series/07-Build-Materialized-Views-on-Top-of-Time-Series-Data.md)
+   * [Shard a Time Series Collection](21-Time-series/08-Shard-a-Time-Series-Collection.md)
+   * [Best Practices for Time Series Collections](21-Time-series/09-Best-Practices-for-Time-Series-Collections.md)
+   * [reference]()
+     * [Time Series Compression](21-Time-series/10-reference/01-Time-Series-Compression.md)
+     * [Limitations](21-Time-series/10-reference/02-limitations.md)
+
   * [Create-and-Query-a-Time-Series-Collection](01-Create-and-Query-a-Time-Series-Collection.md)
   * [List-Time-Series-Collections-in-a-Database](02-List-Time-Series-Collections-in-a-Database.md)
   * [Set-up-Automatic-Removal-for-Time-Series-Collections (TTL)](03-Set-up-Automatic-Removal-for-Time-Series-Collections (TTL))
@@ -1427,7 +1438,6 @@
   * [reference]()
     * [Time-Series-Compression](reference/01-Time-Series-Compression)
     * [limitations](reference/02-limitations.md)
-
 * [技术支持]( 18-support.md )
   * [MongoDB的Scala驱动]( 20-mongodb-drivers/01-MongoDB-Scala-Driver.md )
 * [开始使用MongoDB开发]( 20-mongodb-drivers.md )
