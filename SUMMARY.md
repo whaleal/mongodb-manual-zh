@@ -1378,7 +1378,7 @@
   * [Release Notes for MongoDB 1.4]( 17-release-notes/14-1.4.md )
   * [Release Notes for MongoDB 1.2.x]( 17-release-notes/15-1.2.md )
   * [MongoDB Versioning]( 17-release-notes/16-versioning.md )
-* [时间序列](21-time-series.md)
+* [时间序列](21-Time-series.md)
   * [Create-and-Query-a-Time-Series-Collection](01-Create-and-Query-a-Time-Series-Collection.md)
   * [List-Time-Series-Collections-in-a-Database](02-List-Time-Series-Collections-in-a-Database.md)
   * [Set-up-Automatic-Removal-for-Time-Series-Collections (TTL)](03-Set-up-Automatic-Removal-for-Time-Series-Collections (TTL))
