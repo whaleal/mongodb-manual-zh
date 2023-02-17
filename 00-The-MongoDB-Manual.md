@@ -1,10 +1,10 @@
 #  MongoDB 用户手册 #
 
-MONGODB 4.2发布于2019年8月13日
+MONGODB 6.0发布于2022年6月8日
 
-有关MongoDB 4.2中的新功能，请参阅MongoDB 4.2 [发行说明](https://docs.mongodb.com/v4.2/release-notes/4.2/)。
+有关MongoDB 6.0中的新功能，请参阅MongoDB 6.0 [发行说明](https://www.mongodb.com/docs/manual/release-notes/6.0/)。
 
-欢迎使用MongoDB 4.2手册！MongoDB是一个文档数据库，旨在简化开发和扩展。该手册介绍了MongoDB中的关键概念，介绍了查询语言，并提供了操作和管理方面的考虑因素和过程以及全面的参考部分。该手册也以[HTML tar.gz](https://docs.mongodb.com/v4.2/manual.tar.gz)和[EPUB的形式提供](https://docs.mongodb.com/v4.2/MongoDB-manual.epub)。
+欢迎使用MongoDB 6.0手册！MongoDB是一个文档数据库，旨在简化开发和扩展。该手册介绍了MongoDB中的关键概念，介绍了查询语言，并提供了操作和管理方面的考虑因素和过程以及全面的参考部分
 
 MongoDB提供数据库的*社区*版和*企业*版：
 
@@ -19,9 +19,9 @@ MongoDB还提供 [Atlas](https://www.mongodb.com/cloud/atlas?tck=docs_server)（
 
 ## 入门 ##
 
-MongoDB 在以下版本中提供了“ [入门指南”](https://docs.mongodb.com/getting-started/shell)。
+MongoDB 在以下版本中提供了“ [入门指南”](https://www.mongodb.com/docs/)。
 
-| [mongo Shell版](https://docs.mongodb.com/v4.2/tutorial/getting-started/)<br/>[Node.JS版](http://mongodb.github.io/node-mongodb-native/3.4/quick-start/quick-start/) | [Python版](https://docs.mongodb.com/drivers/pymongo)<br/>[C ++版](https://mongodb.github.io/mongo-cxx-driver/mongocxx-v3/tutorial/) | [Java版](https://mongodb.github.io/mongo-java-driver/)<br/>[C＃版](http://mongodb.github.io/mongo-csharp-driver/) | [Ruby版](https://docs.mongodb.com/ruby-driver/current/quick-start/) |
+| [mongo Shell版](https://www.mongodb.com/docs/manual/tutorial/getting-started/)<br/>[Node.JS版](http://mongodb.github.io/node-mongodb-native/3.4/quick-start/quick-start/) | [Python版](https://docs.mongodb.com/drivers/pymongo)<br/>[C ++版](https://mongodb.github.io/mongo-cxx-driver/mongocxx-v3/tutorial/) | [Java版](https://mongodb.github.io/mongo-java-driver/)<br/>[C＃版](http://mongodb.github.io/mongo-csharp-driver/) | [Ruby版](https://docs.mongodb.com/ruby-driver/current/quick-start/) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 |                                                              |                                                              |                                                              |                                                              |
 
@@ -31,7 +31,7 @@ MongoDB 在以下版本中提供了“ [入门指南”](https://docs.mongodb.co
 
 | 介绍                                                         | 开发者                                                       | 管理员                                                       | 参考                                                         |
 | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| [MongoDB简介](https://docs.mongodb.com/v4.2/introduction/)<br/>[安装指南](https://docs.mongodb.com/v4.2/installation/)<br/>[数据库和集合](https://docs.mongodb.com/v4.2/core/databases-and-collections/)<br/>[文档资料](https://docs.mongodb.com/v4.2/core/document/) | [CRUD操作](https://docs.mongodb.com/v4.2/crud/)<br/>[聚合](https://docs.mongodb.com/v4.2/aggregation/)<br/>[SQL到MongoDB](https://docs.mongodb.com/v4.2/reference/sql-comparison/)<br/>[索引](https://docs.mongodb.com/v4.2/indexes/) | [生产须知](https://docs.mongodb.com/v4.2/administration/production-notes/)<br/>[副本集](https://docs.mongodb.com/v4.2/replication/)<br/>[分片集群](https://docs.mongodb.com/v4.2/sharding/)<br/>[MongoDB安全](https://docs.mongodb.com/v4.2/security/) | [shell方法](https://docs.mongodb.com/v4.2/reference/method/)<br/>[查询运算符](https://docs.mongodb.com/v4.2/reference/operator/)<br/>[参考](https://docs.mongodb.com/v4.2/reference/)[词汇表](https://docs.mongodb.com/v4.2/reference/glossary/) |
+| [MongoDB简介](https://www.mongodb.com/docs/v6.0/introduction/)<br/>[安装指南](https://docs.mongodb.com/v6.0/installation/)<br/>[数据库和集合](https://docs.mongodb.com/v6.0/core/databases-and-collections/)<br/>[文档资料](https://docs.mongodb.com/v6.0/core/document/) | [CRUD操作](https://docs.mongodb.com/v6.0/crud/)<br/>[聚合](https://docs.mongodb.com/v6.0/aggregation/)<br/>[SQL到MongoDB](https://docs.mongodb.com/v6.0/reference/sql-comparison/)<br/>[索引](https://docs.mongodb.com/v6.0/indexes/) | [生产须知](https://docs.mongodb.com/v6.0/administration/production-notes/)<br/>[副本集](https://docs.mongodb.com/v6.0/replication/)<br/>[分片集群](https://docs.mongodb.com/v6.0/sharding/)<br/>[MongoDB安全](https://docs.mongodb.com/v6.0/security/) | [shell方法](https://docs.mongodb.com/v6.0/reference/method/)<br/>[查询运算符](https://docs.mongodb.com/v6.0/reference/operator/)<br/>[参考](https://docs.mongodb.com/v6.0/reference/)[词汇表](https://docs.mongodb.com/v6.0/reference/glossary/) |
 
 
 
@@ -42,9 +42,6 @@ MongoDB 在以下版本中提供了“ [入门指南”](https://docs.mongodb.co
  MongoDB社区
 
 如有疑问，讨论或常规技术支持，请访问 [MongoDB社区论坛](https://community.mongodb.com/)。MongoDB社区论坛是与其他MongoDB用户联系，提出问题并获得答案的集中场所。
-
-> 译者注：MongoDB中文社区提供MongoDB中文用户原创博客/文档翻译/技术问答/技术大会/线上活动等板块平台交流服务，访问MongoDB中文社区网站请点击：https://mongoing.com/
-> 进入技术交流社群请联系小芒果，微信ID：mongoingcom
 
 
 ##  MongoDB Atlas或Cloud ##
@@ -68,12 +65,9 @@ MongoDB 在以下版本中提供了“ [入门指南”](https://docs.mongodb.co
  社区
 
 参与MongoDB社区是与其他才华横溢，志趣相投的工程师建立关系，提高对正在从事的有趣工作的认识并提高技能的一种好方法。要了解MongoDB社区，请参阅 [参与MongoDB](http://www.mongodb.org/get-involved?tck=docs_server)。
+同时可以参与[ whaleal社区 ](https://www.whaleal.com)和志同道合的工程师学习讨论MongoDB等相关专业知识技能。
 
-> 译者注：MongoDB中文社区提供MongoDB中文用户原创博客/文档翻译/技术问答/技术大会/线上活动等板块平台交流服务，访问MongoDB中文社区网站请点击：https://mongoing.com/
-> 进入技术交流社群请联系小芒果，微信ID：mongoingcom
-
-
- 学习
+学习
 
 除了文档外，还有许多学习使用MongoDB的方法。您可以：
 
@@ -115,9 +109,3 @@ MongoDB 在以下版本中提供了“ [入门指南”](https://docs.mongodb.co
 - [MongoDB生态系统](https://docs.mongodb.com/ecosystem/?tck=docs_server)
 
   可用于MongoDB的驱动程序，框架，工具和服务的文档。
-
-
-
-原文链接：https://docs.mongodb.com/v4.2/
-
-译者：小芒果

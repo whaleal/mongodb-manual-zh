@@ -1,4 +1,4 @@
- WiredTiger 存储引擎
+#  WiredTiger 存储引擎
 
 从MongoDB 3.2开始，WiredTiger存储引擎开始作为默认的存储引擎。 对于现有部署，如果未指定参数--storageEngine或storage.engine设置，则版本3.2+ mongod实例可以自动确定用于在--dbpath或storage.dbPath中创建数据文件的存储引擎。 请参阅默认存储引擎配置参数更改文档。<br />
 
@@ -22,7 +22,7 @@ WiredTiger使用MultiVersion并发控制（MVCC）方式。 在操作开始时�
 
 当WiredTiger的元数据表被原子更新以引用新的检查点时，新的检查点将变为可访问且永久的。 一旦可以访问新的检查点，WiredTiger就会从旧的检查点释放页面。<br />
 
-使用WiredTiger，即使没有日记，MongoDB也可以从最后一个检查点恢复； 但是，要恢复上一个检查点之后所做的更改，请运行日志功能。<br />
+使用WiredTiger，即使没有日志，MongoDB也可以从最后一个检查点恢复； 但是，要恢复上一个检查点之后所做的更改，请运行日志功能。<br />
 
 注意<br />
 
@@ -44,7 +44,7 @@ WiredTiger日志使用快速压缩库进行压缩。 要指定其他压缩算法
 
 注意<br />
 
-从MongoDB 4.0开始，您不能指定--nojournal选项或storage.journal.enabled：使用WiredTiger存储引擎的副本集成员为false。<br />SEE ALSO 也可以参考<br />Journaling with WiredTiger<br />使用WiredTiger日志<br />
+从MongoDB 4.0开始，您不能指定--nojournal选项或storage.journal.enabled：使用WiredTiger存储引擎的副本集节点为false。<br />SEE ALSO 也可以参考<br />Journaling with WiredTiger<br />使用WiredTiger日志<br />
 
 **压缩**<br />
 
@@ -75,7 +75,7 @@ zstd（从MongoDB 4.2开始支持）<br />
 从MongoDB 3.4开始，默认的WiredTiger内部缓存大小是以下两者中的较大者：<br />
 50％（RAM-1 GB）或256 MB。<br />
 
-例如，在总共有4GB RAM的系统上，WiredTiger缓存将使用1.5GB RAM（0.5 _（4 GB-1 GB）= 1.5 GB）。 相反，总内存为1.25 GB的系统将为WiredTiger缓存分配256 MB，因为这是总RAM的一半以上减去一GB（0.5 _（1.25 GB-1 GB）= 128 MB <256 MB） 。<br />
+例如，在总共有4GB RAM的系统上，WiredTiger缓存将使用1.5GB RAM（0.5 _（4 GB-1 GB）= 1.5 GB）。 相反，总内存为1.25 GB的系统将为WiredTiger缓存分配256 MB，因为这是总RAM的一半以上减去1GB（0.5 _（1.25 GB-1 GB）= 128 MB <256 MB） 。<br />
 
 注意<br />
 
