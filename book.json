@@ -62,8 +62,8 @@
             "minTocSize": 4
           },
     "insert-logo": {
-             "url": "https://raw.githubusercontent.com/whaleal/whaleal.github.io/main/images/whaleal_logo.jpg",
-             "style": "background: none; max-height: 30px; min-height: 30px"
+             "url": "https://raw.githubusercontent.com/whaleal/whaleal.github.io/main/images/whaleal_logo1.png",
+             "style": "background: none; max-height: 73px; min-height: 73px"
            }
 	}
 
