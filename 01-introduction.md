@@ -1,114 +1,99 @@
- MongoDB简介
+#  MongoDB简介
 
-在本页
+在本页面
 
-- [文档数据库](https://docs.mongodb.com/v4.2/introduction/document-database)
-- [主要特性](https://docs.mongodb.com/v4.2/introduction/key-features)
+- [文档型数据库]()
 
-
-
-欢迎使用MongoDB 4.2手册！MongoDB是一个文档数据库，旨在简化开发和扩展。该手册介绍了MongoDB中的关键概念，介绍了查询语言，并提供了操作和管理上的注意事项和过程以及全面的参考章节。
-
-MongoDB提供数据库的*社区*版和*企业*版：
-
-- MongoDB社区版是MongoDB的[可用源和免费](https://github.com/mongodb/mongo/)版本。
-- MongoDB企业版作为MongoDB高级企业版订阅的一部分提供，并且包括对MongoDB部署的全面支持。MongoDB企业版还添加了以企业为中心的功能，例如LDAP和Kerberos支持，磁盘加密和审核。
+- [主要特点]()
 
 
 
- 文档数据库
+## 文档型数据库
 
-MongoDB中的记录是一个文档，它是由字段和值对组成的数据结构。MongoDB文档类似于JSON对象。字段的值可以包括其他文档，数组和文档数组。
+在MongoDB中的一条记录代表一个文档，它是由字段和键值对组成的数据结构。MongoDB文档类似于JSON对象。字段的值可以包括其他文档、数组和文档数组。
 
-![A MongoDB document.](https://docs.mongodb.com/v4.2/_images/crud-annotated-document.bakedsvg.svg)
-
-使用文档的优点是：
-
-- 文档（即对象）对应于许多编程语言中的内置数据类型。
-- 嵌入式文档和数组减少了对昂贵连接的需求。
-- 动态模式支持流畅的多态性。
+![A MongoDB document.](https://www.mongodb.com/docs/v6.0/images/crud-annotated-document.bakedsvg.svg)
 
 
 
- 集合/视图/按需实例化视图
+使用文档型的优点有：
 
-MongoDB将文档存储在[集合中](https://docs.mongodb.com/v4.2/core/databases-and-collections/collections)。集合类似于关系数据库中的表。
-
-除集合外，MongoDB还支持：
-
-- 只读[视图](https://docs.mongodb.com/v4.2/core/views/)（从MongoDB 3.4开始）
-- [按需实例化视图](https://docs.mongodb.com/v4.2/core/materialized-views/)（从MongoDB 4.2开始）。
+- 在许多编程语言中文档型对应于原生数据类型			
+-  嵌入式文档和数组减少了对昂贵的连接的需求
+-  动态模式支持流畅的多态性
 
 
 
- 主要特性
-
- 高性能
-
-MongoDB提供高性能的数据持久化。特别是，
-
-- 对嵌入式数据模型的支持减少了数据库系统上的I / O操作。
-- 索引支持更快的查询，并且可以包含来自嵌入式文档和数组的键。
+## 集合/视图/灵活的物化视图
 
 
 
- 丰富的查询语言
+MongoDB以集合([collections](https://www.mongodb.com/docs/v6.0/core/databases-and-collections/#std-label-collections))的形式存储文档。集合类似于关系型数据库中的表(tables)。
 
-MongoDB支持丰富的查询语言以支持[读写操作（CRUD）](https://docs.mongodb.com/v4.2/crud/)以及：
+除了集合，MongoDB还支持:
 
-- [数据聚合](https://docs.mongodb.com/v4.2/core/aggregation-pipeline/)
-- [文本搜索](https://docs.mongodb.com/v4.2/text-search/)和[地理空间查询](https://docs.mongodb.com/v4.2/tutorial/geospatial-tutorial/)。
-
-
-
-也可以看看
-
-- [SQL到MongoDB的映射图](https://docs.mongodb.com/v4.2/reference/sql-comparison/)
-- [SQL到聚合的映射图](https://docs.mongodb.com/v4.2/reference/sql-aggregation-comparison/)
+- 只读视图([views](https://www.mongodb.com/docs/v6.0/core/views/))（从MongoDB3.4开始）
+- [灵活的物化视图](https://www.mongodb.com/docs/v6.0/core/materialized-views/)(从MongoDB4.2开始)
 
 
 
- 高可用
+## 主要特点
 
-MongoDB的复制工具（称为[副本集](https://docs.mongodb.com/v4.2/replication/)）提供：
+### 高性能
 
-- *自动*故障转移
-- 数据冗余。
+ MongoDB提供高性能数据持久性。特别是：
 
-[副本集](https://docs.mongodb.com/v4.2/replication/)是一组维护相同数据集合的 mongod实例，提供了冗余和提高了数据可用性。
+- 支持嵌入式数据模型降低数据库在系统上的I/O消耗
+- 索引支持更快的查询，并可以包括来自嵌入式文档和数组的keys。
+
+### 查询API
+
+MongoDB查询API支持[读写操作(CRUD)](https://www.mongodb.com/docs/v6.0/crud/)以及:
+
+- [数据聚合](https://www.mongodb.com/docs/v6.0/core/aggregation-pipeline/)
+-  [文本检索](https://www.mongodb.com/docs/v6.0/text-search/)和[地理空间查询](https://www.mongodb.com/docs/v6.0/tutorial/geospatial-tutorial/)。
+
+```html
+Tip:
+	另请参考：
+		[SQL to MongoDB Mapping Chart](https://www.mongodb.com/docs/v6.0/reference/sql-comparison/)
+		[SQL to Aggregation Mapping Chart](https://www.mongodb.com/docs/v6.0/reference/sql-aggregation-comparison/)
+		
+```
+
+### 高可用
+
+MongoDB的复制功能，称为复制集，提供:
+
+- 自动故障转移
+- 数据冗余
+
+ 复制集是一组MongoDB服务器，它们维护相同的数据集群，提供冗余并提高数据可用性。
+
+### 水平拓展
+
+ MongoDB将水平可伸缩性作为其核心功能的一部分:
+
+- [分片](https://www.mongodb.com/docs/v6.0/sharding/#std-label-sharding-introduction)将数据分布在一组机器上。
+- 从 3.4 开始，MongoDB 支持基于[shard key](https://www.mongodb.com/docs/v6.0/reference/glossary/#std-term-shard-key)创建数据[zones](https://www.mongodb.com/docs/v6.0/core/zone-sharding/#std-label-zone-sharding)。在一个平衡(balanced)集群中，MongoDB 将zone覆盖的读取和写入仅定向到zone内的那些分片。有关详细信息，请参阅[区域](https://www.mongodb.com/docs/v6.0/core/zone-sharding/#std-label-zone-sharding) 手册页。
+
+###  支持多种存储引擎
+
+MongoDB支持多种存储引擎:
+
+- [WiredTiger Storage Engine](https://www.mongodb.com/docs/v6.0/core/wiredtiger/)(包括对[静止加密](https://www.mongodb.com/docs/v6.0/core/security-encryption-at-rest/)的支持))
+- [In-Memory Storage Engine.](https://www.mongodb.com/docs/v6.0/core/inmemory/)
+
+此外，MongoDB还提供了可插拔的存储引擎API，允许第三方为MongoDB开发存储引擎。
 
 
 
- 水平拓展
-
-MongoDB提供水平可伸缩性作为其*核心* 功能的一部分：
-
-- [分片](https://docs.mongodb.com/v4.2/sharding/sharding-introduction)将数据分布在一个集群的机器上。
-- 从3.4开始，MongoDB支持基于[分片键](https://docs.mongodb.com/v4.2/reference/glossary/term-shard-key)创建数据[区域](https://docs.mongodb.com/v4.2/core/zone-sharding/zone-sharding)。在平衡群集中，MongoDB仅将区域覆盖的读写定向到区域内的那些分片。有关 更多信息，请参见[区域](https://docs.mongodb.com/v4.2/core/zone-sharding/zone-sharding)章节。
 
 
+原文链接：https://www.mongodb.com/docs/v6.0/introduction/
 
- 支持多种存储引擎
-
-MongoDB支持[多个存储引擎](https://docs.mongodb.com/v4.2/core/storage-engines/)：
-
-- [WiredTiger存储引擎](https://docs.mongodb.com/v4.2/core/wiredtiger/)（包括对[静态](https://docs.mongodb.com/v4.2/core/wiredtiger/)[加密的](https://docs.mongodb.com/v4.2/core/security-encryption-at-rest/)支持 ）
-- [内存存储引擎](https://docs.mongodb.com/v4.2/core/inmemory/)。
-
-另外，MongoDB提供可插拔的存储引擎API，允许第三方为MongoDB开发存储引擎。
+译者：杨帅
 
 
 
-←  [MongoDB手册内容](https://docs.mongodb.com/v4.2/contents/)
-
-
-
-原文链接：https://docs.mongodb.com/v4.2/introduction/
-
-译者：小芒果
-
-
- 参见
-
-原文 - [Introduction]( https://docs.mongodb.com/manual/introduction/ )
 
