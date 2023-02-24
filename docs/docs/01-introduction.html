@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>MongoDB简介 · MongoDB 中文手册 | MongoD Manual | 中文操作手册 | 翻译 | CSDN | github | 百度 | Google | 教程 ｜ 安装配置</title>
+        <title>MongoDB简介 · MongoDB 中文手册 | MongoDB 中文文档 | 中文操作手册 | 翻译 | CSDN | github | 百度 | Google | 教程 ｜ 安装配置</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="gitbook/style.css">
 
     
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-donate/plugin.css">
+                
             
                 
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
@@ -116,7 +120,7 @@
     }
     </style>
     <script>
-        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"whaleal","repo":"mongodb-manual-zh","type":"star","count":true,"size":"small"}]};
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"JinMuInfo","repo":"MongoDB-Manual-zh","type":"star","count":true,"size":"small"}]};
     </script>
 
     </head>
@@ -987,9 +991,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.4" data-path="02-installation/04-verify-mongodb-packages.html">
+        <li class="chapter " data-level="1.4.4" data-path="02-installation/04-verify-mongodb-packages.md">
             
-                <a href="02-installation/04-verify-mongodb-packages.html">
+                <span>
             
                     
                     验证MongoDB软件包的完整性
@@ -19260,73 +19264,79 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="mongodb&#x7B80;&#x4ECB;">MongoDB&#x7B80;&#x4ECB;</h1>
-<p>&#x5728;&#x672C;&#x9875;&#x9762;</p>
+                                <p> MongoDB&#x7B80;&#x4ECB;</p>
+<p>&#x5728;&#x672C;&#x9875;</p>
 <ul>
-<li><p><a href="">&#x6587;&#x6863;&#x578B;&#x6570;&#x636E;&#x5E93;</a></p>
-</li>
-<li><p><a href="">&#x4E3B;&#x8981;&#x7279;&#x70B9;</a></p>
-</li>
+<li><a href="https://docs.mongodb.com/v4.2/introduction/document-database" target="_blank">&#x6587;&#x6863;&#x6570;&#x636E;&#x5E93;</a></li>
+<li><a href="https://docs.mongodb.com/v4.2/introduction/key-features" target="_blank">&#x4E3B;&#x8981;&#x7279;&#x6027;</a></li>
 </ul>
-<h2 id="&#x6587;&#x6863;&#x578B;&#x6570;&#x636E;&#x5E93;">&#x6587;&#x6863;&#x578B;&#x6570;&#x636E;&#x5E93;</h2>
-<p>&#x5728;MongoDB&#x4E2D;&#x7684;&#x4E00;&#x6761;&#x8BB0;&#x5F55;&#x4EE3;&#x8868;&#x4E00;&#x4E2A;&#x6587;&#x6863;&#xFF0C;&#x5B83;&#x662F;&#x7531;&#x5B57;&#x6BB5;&#x548C;&#x952E;&#x503C;&#x5BF9;&#x7EC4;&#x6210;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;MongoDB&#x6587;&#x6863;&#x7C7B;&#x4F3C;&#x4E8E;JSON&#x5BF9;&#x8C61;&#x3002;&#x5B57;&#x6BB5;&#x7684;&#x503C;&#x53EF;&#x4EE5;&#x5305;&#x62EC;&#x5176;&#x4ED6;&#x6587;&#x6863;&#x3001;&#x6570;&#x7EC4;&#x548C;&#x6587;&#x6863;&#x6570;&#x7EC4;&#x3002;</p>
-<p><img src="https://www.mongodb.com/docs/v6.0/images/crud-annotated-document.bakedsvg.svg" alt="A MongoDB document."></p>
-<p>&#x4F7F;&#x7528;&#x6587;&#x6863;&#x578B;&#x7684;&#x4F18;&#x70B9;&#x6709;&#xFF1A;</p>
+<p>&#x6B22;&#x8FCE;&#x4F7F;&#x7528;MongoDB 4.2&#x624B;&#x518C;&#xFF01;MongoDB&#x662F;&#x4E00;&#x4E2A;&#x6587;&#x6863;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x65E8;&#x5728;&#x7B80;&#x5316;&#x5F00;&#x53D1;&#x548C;&#x6269;&#x5C55;&#x3002;&#x8BE5;&#x624B;&#x518C;&#x4ECB;&#x7ECD;&#x4E86;MongoDB&#x4E2D;&#x7684;&#x5173;&#x952E;&#x6982;&#x5FF5;&#xFF0C;&#x4ECB;&#x7ECD;&#x4E86;&#x67E5;&#x8BE2;&#x8BED;&#x8A00;&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;&#x4E86;&#x64CD;&#x4F5C;&#x548C;&#x7BA1;&#x7406;&#x4E0A;&#x7684;&#x6CE8;&#x610F;&#x4E8B;&#x9879;&#x548C;&#x8FC7;&#x7A0B;&#x4EE5;&#x53CA;&#x5168;&#x9762;&#x7684;&#x53C2;&#x8003;&#x7AE0;&#x8282;&#x3002;</p>
+<p>MongoDB&#x63D0;&#x4F9B;&#x6570;&#x636E;&#x5E93;&#x7684;<em>&#x793E;&#x533A;</em>&#x7248;&#x548C;<em>&#x4F01;&#x4E1A;</em>&#x7248;&#xFF1A;</p>
 <ul>
-<li>&#x5728;&#x8BB8;&#x591A;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x4E2D;&#x6587;&#x6863;&#x578B;&#x5BF9;&#x5E94;&#x4E8E;&#x539F;&#x751F;&#x6570;&#x636E;&#x7C7B;&#x578B;            </li>
-<li>&#x5D4C;&#x5165;&#x5F0F;&#x6587;&#x6863;&#x548C;&#x6570;&#x7EC4;&#x51CF;&#x5C11;&#x4E86;&#x5BF9;&#x6602;&#x8D35;&#x7684;&#x8FDE;&#x63A5;&#x7684;&#x9700;&#x6C42;</li>
-<li>&#x52A8;&#x6001;&#x6A21;&#x5F0F;&#x652F;&#x6301;&#x6D41;&#x7545;&#x7684;&#x591A;&#x6001;&#x6027;</li>
+<li>MongoDB&#x793E;&#x533A;&#x7248;&#x662F;MongoDB&#x7684;<a href="https://github.com/mongodb/mongo/" target="_blank">&#x53EF;&#x7528;&#x6E90;&#x548C;&#x514D;&#x8D39;</a>&#x7248;&#x672C;&#x3002;</li>
+<li>MongoDB&#x4F01;&#x4E1A;&#x7248;&#x4F5C;&#x4E3A;MongoDB&#x9AD8;&#x7EA7;&#x4F01;&#x4E1A;&#x7248;&#x8BA2;&#x9605;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x63D0;&#x4F9B;&#xFF0C;&#x5E76;&#x4E14;&#x5305;&#x62EC;&#x5BF9;MongoDB&#x90E8;&#x7F72;&#x7684;&#x5168;&#x9762;&#x652F;&#x6301;&#x3002;MongoDB&#x4F01;&#x4E1A;&#x7248;&#x8FD8;&#x6DFB;&#x52A0;&#x4E86;&#x4EE5;&#x4F01;&#x4E1A;&#x4E3A;&#x4E2D;&#x5FC3;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4F8B;&#x5982;LDAP&#x548C;Kerberos&#x652F;&#x6301;&#xFF0C;&#x78C1;&#x76D8;&#x52A0;&#x5BC6;&#x548C;&#x5BA1;&#x6838;&#x3002;</li>
 </ul>
-<h2 id="&#x96C6;&#x5408;&#x89C6;&#x56FE;&#x7075;&#x6D3B;&#x7684;&#x7269;&#x5316;&#x89C6;&#x56FE;">&#x96C6;&#x5408;/&#x89C6;&#x56FE;/&#x7075;&#x6D3B;&#x7684;&#x7269;&#x5316;&#x89C6;&#x56FE;</h2>
-<p>MongoDB&#x4EE5;&#x96C6;&#x5408;(<a href="https://www.mongodb.com/docs/v6.0/core/databases-and-collections/#std-label-collections" target="_blank">collections</a>)&#x7684;&#x5F62;&#x5F0F;&#x5B58;&#x50A8;&#x6587;&#x6863;&#x3002;&#x96C6;&#x5408;&#x7C7B;&#x4F3C;&#x4E8E;&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x7684;&#x8868;(tables)&#x3002;</p>
-<p>&#x9664;&#x4E86;&#x96C6;&#x5408;&#xFF0C;MongoDB&#x8FD8;&#x652F;&#x6301;:</p>
+<p> &#x6587;&#x6863;&#x6570;&#x636E;&#x5E93;</p>
+<p>MongoDB&#x4E2D;&#x7684;&#x8BB0;&#x5F55;&#x662F;&#x4E00;&#x4E2A;&#x6587;&#x6863;&#xFF0C;&#x5B83;&#x662F;&#x7531;&#x5B57;&#x6BB5;&#x548C;&#x503C;&#x5BF9;&#x7EC4;&#x6210;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;MongoDB&#x6587;&#x6863;&#x7C7B;&#x4F3C;&#x4E8E;JSON&#x5BF9;&#x8C61;&#x3002;&#x5B57;&#x6BB5;&#x7684;&#x503C;&#x53EF;&#x4EE5;&#x5305;&#x62EC;&#x5176;&#x4ED6;&#x6587;&#x6863;&#xFF0C;&#x6570;&#x7EC4;&#x548C;&#x6587;&#x6863;&#x6570;&#x7EC4;&#x3002;</p>
+<p><img src="https://docs.mongodb.com/v4.2/_images/crud-annotated-document.bakedsvg.svg" alt="A MongoDB document."></p>
+<p>&#x4F7F;&#x7528;&#x6587;&#x6863;&#x7684;&#x4F18;&#x70B9;&#x662F;&#xFF1A;</p>
 <ul>
-<li>&#x53EA;&#x8BFB;&#x89C6;&#x56FE;(<a href="https://www.mongodb.com/docs/v6.0/core/views/" target="_blank">views</a>)&#xFF08;&#x4ECE;MongoDB3.4&#x5F00;&#x59CB;&#xFF09;</li>
-<li><a href="https://www.mongodb.com/docs/v6.0/core/materialized-views/" target="_blank">&#x7075;&#x6D3B;&#x7684;&#x7269;&#x5316;&#x89C6;&#x56FE;</a>(&#x4ECE;MongoDB4.2&#x5F00;&#x59CB;)</li>
+<li>&#x6587;&#x6863;&#xFF08;&#x5373;&#x5BF9;&#x8C61;&#xFF09;&#x5BF9;&#x5E94;&#x4E8E;&#x8BB8;&#x591A;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x5185;&#x7F6E;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;</li>
+<li>&#x5D4C;&#x5165;&#x5F0F;&#x6587;&#x6863;&#x548C;&#x6570;&#x7EC4;&#x51CF;&#x5C11;&#x4E86;&#x5BF9;&#x6602;&#x8D35;&#x8FDE;&#x63A5;&#x7684;&#x9700;&#x6C42;&#x3002;</li>
+<li>&#x52A8;&#x6001;&#x6A21;&#x5F0F;&#x652F;&#x6301;&#x6D41;&#x7545;&#x7684;&#x591A;&#x6001;&#x6027;&#x3002;</li>
 </ul>
-<h2 id="&#x4E3B;&#x8981;&#x7279;&#x70B9;">&#x4E3B;&#x8981;&#x7279;&#x70B9;</h2>
-<h3 id="&#x9AD8;&#x6027;&#x80FD;">&#x9AD8;&#x6027;&#x80FD;</h3>
-<p> MongoDB&#x63D0;&#x4F9B;&#x9AD8;&#x6027;&#x80FD;&#x6570;&#x636E;&#x6301;&#x4E45;&#x6027;&#x3002;&#x7279;&#x522B;&#x662F;&#xFF1A;</p>
+<p> &#x96C6;&#x5408;/&#x89C6;&#x56FE;/&#x6309;&#x9700;&#x5B9E;&#x4F8B;&#x5316;&#x89C6;&#x56FE;</p>
+<p>MongoDB&#x5C06;&#x6587;&#x6863;&#x5B58;&#x50A8;&#x5728;<a href="https://docs.mongodb.com/v4.2/core/databases-and-collections/collections" target="_blank">&#x96C6;&#x5408;&#x4E2D;</a>&#x3002;&#x96C6;&#x5408;&#x7C7B;&#x4F3C;&#x4E8E;&#x5173;&#x7CFB;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x7684;&#x8868;&#x3002;</p>
+<p>&#x9664;&#x96C6;&#x5408;&#x5916;&#xFF0C;MongoDB&#x8FD8;&#x652F;&#x6301;&#xFF1A;</p>
 <ul>
-<li>&#x652F;&#x6301;&#x5D4C;&#x5165;&#x5F0F;&#x6570;&#x636E;&#x6A21;&#x578B;&#x964D;&#x4F4E;&#x6570;&#x636E;&#x5E93;&#x5728;&#x7CFB;&#x7EDF;&#x4E0A;&#x7684;I/O&#x6D88;&#x8017;</li>
-<li>&#x7D22;&#x5F15;&#x652F;&#x6301;&#x66F4;&#x5FEB;&#x7684;&#x67E5;&#x8BE2;&#xFF0C;&#x5E76;&#x53EF;&#x4EE5;&#x5305;&#x62EC;&#x6765;&#x81EA;&#x5D4C;&#x5165;&#x5F0F;&#x6587;&#x6863;&#x548C;&#x6570;&#x7EC4;&#x7684;keys&#x3002;</li>
+<li>&#x53EA;&#x8BFB;<a href="https://docs.mongodb.com/v4.2/core/views/" target="_blank">&#x89C6;&#x56FE;</a>&#xFF08;&#x4ECE;MongoDB 3.4&#x5F00;&#x59CB;&#xFF09;</li>
+<li><a href="https://docs.mongodb.com/v4.2/core/materialized-views/" target="_blank">&#x6309;&#x9700;&#x5B9E;&#x4F8B;&#x5316;&#x89C6;&#x56FE;</a>&#xFF08;&#x4ECE;MongoDB 4.2&#x5F00;&#x59CB;&#xFF09;&#x3002;</li>
 </ul>
-<h3 id="&#x67E5;&#x8BE2;api">&#x67E5;&#x8BE2;API</h3>
-<p>MongoDB&#x67E5;&#x8BE2;API&#x652F;&#x6301;<a href="https://www.mongodb.com/docs/v6.0/crud/" target="_blank">&#x8BFB;&#x5199;&#x64CD;&#x4F5C;(CRUD)</a>&#x4EE5;&#x53CA;:</p>
+<p> &#x4E3B;&#x8981;&#x7279;&#x6027;</p>
+<p> &#x9AD8;&#x6027;&#x80FD;</p>
+<p>MongoDB&#x63D0;&#x4F9B;&#x9AD8;&#x6027;&#x80FD;&#x7684;&#x6570;&#x636E;&#x6301;&#x4E45;&#x5316;&#x3002;&#x7279;&#x522B;&#x662F;&#xFF0C;</p>
 <ul>
-<li><a href="https://www.mongodb.com/docs/v6.0/core/aggregation-pipeline/" target="_blank">&#x6570;&#x636E;&#x805A;&#x5408;</a></li>
-<li><a href="https://www.mongodb.com/docs/v6.0/text-search/" target="_blank">&#x6587;&#x672C;&#x68C0;&#x7D22;</a>&#x548C;<a href="https://www.mongodb.com/docs/v6.0/tutorial/geospatial-tutorial/" target="_blank">&#x5730;&#x7406;&#x7A7A;&#x95F4;&#x67E5;&#x8BE2;</a>&#x3002;</li>
+<li>&#x5BF9;&#x5D4C;&#x5165;&#x5F0F;&#x6570;&#x636E;&#x6A21;&#x578B;&#x7684;&#x652F;&#x6301;&#x51CF;&#x5C11;&#x4E86;&#x6570;&#x636E;&#x5E93;&#x7CFB;&#x7EDF;&#x4E0A;&#x7684;I / O&#x64CD;&#x4F5C;&#x3002;</li>
+<li>&#x7D22;&#x5F15;&#x652F;&#x6301;&#x66F4;&#x5FEB;&#x7684;&#x67E5;&#x8BE2;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x6765;&#x81EA;&#x5D4C;&#x5165;&#x5F0F;&#x6587;&#x6863;&#x548C;&#x6570;&#x7EC4;&#x7684;&#x952E;&#x3002;</li>
 </ul>
-<pre><code class="lang-html">Tip:
-    &#x53E6;&#x8BF7;&#x53C2;&#x8003;&#xFF1A;
-        [SQL to MongoDB Mapping Chart](https://www.mongodb.com/docs/v6.0/reference/sql-comparison/)
-        [SQL to Aggregation Mapping Chart](https://www.mongodb.com/docs/v6.0/reference/sql-aggregation-comparison/)
-</code></pre>
-<h3 id="&#x9AD8;&#x53EF;&#x7528;">&#x9AD8;&#x53EF;&#x7528;</h3>
-<p>MongoDB&#x7684;&#x590D;&#x5236;&#x529F;&#x80FD;&#xFF0C;&#x79F0;&#x4E3A;&#x590D;&#x5236;&#x96C6;&#xFF0C;&#x63D0;&#x4F9B;:</p>
+<p> &#x4E30;&#x5BCC;&#x7684;&#x67E5;&#x8BE2;&#x8BED;&#x8A00;</p>
+<p>MongoDB&#x652F;&#x6301;&#x4E30;&#x5BCC;&#x7684;&#x67E5;&#x8BE2;&#x8BED;&#x8A00;&#x4EE5;&#x652F;&#x6301;<a href="https://docs.mongodb.com/v4.2/crud/" target="_blank">&#x8BFB;&#x5199;&#x64CD;&#x4F5C;&#xFF08;CRUD&#xFF09;</a>&#x4EE5;&#x53CA;&#xFF1A;</p>
 <ul>
-<li>&#x81EA;&#x52A8;&#x6545;&#x969C;&#x8F6C;&#x79FB;</li>
-<li><p>&#x6570;&#x636E;&#x5197;&#x4F59;</p>
-<p>&#x590D;&#x5236;&#x96C6;&#x662F;&#x4E00;&#x7EC4;MongoDB&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5B83;&#x4EEC;&#x7EF4;&#x62A4;&#x76F8;&#x540C;&#x7684;&#x6570;&#x636E;&#x96C6;&#x7FA4;&#xFF0C;&#x63D0;&#x4F9B;&#x5197;&#x4F59;&#x5E76;&#x63D0;&#x9AD8;&#x6570;&#x636E;&#x53EF;&#x7528;&#x6027;&#x3002;</p>
-</li>
+<li><a href="https://docs.mongodb.com/v4.2/core/aggregation-pipeline/" target="_blank">&#x6570;&#x636E;&#x805A;&#x5408;</a></li>
+<li><a href="https://docs.mongodb.com/v4.2/text-search/" target="_blank">&#x6587;&#x672C;&#x641C;&#x7D22;</a>&#x548C;<a href="https://docs.mongodb.com/v4.2/tutorial/geospatial-tutorial/" target="_blank">&#x5730;&#x7406;&#x7A7A;&#x95F4;&#x67E5;&#x8BE2;</a>&#x3002;</li>
 </ul>
-<h3 id="&#x6C34;&#x5E73;&#x62D3;&#x5C55;">&#x6C34;&#x5E73;&#x62D3;&#x5C55;</h3>
-<p> MongoDB&#x5C06;&#x6C34;&#x5E73;&#x53EF;&#x4F38;&#x7F29;&#x6027;&#x4F5C;&#x4E3A;&#x5176;&#x6838;&#x5FC3;&#x529F;&#x80FD;&#x7684;&#x4E00;&#x90E8;&#x5206;:</p>
+<p>&#x4E5F;&#x53EF;&#x4EE5;&#x770B;&#x770B;</p>
 <ul>
-<li><a href="https://www.mongodb.com/docs/v6.0/sharding/#std-label-sharding-introduction" target="_blank">&#x5206;&#x7247;</a>&#x5C06;&#x6570;&#x636E;&#x5206;&#x5E03;&#x5728;&#x4E00;&#x7EC4;&#x673A;&#x5668;&#x4E0A;&#x3002;</li>
-<li>&#x4ECE; 3.4 &#x5F00;&#x59CB;&#xFF0C;MongoDB &#x652F;&#x6301;&#x57FA;&#x4E8E;<a href="https://www.mongodb.com/docs/v6.0/reference/glossary/#std-term-shard-key" target="_blank">shard key</a>&#x521B;&#x5EFA;&#x6570;&#x636E;<a href="https://www.mongodb.com/docs/v6.0/core/zone-sharding/#std-label-zone-sharding" target="_blank">zones</a>&#x3002;&#x5728;&#x4E00;&#x4E2A;&#x5E73;&#x8861;(balanced)&#x96C6;&#x7FA4;&#x4E2D;&#xFF0C;MongoDB &#x5C06;zone&#x8986;&#x76D6;&#x7684;&#x8BFB;&#x53D6;&#x548C;&#x5199;&#x5165;&#x4EC5;&#x5B9A;&#x5411;&#x5230;zone&#x5185;&#x7684;&#x90A3;&#x4E9B;&#x5206;&#x7247;&#x3002;&#x6709;&#x5173;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;<a href="https://www.mongodb.com/docs/v6.0/core/zone-sharding/#std-label-zone-sharding" target="_blank">&#x533A;&#x57DF;</a> &#x624B;&#x518C;&#x9875;&#x3002;</li>
+<li><a href="https://docs.mongodb.com/v4.2/reference/sql-comparison/" target="_blank">SQL&#x5230;MongoDB&#x7684;&#x6620;&#x5C04;&#x56FE;</a></li>
+<li><a href="https://docs.mongodb.com/v4.2/reference/sql-aggregation-comparison/" target="_blank">SQL&#x5230;&#x805A;&#x5408;&#x7684;&#x6620;&#x5C04;&#x56FE;</a></li>
 </ul>
-<h3 id="&#x652F;&#x6301;&#x591A;&#x79CD;&#x5B58;&#x50A8;&#x5F15;&#x64CE;">&#x652F;&#x6301;&#x591A;&#x79CD;&#x5B58;&#x50A8;&#x5F15;&#x64CE;</h3>
-<p>MongoDB&#x652F;&#x6301;&#x591A;&#x79CD;&#x5B58;&#x50A8;&#x5F15;&#x64CE;:</p>
+<p> &#x9AD8;&#x53EF;&#x7528;</p>
+<p>MongoDB&#x7684;&#x590D;&#x5236;&#x5DE5;&#x5177;&#xFF08;&#x79F0;&#x4E3A;<a href="https://docs.mongodb.com/v4.2/replication/" target="_blank">&#x526F;&#x672C;&#x96C6;</a>&#xFF09;&#x63D0;&#x4F9B;&#xFF1A;</p>
 <ul>
-<li><a href="https://www.mongodb.com/docs/v6.0/core/wiredtiger/" target="_blank">WiredTiger Storage Engine</a>(&#x5305;&#x62EC;&#x5BF9;<a href="https://www.mongodb.com/docs/v6.0/core/security-encryption-at-rest/" target="_blank">&#x9759;&#x6B62;&#x52A0;&#x5BC6;</a>&#x7684;&#x652F;&#x6301;))</li>
-<li><a href="https://www.mongodb.com/docs/v6.0/core/inmemory/" target="_blank">In-Memory Storage Engine.</a></li>
+<li><em>&#x81EA;&#x52A8;</em>&#x6545;&#x969C;&#x8F6C;&#x79FB;</li>
+<li>&#x6570;&#x636E;&#x5197;&#x4F59;&#x3002;</li>
 </ul>
-<p>&#x6B64;&#x5916;&#xFF0C;MongoDB&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x53EF;&#x63D2;&#x62D4;&#x7684;&#x5B58;&#x50A8;&#x5F15;&#x64CE;API&#xFF0C;&#x5141;&#x8BB8;&#x7B2C;&#x4E09;&#x65B9;&#x4E3A;MongoDB&#x5F00;&#x53D1;&#x5B58;&#x50A8;&#x5F15;&#x64CE;&#x3002;</p>
-<p>&#x539F;&#x6587;&#x94FE;&#x63A5;&#xFF1A;<a href="https://www.mongodb.com/docs/v6.0/introduction/" target="_blank">https://www.mongodb.com/docs/v6.0/introduction/</a></p>
-<p>&#x8BD1;&#x8005;&#xFF1A;&#x6768;&#x5E05;</p>
+<p><a href="https://docs.mongodb.com/v4.2/replication/" target="_blank">&#x526F;&#x672C;&#x96C6;</a>&#x662F;&#x4E00;&#x7EC4;&#x7EF4;&#x62A4;&#x76F8;&#x540C;&#x6570;&#x636E;&#x96C6;&#x5408;&#x7684; mongod&#x5B9E;&#x4F8B;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x5197;&#x4F59;&#x548C;&#x63D0;&#x9AD8;&#x4E86;&#x6570;&#x636E;&#x53EF;&#x7528;&#x6027;&#x3002;</p>
+<p> &#x6C34;&#x5E73;&#x62D3;&#x5C55;</p>
+<p>MongoDB&#x63D0;&#x4F9B;&#x6C34;&#x5E73;&#x53EF;&#x4F38;&#x7F29;&#x6027;&#x4F5C;&#x4E3A;&#x5176;<em>&#x6838;&#x5FC3;</em> &#x529F;&#x80FD;&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF1A;</p>
+<ul>
+<li><a href="https://docs.mongodb.com/v4.2/sharding/sharding-introduction" target="_blank">&#x5206;&#x7247;</a>&#x5C06;&#x6570;&#x636E;&#x5206;&#x5E03;&#x5728;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#x7684;&#x673A;&#x5668;&#x4E0A;&#x3002;</li>
+<li>&#x4ECE;3.4&#x5F00;&#x59CB;&#xFF0C;MongoDB&#x652F;&#x6301;&#x57FA;&#x4E8E;<a href="https://docs.mongodb.com/v4.2/reference/glossary/term-shard-key" target="_blank">&#x5206;&#x7247;&#x952E;</a>&#x521B;&#x5EFA;&#x6570;&#x636E;<a href="https://docs.mongodb.com/v4.2/core/zone-sharding/zone-sharding" target="_blank">&#x533A;&#x57DF;</a>&#x3002;&#x5728;&#x5E73;&#x8861;&#x7FA4;&#x96C6;&#x4E2D;&#xFF0C;MongoDB&#x4EC5;&#x5C06;&#x533A;&#x57DF;&#x8986;&#x76D6;&#x7684;&#x8BFB;&#x5199;&#x5B9A;&#x5411;&#x5230;&#x533A;&#x57DF;&#x5185;&#x7684;&#x90A3;&#x4E9B;&#x5206;&#x7247;&#x3002;&#x6709;&#x5173; &#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x89C1;<a href="https://docs.mongodb.com/v4.2/core/zone-sharding/zone-sharding" target="_blank">&#x533A;&#x57DF;</a>&#x7AE0;&#x8282;&#x3002;</li>
+</ul>
+<p> &#x652F;&#x6301;&#x591A;&#x79CD;&#x5B58;&#x50A8;&#x5F15;&#x64CE;</p>
+<p>MongoDB&#x652F;&#x6301;<a href="https://docs.mongodb.com/v4.2/core/storage-engines/" target="_blank">&#x591A;&#x4E2A;&#x5B58;&#x50A8;&#x5F15;&#x64CE;</a>&#xFF1A;</p>
+<ul>
+<li><a href="https://docs.mongodb.com/v4.2/core/wiredtiger/" target="_blank">WiredTiger&#x5B58;&#x50A8;&#x5F15;&#x64CE;</a>&#xFF08;&#x5305;&#x62EC;&#x5BF9;<a href="https://docs.mongodb.com/v4.2/core/wiredtiger/" target="_blank">&#x9759;&#x6001;</a><a href="https://docs.mongodb.com/v4.2/core/security-encryption-at-rest/" target="_blank">&#x52A0;&#x5BC6;&#x7684;</a>&#x652F;&#x6301; &#xFF09;</li>
+<li><a href="https://docs.mongodb.com/v4.2/core/inmemory/" target="_blank">&#x5185;&#x5B58;&#x5B58;&#x50A8;&#x5F15;&#x64CE;</a>&#x3002;</li>
+</ul>
+<p>&#x53E6;&#x5916;&#xFF0C;MongoDB&#x63D0;&#x4F9B;&#x53EF;&#x63D2;&#x62D4;&#x7684;&#x5B58;&#x50A8;&#x5F15;&#x64CE;API&#xFF0C;&#x5141;&#x8BB8;&#x7B2C;&#x4E09;&#x65B9;&#x4E3A;MongoDB&#x5F00;&#x53D1;&#x5B58;&#x50A8;&#x5F15;&#x64CE;&#x3002;</p>
+<p>&#x2190;  <a href="https://docs.mongodb.com/v4.2/contents/" target="_blank">MongoDB&#x624B;&#x518C;&#x5185;&#x5BB9;</a></p>
+<p>&#x539F;&#x6587;&#x94FE;&#x63A5;&#xFF1A;<a href="https://docs.mongodb.com/v4.2/introduction/" target="_blank">https://docs.mongodb.com/v4.2/introduction/</a></p>
+<p>&#x8BD1;&#x8005;&#xFF1A;&#x5C0F;&#x8292;&#x679C;</p>
+<p> &#x53C2;&#x89C1;</p>
+<p>&#x539F;&#x6587; - <a href="https://docs.mongodb.com/manual/introduction/" target="_blank">Introduction</a></p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; &#x4E0A;&#x6D77;&#x9526;&#x6728;&#x4FE1;&#x606F;&#x6280;&#x672F;&#x6709;&#x9650;&#x516C;&#x53F8; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2023-02-16 13:01:19
+2020-12-18 11:34:57
 </span></footer>
                                 
                                 </section>
@@ -19370,7 +19380,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"MongoDB简介","level":"1.3","depth":1,"next":{"title":"入门","level":"1.3.1","depth":2,"path":"01-introduction/01-getting-started.md","ref":"01-introduction/01-getting-started.md","articles":[]},"previous":{"title":"MongoDB用户手册","level":"1.2","depth":1,"path":"00-The-MongoDB-Manual.md","ref":"00-The-MongoDB-Manual.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hide-element","-sharing","tbfed-pagefooter","github-buttons","github","chapter-fold","expandable-chapters","pageview-count","edit-link","back-to-top-button","-lunr","-search","search-pro","splitter","page-toc-button","auto-scroll-table","flexible-alerts","alerts","insert-logo"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 上海锦木信息技术有限公司","modify_label":"文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/whaleal/mongodb-manual-zh"},"splitter":{},"search-pro":{},"auto-scroll-table":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":4,"minTocSize":4},"back-to-top-button":{},"pageview-count":{},"alerts":{},"github-buttons":{"buttons":[{"user":"whaleal","repo":"mongodb-manual-zh","type":"star","count":true,"size":"small"}]},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"edit-link":{"label":"Edit This Page","base":"https://github.com/whaleal/mongodb-manual-zh/tree/dev"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 30px; min-height: 30px","url":"https://raw.githubusercontent.com/whaleal/whaleal.github.io/main/images/whaleal_logo.jpg"},"expandable-chapters":{}},"theme":"default","keywords":"MongoDB,Manual,中文手册,操作手册","author":"hbnking","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MongoDB 中文手册 | MongoD Manual | 中文操作手册 | 翻译 | CSDN | github | 百度 | Google | 教程 ｜ 安装配置","language":"zh-hans","gitbook":"*","description":"MongoDB-Manual-zh"},"file":{"path":"01-introduction.md","mtime":"2023-02-16T05:01:19.128Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-02-16T05:25:27.757Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"MongoDB简介","level":"1.3","depth":1,"next":{"title":"入门","level":"1.3.1","depth":2,"path":"01-introduction/01-getting-started.md","ref":"01-introduction/01-getting-started.md","articles":[]},"previous":{"title":"MongoDB用户手册","level":"1.2","depth":1,"path":"00-The-MongoDB-Manual.md","ref":"00-The-MongoDB-Manual.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hide-element","-sharing","donate","tbfed-pagefooter","github-buttons","github","chapter-fold","expandable-chapters","pageview-count","edit-link","back-to-top-button","-lunr","-search","search-pro","splitter","page-toc-button","auto-scroll-table","flexible-alerts","alerts","insert-logo"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 上海锦木信息技术有限公司","modify_label":"文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/JinMuInfo/MongoDB-Manual-zh"},"splitter":{},"search-pro":{},"auto-scroll-table":{},"donate":{"alipay":"https://docs.jinmu.info/images/pay/alipay.jpeg","alipayText":"支付宝打赏","button":"打赏","title":"","wechat":"https://docs.jinmu.info/images/pay/Wechatpay.jpeg","wechatText":"微信打赏"},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":4,"minTocSize":4},"back-to-top-button":{},"pageview-count":{},"alerts":{},"github-buttons":{"buttons":[{"user":"JinMuInfo","repo":"MongoDB-Manual-zh","type":"star","count":true,"size":"small"}]},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"edit-link":{"label":"Edit This Page","base":"https://github.com/JinMuInfo/MongoDB-Manual-zh/tree/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 30px; min-height: 30px","url":"https://docs.jinmu.info/images/logo/MongoLogoBlack.png"},"expandable-chapters":{}},"theme":"default","author":"hbnking","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MongoDB 中文手册 | MongoDB 中文文档 | 中文操作手册 | 翻译 | CSDN | github | 百度 | Google | 教程 ｜ 安装配置","language":"zh-hans","gitbook":"*","description":"MongoDB-Manual-zh"},"file":{"path":"01-introduction.md","mtime":"2020-12-18T03:34:57.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-14T12:06:43.006Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -19381,6 +19391,10 @@
     
         
         <script src="gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-donate/plugin.js"></script>
         
     
         
