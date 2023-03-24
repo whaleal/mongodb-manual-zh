@@ -1,13 +1,81 @@
- Operational Restrictions
+# 分片集群中的操作限制
 
- ！本页翻译征集中！
 
-请点击页面上方 EDIT THIS PAGE 参与翻译。
-详见：
-[贡献指南]( https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/CONTRIBUTING.md )、
-[原文链接](  https://docs.mongodb.com/manual/core/sharded-cluster-requirements/  )。
 
- 参见
+## 分片操作限制
 
-原文 - [Operational Restrictions]( https://docs.mongodb.com/manual/core/sharded-cluster-requirements/ )
+### 分片环境中的操作不可用	
+
+`$where`不允许从`$where`函数中引用`db`对象。这在未分片的集合中并不常见。
+
+`geoSearch`分片环境不支持该命令。
+
+在 MongoDB 5.0 及更早版本中，您不能在 $lookup 阶段的 from 参数中指定分片集合。
+
+### 分片集合中的单个文档修改操作
+
+指定`multi: false`或者`justOne`选项的分片集合的所有`updateOne()`和`deleteOne()`操作中必须包括查询规范中的分片键*或*`_id`字段。 
+
+`updateOne()`和`deleteOne()`在不包含分片键或`_id`字段的分片集合中 指定`multi: false`或`justOne`的操作返回错误。
+
+要将 findOneAndUpdate() 与分片集合一起使用，您的查询过滤器必须在分片键上包含相等条件，以比较以下任一格式的键和值：
+
+```shell
+{ key: value }
+{ key: { $eq: value } }
+```
+
+
+
+### 分片集合中的唯一索引
+
+MongoDB 不支持跨分片的唯一索引，除非唯一索引包含完整的分片键作为索引的前缀。在这些情况下，MongoDB 将强制整个键的唯一性，而不是单个字段。
+
+
+
+## 分片现有集合数据大小
+
+如果现有集合的大小不超过特定限制，则只能对其进行分片。这些限制可以根据所有分片键值的平均大小和配置的块大小来估计。
+
+
+
+>## 重要的
+>
+>这些限制仅适用于初始分片操作。成功启用分片后，分片集合可以增长到*任意大小。*
+
+
+
+使用以下公式计算*理论上的*最大集合大小。
+
+```shell
+maxSplits = 16777216 (bytes) / <average size of shard key values in bytes>
+maxCollectionSize (MB) = maxSplits * (chunkSize / 2)
+```
+
+
+
+>## 笔记
+>
+>最大BSON文档大小为 16MB 或`16777216`字节。
+>
+>所有转换都应使用以 2 为底的比例，例如 1024 千字节 = 1 兆字节。
+
+
+
+如果`maxCollectionSize`小于或接近于目标集合，则增加块大小以确保初始分片成功。如果怀疑计算结果是否太“接近”目标集合大小，最好增加块大小。
+
+初始分片成功后，您可以根据需要减小块大小。如果您稍后减小块大小，则所有块拆分为新大小可能需要一些时间。
+
+此表使用上述公式说明了近似的最大集合大小：
+
+| 分片键值的平均大小            | 512 字节 | 256 字节 | 128字节 | 64 字节 |
+| :---------------------------- | :------- | :------- | :------ | :------ |
+| 最大分割数                    | 32,768   | 65,536   | 131,072 | 262,144 |
+| 最大集合大小（64 MB 块大小）  | 1 TB     | 2TB      | 4TB     | 8TB     |
+| 最大集合大小（128 MB 块大小） | 2TB      | 4TB      | 8TB     | 16TB    |
+| 最大集合大小（256 MB 块大小） | 4TB      | 8TB      | 16TB    | 32 TB   |
+
+原文 -  https://docs.mongodb.com/manual/core/sharded-cluster-requirements/ 
+
+译者：陆文龙
 

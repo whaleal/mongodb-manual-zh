@@ -1,80 +1,69 @@
- 范围分片
+# 远程分片
 
-基于范围的分片会将数据划分为由片键值确定的连续范围。 在此模型中，具有“接近”片键值的文档可能位于相同的[块](https://docs.mongodb.com/v4.2/reference/glossary/term-chunk)或[分片](https://docs.mongodb.com/v4.2/reference/glossary/term-shard)中。 这允许在连续范围内读取目标文档的高效查询。 但是，如果片键选择不佳，则读取和写入性能均可能降低。 请参阅[片键的选择](https://docs.mongodb.com/v4.2/core/ranged-sharding/sharding-ranged-shard-key)。
+基于范围的分片涉及将数据划分为由分片键值确定的连续范围。在这个模型中，具有“接近”分片键值的文档很可能在同一个块或分片中。这允许在连续范围内读取目标文档的高效查询。但是，读取和写入性能可能会因分片键选择不当而降低。
 
-![Diagram of the shard key value space segmented into smaller ranges or chunks.](https://docs.mongodb.com/v4.2/_images/sharding-range-based.bakedsvg.svg)
-
-如果未配置任何其他选项（例如`哈希分片`或`区域`所需的其他选项），则基于范围的分片是默认的分片方式。
+![分片键值空间的图表被分割成更小的范围或块。](../images/sharding-range-based.bakedsvg.svg)
 
 
 
- 片键的选择
-
-当片键呈现出以下特征时，范围分片更高效：
-
-- [基数](https://docs.mongodb.com/v4.2/core/sharding-shard-key/shard-key-range) 大
-- [频率](https://docs.mongodb.com/v4.2/core/sharding-shard-key/shard-key-frequency) 低
-- 非[单调变更](https://docs.mongodb.com/v4.2/core/sharding-shard-key/shard-key-monotonic) 
-
-下图说明了使用字段`X`作为片键的分片群集。 如果`X`的值具有大取值范围，低频率以及非单调变化的特征，则插入的分布可能类似于下面这样：
-
-![Diagram of good shard key distribution](https://docs.mongodb.com/v4.2/_images/sharded-cluster-ranged-distribution-good.bakedsvg.svg)
+如果没有配置散列分片或 区域所需的其他选项，则基于范围的分片是默认的分片方法。
 
 
 
- 对一个集合进行分片
+## 片键选择
 
-使用`sh.shardCollection()`方法，指定集合的完整命名空间以及作为[片键](https://docs.mongodb.com/v4.2/reference/glossary/term-shard-key)的目标[索引](https://docs.mongodb.com/v4.2/reference/glossary/term-index)或复合索引。
+当分片键显示以下特征时，远程分片最有效：
 
-```
+- 大分片键基数
+- 低分片键频率
+- 非单调变化的分片键
+
+下图说明了使用字段作为分片键的分片集群`X`。如果 的值`X`范围较大、频率较低且以非单调速率变化，则插入的分布可能类似于以下内容：
+
+![良好的分片键分布图](../images/sharded-cluster-ranged-distribution-good.bakedsvg.svg)
+
+
+
+## 分片集合
+
+使用`sh.shardCollection()`方法，指定集合的完整命名空间和目标索引或复合索引以用作分片键。
+
+```shell
 sh.shardCollection( "database.collection", { <shard key> } )
 ```
 
-> 重要
+
+
+>## 重要的
 >
-> - 一旦对某个集合进行分片后，片键的选择是不可变的。 也就是说，您不能再为该集合选择其他片键。
-> - 从MongoDB 4.2开始，除非片键字段是不可变的`_id`字段，否则您可以更新文档的片键值。 有关更新片键的详细信息，请参阅[更改文档的片键值](https://docs.mongodb.com/v4.2/core/sharding-shard-key/update-shard-key)。在MongoDB 4.2以前的版本，片键是不可变的.
+>- 从 MongoDB 5.0 开始，您可以通过更改集合的分片键来重新分片集合。
+>- 从 MongoDB 4.4 开始，您可以通过向现有分片键添加一个或多个后缀字段来优化分片键。
+>- 在 MongoDB 4.2 及更早版本中，分片键的选择在分片后无法更改。
 
 
 
- 对一个已有数据的集合进行分片
+### 分片填充集合
 
-如果您对一个已经包含数据的集合进行分片操作：
+如果您对填充的集合进行分片，则最初只会创建一个块。然后，平衡器根据配置的范围大小在必要时从该块迁移范围。
 
-- 分片操作将创建初始数据块，以覆盖片键值的整个范围。 创建的数据块数取决于[配置的数据块大小](https://docs.mongodb.com/v4.2/core/sharding-data-partitioning/sharding-chunk-size)。
-- 在初始数据块创建之后，均衡器会在分片上适当地迁移这些初始数据块，并管理后续的数据块分配。
+### 分片空集合
 
+如果你分片一个空集合：
 
-
- 对一个空集合进行分片
-
-如果您对一个空集合进行分片操作：
-
-- 如果没有为空集合或不存在的集合指定区域和区域范围：
-
-  - 分片操作将创建一个空块，以覆盖片键值的整个范围。
-- 在创建初始块之后，平衡器将在块之间适当地迁移初始块，并管理后续的块分配。
-  
-- 如果已经为空集合或不存在的集合指定区域和区域范围（从MongoDB4.0.3版本起可用）：
-
-  - 分片操作会为定义的区域范围以及覆盖该片键值的整个范围的任何其他块创建空数据块，并根据区域范围执行初始数据块分配。数据块的这种初始创建和分配可以使分片设置更加快速。
-- 在初始分配之后，均衡器将管理后续的数据块分配。
+- 没有为空的或不存在的集合指定区域和区域范围：
+  - 分片操作创建一个空块以覆盖分片键值的整个范围。
+  - 在创建初始块后，平衡器会根据需要在分片之间迁移初始块，并管理未来的块分布。
+- 为空集合或不存在的集合指定区域和区域范围（从 MongoDB 4.0.3 开始可用）
+  - 分片操作为定义的区域范围创建空块以及任何其他块以覆盖分片键值的整个范围，并根据区域范围执行初始块分布。这种块的初始创建和分布允许更快地设置分区分片。
+  - 在初始分配之后，平衡器管理接下来的块分配。
 
 
 
-另请参阅
-
-要了解如何部署分片集群和实现范围分片，请参阅[部署分片集群](https://docs.mongodb.com/v4.2/tutorial/deploy-shard-cluster/sharding-procedure-setup)。
 
 
+原文链接：https://www.mongodb.com/docs/manual/core/ranged-sharding/
 
-原文链接：https://docs.mongodb.com/v4.2/core/ranged-sharding/
+译者：陆文龙
 
-译者：刘翔
 
-校对：牟天垒
-
- 参见
-
-原文 - [Ranged Sharding]( https://docs.mongodb.com/manual/core/ranged-sharding/ )
 
