@@ -1,13 +1,20 @@
- Back Up Cluster Metadata
+# 备份集群元数据
 
- ！本页翻译征集中！
+此过程关闭配置服务器`mongod`的实例 ，以便创建分片集群元数据的备份。集群的配置服务器存储集群的所有元数据，最重要的是从块到 分片的映射。
 
-请点击页面上方 EDIT THIS PAGE 参与翻译。
-详见：
-[贡献指南]( https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/CONTRIBUTING.md )、
-[原文链接](  https://docs.mongodb.com/manual/tutorial/backup-sharded-cluster-metadata/  )。
+当您执行此过程时，集群保持运行 。
 
- 参见
+1. 暂时禁用集群平衡器进程。
+2. 关闭配置数据库之一。
+3. 创建数据文件的完整副本（即由`dbPath`配置实例的选项指定的路径。）
+4. 重启原来的配置服务器。
+5. 重新启用平衡器以允许集群恢复正常的平衡操作。
 
-原文 - [Back Up Cluster Metadata]( https://docs.mongodb.com/manual/tutorial/backup-sharded-cluster-metadata/ )
+
+
+当三个配置服务器之一不可用时，集群无法拆分任何块，也无法在分片之间迁移块。您的应用程序将能够将数据写入集群。
+
+原文 -https://docs.mongodb.com/manual/tutorial/backup-sharded-cluster-metadata/
+
+译者：陆文龙
 
