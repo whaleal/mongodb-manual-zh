@@ -389,9 +389,6 @@ mongosh可作为RHEL和Amazon Linux 2的yum软件包提供。
 
 
 
-
-
 翻译：韩鹏帅
 
 原文：[Install mongosh](https://www.mongodb.com/docs/mongodb-shell/install/)
-
