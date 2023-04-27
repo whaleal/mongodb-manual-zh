@@ -108,4 +108,4 @@ mongosh支持以下KMS提供程序与客户端字段级加密一起使用：
 
 翻译：韩鹏帅
 
-原文：Run Aggregation Pipelines
+原文：[Run Aggregation Pipelines](https://www.mongodb.com/docs/mongodb-shell/run-agg-pipelines/)
