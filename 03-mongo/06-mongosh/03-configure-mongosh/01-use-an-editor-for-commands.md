@@ -248,34 +248,3 @@ db.music.insertMany( albums )
 翻译：韩鹏帅
 
 原文：[Use an Editor for Commands](https://www.mongodb.com/docs/mongodb-shell/reference/editor-mode/)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
