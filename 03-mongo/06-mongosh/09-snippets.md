@@ -50,8 +50,6 @@ A`snippet`是脚本，打包后存放在registry中，方便分享和复用。
 
 
 
-
-
 翻译：韩鹏帅
 
 原文：[Snippets](https://www.mongodb.com/docs/mongodb-shell/snippets/)
