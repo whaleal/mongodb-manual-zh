@@ -122,7 +122,7 @@
 
 
 
-![mongdb支持的安全特性及解决的安全漏洞表](/Users/jinmu/Desktop/mongodb-manual-zh/images/features-2.png)
+![mongdb支持的安全特性及解决的安全漏洞表](../../../../images/features-2.png)
 
 
 

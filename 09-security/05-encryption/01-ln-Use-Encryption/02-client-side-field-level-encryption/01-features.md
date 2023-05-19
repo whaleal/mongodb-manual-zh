@@ -68,7 +68,7 @@
 
 下图列出了 MongoDB 支持的安全特性以及它们解决的潜在安全漏洞：
 
-![mongdb支持的安全特性及解决的安全漏洞表](/Users/jinmu/Desktop/mongodb-manual-zh/images/features-01.png)
+![mongdb支持的安全特性及解决的安全漏洞表](../../../../images/features-01.png)
 
 > 重要的:
 >
