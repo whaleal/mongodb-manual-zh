@@ -12,7 +12,7 @@ MongoDB 支持在使用客户端字段级加密时自动加密读写操作中的
 
 下图显示了客户端应用程序和驱动程序执行字段级加密数据写入所采取的步骤：
 
-![加密写入步骤图](/Users/jinmu/Desktop/mongodb-manual-zh/images/Automatic-Encryption-01.png)
+![加密写入步骤图](../../../../../images/Automatic-Encryption-01.png)
 
 
 
@@ -26,7 +26,7 @@ MongoDB 支持在使用客户端字段级加密时自动加密读写操作中的
 
 下图显示了客户端应用程序和驱动程序查询和解密字段级加密数据所采取的步骤：
 
-![加密读取步骤图](/Users/jinmu/Desktop/mongodb-manual-zh/images/Automatic-Encryption-02.png)
+![加密读取步骤图](../../../../../images/Automatic-Encryption-02.png)
 
 ## 启用自动客户端字段级加密
 
