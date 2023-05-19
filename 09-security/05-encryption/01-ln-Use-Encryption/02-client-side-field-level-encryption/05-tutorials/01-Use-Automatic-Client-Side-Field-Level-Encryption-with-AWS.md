@@ -187,7 +187,14 @@ dek_id := "abc123"
    var keyVaultClient = new MongoClient(connectionString);
    var indexOptions = new CreateIndexOptions<BsonDocument>();
    indexOptions.Unique = true;
-   indexOptions.PartialFilterExpression = new BsonDocument { { "keyAltNames", new BsonDocument { { "$exists", new BsonBoolean(true) } } } };
+   indexOptions.PartialFilterExpression = new BsonDocument 
+   { 
+   	{
+     	"keyAltNames", new BsonDocument 
+   		{ { "$exists", new BsonBoolean(true) } } 
+   	} 
+   		
+   };
    var builder = Builders<BsonDocument>.IndexKeys;
    var indexKeysDocument = builder.Ascending("keyAltNames");
    var indexModel = new CreateIndexModel<BsonDocument>(indexKeysDocument, indexOptions);

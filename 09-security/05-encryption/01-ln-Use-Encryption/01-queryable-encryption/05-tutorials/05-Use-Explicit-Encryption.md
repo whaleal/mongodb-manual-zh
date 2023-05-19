@@ -71,7 +71,7 @@
 
    选择与您首选的 MongoDB 驱动程序对应的选项卡：
 
-   ```
+   ```c#
    var connectionString = "<Your MongoDB URI>";
    var keyVaultNamespace = CollectionNamespace.FromFullName("encryption.__keyVault");
    var keyVaultClient = new MongoClient(connectionString);
@@ -79,7 +79,11 @@
    {
        Unique = true,
        PartialFilterExpression = new BsonDocument
-           {{"keyAltNames", new BsonDocument {{"$exists", new BsonBoolean(true)}}}}
+           {
+           	{"keyAltNames", new BsonDocument {
+           		{"$exists", new BsonBoolean(true)}
+             }}
+           }
    };
    var builder = Builders<BsonDocument>.IndexKeys;
    var indexKeysDocument = builder.Ascending("keyAltNames");
@@ -102,7 +106,7 @@
 
      选择与您首选的 MongoDB 驱动程序对应的选项卡：
 
-     ```
+     ```c#
      var kmsProviders = new Dictionary<string, IReadOnlyDictionary<string, object>>();
      const string provider = "local";
      var localMasterKeyBase64Read = File.ReadAllText("master-key.txt");
@@ -324,7 +328,7 @@
 
    使用以下代码片段，使用启用了可查询加密的 `MongoClient`实例将加密文档插入 命名空间：`medicalRecords.patients`
 
-   ```
+   ```c#
    var patientId = 12345678;
    var medications = new BsonArray
            {
@@ -339,7 +343,12 @@
        medications,
        new EncryptOptions(algorithm: "Unindexed", keyId: dataKeyId2),
        CancellationToken.None);
-   collection.InsertOne(new BsonDocument { { "firstName", "Jon" }, { "patientId", indexedEncrypted }, { "medications", unindexedEncrypted } });
+   collection.InsertOne(new BsonDocument 
+   {
+   { "firstName", "Jon" },
+   { "patientId", indexedEncrypted }, 
+   { "medications", unindexedEncrypted } 
+   });
    ```
 
    插入文档时，启用了可查询加密的客户端会加密文档的字段，使其类似于以下内容：
