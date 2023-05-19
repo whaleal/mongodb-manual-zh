@@ -142,7 +142,12 @@ var client = new MongoClient(clientSettings);
        new BsonArray { "Cheese", "Grapes" },
        new EncryptOptions(algorithm: "AEAD_AES_256_CBC_HMAC_SHA_512-Random", keyId: dataKeyId),
        CancellationToken.None);
-   collection.InsertOne(new BsonDocument { { "name", encryptedName }, { "age", 83 }, { "foods", encryptedFoods } });
+   collection.InsertOne(new BsonDocument 
+   {
+   	{ "name", encryptedName }, 
+   	{ "age", 83 }, 
+   	{ "foods", encryptedFoods } 
+   });
    ```
 
 4. 检索文档和解密字段
