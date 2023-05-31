@@ -37,8 +37,8 @@
        	"github-buttons": {
             "buttons": [
               {
-                "user": "JinMuInfo",
-                "repo": "MongoDB-Manual-zh",
+                "user": "whaleal",
+                "repo": "mongodb-manual-zh",
                 "type": "star",
                 "count": true,
                 "size": "small"
@@ -46,7 +46,7 @@
             ]
         },
         "edit-link": {
-            "base": "https://github.com/JinMuInfo/MongoDB-Manual-zh/tree/master",
+            "base": "https://github.com/whaleal/mongodb-manual-zh/tree/dev",
             "label": "Edit This Page"
         },
 	"tbfed-pagefooter": {
@@ -55,15 +55,15 @@
           "modify_format": "YYYY-MM-DD HH:mm:ss"
         },
 	"github": {
-		"url": "https://github.com/JinMuInfo/MongoDB-Manual-zh"
+		"url": "https://github.com/whaleal/mongodb-manual-zh"
 		},
 	 "page-toc-button": {
             "maxTocDepth": 4,
             "minTocSize": 4
           },
     "insert-logo": {
-             "url": "https://docs.jinmu.info/images/logo/MongoLogoBlack.png",
-             "style": "background: none; max-height: 30px; min-height: 30px"
+             "url": "https://raw.githubusercontent.com/whaleal/whaleal.github.io/main/images/whaleal_logo1.png",
+             "style": "background: none; max-height: 73px; min-height: 73px"
            }
 	}
 

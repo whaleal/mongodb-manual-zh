@@ -1,147 +1,142 @@
- 安全检查列表
+# 安全检查表
 
-MongoDB还为如何保护MongoDB部署提供了一个建议的操作列表即[安全检查列表]((https://docs.mongodb.com/manual/administration/security-checklist/))
+本文档提供了一个安全措施列表，您应该实施这些措施来保护您的 MongoDB 安装。该清单并非详尽无遗。
 
-*最后更新于：2019-12-05*
+## 生产前检查清单/注意事项
 
-这个文档提供了一个保护MongoDB应该实施的安全措施列表。这个列表并不是完整无遗的。
+* 启用访问控制并强制执行身份验证
 
-**生产环境前的检查列表/注意事项**
+  * 启用访问控制并指定身份验证机制
 
+    MongoDB 社区支持多种[身份验证机制](https://www.mongodb.com/docs/manual/core/authentication/#std-label-security-authentication-mechanisms)，客户端可以使用这些机制来验证其身份:
 
- ➤启动访问控制和强制身份认证
+    * [SCRAM](https://www.mongodb.com/docs/manual/core/security-scram/#std-label-authentication-scram)（*默认*）
+    * [x.509 证书身份验证。](https://www.mongodb.com/docs/manual/core/security-x.509/#std-label-security-auth-x509)
 
+    除了上述机制外，MongoDB Atlas 和 MongoDB Enterprise 还支持以下机制：
 
-启动访问控制和指定身份认证的机制。你可以使用MongoDB的SCRMA或者x.509身份认证机制或者集成你已经使用的Kerberos/LDAP基础设施。身份认证要求所有的客户端和服务端在连接到系统之前提供有效的凭证。
+    * [LDAP 代理身份验证](https://www.mongodb.com/docs/manual/core/authentication/#std-label-security-auth-ldap)，以及
+    * [Kerberos 身份验证。](https://www.mongodb.com/docs/manual/core/authentication/#std-label-security-auth-kerberos)
 
-请参阅[身份认证](https://docs.mongodb.com/manual/core/authentication/)和[开启访问控制](https://docs.mongodb.com/manual/tutorial/enable-authentication/)。
+    这些机制允许 MongoDB 集成到您现有的身份验证系统中。
 
+  > 提示:
+  >
+  > **也可以看看**:
+  >
+  > * [验证](https://www.mongodb.com/docs/manual/core/authentication/)
+  > * [启用访问控制](https://www.mongodb.com/docs/manual/tutorial/enable-authentication/)
 
- ➤ 配置基于角色的访问控制
+* 配置基于角色的访问控制
 
+  * **先**创建[用户管理员](https://www.mongodb.com/docs/manual/tutorial/configure-scram-client-authentication/#std-label-create-user-admin) ，再创建其他用户。为访问系统的每个人/应用程序创建一个唯一的 MongoDB 用户。
 
-**首先**创建一个管理员用户，然后再创建其他的用户。为每一人/应用程序创建唯一的用户以访问系统。
+  * 遵循最小特权原则。创建定义一组用户所需的确切访问权限的角色。然后创建用户并仅向他们分配执行操作所需的角色。用户可以是个人或客户端应用程序。
 
+    > 笔记:
+    >
+    > 一个用户可以拥有跨不同数据库的权限。如果用户需要多个数据库的权限，请创建一个具有授予适用数据库权限的角色的用户，而不是在不同的数据库中多次创建用户。
 
-遵循最小权限原则。为一组用户创建他们所需的确切访问权限的角色。然后创建用户并且仅为他们分配执行操作所需的角色。一个用户可以是个人或者一个客户端程序。
+  > 提示:
+  >
+  > ** 也可以看看：**
+  >
+  > - [基于角色的访问控制](https://www.mongodb.com/docs/manual/core/authorization/)
+  > - [管理用户和角色](https://www.mongodb.com/docs/manual/tutorial/manage-users-and-roles/)
 
->提示：
->
->一个用户在不同数据库可以拥有不同的权限。如果一个用户要求在多个数据库的权限，使用有多个可授予适当数据库权限的角色来创建一个单一用户，而不是给不同的数据库创建多个用户。
+* 加密通信 (TLS/SSL)
 
+  * 将 MongoDB 配置为对所有传入和传出连接使用 TLS/SSL。使用 TLS/SSL 加密 MongoDB 部署组件之间以及所有应用程序和 MongoDB 之间的[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)通信。[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)
 
-请参阅[基于角色的访问控制](https://docs.mongodb.com/manual/core/authorization/)和[用户与角色管理](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/)。
+    MongoDB 使用本机 TLS/SSL 操作系统库：
 
+    | 平台         | TLS/SSL 库          |
+    | :----------- | :------------------ |
+    | 视窗         | 安全通道 (Schannel) |
+    | 操作系统/BSD | 打开SSL             |
+    | 苹果系统     | 安全运输            |
 
- ➤ 加密通信（TLS/SSL）
+  > 提示:
+  >
+  > **也可以看看：**
+  >
+  > [为 TLS/SSL配置`mongod`和。`mongos`](https://www.mongodb.com/docs/manual/tutorial/configure-ssl/)
 
+* 加密和保护数据
 
-配置MongoDB为所有传入和传出连接使用TLS/SSL。使用TLS/SSL加密MongoDB部署的[`mongod`](https://docs.mongodb.com/manual/reference/program/mongod/bin.mongod)和[`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/bin.mongos)组件以及所有应用程序和MongoDB之间的通信。
+  * 您可以使用 WiredTiger 存储引擎的本机静态[加密对存储层中的数据进行加密。](https://www.mongodb.com/docs/manual/core/security-encryption-at-rest/)
+  * 如果您未使用 WiredTiger 的静态加密，则应使用文件系统、设备或物理加密（例如 dm-crypt）在每个主机上对 MongoDB 数据进行加密。您还应该使用文件系统权限来保护 MongoDB 数据。MongoDB数据包括数据文件、配置文件、审计日志和密钥文件。
+  * 在通过线路将数据传输到服务器之前，您可以使用[可查询加密](https://www.mongodb.com/docs/manual/core/queryable-encryption/#std-label-qe-manual-feature-qe)或[客户端字段级加密来加密文档应用程序端中的字段。](https://www.mongodb.com/docs/manual/core/csfle/#std-label-manual-csfle-feature)
+  * 将日志收集到中央日志存储。这些日志包含数据库身份验证尝试，包括源 IP 地址。
 
-从4.0版本开始，MongoDB使用操作系统原生的TLS/SSL库：
+* 限制网络曝光
 
-| 操作系统  | 使用的系统库     |
-| :-------- | ---------------- |
-| Linux/BSD | OpenSSL          |
-| macOS     | Secure Transport |
+  * 确保 MongoDB 在受信任的网络环境中运行，并配置防火墙或安全组来控制 MongoDB 实例的入站和出站流量。
+  * 禁用直接 SSH root 访问。
+  * 只允许受信任的客户端访问 MongoDB 实例可用的网络接口和端口。
 
-> 注意
->
-> 从4.0版本开始，在支持TLS1.1+的系统上，MongoDB会禁用TLS1.0加密。更多详细信息，请参阅 [禁用TLS1.0](https://docs.mongodb.com/manual/tutorial/configure-ssl/).
+  >提示:
+  >
+  >**也可以看看:**
+  >
+  >- [网络和配置强化](https://www.mongodb.com/docs/manual/core/security-hardening/)
+  >- 配置[`net.bindIp`](https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-net.bindIp)设置
+  >- 配置[`security.clusterIpSourceAllowlist`](https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-security.clusterIpSourceAllowlist)设置
+  >- 命令的 authenticationRestrictions 字段 指定[每个](https://www.mongodb.com/docs/manual/reference/method/db.createUser/#std-label-db-createUser-authenticationRestrictions)[`db.createUser()`](https://www.mongodb.com/docs/manual/reference/method/db.createUser/#mongodb-method-db.createUser)用户的 IP 允许列表。
 
-请[参阅使用TLS/SSL配置mongod和mongos](https://docs.mongodb.com/manual/tutorial/configure-ssl/)
+* 审核系统活动
 
+  * 跟踪对数据库配置和数据的访问和更改。 [MongoDB 企业版](http://www.mongodb.com/products/mongodb-enterprise-advanced?tck=docs_server) 包括一个系统审计工具，可以记录 MongoDB 实例上的系统事件（包括用户操作和连接事件）。这些审计记录允许进行取证分析，并允许管理员进行适当的控制。您可以设置过滤器以仅记录特定事件，例如身份验证事件。
 
- ➤加密和保护数据
+  >提示:
+  >
+  >**也可以看看：**
+  >
+  >- [审计](https://www.mongodb.com/docs/manual/core/auditing/)
+  >- [配置审计](https://www.mongodb.com/docs/manual/tutorial/configure-auditing/)
 
-从MongoDB 3.2企业版开始，你可以使用WiredTiger存储引擎的本地[静态加密](https://docs.mongodb.com/manual/core/security-encryption-at-rest/)来加密存储层的数据。
+* 使用专用用户运行 MongoDB
 
+  * 使用专用操作系统用户帐户运行 MongoDB 进程。确保该帐户具有访问数据的权限，但没有不必要的权限。
 
-如果你没有使用WiredTiger的静态加密，MongoDB的数据应该在每台主机上使用文件系统、设备或物理加密（例如dm-crypt）。使用文件系统权限保护MongoDB数据。MongoDB数据包括数据文件、配置文件、审计日志以及秘钥文件。
+  > 提示:
+  >
+  > **也可以看看：**
+  >
+  > [安装 MongoDB](https://www.mongodb.com/docs/manual/installation/)
 
-将日志收集到一个中央日志存储区。这些日志包含了DB身份认证尝试及其源IP地址.
+* 使用安全配置选项运行 MongoDB
 
+  * MongoDB 支持为某些服务器端操作 执行 JavaScript 代码：[`mapReduce`](https://www.mongodb.com/docs/manual/reference/command/mapReduce/#mongodb-dbcommand-dbcmd.mapReduce)、、、和。如果您不使用这些操作，请使用该选项禁用服务器端脚本。[`$where`](https://www.mongodb.com/docs/manual/reference/operator/query/where/#mongodb-query-op.-where)[`$accumulator`](https://www.mongodb.com/docs/manual/reference/operator/aggregation/accumulator/#mongodb-group-grp.-accumulator)[`$function`](https://www.mongodb.com/docs/manual/reference/operator/aggregation/function/#mongodb-expression-exp.-function)[`--noscripting`](https://www.mongodb.com/docs/manual/reference/program/mongod/#std-option-mongod.--noscripting)
+  * 保持输入验证启用。MongoDB 通过[`net.wireObjectCheck`](https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-net.wireObjectCheck)设置默认启用输入验证。这确保实例存储的所有文档 [`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)都是有效的[BSON 。](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-BSON)
 
- ➤ 限制网络暴露
+* 索取安全技术实施指南（如适用）
 
+  * 安全技术实施指南 (STIG) 包含美国国防部内部部署的安全指南。MongoDB Inc. 提供其 STIG，基于 [要求](http://www.mongodb.com/lp/contact/stig-requests).
 
-确保MongoDB运行在受信任的网络环境中并且配置防火墙或者安全组来控制MongoDB实例的入站和出站流量。
+* 考虑安全标准合规性
 
-只允许受信任的客户端访问MongoDB实例所在的网络接口和端口。例如，使用白名单机制允许受信任的IP地址访问。
+  * 对于需要 HIPAA 或 PCI-DSS 合规性的应用，请参阅[MongoDB 安全参考架构](https://www.mongodb.com/collateral/mongodb-security-architecture) 了解有关如何使用 MongoDB 的关键安全功能构建合规应用程序基础设施的更多信息。
 
-> 注意
->
-> 从MongoDB 3.6开始，MongoDB的二进制文件：[`mongod`](https://docs.mongodb.com/manual/reference/program/mongod/bin.mongod)和[`mongos`](https://docs.mongodb.com/manual/reference/program/mongos/bin.mongos)会默认绑定在`localhost`上。MongoDB 2.6到3.4版本，只有官方MongoDB RPM（Red Hat、CentOS、Fedora Linux和衍生品）和DEB（Debian、Ubuntu和衍生品）包中的二进制文件默认绑定在localhost。了解更多关于这个改变的信息，请参阅[localhost绑定兼容变更](https://docs.mongodb.com/manual/release-notes/3.6-compatibility/bind-ip-compatibility)
+## 定期/持续的生产检查
 
-请参阅：
+* 定期检查[MongoDB 产品 CVE](https://www.mongodb.com/alerts)并升级您的产品。
+* 咨询的[MongoDB 生命周期结束日期](https://www.mongodb.com/support-policy)并根据需要升级您的 MongoDB 安装。一般来说，尽量保持最新版本。
+* 确保您的信息安全管理系统策略和程序扩展到您的 MongoDB 安装，包括执行以下操作：
+  - 定期为您的机器应用补丁。
+  - 查看策略/程序更改，尤其是对网络规则的更改，以防止无意中将 MongoDB 暴露在 Internet 上。
+  - 查看 MongoDB 数据库用户并定期轮换他们。
 
-- [网络和配置加固](https://docs.mongodb.com/manual/core/security-hardening/)
-- [`net.bindIp`](https://docs.mongodb.com/manual/reference/configuration-options/net.bindIp)配置设定
-- [`security.clusterIpSourceWhitelist`](https://docs.mongodb.com/manual/reference/configuration-options/security.clusterIpSourceWhitelist)配置设定
-- [authenticationRestrictions](https://docs.mongodb.com/manual/reference/method/db.createUser/db-createuser-authenticationrestrictions)为每个用户指定IP白名单
+## 报告可疑的安全漏洞
 
-禁用直接SSH root访问。
+如果您怀疑您在任何 MongoDB 产品中发现了安全漏洞，请通过 MongoDB 报告该问题[错误提交表格](https://www.mongodb.com/security).
 
 
- ➤系统活动审计
 
 
-跟踪对数据库配置和数据的访问和更改。[MongoDB企业版](http://www.mongodb.com/products/mongodb-enterprise-advanced?jmp=docs)包含了一个系统审计工具，可以记录MongoDB实例上的系统事件（例如用户操作、连接事件）。这些审计记录使审查分析得以进行并且允许管理员去验证适当的控制。可以设置过滤器来记录特定的事件，例如身份认证事件。
 
-请参阅[Auditing](https://docs.mongodb.com/manual/core/auditing/) 和[Configure Auditing](https://docs.mongodb.com/manual/tutorial/configure-auditing/)
 
 
- ➤使用专用用户运行MongoDB
+译者：韩鹏帅
 
-
-使用一个专用的操作系统账户运行MongoDB进程。确保这个账户除了访问数据，没有不必要的权限。
-
-关于运行MongoDB的更多信息，请参阅[MongoDB安装](https://docs.mongodb.com/manual/installation/)
-
-
- ➤ 使用安全的配置选项运行MongoDB
-
-
-MongoDB支持使用JavaScript代码对服务器端执行特定的操作，包括：[`mapReduce`](https://docs.mongodb.com/manual/reference/command/mapReduce/dbcmd.mapReduce)和[`$where`](https://docs.mongodb.com/manual/reference/operator/query/where/op._S_where)。如果你不使用这些操作，在命令行使用[`--noscripting`](https://docs.mongodb.com/manual/reference/program/mongod/cmdoption-mongod-noscripting)选项来禁用服务器端脚本。
-
-确保启用了输入验证。MongoDB默认通过[`net.wireObjectCheck`](https://docs.mongodb.com/manual/reference/configuration-options/net.wireObjectCheck)设置启用输入验证。这确保了[`mongod`](https://docs.mongodb.com/manual/reference/program/mongod/bin.mongod)实例存储的所有文档都是有效的[BSON](https://docs.mongodb.com/manual/reference/glossary/term-bson)。
-
-请参阅：[网络和配置加固](https://docs.mongodb.com/manual/core/security-hardening/)
-
-
- ➤索取安全技术实施指南（如适用）
-
-
-安全技术实施指南（STIG）包含美国国防部内部部署的安全指南。MongoDB公司为需要的情况提供了它的STIG。请[索取一个副本](http://www.mongodb.com/lp/contact/stig-requests)以获取更多信息。
-
-
- ➤考虑安全标准的合规性
-
-
-对于需要遵循HIPAA或者PCI-DSS的应用程序，请参看[MongoDB安全参考架构](https://www.mongodb.com/collateral/mongodb-security-architecture)以了解更多关于如何使用关键安全功能来构建合规的应用程序基础设施。
-
-
- 定期/持续的产品检查
-
-
-定期检查[MongoDB产品通用漏洞披露](https://www.mongodb.com/alerts)并且更新你的产品。
-
-查询[MongoDB的生命周期终止日期](https://www.mongodb.com/support-policy)并升级你的MongoDB。一般来说，尽量使用最新的版本。
-
-确保你的信息安全管理的系统策略和程序在你安装的MongoDB上生效，包括执行以下操作：
-
-- 定期对你的设备打补丁并且检查操作指南
-- 检查策略及流程变更，尤其是网络规则的更改，以防无意中将MongoDB暴露在互联网。
-- 检查MongoDB数据库用户并定期进行轮换。
-
-原文链接：https://docs.mongodb.com/manual/security/
-
-https://docs.mongodb.com/manual/administration/security-checklist/
-
-译者：傅立
-
-
- 参见
-
-原文 - [Security Checklist]( https://docs.mongodb.com/manual/administration/security-checklist/ )
-
+原文：[Security Checklist](https://www.mongodb.com/docs/manual/administration/security-checklist/)
