@@ -1,13 +1,16 @@
- Config Server Administration
+# 分片集群配置服务器管理
 
- ！本页翻译征集中！
+- 更换配置服务器
 
-请点击页面上方 EDIT THIS PAGE 参与翻译。
-详见：
-[贡献指南]( https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/CONTRIBUTING.md )、
-[原文链接](  https://docs.mongodb.com/manual/administration/sharded-cluster-config-servers/  )。
+  ​	替换配置服务器副本集中的配置服务器
 
- 参见
+>## TIP
+>
+>### 也可以看看:
+>
+>备份恢复分片集群
 
-原文 - [Config Server Administration]( https://docs.mongodb.com/manual/administration/sharded-cluster-config-servers/ )
+原文 - https://docs.mongodb.com/manual/administration/sharded-cluster-config-servers/ 
+
+译者：陆文龙
 

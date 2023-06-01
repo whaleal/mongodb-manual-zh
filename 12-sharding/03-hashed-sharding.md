@@ -1,106 +1,140 @@
- 哈希分片
+# 哈希分片
 
-哈希分片使用[哈希索引](https://docs.mongodb.com/v4.2/core/index-hashed/index-hashed-index)来在分片集群中对数据进行划分。哈希索引计算某一个字段的哈希值作为索引值，这个值被用作片键。
+散列分片使用单个字段散列索引或复合散列索引（*4.4 中的新增*功能）作为分片键来跨分片集群对数据进行分区。
 
-![Diagram of the hashed based segmentation.](https://docs.mongodb.com/v4.2/_images/sharding-hash-based.bakedsvg.svg)
+- 在单个字段散列索引上分片
 
-哈希分片以减少[定向操作和增加广播操作](https://docs.mongodb.com/v4.2/core/sharded-cluster-query-router/sharding-query-isolation)作为代价，分片集群内的数据分布更加均衡。在哈希之后，拥有比较“接近”的片键的文档将不太可能会分布在相同的数据库或者分片上。mongos更有可能执行广播操作来完成一个给定的范围查询。相对的，mongos可以将等值匹配的查询直接定位到单个分片上。
+  哈希分片以减少Targeted Operations 与 Broadcast Operations为代价，在分片集群中提供更均匀的数据分布 。散列后，具有“关闭”分片键值的文档不太可能位于同一块或分片上 - 更有 `mongos`可能执行 广播操作来完成给定的范围查询。 `mongos`可以将具有相等匹配的查询定位到单个分片。
 
-> 注意：
+  ![基于散列的分割图。](../images/sharding-hash-based.bakedsvg.svg)
+
+  哈希索引计算单个字段的哈希值作为索引值；该值用作您的分片键。
+
+- 在复合哈希索引上分片
+
+  MongoDB 4.4 添加了对使用单个 散列字段创建复合索引的支持。要创建复合散列索引，请在创建索引时指定`hashed`为任何单个索引键的值。复合哈希索引计算复合索引中单个字段的哈希值；该值与索引中的其他字段一起用作您的分片键。复合散列分片支持区域分片等功能，其中前缀（即第一个）非散列字段或字段支持区域范围，而散列字段支持分片数据的更均匀分布。复合哈希分片还支持带有哈希前缀的分片键，用于解决与单调递增字段相关的数据分布问题。
+
+>## 提示
 >
-> 当使用哈希索引来解析查询时，MongoDB会自动计算哈希值。应用程序**不需要**计算哈希。
+>MongoDB 在使用散列索引解析查询时自动计算散列。应用程序不需要**计算**哈希值。
 
->  警告
+
+
+
+
+>## 警告
 >
-> MongoDB哈希索引在哈希计算之前会将浮点数截断为64位整数。 例如，哈希索引会将为具有`2.3`、`2.2`和`2.9`的值的字段存储为相同的值。 为了避免冲突，请勿对不能可靠地转换为64位整数（然后再返回到浮点）的浮点数使用哈希索引。 MongoDB哈希索引不支持大于2^53的浮点值。
->
-> 如果想查看一个键的哈希值是什么，请参考 [`convertShardKeyToHashed()`](https://docs.mongodb.com/v4.2/reference/method/convertShardKeyToHashed/convertShardKeyToHashed)。
-
-|                                                              |                                                              |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [[1\]](https://docs.mongodb.com/v4.2/core/hashed-sharding/id1) | 从4.0版开始，mongo shell提供了`convertShardKeyToHashed（）`方法。 此方法使用与哈希索引相同的哈希函数，可用于查看键的哈希值。 |
+>MongoDB`hashed`索引在散列之前将浮点数截断为 64 位整数。例如，`hashed`索引将为包含值`2.3`、`2.2`和`2.9`的字段存储相同的值。为防止冲突，请勿`hashed`对无法可靠地转换为 64 位整数（然后再转换回浮点数）的浮点数使用索引。MongoDB`hashed`索引不支持大于 2 53的浮点值。
 
 
 
- 哈希分片的片键
+从 4.0 版开始，`mongosh`提供`convertShardKeyToHashed()`方法。此方法使用与散列索引相同的散列函数，可用于查看某个键的散列值。
 
-您选择作为哈希片键的字段应具有良好的[基数](https://docs.mongodb.com/v4.2/core/sharding-shard-key/shard-key-range)或者该字段包含大量不同的值。 哈希分片非常适合选取具有像`ObjectId`值或时间戳那样[单调](https://docs.mongodb.com/v4.2/core/sharding-shard-key/shard-key-monotonic)更改的字段作为片键。 一个很好的例子是默认的`_id`字段，假设它仅包含`ObjectID`值（而非用户自定义的`_id`）。
+## 散列分片片键
 
-要使用哈希片键对集合进行分片，请参阅 [对集合进行分片](https://docs.mongodb.com/v4.2/tutorial/deploy-shard-cluster/deploy-hashed-sharded-cluster-shard-collection)。
-
-
-
- 哈希分片 VS 范围分片
-
-给定一个使用单调递增的值`X`作为片键的集合，使用范围分片会导致插入数据的分布类似于下面这样：
-
-![Diagram of poor shard key distribution due to monotonically increasing or decreasing shard key](https://docs.mongodb.com/v4.2/_images/sharded-cluster-monotonic-distribution.bakedsvg.svg)
+您选择作为散列分片键的字段应该具有良好的 基数，或大量不同的值。散列键非常适合具有 单调更改字段（如ObjectId值或时间戳）的分片键。一个很好的例子是默认`_id`字段，假设它只包含ObjectId值。
 
 
 
-由于`X`的值始终在增加，因此具有`maxKey`(上限)的数据块将接收大多数传入的写操作。 这将插入操作限制在只能定向到包含此块的单个分片，从而减少或消除了分片集群中分布式写入的优势。
+## 哈希与远程分片
 
-通过在`X`上使用哈希索引，插入的分布将类似于下面这样：
+给定一个使用单调递增值`X`作为分片键的集合，使用范围分片会导致传入插入的分布类似于以下内容：
 
-![Diagram of hashed shard key distribution](https://docs.mongodb.com/v4.2/_images/sharded-cluster-hashed-distribution.bakedsvg.svg)
-
-由于现在数据分布更加均匀，因此可以在整个集群中更高效地分布式插入数据。
+![由于分片键单调递增或单调递减导致的分片键分布不佳的示意图](../images/sharded-cluster-monotonic-distribution.bakedsvg.svg)
 
 
 
- 对一个集合进行分片
+由于 的值`X`始终在增加，因此上限为maxKey的块接收大多数传入写入。这将插入操作限制为包含此块的单个分片，从而减少或消除了分片集群中分布式写入的优势。
 
-使用 [`sh.shardCollection()`](https://docs.mongodb.com/v4.2/reference/method/sh.shardCollection/sh.shardCollection) 方法，指定集合的完整命名空间以及作为[片键](https://docs.mongodb.com/v4.2/reference/glossary/term-shard-key)的目标[哈希索引](https://docs.mongodb.com/v4.2/core/index-hashed/)。
+通过在 上使用散列索引`X`，插入的分布类似于以下内容：
 
-```
+![散列分片键分布图](../images/sharded-cluster-hashed-distribution.bakedsvg.svg)
+
+
+
+由于数据现在分布得更均匀，因此插入可以有效地分布在整个集群中。
+
+## 分片集合
+
+使用`sh.shardCollection()`方法，指定集合的完整命名空间和目标散列索引以使用shard key 。
+
+```shell
 sh.shardCollection( "database.collection", { <field> : "hashed" } )
 ```
 
-> 重要
+
+
+要在复合散列索引上分片集合 ，请指定集合的完整名称空间和目标复合散列索引以用作分片键：
+
+```shell
+sh.shardCollection(
+  "database.collection",
+  { "fieldA" : 1, "fieldB" : 1, "fieldC" : "hashed" }
+)
+```
+
+
+
+>## 重要的
 >
-> - 一旦对某个集合进行分片后，片键的选择是不可变的。 也就是说，您不能再为该集合选择其他的片键。
-> - 从MongoDB 4.2开始，除非片键字段是不可变的`_id`字段，否则您可以更新文档的片键值。 有关更新片键的详细信息，请参阅[更改文档的片键值](https://docs.mongodb.com/v4.2/core/sharding-shard-key/update-shard-key)。在MongoDB 4.2以前的版本，片键是不可变的。
+>- 从 MongoDB 5.0 开始，您可以通过更改集合的分片键来重新分片集合。
+>- 从 MongoDB 4.4 开始，您可以通过向现有分片键添加一个或多个后缀字段来优化分片键。
+>- 在 MongoDB 4.2 及更早版本中，分片键的选择在分片后无法更改。
 
 
 
- 对一个已有数据的集合进行分片
+### 分片填充集合
 
-如果您使用哈希片键对一个已经包含数据的集合进行分片操作：
+如果您使用散列分片键分片填充的集合：
 
-- 分片操作将创建初始数据块，以覆盖片键值的整个范围。 创建的数据块数取决于[配置的数据块大小](https://docs.mongodb.com/v4.2/core/sharding-data-partitioning/sharding-chunk-size)。
-- 在初始数据块创建之后，均衡器会在分片上适当地迁移这些初始数据块，并管理后续的数据块分配。
+- 分片操作创建一个初始块以覆盖所有分片键值。
+- 在初始块创建之后，平衡器在需要平衡数据时移动初始块的范围。
+
+### 分片空集合
+
+从 MongoDB 4.0.3 开始，如果已经为集合定义了区域和区域范围，则分片集合操作可以为空的或不存在的集合执行初始块创建和分发。块的初始创建和分发允许更快地设置分区分片。在初始分配之后，平衡器照常管理块分配。
+
+在单字段散列分片键上分片空集合
+
+- 没有为空的或不存在的集合指定区域和区域范围：
+  - 分片操作创建空块以覆盖分片键值的整个范围并执行初始块分配。默认情况下，该操作为每个分片创建 2 个块并跨集群迁移。您可以使用`numInitialChunks` 选项指定不同数量的初始块。这种块的初始创建和分配允许更快地设置分片。
+  - 在初始分配之后，平衡器管理接下来的块分配。
+- 为空集合或不存在的集合指定区域和区域范围（从 MongoDB 4.0.3 开始可用）：
+  - 分片操作为定义的区域范围创建空块以及任何其他块以覆盖分片键值的整个范围，并根据区域范围执行初始块分布。这种块的初始创建和分布允许更快地设置分区分片。
+  - 在初始分配之后，平衡器管理接下来的块分配。
+
+使用散列字段前缀在复合散列分片键上分片空集合
+
+如果复合散列分片键以散列字段作为前缀（即散列字段是分片键中的第一个字段）：
+
+- 没有为空的或不存在的集合指定区域和区域范围：
+  - 分片操作创建空块以覆盖分片键值的整个范围并执行初始块分配。所有非散列字段的值都`MinKey`在每个分割点。默认情况下，该操作为每个分片创建 2 个块并跨集群迁移。您可以使用 `numInitialChunks`选项指定不同数量的初始块。这种块的初始创建和分配允许更快地设置分片。
+  - 在初始分配之后，平衡器管理接下来的块分配。
+- 单个区域*的* 范围从`MinKey`到`MaxKey`指定为空或不存在的集合*，* `presplitHashedZones`选项指定给`sh.shardCollection()` ：
+  - 分片操作为定义的区域范围创建空块以及任何其他块以覆盖分片键值的整个范围，并根据区域范围执行初始块分布。这种块的初始创建和分布允许更快地设置分区分片。
+  - 在初始分配之后，平衡器管理接下来的块分配。
+
+在具有非散列前缀的复合散列分片键上分片空集合
+
+如果复合散列分片键有一个或多个非散列字段作为前缀（即散列字段不是*分*片键中的第一个字段）：
+
+- 由于没有为空或不存在的集合指定区域和区域范围，*并且* preSplitHashedZones是`false`或被省略，MongoDB 在对集合进行分片时不执行任何初始块创建或分配。
+
+- 如果没有为空集合或不存在的集合指定区域和区域范围， *并且* preSplitHashedZones，`sh.shardCollection()`/`shardCollection`会返回错误。
+
+- 为空或不存在的集合指定区域和区域范围*，并将*preSplitHashedZones选项 指定给 `sh.shardCollection()`：
+
+  - 分片操作为定义的区域范围创建空块以及任何其他块以覆盖分片键值的整个范围。
+  - 分片操作进一步细分每个范围的初始块，以便为区域中的每个分片分配相同数量的块。
+  - 这种块的初始创建和分布允许更快地设置分区分片。在初始分配之后，平衡器管理接下来的块分配。
+
+  每个区域的定义范围*必须*满足特定要求。有关要求的说明和完整示例，请参阅为空或不存在的集合预定义区域和区域范围。
 
 
 
- 对一个空集合进行分片
+原文链接：https://www.mongodb.com/docs/manual/core/hashed-sharding/
 
-如果您使用哈希片键对一个空集合进行分片操作：
-
-- 如果没有为空集合或不存在的集合指定区域和区域范围：
-
-  - 分片操作将创建空数据块，以覆盖片键值的整个范围，并执行初始数据块分配。默认情况下，该操作为每个分片创建2个数据块，并在整个集群中迁移。您可以使用`numInitialChunks`选项指定不同数量的初始块。数据块的这种初始创建和分配可以使分片设置更加快速。
-- 初始分配之后，均衡器将管理后续的数据块分配。
-  
-- 如果已经为空集合或不存在的集合指定区域和区域范围（从MongoDB4.0.3版本起可用）：
-
-  - 分片操作会为定义的区域范围以及所有其他分片创建空数据块，以覆盖片键值的整个范围，并根据区域范围执行初始数据块分配。数据块的这种初始创建和分配可以使分片设置更加快速。
-- 初始分配之后，均衡器将管理后续的数据块分配。
+译者：陆文龙
 
 
-
-另请参考：
-
-要了解如何部署分片集群和实现哈希分片，请参阅[部署分片集群](https://docs.mongodb.com/v4.2/tutorial/deploy-shard-cluster/sharding-procedure-setup)。
-
-
-
-原文链接：https://docs.mongodb.com/v4.2/core/hashed-sharding/
-
-译者：刘翔
-
-校对：牟天垒
-
- 参见
-
-原文 - [Hashed Sharding]( https://docs.mongodb.com/manual/core/hashed-sharding/ )
 
