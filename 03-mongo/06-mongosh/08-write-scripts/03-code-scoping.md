@@ -1,6 +1,6 @@
 # 代码范围
 
-当 JavaScript 加载到 时，用、和[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)定义的顶级函数和变量 被添加到全局范围。`const``var``let`
+当 JavaScript 加载到 mongosh 时，用 `const`、`var `和 `let` 定义的顶级函数和变量被添加到全局范围。
 
 考虑以下代码：
 
