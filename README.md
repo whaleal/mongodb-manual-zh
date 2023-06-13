@@ -2,6 +2,7 @@
 
 <img src="./images/logo/jinmu.png" width="310px" alt="Jinmu Logo">  
 <img src="./images/logo/mongodb.png" width="300px" alt="MongoDB Logo">  
+<img src="https://docs.whaleal.com/images/whaleal_logo.jpg" width="300px" alt="whaleal Logo"> 
 
 
 ## 项目介绍
