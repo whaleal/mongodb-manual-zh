@@ -1,7 +1,7 @@
 {
-    "title": "MongoDB 中文手册 | MongoD Manual | 中文操作手册 | 翻译 | CSDN | github | 百度 | Google | 教程 ｜ 安装配置",
+    "title": "MongoDB 中文手册 | MongoD Manual | 中文操作手册",
     "description": "MongoDB-Manual-zh",
-    "keywords": "MongoDB,Manual,中文手册,操作手册",
+    "keywords": "MongoDB,Manual,中文手册,操作手册,6.0版本,CSDN,中文手册,持续更新,社区,翻译,github,贴吧,Google,教程,安装配置",
     "author": "hbnking",
     "language": "zh-hans",
     "root": ".",
