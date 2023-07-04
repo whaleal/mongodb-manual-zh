@@ -12,9 +12,9 @@ MongoDB 是专为可扩展性，高性能和高可用性而设计的数据库。
 本项目为 MongoDB 中文手册(中文文档),与[MongoDB 英文文档](https://docs.mongodb.com/manual/)保持同步。
 
 项目地址  
-[维护地址](https://github.com/whaleal/mongodb-manual-zh)  
-[在线阅读](https://docs.whaleal.com/mongodb-manual-zh/)  
-[在线阅读备用地址](https://docs.whaleal.com/mongodb-manual-zh/docs)  
+[项目维护地址](https://github.com/whaleal/mongodb-manual-zh)  
+[在线阅读地址1](https://docs.whaleal.com/mongodb-manual-zh/docs)  
+[在线阅读地址2](https://docs.whaleal.com/mongodb-manual-zh/)  
 
 ## 项目协议
 
