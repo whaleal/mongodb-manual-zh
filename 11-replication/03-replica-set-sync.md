@@ -1,10 +1,10 @@
-# 副本集数据同步[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-sync/#replica-set-data-synchronization)
+# 副本集数据同步
 
 为了维护共享数据集的最新副本，副本集的从节点[同步](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-sync)或从其他节点复制数据。MongoDB 使用两种形式的数据同步：初始同步用完整数据集填充新节点，复制将持续更改应用到整个数据集。
 
 
 
-## 初始同步[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-sync/#initial-sync)
+## 初始同步
 
 初始同步将所有数据从副本集的一个节点复制到另一个节点。看[初始同步源选择](https://www.mongodb.com/docs/manual/core/replica-set-sync/#std-label-replica-set-initial-sync-source-selection)有关初始同步源选择标准的更多信息。
 
@@ -14,7 +14,7 @@
 
 
 
-### 逻辑初始同步过程[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-sync/#logical-initial-sync-process)
+### 逻辑初始同步过程
 
 当您执行逻辑初始同步时，MongoDB：
 
@@ -29,7 +29,7 @@
 
 
 
-### 基于文件复制的初始同步[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-sync/#file-copy-based-initial-sync)
+### 基于文件复制的初始同步
 
 *仅在 MongoDB Enterprise 中可用。*
 
@@ -47,15 +47,15 @@
 
 要了解更多信息，请参阅[没有查询谓词的不准确计数。](https://www.mongodb.com/docs/manual/reference/method/db.collection.count/#std-label-count-method-behavior-query-predicate)
 
-#### 启用基于文件复制的初始同步[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-sync/#enable-file-copy-based-initial-sync)
+#### 启用基于文件复制的初始同步
 
 要启用基于文件复制的初始同步，请将 [`initialSyncMethod`](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.initialSyncMethod)参数设置`fileCopyBased`为初始同步的目标节点。该参数只能在启动时设置。
 
-#### 行为[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-sync/#behavior)
+#### 行为
 
 基于文件副本的初始同步将`local`正在同步的节点上的数据库替换为正在*同步的*节点的`local`数据库。
 
-#### 限制[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-sync/#limitations)
+#### 限制
 
 - 在基于文件复制的初始同步期间：
   - 您不能对*同步到*的节点或*同步自*的节点运行备份。
@@ -65,7 +65,7 @@
 
 
 
-### 容错[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-sync/#fault-tolerance)
+### 容错
 
 如果执行初始同步的从节点在同步过程中遇到*非暂时性* （即持久性）网络错误，则从节点从头开始重新启动初始同步过程。
 
@@ -77,7 +77,7 @@
 
 
 
-### 初始同步源选择[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-sync/#initial-sync-source-selection)
+### 初始同步源选择
 
 初始同步源选择取决于 [`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)启动参数 的值[`initialSyncSourceReadPreference`](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.initialSyncSourceReadPreference)（*4.4 新增*）：
 
@@ -118,7 +118,7 @@
 
 如果节点在两次通过后无法选择初始同步源，它会记录一个错误并等待`1`第二次，然后重新启动选择过程。从节点可以在出现错误退出之前多次[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)重新启动初始同步源选择过程。`10`
 
-## 复制[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-sync/#replication)
+## 复制
 
 从节点在初始同步后连续复制数据。从节点从源同步中复制操作[日志](https://www.mongodb.com/docs/manual/core/replica-set-oplog/)，并在异步过程中应用这些操作。
 
@@ -130,7 +130,7 @@
 
 
 
-### 流复制[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-sync/#streaming-replication)
+### 流复制
 
 从 MongoDB 4.4 开始，*来自*源的同步将连续的[oplog](https://www.mongodb.com/docs/manual/core/replica-set-oplog/)条目流发送到它们的同步从节点。流式复制减轻了高负载和高延迟网络中的复制滞后。它也是：
 
@@ -142,7 +142,7 @@
 
 
 
-### 多线程复制[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-sync/#multithreaded-replication)
+### 多线程复制
 
 MongoDB 使用多线程批量应用写入操作以提高并发性。MongoDB 按文档 ID ( [WiredTiger](https://www.mongodb.com/docs/manual/core/wiredtiger/#std-label-storage-wiredtiger) ) 对批次进行分组，并使用不同的线程同时应用每组操作。MongoDB 始终按照原始写入顺序将写入操作应用于给定文档。
 
@@ -150,7 +150,7 @@ MongoDB 使用多线程批量应用写入操作以提高并发性。MongoDB 按�
 
 从快照读取保证了数据的一致视图，并允许读取与正在进行的复制同时发生而无需锁定。因此，需要这些读取关注级别的辅助读取不再需要等待应用复制批次，并且可以在收到它们时进行处理。
 
-### 流量控制[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-sync/#flow-control)
+### 流量控制
 
 从 MongoDB 4.2 开始，管理员可以限制主数据库应用其写入的速率，目的是将[`majority committed`](https://www.mongodb.com/docs/manual/reference/command/replSetGetStatus/#mongodb-data-replSetGetStatus.optimes.lastCommittedOpTime)延迟保持在可配置的最大值以下[`flowControlTargetLagSeconds`。](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.flowControlTargetLagSeconds)
 
@@ -164,7 +164,7 @@ MongoDB 使用多线程批量应用写入操作以提高并发性。MongoDB 按�
 
 
 
-### 复制同步源选择[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-sync/#replication-sync-source-selection)
+### 复制同步源选择
 
 复制同步源选择取决于副本集 [`chaining`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.settings.chainingAllowed)设置：
 

@@ -1,6 +1,6 @@
 # 强制成员成为主节点
 
-## 概述[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/force-member-to-be-primary/#overview)
+## 概述
 
 [您可以通过为副本集](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-replica-set)节点提供比集合中任何其他节点更高的[`members[n].priority`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.priority)值来强制其成为[主节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-primary)。
 
@@ -8,11 +8,11 @@
 
 有关优先级的更多信息，请参阅 [`members[n\].priority`。](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.priority)
 
-## 考虑[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/force-member-to-be-primary/#consideration)
+## 考虑
 
 副本集的大多数已配置成员*必须*对集合可用，才能重新配置集合或选举主节点。有关详细信息，请参阅 [副本集选举](https://www.mongodb.com/docs/manual/core/replica-set-elections/)。
 
-## 程序[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/force-member-to-be-primary/#procedures)
+## 程序
 
 
 
@@ -20,7 +20,7 @@
 >
 >*在4.0.2版更改*：如果参数[`enableElectionHandoff`](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.enableElectionHandoff)为 true（默认），当主节点从[`rs.stepDown()`](https://www.mongodb.com/docs/manual/reference/method/rs.stepDown/#mongodb-method-rs.stepDown) （或[`replSetStepDown`](https://www.mongodb.com/docs/manual/reference/command/replSetStepDown/#mongodb-dbcommand-dbcmd.replSetStepDown)不带 的命令`force: true`）下台时，已下台的主节点会提名一个符合条件的从节点立即进行选举。否则，副手可以等到 直到[`settings.electionTimeoutMillis`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.settings.electionTimeoutMillis)召集选举。降级的主节点不会等待切换的效果。有关详细信息，请参阅 [`enableElectionHandoff`。](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.enableElectionHandoff)
 
-### 通过将其优先级调高来强制成员成为主节点[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/force-member-to-be-primary/#force-a-member-to-be-primary-by-setting-its-priority-high)
+### 通过将其优先级调高来强制成员成为主节点
 
 此过程假定您当前的[主节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-primary)是 `m1.example.net`并且您希望改为`m3.example.net`主要。该过程还假设您有一个具有以下配置的三节点[副本集](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-replica-set),有关配置的更多信息，请参阅[副本集配置使用](https://www.mongodb.com/docs/manual/reference/method/rs.reconfig/#std-label-replica-set-reconfiguration-usage)。
 
@@ -91,7 +91,7 @@
 
 
 
-### 使用数据库命令强制节点为节点[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/force-member-to-be-primary/#force-a-member-to-be-primary-using-database-commands)
+### 使用数据库命令强制节点为节点
 
 考虑具有以下节点的[副本集](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-replica-set)：
 

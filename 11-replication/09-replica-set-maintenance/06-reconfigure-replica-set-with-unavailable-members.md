@@ -8,7 +8,7 @@
 
 
 
-## 通过强制重新配置来重新配置[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/reconfigure-replica-set-with-unavailable-members/#reconfigure-by-forcing-the-reconfiguration)
+## 通过强制重新配置来重新配置
 
 此过程允许您在大多数[副本集](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-replica-set)节点关闭或无法访问时进行恢复。您连接到任何幸存的节点并使用该方法的`force`选项[`rs.reconfig()`](https://www.mongodb.com/docs/manual/reference/method/rs.reconfig/#mongodb-method-rs.reconfig) 。
 

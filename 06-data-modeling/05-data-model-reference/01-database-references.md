@@ -1,4 +1,4 @@
-****数据库参考****[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/database-references/#database-references)
+****数据库参考****
 
 对于 MongoDB 中的许多用例，相关数据存储在单个[文档](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-document)中的非规范化数据模型是最佳的。但是，在某些情况下，将相关信息存储在单独的文档中是有意义的，通常是在不同的集合或数据库中。
 
@@ -21,13 +21,13 @@ DBRefs 提供了一种通用格式和类型来表示文档之间的关系。如�
 
 除非您有令人信服的理由使用 DBRef，否则请改用手动引用。
 
-**手册参考**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/database-references/#manual-references)
+**手册参考**
 
-**背景**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/database-references/#background)
+**背景**
 
 [手动引用是将一个文档的](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-document) `_id`字段包含在另一个文档中的做法 。然后应用程序可以发出第二个查询以根据需要解析引用的字段。
 
-**过程**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/database-references/#process)
+**过程**
 
 考虑以下插入两个文档的操作，使用第一个文档的 `_id`字段作为第二个文档中的引用：
 
@@ -49,21 +49,21 @@ db.people.insertOne({
 
 然后，当查询从集合中返回文档时，如果需要，您可以对集合中字段`people`引用的文档进行第二次查询。`places_id``places`
 
-**采用**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/database-references/#use)
+**采用**
 
 对于几乎所有想要存储两个文档之间关系的情况，请使用[手册参考](https://www.mongodb.com/docs/manual/reference/database-references/#std-label-document-references). 引用很容易创建，您的应用程序可以根据需要解析引用。
 
 手动链接的唯一限制是这些引用不传达数据库和集合名称。如果单个集合中的文档与多个集合中的文档相关，则可能需要考虑使用 DBRefs。
 
-**数据库引用**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/database-references/#dbrefs)
+**数据库引用**
 
-**背景**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/database-references/#background-1)
+**背景**
 
 DBRefs 是表示[文档](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-document)的约定，而不是特定的引用类型。`_id`除了来自字段的值之外，它们还包括集合的名称，在某些情况下还包括数据库名称。
 
 可选地，DBRefs 可以包含任意数量的其他字段。额外的字段名称必须遵循 服务器版本强加的任何[字段名称规则。](https://www.mongodb.com/docs/manual/reference/limits/#std-label-limit-restrictions-on-field-names)
 
-**格式**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/database-references/#format)
+**格式**
 
 DBRef 具有以下字段：
 
@@ -108,7 +108,7 @@ DBRef 具有以下字段：
 >
 >DBRef 中字段的顺序很重要，使用 DBRef 时必须使用上述顺序。
 
-**DBRef 的驱动程序支持**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/database-references/#driver-support-for-dbrefs)
+**DBRef 的驱动程序支持**
 
 | 驱动    | DBRef 支持 | 笔记                                                         |
 | :------ | :--------- | :----------------------------------------------------------- |
@@ -125,7 +125,7 @@ DBRef 具有以下字段：
 | Ruby    | 支持的     | 请参阅[Ruby 驱动页面](https://www.mongodb.com/docs/ruby-driver/current/) 想要查询更多的信息。 |
 | Scala   | 不支持     | 您可以手动遍历引用。                                         |
 
-**采用**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/database-references/#use-1)
+**采用**
 
 在大多数情况下，您应该使用[手册参考](https://www.mongodb.com/docs/manual/reference/database-references/#std-label-document-references)连接两个或多个相关文档的方法。但是，如果您需要引用多个集合中的文档，请考虑使用 DBRefs。
 

@@ -6,11 +6,11 @@
 
 要部署启用[访问控制](https://www.mongodb.com/docs/manual/core/authorization/)的副本集，请 [参阅使用密钥文件身份验证部署副本集](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set-with-keyfile-access-control/#std-label-deploy-repl-set-with-auth)。如果您希望从单个 MongoDB 实例部署副本集，请参阅 [将独立实例转换为副本集](https://www.mongodb.com/docs/manual/tutorial/convert-standalone-to-replica-set/)。有关副本集部署的更多信息，请参阅[复制](https://www.mongodb.com/docs/manual/replication/)和 [副本集部署架构](https://www.mongodb.com/docs/manual/core/replica-set-architectures/)文档。
 
-## 概述[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set-for-testing/#overview)
+## 概述
 
 三个节点[副本集](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-replica-set)提供了足够的冗余来应对大多数网络分区和其他系统故障。这些集合还具有足够的容量用于许多分布式读取操作。副本集应该总是有奇数个节点。这确保了[选举](https://www.mongodb.com/docs/manual/core/replica-set-elections/)能够顺利进行。有关设计副本集的更多信息，请参阅[复制概述。](https://www.mongodb.com/docs/manual/replication/)
 
-## 要求[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set-for-testing/#requirements)
+## 要求
 
 对于测试和开发系统，您可以[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod) 在本地系统或虚拟实例中运行您的实例。
 
@@ -18,7 +18,7 @@
 
 每个节点都必须能够连接到每个其他节点。有关如何检查您的连接的说明，请参阅 [测试所有节点之间的连接。](https://www.mongodb.com/docs/manual/tutorial/troubleshoot-replica-sets/#std-label-replica-set-troubleshooting-check-connection)
 
-## 注意事项[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set-for-testing/#considerations)
+## 注意事项
 
 
 
@@ -28,7 +28,7 @@
 
 使用主机名而不是 IP 地址来配置跨分割网络水平的集群。从 MongoDB 5.0 开始，仅配置了 IP 地址的节点将无法通过启动验证而不会启动。
 
-### IP绑定[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set-for-testing/#ip-binding)
+### IP绑定
 
 
 
@@ -68,7 +68,7 @@ mongosh --host 198.51.100.1
 
 在这个测试部署中，三个节点在同一台机器上运行。
 
-### 副本集命名[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set-for-testing/#replica-set-naming)
+### 副本集命名
 
 
 
@@ -80,7 +80,7 @@ mongosh --host 198.51.100.1
 
 如果您的应用程序连接到多个副本集，则每个副本集必须具有不同的名称。一些驱动程序按副本集名称对副本集连接进行分组。
 
-## 程序[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set-for-testing/#procedure)
+## 程序
 
 
 

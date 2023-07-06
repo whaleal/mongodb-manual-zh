@@ -33,18 +33,18 @@
 
 [默认写入关注公式](https://www.mongodb.com/docs/manual/reference/mongodb-defaults/#std-label-default-wc-formula)
 
-## 注意事项[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/add-replica-set-arbiter/#considerations)
+## 注意事项
 
 [季度快速发布](https://www.mongodb.com/docs/manual/reference/versioning/#std-label-release-version-numbers)版本不支持 [仲裁](https://www.mongodb.com/docs/manual/core/replica-set-members/#std-label-replica-set-arbiters)器。如果您的部署包括仲裁程序，请仅使用 LTS版本。
 
-## Primary-Secondary-Arbiter 副本集[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/add-replica-set-arbiter/#primary-secondary-arbiter-replica-sets)
+## Primary-Secondary-Arbiter 副本集
 
 如果您使用的是三节点主从仲裁器 (PSA) 架构，请考虑以下事项：
 
 - [`"majority"`](https://www.mongodb.com/docs/manual/reference/write-concern/#mongodb-writeconcern-writeconcern.-majority-)如果辅助节点不可用或滞后，写入问题可能会导致性能问题。有关如何缓解这些问题的建议，请参阅 [缓解 PSA 副本集的性能问题。](https://www.mongodb.com/docs/manual/tutorial/mitigate-psa-performance-issues/#std-label-performance-issues-psa)
 - 如果您使用的是全局默认值[`"majority"`](https://www.mongodb.com/docs/manual/reference/read-concern-majority/#mongodb-readconcern-readconcern.-majority-) 并且写入问题小于大多数的大小，则您的查询可能会返回陈旧（未完全复制）的数据。
 
-### 副本集协议版本[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/add-replica-set-arbiter/#replica-set-protocol-version)
+### 副本集协议版本
 
 
 
@@ -58,11 +58,11 @@
 
 请参阅[副本集协议版本。](https://www.mongodb.com/docs/manual/reference/replica-set-protocol-versions/)
 
-### 仲裁者[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/add-replica-set-arbiter/#arbiter)
+### 仲裁者
 
 仲裁器不存储数据，但在仲裁器的[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod) 进程被添加到副本集之前，仲裁器将像任何其他 [`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)进程一样运行，并以一组数据文件和一个完整大小的[日志启动。](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-journal)
 
-### IP绑定[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/add-replica-set-arbiter/#ip-binding)
+### IP绑定
 
 
 
@@ -108,7 +108,7 @@ mongosh --host 198.51.100.1
 
 使用主机名而不是 IP 地址来配置跨分割网络水平的集群。从 MongoDB 5.0 开始，仅配置了 IP 地址的节点将无法通过启动验证而不会启动。
 
-## 添加仲裁者[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/add-replica-set-arbiter/#add-an-arbiter)
+## 添加仲裁者
 
 
 

@@ -1,4 +1,4 @@
-# 对冲阅读期权[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference-hedge-option/#hedged-read-option)
+# 对冲阅读期权
 
 从用于分片集群的 MongoDB 4.4 开始，您可以指定对非[读取首选项使用](https://www.mongodb.com/docs/manual/core/read-preference/)[对冲读取](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#std-label-mongos-hedged-reads)[。](https://www.mongodb.com/docs/manual/core/read-preference/)`primary`
 
@@ -12,18 +12,18 @@
 
 为了为读取首选项指定对冲读取，MongoDB 4.4 为读取首选项引入了对冲读取选项。
 
-## 启用对冲读取[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference-hedge-option/#enable-hedged-reads)
+## 启用对冲读取
 
 要使用对冲读取，请为非读取首选项启用对冲读取选项`primary` 。读取首选项[`nearest`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-nearest)默认指定对冲读取。
 
 - 使用驱动程序时，请参阅[司机的阅读偏好API 。](https://www.mongodb.com/docs/drivers/)
 - 使用时[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh), 您可以使用辅助方法[`cursor.readPref()`](https://www.mongodb.com/docs/manual/reference/method/cursor.readPref/#mongodb-method-cursor.readPref)和[`Mongo.setReadPref()`.](https://www.mongodb.com/docs/manual/reference/method/Mongo.setReadPref/#mongodb-method-Mongo.setReadPref)
 
-## 附加信息[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference-hedge-option/#additional-information)
+## 附加信息
 
 有关对冲读取的更多信息，请参阅[对冲读取。](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#std-label-mongos-hedged-reads)
 
-### 使用对冲读取的节点选择[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference-hedge-option/#member-selection-with-hedged-reads)
+### 使用对冲读取的节点选择
 
 有关对冲读取的节点选择的详细信息，请参阅 [读取首选项和碎片。](https://www.mongodb.com/docs/manual/core/read-preference-mechanics/#std-label-read-preference-mechanics-sharded-cluster)
 

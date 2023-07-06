@@ -11,13 +11,13 @@
 
 使用本教程更新副本集以使用[WiredTiger](https://www.mongodb.com/docs/manual/core/wiredtiger/#std-label-storage-wiredtiger)。该过程以滚动方式更新副本集以避免停机。
 
-## 注意事项[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-replica-set-wiredtiger/#considerations)
+## 注意事项
 
 副本集可以有具有不同存储引擎的节点。因此，您可以更新节点以滚动方式使用 WiredTiger 存储引擎。
 
 
 
-### PSA 三节点架构[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-replica-set-wiredtiger/#psa-3-member-architecture)
+### PSA 三节点架构
 
 [`"majority"`](https://www.mongodb.com/docs/manual/reference/read-concern-majority/#mongodb-readconcern-readconcern.-majority-)默认情况下启用可用于 WiredTiger的读取关注。但是，在具有主从仲裁器 (PSA) 架构的三成员副本集中，您可以禁用 [`"majority"`](https://www.mongodb.com/docs/manual/reference/read-concern-majority/#mongodb-readconcern-readconcern.-majority-)读安全。禁用[`"majority"`](https://www.mongodb.com/docs/manual/reference/read-concern-majority/#mongodb-readconcern-readconcern.-majority-)三节点 PSA 架构的读可避免可能的缓存压力增加。
 
@@ -31,15 +31,15 @@
 
 有关 PSA 架构和阅读关注的更多信息 [`"majority"`](https://www.mongodb.com/docs/manual/reference/read-concern-majority/#mongodb-readconcern-readconcern.-majority-)，请参阅[Primary-Secondary-Arbiter Replica Sets 。](https://www.mongodb.com/docs/manual/reference/read-concern-majority/#std-label-disable-read-concern-majority)
 
-### 默认绑定到本地主机[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-replica-set-wiredtiger/#default-bind-to-localhost)
+### 默认绑定到本地主机
 
 MongoDB 二进制文件，[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)和 [`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)，默认绑定到`localhost`。
 
-### XFS 和 WiredTiger[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-replica-set-wiredtiger/#xfs-and-wiredtiger)
+### XFS 和 WiredTiger
 
 使用 WiredTiger 存储引擎，在 Linux 上建议使用 XFS 作为数据承载节点。有关详细信息，请参阅 [内核和文件系统。](https://www.mongodb.com/docs/manual/administration/production-notes/#std-label-prod-notes-linux-file-system)
 
-### 仅限 MMAPv1 限制[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-replica-set-wiredtiger/#mmapv1-only-restrictions)
+### 仅限 MMAPv1 限制
 
 升级到 WiredTiger 后，您的 WiredTiger 部署将**不受** 以下仅限 MMAPv1 的限制：
 
@@ -53,19 +53,19 @@ MongoDB 二进制文件，[`mongod`](https://www.mongodb.com/docs/manual/referen
 
 
 
-## 程序[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-replica-set-wiredtiger/#procedure)
+## 程序
 
 以下过程以滚动方式更新副本集。该过程首先更新[从节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-secondary)，然后降级[主节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-primary)，并更新降级的节点。
 
 要将节点更新为 WiredTiger，该过程会删除节点的数据，从[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)WiredTiger 开始，并执行 [初始同步。](https://www.mongodb.com/docs/manual/tutorial/resync-replica-set-member/)
 
-### A. 将从节点更新为 WiredTiger。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-replica-set-wiredtiger/#a.-update-the-secondary-members-to-wiredtiger.)
+### A. 将从节点更新为 WiredTiger。
 
 一次更新一个从节点：
 
 
 
-#### 关闭从节点。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-replica-set-wiredtiger/#shut-down-the-secondary-member)
+#### 关闭从节点。
 
 在[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh), 关闭从节点。
 
@@ -78,7 +78,7 @@ db.shutdownServer()
 
 
 
-#### `mongod`为新运行的 WiredTiger准备一个数据目录。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-replica-set-wiredtiger/#prepare-a-data-directory-for-the-new-mongod-running-with-wiredtiger)
+#### `mongod`为新运行的 WiredTiger准备一个数据目录。
 
 [`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)为将与 WiredTiger 存储引擎一起运行的新实例准备一个数据目录。`mongod`必须对该目录具有读写权限。您可以删除已停止的从节点当前数据目录的内容，也可以完全创建一个新目录。
 
@@ -86,13 +86,13 @@ db.shutdownServer()
 
  
 
-#### 更新 WiredTiger 的配置。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-replica-set-wiredtiger/#update-configuration-for-wiredtiger)
+#### 更新 WiredTiger 的配置。
 
 从 实例配置中删除任何[MMAPv1 特定配置选项。](https://www.mongodb.com/docs/manual/release-notes/4.2/#std-label-4.2-mmapv1-conf-options)[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)
 
 
 
-#### 从 WiredTiger开始`mongod`。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-replica-set-wiredtiger/#start-mongod-with-wiredtiger)
+#### 从 WiredTiger开始`mongod`。
 
 开始[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)，指定`wiredTiger`为 [`--storageEngine`](https://www.mongodb.com/docs/manual/reference/program/mongod/#std-option-mongod.--storageEngine)和为 WiredTiger 准备的数据目录为[`--dbpath`.](https://www.mongodb.com/docs/manual/reference/program/mongod/#std-option-mongod.--dbpath)
 
@@ -118,7 +118,7 @@ mongod --storageEngine wiredTiger --dbpath <newWiredTigerDBPath> --replSet <repl
 
 对其余从节点重复这些步骤，一次更新一个。
 
-### B. 降级主节点。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-replica-set-wiredtiger/#b.-step-down-the-primary.)
+### B. 降级主节点。
 
 
 
@@ -134,13 +134,13 @@ rs.stepDown()
 
 
 
-### C.更新降级的主节点。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-replica-set-wiredtiger/#c.-update-the-stepped-down-primary.)
+### C.更新降级的主节点。
 
 当主节点降级并成为从节点时，像以前一样更新从节点以使用 WiredTiger：
 
  
 
-#### 关闭从节点。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-replica-set-wiredtiger/#shut-down-the-secondary-member-1)
+#### 关闭从节点。
 
 在[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh), 关闭从节点。
 
@@ -151,7 +151,7 @@ db.shutdownServer()
 
 
 
-#### ` mongod`为新运行的 WiredTiger准备一个数据目录。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-replica-set-wiredtiger/#prepare-a-data-directory-for-the-new-mongod-running-with-wiredtiger-1)
+#### ` mongod`为新运行的 WiredTiger准备一个数据目录。
 
 [`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)为将与 WiredTiger 存储引擎一起运行的新实例准备一个数据目录。`mongod`必须对该目录具有读写权限。您可以删除已停止的从节点当前数据目录的内容，也可以完全创建一个新目录。
 
@@ -159,13 +159,13 @@ db.shutdownServer()
 
  
 
-#### 更新 WiredTiger 的配置。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-replica-set-wiredtiger/#update-configuration-for-wiredtiger-1)
+#### 更新 WiredTiger 的配置。
 
 从 实例配置中删除任何[MMAPv1 特定配置选项。](https://www.mongodb.com/docs/manual/release-notes/4.2/#std-label-4.2-mmapv1-conf-options)[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)
 
  
 
-#### 从 WiredTiger开始`mongod`。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-replica-set-wiredtiger/#start-mongod-with-wiredtiger-1)
+#### 从 WiredTiger开始`mongod`。
 
 开始[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)，指定`wiredTiger`为 [`--storageEngine`](https://www.mongodb.com/docs/manual/reference/program/mongod/#std-option-mongod.--storageEngine)和为 WiredTiger 准备的数据目录为[`--dbpath`.](https://www.mongodb.com/docs/manual/reference/program/mongod/#std-option-mongod.--dbpath)
 

@@ -8,7 +8,7 @@
 
 
 
-## 主要有两个次要成员 (P-S-S)[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-architecture-three-members/#primary-with-two-secondary-members--p-s-s-)
+## 主要有两个次要成员 (P-S-S)
 
 具有三个存储数据的成员的副本集具有：
 
@@ -25,7 +25,7 @@
 
 
 
-## 主节点与从节点和仲裁节点 (P-S-A)[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-architecture-three-members/#primary-with-a-secondary-and-an-arbiter--psa-)
+## 主节点与从节点和仲裁节点 (P-S-A)
 
 
 

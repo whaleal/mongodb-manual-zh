@@ -56,7 +56,7 @@ MongoDB 在启动时或元数据发生更改后（例如块迁移后）从`confi
 
 从副本集配置服务器读取时，MongoDB 使用 [Read Concern](https://www.mongodb.com/docs/manual/reference/read-concern/)级别[`"majority"`。](https://www.mongodb.com/docs/manual/reference/read-concern-majority/#mongodb-readconcern-readconcern.-majority-)
 
-**配置服务器可用性**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-config-servers/#config-server-availability)
+**配置服务器可用性**
 
 如果配置服务器副本集丢失了它的主节点并且不能选出一个主节点，集群的元数据就会变成*只读*的。您仍然可以从分片读取和写入数据，但是在副本集可以选择主副本之前不会发生块迁移或块拆分。
 
@@ -68,7 +68,7 @@ MongoDB 在启动时或元数据发生更改后（例如块迁移后）从`confi
 
 有关详细信息，请参阅[配置服务器副本集节点变得不可用](https://www.mongodb.com/docs/manual/tutorial/troubleshoot-sharded-clusters/#std-label-sharding-config-servers-and-availability)。
 
-**分片集群元数据**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-config-servers/#sharded-cluster-metadata)
+**分片集群元数据**
 
 配置服务器将元数据存储在[配置数据库中。](https://www.mongodb.com/docs/manual/reference/config-database/)
 

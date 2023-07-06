@@ -1,6 +1,6 @@
 # 驱动API
 
-## 回调 API 与核心 API[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-in-applications/#callback-api-vs-core-api)
+## 回调 API 与核心 API
 
 [回调接口：](https://www.mongodb.com/docs/manual/core/transactions-in-applications/#std-label-txn-callback-api)
 
@@ -14,7 +14,7 @@
 
 
 
-## 回调接口[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-in-applications/#callback-api)
+## 回调接口
 
 回调 API 包含以下逻辑：
 
@@ -97,7 +97,7 @@ try {
 
 
 
-## 核心接口[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-in-applications/#core-api)
+## 核心接口
 
 核心事务 API 不包含针对标记为以下错误的重试逻辑：
 
@@ -187,7 +187,7 @@ void updateEmployeeInfoWithRetry() {
 
 
 
-## 驱动程序版本[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-in-applications/#driver-versions)
+## 驱动程序版本
 
 *对于 MongoDB 4.2 部署（副本集和分片集群）上的事务*，客户端**必须**使用为 MongoDB 4.2 更新的 MongoDB 驱动程序：
 
@@ -195,13 +195,13 @@ void updateEmployeeInfoWithRetry() {
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 |                                                              |                                                              |                                                              |
 
-## Transaction Error Handling[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-in-applications/#transaction-error-handling)
+## Transaction Error Handling
 
 无论是什么数据库系统，无论是MongoDB还是关系型数据库，应用程序都应该采取措施处理事务提交时的错误，并为事务加入重试逻辑。
 
 
 
-### `"TransientTransactionError"`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-in-applications/#-transienttransactionerror-)
+### `"TransientTransactionError"`
 
 事务内的*单个*[`retryWrites`](https://www.mongodb.com/docs/manual/reference/connection-string/#mongodb-urioption-urioption.retryWrites)写操作不可重试，无论 的值如何。如果操作遇到错误[与标签相关联](https://github.com/mongodb/specifications/blob/master/source/transactions/transactions.rst#error-labels) `"TransientTransactionError"`，例如当主节点停止时，可以重试整个事务。
 
@@ -210,7 +210,7 @@ void updateEmployeeInfoWithRetry() {
 
 
 
-### `"UnknownTransactionCommitResult"`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-in-applications/#-unknowntransactioncommitresult-)
+### `"UnknownTransactionCommitResult"`
 
 提交操作是可[重试的写操作](https://www.mongodb.com/docs/manual/core/retryable-writes/)。如果提交操作遇到错误，MongoDB 驱动程序会重试提交，而不管 [`retryWrites`.](https://www.mongodb.com/docs/manual/reference/connection-string/#mongodb-urioption-urioption.retryWrites)
 
@@ -219,7 +219,7 @@ void updateEmployeeInfoWithRetry() {
 - 回调 API 合并了重试逻辑 `"UnknownTransactionCommitResult"`。
 - 核心事务 API 不包含 `"UnknownTransactionCommitResult"`. 要处理 `"UnknownTransactionCommitResult"`，应用程序应明确包含错误的重试逻辑。
 
-### 驱动程序版本错误[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-in-applications/#driver-version-errors)
+### 驱动程序版本错误
 
 在具有多个实例的分片集群上[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)，使用为 MongoDB 4.0（而不是 MongoDB 4.2）更新的驱动程序执行事务将失败并可能导致错误，包括：
 
@@ -236,11 +236,11 @@ void updateEmployeeInfoWithRetry() {
 
 *对于 MongoDB 4.2 部署（副本集和分片集群）上的事务*，请使用为 MongoDB 4.2 更新的 MongoDB 驱动程序
 
-## 附加信息[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-in-applications/#additional-information)
+## 附加信息
 
 
 
-### `mongosh`例子[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-in-applications/#mongosh-example)
+### `mongosh`例子
 
 下列[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)事务可用的方法：
 

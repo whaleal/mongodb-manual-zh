@@ -1,6 +1,6 @@
 # 防止次要成为主节点
 
-## 概述[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/configure-secondary-only-replica-set-member/#overview)
+## 概述
 
 在副本集中，默认情况下所有[从节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-secondary)都有资格通过选举过程成为主节点。您可以通过使一些成员更有可能成为主要成员而其他成员不太可能或不能成为主要成员来影响这些选举的结果。
 
@@ -8,7 +8,7 @@
 
 为了防止[次要](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-secondary)成员 在[故障转移](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-failover)中成为[主要](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-primary)成员，请为次要成员分配优先级，如此处所述。有关仅次要成员及其用途的详细说明，请参阅[Priority 0 Replica Set Members ](https://www.mongodb.com/docs/manual/core/replica-set-priority-0-member/)[。](https://www.mongodb.com/docs/manual/core/replica-set-priority-0-member/)`0`
 
-## 注意事项[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/configure-secondary-only-replica-set-member/#considerations)
+## 注意事项
 
 更新副本配置对象时，使用**数组索引**[`members`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members)访问数组 中的副本集成员。数组索引以. 不要将此索引值与数组中每个文档中的 **字段**值混淆。`0`[`members[n\]._id`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-._id)[`members`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members)
 
@@ -16,7 +16,7 @@
 >
 >MongoDB 不允许当前[主](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-primary)节点的优先级为`0`. 为防止当前主节点再次成为主节点，您必须首先使用 降级当前主节点 [`rs.stepDown()`。](https://www.mongodb.com/docs/manual/reference/method/rs.stepDown/#mongodb-method-rs.stepDown)
 
-## 程序[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/configure-secondary-only-replica-set-member/#procedure)
+## 程序
 
 本教程使用具有 5 个节点的示例副本集。
 
@@ -27,7 +27,7 @@
 
 
 
-### 检索当前副本集配置。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/configure-secondary-only-replica-set-member/#retrieve-the-current-replica-set-configuration)
+### 检索当前副本集配置。
 
 该[`rs.conf()`](https://www.mongodb.com/docs/manual/reference/method/rs.conf/#mongodb-method-rs.conf)方法返回一个[副本集配置文档](https://www.mongodb.com/docs/manual/reference/replica-configuration/)，其中包含副本集的当前配置。
 
@@ -43,7 +43,7 @@ cfg = rs.conf()
 
 
 
-### 分配优先级值`0`。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/configure-secondary-only-replica-set-member/#assign-priority-value-of-0)
+### 分配优先级值`0`。
 
 为防止从节点成为主节点，请将从节点的更新[`members[n].priority`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.priority) 为`0`.
 
@@ -59,7 +59,7 @@ cfg.members[2].priority = 0
 
 
 
-### 重新配置副本集。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/configure-secondary-only-replica-set-member/#reconfigure-the-replica-set)
+### 重新配置副本集。
 
 使用[`rs.reconfig()`](https://www.mongodb.com/docs/manual/reference/method/rs.reconfig/#mongodb-method-rs.reconfig)方法使用更新的副本集配置文档重新配置副本集。
 
@@ -71,7 +71,7 @@ rs.reconfig(cfg)
 
 
 
-## 相关文件[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/configure-secondary-only-replica-set-member/#related-documents)
+## 相关文件
 
 - [`members[n\].priority`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.priority)
 - [调整副本集成员的优先级](https://www.mongodb.com/docs/manual/tutorial/adjust-replica-set-member-priority/)

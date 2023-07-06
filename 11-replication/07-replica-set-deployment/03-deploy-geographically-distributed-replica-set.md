@@ -1,6 +1,6 @@
 # 部署地理冗余副本集
 
-## 概述[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#overview)
+## 概述
 
 [本教程概述了部署多个节点](https://www.mongodb.com/docs/manual/core/replica-set-architecture-geographically-distributed/#std-label-replica-set-geographical-distribution)的[副本集](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-replica-set)的过程。本教程介绍了三节点副本集和五节点副本集。如果您有偶数个副本集节点，请添加另一个数据承载节点，如果可能，以部署奇数个投票节点。
 
@@ -10,15 +10,15 @@
 | ----- | ------------------------------------------------------------ |
 |       |                                                              |
 
-## 注意事项[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#considerations)
+## 注意事项
 
-### 搭建[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#architecture)
+### 搭建
 
 在生产中，将副本集的每个节点部署到自己的机器上。如果可能，请确保 MongoDB 侦听默认端口 `27017`.
 
 有关详细信息，请参阅[副本集部署架构。](https://www.mongodb.com/docs/manual/core/replica-set-architectures/)
 
-### 主机名[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#hostnames)
+### 主机名
 
 
 
@@ -28,7 +28,7 @@
 
 使用主机名而不是 IP 地址来配置跨分割网络水平的集群。从 MongoDB 5.0 开始，仅配置了 IP 地址的节点将无法通过启动验证而不会启动。
 
-### IP绑定[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#ip-binding)
+### IP绑定
 
 使用该[`--bind_ip`](https://www.mongodb.com/docs/manual/reference/program/mongod/#std-option-mongod.--bind_ip)选项可确保 MongoDB 侦听来自已配置地址上的应用程序的连接。
 
@@ -68,7 +68,7 @@ mongosh --host 198.51.100.1
 
 
 
-### 连通性[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#connectivity)
+### 连通性
 
 确保网络流量可以在集合的所有节点和网络中的所有客户端之间安全传递。
 
@@ -82,7 +82,7 @@ mongosh --host 198.51.100.1
 
 每个节点都必须能够连接到每个其他节点。有关如何检查您的连接的说明，请参阅 [测试所有节点之间的连接。](https://www.mongodb.com/docs/manual/tutorial/troubleshoot-replica-sets/#std-label-replica-set-troubleshooting-check-connection)
 
-### 配置[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#configuration)
+### 配置
 
 在部署MongoDB之前创建MongoDB存放数据文件的目录。
 
@@ -90,7 +90,7 @@ mongosh --host 198.51.100.1
 
 有关配置选项的更多信息，请参阅 [配置文件选项。](https://www.mongodb.com/docs/manual/reference/configuration-options/)
 
-### 节点分布[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#distribution-of-the-members)
+### 节点分布
 
 如果可能，使用奇数个数据中心，并选择一种节点分布，即使在数据中心丢失的情况下，剩余的副本集节点也可以占多数或至少提供数据副本的可能性最大.
 
@@ -98,17 +98,17 @@ mongosh --host 198.51.100.1
 
 永远不要部署超过七名有投票权的节点。
 
-## 先决条件[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#prerequisites)
+## 先决条件
 
 对于本教程中的所有配置，将每个副本集节点部署在单独的系统上。尽管您可以在单个系统上部署多个副本集节点，但这样做会降低副本集的冗余和容量。此类部署通常用于测试目的。
 
 本教程假设您已在将成为副本集一部分的每个系统上安装 MongoDB。如果您尚未安装 MongoDB，请参阅[安装教程。](https://www.mongodb.com/docs/manual/installation/#std-label-tutorial-installation)
 
-## 程序[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#procedures)
+## 程序
 
 
 
-### 部署一个地理冗余的三节点副本集[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#deploy-a-geographically-redundant-three-member-replica-set)
+### 部署一个地理冗余的三节点副本集
 
 
 
@@ -135,7 +135,7 @@ mongosh --host 198.51.100.1
 
 如果可能，将节点分布在至少三个数据中心。对于配置服务器副本集 (CSRS)，最佳做法是分布在三个（或更多，取决于节点数量）中心。如果第三个数据中心的成本过高，一种分配的可能性是在两个数据中心之间平均分配数据承载节点，如果您的公司政策允许，则将剩余的节点存储在云中。
 
-#### 使用适当的选项启动副本集的每个节点。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#start-each-member-of-the-replica-set-with-the-appropriate-options)
+#### 使用适当的选项启动副本集的每个节点。
 
 对于每个节点，[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)使用以下设置启动一个实例：
 
@@ -190,7 +190,7 @@ mongod --config <path-to-config>
 
 
 
-#### 连接[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)到其中一个`mongod`实例。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#connect-to-one-of-the-mongod-instances)
+#### 连接[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)到其中一个`mongod`实例。
 
 从其中一个正在运行的同一台机器[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)上（在本教程中，`mongodb0.example.net`），开始 [`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh). 要连接到[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod) 默认端口上的侦听本地主机`27017`，只需发出：
 
@@ -206,7 +206,7 @@ mongosh
 
 
 
-#### 启动副本集。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#initiate-the-replica-set)
+#### 启动副本集。
 
 从[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)，[`rs.initiate()`](https://www.mongodb.com/docs/manual/reference/method/rs.initiate/#mongodb-method-rs.initiate)在副本集节点 0 上运行。
 
@@ -241,7 +241,7 @@ MongoDB 使用默认副本集配置启动副本集。
 
 
 
-#### 查看副本集配置。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#view-the-replica-set-configuration)
+#### 查看副本集配置。
 
 用于[`rs.conf()`](https://www.mongodb.com/docs/manual/reference/method/rs.conf/#mongodb-method-rs.conf)显示[副本集配置对象：](https://www.mongodb.com/docs/manual/reference/replica-configuration/)
 
@@ -322,7 +322,7 @@ rs.conf()
 
 
 
-#### 可选的。配置成为主要成员的资格。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#optional-configure-the-member-eligibility-for-becoming-primary)
+#### 可选的。配置成为主要成员的资格。
 
 在某些情况下，您可能希望一个数据中心的节点在其他数据中心的节点之前被选为主要成员。您可以修改节点的[`priority`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.priority)值，使一个数据中心节点的 [`priority`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.priority)的节点比其他数据中心节点的priority更高。
 
@@ -360,11 +360,11 @@ rs.conf()
 
 
 
-#### 确保副本集有一个主节点。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#ensure-that-the-replica-set-has-a-primary)
+#### 确保副本集有一个主节点。
 
 用于[`rs.status()`](https://www.mongodb.com/docs/manual/reference/method/rs.status/#mongodb-method-rs.status)标识副本集中的主节点。
 
-### 部署地理冗余的五节点副本集[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#deploy-a-geographically-redundant-five-member-replica-set)
+### 部署地理冗余的五节点副本集
 
 
 
@@ -395,7 +395,7 @@ rs.conf()
 
 
 
-#### 使用适当的选项启动副本集的每个节点。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#start-each-member-of-the-replica-set-with-the-appropriate-options-1)
+#### 使用适当的选项启动副本集的每个节点。
 
 对于每个节点，[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)使用以下设置启动一个实例：
 
@@ -456,7 +456,7 @@ mongod --config <path-to-config>
 
 
 
-#### 连接[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)到其中一个`mongod`实例。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#connect-to-one-of-the-mongod-instances-1)
+#### 连接[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)到其中一个`mongod`实例。
 
 从其中一个正在运行的同一台机器[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)上（在本教程中，`mongodb0.example.net`），开始 [`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh). 要连接到[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod) 默认端口上的侦听本地主机`27017`，只需发出：
 
@@ -472,7 +472,7 @@ mongosh
 
 
 
-#### 启动副本集。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#initiate-the-replica-set-1)
+#### 启动副本集。
 
 从[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)，[`rs.initiate()`](https://www.mongodb.com/docs/manual/reference/method/rs.initiate/#mongodb-method-rs.initiate)在副本集节点 0 上运行。
 
@@ -499,7 +499,7 @@ rs.initiate( {
 
  
 
-#### 查看副本集配置。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#view-the-replica-set-configuration-1)
+#### 查看副本集配置。
 
 用于[`rs.conf()`](https://www.mongodb.com/docs/manual/reference/method/rs.conf/#mongodb-method-rs.conf)显示[副本集配置对象：](https://www.mongodb.com/docs/manual/reference/replica-configuration/)
 
@@ -607,7 +607,7 @@ rs.conf()
 
 
 
-#### 可选 的。配置成为主节点的资格。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#optional-configure-the-member-eligibility-for-becoming-primary-1)
+#### 可选 的。配置成为主节点的资格。
 
 在某些情况下，您可能希望一个数据中心的节点在其他数据中心的节点之前被选为主节点。您可以修改节点的[`priority`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.priority)值，使一个数据中心节点的 [`priority`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.priority)值比其他数据中心节点的值更高。
 
@@ -645,7 +645,7 @@ rs.conf()
 
  
 
-#### 确保副本集有一个主节点。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-geographically-distributed-replica-set/#ensure-that-the-replica-set-has-a-primary-1)
+#### 确保副本集有一个主节点。
 
 用于[`rs.status()`](https://www.mongodb.com/docs/manual/reference/method/rs.status/#mongodb-method-rs.status)标识副本集中的主节点。
 

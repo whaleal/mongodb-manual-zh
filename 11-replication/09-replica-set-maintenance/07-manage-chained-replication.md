@@ -14,7 +14,7 @@ MongoDB 默认启用链式复制。此过程描述了如何禁用它以及如何
 
 
 
-## 禁用链式复制[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/manage-chained-replication/#disable-chained-replication)
+## 禁用链式复制
 
 要禁用链式复制，请将 [Replica Set Configuration](https://www.mongodb.com/docs/manual/reference/replica-configuration/)[`settings.chainingAllowed`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.settings.chainingAllowed)中的 字段设置为。`false`
 
@@ -55,7 +55,7 @@ MongoDB 默认启用链式复制。此过程描述了如何禁用它以及如何
 
    
 
-## 重新启用链式复制[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/manage-chained-replication/#re-enable-chained-replication)
+## 重新启用链式复制
 
 要重新启用链式复制，请设置 [`settings.chainingAllowed`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.settings.chainingAllowed)为`true`. 您可以使用以下命令序列：
 

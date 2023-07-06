@@ -1,6 +1,6 @@
 # 将副本集转换为分片集群
 
-## 概述[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/convert-replica-set-to-replicated-shard-cluster/#overview)
+## 概述
 
 本教程将单个三节点副本集转换为具有两个分片的分片集群。每个分片都是一个独立的三节点副本集。本教程特定于 MongoDB 6.0。其他版本的MongoDB请参考对应版本的MongoDB手册。
 
@@ -42,7 +42,7 @@
 
 
 
-#### 1.使用适当的选项启动副本集的每个成员。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/convert-replica-set-to-replicated-shard-cluster/#start-each-member-of-the-replica-set-with-the-appropriate-options)
+#### 1.使用适当的选项启动副本集的每个成员。
 
 对于每个节点，使用以下设置启动一个`mongod`实例：
 

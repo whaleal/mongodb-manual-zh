@@ -1,8 +1,8 @@
-**指定现有文档的验证级别**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/specify-validation-level/#specify-validation-level-for-existing-documents)
+**指定现有文档的验证级别**
 
 对于在添加验证之前集合中已经存在的文档，您可以指定 MongoDB 如何将验证规则应用于这些文档。
 
-**语境**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/specify-validation-level/#context)
+**语境**
 
 您的模式`validationLevel`确定 MongoDB 应用验证规则的文档：
 
@@ -11,7 +11,7 @@
 | `strict`   | （*默认*）MongoDB 将验证规则应用于所有插入和更新。           |
 | `moderate` | MongoDB 仅将验证规则应用于现有的有效文档。不检查在添加验证之前存在的对无效文档的更新的有效性。 |
 
-**先决条件**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/specify-validation-level/#prerequisite)
+**先决条件**
 
 此页面上的示例使用`contacts`包含这些文档的集合：
 
@@ -22,11 +22,11 @@ db.contacts.insertMany([
 ])
 ```
 
-**步骤：使用`strict`验证**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/specify-validation-level/#steps--use-strict-validation)
+**步骤：使用`strict`验证**
 
 以下示例`strict`向集合添加验证`contacts` 并显示尝试更新无效文档时的结果。
 
-1. **指定具有`strict`验证级别的验证规则。**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/specify-validation-level/#specify-validation-rules-with-strict-validation-level.)
+1. **指定具有`strict`验证级别的验证规则。**
 
    将验证器添加到`contacts`集合中`strict` `validationLevel`：
 
@@ -53,7 +53,7 @@ db.contacts.insertMany([
 
    因为`validationLevel`是`strict`，当任何文档更新时，MongoDB 会检查该文档以进行验证。
 
-2. **测试验证**。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/specify-validation-level/#test-the-validation.)
+2. **测试验证**。
 
    以下更新命令修改`contacts` 集合中的两个文档，使得两个文档都不符合要求`name`为字符串的验证规则：
 
@@ -69,7 +69,7 @@ db.contacts.insertMany([
    )
    ```
 
-3. **观察结果**。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/specify-validation-level/#observe-results.)
+3. **观察结果**。
 
    两次更新操作均失败。MongoDB 为每个操作返回以下输出：
 
@@ -108,11 +108,11 @@ db.contacts.insertMany([
     }
    ```
 
-**步骤：使用`moderate`验证**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/specify-validation-level/#steps--use-moderate-validation)
+**步骤：使用`moderate`验证**
 
 以下示例`moderate`向集合添加验证`contacts` 并显示尝试更新无效文档时的结果。
 
-1. **指定具有`moderate`验证级别的验证规则**。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/specify-validation-level/#specify-validation-rules-with-moderate-validation-level.)
+1. **指定具有`moderate`验证级别的验证规则**。
 
    将验证器添加到`contacts`集合中`moderate` `validationLevel`：
 
@@ -142,7 +142,7 @@ db.contacts.insertMany([
    - 如果使用 更新文档`_id: 1`，MongoDB 将应用新的验证规则，因为现有文档满足验证要求。
    - 如果使用 更新文档`_id: 2`，MongoDB 不会应用新的验证规则，因为现有文档不符合验证要求。
 
-2. **测试验证**。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/specify-validation-level/#test-the-validation.-1)
+2. **测试验证**。
 
    以下更新命令修改`contacts` 集合中的两个文档，使得两个文档都不符合要求`name`为字符串的验证规则：
 
@@ -158,7 +158,7 @@ db.contacts.insertMany([
    )
    ```
 
-3. **观察结果**。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/specify-validation-level/#observe-results.-1)
+3. **观察结果**。
 
    MongoDB 为每个操作返回以下输出：
 
@@ -213,7 +213,7 @@ db.contacts.insertMany([
 >
 >错误输出供人类使用。它将来可能会发生变化，不应在脚本中依赖它。
 
-**学到更多**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/specify-validation-level/#learn-more)
+**学到更多**
 
 - [选择如何处理无效文件](https://www.mongodb.com/docs/manual/core/schema-validation/handle-invalid-documents/#std-label-schema-validation-handle-invalid-docs)
 - [修改架构验证](https://www.mongodb.com/docs/manual/core/schema-validation/update-schema-validation/#std-label-schema-update-validation)

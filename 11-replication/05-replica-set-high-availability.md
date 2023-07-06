@@ -1,4 +1,4 @@
-# 副本集高可用性[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-high-availability/#replica-set-high-availability)
+# 副本集高可用性
 
 副本集使用选举来支持 [高可用性。](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-high-availability)
 

@@ -1,4 +1,4 @@
-**选择如何处理无效文件**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/handle-invalid-documents/#choose-how-to-handle-invalid-documents)
+**选择如何处理无效文件**
 
 您可以指定 MongoDB 如何处理违反违规规则的文档。当操作会导致无效文档时，MongoDB 可以：
 
@@ -7,7 +7,7 @@
 
 拒绝无效文档可确保您的模式保持一致。但是，在某些情况下，您可能希望允许无效文档，例如包含模式建立之前的文档的数据迁移。
 
-**语境**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/handle-invalid-documents/#context)
+**语境**
 
 您的架构`validationAction`选项决定了 MongoDB 如何处理无效文档：
 
@@ -16,11 +16,11 @@
 | `error`  | （*默认*）MongoDB 拒绝任何违反验证标准的插入或更新。         |
 | `warn`   | MongoDB 允许操作继续进行，但会在 MongoDB 日志中记录违规情况。 |
 
-**选项 1：拒绝无效文件**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/handle-invalid-documents/#option-1--reject-invalid-documents)
+**选项 1：拒绝无效文件**
 
 以下过程显示如何创建拒绝无效文档的架构验证。
 
-1. **使用创建一个集合`validationAction: "error"`。**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/handle-invalid-documents/#create-a-collection-with-validationaction---error-.)
+1. **使用创建一个集合`validationAction: "error"`。**
 
    使用 JSON 架构验证器创建一个`contacts`集合，该验证器具有 `validationAction: "error"`：
 
@@ -47,7 +47,7 @@
 
    这`error` `validationAction`会导致 MongoDB 拒绝任何无效文档并阻止它们被插入到集合中。
 
-2. **试图插入无效文档**。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/handle-invalid-documents/#attempt-to-insert-an-invalid-document.)
+2. **试图插入无效文档**。
 
    尝试插入以下文档：
 
@@ -98,11 +98,11 @@
    }
    ```
 
-**选项 2：允许无效文档，但将它们记录在日志中**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/handle-invalid-documents/#option-2--allow-invalid-documents--but-record-them-in-the-log)
+**选项 2：允许无效文档，但将它们记录在日志中**
 
 以下过程显示如何创建允许无效文档但在 MongoDB 日志中记录无效文档的模式验证。
 
-1. **使用创建一个集合`validationAction: "warn"`。**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/handle-invalid-documents/#create-a-collection-with-validationaction---warn-.)
+1. **使用创建一个集合`validationAction: "warn"`。**
 
    使用 JSON 架构验证器创建一个`contacts2`集合，该验证器具有 `validationAction: "warn"`：
 
@@ -129,7 +129,7 @@
 
    允许将`warn` `validationAction`无效文档插入到集合中。无效文档记录在 MongoDB 日志中。
 
-2. **试图插入无效文档。**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/handle-invalid-documents/#attempt-to-insert-an-invalid-document.-1)
+2. **试图插入无效文档。**
 
    尝试插入以下文档：
 
@@ -144,7 +144,7 @@
    - 该`email`字段与正则表达式模式不匹配。该`email`字段必须以`@mongodb.com`.
    - 它缺少必填`phone`字段。
 
-3. **检查无效文档的日志。**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/handle-invalid-documents/#check-the-logs-for-the-invalid-document.)
+3. **检查无效文档的日志。**
 
    要以可读格式查看 MongoDB 日志，请运行以下命令：
 
@@ -208,7 +208,7 @@
    }
    ```
 
-**学到更多**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/handle-invalid-documents/#learn-more)
+**学到更多**
 
 - [日志消息](https://www.mongodb.com/docs/manual/reference/log-messages/#std-label-log-messages-ref)
 - [指定现有文档的验证级别](https://www.mongodb.com/docs/manual/core/schema-validation/specify-validation-level/#std-label-schema-specify-validation-level)

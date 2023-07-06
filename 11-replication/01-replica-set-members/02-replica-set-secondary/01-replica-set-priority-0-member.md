@@ -14,7 +14,7 @@
 
 将此与副本集节点的默认优先级进行比较， [`priority 1`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.priority)在这种情况下，其中任何一个从节点都有资格充当主节点。有关详细信息，请参阅 [分布在两个或多个数据中心](https://www.mongodb.com/docs/manual/core/replica-set-architecture-geographically-distributed/)的副本集。
 
-## 优先级为 0 的节点作为备用节点[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-priority-0-member/#priority-0-members-as-standbys)
+## 优先级为 0 的节点作为备用节点
 
 从节点的[`priority 0`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.priority)可以作为备用节点。在某些副本集中，可能无法在合理的时间内添加新成员。备用节点保留数据的当前副本，以便能够替换不可用的节点。
 
@@ -24,11 +24,11 @@
 
 如果您的集合已经有七个投票成员，也将成员配置为[non-voting 。](https://www.mongodb.com/docs/manual/core/replica-set-elections/#std-label-replica-set-non-voting-members)
 
-## 故障转移注意事项[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-priority-0-member/#failover-considerations)
+## 故障转移注意事项
 
 将从节点配置为具有[`priority 0`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.priority)时，请考虑潜在的故障转移模式，包括所有可能的网络分区。始终确保您的主数据中心包含法定节点数的投票节点和有资格成为主节点的节点。
 
-## 例子[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-priority-0-member/#example)
+## 例子
 
 要将从节点配置为具有[`priority 0`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.priority)，请参阅 [防止辅助成为主要。](https://www.mongodb.com/docs/manual/tutorial/configure-secondary-only-replica-set-member/)
 

@@ -18,7 +18,7 @@
 
 为任何给定的写入操作选择理想的写安全取决于您的应用程序的性能目标和数据持久性要求。有关配置写关注以防止回滚的更多指导，请参阅[避免副本集回滚。](https://www.mongodb.com/docs/manual/core/replica-set-rollbacks/#std-label-rollback-avoid)
 
-## 验证对副本集的写入操作[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-write-concern/#verify-write-operations-to-replica-sets)
+## 验证对副本集的写入操作
 
 以下操作包括该方法的`writeConcern`选项[`insertOne()`](https://www.mongodb.com/docs/manual/reference/method/db.collection.insertOne/#mongodb-method-db.collection.insertOne)。该操作指定： -[`"majority"`](https://www.mongodb.com/docs/manual/reference/write-concern/#mongodb-writeconcern-writeconcern.-majority-)写关注，以及 - 5 秒超时。
 
@@ -47,7 +47,7 @@ db.products.insertOne(
 
 
 
-## 修改默认写安全[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-write-concern/#modify-default-write-concern)
+## 修改默认写安全
 
 您可以通过发出[`setDefaultRWConcern`](https://www.mongodb.com/docs/manual/reference/command/setDefaultRWConcern/#mongodb-dbcommand-dbcmd.setDefaultRWConcern)命令来修改副本集的默认写安全。
 
@@ -59,7 +59,7 @@ db.products.insertOne(
 >
 >[写安全](https://www.mongodb.com/docs/manual/reference/write-concern/)
 
-## 自定义写入问题[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-write-concern/#custom-write-concerns)
+## 自定义写入问题
 
 您可以[标记](https://www.mongodb.com/docs/manual/tutorial/configure-replica-set-tag-sets/)副本集的节点并使用生成的标记集来创建自定义写入问题。有关使用标签集配置自定义写入问题的信息，请参阅[配置副本集标签](https://www.mongodb.com/docs/manual/tutorial/configure-replica-set-tag-sets/)集。
 

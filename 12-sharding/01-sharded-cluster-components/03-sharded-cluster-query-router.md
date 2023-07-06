@@ -10,7 +10,7 @@ MongoDB[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#
 
 最常见的做法是[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)在与应用程序服务器相同的系统上运行[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)实例，但您可以在分片或其他专用资源上维护[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)实例。另见[`mongos`数量和分布。](https://www.mongodb.com/docs/manual/core/sharded-cluster-components/#std-label-sharded-cluster-components-distribution)
 
-**路由和结果过程**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#routing-and-results-process)
+**路由和结果过程**
 
 实例通过以下方式将[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)查询路由到[集群](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-sharded-cluster)：
 
@@ -37,29 +37,29 @@ MongoDB[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#
 
 从MongoDB 4.4开始，[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)可以支持[对冲读取](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#std-label-mongos-hedged-reads)以尽量减少延迟。看[对冲读取](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#std-label-mongos-hedged-reads)想要查询更多的信息。
 
-**`mongos`如何处理查询修饰符**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#how-mongos-handles-query-modifiers)
+**`mongos`如何处理查询修饰符**
 
-**排序**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#sorting)
+**排序**
 
 如果查询结果未排序，[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos) 实例将打开一个结果游标，该游标是分片上所有游标的“循环法”结果。
 
-**限制**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#limits)
+**限制**
 
 如果查询使用 [`limit()`](https://www.mongodb.com/docs/manual/reference/method/cursor.limit/#mongodb-method-cursor.limit)游标方法限制了结果集的大小，则[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos) 实例将该限制传递给分片，然后在将结果返回给客户端之前将限制重新应用到结果。
 
-**跳过**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#skips)
+**跳过**
 
 如果查询使用[`skip()`](https://www.mongodb.com/docs/manual/reference/method/cursor.skip/#mongodb-method-cursor.skip) 游标方法指定要跳过的记录数，[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)则*不能*将跳过传递给分片，而是从分片中检索未跳过的结果，并在组装完整结果时跳过适当数量的文档。
 
 当与 a 结合使用时[`limit()`](https://www.mongodb.com/docs/manual/reference/method/cursor.limit/#mongodb-method-cursor.limit)， [`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)会将*limit*加上[`skip()`](https://www.mongodb.com/docs/manual/reference/method/cursor.skip/#mongodb-method-cursor.skip)的值 传递给分片，以提高这些操作的效率。
 
-**读取首选项和分片**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#read-preference-and-shards)
+**读取首选项和分片**
 
 对于分片集群，在从分片读取时[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)应用[读取首选项](https://www.mongodb.com/docs/manual/core/read-preference/)。所选节点受[读取首选项](https://www.mongodb.com/docs/manual/core/read-preference/)和 [`replication.localPingThresholdMs`](https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-replication.localPingThresholdMs)设置的约束，并针对每个操作重新评估。
 
 有关读取首选项和分片集群的详细信息，请参阅 [读取首选项和分片。](https://www.mongodb.com/docs/manual/core/read-preference-mechanics/#std-label-read-preference-mechanics-sharded-cluster)
 
-**对冲读取**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#hedged-reads)
+**对冲读取**
 
 从 4.4 版本开始，[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)实例可以对冲使用非`primary` [读取偏好](https://www.mongodb.com/docs/manual/core/read-preference/)的读取。通过对冲读取，[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos) 实例将读取操作路由到每个查询分片的两个副本集节点，并从每个分片的第一个响应者返回结果。为对冲读取操作而发送的附加读取使用[`maxTimeMSForHedgedReads`](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.maxTimeMSForHedgedReads) 的 `maxTimeMS`值。
 
@@ -76,7 +76,7 @@ MongoDB[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#
 - [`listIndexes`](https://www.mongodb.com/docs/manual/reference/command/listIndexes/#mongodb-dbcommand-dbcmd.listIndexes)
 - [`planCacheListFilters`](https://www.mongodb.com/docs/manual/reference/command/planCacheListFilters/#mongodb-dbcommand-dbcmd.planCacheListFilters)
 
-**对冲阅读和阅读偏好**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#hedged-reads-and-read-preference)
+**对冲阅读和阅读偏好**
 
 对冲读取在每个操作中指定为[读取首选项](https://www.mongodb.com/docs/manual/core/read-preference/)的一部分。非`primary` [阅读偏好](https://www.mongodb.com/docs/manual/core/read-preference/)支持对冲阅读。请参阅[对冲阅读偏好选项。](https://www.mongodb.com/docs/manual/core/read-preference-hedge-option/#std-label-read-preference-hedged-read)
 
@@ -85,15 +85,15 @@ MongoDB[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#
 
 有关读取首选项和分片集群以及节点选择的详细信息，请参阅[读取首选项和碎片。](https://www.mongodb.com/docs/manual/core/read-preference-mechanics/#std-label-read-preference-mechanics-sharded-cluster)
 
-**启用/禁用对冲读取的支持**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#enable-disable-support-for-hedged-reads)
+**启用/禁用对冲读取的支持**
 
 默认情况下，[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)实例支持使用对冲读取。要关闭[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)实例对对冲读取的支持，请参阅[`readHedgingMode`](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.readHedgingMode)参数。如果对冲读取支持是`off`，则无论为读取首选项指定的选项[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)如何，都不使用对冲读取。`hedge`
 
-**对冲读取诊断**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#hedged-reads-diagnostics)
+**对冲读取诊断**
 
 命令[`serverStatus`](https://www.mongodb.com/docs/manual/reference/command/serverStatus/#mongodb-dbcommand-dbcmd.serverStatus)及其对应 [`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)方法[`db.serverStatus()`](https://www.mongodb.com/docs/manual/reference/method/db.serverStatus/#mongodb-method-db.serverStatus)返回 [`hedgingMetrics`。](https://www.mongodb.com/docs/manual/reference/command/serverStatus/#mongodb-serverstatus-serverstatus.hedgingMetrics)
 
-**确认连接到`mongos`实例**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#confirm-connection-to-mongos-instances)
+**确认连接到`mongos`实例**
 
 要检测您的客户端连接到的 MongoDB 实例是否为[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)，请使用[`hello`](https://www.mongodb.com/docs/manual/reference/command/hello/#mongodb-dbcommand-dbcmd.hello)命令。当客户端连接到 a[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)时，[`hello`](https://www.mongodb.com/docs/manual/reference/command/hello/#mongodb-dbcommand-dbcmd.hello)返回一个`msg`包含包含字符串的字段 的文档`isdbgrid`。例如：
 
@@ -109,13 +109,13 @@ MongoDB[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#
 
 如果应用程序改为连接到  [`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)，则返回的文档不包含该`isdbgrid`字符串。
 
-**目标行动与广播行动**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#targeted-operations-vs.-broadcast-operations)
+**目标行动与广播行动**
 
 通常，分片环境中最快的查询是那些 使用分[片键和来自](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-shard-key)[配置服务器](https://www.mongodb.com/docs/manual/core/sharded-cluster-config-servers/#std-label-sharding-config-server)的集群元数据[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)路由到单个分片的查询。这些[有针对性的行动](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#std-label-sharding-mongos-targeted)使用分片键值定位满足查询文档的分片或分片子集。
 
 对于不包含分片键的查询，[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)必须查询所有分片，等待它们的响应，然后将结果返回给应用程序。这些“分散/聚集”查询可以是长时间运行的操作。
 
-**广播业务**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#broadcast-operations)
+**广播业务**
 
 [`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)实例向集合的所有分片广播查询，**除非**[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)可以确定哪个分片或分片子集存储此数据。
 
@@ -127,7 +127,7 @@ MongoDB[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#
 
 和方法是广播操作[`updateMany()`](https://www.mongodb.com/docs/manual/reference/method/db.collection.updateMany/#mongodb-method-db.collection.updateMany)， [`deleteMany()`](https://www.mongodb.com/docs/manual/reference/method/db.collection.deleteMany/#mongodb-method-db.collection.deleteMany)除非查询文档完整指定分片键。
 
-**针对性操作**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#targeted-operations)
+**针对性操作**
 
 [`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)可以将包含分片键或[复合](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-compound-index)分片键前缀的查询路由到特定分片或一组分片。[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)使用分片键值定位其范围包括分片键值的 [块](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-chunk)，并将查询定向到[包含](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-shard)该块的分片。
 
@@ -152,11 +152,11 @@ MongoDB[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#
 
 根据集群中数据的分布和查询的选择性，[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)可能仍然会执行一个[广播操作](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#std-label-sharding-mongos-broadcast)来满足这些查询。
 
-**索引使用**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#index-use)
+**索引使用**
 
 当分片收到查询时，它会使用最有效的索引来完成该查询。使用的索引可以是分 [片键索引](https://www.mongodb.com/docs/manual/core/sharding-shard-key/#std-label-sharding-shard-key-indexes)或分片上存在的另一个合格索引。
 
-**分片集群安全**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#sharded-cluster-security)
+**分片集群安全**
 
 使用[内部/节点身份验证](https://www.mongodb.com/docs/manual/core/security-internal-authentication/)来实施集群内安全并防止未经授权的集群组件访问集群。您必须使用适当的安全设置启动每个[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)或[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)在集群中以强制执行内部身份验证。
 
@@ -166,7 +166,7 @@ MongoDB[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#
 
 有关[部署安全分片集群](https://www.mongodb.com/docs/manual/tutorial/deploy-sharded-cluster-with-keyfile-access-control/)的教程，请参阅使用密钥文件身份验证部署分片集群。
 
-**集群用户**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#cluster-users)
+**集群用户**
 
 分片集群支持[基于角色的访问控制](https://www.mongodb.com/docs/manual/core/authorization/) *(RBAC)*，用于限制对集群数据和操作的未授权访问。您必须使用选项启动 [`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)集群中的每个服务器，包括[配置服务器](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-config-server)，[`--auth`](https://www.mongodb.com/docs/manual/reference/program/mongod/#std-option-mongod.--auth)以强制执行 RBAC。或者，为集群间安全实施[内部/节点身份验证也可以通过 RBAC 实现用户访问控制。](https://www.mongodb.com/docs/manual/core/security-internal-authentication/)
 
@@ -176,7 +176,7 @@ MongoDB[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#
 
 有关启用将用户添加到启用 RBAC 的 MongoDB 部署的教程，请参阅[启用访问控制。](https://www.mongodb.com/docs/manual/tutorial/enable-authentication/)
 
-**元数据操作**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#metadata-operations)
+**元数据操作**
 
 [`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)[`"majority"`](https://www.mongodb.com/docs/manual/reference/write-concern/#mongodb-writeconcern-writeconcern.-majority-)对影响分片集群元数据的以下操作使用写关注：
 
@@ -193,13 +193,13 @@ MongoDB[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#
 | [`removeShard`](https://www.mongodb.com/docs/manual/reference/command/removeShard/#mongodb-dbcommand-dbcmd.removeShard) |                                                              |                       |
 | [`setFeatureCompatibilityVersion`](https://www.mongodb.com/docs/manual/reference/command/setFeatureCompatibilityVersion/#mongodb-dbcommand-dbcmd.setFeatureCompatibilityVersion) |                                                              |                       |
 
-**附加信息**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#additional-information)
+**附加信息**
 
-**燃料电池汽车兼容性**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#fcv-compatibility)
+**燃料电池汽车兼容性**
 
 当[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)尝试连接到[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)其 [功能兼容版本 (fCV)](https://www.mongodb.com/docs/manual/reference/command/setFeatureCompatibilityVersion/#std-label-view-fcv)大于[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos). 例如，您不能将 MongoDB 4.0版本连接[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)到[fCV](https://www.mongodb.com/docs/manual/reference/command/setFeatureCompatibilityVersion/#std-label-view-fcv)设置为4.2的4.2分 片集群。但是，您可以将 MongoDB 4.0版本 连接到4.2分片集群，并将[fCV](https://www.mongodb.com/docs/manual/reference/command/setFeatureCompatibilityVersion/#std-label-view-fcv)设置为4.0 。[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)
 
-**连接池**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#connection-pools)
+**连接池**
 
 从 MongoDB 4.2 开始，MongoDB 添加了参数 [`ShardingTaskExecutorPoolReplicaSetMatching`](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.ShardingTaskExecutorPoolReplicaSetMatching). 这个参数决定了 [`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)/[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)实例的连接池到分片集群的每个节点的最小大小。该值在运行时可能会有所不同。
 
@@ -207,7 +207,7 @@ MongoDB[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#
 
 要修改，请参阅[`ShardingTaskExecutorPoolReplicaSetMatching`。](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.ShardingTaskExecutorPoolReplicaSetMatching)
 
-**将聚合管道与集群一起使用**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#using-aggregation-pipelines-with-clusters)
+**将聚合管道与集群一起使用**
 
 有关分片如何与[聚合](https://www.mongodb.com/docs/manual/core/aggregation-pipeline/#std-label-aggregation-pipeline)一起工作的更多信息，请阅读[实用的 MongoDB 聚合](https://www.practical-mongodb-aggregations.com/guides/sharding.html) 电子书。
 

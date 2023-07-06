@@ -14,7 +14,7 @@
 
 
 
-## A.连接到副本集节点[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-oplog-size/#a.-connect-to-the-replica-set-member)
+## A.连接到副本集节点
 
 使用连接到副本集节点['mongosh`:](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)
 
@@ -30,7 +30,7 @@ mongosh --host <hostname>:<port>
 
 
 
-## B.（可选）验证oplog的当前大小[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-oplog-size/#b.--optional--verify-the-current-size-of-the-oplog)
+## B.（可选）验证oplog的当前大小
 
 要查看 oplog 的当前大小，请切换到`local` 数据库并[`db.collection.stats()`](https://www.mongodb.com/docs/manual/reference/method/db.collection.stats/#mongodb-method-db.collection.stats)针对 `oplog.rs`集合运行。[`stats()`](https://www.mongodb.com/docs/manual/reference/method/db.collection.stats/#mongodb-method-db.collection.stats)将 oplog 大小显示为[`maxSize`.](https://www.mongodb.com/docs/manual/reference/command/collStats/#mongodb-data-collStats.maxSize)
 
@@ -43,7 +43,7 @@ db.oplog.rs.stats().maxSize
 
 该`maxSize`字段以字节为单位显示集合大小。
 
-## C. 改变副本集节点的oplog大小[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-oplog-size/#c.-change-the-oplog-size-of-the-replica-set-member)
+## C. 改变副本集节点的oplog大小
 
 使用命令调整 oplog 的大小[`replSetResizeOplog`](https://www.mongodb.com/docs/manual/reference/command/replSetResizeOplog/#mongodb-dbcommand-dbcmd.replSetResizeOplog)。是双精度 `size`值，必须大于`990`兆字节。`size`显式地投射 oplog[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh), 使用 `Double()`构造函数。
 
@@ -59,7 +59,7 @@ db.adminCommand({replSetResizeOplog: 1, size: Double(16000)})
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 |                                                              |                                                              |
 
-## D.（可选）压缩`oplog.rs`以回收磁盘空间[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-oplog-size/#d.--optional--compact-oplog.rs-to-reclaim-disk-space)
+## D.（可选）压缩`oplog.rs`以回收磁盘空间
 
 减小 oplog 的大小*不会*自动回收分配给原始 oplog 大小的磁盘空间。您必须 [`compact`](https://www.mongodb.com/docs/manual/reference/command/compact/#mongodb-dbcommand-dbcmd.compact)针对数据库中的`oplog.rs`集合 运行`local`以回收磁盘空间。增加 oplog 大小后`compact`在集合上运行没有任何好处。`oplog.rs`
 

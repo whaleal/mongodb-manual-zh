@@ -12,7 +12,7 @@
 
 
 
-## 在阅读首选项中使用标签集[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/configure-replica-set-tag-sets/#use-tag-sets-in-read-preference)
+## 在阅读首选项中使用标签集
 
 如果一个或多个副本集节点与[`tags`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.tags)关联 ，您可以在[读取首选项](https://www.mongodb.com/docs/manual/core/read-preference/#std-label-read-preference)中指定一个标记集来定位这些节点。标签集是文档数组，其中每个文档都包含标签和值对。将按顺序尝试指定，直到找到匹配为止。一旦找到，该规范将用于查找所有符合条件的匹配节点。
 
@@ -137,7 +137,7 @@
 
 
 
-## 自定义多数据中心写入问题[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/configure-replica-set-tag-sets/#custom-multi-datacenter-write-concerns)
+## 自定义多数据中心写入问题
 
 如果一个或多个副本集节点与[`tags`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.tags)关联，您可以配置副本集的 [`settings.getLastErrorModes`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.settings.getLastErrorModes)设置以创建自定义写入问题。
 

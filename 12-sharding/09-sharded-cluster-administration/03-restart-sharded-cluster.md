@@ -32,7 +32,7 @@ sh.stopBalancer()
 
 ## 停止分片集群
 
-### 1.停止`mongos`路由器。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/restart-sharded-cluster/#stop-mongos-routers)
+### 1.停止`mongos`路由器。
 
 在每个`mongos`路由器的`admin`数据库 运行`db.shutdownServer()`：
 

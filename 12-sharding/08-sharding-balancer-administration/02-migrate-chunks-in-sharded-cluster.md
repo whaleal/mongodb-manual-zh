@@ -56,7 +56,7 @@
 
 有关详细信息，请参阅`moveRange`和`moveRange`。
 
-## 更改流和孤立文档[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/migrate-chunks-in-sharded-cluster/#change-streams-and-orphan-documents)
+## 更改流和孤立文档
 
 从 MongoDB 5.3 开始,在范围迁移期间， 不会为孤立文档的更新生成更改流事件。
 

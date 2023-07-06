@@ -1,8 +1,8 @@
-# 阅读偏好用例[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference-use-cases/#read-preference-use-cases)
+# 阅读偏好用例
 
 以下文档解释了各种读取首选项模式的常见用例，以及概述何时不应更改默认主读首选项的反指示。
 
-## 阅读偏好模式[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference-use-cases/#read-preference-modes)
+## 阅读偏好模式
 
 | 阅读偏好模式                                                 | 描述                                                         |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
@@ -12,7 +12,7 @@
 | [`secondaryPreferred`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-secondaryPreferred) | 在大多数情况下，操作从[从节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-secondary)读取，但如果没有[从节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-secondary)可用，则操作从分片集群上的[主节点读取。](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-primary)从 4.4 版开始，[`secondaryPreferred`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-secondaryPreferred)支持 分片集群上的[对冲读取。](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#std-label-mongos-hedged-reads) |
 | [`nearest`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-nearest) | 根据指定的延迟阈值，操作从随机合格的[副本集](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-replica-set) 节点读取，无论该节点是[primary](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-primary) 还是[secondary 。](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-secondary)在计算延迟时，该操作会考虑以下因素：连接[`localThresholdMS`](https://www.mongodb.com/docs/manual/reference/connection-string/#mongodb-urioption-urioption.localThresholdMS)字符串选项maxStalenessSeconds[读取](https://www.mongodb.com/docs/manual/core/read-preference-staleness/#std-label-replica-set-read-preference-max-staleness)首选项任何指定[的标签集列表](https://www.mongodb.com/docs/manual/tutorial/configure-replica-set-tag-sets/)从 4.4 版本开始，[`nearest`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-nearest)支持 分片集群上的对冲[读取](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#std-label-mongos-hedged-reads)，并默认启用对冲读取选项。 |
 
-## 使用非主要阅读偏好的指示[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference-use-cases/#indications-to-use-non-primary-read-preference)
+## 使用非主要阅读偏好的指示
 
 以下是使用非[`primary`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-primary) 读取偏好模式的常见用例：
 
@@ -32,7 +32,7 @@
 
 
 
-## 非主要阅读偏好的反指示[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference-use-cases/#counter-indications-for-non-primary-read-preference)
+## 非主要阅读偏好的反指示
 
 一般来说，不要*使用*[`secondary`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-secondary)和 [`secondaryPreferred`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-secondaryPreferred)来提供额外的读容量，因为：
 
@@ -50,7 +50,7 @@
 
 
 
-## 最大化一致性[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference-use-cases/#maximize-consistency)
+## 最大化一致性
 
 为避免*过时*的读取，请使用[`primary`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-primary)读取首选项和 . 如果主节点不可用，例如在选举期间或大多数副本集不可访问时，使用读取首选项的读取操作会产生错误或抛出异常。[`"majority"`](https://www.mongodb.com/docs/manual/reference/read-concern-majority/#mongodb-readconcern-readconcern.-majority-) `readConcern`[`primary`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-primary)
 
@@ -63,7 +63,7 @@
 
 为了提高一致性，您可以禁用自动[故障转移](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-failover)；但是，禁用自动故障转移会牺牲可用性。
 
-## 最大化可用性[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference-use-cases/#maximize-availability)
+## 最大化可用性
 
 要尽可能允许读取操作，请使用 [`primaryPreferred`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-primaryPreferred). 当有主节点时，您将获得一致的读取[[ 1 \]](https://www.mongodb.com/docs/manual/core/read-preference-use-cases/#footnote-edge-cases-2-primaries)，但如果没有主节点，您仍然可以查询[从节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-secondary)。但是，在使用这种读取模式时，请考虑描述的情况 [`secondary`对比`secondaryPreferred`_](https://www.mongodb.com/docs/manual/core/read-preference-use-cases/#std-label-caveat-secondaryPreferred)
 
@@ -71,7 +71,7 @@
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 |                                                              |                                                              |
 
-## 最小化延迟[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference-use-cases/#minimize-latency)
+## 最小化延迟
 
 要始终从低延迟节点读取，请使用[`nearest`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-nearest). 驾驶员或[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)将从最近的节点以及距离最近的节点不超过15 毫秒[[ 2 \]](https://www.mongodb.com/docs/manual/core/read-preference-use-cases/#footnote-secondary-acceptable-latency)的节点那里读取信息 。
 
@@ -81,7 +81,7 @@
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 |                                                              |                                                              |
 
-## 来自地理分布节点的查询[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference-use-cases/#query-from-geographically-distributed-members)
+## 来自地理分布节点的查询
 
 如果副本集的节点是地理分布的，您可以创建反映实例位置的副本标签，然后配置您的应用程序以查询附近的节点。
 
@@ -97,7 +97,7 @@ db.collection.find().readPref('nearest', [ { 'dc': 'east' } ])
 
 
 
-## `secondary`对比`secondaryPreferred`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference-use-cases/#secondary-vs-secondarypreferred)
+## `secondary`对比`secondaryPreferred`
 
 对于特定的专用查询（例如 ETL、报告），您可以使用[`secondary`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-secondary)读取首选项模式将读取负载从主数据库转移。对于此用例，[`secondary`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-secondary)模式优于[`secondaryPreferred`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-secondaryPreferred)模式，因为 [`secondaryPreferred`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-secondaryPreferred)存在以下情况的风险：如果所有从节点都不可用并且您的副本集有足够的[仲裁器](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-arbiter) [[ 3 \]](https://www.mongodb.com/docs/manual/core/read-preference-use-cases/#footnote-arbiter-limit)来防止主节点退出，那么主节点将接收来自主节点的所有流量客户。如果主节点无法处理此负载，查询将与写入竞争。因此，使用读取首选项[`secondary`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-secondary)来分发这些特定的专用查询而不是 [`secondaryPreferred`.](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-secondaryPreferred)
 

@@ -8,7 +8,7 @@
 
 要安装独立实例，请参阅[安装教程。](https://www.mongodb.com/docs/manual/installation/#std-label-tutorials-installation)
 
-## 程序[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/convert-standalone-to-replica-set/#procedure)
+## 程序
 
 
 

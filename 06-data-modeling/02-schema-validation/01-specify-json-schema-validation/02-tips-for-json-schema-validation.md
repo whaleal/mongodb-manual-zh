@@ -1,8 +1,8 @@
-**JSON 模式验证技巧**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/specify-json-schema/json-schema-tips/#tips-for-json-schema-validation)
+**JSON 模式验证技巧**
 
 本页介绍了 JSON 模式验证的最佳实践，以帮助避免常见问题。
 
-**`_id`领域和`additionalProperties: false`**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/specify-json-schema/json-schema-tips/#_id-field-and-additionalproperties--false)
+**`_id`领域和`additionalProperties: false`**
 
 当您`additionalProperties: false`在 JSON 模式中指定时，MongoDB 拒绝包含未包含在您的模式`properties`对象中的字段的文档。
 
@@ -39,7 +39,7 @@
 }
 ```
 
-`null`**字段值验证**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/specify-json-schema/json-schema-tips/#validation-for-null-field-values)
+`null`**字段值验证**
 
 您的应用程序可能配置为将缺少的字段值设置为 `null`，而不是在发送到集合的对象中不包括这些字段。
 

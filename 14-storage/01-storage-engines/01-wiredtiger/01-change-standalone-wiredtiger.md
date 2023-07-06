@@ -8,30 +8,30 @@
 
 [使用本教程将独立](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-standalone) MongoDB 实例的存储引擎更改为[WiredTiger 。](https://www.mongodb.com/docs/manual/core/wiredtiger/#std-label-storage-wiredtiger)
 
-## 注意事项[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-standalone-wiredtiger/#considerations)
+## 注意事项
 
-### `mongodump`和`mongorestore`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-standalone-wiredtiger/#mongodump-and-mongorestore)
+### `mongodump`和`mongorestore`
 
 本教程使用[`mongodump`](https://www.mongodb.com/docs/database-tools/mongodump/#mongodb-binary-bin.mongodump)和 [`mongorestore`](https://www.mongodb.com/docs/database-tools/mongorestore/#mongodb-binary-bin.mongorestore)用于导出和导入数据的实用程序。
 
 - 确保在您的系统上安装并更新了这些 MongoDB 包组件。
 - 确保您有足够的驱动器空间可用于 [`mongodump`](https://www.mongodb.com/docs/database-tools/mongodump/#mongodb-binary-bin.mongodump)[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)使用 WiredTiger 运行的新实例的导出文件和数据文件 。
 
-### 默认绑定到本地主机[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-standalone-wiredtiger/#default-bind-to-localhost)
+### 默认绑定到本地主机
 
 MongoDB 二进制文件，[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)和 [`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)，默认绑定到`localhost`。
 
 教程运行[`mongodump`](https://www.mongodb.com/docs/database-tools/mongodump/#mongodb-binary-bin.mongodump)和 [`mongorestore`](https://www.mongodb.com/docs/database-tools/mongorestore/#mongodb-binary-bin.mongorestore)[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)来自与他们连接的同一主机 。如果远程运行， [`mongodump`](https://www.mongodb.com/docs/database-tools/mongodump/#mongodb-binary-bin.mongodump)和[`mongorestore`](https://www.mongodb.com/docs/database-tools/mongorestore/#mongodb-binary-bin.mongorestore)必须指定 IP 地址或关联的主机名才能连接到 [`mongod`.](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)
 
-### MongoDB 3.0 或更高版本[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-standalone-wiredtiger/#mongodb-3.0-or-greater)
+### MongoDB 3.0 或更高版本
 
 您必须使用 MongoDB 版本 3.0 或更高版本才能使用 WiredTiger 存储引擎。如果使用较早的 MongoDB 版本，您必须在继续更改存储引擎之前升级您的 MongoDB 版本。要升级您的 MongoDB 版本，请参阅相应版本的手册。
 
-### XFS 和 WiredTiger[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-standalone-wiredtiger/#xfs-and-wiredtiger)
+### XFS 和 WiredTiger
 
 使用 WiredTiger 存储引擎，在 Linux 上建议使用 XFS 作为数据承载节点。有关详细信息，请参阅 [内核和文件系统。](https://www.mongodb.com/docs/manual/administration/production-notes/#std-label-prod-notes-linux-file-system)
 
-### 仅限 MMAPv1 限制[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-standalone-wiredtiger/#mmapv1-only-restrictions)
+### 仅限 MMAPv1 限制
 
 升级到 WiredTiger 后，您的 WiredTiger 部署将**不受** 以下仅限 MMAPv1 的限制：
 
@@ -43,17 +43,17 @@ MongoDB 二进制文件，[`mongod`](https://www.mongodb.com/docs/manual/referen
 | 数据大小           | 对于 MMAPv1，单个[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)实例无法管理超过底层操作系统提供的最大虚拟内存地址空间的数据集。 |
 | 数据库中的集合数   | 对于 MMAPv1 存储引擎，数据库中集合的最大数量是命名空间文件大小和数据库中集合索引数量的函数。 |
 
-## 程序[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-standalone-wiredtiger/#procedure)
+## 程序
 
  
 
-### 启动`mongod`您要更改的 WiredTiger。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-standalone-wiredtiger/#start-the-mongod-you-wish-to-change-to-wiredtiger)
+### 启动`mongod`您要更改的 WiredTiger。
 
 如果[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)已经在运行，则可以跳过此步骤。
 
  
 
-### 使用`mongodump`导出数据。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-standalone-wiredtiger/#export-data-using-mongodump)
+### 使用`mongodump`导出数据。
 
 ```
 mongodump --out=<exportDataDestination>
@@ -63,7 +63,7 @@ mongodump --out=<exportDataDestination>
 
 
 
-### 使用 WiredTiger为新`mongod`运行创建一个数据目录。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-standalone-wiredtiger/#create-a-data-directory-for-the-new-mongod-running-with-wiredtiger)
+### 使用 WiredTiger为新`mongod`运行创建一个数据目录。
 
 [`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)为将使用 WiredTiger 存储引擎运行的新实例创建一个数据目录。`mongod`必须对该目录具有读写权限。
 
@@ -71,13 +71,13 @@ mongodump --out=<exportDataDestination>
 
  
 
-### 更新 WiredTiger 的配置。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-standalone-wiredtiger/#update-configuration-for-wiredtiger)
+### 更新 WiredTiger 的配置。
 
 从[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)实例配置中删除所有[MMAPv1 特定配置选项。](https://www.mongodb.com/docs/manual/release-notes/4.2/#std-label-4.2-mmapv1-conf-options)
 
  
 
-### 用WiredTiger启动`mongod`。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-standalone-wiredtiger/#start-mongod-with-wiredtiger)
+### 用WiredTiger启动`mongod`。
 
 启动，将WiredTiger 的新创建数据目录指定`wiredTiger`为
 
@@ -103,7 +103,7 @@ mongod --storageEngine wiredTiger --dbpath <newWiredTigerDBPath> --bind_ip local
 
 
 
-### 使用 上传导出的数据`mongorestore`。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-standalone-wiredtiger/#upload-the-exported-data-using-mongorestore)
+### 使用 上传导出的数据`mongorestore`。
 
 ```
 mongorestore <exportDataDestination>

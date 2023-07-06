@@ -2,7 +2,7 @@
 
 本页描述了对 分片集群部署进行故障排除的常见策略。
 
-## 应用程序服务器或`mongos`实例变得不可用[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/troubleshoot-sharded-clusters/#application-servers-or--instances-become-unavailable)
+## 应用程序服务器或`mongos`实例变得不可用
 
 如果每个应用服务器都有自己的`mongos`实例，其他应用服务器可以继续访问数据库。此外， `mongos`实例不保持持久状态，它们可以重新启动并变得不可用而不会丢失任何状态或数据。当`mongos`实例启动时，它会检索配置数据库的副本 并可以开始路由查询。
 

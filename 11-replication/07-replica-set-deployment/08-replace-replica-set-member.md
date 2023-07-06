@@ -2,7 +2,7 @@
 
 如果您需要更改副本集成员的主机名而不更改该成员或副本集的配置，则可以使用本教程中概述的操作。例如，如果您必须重新配置系统或重命名主机，您可以使用此模式来最小化更改的范围。
 
-## Operation[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/replace-replica-set-member/#operation)
+## Operation
 
 要更改副本集成员的主机名，请修改该 [`members[n\].host`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.host)字段。当您重新配置集合时，字段的值 [`members[n\]._id`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-._id)不会改变。
 
@@ -16,7 +16,7 @@
 
 
 
-## 例子[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/replace-replica-set-member/#example)
+## 例子
 
 要将在`mongo2.example.net`处配置的副本集成员的主机名更改为`members[0]`，请发出以下命令序列：
 

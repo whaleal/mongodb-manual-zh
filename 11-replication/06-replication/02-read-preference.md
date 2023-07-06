@@ -38,7 +38,7 @@
 - [阅读偏好`maxStalenessSeconds`](https://www.mongodb.com/docs/manual/core/read-preference-staleness/#std-label-replica-set-read-preference-max-staleness)
 - [对冲读取](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#std-label-mongos-hedged-reads)
 
-## 行为[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference/#behavior)
+## 行为
 
 - 所有阅读偏好模式除外[`primary`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-primary)可能会返回陈旧数据，因为[从节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-secondary)在异步过程中从主节点复制操作。 [[ 1 \]](https://www.mongodb.com/docs/manual/core/read-preference/#footnote-edge-cases-2-primaries)如果您选择使用非[`primary`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-primary) 模式。
 - 阅读偏好不影响数据的可见性；即客户端可以在写入结果被确认或传播到大多数副本集节点之前看到写入结果。有关详细信息，请参阅 [读取隔离、一致性和新近度。](https://www.mongodb.com/docs/manual/core/read-isolation-consistency-recency/)
@@ -46,25 +46,25 @@
 
 
 
-## 阅读偏好模式[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference/#read-preference-modes)
+## 阅读偏好模式
 
-- `primary`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-primary)
+- `primary`
 
   所有读取操作仅使用当前副本集 [primary](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-primary)。[[ 1 \]](https://www.mongodb.com/docs/manual/core/read-preference/#footnote-edge-cases-2-primaries)这是默认的阅读模式。如果主数据库不可用，读取操作会产生错误或抛出异常。这[`primary`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-primary)[读取首选项模式与使用标记集列表](https://www.mongodb.com/docs/manual/core/read-preference-tags/#std-label-replica-set-read-preference-tag-sets)或[maxStalenessSeconds](https://www.mongodb.com/docs/manual/core/read-preference-staleness/#std-label-replica-set-read-preference-max-staleness)的读取首选项模式不兼容。如果您指定标记集列表或一个`maxStalenessSeconds`值[`primary`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-primary)，驱动程序将产生一个错误。包含读取操作[的多文档事务必须使用读取首选项](https://www.mongodb.com/docs/manual/core/transactions/)[`primary`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-primary). 给定事务中的所有操作必须路由到同一成节点。
 
-- `primaryPreferred`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-primaryPreferred)
+- `primaryPreferred`
 
   当 primaryPreferred 读取首选项包含 maxStalenessSeconds 值并且没有可从中读取的主节点数据时，客户端通过将次要数据的最后一次写入与次要数据的最近一次写入进行比较来估计每个次要数据的陈旧程度。 客户端然后将读取操作定向到一个其估计滞后小于或等于 maxStalenessSeconds 的从节点。然后客户端将读取操作定向到估计滞后小于或等于 的从节点`maxStalenessSeconds`。当读取首选项包括[标签集列表（标签集数组）](https://www.mongodb.com/docs/manual/core/read-preference-tags/#std-label-replica-set-read-preference-tag-sets)并且没有可从中读取的主节点时，客户端会尝试查找具有匹配标签的从节点（按顺序尝试标签集直到找到匹配项）。如果找到匹配的从节点，客户端会从[最近](https://www.mongodb.com/docs/manual/core/read-preference-mechanics/#std-label-replica-set-read-preference-behavior-nearest)的匹配从节点组中随机选择一个从节点。如果没有从节点具有匹配的标签，则读取操作会产生错误。当读取首选项包括一个`maxStalenessSeconds`值 **和**一个标签集列表时，客户端首先按陈旧性过滤，然后按指定的标签过滤。使用读取操作[`primaryPreferred`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-primaryPreferred)模式可能会返回陈旧的数据。使用该 `maxStalenessSeconds`选项可以避免从客户端读取过时的次级数据。笔记从 4.4 版开始，[`primaryPreferred`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-primaryPreferred)支持 分片集群上的[对冲读取。](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#std-label-mongos-hedged-reads)
 
-- `secondary`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-secondary)
+- `secondary`
 
   读取操作*只*从集合的[从节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-secondary)操作。如果没有从节点可用，则此读取操作会产生错误或异常。大多数副本集至少有一个从节点，但在某些情况下可能没有可用的从节点。例如，如果节点处于恢复状态或不可用，则具有[主节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-primary)、从节点和 [仲裁节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-arbiter)的副本集可能没有任何可用的从节点。当[`secondary`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-secondary)读取首选项包括一个[maxStalenessSeconds 值](https://www.mongodb.com/docs/manual/core/read-preference-staleness/#std-label-replica-set-read-preference-max-staleness)，客户端通过比较从节点最后一次写入与主节点写入来估计每个从节点陈旧程度。然后，客户端将读取操作定向到估计滞后小于或等于 的从节点`maxStalenessSeconds`。如果没有主节点，客户端使用具有最近写入的从节点进行比较。当读取首选项包含[标签集列表（标签集数组）](https://www.mongodb.com/docs/manual/core/read-preference-tags/#std-label-replica-set-read-preference-tag-sets)时，客户端会尝试查找具有匹配标签的从节点（按顺序尝试标签集，直到找到匹配项）。如果找到匹配的从节点，客户端会从[最近](https://www.mongodb.com/docs/manual/core/read-preference-mechanics/#std-label-replica-set-read-preference-behavior-nearest)的匹配从节点组中随机选择一个从节点。如果没有从节点具有匹配的标签，则读取操作会产生错误。当读取首选项包括一个`maxStalenessSeconds`值 **和**一个标签集列表时，客户端首先按陈旧性过滤，然后按指定的标签过滤。使用读取操作[`secondary`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-secondary)模式可能会返回陈旧的数据。使用该 `maxStalenessSeconds`选项可以避免从客户端读取过时的次级数据。笔记从 4.4 版开始，[`secondary`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-secondary)支持 分片集群上的[对冲读取。](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#std-label-mongos-hedged-reads)
 
-- `secondaryPreferred`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-secondaryPreferred)
+- `secondaryPreferred`
 
   在大多数情况下，操作从[从节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-secondary)读取，但在集合由单个 [主节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-primary)（没有其他节点）组成的情况下，读取操作将使用副本集的主节点。当[`secondaryPreferred`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-secondaryPreferred)读取首选项包括一个[maxStalenessSeconds 值](https://www.mongodb.com/docs/manual/core/read-preference-staleness/#std-label-replica-set-read-preference-max-staleness)，客户端通过比较从节点最后一次写入与主节点写入来估计每个从节点陈旧程度。然后，客户端将读取操作定向到估计滞后小于或等于的从节点`maxStalenessSeconds`。如果没有主节点，客户端使用具有最近写入的从节点进行比较。如果没有估计滞后小于或等于 的从节点`maxStalenessSeconds`，则客户端将读取操作定向到副本集的主节点。当读取首选项包含[标签集列表（标签集数组）](https://www.mongodb.com/docs/manual/core/read-preference-tags/#std-label-replica-set-read-preference-tag-sets)时，客户端会尝试查找具有匹配标签的从节点（按顺序尝试标签集，直到找到匹配项）。如果找到匹配的从节点，客户端会从[最近](https://www.mongodb.com/docs/manual/core/read-preference-mechanics/#std-label-replica-set-read-preference-behavior-nearest)的匹配从节点组中随机选择一个从节点。如果没有从节点具有匹配的标签，则客户端将忽略标签并从主节点读取。当读取首选项包括一个`maxStalenessSeconds`值 **和**一个标签集列表时，客户端首先按陈旧性过滤，然后按指定的标签过滤。使用读取操作[`secondaryPreferred`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-secondaryPreferred)模式可能会返回陈旧的数据。使用该 `maxStalenessSeconds`选项可以避免从客户端读取过时的次级数据。笔记从 4.4 版开始，[`secondaryPreferred`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-secondaryPreferred)支持 分片集群上的[对冲读取。](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#std-label-mongos-hedged-reads)
 
-- `nearest`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-nearest)
+- `nearest`
 
   驱动程序从其网络延迟落在可接受的延迟窗口内的节点读取。读入[`nearest`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-nearest)mode 在路由读取操作时不考虑节点是[主节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-primary)还是 [从节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-secondary)：主节点和从节点被同等对待。设置此模式可最大限度地减少网络延迟对读取操作的影响，而不优先考虑当前或过时的数据。当读取首选项包含[maxStalenessSeconds 值](https://www.mongodb.com/docs/manual/core/read-preference-staleness/#std-label-replica-set-read-preference-max-staleness)时，客户端通过将从节点最后一次写入与主节点写入（如果可用）或如果没有主节点则与最近的写入进行比较来估计每个次要的陈旧程度。然后，客户端将过滤掉滞后大于估计值的从节点，并随机将读取定向到网络延迟落在[可接受延迟窗口](https://www.mongodb.com/docs/manual/core/read-preference-mechanics/#std-label-replica-set-read-preference-behavior-nearest)`maxStalenessSeconds`内的剩余节点（主节点或从节点） [。](https://www.mongodb.com/docs/manual/core/read-preference-mechanics/#std-label-replica-set-read-preference-behavior-nearest)如果你指定了一个[标签集列表](https://www.mongodb.com/docs/manual/core/read-preference-tags/#std-label-replica-set-read-preference-tag-sets)，客户端会尝试找到一个与指定的标签集列表相匹配的副本集节点，并将读取定向到[最近组中的任意节点。](https://www.mongodb.com/docs/manual/core/read-preference-mechanics/#std-label-replica-set-read-preference-behavior-nearest)当读取首选项包括一个`maxStalenessSeconds`值 **和**一个标签集列表时，客户端首先按陈旧性过滤，然后按指定的标签过滤。从剩余的[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)实例中，客户端然后随机将读取定向到落在可接受的延迟窗口内的实例。阅读首选项[节点选择](https://www.mongodb.com/docs/manual/core/read-preference-mechanics/#std-label-replica-set-read-preference-behavior-nearest) 文档详细描述了该过程。使用读取操作[`nearest`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-nearest)模式可能会返回陈旧的数据。使用该 `maxStalenessSeconds`选项可以避免从客户端读取过时的次级数据。笔记从 4.4 版本开始，读取首选项[`nearest`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-nearest)，默认情况下，指定对分片集群上的读取使用[对冲读取。](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/#std-label-mongos-hedged-reads)
 
@@ -78,7 +78,7 @@
 
 
 
-## 配置阅读首选项[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference/#configure-read-preference)
+## 配置阅读首选项
 
 使用 MongoDB 驱动程序时，您可以使用驱动程序的读取首选项 API 指定读取首选项。见司机[API文档](https://www.mongodb.com/docs/drivers/). [您还可以在连接到副本集或分片集群](https://www.mongodb.com/docs/manual/reference/connection-string/#std-label-connections-read-preference)时设置读取首选项（对冲读取选项除外）。有关示例，请参阅 [连接字符串。](https://www.mongodb.com/docs/manual/reference/connection-string/#std-label-connections-read-preference)
 
@@ -86,11 +86,11 @@
 
 使用时[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)，见 [`cursor.readPref()`](https://www.mongodb.com/docs/manual/reference/method/cursor.readPref/#mongodb-method-cursor.readPref)和[`Mongo.setReadPref()`。](https://www.mongodb.com/docs/manual/reference/method/Mongo.setReadPref/#mongodb-method-Mongo.setReadPref)
 
-## 阅读偏好和交易[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference/#read-preference-and-transactions)
+## 阅读偏好和交易
 
 包含读取操作[的多文档事务必须使用读取首选项](https://www.mongodb.com/docs/manual/core/transactions/)[`primary`](https://www.mongodb.com/docs/manual/core/read-preference/#mongodb-readmode-primary). 给定事务中的所有操作必须路由到同一成员。
 
-## 其他注意事项[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference/#additional-considerations)
+## 其他注意事项
 
 对于包含或阶段的[聚合管道](https://www.mongodb.com/docs/manual/core/aggregation-pipeline/)操作，无论读取首选项设置如何，管道都在[主节点上运行。](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-primary)[`$out`](https://www.mongodb.com/docs/manual/reference/operator/aggregation/out/#mongodb-pipeline-pipe.-out)[`$merge`](https://www.mongodb.com/docs/manual/reference/operator/aggregation/merge/#mongodb-pipeline-pipe.-merge)
 
