@@ -8,7 +8,7 @@ MongoDB 将分片键值（或散列分片键值）的跨度划分为不重叠的
 
 shard key 直接关系到 chunk 分发的有效性。请参阅[选择分片键。](https://www.mongodb.com/docs/manual/core/sharding-choose-a-shard-key/#std-label-sharding-shard-key-selection)
 
-**分片键索引**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharding-shard-key/#shard-key-indexes)
+**分片键索引**
 
 所有分片集合**必须**有一个支持分 [片键](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-shard-key)的索引。索引可以是分片键上的索引，也可以是分 片键是索引[前缀的](https://www.mongodb.com/docs/manual/core/index-compound/#std-label-compound-index-prefix)[复合](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-compound-index)索引。
 
@@ -17,7 +17,7 @@ shard key 直接关系到 chunk 分发的有效性。请参阅[选择分片键�
 
 如果删除分片键的最后一个有效索引，则通过仅在分片键上重新创建索引来恢复。
 
-**唯一索引**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharding-shard-key/#unique-indexes)
+**唯一索引**
 
 MongoDB 可以对范围分片键索引实施唯一性约束。通过在分片键上使用唯一索引，MongoDB 对整个键组合而不是分片键的单个组件强制执行唯一性。
 
@@ -54,11 +54,11 @@ MongoDB 可以对范围分片键索引实施唯一性约束。通过在分片键
 
 您不能在[散列索引上指定唯一约束。](https://www.mongodb.com/docs/manual/core/index-hashed/#std-label-index-type-hashed)
 
-**缺少片键字段**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharding-shard-key/#missing-shard-key-fields)
+**缺少片键字段**
 
 从 4.4 版开始，分片集合中的文档可能缺少分片键字段。要设置缺少的分片键字段，请参阅 [设置缺少的分片键字段。](https://www.mongodb.com/docs/manual/core/sharding-set-missing-shard-key-fields/#std-label-shard-key-missing-set)
 
-**块范围和缺失的分片键字段**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharding-shard-key/#chunk-range-and-missing-shard-key-fields)
+**块范围和缺失的分片键字段**
 
 缺少的分片键字段与具有空值的分片键属于相同的块范围。例如，如果分片键在 fields 上`{ x: 1, y: 1 }`，那么：
 
@@ -68,7 +68,7 @@ MongoDB 可以对范围分片键索引实施唯一性约束。通过在分片键
 | `{ y: "goodbye" }` | `{ x: null, y: "goodbye" }` |
 | `{ z: "oops" }`    | `{ x: null, y: null }`      |
 
-**读/写操作和缺少分片键字段**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/sharding-shard-key/#read-write-operations-and-missing-shard-key-fields)
+**读/写操作和缺少分片键字段**
 
 要定位缺少分片键字段的文档，您可以 在分片[`{ $exists: false }`](https://www.mongodb.com/docs/manual/reference/operator/query/exists/#mongodb-query-op.-exists)键字段上使用过滤条件。例如，如果分片键在 fields 上`{ x: 1, y: 1 }`，您可以通过运行以下查询找到缺少分片键字段的文档：
 

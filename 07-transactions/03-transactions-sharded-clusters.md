@@ -1,10 +1,10 @@
-# 生产注意事项（分片集群）[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-sharded-clusters/#production-considerations--sharded-clusters-)
+# 生产注意事项（分片集群）
 
 从 4.2 版本开始，MongoDB 提供了为分片集群执行多文档事务的能力。
 
 下一页列出了特定于在分片集群上运行事务的关注点。[这些问题是生产注意事项](https://www.mongodb.com/docs/manual/core/transactions-production-consideration/)中列出的问题之外的问题 [。](https://www.mongodb.com/docs/manual/core/transactions-production-consideration/)
 
-## 分片事务和 MongoDB 驱动程序[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-sharded-clusters/#sharded-transactions-and-mongodb-drivers)
+## 分片事务和 MongoDB 驱动程序
 
 *对于 MongoDB 4.2 部署（副本集和分片集群）上的事务*，客户端**必须**使用针对 MongoDB 4.2 更新的 MongoDB 驱动程序。
 
@@ -21,13 +21,13 @@
 | 251      | `cannot continue txnId -1 for session ... with txnId 1` |
 | 50940    | `cannot commit with no participants`                    |
 
-## 表现[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-sharded-clusters/#performance)
+## 表现
 
-### 单个分片[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-sharded-clusters/#single-shard)
+### 单个分片
 
 针对单个分片的事务应该具有与副本集事务相同的性能。
 
-### 多个分片[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-sharded-clusters/#multiple-shards)
+### 多个分片
 
 影响多个分片的事务会产生更大的性能成本。
 
@@ -39,7 +39,7 @@
 
 
 
-### 时限[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-sharded-clusters/#time-limit)
+### 时限
 
 要指定时间限制，请在 上指定`maxTimeMS`限制 `commitTransaction`。
 
@@ -49,7 +49,7 @@
 
 要[`transactionLifetimeLimitSeconds`](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.transactionLifetimeLimitSeconds)为分片集群修改，必须为所有分片副本集节点修改参数。
 
-## 阅读关注[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-sharded-clusters/#read-concerns)
+## 阅读关注
 
 多文档事务支持[`"local"`](https://www.mongodb.com/docs/manual/reference/read-concern-local/#mongodb-readconcern-readconcern.-local-)、 [`"majority"`](https://www.mongodb.com/docs/manual/reference/read-concern-majority/#mongodb-readconcern-readconcern.-majority-)和[`"snapshot"`](https://www.mongodb.com/docs/manual/reference/read-concern-snapshot/#mongodb-readconcern-readconcern.-snapshot-)读取关注级别。
 
@@ -57,7 +57,7 @@
 
 有关阅读关注和交易的更多信息，请参阅 [交易和阅读关注。](https://www.mongodb.com/docs/manual/core/transactions/#std-label-transactions-read-concern)
 
-## 写下疑虑[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-sharded-clusters/#write-concerns)
+## 写下疑虑
 
 您不能在分片[`writeConcernMajorityJournalDefault`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.writeConcernMajorityJournalDefault)设置为的分片集群上运行事务`false` （例如具有使用[内存存储引擎](https://www.mongodb.com/docs/manual/core/inmemory/)的投票节点的分片）。
 
@@ -67,11 +67,11 @@
 
 不管[为事务指定的写关注点](https://www.mongodb.com/docs/manual/core/transactions/#std-label-transactions-write-concern)如何，分片集群事务的提交操作包括一些使用`{w: "majority", j: true}`写关注点的部分。
 
-## 仲裁节点[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-sharded-clusters/#arbiters)
+## 仲裁节点
 
 如果任何事务操作读取或写入包含仲裁程序的分片，则写入操作跨越多个分片的事务将出错并中止。
 
-## 备份和恢复[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-sharded-clusters/#backups-and-restores)
+## 备份和恢复
 
 
 
@@ -85,7 +85,7 @@
 - [MongoDB 云管理器](https://www.mongodb.com/cloud/cloud-manager?tck=docs_server)， 要么
 - [MongoDB 运营经理](https://www.mongodb.com/products/ops-manager?tck=docs_server).
 
-## 块迁移[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-sharded-clusters/#chunk-migrations)
+## 块迁移
 
 [块迁移](https://www.mongodb.com/docs/manual/core/sharding-balancer-administration/#std-label-chunk-migration-procedure)在某些阶段获取独占集合锁。
 
@@ -106,7 +106,7 @@
 
 [`shardingStatistics.countDonorMoveChunkLockTimeout`](https://www.mongodb.com/docs/manual/reference/command/serverStatus/#mongodb-serverstatus-serverstatus.shardingStatistics.countDonorMoveChunkLockTimeout)
 
-## 提交期间的外部读取[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-sharded-clusters/#outside-reads-during-commit)
+## 提交期间的外部读取
 
 在提交事务期间，外部读取操作可能会尝试读取将由事务修改的相同文档。如果事务写入多个分片，则在跨分片的提交尝试期间
 
@@ -121,7 +121,7 @@
 
 [事务和原子性](https://www.mongodb.com/docs/manual/core/transactions/#std-label-transactions-atomicity)
 
-## 附加信息[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-sharded-clusters/#additional-information)
+## 附加信息
 
 另请参阅[生产注意事项。](https://www.mongodb.com/docs/manual/core/transactions-production-consideration/)
 

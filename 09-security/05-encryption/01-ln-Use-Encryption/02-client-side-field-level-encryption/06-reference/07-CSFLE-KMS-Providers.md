@@ -20,7 +20,7 @@
 
 要创建客户主密钥，您必须配置密钥管理服务提供商以生成您的客户主密钥，如下所示：
 
-![建客户主密钥流程图](/Users/jinmu/Desktop/mongodb-manual-zh/images/CSFLE-KMS-Providers-01.png)
+![建客户主密钥流程图](../../../../../images/CSFLE-KMS-Providers-01.png)
 
 要查看演示如何在首选密钥管理服务中创建和存储 CMK的教程，请参阅[教程。](https://www.mongodb.com/docs/manual/core/csfle/tutorials/#std-label-csfle-tutorial-automatic-encryption)
 

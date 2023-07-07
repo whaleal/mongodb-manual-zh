@@ -1,4 +1,4 @@
-# 副本集读写语义[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/applications/replication/#replica-set-read-and-write-semantics)
+# 副本集读写语义
 
 从客户端应用程序的角度来看，MongoDB 实例是作为单个服务器（即“独立”）运行还是作为 [副本集](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-replica-set)运行是透明的。但是，MongoDB 为副本集提供了额外的读写配置。
 

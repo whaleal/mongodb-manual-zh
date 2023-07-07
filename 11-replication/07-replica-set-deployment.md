@@ -1,4 +1,4 @@
- 副本集部署教程[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/administration/replica-set-deployment/#replica-set-deployment-tutorials)
+ 副本集部署教程
 
 以下教程提供了有关部署副本集的信息。
 

@@ -1,4 +1,4 @@
-**查看现有验证规则**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/view-existing-validation-rules/#view-existing-validation-rules)
+**查看现有验证规则**
 
 您可以查看集合的验证规则以确定对文档施加了哪些限制以及 MongoDB 在出现无效文档时如何处理它们。
 
@@ -6,11 +6,11 @@
 
 这两个命令返回相同的信息，但每个命令的输出格式不同。
 
-**先决条件**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/view-existing-validation-rules/#prerequisite)
+**先决条件**
 
 要运行此页面上的示例，请创建一个`students`包含验证规则的集合。有关详细信息，请参阅 [指定 JSON 架构验证。](https://www.mongodb.com/docs/manual/core/schema-validation/specify-json-schema/#std-label-schema-validation-json)
 
-**示例：`db.getCollectionInfos()`语法**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/view-existing-validation-rules/#example--db.getcollectioninfos---syntax)
+**示例：`db.getCollectionInfos()`语法**
 
 以下命令用于[`db.getCollectionInfos()`](https://www.mongodb.com/docs/manual/reference/method/db.getCollectionInfos/#mongodb-method-db.getCollectionInfos)返回`students`集合的验证规则：
 
@@ -51,7 +51,7 @@ db.getCollectionInfos( { name: "students" } )[0].options.validator
 >
 >如果`validationAction`和`validationLevel`未明确设置，[`db.getCollectionInfos()`](https://www.mongodb.com/docs/manual/reference/method/db.getCollectionInfos/#mongodb-method-db.getCollectionInfos)则不在其输出中包含这些字段。
 
-**示例**：`listCollections`语法[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/view-existing-validation-rules/#example--listcollections-syntax)
+**示例**：`listCollections`语法
 
 以下命令用于[`listCollections`](https://www.mongodb.com/docs/manual/reference/command/listCollections/#mongodb-dbcommand-dbcmd.listCollections)返回`students`集合的验证规则：
 
@@ -101,7 +101,7 @@ db.runCommand ( { listCollections: 1, filter: { name: "students" } } )
 }
 ```
 
-**学到更多**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/view-existing-validation-rules/#learn-more)
+**学到更多**
 
 - [查询和修改有效或无效文件](https://www.mongodb.com/docs/manual/core/schema-validation/use-json-schema-query-conditions/#std-label-use-json-schema-query-conditions)
 - [选择如何处理无效文件](https://www.mongodb.com/docs/manual/core/schema-validation/handle-invalid-documents/#std-label-schema-validation-handle-invalid-docs)

@@ -14,7 +14,7 @@ MongoDB 提供了两个用于执行初始同步的选项：
 
   看[通过从另一个节点复制数据文件来同步。](https://www.mongodb.com/docs/manual/tutorial/resync-replica-set-member/#std-label-replica-set-resync-by-copying)
 
-## 程序[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/resync-replica-set-member/#procedures)
+## 程序
 
 >## NOTE
 >
@@ -47,11 +47,11 @@ MongoDB 提供了两个用于执行初始同步的选项：
 
 
 
-### 通过从另一个节点复制数据文件来同步[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/resync-replica-set-member/#sync-by-copying-data-files-from-another-member)
+### 通过从另一个节点复制数据文件来同步
 
 这种方法使用来自副本集现有成员的数据文件“播种”新成员或陈旧节点。数据文件**必须**足够新以允许新节点赶上操作 [日志](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-oplog)。否则，节点将需要执行初始同步。
 
-#### 复制数据文件[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/resync-replica-set-member/#copy-the-data-files)
+#### 复制数据文件
 
 您可以将数据文件捕获为快照或直接副本。但是，在大多数情况下，您无法将数据文件从一个正在运行的 [`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)实例复制到另一个实例，因为数据文件会在文件复制操作期间更改。
 
@@ -61,7 +61,7 @@ MongoDB 提供了两个用于执行初始同步的选项：
 
 你*不能*使用[`mongodump`](https://www.mongodb.com/docs/database-tools/mongodump/#mongodb-binary-bin.mongodump)数据文件的备份： **只有快照备份**。有关捕获正在运行的[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)实例的一致快照的方法，请参阅 [MongoDB 备份方法](https://www.mongodb.com/docs/manual/core/backups/)文档。
 
-#### 同步节点[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/resync-replica-set-member/#sync-the-member)
+#### 同步节点
 
 从“种子”源复制数据文件后， [`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)使用新实例启动实例[`members[n\]._id`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-._id)并允许它应用操作日志中的所有操作，直到它反映副本集的当前状态。要查看副本集的当前状态，请使用[`rs.printSecondaryReplicationInfo()`](https://www.mongodb.com/docs/manual/reference/method/rs.printSecondaryReplicationInfo/#mongodb-method-rs.printSecondaryReplicationInfo)或 [`rs.status()`。](https://www.mongodb.com/docs/manual/reference/method/rs.status/#mongodb-method-rs.status)
 

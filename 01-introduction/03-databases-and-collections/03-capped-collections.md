@@ -1,4 +1,4 @@
- 封顶集合
+ capped collection
 
 本文索引
 

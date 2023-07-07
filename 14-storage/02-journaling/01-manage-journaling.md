@@ -1,4 +1,4 @@
-# 管理日志[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/manage-journaling/#manage-journaling)
+# 管理日志
 
 MongoDB 使用预*写日志记录*到磁盘[日志](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-journal)来保证[写操作](https://www.mongodb.com/docs/manual/crud/)的持久性。
 
@@ -12,9 +12,9 @@ WiredTiger 存储引擎不需要日志来保证崩溃后的一致状态。数据
 
 启用日志功能后，如果[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)意外停止，程序可以恢复写入日志的所有内容。MongoDB 将在重新启动时重新应用写操作并保持一致的状态。默认情况下，最大程度的丢失写入（即未对日志进行的写入）是最近 100 毫秒内进行的写入，加上执行实际日志写入所花费的时间。有关 [`commitIntervalMs`](https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-storage.journal.commitIntervalMs)默认值的更多信息，请参阅 。
 
-## 程序[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/manage-journaling/#procedures)
+## 程序
 
-### 禁用日志记录[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/manage-journaling/#disable-journaling)
+### 禁用日志记录
 
 
 
@@ -26,15 +26,15 @@ WiredTiger 存储引擎不需要日志来保证崩溃后的一致状态。数据
 
 要禁用独立部署日记功能，请使用[`--nojournal`](https://www.mongodb.com/docs/manual/reference/program/mongod/#std-option-mongod.--nojournal)命令行选项启动 [`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)。
 
-### 获取提交确认[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/manage-journaling/#get-commit-acknowledgement)
+### 获取提交确认
 
 [您可以使用Write Concern](https://www.mongodb.com/docs/manual/reference/write-concern/#std-label-write-concern)和[`j`](https://www.mongodb.com/docs/manual/reference/write-concern/#mongodb-writeconcern-writeconcern.j)选项获得提交确认。有关详细信息，请参阅 [Write Concern。](https://www.mongodb.com/docs/manual/reference/write-concern/#std-label-write-concern-operation)
 
-### 监控期刊状态[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/manage-journaling/#monitor-journal-status)
+### 监控期刊状态
 
 [`serverStatus`](https://www.mongodb.com/docs/manual/reference/command/serverStatus/#mongodb-dbcommand-dbcmd.serverStatus)命令/[`db.serverStatus()`](https://www.mongodb.com/docs/manual/reference/method/db.serverStatus/#mongodb-method-db.serverStatus) 方法返回[`wiredTiger.log`](https://www.mongodb.com/docs/manual/reference/command/serverStatus/#mongodb-serverstatus-serverstatus.wiredTiger.log)，其中包含有关日志的统计信息。
 
-### 意外关机后恢复数据[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/manage-journaling/#recover-data-after-unexpected-shutdown)
+### 意外关机后恢复数据
 
 在崩溃后重新启动时，MongoDB 在服务器重新运行可日志目录中的所有日志文件。如果 MongoDB 必须重新执行日志文件，[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)请在日志输出中记录这些事件。
 
@@ -42,7 +42,7 @@ WiredTiger 存储引擎不需要日志来保证崩溃后的一致状态。数据
 
 
 
-### 更改 WiredTiger Journal Compressor[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/manage-journaling/#change-wiredtiger-journal-compressor)
+### 更改 WiredTiger Journal Compressor
 
 对于 WiredTiger 存储引擎，MongoDB 默认情况下使用 `snappy`日志压缩器。要为[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)实例指定不同的压缩算法或不压缩 ：
 

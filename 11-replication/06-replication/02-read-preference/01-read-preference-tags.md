@@ -1,4 +1,4 @@
-# 阅读偏好标签集列表[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference-tags/#read-preference-tag-set-lists)
+# 阅读偏好标签集列表
 
 如果一个或多个副本集节点与 [`tags`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.tags)关联，您可以在读取首选项中指定一个标记集列表（标记集数组）以定位这些节点。
 
@@ -37,7 +37,7 @@
 
 
 
-## 标签匹配顺序[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference-tags/#order-of-tag-matching)
+## 标签匹配顺序
 
 如果标签集列表包含多个文档，MongoDB 会连续尝试每个文档，直到找到匹配项。找到匹配项后，该标记集将用于查找所有符合条件的匹配节点，而忽略其余标记集。如果没有节点与任何标记集匹配，则读取操作返回错误。
 
@@ -77,7 +77,7 @@
 
     空文档匹配任何符合条件的节点。
 
-## 标签集列表和阅读偏好模式[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference-tags/#tag-set-list-and-read-preference-modes)
+## 标签集列表和阅读偏好模式
 
 标签与主节点模式不兼容，并且通常仅在选择集合的从节点进行读取操作时才适用。 但是，最近读取模式在与标签集列表结合使用时，会选择网络延迟最低的匹配节点。 该成员可能是主节点或从节点。
 

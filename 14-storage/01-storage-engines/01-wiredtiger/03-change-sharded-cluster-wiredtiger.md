@@ -1,4 +1,4 @@
-# 将 Sharded Cluster 更改为 WiredTiger[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-sharded-cluster-wiredtiger/#change-sharded-cluster-to-wiredtiger)
+# 将 Sharded Cluster 更改为 WiredTiger
 
 
 
@@ -14,15 +14,15 @@
 - 要转换使用 MMAPv1 的 3.4 分片集群，请参阅 [MongoDB 3.4 手册。](https://www.mongodb.com/docs/v3.4/tutorial/change-sharded-cluster-wiredtiger/)
 - 要转换使用 MMAPv1 的 3.2 分片集群，请参阅 [MongoDB 3.2 手册。](https://www.mongodb.com/docs/v3.2/tutorial/change-sharded-cluster-wiredtiger/)
 
-## 注意事项[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-sharded-cluster-wiredtiger/#considerations)
+## 注意事项
 
-### 停机时间[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-sharded-cluster-wiredtiger/#downtime)
+### 停机时间
 
 如果更改任何分片的主机或端口[，](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-shard)则还必须更新分片配置。
 
 
 
-### PSA 三节点架构[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-sharded-cluster-wiredtiger/#psa-3-member-architecture)
+### PSA 三节点架构
 
 从 MongoDB 3.6 开始，[`"majority"`](https://www.mongodb.com/docs/manual/reference/read-concern-majority/#mongodb-readconcern-readconcern.-majority-)默认情况下启用可用于 WiredTiger 的读安全。但是，对于 MongoDB 4.0.3+，如果您有一个具有主从仲裁器 (PSA) 架构的三节点分片副本集，则可以禁用 该分[`"majority"`](https://www.mongodb.com/docs/manual/reference/read-concern-majority/#mongodb-readconcern-readconcern.-majority-)片副本集的读安全。禁用[`"majority"`](https://www.mongodb.com/docs/manual/reference/read-concern-majority/#mongodb-readconcern-readconcern.-majority-)三节点 PSA 架构可避免可能的缓存压力增加。
 
@@ -45,23 +45,23 @@
 
 有关 PSA 架构和read concern 的更多信息 [`"majority"`](https://www.mongodb.com/docs/manual/reference/read-concern-majority/#mongodb-readconcern-readconcern.-majority-)，请参阅[Primary-Secondary-Arbiter Replica Sets 。](https://www.mongodb.com/docs/manual/reference/read-concern-majority/#std-label-disable-read-concern-majority)
 
-### MongoDB 3.0 或更高版本[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-sharded-cluster-wiredtiger/#mongodb-3.0-or-greater)
+### MongoDB 3.0 或更高版本
 
 您必须使用 MongoDB 版本 3.0 或更高版本才能使用 WiredTiger 存储引擎。如果使用较早的 MongoDB 版本，您必须在继续更改存储引擎之前升级您的 MongoDB 版本。要升级您的 MongoDB 版本，请参阅相应版本的手册。
 
-### 默认绑定到本地主机[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-sharded-cluster-wiredtiger/#default-bind-to-localhost)
+### 默认绑定到本地主机
 
 MongoDB 二进制文件，[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)和 [`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)，默认绑定到`localhost`。
 
-### 配置服务器[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-sharded-cluster-wiredtiger/#config-servers)
+### 配置服务器
 
 从版本 3.4 开始，配置服务器必须[部署为副本集 (CSRS)](https://www.mongodb.com/docs/manual/release-notes/3.4/#std-label-3.4-remove-sccc)。因此，版本 3.4+ 配置服务器已经使用 WiredTiger 存储引擎。
 
-### XFS 和 WiredTiger[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-sharded-cluster-wiredtiger/#xfs-and-wiredtiger)
+### XFS 和 WiredTiger
 
 使用 WiredTiger 存储引擎，在 Linux 上建议使用 XFS 作为数据承载节点。有关详细信息，请参阅 [内核和文件系统。](https://www.mongodb.com/docs/manual/administration/production-notes/#std-label-prod-notes-linux-file-system)
 
-### 仅限 MMAPv1 限制[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-sharded-cluster-wiredtiger/#mmapv1-only-restrictions)
+### 仅限 MMAPv1 限制
 
 升级到 WiredTiger 后，您的 WiredTiger 部署将**不受** 以下仅限 MMAPv1 的限制：
 
@@ -73,17 +73,17 @@ MongoDB 二进制文件，[`mongod`](https://www.mongodb.com/docs/manual/referen
 | 数据大小           | 对于 MMAPv1，单个[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)实例无法管理超过底层操作系统提供的最大虚拟内存地址空间的数据集。 |
 | 数据库中的集合数   | 对于 MMAPv1 存储引擎，数据库中集合的最大数量是命名空间文件大小和数据库中集合索引数量的函数。 |
 
-## 程序[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-sharded-cluster-wiredtiger/#procedure)
+## 程序
 
 对于每个副本集[shard](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-shard)，将存储引擎更改为 WiredTiger：
 
-### A. 将从节点更新为 WiredTiger。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-sharded-cluster-wiredtiger/#a.-update-the-secondary-members-to-wiredtiger.)
+### A. 将从节点更新为 WiredTiger。
 
 一次更新一个从节点：
 
  
 
-#### 关闭从节点。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-sharded-cluster-wiredtiger/#shut-down-the-secondary-member)
+#### 关闭从节点。
 
 在[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh), 关闭从节点。
 
@@ -96,7 +96,7 @@ db.shutdownServer()
 
  
 
-#### `mongod`为新运行的 WiredTiger准备一个数据目录。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-sharded-cluster-wiredtiger/#prepare-a-data-directory-for-the-new-mongod-running-with-wiredtiger)
+#### `mongod`为新运行的 WiredTiger准备一个数据目录。
 
 [`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)为将与 WiredTiger 存储引擎一起运行的新实例准备一个数据目录。`mongod`必须对该目录具有读写权限。您可以删除已停止的从节点当前数据目录的内容，也可以完全创建一个新目录。
 
@@ -104,13 +104,13 @@ db.shutdownServer()
 
  
 
-#### 更新 WiredTiger 的配置。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-sharded-cluster-wiredtiger/#update-configuration-for-wiredtiger)
+#### 更新 WiredTiger 的配置。
 
 从[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)实例配置中删除任何[MMAPv1 特定配置选项。](https://www.mongodb.com/docs/manual/release-notes/4.2/#std-label-4.2-mmapv1-conf-options)
 
  
 
-#### 从 WiredTiger开始`mongod`。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-sharded-cluster-wiredtiger/#start-mongod-with-wiredtiger)
+#### 从 WiredTiger开始`mongod`。
 
 启动[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)，指定`wiredTiger`为 [`--storageEngine`](https://www.mongodb.com/docs/manual/reference/program/mongod/#std-option-mongod.--storageEngine)和为 WiredTiger 准备的数据目录为[`--dbpath`.](https://www.mongodb.com/docs/manual/reference/program/mongod/#std-option-mongod.--dbpath)
 
@@ -136,7 +136,7 @@ mongod --storageEngine wiredTiger --dbpath <newWiredTigerDBPath> --replSet <repl
 
 对其余从节点重复这些步骤，一次更新一个。
 
-### B. 降级主节点。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-sharded-cluster-wiredtiger/#b.-step-down-the-primary.)
+### B. 降级主节点。
 
 一旦所有从节点都升级到 WiredTiger，连接[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)到主节点并用于 [`rs.stepDown()`](https://www.mongodb.com/docs/manual/reference/method/rs.stepDown/#mongodb-method-rs.stepDown)降低主要并强制选举新的主节点。
 
@@ -146,13 +146,13 @@ rs.stepDown()
 
 
 
-### C.更新旧的主节点。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-sharded-cluster-wiredtiger/#c.-update-the-old-primary.)
+### C.更新旧的主节点。
 
 当主节点降级并成为从节点时，像以前一样更新从节点以使用 WiredTiger：
 
  
 
-#### 关闭从节点。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-sharded-cluster-wiredtiger/#shut-down-the-secondary-member-1)
+#### 关闭从节点。
 
 在[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh), 关闭从节点。
 
@@ -165,7 +165,7 @@ db.shutdownServer()
 
  
 
-#### `mongod`为新运行的 WiredTiger准备一个数据目录。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-sharded-cluster-wiredtiger/#prepare-a-data-directory-for-the-new-mongod-running-with-wiredtiger-1)
+#### `mongod`为新运行的 WiredTiger准备一个数据目录。
 
 [`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)为将与 WiredTiger 存储引擎一起运行的新实例准备一个数据目录。`mongod`必须对该目录具有读写权限。您可以删除已停止的从节点当前数据目录的内容，也可以完全创建一个新目录。
 
@@ -173,13 +173,13 @@ db.shutdownServer()
 
  
 
-#### 更新 WiredTiger 的配置。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-sharded-cluster-wiredtiger/#update-configuration-for-wiredtiger-1)
+#### 更新 WiredTiger 的配置。
 
 从[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)实例配置中删除任何[MMAPv1 特定配置选项。](https://www.mongodb.com/docs/manual/release-notes/4.2/#std-label-4.2-mmapv1-conf-options)
 
  
 
-#### 从 WiredTiger开始`mongod`。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/change-sharded-cluster-wiredtiger/#start-mongod-with-wiredtiger-1)
+#### 从 WiredTiger开始`mongod`。
 
 启动[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)，指定`wiredTiger`为 [`--storageEngine`](https://www.mongodb.com/docs/manual/reference/program/mongod/#std-option-mongod.--storageEngine)和为 WiredTiger 准备的数据目录为[`--dbpath`.](https://www.mongodb.com/docs/manual/reference/program/mongod/#std-option-mongod.--dbpath)
 

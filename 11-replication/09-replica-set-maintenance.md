@@ -1,4 +1,4 @@
-# 副本集维护教程[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/administration/replica-set-maintenance/#replica-set-maintenance-tutorials)
+# 副本集维护教程
 
 以下教程提供有关维护现有副本集的信息。
 

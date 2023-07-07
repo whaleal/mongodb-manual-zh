@@ -1,10 +1,10 @@
-**查询和修改有效或无效文件**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/use-json-schema-query-conditions/#query-for-and-modify-valid-or-invalid-documents)
+**查询和修改有效或无效文件**
 
 如果您在创建集合后向其添加验证，或修改现有的验证模式，则您的集合中可能包含无效文档。同样，如果您的架构`validationAction`是 `warn`，则您的集合可以包含无效文档。您可以查询无效文档，以便有可能从您的集合中更新或删除它们。
 
 要查找与指定架构匹配或不匹配的文档，请使用[`$jsonSchema`](https://www.mongodb.com/docs/manual/reference/operator/query/jsonSchema/#mongodb-query-op.-jsonSchema)with 查询运算符。`$jsonSchema`同样，您可以通过在写入操作的查询条件中使用基于模式的更新或删除文档。
 
-**例子**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/use-json-schema-query-conditions/#examples)
+**例子**
 
 `inventory`使用以下文档创建示例集合：
 
@@ -20,7 +20,7 @@ db.inventory.insertMany( [
 ] )
 ```
 
-**定义架构对象**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/use-json-schema-query-conditions/#define-a-schema-object)
+**定义架构对象**
 
 定义示例模式对象并将其存储在名为的变量中 `myschema`：
 
@@ -47,7 +47,7 @@ let myschema =
 }
 ```
 
-**查找与架构匹配的文档**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/use-json-schema-query-conditions/#find-documents-that-match-the-schema)
+**查找与架构匹配的文档**
 
 这些命令返回与架构匹配的所有文档：
 
@@ -77,7 +77,7 @@ db.inventory.aggregate( [ { $match: myschema } ] )
 ]
 ```
 
-**查找与架构不匹配的文档**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/use-json-schema-query-conditions/#find-documents-that-don-t-match-the-schema)
+**查找与架构不匹配的文档**
 
 要查找所有不满足 schema: 的文档，请 [`$jsonSchema`](https://www.mongodb.com/docs/manual/reference/operator/query/jsonSchema/#mongodb-query-op.-jsonSchema)与[`$nor`](https://www.mongodb.com/docs/manual/reference/operator/query/nor/#mongodb-query-op.-nor)运算符一起使用：
 
@@ -127,7 +127,7 @@ db.inventory.find( { $nor: [ myschema ] } )
 ]
 ```
 
-**更新与架构不匹配的文档**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/use-json-schema-query-conditions/#update-documents-that-don-t-match-the-schema)
+**更新与架构不匹配的文档**
 
 此命令更新所有与架构不匹配的文档并将文档的`isValid`字段设置为`false`：
 
@@ -209,7 +209,7 @@ db.inventory.find()
 ]
 ```
 
-**删除与架构不匹配的文档**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/use-json-schema-query-conditions/#delete-documents-that-don-t-match-the-schema)
+**删除与架构不匹配的文档**
 
 此命令删除所有与架构不匹配的文档：
 
@@ -244,7 +244,7 @@ db.inventory.find()
 ]
 ```
 
-**学到更多**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/use-json-schema-query-conditions/#learn-more)
+**学到更多**
 
 - [查询和投影运算符](https://www.mongodb.com/docs/manual/reference/operator/query/#std-label-query-projection-operators-top)
 - [指定现有文档的验证级别](https://www.mongodb.com/docs/manual/core/schema-validation/specify-validation-level/#std-label-schema-specify-validation-level)

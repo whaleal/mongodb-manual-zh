@@ -1,8 +1,8 @@
-# 生产注意事项[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-production-consideration/#production-considerations)
+# 生产注意事项
 
 下一页列出了运行事务的一些生产注意事项。无论您是在副本集还是分片集群上运行事务，这些都适用。对于在分片集群上运行事务，另请参阅[生产注意事项（分片集群）](https://www.mongodb.com/docs/manual/core/transactions-sharded-clusters/)以了解特定于分片集群的其他注意事项。
 
-## 可用性[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-production-consideration/#availability)
+## 可用性
 
 - **在 4.0 版本**中，MongoDB 支持副本集上的多文档事务。
 
@@ -18,7 +18,7 @@
 
 从 MongoDB 4.2 开始，这两个术语是同义词。分布式事务是指分片集群和副本集上的多文档事务。从 MongoDB 4.2 开始，多文档事务（无论是在分片集群还是副本集上）也称为分布式事务。
 
-## 功能兼容性[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-production-consideration/#feature-compatibility)
+## 功能兼容性
 
 要使用事务，部署的所有节点的[featureCompatibilityVersion](https://www.mongodb.com/docs/manual/reference/command/setFeatureCompatibilityVersion/#std-label-view-fcv) 必须至少为：
 
@@ -39,7 +39,7 @@ db.adminCommand( { getParameter: 1, featureCompatibilityVersion: 1 } )
 
 
 
-## 运行时间限制[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-production-consideration/#runtime-limit)
+## 运行时间限制
 
 默认情况下，事务的运行时间必须少于一分钟。[`transactionLifetimeLimitSeconds`](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.transactionLifetimeLimitSeconds)您可以使用 [`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)实例修改此限制 。对于分片集群，必须为所有分片副本集节点修改该参数。超过此限制的事务被视为已过期，并将被定期清理过程中止。
 
@@ -47,7 +47,7 @@ db.adminCommand( { getParameter: 1, featureCompatibilityVersion: 1 } )
 
 
 
-## 操作日志大小限制[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-production-consideration/#oplog-size-limit)
+## 操作日志大小限制
 
 - 从 4.2 版开始，
 
@@ -57,7 +57,7 @@ db.adminCommand( { getParameter: 1, featureCompatibilityVersion: 1 } )
 
   如果事务包含任何写操作，MongoDB 在提交时创建一个单独的[oplog（操作日志）条目。](https://www.mongodb.com/docs/manual/core/replica-set-oplog/)也就是说，事务中的各个操作没有相应的 oplog 条目。相反，单个 oplog 条目包含事务中的所有写操作。事务的 oplog 条目必须在 BSON 文档大小限制 16MB 之内。
 
-## WiredTiger缓存[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-production-consideration/#wiredtiger-cache)
+## WiredTiger缓存
 
 为防止存储缓存压力对性能产生负面影响：
 
@@ -72,24 +72,24 @@ db.adminCommand( { getParameter: 1, featureCompatibilityVersion: 1 } )
 
 如果您有超过 5% 的未提交事务， [`WiredTiger cache size`](https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-storage.wiredTiger.engineConfig.cacheSizeGB)事务将中止并返回[写入冲突](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-write-conflict)错误。
 
-## 交易与安全[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-production-consideration/#transactions-and-security)
+## 交易与安全
 
 - 如果使用[访问控制](https://www.mongodb.com/docs/manual/core/authorization/)运行，您必须拥有[事务](https://www.mongodb.com/docs/manual/core/transactions/#std-label-transactions-operations)中 操作的[权限](https://www.mongodb.com/docs/manual/reference/built-in-roles/)[。](https://www.mongodb.com/docs/manual/core/transactions/#std-label-transactions-operations)
 - 如果运行[审计](https://www.mongodb.com/docs/manual/core/auditing/)，中止事务中的操作仍然被审计。但是，没有审计事件表明事务已中止。
 
 
 
-## 分片配置限制[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-production-consideration/#shard-configuration-restriction)
+## 分片配置限制
 
 您不能在分片[`writeConcernMajorityJournalDefault`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.writeConcernMajorityJournalDefault)设置为的分片集群上运行事务`false` （例如具有使用[内存存储引擎](https://www.mongodb.com/docs/manual/core/inmemory/)的投票节点的分片）。
 
-## 分片集群和仲裁者[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-production-consideration/#sharded-clusters-and-arbiters)
+## 分片集群和仲裁者
 
 如果任何事务操作读取或写入包含仲裁程序的分片，则写入操作跨越多个分片的事务将出错并中止。
 
 
 
-## 获取锁[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-production-consideration/#acquiring-locks)
+## 获取锁
 
 默认情况下，事务最多等待`5`毫秒以获取事务中操作所需的锁。如果事务无法在`5`毫秒内获取其所需的锁，则事务中止。
 
@@ -101,7 +101,7 @@ db.adminCommand( { getParameter: 1, featureCompatibilityVersion: 1 } )
 
 在开始事务之前立即创建或删除集合时，如果在事务中访问集合，请发出带有写入关注的创建或删除操作，[`"majority"`](https://www.mongodb.com/docs/manual/reference/write-concern/#mongodb-writeconcern-writeconcern.-majority-)以确保事务可以获得所需的锁。
 
-### 锁定请求超时[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-production-consideration/#lock-request-timeout)
+### 锁定请求超时
 
 您可以使用该[`maxTransactionLockRequestTimeoutMillis`](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.maxTransactionLockRequestTimeoutMillis) 参数来调整事务等待获取锁的时间。增加[`maxTransactionLockRequestTimeoutMillis`](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.maxTransactionLockRequestTimeoutMillis)允许事务中的操作等待指定的时间来获取所需的锁。这有助于避免事务因瞬时并发锁获取而中止，例如快速运行的元数据操作。但是，这可能会延迟死锁事务操作的中止。
 
@@ -109,7 +109,7 @@ db.adminCommand( { getParameter: 1, featureCompatibilityVersion: 1 } )
 
 
 
-## 挂起的 DDL 操作和事务[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-production-consideration/#pending-ddl-operations-and-transactions)
+## 挂起的 DDL 操作和事务
 
 如果正在进行多文档事务，则影响相同数据库或集合的新 DDL 操作将在事务后等待。虽然存在这些挂起的 DDL 操作，但访问与挂起的 DDL 操作相同的数据库或集合的新事务无法获得所需的锁，并且将在等待后中止[`maxTransactionLockRequestTimeoutMillis`](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.maxTransactionLockRequestTimeoutMillis)。此外，访问相同数据库或集合的新非事务操作将阻塞，直到达到 `maxTimeMS`限制。
 
@@ -138,7 +138,7 @@ db.adminCommand( { getParameter: 1, featureCompatibilityVersion: 1 } )
 
 
 
-## 正在进行的事务和写入冲突[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-production-consideration/#in-progress-transactions-and-write-conflicts)
+## 正在进行的事务和写入冲突
 
 如果事务正在进行中，并且事务外的写入修改了事务中的操作稍后试图修改的文档，则事务会因为写入冲突而中止。
 
@@ -156,7 +156,7 @@ db.adminCommand( { getParameter: 1, featureCompatibilityVersion: 1 } )
 
 
 
-## 正在进行的事务和过时的读取[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-production-consideration/#in-progress-transactions-and-stale-reads)
+## 正在进行的事务和过时的读取
 
 事务内的读取操作可以返回陈旧数据。也就是说，事务内的读取操作不能保证看到其他已提交事务或非事务写入执行的写入。例如，考虑以下序列：1) 事务正在进行中 2) 事务外的写删除文档 3) 事务内的读操作能够读取现在删除的文档，因为该操作正在使用快照从写之前。
 
@@ -179,7 +179,7 @@ employeeDoc = employeesCollection.findOneAndUpdate(
 - 如果员工文档在事务之外发生了更改，则事务中止。
 - 如果员工文件没有改变，事务返回文件并锁定文件。
 
-## 进行中的事务和块迁移[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-production-consideration/#in-progress-transactions-and-chunk-migration)
+## 进行中的事务和块迁移
 
 [块迁移](https://www.mongodb.com/docs/manual/core/sharding-balancer-administration/#std-label-chunk-migration-procedure)在某些阶段获取独占集合锁。
 
@@ -202,16 +202,16 @@ employeeDoc = employeesCollection.findOneAndUpdate(
 
 
 
-## 提交期间的外部读取[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-production-consideration/#outside-reads-during-commit)
+## 提交期间的外部读取
 
 在提交事务期间，外部读取操作可能会尝试读取将由事务修改的相同文档。如果事务写入多个分片，则在跨分片的提交尝试期间
 
 - [`"snapshot"`](https://www.mongodb.com/docs/manual/reference/read-concern-snapshot/#mongodb-readconcern-readconcern.-snapshot-)使用 read concern或 的外部读取[`"linearizable"`](https://www.mongodb.com/docs/manual/reference/read-concern-linearizable/#mongodb-readconcern-readconcern.-linearizable-)，或者是因果一致会话的一部分（即包括[afterClusterTime](https://www.mongodb.com/docs/manual/reference/read-concern/#std-label-afterClusterTime)）等待事务的所有写入可见。
 - 使用其他读取关注点的外部读取不会等待事务的所有写入都可见，而是读取可用文档的事务前版本。
 
-## 错误[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-production-consideration/#errors)
+## 错误
 
-### MongoDB 4.0 驱动程序的使用[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-production-consideration/#use-of-mongodb-4.0-drivers)
+### MongoDB 4.0 驱动程序的使用
 
 要在 MongoDB 4.2 部署（副本集和分片集群）上使用事务，客户端**必须**使用针对 MongoDB 4.2 更新的 MongoDB 驱动程序。
 
@@ -228,7 +228,7 @@ employeeDoc = employeesCollection.findOneAndUpdate(
 | 251      | `cannot continue txnId -1 for session ... with txnId 1` |
 | 50940    | `cannot commit with no participants`                    |
 
-## 附加信息[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/transactions-production-consideration/#additional-information)
+## 附加信息
 
 
 

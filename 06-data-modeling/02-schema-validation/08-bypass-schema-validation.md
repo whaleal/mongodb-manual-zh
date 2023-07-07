@@ -1,15 +1,15 @@
-**绕过架构验证**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/bypass-document-validation/#bypass-schema-validation)
+**绕过架构验证**
 
 在某些情况下，您可能需要绕过集合的架构验证规则。例如，如果您要将可能无效的数据从备份恢复到具有验证规则的集合。在这种情况下，旧文档可能无法满足新的验证要求。
 
-**语境**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/bypass-document-validation/#context)
+**语境**
 
 绕过模式验证是在每个操作的基础上完成的。如果您绕过架构验证以插入无效文档，则以后对无效文档的任何更新都必须：
 
 - 也绕过架构验证
 - 结果是一个有效的文件
 
-**支持的操作**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/bypass-document-validation/#supported-operations)
+**支持的操作**
 
 您可以使用以下命令和方法绕过每个操作的验证：
 
@@ -20,15 +20,15 @@
 - [`update`](https://www.mongodb.com/docs/manual/reference/command/update/#mongodb-dbcommand-dbcmd.update)命令
 - [`$out`](https://www.mongodb.com/docs/manual/reference/operator/aggregation/out/#mongodb-pipeline-pipe.-out)命令和 方法的[`$merge`](https://www.mongodb.com/docs/manual/reference/operator/aggregation/merge/#mongodb-pipeline-pipe.-merge)阶段 [`aggregate`](https://www.mongodb.com/docs/manual/reference/command/aggregate/#mongodb-dbcommand-dbcmd.aggregate)[`db.collection.aggregate()`](https://www.mongodb.com/docs/manual/reference/method/db.collection.aggregate/#mongodb-method-db.collection.aggregate)
 
-**先决条件**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/bypass-document-validation/#prerequisite)
+**先决条件**
 
 对于已启用访问控制的部署，要绕过文档验证，经过身份验证的用户必须有 [`bypassDocumentValidation`](https://www.mongodb.com/docs/manual/reference/privilege-actions/#mongodb-authaction-bypassDocumentValidation)操作。内置角色 [`dbAdmin`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-dbAdmin)并[`restore`](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-restore)提供此操作。
 
-**步骤**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/bypass-document-validation/#steps)
+**步骤**
 
 下面的示例创建一个具有模式验证的集合，然后通过绕过验证规则插入一个无效文档。
 
-1. **创建具有验证规则的集合**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/bypass-document-validation/#create-a-collection-with-validation-rules)
+1. **创建具有验证规则的集合**
 
    创建一个`students`集合并使用[`$jsonSchema`](https://www.mongodb.com/docs/manual/reference/operator/query/jsonSchema/#mongodb-query-op.-jsonSchema) 运算符设置模式验证规则：
 
@@ -55,7 +55,7 @@
    } )
    ```
 
-2. **绕过验证以插入无效文档**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/bypass-document-validation/#bypass-the-validation-to-insert-an-invalid-document)
+2. **绕过验证以插入无效文档**
 
    以下文档无效，因为该`year` 字段超出了允许的范围 ( `2017`- `3017`)：
 
@@ -93,7 +93,7 @@
    } )
    ```
 
-**结果**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/bypass-document-validation/#results)
+**结果**
 
 要确认文档已成功插入，请查询 `students`集合：
 
@@ -116,7 +116,7 @@ MongoDB 返回插入的文档：
 ]
 ```
 
-**学到更多**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/bypass-document-validation/#learn-more)
+**学到更多**
 
 - [查询和修改有效或无效文件](https://www.mongodb.com/docs/manual/core/schema-validation/use-json-schema-query-conditions/#std-label-use-json-schema-query-conditions)
 - [指定现有文档的验证级别](https://www.mongodb.com/docs/manual/core/schema-validation/specify-validation-level/#std-label-schema-specify-validation-level)

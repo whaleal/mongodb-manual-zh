@@ -10,7 +10,7 @@
 
 
 
-## 程序[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/configure-a-non-voting-replica-set-member/#procedure)
+## 程序
 
 以下过程将单个[从节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-secondary) 副本集节点配置为非投票。要将[主节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-primary)转换为无投票权节点，您必须首先使用[`replSetStepDown`](https://www.mongodb.com/docs/manual/reference/command/replSetStepDown/#mongodb-dbcommand-dbcmd.replSetStepDown)或其shell帮助程序成功降低主节点，[`rs.stepDown()`](https://www.mongodb.com/docs/manual/reference/method/rs.stepDown/#mongodb-method-rs.stepDown)然后再执行此过程。
 
@@ -37,7 +37,7 @@
 
 
 
-## 相关文件[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/configure-a-non-voting-replica-set-member/#related-documents)
+## 相关文件
 
 - [`members[n\].votes`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.votes)
 - [副本集重新配置](https://www.mongodb.com/docs/manual/reference/method/rs.reconfig/#std-label-replica-set-reconfiguration-usage)

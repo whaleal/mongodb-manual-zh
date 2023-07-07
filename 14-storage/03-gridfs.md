@@ -1,4 +1,4 @@
-# 网格文件系统[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#gridfs)
+# 网格文件系统
 
 [GridFS](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-GridFS)是一种用于存储和检索超过[BSON](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-BSON)文档[大小限制](https://www.mongodb.com/docs/manual/reference/limits/#std-label-limit-bson-document-size)16 MB 的文件的规范。
 
@@ -18,7 +18,7 @@ GridFS 不仅可用于存储超过 16 MB 的文件，而且可用于存储您想
 
 
 
-## 何时使用 GridFS[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#when-to-use-gridfs)
+## 何时使用 GridFS
 
 在 MongoDB 中，使用[GridFS](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-GridFS)存储大于 16 MB 的文件。
 
@@ -34,7 +34,7 @@ GridFS 不仅可用于存储超过 16 MB 的文件，而且可用于存储您想
 
 
 
-## 使用网格文件系统[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#use-gridfs)
+## 使用网格文件系统
 
 [要使用GridFS](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-GridFS)存储和检索文件，请使用以下任一方法：
 
@@ -43,7 +43,7 @@ GridFS 不仅可用于存储超过 16 MB 的文件，而且可用于存储您想
 
 
 
-## GridFS 集合[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#gridfs-collections)
+## GridFS 集合
 
 [GridFS](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-GridFS)将文件存储在两个集合中：
 
@@ -59,7 +59,7 @@ GridFS 通过在每个集合前加上存储桶名称作为前缀，将这些集�
 
 
 
-### `chunks`系列_[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#the-chunks-collection)
+### `chunks`系列_
 
 `chunks` [[ 1 \]](https://www.mongodb.com/docs/manual/core/gridfs/#footnote-chunk-disambiguation)集合中的每个文档代表一个不同的文件块，如[GridFS](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-GridFS)中所示。此集合中的文档具有以下形式：
 
@@ -76,25 +76,25 @@ GridFS 通过在每个集合前加上存储桶名称作为前缀，将这些集�
 
 集合中的文档`chunks`包含以下字段：
 
-- `chunks._id`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#mongodb-data-chunks._id)
+- `chunks._id`
 
   块的唯一[ObjectId](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-ObjectId)。
 
-- `chunks.files_id`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#mongodb-data-chunks.files_id)
+- `chunks.files_id`
 
   集合`_id`中指定的“父”文档的。`files`
 
-- `chunks.n`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#mongodb-data-chunks.n)
+- `chunks.n`
 
   块的序列号。GridFS 对所有块进行编号，从 0 开始。
 
-- `chunks.data`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#mongodb-data-chunks.data)
+- `chunks.data`
 
   作为[BSON](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-BSON) `Binary`类型的块的有效负载。
 
 
 
-### `files`系列_[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#the-files-collection)
+### `files`系列_
 
 `files`集合 中的每个文档代表[GridFS中的一个文件。](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-GridFS)
 
@@ -116,51 +116,51 @@ GridFS 通过在每个集合前加上存储桶名称作为前缀，将这些集�
 
 集合中的文档`files`包含以下部分或全部字段：
 
-- `files._id`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#mongodb-data-files._id)
+- `files._id`
 
   此文档的唯一标识符。`_id`是您为原始文档选择的数据类型。MongoDB 文档的默认类型是[BSON ](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-BSON)[ObjectId 。](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-ObjectId)
 
-- `files.length`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#mongodb-data-files.length)
+- `files.length`
 
   文档的大小（以字节为单位）。
 
-- `files.chunkSize`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#mongodb-data-files.chunkSize)
+- `files.chunkSize`
 
   每个块的大小（以**字节**为单位）。GridFS 将文档分成 size 的块，`chunkSize`最后一个除外，它只是根据需要的大小。默认大小为 255 千字节 (kB)。
 
-- `files.uploadDate`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#mongodb-data-files.uploadDate)
+- `files.uploadDate`
 
   GridFS 首次存储文档的日期。该值具有 `Date`类型。
 
-- `files.md5`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#mongodb-data-files.md5)
+- `files.md5`
 
   **弃用**FIPS 140-2 禁止使用 MD5 算法。MongoDB 驱动程序弃用 MD5 支持，并将在未来版本中删除 MD5 生成。需要文件摘要的应用程序应该在 GridFS 之外实现它并存储在[`files.metadata`.](https://www.mongodb.com/docs/manual/core/gridfs/#mongodb-data-files.metadata)[filemd5](https://www.mongodb.com/docs/manual/reference/command/filemd5/)命令返回的完整文件的 MD5 散列。该值具有`String` 类型。
 
-- `files.filename`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#mongodb-data-files.filename)
+- `files.filename`
 
   可选的。GridFS 文件的人类可读名称。
 
-- `files.contentType`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#mongodb-data-files.contentType)
+- `files.contentType`
 
   **弃用**可选的。GridFS 文件的有效 MIME 类型。仅供应用使用。采用[`files.metadata`](https://www.mongodb.com/docs/manual/core/gridfs/#mongodb-data-files.metadata)用于存储与 GridFS 文件的 MIME 类型相关的信息。
 
-- `files.aliases`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#mongodb-data-files.aliases)
+- `files.aliases`
 
   **弃用**可选的。别名字符串数组。仅供应用使用。采用[`files.metadata`](https://www.mongodb.com/docs/manual/core/gridfs/#mongodb-data-files.metadata)用于存储与 GridFS 文件的 MIME 类型相关的信息。
 
-- `files.metadata`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#mongodb-data-files.metadata)
+- `files.metadata`
 
   可选的。元数据字段可以是任何数据类型，并且可以包含您要存储的任何附加信息。如果您希望向`files` 集合中的文档添加额外的任意字段，请将它们添加到元数据字段中的对象。
 
 
 
-## GridFS 索引[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#gridfs-indexes)
+## GridFS 索引
 
 GridFS 在每个`chunks`和`files`集合上使用索引以提高效率。[司机](https://www.mongodb.com/docs/drivers/)符合[网格文件系统规范](https://github.com/mongodb/specifications/blob/master/source/gridfs/gridfs-spec.rst) 为方便起见自动创建这些索引。您还可以根据需要创建任何其他索引以满足您的应用程序的需要。
 
 
 
-### `chunks`指数_[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#the-chunks-index)
+### `chunks`指数_
 
 [GridFS](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-GridFS)使用和字段在集合 上使用[唯一](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-unique-index)的[复合](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-compound-index)索引。这允许高效检索块，如以下示例所示：`chunks``files_id``n`
 
@@ -182,7 +182,7 @@ db.fs.chunks.createIndex( { files_id: 1, n: 1 }, { unique: true } );
 
 
 
-### `files`指数_[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#the-files-index)
+### `files`指数_
 
 [GridFS](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-GridFS)使用和字段在集合上使用[索引。](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-index)此索引允许高效检索文件，如本例所示：`files``filename``uploadDate`
 
@@ -206,11 +206,11 @@ db.fs.files.createIndex( { filename: 1, uploadDate: 1 } );
 | ----- | ------------------------------------------------------------ |
 |       |                                                              |
 
-## 分片网格文件系统[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#sharding-gridfs)
+## 分片网格文件系统
 
 [GridFS](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-GridFS)有两个集合需要考虑-`files`和 `chunks`.
 
-### `chunks`收藏[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#chunks-collection)
+### `chunks`收藏
 
 要对`chunks`集合进行分片，请使用`{ files_id : 1, n : 1 }`或`{ files_id : 1 }`作为分片键索引。`files_id`是一个 [ObjectId](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-ObjectId)并且[单调变化。](https://www.mongodb.com/docs/manual/core/sharding-choose-a-shard-key/#std-label-shard-key-monotonic)
 
@@ -218,7 +218,7 @@ db.fs.files.createIndex( { filename: 1, uploadDate: 1 } );
 
 如果 MongoDB 驱动程序运行[`filemd5`](https://www.mongodb.com/docs/manual/reference/command/filemd5/#mongodb-dbcommand-dbcmd.filemd5)，则不能使用 [散列](https://www.mongodb.com/docs/manual/core/hashed-sharding/)分片。有关详细信息，请参阅[SERVER-9888 。](https://jira.mongodb.org/browse/SERVER-9888)
 
-### `files`收藏[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/gridfs/#files-collection)
+### `files`收藏
 
 该`files`集合很小，仅包含元数据。GridFS 所需的密钥均不适合在分片环境中均匀分布。不分`files`片允许所有文件元数据文档都存在于[主分片上。](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-primary-shard)
 

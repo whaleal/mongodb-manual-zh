@@ -24,7 +24,7 @@
 
 
 
-## 将从节点转换为仲裁节点并重新使用端口号[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/convert-secondary-into-arbiter/#convert-secondary-to-arbiter-and-reuse-the-port-number)
+## 将从节点转换为仲裁节点并重新使用端口号
 
 1. 如果您的应用程序直接连接到从节点，请修改应用程序，使 MongoDB 查询不会到达从节点。
 
@@ -108,7 +108,7 @@
 
 
 
-## 将从节点转换为在新端口号上运行的仲裁节点[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/convert-secondary-into-arbiter/#convert-secondary-to-arbiter-running-on-a-new-port-number)
+## 将从节点转换为在新端口号上运行的仲裁节点
 
 1. 如果您的应用程序直接连接到从节点或具有引用从节点的连接字符串，请修改应用程序，以便 MongoDB 查询不会到达从节点。
 

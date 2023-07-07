@@ -19,9 +19,9 @@
 
 兼容的驱动程序默认启用可重试写入
 
-## 影响选举的因素和条件[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-elections/#factors-and-conditions-that-affect-elections)
+## 影响选举的因素和条件
 
-### 复制选举协议[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-elections/#replication-election-protocol)
+### 复制选举协议
 
 复制[`protocolVersion: 1`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.protocolVersion)减少了副本集故障转移时间并加速了对多个同步主节点的检测。
 
@@ -31,11 +31,11 @@
 
 
 
-### 心跳[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-elections/#heartbeats)
+### 心跳
 
 副本集节点每两秒发送一次心跳（ping）。如果心跳在 10 秒内未返回，则其他成员将违规节点标记为不可访问。
 
-### 节点优先级[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-elections/#member-priority)
+### 节点优先级
 
 在副本集具有稳定的主节点后，选举算法将“尽最大努力”尝试让具有最高 [`priority`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.priority)可用调用选举的从节点。成员优先级影响选举的时间和结果；具有较高优先级的从节点比具有较低优先级的从节点更早地召集选举，并且也更有可能获胜。但是，即使有更高优先级的从节点实例可用，也可以在短时间内将优先级较低的节点选为主节点。副本集节点继续进行选举，直到可用的最高优先级节点成为主节点。
 
@@ -43,13 +43,13 @@
 
 
 
-### 镜像读取[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-elections/#mirrored-reads)
+### 镜像读取
 
 从 4.4 版开始，MongoDB 提供[镜像读取](https://www.mongodb.com/docs/manual/replication/#std-label-mirrored-reads)，以使用最近访问的数据预先加载到从节点的缓存。通过镜像读取，主节点可以镜像接收到的[操作](https://www.mongodb.com/docs/manual/replication/#std-label-mirrored-reads-supported-operations)的子集，并将它们发送到可选择的从节点的子集。预先加载到从节点的缓存可以帮助在选举后更快地恢复性能。
 
 有关详细信息，请参阅[镜像读取。](https://www.mongodb.com/docs/manual/replication/#std-label-mirrored-reads)
 
-### 数据中心丢失[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-elections/#loss-of-a-data-center)
+### 数据中心丢失
 
 对于分布式副本集，数据中心的丢失可能会影响其他数据中心或数据中心中剩余节点选择主节点的能力。
 
@@ -61,11 +61,11 @@
 
 ### 也可以看看：[分布在两个或多个数据中心的副本集](https://www.mongodb.com/docs/manual/core/replica-set-architecture-geographically-distributed/)
 
-### 网络分区[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-elections/#network-partition)
+### 网络分区
 
 网络[分区](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-network-partition)可以将主节点隔离到具有少数节点的分区中。当主节点检测到它只能看到副本集中的少数节点时，主节点会降级并成为 从节点。独立地，分区中可以与一个[`majority`](https://www.mongodb.com/docs/manual/reference/command/replSetGetStatus/#mongodb-data-replSetGetStatus.majorityVoteCount)节点（包括它自己）通信的节点选举成为新的主节点。
 
-## 投票节点[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-elections/#voting-members)
+## 投票节点
 
 副本集节点配置设置[`members[n].votes`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.votes) 和成员[`state`](https://www.mongodb.com/docs/manual/reference/command/replSetGetStatus/#mongodb-data-replSetGetStatus.members-n-.state)决定成员是否在选举中投票。
 
@@ -91,7 +91,7 @@
 
 
 
-## 无投票权的节点[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-elections/#non-voting-members)
+## 无投票权的节点
 
 尽管无投票权的节点不在选举中投票，但这些节点持有副本集数据的副本，并且可以接受来自客户端应用程序的读取操作。
 

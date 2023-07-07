@@ -1,4 +1,4 @@
-# 存储引擎[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/storage-engines/#storage-engines)
+# 存储引擎
 
 [存储引擎](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-storage-engine)是数据库的组件，负责管理数据在内存和磁盘中的存储方式。MongoDB 支持多种存储引擎，因为不同的引擎对特定的工作负载表现更好。为您的用例选择合适的存储引擎会显着影响您的应用程序的性能。
 

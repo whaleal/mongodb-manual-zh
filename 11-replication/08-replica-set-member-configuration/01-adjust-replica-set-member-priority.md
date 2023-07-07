@@ -1,12 +1,12 @@
 # 调整副本集节点的优先级
 
-## 概述[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/adjust-replica-set-member-priority/#overview)
+## 概述
 
 副本集节点的`priority`设置会影响主要[选举](https://www.mongodb.com/docs/manual/core/replica-set-elections/)的时间和结果。优先级高的节点更有可能发起选举，也更有可能获胜。使用此设置可确保某些节点更有可能成为主节点，而其他节点永远不会成为主节点。
 
 节点 [`priority`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.priority)设置的值决定了节点的[`priority`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.priority)参选。数字越大，优先级越高。
 
-## 注意事项[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/adjust-replica-set-member-priority/#considerations)
+## 注意事项
 
 要修改优先级，请更新[`members`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members) 副本配置对象中的数组。数组索引以 `0`. 不要将此索引值与数组中副本集节点字段的值**混淆**[`members[n\]._id`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-._id)的值可以是和[`priority`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.priority)之间的任意浮点数（即十进制）。该字段的默认值为。`0``1000``priority``1`
 
@@ -16,7 +16,7 @@
 
 在计划的维护窗口期间调整优先级设置。重新配置优先级可以强制当前的主节点下台，从而导致选举。在选举之前，主节点关闭所有打开的 [客户端](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-client)连接。
 
-### 优先权和投票[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/adjust-replica-set-member-priority/#priority-and-votes)
+### 优先权和投票
 
 [`members[n\].priority`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.priority)并且[`members[n\].votes`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.votes) 有如下关系：
 
@@ -28,7 +28,7 @@
 - MongoDB 副本集最多可以有 [7 个有投票权的节点](https://www.mongodb.com/docs/manual/reference/limits/#mongodb-limit-Number-of-Voting-Members-of-a-Replica-Set)。如果副本集已经有 7 个投票节点，则不能将副本集中任何剩余节点的优先级修改为大于`0`。
 - 从 MongoDB 4.4 开始，副本重新配置一次只能添加或删除*一个*投票节点。要将多个非投票节点的优先级更改为大于`0`，请发出一系列[`replSetReconfig`](https://www.mongodb.com/docs/manual/reference/command/replSetReconfig/#mongodb-dbcommand-dbcmd.replSetReconfig)or[`rs.reconfig()`](https://www.mongodb.com/docs/manual/reference/method/rs.reconfig/#mongodb-method-rs.reconfig) 操作以一次修改一个节点。有关详细信息，请参阅 [重新配置一次最多只能添加或删除一个投票节点](https://www.mongodb.com/docs/manual/reference/command/replSetReconfig/#std-label-replSetReconfig-cmd-single-node)。
 
-## 程序[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/adjust-replica-set-member-priority/#procedure)
+## 程序
 
 >## WARNING
 >
@@ -37,7 +37,7 @@
 
 
 
-### 将副本集配置复制到一个变量。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/adjust-replica-set-member-priority/#copy-the-replica-set-configuration-to-a-variable)
+### 将副本集配置复制到一个变量。
 
 在[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)，用于[`rs.conf()`](https://www.mongodb.com/docs/manual/reference/method/rs.conf/#mongodb-method-rs.conf)检索副本集配置并将其分配给变量。例如：
 
@@ -49,7 +49,7 @@ cfg = rs.conf()
 
 
 
-### 更改每个节点的优先级值。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/adjust-replica-set-member-priority/#change-each-member-s-priority-value)
+### 更改每个节点的优先级值。
 
 按照数组中的配置更改每个节点的[`members[n].priority`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.priority) 值。[`members`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members)
 
@@ -65,7 +65,7 @@ cfg.members[2].priority = 2
 
 3个
 
-### 为副本集分配新配置。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/adjust-replica-set-member-priority/#assign-the-replica-set-the-new-configuration)
+### 为副本集分配新配置。
 
 用于[`rs.reconfig()`](https://www.mongodb.com/docs/manual/reference/method/rs.reconfig/#mongodb-method-rs.reconfig)应用新配置。
 

@@ -1,12 +1,12 @@
  Troubleshoot Replica Sets
 
-# 副本集故障排除[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/troubleshoot-replica-sets/#troubleshoot-replica-sets)
+# 副本集故障排除
 
 本节介绍对[副本集](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-replica-set)部署进行故障排除的常见策略 。
 
 
 
-## 检查副本集状态[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/troubleshoot-replica-sets/#check-replica-set-status)
+## 检查副本集状态
 
 要显示副本集的当前状态和每个节点的当前状态，请[`rs.status()`](https://www.mongodb.com/docs/manual/reference/method/rs.status/#mongodb-method-rs.status)在 [`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)连接到副本集的 [primary](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-primary)的会话。显示的信息说明 [`rs.status()`](https://www.mongodb.com/docs/manual/reference/method/rs.status/#mongodb-method-rs.status)，请参见[replSetGetStatus 。](https://www.mongodb.com/docs/manual/reference/command/replSetGetStatus/)
 
@@ -16,7 +16,7 @@
 
 
 
-## 检查复制延迟[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/troubleshoot-replica-sets/#check-the-replication-lag)
+## 检查复制延迟
 
 复制滞后是[主节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-primary)上的操作 与该操作从[oplog](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-oplog)应用到 [从节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-secondary)之间的延迟。复制滞后可能是一个重大问题，并会严重影响 MongoDB[副本集](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-replica-set)部署。过多的复制滞后使得“滞后”节点没有资格快速成为主节点，并增加了分布式读取操作不一致的可能性。
 
@@ -47,7 +47,7 @@
 
 - **通过检查复制延迟**图中可用 的非零或增加的 oplog 时间值来监视复制速率[云管家](https://docs.cloudmanager.mongodb.com/reference/alerts/replication-lag/) 并在[运营经理](https://docs.opsmanager.mongodb.com/current/reference/alerts/replication-lag/).
 
-### 复制滞后原因[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/troubleshoot-replica-sets/#replication-lag-causes)
+### 复制滞后原因
 
 复制滞后的可能原因包括：
 
@@ -83,7 +83,7 @@
 
 
 
-### 流量控制[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/troubleshoot-replica-sets/#flow-control)
+### 流量控制
 
 从 MongoDB 4.2 开始，管理员可以限制主节点应用的写入的速率，目的是将[`majority committed`](https://www.mongodb.com/docs/manual/reference/command/replSetGetStatus/#mongodb-data-replSetGetStatus.optimes.lastCommittedOpTime)延迟保持在可配置的最大值以下[`flowControlTargetLagSeconds`。](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.flowControlTargetLagSeconds)
 
@@ -146,7 +146,7 @@ source: 192.0.2.3:27017
 - [`$currentOp.waitingForFlowControl`](https://www.mongodb.com/docs/manual/reference/operator/aggregation/currentOp/#mongodb-data--currentOp.waitingForFlowControl)和[`$currentOp.flowControlStats`](https://www.mongodb.com/docs/manual/reference/operator/aggregation/currentOp/#mongodb-data--currentOp.flowControlStats)
 - [`currentOp.waitingForFlowControl`](https://www.mongodb.com/docs/manual/reference/command/currentOp/#mongodb-data-currentOp.waitingForFlowControl)和[`currentOp.flowControlStats`](https://www.mongodb.com/docs/manual/reference/command/currentOp/#mongodb-data-currentOp.flowControlStats)
 
-## Oplog条目应用缓慢[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/troubleshoot-replica-sets/#slow-application-of-oplog-entries)
+## Oplog条目应用缓慢
 
 从 4.2 版开始（也可以从 4.0.6 开始使用），副本集的从节点现在会[记录比慢速操作阈值应用时间更长的 oplog 条目](https://www.mongodb.com/docs/manual/core/replica-set-oplog/#std-label-slow-oplog-application)。这些缓慢的 oplog 消息：
 
@@ -162,7 +162,7 @@ source: 192.0.2.3:27017
 
 
 
-## 测试所有节点之间的连接[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/troubleshoot-replica-sets/#test-connections-between-all-members)
+## 测试所有节点之间的连接
 
 [副本集](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-replica-set)的所有节点都必须能够连接到该复制集的每个其他节点以支持复制。始终验证两个“方向”的连接。网络拓扑和防火墙配置会阻止正常和所需的连接，从而阻止复制。
 
@@ -250,7 +250,7 @@ mongosh --host 198.51.100.1
 
 如果任何方向的任何连接失败，请检查您的网络和防火墙配置并重新配置您的环境以允许这些连接。
 
-## 重启多个从节点时出现套接字异常[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/troubleshoot-replica-sets/#socket-exceptions-when-rebooting-more-than-one-secondary)
+## 重启多个从节点时出现套接字异常
 
 当您重新启动副本集的节点时，请确保该集能够在维护期间选择一个主节点。这意味着要确保大部分集合[`members[n].votes`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.votes)都可用。
 
@@ -268,7 +268,7 @@ mongosh --host 198.51.100.1
 
 
 
-## 检查 Oplog 的大小[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/troubleshoot-replica-sets/#check-the-size-of-the-oplog)
+## 检查 Oplog 的大小
 
 更大的[oplog](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-oplog)可以为副本集提供更大的延迟容忍度，并使副本集更具弹性。
 

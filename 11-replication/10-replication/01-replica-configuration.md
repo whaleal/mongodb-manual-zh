@@ -149,7 +149,7 @@
 >
 >
 
-`members[n].host`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.host)
+`members[n].host`
 
 *Type*: string
 
@@ -161,7 +161,7 @@
 >
 >[n] .host节点不能保留解析到本地主机或本地接口的值，除非该集合的所有节点都位于解析到本地主机的主机上。
 
-`members[n].arbiterOnly`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.arbiterOnly)
+`members[n].arbiterOnly`
 
 *可选*.
 
@@ -181,7 +181,7 @@
 
 See [Replica Set Protocol Version.](https://www.mongodb.com/docs/manual/reference/replica-set-protocol-versions/)
 
-`members[n].buildIndexes`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.buildIndexes)
+`members[n].buildIndexes`
 
 *Optional*.
 
@@ -233,7 +233,7 @@ Hidden members can acknowledge write operations issued with [Write Concern](http
 >
 >[Hidden Replica Set Members](https://www.mongodb.com/docs/manual/core/replica-set-hidden-member/#std-label-replica-set-hidden-members)
 
-`members[n].priority`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.priority)
+`members[n].priority`
 
 在3.6版更改:从MongoDB 3.6开始，仲裁器的优先级为0。如果一个仲裁器的优先级为1,MongoDB 3.6将仲裁器的优先级重新配置为0。
 
@@ -265,7 +265,7 @@ Members with [`priority`](https://www.mongodb.com/docs/manual/reference/replica-
 >
 >[Replica Set Elections.](https://www.mongodb.com/docs/manual/core/replica-set-elections/#std-label-replica-set-elections)
 
-`members[n].tags`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.tags)
+`members[n].tags`
 
 *Optional*.
 
@@ -284,7 +284,7 @@ Members with [`priority`](https://www.mongodb.com/docs/manual/reference/replica-
 
 更多信息请参考 [Configure Replica Set Tag Sets.](https://www.mongodb.com/docs/manual/tutorial/configure-replica-set-tag-sets/)
 
-`members[n].secondaryDelaySecs`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.secondaryDelaySecs)
+`members[n].secondaryDelaySecs`
 
 *Optional*.
 
@@ -306,7 +306,7 @@ Members with [`priority`](https://www.mongodb.com/docs/manual/reference/replica-
 >
 >参考：[Delayed Replica Set Members](https://www.mongodb.com/docs/manual/core/replica-set-delayed-member/)
 
-`members[n].votes`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.votes)
+`members[n].votes`
 
 *Optional*.
 
@@ -341,7 +341,7 @@ Members with [`priority`](https://www.mongodb.com/docs/manual/reference/replica-
 
  [`settings`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.settings) 文档包含以下字段：
 
-- `settings.chainingAllowed`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.settings.chainingAllowed)
+- `settings.chainingAllowed`
 
   *Optional*.
 
@@ -366,7 +366,7 @@ Members with [`priority`](https://www.mongodb.com/docs/manual/reference/replica-
   >
   >[Manage Chained Replication](https://www.mongodb.com/docs/manual/tutorial/manage-chained-replication/)
 
-`settings.getLastErrorDefaults`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.settings.getLastErrorDefaults)
+`settings.getLastErrorDefaults`
 
 *Optional*.
 
@@ -380,7 +380,7 @@ Members with [`priority`](https://www.mongodb.com/docs/manual/reference/replica-
 
 
 
-`settings.getLastErrorModes`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.settings.getLastErrorModes)
+`settings.getLastErrorModes`
 
 *Optional*.
 
@@ -413,7 +413,7 @@ Members with [`priority`](https://www.mongodb.com/docs/manual/reference/replica-
 
 有关更多信息和示例，请参阅[配置副本集标记集。](https://www.mongodb.com/docs/manual/tutorial/configure-replica-set-tag-sets/)
 
-`settings.heartbeatTimeoutSecs`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.settings.heartbeatTimeoutSecs)
+`settings.heartbeatTimeoutSecs`
 
 *可选*。
 
@@ -429,7 +429,7 @@ Members with [`priority`](https://www.mongodb.com/docs/manual/reference/replica-
 >
 >
 
-`settings.electionTimeoutMillis`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.settings.electionTimeoutMillis)
+`settings.electionTimeoutMillis`
 
 *可选*。
 
@@ -448,7 +448,7 @@ Members with [`priority`](https://www.mongodb.com/docs/manual/reference/replica-
 >
 >*在4.0.2版更改*：如果参数为 true（默认），当主节点从 （或不带 的命令）[`enableElectionHandoff`](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.enableElectionHandoff)下台时，已下台的主节点会提名一个符合条件的从节点立即进行选举。否则，副手可以等到直到 召集选举。降级的主节点不会等待切换的效果。有关详细信息，请参阅 [。](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.enableElectionHandoff)[`rs.stepDown()`](https://www.mongodb.com/docs/manual/reference/method/rs.stepDown/#mongodb-method-rs.stepDown)[`replSetStepDown`](https://www.mongodb.com/docs/manual/reference/command/replSetStepDown/#mongodb-dbcommand-dbcmd.replSetStepDown)`force: true`[`settings.electionTimeoutMillis`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.settings.electionTimeoutMillis)[`enableElectionHandoff`](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.enableElectionHandoff)
 
-`settings.catchUpTimeoutMillis`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.settings.catchUpTimeoutMillis)
+`settings.catchUpTimeoutMillis`
 
 *可选*。
 
@@ -468,7 +468,7 @@ Members with [`priority`](https://www.mongodb.com/docs/manual/reference/replica-
 >
 >要将 3.6 版本启动的副本集降级到 3.4，请将`catchUpTimeoutMillis`from更改`-1`为正数。未能将此值更改为正数会导致运行 3.4 版的节点既不重启也不加入副本集。
 
-`settings.catchUpTakeoverDelayMillis`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.settings.catchUpTakeoverDelayMillis)
+`settings.catchUpTakeoverDelayMillis`
 
 *可选*。
 
@@ -494,11 +494,11 @@ Members with [`priority`](https://www.mongodb.com/docs/manual/reference/replica-
 >
 >环境[`catchUpTimeoutMillis`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.settings.catchUpTimeoutMillis)禁用 *主追赶*`0`并因此也禁用追赶接管。
 
-- `settings.heartbeatIntervalMillis`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.settings.heartbeatIntervalMillis)
+- `settings.heartbeatIntervalMillis`
 
   *仅限内部使用*。心跳的频率（以毫秒为单位）。
 
-- `settings.replicaSetId`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.settings.replicaSetId)
+- `settings.replicaSetId`
 
   *类型*：ObjectId[`rs.initiate()`](https://www.mongodb.com/docs/manual/reference/method/rs.initiate/#mongodb-method-rs.initiate)与副本集关联并在或 期间自动创建的 ObjectId [`replSetInitiate`](https://www.mongodb.com/docs/manual/reference/command/replSetInitiate/#mongodb-dbcommand-dbcmd.replSetInitiate)。你不能改变 [`replicaSetId`.](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.settings.replicaSetId)
 

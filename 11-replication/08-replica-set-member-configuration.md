@@ -1,4 +1,4 @@
-# 成员配置教程[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/administration/replica-set-member-configuration/#member-configuration-tutorials)
+# 成员配置教程
 
 以下教程提供有关配置副本集节点以支持特定操作的信息，例如提供专用备份、支持报告或充当冷备用。
 

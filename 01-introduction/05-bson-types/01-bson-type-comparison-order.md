@@ -45,53 +45,14 @@ Collation specification has the following syntax:
 
 ```
 {
-locale
-:
-<
-string
->
-,
-caseLevel
-:
-<
-boolean
->
-,
-caseFirst
-:
-<
-string
->
-,
-strength
-:
-<
-int
->
-,
-numericOrdering
-:
-<
-boolean
->
-,
-alternate
-:
-<
-string
->
-,
-maxVariable
-:
-<
-string
->
-,
-backwards
-:
-<
-boolean
->
+   locale: <string>,
+   caseLevel: <boolean>,
+   caseFirst: <string>,
+   strength: <int>,
+   numericOrdering: <boolean>,
+   alternate: <string>,
+   maxVariable: <string>,
+   backwards: <boolean>
 }
 ```
 

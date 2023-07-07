@@ -1,6 +1,6 @@
 # 对副本集成员执行维护
 
-## 概述[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/perform-maintence-on-replica-set-members/#overview)
+## 概述
 
 [副本集](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-replica-set)允许 MongoDB 部署在维护窗口的大部分时间保持可用。
 
@@ -8,7 +8,7 @@
 
 使用这些步骤作为常见副本集操作的基础，特别是[升级到最新版本的 MongoDB等过程。](https://www.mongodb.com/docs/manual/tutorial/upgrade-revision/)
 
-## 程序[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/perform-maintence-on-replica-set-members/#procedure)
+## 程序
 
 对于副本集的每个节点，从从节点开始，执行以下事件序列，以主节点结束：
 
@@ -18,7 +18,7 @@
 
 
 
-### 关闭从节点。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/perform-maintence-on-replica-set-members/#stop-a-secondary)
+### 关闭从节点。
 
 在[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh), 关闭[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)实例：
 
@@ -28,7 +28,7 @@ db.shutdownServer()
 
 
 
-### 在不同的端口上以独立方式重新启动从节点。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/perform-maintence-on-replica-set-members/#restart-the-secondary-as-a-standalone-on-a-different-port)
+### 在不同的端口上以独立方式重新启动从节点。
 
 在操作系统 shell 提示符[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod) 下作为独立实例重新启动。
 
@@ -69,7 +69,7 @@ setParameter:
 
 
 
-### 对从节点执行维护操作。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/perform-maintence-on-replica-set-members/#perform-maintenance-operations-on-the-secondary)
+### 对从节点执行维护操作。
 
 当节点是单个节点时，使用[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)执行维护：
 
@@ -87,7 +87,7 @@ mongo --port 27218
 
 
 
-### `mongod`作为副本集的节点重新启动。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/perform-maintence-on-replica-set-members/#restart-mongod-as-a-member-of-the-replica-set)
+### `mongod`作为副本集的节点重新启动。
 
 执行所有维护任务后，使用以下过程[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)在其常用端口上作为副本集的成节点重新启动。
 
@@ -122,7 +122,7 @@ rs.status()
 
 
 
-### 对主主节点进行维护。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/perform-maintence-on-replica-set-members/#perform-maintenance-on-the-primary-last)
+### 对主主节点进行维护。
 
 1. 要在完成所有从节点的维护任务后对节点执行维护，请连接 [`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)到主节点并用于 [`rs.stepDown()`](https://www.mongodb.com/docs/manual/reference/method/rs.stepDown/#mongodb-method-rs.stepDown)降低主要并允许其中一个从节点被选为新的主节点。指定 300 秒的等待时间以防止节点在五分钟内再次被选为主节点：
 

@@ -12,7 +12,7 @@ MongoDB 驱动程序使用服务器选择算法来选择要使用的副本集节
 
 
 
-## 副本集的读取首选项[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference-mechanics/#read-preference-for-replica-sets)
+## 副本集的读取首选项
 
 服务器选择每次操作发生一次，并受 [读取首选项](https://www.mongodb.com/docs/manual/core/read-preference/)和`localThresholdMS` 设置的约束，以确定节点是否有资格进行读取。为每个操作重新评估读取首选项。
 
@@ -26,21 +26,21 @@ MongoDB 驱动程序使用服务器选择算法来选择要使用的副本集节
 
 
 
-## 分片集群的读取首选项[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference-mechanics/#read-preference-for-sharded-clusters)
+## 分片集群的读取首选项
 
 
 
-### 负载均衡[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference-mechanics/#load-balancing)
+### 负载均衡
 
 如果连接种子列表中有多个[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)实例，驱动程序确定哪个[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)是“最接近的”（即具有最低平均网络往返时间的节点）并通过添加平均往返来计算延迟窗口 -这个“最近”[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)实例的时间和`localThresholdMS`. [`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)驱动程序将在延迟窗口内的实例之间随机进行负载平衡。
 
 
 
-### 读取首选项和碎片[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference-mechanics/#read-preference-and-shards)
+### 读取首选项和碎片
 
 对于具有副本集分片的分片集群，[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos) 在从分片读取时应用读取首选项。服务器选择由[读取首选项](https://www.mongodb.com/docs/manual/core/read-preference/)和[`replication.localPingThresholdMs`](https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-replication.localPingThresholdMs) 设置决定。为每个操作重新评估读取首选项。
 
-#### 对冲读取[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/read-preference-mechanics/#hedged-reads)
+#### 对冲读取
 
 从 4.4 版本开始，mongos 支持非主读偏好模式的对冲读。 也就是说，mongos 可以向另一个节点发送额外的读取（如果可用），以在使用非主读取首选项时对冲读取操作。 为对冲读取操作而发送的附加读取使用 maxTimeMSForHedgedReads 的 maxTimeMS 值。以下操作支持对冲读取：
 

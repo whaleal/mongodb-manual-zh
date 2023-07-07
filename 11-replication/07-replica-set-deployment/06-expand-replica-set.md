@@ -4,19 +4,19 @@
 
 [本教程解释了如何向现有副本集](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-replica-set)添加额外节点 。有关复制部署模式的背景，请参阅[副本集部署架构](https://www.mongodb.com/docs/manual/core/replica-set-architectures/)文档。
 
-### 最大投票成员[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/expand-replica-set/#maximum-voting-members)
+### 最大投票成员
 
 一个副本集最多可以有七个有[投票权的节点](https://www.mongodb.com/docs/manual/core/replica-set-elections/#std-label-replica-set-election-internals)。要将成员添加到已经有七个投票成员的副本集，您必须将该成员添加 [为非投票节点](https://www.mongodb.com/docs/manual/core/replica-set-elections/#std-label-replica-set-non-voting-members)或从[`existing member`.](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.votes)
 
-### 初始化脚本[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/expand-replica-set/#init-scripts)
+### 初始化脚本
 
 在生产部署中，您可以配置一个[初始化脚本](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-init-script) 来管理节点进程。
 
-### 现有节点[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/expand-replica-set/#existing-members)
+### 现有节点
 
 您可以使用这些过程将新节点添加到现有集。您还可以使用相同的过程来“重新添加”已删除的节点。如果被删除的节点的数据仍然相对较新，则可以很容易地恢复和赶上。
 
-### 数据文件[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/expand-replica-set/#data-files)
+### 数据文件
 
 如果您有现有节点的备份或快照，您可以将数据文件（例如[`dbPath`](https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-storage.dbPath)目录）移动到新系统并使用它们快速启动新节点
 
@@ -32,7 +32,7 @@
 
 - [比主节点作](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-primary) [日志](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-oplog)中最旧的操作更新。新节点必须能够通过应用主操作日志中的操作成为当前节点。
 
-### IP绑定[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/expand-replica-set/#ip-binding)
+### IP绑定
 
 
 
@@ -78,16 +78,16 @@ mongosh --host 198.51.100.1
 
 使用主机名而不是 IP 地址来配置跨分割网络水平的集群。从 MongoDB 5.0 开始，仅配置了 IP 地址的节点将无法通过启动验证而不会启动。
 
-## 要求[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/expand-replica-set/#requirements)
+## 要求
 
 1. 一个活跃的副本集。
 2. 一个新的 MongoDB 系统能够支持您的数据集，活动副本集可以通过网络访问。
 
 否则，请使用 MongoDB[安装教程](https://www.mongodb.com/docs/manual/installation/#std-label-tutorials-installation)和[部署副本集](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set/) 教程。
 
-## 程序[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/expand-replica-set/#procedures)
+## 程序
 
-### 准备数据目录[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/expand-replica-set/#prepare-the-data-directory)
+### 准备数据目录
 
 在将新节点添加到现有[副本集](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-replica-set)之前，使用以下策略之一准备新节点的[数据目录：](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-dbpath)
 
@@ -105,7 +105,7 @@ mongosh --host 198.51.100.1
 
 
 
-### 将成员添加到现有副本集[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/expand-replica-set/#add-a-member-to-an-existing-replica-set)
+### 将成员添加到现有副本集
 
 
 

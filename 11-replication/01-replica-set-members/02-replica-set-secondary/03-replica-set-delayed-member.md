@@ -4,9 +4,9 @@
 
 因为延迟节点是数据集的“滚动备份”或正在运行的“历史”快照，它们可以帮助您从各种人为错误中恢复。例如，延迟的节点可以从不成功的应用程序升级和操作员错误（包括删除的数据库和集合）中恢复。
 
-## 注意事项[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-delayed-member/#considerations)
+## 注意事项
 
-### 要求[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-delayed-member/#requirements)
+### 要求
 
 延迟节点：
 
@@ -32,30 +32,30 @@
 
 有关多数提交点的更多信息，请参阅 [因果一致性和读写问题](https://www.mongodb.com/docs/manual/core/causal-consistency-read-write-concerns/)。有关解决性能问题的更多详细信息，请参阅 [副本集维护教程。](https://www.mongodb.com/docs/manual/tutorial/mitigate-psa-performance-issues/#std-label-performance-issues-psa)
 
-### 行为[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-delayed-member/#behavior)
+### 行为
 
 延迟节点在延迟时从源[oplog](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-oplog)复制和应用操作。选择延迟量时，请考虑延迟量：
 
 - 必须等于或大于您预期的维护窗口持续时间。
 - 必须*小于*oplog 的容量。有关 oplog 大小的更多信息，请参阅[Oplog 大小。](https://www.mongodb.com/docs/manual/core/replica-set-oplog/#std-label-replica-set-oplog-sizing)
 
-### 写安全[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-delayed-member/#write-concern)
+### 写安全
 
 延迟的副本集节点可以确认用 发出的写操作[`w: `](https://www.mongodb.com/docs/manual/reference/write-concern/#mongodb-writeconcern-writeconcern.-number-)。然而，对于用 发出的写操作[`w : "majority"`](https://www.mongodb.com/docs/manual/reference/write-concern/#mongodb-writeconcern-writeconcern.-majority-)，延迟节点也必须是有投票权的节点（即 [`members[n].votes`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.votes)大于`0`）以确认 `"majority"`写操作。非投票副本集节点（即[`members[n].votes`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.votes)is `0`）不能参与确认具有`majority`写安全的写操作。
 
 延迟的辅助节点可以不早于配置的[`secondaryDelaySecs`.](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.secondaryDelaySecs)
 
-### 分片[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-delayed-member/#sharding)
+### 分片
 
 在分片集群中，延迟节点在 启用[平衡器](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-balancer)时的实用性有限。因为延迟节点会延迟复制块迁移，所以如果在延迟窗口期间发生任何迁移，则分片集群中延迟节点的状态对于恢复到分片集群的先前状态没有用。
 
-## 例子[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-delayed-member/#example)
+## 例子
 
 在下面的 5个节点 副本集中，主节点 和所有从节点都有数据集的副本。一个节点应用延迟 3600 秒（一小时）的操作。这个延迟的节点也是*隐藏*的，并且是*优先级为 0 的节点*。
 
 ![具有隐藏延迟优先级 0 成员的 5 成员副本集的图表。](../../../images/replica-set-delayed-member01.svg)
 
-## 配置[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-delayed-member/#configuration)
+## 配置
 
 延迟的节点 [`members[n].priority`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.priority)等于`0`， [`members[n].hidden`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.hidden)等于`true`，和[`members[n].secondaryDelaySecs`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.secondaryDelaySecs)等于延迟的秒数：
 

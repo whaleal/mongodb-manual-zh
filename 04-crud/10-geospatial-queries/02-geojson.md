@@ -2,21 +2,14 @@
 
 **在本页面**
 
-*   [总览](概观)
-
-*   [`Point`](点)
-
-*   [`LineString`](线串)
-
-*   [多边形](多边形)
-
-*   [多点](多点)
-
-*   [MULTILINESTRING](id1)
-
-*   [MultiPolygon](id2)
-
-*   [GeometryCollection](id3)
+*   [Overview](https://www.mongodb.com/docs/v4.0/reference/geojson/#overview)
+*   [Point](https://www.mongodb.com/docs/v4.0/reference/geojson/#point)
+*   [LineString](https://www.mongodb.com/docs/v4.0/reference/geojson/#linestring)
+*   [Polygon](https://www.mongodb.com/docs/v4.0/reference/geojson/#polygon)
+*   [MultiPoint](https://www.mongodb.com/docs/v4.0/reference/geojson/#multipoint)
+*   [MultiLineString](https://www.mongodb.com/docs/v4.0/reference/geojson/#multilinestring)
+*   [MultiPolygon](https://www.mongodb.com/docs/v4.0/reference/geojson/#multipolygon)
+*   [GeometryCollection](https://www.mongodb.com/docs/v4.0/reference/geojson/#geometrycollection)
 
  <span id="概观">总览</span>
 

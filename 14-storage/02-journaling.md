@@ -1,10 +1,10 @@
-# 日志[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/journaling/#journaling)
+# 日志
 
 为了在发生故障时提供持久性，MongoDB 使用预*写日志记录*到磁盘[日志](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-journal)文件。
 
 
 
-## 日志和 WiredTiger 存储引擎[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/journaling/#journaling-and-the-wiredtiger-storage-engine)
+## 日志和 WiredTiger 存储引擎
 
 
 
@@ -28,7 +28,7 @@
 
 
 
-### 日志过程[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/journaling/#journaling-process)
+### 日志过程
 
 *在版本3.2中更改*。
 
@@ -71,13 +71,13 @@ WiredTiger 在以下任何情况下将缓冲的日志记录同步到磁盘：
 
 该[`serverStatus`](https://www.mongodb.com/docs/manual/reference/command/serverStatus/#mongodb-dbcommand-dbcmd.serverStatus)命令在字段中返回有关 WiredTiger 日志统计信息的信息[`wiredTiger.log`](https://www.mongodb.com/docs/manual/reference/command/serverStatus/#mongodb-serverstatus-serverstatus.wiredTiger.log) 。
 
-### 日志文件[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/journaling/#journal-files)
+### 日志文件
 
 对于日志文件，MongoDB 在该目录下创建一个名为`journal` 的子目录[`dbPath`](https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-storage.dbPath)。WiredTiger 日志文件的名称具有以下格式`WiredTigerLog.<sequence>` ，其中`<sequence>`是从 `0000000001`.
 
 
 
-#### 日志记录[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/journaling/#journal-records)
+#### 日志记录
 
 日志文件包含每个客户端发起的写入操作的记录
 
@@ -85,7 +85,7 @@ WiredTiger 在以下任何情况下将缓冲的日志记录同步到磁盘：
 - 每条记录都有一个唯一的标识符。
 - WiredTiger 的最小日志记录大小为 128 字节。
 
-#### 压缩[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/journaling/#compression)
+#### 压缩
 
 默认情况下，MongoDB 配置 WiredTiger 对其日志数据使用 snappy 压缩。要指定不同的压缩算法或不压缩，请使用 [`storage.wiredTiger.engineConfig.journalCompressor`](https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-storage.wiredTiger.engineConfig.journalCompressor)设置。有关详细信息，请参阅[更改 WiredTiger Journal Compressor](https://www.mongodb.com/docs/manual/tutorial/manage-journaling/#std-label-manage-journaling-change-wt-journal-compressor) .s
 
@@ -95,20 +95,20 @@ WiredTiger 在以下任何情况下将缓冲的日志记录同步到磁盘：
 
 如果日志记录小于或等于 128 字节（最小值 [WiredTiger 的日志记录大小](https://www.mongodb.com/docs/manual/core/journaling/#std-label-wt-jouraling-record)), WiredTiger 不压缩该记录。
 
-#### 日志文件大小限制[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/journaling/#journal-file-size-limit)
+#### 日志文件大小限制
 
 MongoDB 的 WiredTiger 日志文件的最大大小限制约为 100 MB。
 
 - 一旦文件超过该限制，WiredTiger 就会创建一个新的日志文件。
 - WiredTiger 自动删除旧日志文件以仅保留从上一个检查点恢复所需的文件。
 
-#### 预先分配[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/journaling/#pre-allocation)
+#### 预先分配
 
 WiredTiger 预分配日志文件。
 
 
 
-## 日志和内存存储引擎[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/journaling/#journaling-and-the-in-memory-storage-engine)
+## 日志和内存存储引擎
 
 从 MongoDB Enterprise 版本 3.2.6 开始，[内存存储引擎](https://www.mongodb.com/docs/manual/core/inmemory/)是一般可用性 (GA) 的一部分。因为它的数据保存在内存中，所以没有单独的日志。[`j: true`](https://www.mongodb.com/docs/manual/reference/write-concern/#mongodb-writeconcern-writeconcern.j)立即确认具有写关注的写操作。
 

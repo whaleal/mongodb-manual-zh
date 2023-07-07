@@ -6,9 +6,9 @@
 
 ![具有隐藏优先级 0 成员的 5 成员副本集的图表。](../../../images/replica-set-hidden-member01.svg)
 
-## 行为[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-hidden-member/#behavior)
+## 行为
 
-### 读取操作[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-hidden-member/#read-operations)
+### 读取操作
 
 客户端不会将具有适当[阅读偏好](https://www.mongodb.com/docs/manual/core/read-preference/)的阅读分配给隐藏的从节点。因此，除了基本复制之外，这些节点不会收到任何流量。将隐藏节点用于专门的任务，例如报告和备份。
 
@@ -30,7 +30,7 @@
 
 在分片集群中，[`mongos`](https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos)不要与隐藏节点交互。
 
-### 表决[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-hidden-member/#voting)
+### 表决
 
 隐藏成员*可以*在副本集选举中投票。如果您停止投票的隐藏节点，请确保该集合拥有多数活跃节点，否则 [主节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-primary)将下台。
 
@@ -40,11 +40,11 @@
 
   [`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)由于[日志同步](https://www.mongodb.com/docs/manual/core/journaling/#std-label-journal-process)或 [WiredTiger 快照](https://www.mongodb.com/docs/manual/core/wiredtiger/#std-label-storage-wiredtiger-checkpoints)等操作，锁定的数据文件可能会更改。虽然这对逻辑数据（例如客户端访问的数据）没有影响，但一些备份实用程序可能会检测到这些更改并发出警告或因错误而失败。有关 MongoDB 推荐的备份实用程序和过程的更多信息，请参阅 [MongoDB 备份方法。](https://www.mongodb.com/docs/manual/core/backups/)
 
-### 写安全[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-hidden-member/#write-concern)
+### 写安全
 
 隐藏的副本集节点可以确认用发出的写操作[`w: `](https://www.mongodb.com/docs/manual/reference/write-concern/#mongodb-writeconcern-writeconcern.-number-)。但是，对于用 发出的写操作[`w : "majority"`](https://www.mongodb.com/docs/manual/reference/write-concern/#mongodb-writeconcern-writeconcern.-majority-)，隐藏节点也必须是有投票权的节点（即[`members[n].votes`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.votes) 大于`0`）才能确认`"majority"`写操作。非投票副本集成员（即[`members[n].votes`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.votes) is `0`）不能参与确认具有 `majority`写安全的写操作。
 
-## 进一步阅读[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/replica-set-hidden-member/#further-reading)
+## 进一步阅读
 
 有关备份 MongoDB 数据库的更多信息，请参阅[MongoDB 备份方法](https://www.mongodb.com/docs/manual/core/backups/)。要配置隐藏节点，请参阅 [配置隐藏副本集成员。](https://www.mongodb.com/docs/manual/tutorial/configure-a-hidden-replica-set-member/)
 

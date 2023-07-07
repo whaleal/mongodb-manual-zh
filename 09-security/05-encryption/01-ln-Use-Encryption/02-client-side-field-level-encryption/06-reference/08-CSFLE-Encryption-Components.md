@@ -4,7 +4,7 @@
 
 下图说明了 MongoDB 驱动程序或[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)以及客户端字段级加密 (CSFLE) 的每个组件：
 
-![本地密钥提供程序的支持 CSFLE 的应用程序的体系结构图](/Users/jinmu/Desktop/mongodb-manual-zh/images/CSFLE-Encryption-Components-01.png)
+![本地密钥提供程序的支持 CSFLE 的应用程序的体系结构图](../../../../../images/CSFLE-Encryption-Components-01.png)
 
 ## 成分
 

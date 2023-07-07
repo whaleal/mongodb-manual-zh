@@ -2,7 +2,7 @@
 
 隐藏成员是[副本集](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-replica-set)的一部分，但不能成为 [主节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-primary)，并且对客户端应用程序不可见。隐藏节点可以在[选举](https://www.mongodb.com/docs/manual/core/replica-set-elections/#std-label-replica-set-elections)中投票。有关隐藏节点及其用途的更多信息，请参阅 [隐藏副本集节点。](https://www.mongodb.com/docs/manual/core/replica-set-hidden-member/)
 
-## 注意事项[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/configure-a-hidden-replica-set-member/#considerations)
+## 注意事项
 
 隐藏节点最常见的用途是支持[延迟节点](https://www.mongodb.com/docs/manual/core/replica-set-delayed-member/)。如果您只需要防止节点成为主节点，请配置[优先级为 0 的节点。](https://www.mongodb.com/docs/manual/core/replica-set-priority-0-member/)
 
@@ -18,9 +18,9 @@
 
 >
 
-## 例子[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/configure-a-hidden-replica-set-member/#examples)
+## 例子
 
-### 节点配置文件[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/configure-a-hidden-replica-set-member/#member-configuration-document)
+### 节点配置文件
 
 要将从节点配置为隐藏，请将其 [`members[n].priority`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.priority)值`0`设置为并在其节点配置中将其[`members[n\].hidden`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members-n-.hidden)值 设置为：`true`
 
@@ -35,7 +35,7 @@
 
 
 
-### 配置步骤[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/configure-a-hidden-replica-set-member/#configuration-procedure)
+### 配置步骤
 
 以下示例隐藏当前位于数组索引处的从节点 `0`[`members`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members)。要配置[隐藏节点](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-hidden-member)，请在 [`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)连接到主节点的会话，指定要通过其在数组中的数组索引进行配置的节点 [`members`](https://www.mongodb.com/docs/manual/reference/replica-configuration/#mongodb-rsconf-rsconf.members)：
 
@@ -57,7 +57,7 @@ rs.reconfig(cfg)
 >- shell 方法可以强制当前[`rs.reconfig()`](https://www.mongodb.com/docs/manual/reference/method/rs.reconfig/#mongodb-method-rs.reconfig)primary 下台，从而导致[选举](https://www.mongodb.com/docs/manual/core/replica-set-elections/#std-label-replica-set-elections)。当主要步骤关闭时， [`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)关闭所有客户端连接。虽然这通常需要 10-20 秒，但请尝试在计划的维护期间进行这些更改。
 >- 避免重新配置包含不同 MongoDB 版本节点的副本集，因为验证规则可能因 MongoDB 版本而异。
 
-## 相关文件[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/configure-a-hidden-replica-set-member/#related-documents)
+## 相关文件
 
 - [副本集重新配置](https://www.mongodb.com/docs/manual/reference/method/rs.reconfig/#std-label-replica-set-reconfiguration-usage)
 - [副本集选举](https://www.mongodb.com/docs/manual/core/replica-set-elections/)

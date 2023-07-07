@@ -4,11 +4,11 @@
 
 要部署启用[访问控制](https://www.mongodb.com/docs/manual/core/authorization/)的副本集，请 [参阅使用密钥文件身份验证部署副本集](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set-with-keyfile-access-control/#std-label-deploy-repl-set-with-auth)。如果您希望从单个 MongoDB 实例部署副本集，请参阅 [将独立实例转换为副本集](https://www.mongodb.com/docs/manual/tutorial/convert-standalone-to-replica-set/)。有关副本集部署的更多信息，请参阅[复制](https://www.mongodb.com/docs/manual/replication/)和 [副本集部署架构](https://www.mongodb.com/docs/manual/core/replica-set-architectures/)文档。
 
-## 概述[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set/#overview)
+## 概述
 
 三个节点[副本集](https://www.mongodb.com/docs/manual/reference/glossary/#std-term-replica-set)提供了足够的冗余来应对大多数网络分区和其他系统故障。这些集合还具有足够的容量用于许多分布式读取操作。副本集应该总是有奇数个节点。这确保了[选举](https://www.mongodb.com/docs/manual/core/replica-set-elections/)能够顺利进行。有关设计副本集的更多信息，请参阅[复制概述。](https://www.mongodb.com/docs/manual/replication/)
 
-## 要求[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set/#requirements)
+## 要求
 
 [`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod) 对于生产部署，您应该通过在不同的机器上托管实例来尽可能多地保持节点之间的分离。当使用虚拟机进行生产部署时，您应该将每个[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod) 实例放置在由冗余电源电路和冗余网络路径提供服务的单独主机服务器上。
 
@@ -16,15 +16,15 @@
 
 
 
-## 部署副本集时的注意事项[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set/#considerations-when-deploying-a-replica-set)
+## 部署副本集时的注意事项
 
-### 搭建[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set/#architecture)
+### 搭建
 
 在生产中，将副本集的每个节点部署到自己的机器上。如果可能，请确保 MongoDB 侦听默认端口 `27017`.
 
 有关详细信息，请参阅[副本集部署架构。](https://www.mongodb.com/docs/manual/core/replica-set-architectures/)
 
-### 主机名[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set/#hostnames)
+### 主机名
 
 >## IMPORTANT
 >
@@ -34,7 +34,7 @@
 
 使用主机名而不是 IP 地址来配置跨分割网络水平的集群。从 MongoDB 5.0 开始，仅配置了 IP 地址的节点将无法通过启动验证而不会启动。
 
-### IP绑定[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set/#ip-binding)
+### IP绑定
 
 使用该[`--bind_ip`](https://www.mongodb.com/docs/manual/reference/program/mongod/#std-option-mongod.--bind_ip)选项可确保 MongoDB 侦听来自已配置地址上的应用程序的连接。
 
@@ -74,7 +74,7 @@ mongosh --host 198.51.100.1
 
 
 
-### 连通性[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set/#connectivity)
+### 连通性
 
 确保网络流量可以在集合的所有节点和网络中的所有客户端之间安全传递。
 
@@ -88,7 +88,7 @@ mongosh --host 198.51.100.1
 
 每个节点都必须能够连接到每个其他节点。有关如何检查您的连接的说明，请参阅 [测试所有节点之间的连接。](https://www.mongodb.com/docs/manual/tutorial/troubleshoot-replica-sets/#std-label-replica-set-troubleshooting-check-connection)
 
-### 配置[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set/#configuration)
+### 配置
 
 在部署MongoDB之前创建MongoDB存放数据文件的目录。
 
@@ -96,13 +96,13 @@ mongosh --host 198.51.100.1
 
 有关配置选项的更多信息，请参阅 [配置文件选项。](https://www.mongodb.com/docs/manual/reference/configuration-options/)
 
-## 程序[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set/#procedure)
+## 程序
 
 以下过程概述了在禁用访问控制时部署副本集的步骤。
 
 1个
 
-### 使用适当的选项启动副本集的每个节点。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set/#start-each-member-of-the-replica-set-with-the-appropriate-options)
+### 使用适当的选项启动副本集的每个节点。
 
 对于每个节点，[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)使用以下设置启动一个实例：
 
@@ -157,7 +157,7 @@ mongod --config <path-to-config>
 
 2个
 
-### 连接[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)到其中一个`mongod`实例。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set/#connect-to-one-of-the-mongod-instances)
+### 连接[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)到其中一个`mongod`实例。
 
 从其中一个正在运行的同一台机器[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)上（在本教程中，`mongodb0.example.net`），开始 [`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh). 要连接到[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod) 默认端口上的侦听本地主机`27017`，只需发出：
 
@@ -173,7 +173,7 @@ mongosh
 
 3个
 
-### 启动副本集。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set/#initiate-the-replica-set)
+### 启动副本集。
 
 从[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)，[`rs.initiate()`](https://www.mongodb.com/docs/manual/reference/method/rs.initiate/#mongodb-method-rs.initiate)在副本集成员 0 上运行。
 
@@ -208,7 +208,7 @@ MongoDB 使用默认副本集配置启动副本集。
 
 4个
 
-### 查看副本集配置。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set/#view-the-replica-set-configuration)
+### 查看副本集配置。
 
 用于[`rs.conf()`](https://www.mongodb.com/docs/manual/reference/method/rs.conf/#mongodb-method-rs.conf)显示[副本集配置对象：](https://www.mongodb.com/docs/manual/reference/replica-configuration/)
 
@@ -289,7 +289,7 @@ rs.conf()
 
 5个
 
-### 确保副本集有一个主节点。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/deploy-replica-set/#ensure-that-the-replica-set-has-a-primary)
+### 确保副本集有一个主节点。
 
 用于[`rs.status()`](https://www.mongodb.com/docs/manual/reference/method/rs.status/#mongodb-method-rs.status)标识副本集中的主节点。
 

@@ -1,6 +1,6 @@
 # 配置从节点的同步目标
 
-## 概述[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/configure-replica-set-secondary-sync-target/#overview)
+## 概述
 
 从节点从主节点捕获数据以维护集合数据的最新副本。但是，默认情况下，从节点可能会根据节点之间的 ping 时间变化和其他节点复制的状态自动将其同步目标更改为从节点。有关详细信息，请参阅 [副本集数据同步](https://www.mongodb.com/docs/manual/core/replica-set-sync/)和 [管理链式复制](https://www.mongodb.com/docs/manual/tutorial/manage-chained-replication/)。
 
@@ -11,15 +11,15 @@
 - [`replSetSyncFrom`](https://www.mongodb.com/docs/manual/reference/command/replSetSyncFrom/#mongodb-dbcommand-dbcmd.replSetSyncFrom)命令，或
 - [`rs.syncFrom()`](https://www.mongodb.com/docs/manual/reference/method/rs.syncFrom/#mongodb-method-rs.syncFrom)帮手[`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)
 
-## 注意事项[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/configure-replica-set-secondary-sync-target/#considerations)
+## 注意事项
 
-### 同步逻辑[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/configure-replica-set-secondary-sync-target/#sync-logic)
+### 同步逻辑
 
 如果在您运行时初始同步正在进行中操作[`replSetSyncFrom`](https://www.mongodb.com/docs/manual/reference/command/replSetSyncFrom/#mongodb-dbcommand-dbcmd.replSetSyncFrom)/[`rs.syncFrom()`](https://www.mongodb.com/docs/manual/reference/method/rs.syncFrom/#mongodb-method-rs.syncFrom)，[`replSetSyncFrom`/](https://www.mongodb.com/docs/manual/reference/command/replSetSyncFrom/#mongodb-dbcommand-dbcmd.replSetSyncFrom)[`rs.syncFrom()`](https://www.mongodb.com/docs/manual/reference/method/rs.syncFrom/#mongodb-method-rs.syncFrom)将停止正在进行的初始同步并重新启动与新目标的同步过程。
 
 仅根据需要修改默认同步逻辑，并始终谨慎行事。
 
-### 目标[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/configure-replica-set-secondary-sync-target/#target)
+### 目标
 
 要同步的节点必须是集合中数据的有效来源。要从节点同步，节点必须：
 
@@ -31,7 +31,7 @@
 
 如果您尝试从落后于当前节点 10 秒以上的节点进行复制，[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)将记录警告但仍会从滞后的节点	进行复制。另请参阅 [复制滞后和流量控制。](https://www.mongodb.com/docs/manual/replication/#std-label-replication-flow-control)
 
-### Persistence[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/configure-replica-set-secondary-sync-target/#persistence)
+### Persistence
 
 [`replSetSyncFrom`/](https://www.mongodb.com/docs/manual/reference/command/replSetSyncFrom/#mongodb-dbcommand-dbcmd.replSetSyncFrom)[`rs.syncFrom()`](https://www.mongodb.com/docs/manual/reference/method/rs.syncFrom/#mongodb-method-rs.syncFrom)提供默认行为的临时覆盖。 [`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)在以下情况下将恢复为默认同步行为：
 
@@ -39,7 +39,7 @@
 - 和同步目标之间的连接[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)关闭。
 - 如果同步目标落后于副本集的另一个成员超过 30 秒。
 
-## 程序[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/configure-replica-set-secondary-sync-target/#procedure)
+## 程序
 
 在中使用[`replSetSyncFrom`](https://www.mongodb.com/docs/manual/reference/command/replSetSyncFrom/#mongodb-dbcommand-dbcmd.replSetSyncFrom)命令[`mongosh`:](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)
 

@@ -1,4 +1,4 @@
-**修改架构验证**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/update-schema-validation/#modify-schema-validation)
+**修改架构验证**
 
 将架构验证添加到集合后，您可以随时修改架构验证。例如，您可以决定：
 
@@ -7,17 +7,17 @@
 
 要修改集合的模式验证，请使用[`collMod`](https://www.mongodb.com/docs/manual/reference/command/collMod/#mongodb-dbcommand-dbcmd.collMod) 命令并在`validator`对象中指定更新的验证。
 
-**语境**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/update-schema-validation/#context)
+**语境**
 
 您可以修改架构验证的所有组件，包括其规则、验证级别和验证操作。
 
 如果您更新集合的验证规则，则在验证更改之前插入的文档可能不再有效。MongoDB 如何处理这些无效文档取决于您的`validationLevel`. 默认情况下，MongoDB 对所有文档应用验证检查，无论它们是何时插入的。
 
-**步骤**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/update-schema-validation/#steps)
+**步骤**
 
 以下过程创建一个包含验证规则的集合，然后修改这些规则。插入无效和有效文档时，您将观察到结果。
 
-1. **创建一个带有验证的集合**。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/update-schema-validation/#create-a-collection-with-validation.)
+1. **创建一个带有验证的集合**。
 
    创建`users`具有验证规则的集合：
 
@@ -43,7 +43,7 @@
    } )
    ```
 
-2. **修改验证架构**。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/update-schema-validation/#modify-the-validation-schema.)
+2. **修改验证架构**。
 
    运行以下[`collMod`](https://www.mongodb.com/docs/manual/reference/command/collMod/#mongodb-dbcommand-dbcmd.collMod)命令将 `minLength`字段的值`password`从 8 更改为 12：
 
@@ -73,11 +73,11 @@
 >
 >您还可以使用该`collMod`命令向未使用验证创建的现有集合添加验证。
 
-**结果**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/update-schema-validation/#results)
+**结果**
 
 以下示例展示了将有效文档和无效文档插入用户集合时会发生什么，以及如何处理由于验证规则更改而不再有效的先前有效文档。
 
-**插入无效文件**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/update-schema-validation/#insert-an-invalid-document)
+**插入无效文件**
 
 以下操作尝试插入无效文档。文档无效，因为`password`字段长度为 10 个字符，而最小长度为 12：
 
@@ -121,7 +121,7 @@ Additional information: {
 }
 ```
 
-**插入有效文件**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/update-schema-validation/#insert-a-valid-document)
+**插入有效文件**
 
 以下操作插入一个有效文档，其中`password` 字段长度至少为 12 个字符：
 
@@ -134,7 +134,7 @@ db.users.insertOne(
 )
 ```
 
-**处理以前有效但不再有效的文件**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/update-schema-validation/#handle-a-previously-valid-document-that-is-no-longer-valid)
+**处理以前有效但不再有效的文件**
 
 考虑以下文档，它对第一个版本的模式验证有效，但对第二个版本无效：
 
@@ -155,7 +155,7 @@ MongoDB 处理新无效文档的方式取决于模式的 `validationLevel`. 此�
 
 如果更新后的模式验证有一个`validationLevel`of `moderate`，则该文档将不需要匹配新的验证规则。
 
-**学到更多**[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/core/schema-validation/update-schema-validation/#learn-more)
+**学到更多**
 
 - [指定现有文档的验证级别](https://www.mongodb.com/docs/manual/core/schema-validation/specify-validation-level/#std-label-schema-specify-validation-level)
 - [选择如何处理无效文件](https://www.mongodb.com/docs/manual/core/schema-validation/handle-invalid-documents/#std-label-schema-validation-handle-invalid-docs)
