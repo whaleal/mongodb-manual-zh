@@ -201,7 +201,430 @@ db.graduateStudents.aggregate(
 ]
 ```
 
+#### 获取授予当前用户的角色的医疗信息。
 
+从 MongoDB 7.0 开始，您可以使用新的[`USER_ROLES`](https://www.mongodb.com/docs/v7.0/reference/aggregation-variables/#mongodb-variable-variable.USER_ROLES) 系统变量返回用户[角色。](https://www.mongodb.com/docs/v7.0/core/authorization/#std-label-roles)
+
+本节中的示例显示用户对包含医疗信息的集合中的字段具有有限的访问权限。该示例使用一个视图，该视图从系统变量中读取当前用户角色`USER_ROLES`并根据角色隐藏字段。
+
+该示例创建这些用户：
+
+- `James`具有`Billing`可以访问`creditCard` 字段的角色。
+- `Michelle`具有`Provider`可以访问 `diagnosisCode`字段的角色。
+
+执行以下步骤来创建角色、用户、集合和视图：
+
+该示例创建这些用户：
+
+* `James`具有`Billing`可以访问`creditCard` 字段的角色。
+* `Michelle`具有`Provider`可以访问 `diagnosisCode`字段的角色。
+
+执行以下步骤来创建角色、用户、集合和视图：
+
+1. 创建角色
+
+   执行:
+
+   ```
+   db.createRole( { role: "Billing", privileges: [ { resource: { db: "test",
+      collection: "medicalView" }, actions: [ "find" ] } ], roles: [ ] } )
+   db.createRole( { role: "Provider", privileges: [ { resource: { db: "test",
+      collection: "medicalView" }, actions: [ "find" ] } ], roles: [ ] } )
+   ```
+
+2. 创建用户
+
+   创建指定的用户`James`并`Michelle`具有所需的角色。将数据库替换`test`为您的数据库名称。
+
+   ```
+   db.createUser( {
+      user: "James",
+      pwd: "js008",
+      roles: [
+         { role: "Billing", db: "test" }
+      ]
+   } )
+   
+   db.createUser( {
+      user: "Michelle",
+      pwd: "me009",
+      roles: [
+         { role: "Provider", db: "test" }
+      ]
+   } )
+   ```
+
+3. 创建集合
+
+   执行:
+
+   ```
+   db.medical.insertMany( [
+      {
+         _id: 0,
+         patientName: "Jack Jones",
+         diagnosisCode: "CAS 17",
+         creditCard: "1234-5678-9012-3456"
+      },
+      {
+         _id: 1,
+         patientName: "Mary Smith",
+         diagnosisCode: "ACH 01",
+         creditCard: "6541-7534-9637-3456"
+      }
+   ] )
+   ```
+
+4. 创建视图
+
+   要使用系统变量，请添加`$$`到变量名称的开头。将`USER_ROLES`系统变量指定为`$$USER_ROLES`。
+
+   该视图从系统变量中读取当前用户角色`USER_ROLES` ，并根据角色隐藏字段。
+
+   执行：
+
+   ````
+   db.createView(
+      "medicalView", "medical",
+      [ {
+         $set: {
+            "diagnosisCode": {
+               $cond: {
+                  if: { $in: [
+                     "Provider", "$$USER_ROLES.role"
+                  ] },
+                  then: "$diagnosisCode",
+                  else: "$$REMOVE"
+               }
+         }
+      },
+      }, {
+         $set: {
+            "creditCard": {
+               $cond: {
+                  if: { $in: [
+                     "Billing", "$$USER_ROLES.role"
+                  ] },
+                  then: "$creditCard",
+                  else: "$$REMOVE"
+               }
+            }
+         }
+      } ]
+   )
+   ````
+
+   视图示例：
+
+   - 包括`diagnosisCode`具有该角色的用户的字段 `Provider`。
+   - 包括`creditCard`具有该角色的用户的字段 `Billing`。
+   - 使用[`$set`](https://www.mongodb.com/docs/v7.0/reference/operator/aggregation/set/#mongodb-pipeline-pipe.-set)管道阶段并[`$$REMOVE`](https://www.mongodb.com/docs/v7.0/reference/aggregation-variables/#mongodb-variable-variable.REMOVE)根据查询视图的用户是否具有 中返回的匹配角色来隐藏字段 `$$USER_ROLES.role`。
+
+执行以下步骤来检索可访问的信息 `James`：
+
+1. 以James身份登录
+
+   执行:
+
+   ```
+   db.auth( "James", "js008" )
+   ```
+
+2. 检索文档
+
+   执行:
+
+   ```
+   db.medicalView.find()
+   ```
+
+3. 检查文件
+
+   `James`具有`Billing`角色并查看以下文档，其中包含该`creditCard`字段但不包含该 `diagnosisCode`字段：
+
+   ```
+   [
+      {
+         _id: 0, patientName: 'Jack Jones',
+         creditCard: '1234-5678-9012-3456'
+      },
+      {
+         _id: 1, patientName: 'Mary Smith',
+         creditCard: '6541-7534-9637-3456'
+      }
+   ]
+   ```
+
+执行以下步骤来检索可访问的信息 `Michelle`：
+
+1. 以Michelle身份登录
+
+   执行:
+
+   ```
+   db.auth( "Michelle", "me009" )
+   ```
+
+2. 检索文档
+
+   执行:
+
+   ```
+   db.medicalView.find()
+   ```
+
+3. 检查文件
+
+   `Michelle`具有`Provider`角色并查看以下文档，其中包含该`diagnosisCode`字段但不包含该 `creditCard`字段：
+
+   ```
+   [
+      { _id: 0, patientName: 'Jack Jones',
+         diagnosisCode: 'CAS 17' },
+      { _id: 1, patientName: 'Mary Smith',
+         diagnosisCode: 'ACH 01' }
+   ]
+   ```
+
+#### 检索授予当前用户的角色的预算文档。
+
+从 MongoDB 7.0 开始，您可以使用新的[`USER_ROLES`](https://www.mongodb.com/docs/v7.0/reference/aggregation-variables/#mongodb-variable-variable.USER_ROLES) 系统变量返回用户[角色。](https://www.mongodb.com/docs/v7.0/core/authorization/#std-label-roles)
+
+本部分中的场景显示具有各种角色的用户，这些用户对包含预算信息的集合中的文档具有有限的访问权限。
+
+该场景展示了 的一种可能用途`USER_ROLES`。该`budget` 集合包含带有名为 的字段的文档`allowedRoles`。正如您将在以下场景中看到的，您可以编写查询来比较字段中找到的用户角色`allowedRoles`与系统变量返回的角色`USER_ROLES`。
+
+> 笔记:
+>
+> 对于另一个`USER_ROLES`示例场景，请参阅 [检索授予当前用户的角色的医疗信息](https://www.mongodb.com/docs/v7.0/core/views/create-view/#std-label-create-view-user-roles-system-variable-medical-example)。该示例不会将用户角色存储在文档字段中，如以下示例所示。
+
+对于本节中的预算场景，请执行以下步骤来创建角色、用户和`budget`集合：
+
+1. 创建角色
+
+   执行:
+
+   ````
+   db.createRole( { role: "Marketing", roles: [], privileges: [] } )
+   db.createRole( { role: "Sales", roles: [], privileges: [] } )
+   db.createRole( { role: "Development", roles: [], privileges: [] } )
+   db.createRole( { role: "Operations", roles: [], privileges: [] } )
+   ````
+
+2. 创建用户
+
+   创建指定的用户`John`并`Jane`具有所需的角色。将数据库替换`test`为您的数据库名称。
+
+   ```
+   db.createUser( {
+      user: "John",
+      pwd: "jn008",
+      roles: [
+         { role: "Marketing", db: "test" },
+         { role: "Development", db: "test" },
+         { role: "Operations", db: "test" },
+         { role: "read", db: "test" }
+      ]
+   } )
+   
+   db.createUser( {
+      user: "Jane",
+      pwd: "je009",
+      roles: [
+         { role: "Sales", db: "test" },
+         { role: "Operations", db: "test" },
+         { role: "read", db: "test" }
+      ]
+   } )
+   ```
+
+3. 创建集合
+
+   执行:
+
+   ```
+   db.budget.insertMany( [
+      {
+         _id: 0,
+         allowedRoles: [ "Marketing" ],
+         comment: "For marketing team",
+         yearlyBudget: 15000
+      },
+      {
+         _id: 1,
+         allowedRoles: [ "Sales" ],
+         comment: "For sales team",
+         yearlyBudget: 17000,
+         salesEventsBudget: 1000
+      },
+      {
+         _id: 2,
+         allowedRoles: [ "Operations" ],
+         comment: "For operations team",
+         yearlyBudget: 19000,
+         cloudBudget: 12000
+      },
+      {
+         _id: 3,
+         allowedRoles: [ "Development" ],
+         comment: "For development team",
+         yearlyBudget: 27000
+      }
+   ] )
+   ```
+
+执行以下步骤创建视图并检索可访问的文档`John`：
+
+1. 创建视图
+
+   要使用系统变量，请添加`$$`到变量名称的开头。将`USER_ROLES`系统变量指定为`$$USER_ROLES`。
+
+   执行:
+
+   ```
+   db.createView(
+      "budgetView", "budget",
+      [ {
+         $match: {
+            $expr: {
+               $not: {
+                  $eq: [ { $setIntersection: [ "$allowedRoles", "$$USER_ROLES.role" ] }, [] ]
+               }
+            }
+         }
+      } ]
+   )
+   ```
+
+   如果无法创建视图，请确保您以具有创建视图权限的用户身份登录。
+
+   上一个示例从`budget` 集合中返回与运行该示例的用户所具有的至少一个角色相匹配的文档。为此，该示例 [`$setIntersection`](https://www.mongodb.com/docs/v7.0/reference/operator/aggregation/setIntersection/#mongodb-expression-exp.-setIntersection)返回`budget`文档`allowedRoles`字段与用户角色集之间的交集`$$USER_ROLES`不为空的文档。
+
+2. 以John身份登录
+
+   执行:
+
+   ```
+   db.auth( "John", "jn008" )
+   ```
+
+3. 检索文档
+
+   执行:
+
+   ```
+   db.budgetView.find()
+   ```
+
+4. 检查文件
+
+   `John`具有`Marketing`、`Operations`、 和`Development` 角色，并查看这些文档：
+
+   ```
+   [
+      {
+         _id: 0,
+         allowedRoles: [ 'Marketing' ],
+         comment: 'For marketing team',
+         yearlyBudget: 15000
+      },
+      {
+         _id: 2,
+         allowedRoles: [ 'Operations' ],
+         comment: 'For operations team',
+         yearlyBudget: 19000,
+         cloudBudget: 12000
+      },
+      {
+         _id: 3,
+         allowedRoles: [ 'Development' ],
+         comment: 'For development team',
+         yearlyBudget: 27000
+      }
+   ]
+   ```
+
+执行以下步骤来检索 Jane 可访问的文档：
+
+1. 登录身份`Jane`
+
+   执行:
+
+   ```
+   db.auth( "Jane", "je009" )
+   ```
+
+2. 检索文档
+
+   执行:
+
+   ```
+   db.budgetView.find()
+   ```
+
+3. 检查文件
+
+   `Jane`具有`Sales`和`Operations`角色，并查看这些文档：
+
+   ```
+   [
+      {
+         _id: 1,
+         allowedRoles: [ 'Sales' ],
+         comment: 'For sales team',
+         yearlyBudget: 17000,
+         salesEventsBudget: 1000
+      },
+      {
+         _id: 2,
+         allowedRoles: [ 'Operations' ],
+         comment: 'For operations team',
+         yearlyBudget: 19000,
+         cloudBudget: 12000
+      }
+   ]
+   ```
+
+   > 笔记:
+   >
+   > 在分片集群上，另一个服务器节点可以代表用户在分片上运行查询。在这些查询中，`USER_ROLES`仍然填充用户的角色。
+
+#### 多个数据库中具有相同名称的角色
+
+多个数据库可以具有同名的角色。如果创建视图并在视图中引用特定角色，则应该同时指定`db`数据库名称字段和`role`字段，或者指定`_id`包含数据库名称和角色的字段。
+
+以下示例返回分配给 的角色`Jane`，该角色具有不同名称的角色。该示例返回`_id`、`role`和`db`数据库名称：
+
+1. 登录身份`Jane`
+
+   执行:
+
+   ```
+   db.auth( "Jane", "je009" )
+   ```
+
+2. 检索文档
+
+   执行:
+
+   ```
+   db.budget.findOne( {}, { myRoles: "$$USER_ROLES" } )
+   ```
+
+3. 检查文件
+
+   示例输出，显示数组中的`_id`、`role`和`db` 数据库名称`myRoles`：
+
+   ```
+   {
+      _id: 0,
+      myRoles: [
+         { _id: 'test.Operations', role: 'Operations', db: 'test' },
+         { _id: 'test.Sales', role: 'Sales', db: 'test' },
+         { _id: 'test.read', role: 'read', db: 'test' }
+      ]
+   }
+   ```
 
 ## 行为
 

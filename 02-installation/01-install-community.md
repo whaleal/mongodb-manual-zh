@@ -1,31 +1,33 @@
- 安装MongoDB社区版
+ 
+
+## 安装MongoDB社区版
 
 下方文档提供了安装MongoDB社区版的说明。
 
-- [在Linux上安装](https://docs.mongodb.com/v4.2/administration/install-on-linux/)
+- [在 Linux 上安装](https://www.mongodb.com/docs/v7.0/administration/install-on-linux/#std-label-install-mdb-community-edition-linux)
 
   在Linux上安装MongoDB Community Edition和必需的依赖项。
 
-- [在macOS上安装](https://docs.mongodb.com/v4.2/tutorial/install-mongodb-on-os-x/)
+- [在 macOS 上安装](https://www.mongodb.com/docs/v7.0/tutorial/install-mongodb-on-os-x/#std-label-install-mdb-community-macos)
 
   从MongoDB归档文件在macOS系统上安装MongoDB Community Edition。
 
-- [在Windows上安装](https://docs.mongodb.com/v4.2/tutorial/install-mongodb-on-windows/)
+- [在 Windows 上安装](https://www.mongodb.com/docs/v7.0/tutorial/install-mongodb-on-windows/#std-label-install-mdb-community-windows)
 
   在Windows系统上安装MongoDB Community Edition，并可以选择将MongoDB作为Windows服务启动。
+  
+- [在 Docker 上安装](https://www.mongodb.com/docs/v7.0/tutorial/install-mongodb-community-with-docker/#std-label-docker-mongodb-community-install)
 
-←  [安装MongoDB](https://docs.mongodb.com/v4.2/installation/)[在Linux上安装MongoDB社区版](https://docs.mongodb.com/v4.2/administration/install-on-linux/) →
+  安装 MongoDB 社区 Docker 容器。
 
+  
 
+原文链接：https://www.mongodb.com/docs/v7.0/administration/install-community/
 
-
-
-原文链接：https://docs.mongodb.com/v4.2/administration/install-community/
-
-译者：小芒果
+译者：韩鹏帅
 
 
  参见
 
-原文 - [Install MongoDB Community Edition]( https://docs.mongodb.com/manual/administration/install-community/ )
+原文 - [Install MongoDB Community Edition]( https://www.mongodb.com/docs/v7.0/administration/install-community/)
 

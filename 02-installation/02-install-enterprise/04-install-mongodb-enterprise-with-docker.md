@@ -1,124 +1,139 @@
- 使用Docker安装MongoDB企业版
+## 使用Docker安装MongoDB企业版
 
-重要
+> 重要
+>
+> 将容器与MongoDB结合使用的推荐解决方案是：
+>
+> - 为了进行开发和测试，请使用 [MongoDB社区Docker容器](https://hub.docker.com/_/mongo/)。
+> - 对于MongoDB企业版生产安装，请通过[MongoDB Ops Manager](https://docs.opsmanager.mongodb.com/current/tutorial/install-k8s-operator)使用Kubernetes 。
+>
 
-将容器与MongoDB结合使用的推荐解决方案是：
+您可以使用官方 MongoDB Enterprise 映像将 MongoDB Enterprise Edition 作为 Docker 容器运行。如果您想要执行以下操作，请使用 Docker 容器来运行 MongoDB 部署：
 
-- 为了进行开发和测试，请使用 [MongoDB社区Docker容器](https://hub.docker.com/_/mongo/)。
-- 对于MongoDB企业版生产安装，请通过[MongoDB Ops Manager](https://docs.opsmanager.mongodb.com/current/tutorial/install-k8s-operator)使用Kubernetes 。
+- 快速设置部署。
+- 避免编辑配置文件。
+- 测试 MongoDB 多个版本的功能。
 
+### 关于此任务
 
+本页假设您事先了解 Docker。完整描述 [Docker](https://docs.docker.com/)超出了本文档的范围。
 
-注意
+本程序使用官方[MongoDB 企业高级服务器](https://hub.docker.com/r/mongodb/mongodb-enterprise-server)容器，由 MongoDB 维护。
 
-此过程使用Docker的官方[mongo image](https://github.com/docker-library/mongo)，该[镜像](https://github.com/docker-library/mongo)由Docker社区*而非* MongoDB支持。
+### 在你开始之前
 
-如果以上推荐的解决方案无法满足您的需求，请按照本教程中的步骤手动将Docker 安装到 [MongoDB企业版](https://www.mongodb.com/products/mongodb-enterprise-advanced?tck=docs_server)。
+安装[Docker。](https://docs.docker.com/install/)
 
+安装[mongosh。](https://www.mongodb.com/docs/mongodb-shell/install/)
 
+### 步骤
 
-
-
- 注意事项
-
-[Docker](https://docs.docker.com/)的完整描述超出了本文档的范围。本页面假定您具有Docker的先验知识。
-
-本文档仅描述了如何在Docker上安装MongoDB企业版，并且不会替换Docker上的其他资源。我们鼓励您在将Docker安装到MongoDB 企业版之前，彻底熟悉Docker及其相关主题。
-
-重要
-
-此过程使用Docker的官方[mongo image](https://github.com/docker-library/mongo)，该[镜像](https://github.com/docker-library/mongo)由Docker社区*而非* MongoDB支持。它仅支持在其[存储库](https://github.com/docker-library/mongo)中列出的主要版本，只有每个主要版本有特定的次版本。次要版本可以在每个主要版本的文件夹中的`Dockerfile`中找到。
-
-
-
-
-
- 使用企业版MongoDB创建Docker镜像
-
- 1. 下载用于企业版MongoDB的Docker构建文件。
-
-安装 [Docker](https://docs.docker.com/install/)并设置 [Docker Hub](https://hub.docker.com/)帐户后， 使用以下命令从[Docker Hub mongo项目](https://github.com/docker-library/mongo)下载构建文件 。设置`MONGODB_VERSION`为您选择的主要版本。
-
-DOCKER HUB MONGO项目
-
-MongoDB *不*维护Docker Hub mongo项目。任何支持请求都应发送给[Docker](https://github.com/docker-library/mongo)。
-
-复制
+#### 1、拉取 MongoDB Docker 镜像
 
 ```
-export MONGODB_VERSION=4.0
-curl -O --remote-name-all https://raw.githubusercontent.com/docker-library/mongo/master/$MONGODB_VERSION/{Dockerfile,docker-entrypoint.sh}
+docker pull mongodb/mongodb-enterprise-server:latest
 ```
 
-
-
- 2. 构建Docker容器。
-
-使用下载的构建文件来创建围绕企业版MongoDB的Docker容器镜像。将您的Docker Hub用户名设置为`DOCKER_USERNAME`。
-
-复制
+#### 2、将镜像作为容器运行
 
 ```
-export DOCKER_USERNAME=username
-chmod 755 ./docker-entrypoint.sh
-docker build --build-arg MONGO_PACKAGE=mongodb-enterprise --build-arg MONGO_REPO=repo.mongodb.com -t $DOCKER_USERNAME/mongo-enterprise:$MONGODB_VERSION .
+docker run --name mongodb -p 27017:27017 -d mongodb/mongodb-enterprise-server:latest
 ```
 
+此命令中的`-p 27017:27017`会将容器端口映射到主机端口。这允许您使用连接字符串连接到 MongoDB `localhost:27017`。
 
+`:`要安装特定版本的 MongoDB，请在 Docker run 命令中的后面指定版本。Docker 拉取并运行指定的版本。
 
- 3. 测试您的镜像。
-
-在Docker容器中本地运行mongod并检查版本，使用以下命令：
-
-复制
+例如，要运行 MongoDB 5.0：
 
 ```
-docker run --name mymongo -itd $DOCKER_USERNAME/mongo-enterprise:$MONGODB_VERSION
-docker exec -it mymongo /usr/bin/mongo --eval "db.version()"
+docker run --name mongodb -p 27017:27017 -d mongodb/mongodb-enterprise-server:5.0-ubuntu2004
 ```
 
-这应该输出MongoDB的shell和服务器版本。
+有关可用版本的完整列表，请参阅 [标签。](https://hub.docker.com/r/mongodb/mongodb-enterprise-server/tags)
 
+> 笔记:
+>
+> **添加命令行选项**
+>
+> [您可以通过将命令行选项](https://www.mongodb.com/docs/v7.0/reference/configuration-file-settings-command-line-options-mapping/#std-label-conf-file-command-line-mapping) 附加到 docker run 命令来使用mongod 命令行选项。
+>
+> 例如，考虑[`mongod --replSet`](https://www.mongodb.com/docs/v7.0/reference/program/mongod/#std-option-mongod.--replSet)docker 命令行选项：
+>
+> ```
+> docker run -p 27017:27017 -d mongodb/mongodb-enterprise-server:latest --name mongodb --replSet myReplicaSet
+> ```
 
+#### 3、检查容器是否正在运行
 
-
-
- 将镜像推送到Docker Hub
-
-（可选）您可以将Docker镜像推送到远程存储库（例如Docker Hub），以在其他主机上使用该镜像。如果将镜像推送到Docker Hub，则可以在要通过Docker安装企业版MongoDB的每台主机上运行`docker pull`。有关使用`docker pull`的完整指导，请在[此处](https://docs.docker.com/engine/reference/commandline/pull/examples)参考其文档 。
-
-
-
- 1. 检查您的本地镜像。
-
-以下命令显示您的本地Docker镜像：
-
-复制
-
-```
-docker images
-```
-
-您应该在命令输出中看到您的企业版MongoDB镜像。如果不这样做，请尝试[使用企业版MongoDB创建Docker镜像](https://docs.mongodb.com/v4.2/tutorial/install-mongodb-enterprise-with-docker/create-docker-image-enterprise)。
-
-
-
- 2. 推送至Docker Hub。
-
-将您的本地企业版MongoDB镜像推送到您的远程Docker Hub帐户。
-
-复制
+要检查 Docker 容器的状态，请运行以下命令：
 
 ```
-docker login
-docker push $DOCKER_USERNAME/mongo-enterprise:$MONGODB_VERSION
+docker container ls
 ```
 
-如果您登录[Docker Hub](https://hub.docker.com/)站点，则应该看到存储库下面列出的镜像。
+该`ls`命令的输出列出了描述正在运行的容器的以下字段：
+
+- `Container ID`
+- `Image`
+- `Command`
+- `Created`
+- `Status`
+- `Port`
+- `Names`
+
+```
+CONTAINER ID   IMAGE                                      COMMAND                 CREATED         STATUS         PORTS       NAMES
+c29db5687290   mongodb-enterprise-server:latest  "docker-entrypoint.s…"   4 seconds ago   Up 3 seconds   27017/tcp   mongo
+```
+
+#### 4、连接到 MongoDB 部署`mongosh`
+
+```
+mongosh --port 27017
+```
+
+#### 5、**验证您的部署**
+
+要确认您的 MongoDB 实例正在运行，请运行以下`Hello` 命令：
+
+```
+db.runCommand(
+   {
+      hello: 1
+   }
+)
+```
+
+此命令的结果返回描述您的部署的文档 `mongod`：
+
+```
+{
+   isWritablePrimary: true,
+   topologyVersion: {
+      processId: ObjectId("63c00e27195285e827d48908"),
+      counter: Long("0")
+},
+   maxBsonObjectSize: 16777216,
+   maxMessageSizeBytes: 48000000,
+   maxWriteBatchSize: 100000,
+   localTime: ISODate("2023-01-12T16:51:10.132Z"),
+   logicalSessionTimeoutMinutes: 30,
+   connectionId: 18,
+   minWireVersion: 0,
+   maxWireVersion: 20,
+   readOnly: false,
+   ok: 1
+}
+```
+
+### 了解更多
+
+有关兼容性信息，请参阅 [Docker 和 MongoDB 。](https://www.mongodb.com/compatibility/docker)
 
 
 
-原文链接：https://docs.mongodb.com/v4.2/tutorial/install-mongodb-enterprise-with-docker/
+原文链接：https://www.mongodb.com/docs/v7.0/tutorial/install-mongodb-enterprise-with-docker/
 
-译者：小芒果
+译者：韩鹏帅
 

@@ -1,93 +1,80 @@
-# 使用 .tgz Tarball 在 Red Hat 或 CentOS 上安装 MongoDB Enterprise
+# 使用 .tgz Tarball 在 Red Hat 或 CentOS 上安装 MongoDB 企业 版
 
 
 
-## NOTE
+> 笔记:
+>
+> **MongoDB Atlas**
+>
+> [MongoDB Atlas](https://www.mongodb.com/cloud/atlas?tck=docs_server) 是云中托管的 MongoDB 服务选项，无需安装开销，并提供免费套餐以供入门。
 
-### MongoDB Atlas
+### 概述
 
-[MongoDB Atlas](https://www.mongodb.com/cloud/atlas?tck=docs_server) 是云中托管的 MongoDB 服务选项，无需安装开销，并提供免费套餐以供入门。
-
-## 概述[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#overview)
-
-使用本教程使用下载的`.tgz`tarball 在 Red Hat Enterprise Linux、CentOS Linux 或 Oracle Linux [1](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#footnote-oracle-linux)上手动安装 MongoDB 6.0企业版。
+使用本教程使用下载的`.tgz`tarball 在 Red Hat Enterprise Linux、CentOS Linux 或 Oracle Linux [1](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#footnote-oracle-linux)上手动安装 MongoDB 7.0企业版。
 
 [MongoDB 企业版](https://www.mongodb.com/products/mongodb-enterprise-advanced?tck=docs_server) 在选定的平台上可用，并包含对与安全和监视相关的多个功能的支持。
 
-### MongoDB 版本[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#mongodb-version)
+#### MongoDB 版本
 
-本教程安装 MongoDB 6.0企业 版。要安装不同版本的 MongoDB Enterprise ，请使用此页面左上角的版本下拉菜单选择该版本的文档。
+本教程安装 MongoDB 7.0企业 版。要安装不同版本的 MongoDB Enterprise ，请使用此页面左上角的版本下拉菜单选择该版本的文档。
 
-### 安装方法[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#installation-method)
+#### 安装方法
 
 虽然 MongoDB 可以通过下载的`.tgz` tarball 手动安装，如本文档所述，但建议尽可能使用系统上的 `yum`包管理器来安装 MongoDB。使用包管理器会自动安装所有需要的依赖项，提供一个示例`mongod.conf`文件来帮助您入门，并简化未来的升级和维护任务。
 
 ➤有关说明，请参阅[使用 yum 包管理器安装 MongoDB](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat/) 。
 
-## 注意事项[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#considerations)
+## 注意事项
 
-### MongoDB shell，`mongosh`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#mongodb-shell--mongosh)
+### MongoDB shell，`mongosh`
 
 使用`.tgz`包安装服务器时，需要按照[mongosh安装说明](https://www.mongodb.com/docs/mongodb-shell/install/)下载并安装[mongosh](https://www.mongodb.com/docs/mongodb-shell/)分别地。
 
-### 平台支持[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#platform-support)
+### 平台支持
 
+MongoDB 7.0 企业版在[x86_64](https://www.mongodb.com/docs/v7.0/administration/production-notes/#std-label-prod-notes-supported-platforms-x86_64)架构上支持以下 **64 位**版本的 Red Hat Enterprise Linux (RHEL)、CentOS Linux、Oracle Linux [[ 1 \]](https://www.mongodb.com/docs/v7.0/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#footnote-oracle-linux)、Rocky Linux 和 AlmaLinux [[ 2 \] ：](https://www.mongodb.com/docs/v7.0/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#footnote-rocky-almalinux)
 
-
-## NOTE
-
-### 停产通知
-
-- MongoDB 5.0 企业版取消 对[x86_64上的](https://www.mongodb.com/docs/manual/administration/production-notes/#std-label-prod-notes-supported-platforms-x86_64)RHEL / CentOS / Oracle 6 的 支持
-- MongoDB 企业版 在版本 4.0 和 5.0 之间删除了对RHEL 7 / CentOS / Oracle [PPC64LE的支持。](https://www.mongodb.com/docs/manual/administration/production-notes/#std-label-prod-notes-supported-platforms-PPC64LE)但是，5.0.X 版本支持这些体系结构。
-
-MongoDB 6.0 企业版在[x86_64](https://www.mongodb.com/docs/manual/administration/production-notes/#std-label-prod-notes-supported-platforms-x86_64)架构上支持以下 **64 位**版本的 Red Hat Enterprise Linux (RHEL)、CentOS Linux、Oracle Linux [[ 1 \]](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#footnote-oracle-linux)、Rocky Linux 和 AlmaLinux [[ 2 \] ：](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#footnote-rocky-almalinux)
-
-- RHEL / CentOS / Oracle / Rocky / Alma 9
-- RHEL / CentOS / 甲骨文 / Rocky / Alma 8
-- RHEL / CentOS / 甲骨文 7
+- RHEL / CentOS Stream / Oracle / Rocky / AlmaLinux 9
+- RHEL / CentOS Stream / Oracle / Rocky / AlmaLinux 8
+- RHEL /CentOS/Oracle 7
 
 MongoDB 仅支持这些平台的 64 位版本。
 
-RHEL / CentOS / Oracle / Rocky / Alma Linux 上的 MongoDB 6.0 企业版 还支持特定平台上的[ARM64](https://www.mongodb.com/docs/manual/administration/production-notes/#std-label-prod-notes-supported-platforms-ARM64)架构。
+RHEL / CentOS / Oracle / Rocky / Alma Linux上的 MongoDB 7.0 企业版 还支持 特定平台上的[ARM64架构。](https://www.mongodb.com/docs/v7.0/administration/production-notes/#std-label-prod-notes-supported-platforms-ARM64)
 
 有关详细信息，请参阅[平台支持](https://www.mongodb.com/docs/manual/administration/production-notes/#std-label-prod-notes-supported-platforms)。
 
-| [ 1 ] | *( [1](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#ref-oracle-linux-id1) , [2](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#ref-oracle-linux-id1) )* MongoDB 仅支持运行 Red Hat 兼容内核 (RHCK) 的 Oracle Linux。MongoDB 不**支持**Unbreakable Enterprise Kernel (UEK)。 |
+| [ 1 ] | ( *[1](https://www.mongodb.com/docs/v7.0/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#ref-oracle-linux-id1) , [2](https://www.mongodb.com/docs/v7.0/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#ref-oracle-linux-id1) )* MongoDB 仅支持运行 Red Hat 兼容内核 (RHCK) 的 Oracle Linux。MongoDB 不**支持**Unbreakable Enterprise Kernel (UEK)。 |
 | ----- | ------------------------------------------------------------ |
 |       |                                                              |
 
-| [ [2](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#ref-rocky-almalinux-id2) ] | 为 RHEL 版本 8.0+ 发布的 MongoDB 本地产品与 Rocky Linux 版本 8.0+ 和 AlmaLinux 版本 8.0+ 兼容并受其支持，具体取决于这些发行版履行其提供完全 RHEL 兼容性的义务。 |
+| [ [2](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#ref-rocky-almalinux-id2) ] | 针对 RHEL 版本 8.0+ 发布的 MongoDB 本地产品与 Rocky Linux 版本 8.0+ 和 AlmaLinux 版本 8.0+ 兼容并受支持，具体取决于这些发行版履行其提供完全 RHEL 兼容性的义务。 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 |                                                              |                                                              |
 
-### 制作说明[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#production-notes)
+### 制作说明
 
 在生产环境中部署 MongoDB 之前，请考虑 [生产说明](https://www.mongodb.com/docs/manual/administration/production-notes/)文档，其中提供了生产 MongoDB 部署的性能注意事项和配置建议。
 
+### 安装 MongoDB 企业版
 
-
-## 安装 MongoDB 企业版[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#install-mongodb-enterprise-edition)
-
-### 先决条件[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#prerequisites)
+#### 先决条件
 
 使用以下命令安装 MongoDB Enterprise  `.tgz`tarball所需的依赖项：
 
 RHEL / CentOS 9   RHEL / CentOS 8     RHEL / CentOS 7    RHEL / CentOS 6
 
 ```
-sudo yum install cyrus-sasl cyrus-sasl-gssapi cyrus-sasl-plain krb5-libs libcurl net-snmp openldap openssl xz-libs
+sudo yum install cyrus-sasl cyrus-sasl-gssapi cyrus-sasl-plain krb5-libs libcurl openldap openssl xz-libs
 ```
 
 
 
-### 程序[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#procedure)
+### 过程
 
 按照以下步骤从 .tgz 手动安装 MongoDB 企业版。
 
-
-
-#### 下载压缩包。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#download-the-tarball)
+#### 1、下载压缩包。
 
 安装所需的 先决条件包后，从以下链接下载 MongoDB Enterprise  `tgz`tarball：
 
@@ -98,19 +85,15 @@ sudo yum install cyrus-sasl cyrus-sasl-gssapi cyrus-sasl-plain krb5-libs libcurl
 3. 在**包**下拉列表中，选择**tgz**。
 4. 单击**下载**。
 
-
-
-#### 从下载的存档中提取文件。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#extract-the-files-from-the-downloaded-archive)
+#### 2、从下载的存档中提取文件。
 
 例如，从系统 shell 中，您可以使用以下`tar`命令提取：
 
 ```
-tar -zxvf mongodb-linux-*-6.0.3.tgz
+tar -zxvf mongodb-linux-*-7.0.tgz
 ```
 
-
-
-#### `PATH`确保二进制文件位于环境变量中列出的目录中。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#ensure-the-binaries-are-in-a-directory-listed-in-your-path-environment-variable)
+#### 3、`PATH`确保二进制文件位于环境变量中列出的目录中。
 
 MongoDB 二进制文件位于`bin/`tarball 的目录中。您可以：
 
@@ -120,39 +103,34 @@ MongoDB 二进制文件位于`bin/`tarball 的目录中。您可以：
   sudo cp /path/to/the/mongodb-directory/bin/* /usr/local/bin/
   ```
 
-  
-
 - 从变量中列出的目录创建指向二进制文件的符号链接`PATH`，例如`/usr/local/bin`（根据需要更新 `/path/to/the/mongodb-directory/`安装目录）：
 
   ```
   sudo ln -s  /path/to/the/mongodb-directory/bin/* /usr/local/bin/
   ```
 
-  
 
-#### 安装 MongoDB Shell ( `mongosh`)。[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#install-the-mongodb-shell-mongosh)
+#### 4、安装 MongoDB Shell ( `mongosh`)。
 
 [安装](https://www.mongodb.com/docs/mongodb-shell/install/) `mongosh`然后使用 MongoDB Shell 连接到您的部署。
 
 `mongosh`从您需要 的版本下载包[MongoDB 下载中心](https://www.mongodb.com/try/download/enterprise?tck=docs_server)并解压缩包。
 
-## 运行 MongoDB 企业版[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#run-mongodb-enterprise-edition)
+### 运行 MongoDB 企业版
 
-### 先决条件[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#prerequisites-1)
+#### 先决条件
 
-#### 限制[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#ulimit)
+##### 限制
 
 大多数类 Unix 操作系统限制进程可能使用的系统资源。这些限制可能会对 MongoDB 操作产生负面影响，应该进行调整。有关为您的平台推荐的设置，请参阅[UNIX`ulimit`设置。](https://www.mongodb.com/docs/manual/reference/ulimit/)
 
+> 笔记
+>
+> `ulimit`从 MongoDB 4.4 开始，如果打开文件数的值小于 `64000`，则会生成启动错误 。
 
+#### 目录路径
 
-## NOTE
-
-`ulimit`从 MongoDB 4.4 开始，如果打开文件数的值小于 `64000`，则会生成启动错误 。
-
-#### 目录路径[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#directory-paths)
-
-##### 使用默认目录[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#to-use-default-directories)
+##### 使用默认目录
 
 默认情况下，MongoDB 使用`mongod`用户帐户运行并使用以下默认目录：
 
@@ -166,8 +144,6 @@ sudo mkdir -p /var/lib/mongo
 sudo mkdir -p /var/log/mongodb
 ```
 
-
-
 默认情况下，MongoDB 使用`mongod`用户帐户运行。创建一个`mongod`和一个`mongodb`组。确保`mongod` 属于该组，然后将这些目录的所有者和组设置为`mongod`：
 
 ```
@@ -175,9 +151,7 @@ sudo chown -R mongod:mongod /var/lib/mongo
 sudo chown -R mongod:mongod /var/log/mongodb
 ```
 
-
-
-##### 使用非默认目录[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#to-use-non-default-directories)
+##### 使用非默认目录
 
 要使用默认目录以外的数据目录和/或日志目录：
 
@@ -194,28 +168,22 @@ sudo chown -R mongod:mongod /var/log/mongodb
    sudo chown -R mongod:mongod <directory>
    ```
 
-   
-
    如果更改运行 MongoDB 进程的用户，则**必须** 授予新用户访问这些目录的权限。
 
 4. 如果强制执行，请配置 SELinux。请参阅[配置 SELinux 。](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-red-hat/#std-label-install-rhel-configure-selinux)
 
+#### 配置 SELinux
 
+> 警告
+>
+> 配置不当的 SELinux 策略可能不安全或可能使您的[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)实例停止工作。
+>
+> 如果 SELinux 处于`enforcing`模式，您必须为 MongoDB 自定义 SELinux 策略以
+>
+> - 允许访问`cgroup`
+> - 允许访问`netstat`
 
-#### 配置 SELinux[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#configure-selinux)
-
-
-
-## WARNING
-
-配置不当的 SELinux 策略可能不安全或可能使您的[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)实例停止工作。
-
-如果 SELinux 处于`enforcing`模式，您必须为 MongoDB 自定义 SELinux 策略以
-
-- 允许访问`cgroup`
-- 允许访问`netstat`
-
-##### 允许访问`cgroup`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#permit-access-to-cgroup)
+##### 允许访问`cgroup`
 
 当前的 SELinux 策略不允许 MongoDB 进程访问`/sys/fs/cgroup`，这是确定系统上可用内存所必需的。如果您打算在 `enforcing`模式下运行 SELinux，则需要对您的 SELinux 策略进行以下调整：
 
@@ -224,8 +192,6 @@ sudo chown -R mongod:mongod /var/log/mongodb
    ```
    sudo yum install checkpolicy
    ```
-
-   
 
 2. 创建自定义策略文件`mongodb_cgroup_memory.te`：
 
@@ -246,8 +212,6 @@ sudo chown -R mongod:mongod /var/log/mongodb
    EOF
    ```
 
-   
-
 3. 创建后，通过运行以下三个命令编译并加载自定义策略模块：
 
    ```
@@ -256,11 +220,10 @@ sudo chown -R mongod:mongod /var/log/mongodb
    sudo semodule -i mongodb_cgroup_memory.pp
    ```
 
-   
 
 MongoDB 进程现在能够在 SELinux 设置为`enforcing`.
 
-##### 允许访问`netstat`FTDC[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#permit-access-to-netstat-for-ftdc)
+##### 允许访问`netstat`FTDC
 
 当前的 SELinux 策略不允许 MongoDB 进程打开和读取`/proc/net/netstat`，这是 [全时诊断数据捕获 (FTDC)](https://www.mongodb.com/docs/manual/administration/analyzing-mongodb-performance/#std-label-ftdc-stub)所必需的。如果您打算在 `enforcing`模式下运行 SELinux，则需要对您的 SELinux 策略进行以下调整：
 
@@ -269,8 +232,6 @@ MongoDB 进程现在能够在 SELinux 设置为`enforcing`.
    ```
    sudo yum install checkpolicy
    ```
-
-   
 
 2. 创建自定义策略文件`mongodb_proc_net.te`：
 
@@ -301,9 +262,7 @@ MongoDB 进程现在能够在 SELinux 设置为`enforcing`.
 
    
 
-
-
-###### 使用自定义 MongoDB 目录路径[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-red-hat-tarball/#using-a-custom-mongodb-directory-path)
+###### 使用自定义 MongoDB 目录路径
 
 1. 更新 SELinux 策略以允许`mongod`服务使用新目录：
 
@@ -311,17 +270,13 @@ MongoDB 进程现在能够在 SELinux 设置为`enforcing`.
    sudo semanage fcontext -a -t <type> </some/MongoDB/directory.*>
    ```
 
-   
-
    根据需要指定以下类型之一：
 
    - `mongod_var_lib_t`对于数据目录
-   - `mongod_log_t`对于日志文件目录
+- `mongod_log_t`对于日志文件目录
    - `mongod_var_run_t`对于pid文件目录
-
    
-
-   ## NOTE
+   
 
    请务必`.*`在目录末尾包含 。
 
