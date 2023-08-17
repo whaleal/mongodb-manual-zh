@@ -1,6 +1,6 @@
-# 故障排除[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/installation-ubuntu-community-troubleshooting/#troubleshooting)
+# 故障排除
 
-## 检索公钥时出错[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/installation-ubuntu-community-troubleshooting/#errors-when-retrieving-the-public-key)
+## 检索公钥时出错
 
 在[安装 MongoDB Community Edition过程](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/#std-label-install-community-ubuntu-pkg)**的导入包管理系统使用的公钥** 步骤中，您可能会遇到错误。`"gpg: no valid OpenPGP data found."`
 
@@ -21,17 +21,17 @@ sudo apt-key list
 --------------------
 pub   rsa4096 2018-04-18 [SC] [expires: 2023-04-17]
       E162 F504 A20C DF15 827F  718D 4B7C 549A 058F 8B6B
-uid           [ unknown] MongoDB 6.0 Release Signing Key <packaging@mongodb.com>
+uid           [ unknown] MongoDB 7.0 Release Signing Key <packaging@mongodb.com>
 ```
 
-## 运行时出错`sudo apt update`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/installation-ubuntu-community-troubleshooting/#errors-when-running-sudo-apt-update)
+## 运行时出错`sudo apt update`
 
 `sudo apt-get update`作为 [安装 MongoDB 社区版](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/#std-label-install-community-ubuntu-pkg)过程的一部分运行时，您可能会遇到一个或多个类似于以下内容的错误：
 
 ```
-W: GPG error: https://repo.mongodb.org/apt/ubuntu <release>/mongodb-org/6.0 Release: \
+W: GPG error: https://repo.mongodb.org/apt/ubuntu <release>/mongodb-org/7.0 Release: \
    The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 4B7C549A058F8B6B
-E: The repository 'https://repo.mongodb.org/apt/ubuntu <release>/mongodb-org/6.0 Release' \
+E: The repository 'https://repo.mongodb.org/apt/ubuntu <release>/mongodb-org/7.0 Release' \
    is not signed.
 N: Updating from such a repository can't be done securely, and is therefore disabled by default.
 N: See apt-secure(8) manpage for repository creation and user configuration details.
@@ -55,7 +55,7 @@ sudo apt-key list
 --------------------
 pub   rsa4096 2018-04-18 [SC] [expires: 2023-04-17]
       E162 F504 A20C DF15 827F  718D 4B7C 549A 058F 8B6B
-uid           [ unknown] MongoDB 6.0 Release Signing Key <packaging@mongodb.com>
+uid           [ unknown] MongoDB 7.0 Release Signing Key <packaging@mongodb.com>
 ```
 
 ## 运行时出错`sudo apt install -y mongodb-org`[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/installation-ubuntu-community-troubleshooting/#errors-when-running-sudo-apt-install--y-mongodb-org)
@@ -69,12 +69,12 @@ Reading state information... Done
 E: Unable to locate package mongodb-org
 ```
 
-此错误表示 `/etc/apt/sources.list.d/mongodb-org-6.0.list` 可能配置不正确或丢失。
+此错误表示 `/etc/apt/sources.list.d/mongodb-org-7.0.list` 可能配置不正确或丢失。
 
-要查看`mongodb-org-6.0.list`文件的内容，请在终端或 shell 中运行以下命令：
+要查看`mongodb-org-7.0.list`文件的内容，请在终端或 shell 中运行以下命令：
 
 ```
-cat /etc/apt/sources.list.d/mongodb-org-6.0.list
+cat /etc/apt/sources.list.d/mongodb-org-7.0.list
 ```
 
 
@@ -88,7 +88,7 @@ cat /etc/apt/sources.list.d/mongodb-org-6.0.list
 `mongodb-org`安装软件包时，您可能会遇到类似于以下内容的错误：
 
 ```
-dpkg: error processing archive /var/cache/apt/archives/mongodb-org-server_6.0.0_amd64.deb (--unpack):
+dpkg: error processing archive /var/cache/apt/archives/mongodb-org-server_7.0.0_amd64.deb (--unpack):
 trying to overwrite '/usr/bin/mongod', which is also in package mongodb-server-core 1:3.6.3-0ubuntu1
 ```
 
@@ -119,9 +119,7 @@ sudo apt autoremove
 
 
 
-
-
-## NOTE
+## 笔记
 
 ```
 sudo apt purge mongodb`删除Ubuntu软件包安装的任何默认配置文件。如果您修改了这些配置文件*并*希望保留这些修改，请将这些文件复制到另一个目录，例如 . `mongodb``/home/your-user-name
@@ -129,7 +127,7 @@ sudo apt purge mongodb`删除Ubuntu软件包安装的任何默认配置文件。
 
 如果您的输出包含`mongodb-org`和 `mongodb`二进制文件的混合，您可能需要先`apt remove`、`apt purge`和包`apt autoremove`，`mongodb-org`然后再尝试删除和清除Ubuntu 包。清除所有与 MongoDB 相关的包后，重试安装过程。 `mongodb`
 
-## `mongod`报告与打开套接字相关的错误[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/installation-ubuntu-community-troubleshooting/#mongod-reports-errors-related-to-opening-a-socket)
+## `mongod`报告与打开套接字相关的错误
 
 启动 . _ `Socket is already in use`_ 这些错误通常表示另一个进程正在使用为该 进程配置的端口，通常 是系统上运行的另一个进程。`Failed to unlink socket file`[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)
 
@@ -156,7 +154,7 @@ tcp          LISTEN                 ::]:22        users:(("sshd",pid=819,fd=4))
 
 如果系统有一个[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)或其他系统进程在您想要的端口上运行，您必须关闭现有进程*或*为新进程选择一个新端口 [`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)。您可以指定 [配置文件](https://www.mongodb.com/docs/manual/administration/configuration/#std-label-configuration-file) 选项来更改 侦听的端口。[`net.port`](https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-net.port) [`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)
 
-## `mongod`报告与数据目录相关的错误[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/installation-ubuntu-community-troubleshooting/#mongod-reports-errors-related-to-the-data-directory)
+## `mongod`报告与数据目录相关的错误
 
 [用户可能会在进程日志](https://www.mongodb.com/docs/manual/administration/monitoring/#std-label-monitoring-standard-loggging)中遇到类似于以下内容的错误 [：](https://www.mongodb.com/docs/manual/administration/monitoring/#std-label-monitoring-standard-loggging)[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)
 
@@ -168,7 +166,7 @@ Attempted to create lock file on a read-only directory: ...
 
 通常，这些错误表明 MongoDB 数据目录不存在，或者 [`mongod`.](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)
 
-### 数据目录必须存在[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/installation-ubuntu-community-troubleshooting/#the-data-directory-must-exist)
+### 数据目录必须存在
 
 数据目录通过[配置文件](https://www.mongodb.com/docs/manual/administration/configuration/#std-label-configuration-file)[`storage.dbPath`](https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-storage.dbPath) 中的设置指定，或者通过命令行上的选项指定 。[`--dbpath`](https://www.mongodb.com/docs/manual/reference/program/mongod/#std-option-mongod.--dbpath)[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)
 
@@ -177,13 +175,13 @@ Attempted to create lock file on a read-only directory: ...
 
 无论您是使用上述数据目录路径之一，还是在配置文件或命令行中提供您自己的路径，请确保在启动[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod). `mkdir`您可以使用命令在 Ubuntu 上创建目录。
 
-### 数据目录必须可访问[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/installation-ubuntu-community-troubleshooting/#the-data-directory-must-be-accessible)
+### 数据目录必须可访问
 
 必须为数据目录配置适当的权限和所有权设置，以允许 [`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)读取、写入和导航目录内容（`rwx`用户或组权限）。
 
 在 启动 [.](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod) _ `chown`_`chmod``user:group`[`mongod`](https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod)
 
-### 开始`mongod`使用数据目录[![img](https://www.mongodb.com/docs/manual/assets/link.svg)](https://www.mongodb.com/docs/manual/reference/installation-ubuntu-community-troubleshooting/#starting-mongod-using-the-data-directory)
+### 开始`mongod`使用数据目录
 
 ```
 mongod`作为服务启动的用户（例如使用`sudo systemctl start mongod`或）通常只有在修改了 to 中的默认值时`sudo service mongod start`才会看到这些错误 ：[`dbPath`](https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-storage.dbPath)`/etc/mongod.conf
@@ -197,9 +195,9 @@ mongod`作为服务启动的用户（例如使用`sudo systemctl start mongod`�
 - 指定[`dbPath`](https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-storage.dbPath)或 [`--dbpath`](https://www.mongodb.com/docs/manual/reference/program/mongod/#std-option-mongod.--dbpath)不允许用户或用户所属的组读取、写入和执行 ( `rwx`) 目录或其内容的目录，*或*
 - 指定的数据目录不存在。
 
-←  [使用 .tgz Tarball 在 Ubuntu 上安装 MongoDB Community](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu-tarball/)[在 Debian 上安装 MongoDB 社区版](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-debian/) →
 
-原文链接 -https://docs.mongodb.com/manual/reference/installation-ubuntu-community-troubleshooting/
 
-译者：陆文龙
+原文链接 -https://www.mongodb.com/docs/v7.0/reference/installation-ubuntu-community-troubleshooting/
+
+译者：韩鹏帅
 

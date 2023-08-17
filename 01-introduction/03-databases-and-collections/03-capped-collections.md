@@ -1,151 +1,166 @@
- capped collection
+## 上限集合
 
-本文索引
+### 概述
 
-* [概述](概述)
-* [表现](表现)
-* [限制与推荐](限制与推荐)
-* [使用](使用)
+[上限集合](https://www.mongodb.com/docs/v7.0/reference/glossary/#std-term-capped-collection)是固定大小的集合，支持根据插入顺序插入和检索文档的高吞吐量操作。上限集合的工作方式与循环缓冲区类似：一旦集合填满其分配的空间，它就会通过覆盖集合中最旧的文档来为新文档腾出空间。
 
- 概述
+有关创建上限集合的更多信息，请参阅[`createCollection()`](https://www.mongodb.com/docs/v7.0/reference/method/db.createCollection/#mongodb-method-db.createCollection)或。[`create`](https://www.mongodb.com/docs/v7.0/reference/command/create/#mongodb-dbcommand-dbcmd.create)
 
-封顶集合 [capped collection](https://docs.mongodb.com/manual/reference/glossary/term-capped-collection) 是固定大小的集合, 支持高吞吐的插入操作和根据插入顺序的查询操作. 封顶集合的工作方式与循环缓冲区 (circular buffers) 类似: 当一个集合填满了被分配的空间, 则通过覆盖最早的文档来为新的文档腾出空间.
+```
+提示:
+作为上限集合的替代方案，请考虑 MongoDB 的 TTL（生存时间）索引。如通过设置 TTL 使集合中的数据过期中所述，这些索引允许您根据日期类型字段的值和索引的 TTL 值使普通集合中的数据过期并删除。
 
-参阅 [`createCollection()`](https://docs.mongodb.com/manual/reference/method/db.createCollection/db.createCollection) 或 [`create`](https://docs.mongodb.com/manual/reference/command/create/dbcmd.create) 获取更多创建封顶集合的信息.
+TTL 索引与上限集合不兼容。
+```
 
- 表现
+### 行为
 
- 顺序插入
+#### 广告订单
 
-封顶集合保证了插入的顺序. 因此, 历史查询不需要索引排序. 没有这种索引开销, 封顶集合可以支持更高的插入吞吐量.
+有上限的集合保证插入顺序的保留。因此，查询不需要索引即可按插入顺序返回文档。如果没有这种索引开销，上限集合可以支持更高的插入吞吐量。
 
- 自动删除最早的文档
+#### 自动删除最旧的文档
 
-为了给新的文档腾出空间, 封顶集合会自动删除集合中最早的文档, 不需要定时脚本或者显示的删除操作.
+为了给新文档腾出空间，上限集合会自动删除集合中最旧的文档，而无需脚本或显式删除操作。
 
-例如, 在 [oplog.rs](https://docs.mongodb.com/manual/reference/glossary/term-oplog) 集合中存储了 [replica set](https://docs.mongodb.com/manual/reference/glossary/term-replica-set) 的操作的日志, 该集合就使用的是封顶集合. 除此之外, 还可以考虑以下潜在的用例:
+考虑以下上限集合的潜在用例：
 
-* 存储由高容量 (high-volume) 系统生成的日志信息. 在封顶集合中不用索引插入文档的速度接近直接输出日志到文件系统. 而且, 内置的 _先进先出_ 的属性维护了事件的顺序, 这在管理存储时用得到 (译注: 有些日志存储系统的顺序可能会乱, 如 Elasticsearch).
-* 在封顶集合中记性数据缓存 (少量的). 由于缓存是高频读很少写, 因此你需要确保集合 _始终_ 保留在工作区间 \(即 RAM 中\) _或者_ 接受一些使用索引带来的写入的成本 (or accept some write penalty for the required index or indexes
-).
+- 存储大容量系统生成的日志信息。在没有索引的上限集合中插入文档的速度接近于将日志信息直接写入文件系统的速度。此外，内置的*先进先出*属性维护事件的顺序，同时管理存储使用。例如，[操作日志](https://www.mongodb.com/docs/v7.0/core/capped-collections/#std-label-capped-collections-oplog) 使用上限集合。
+- 在上限集合中缓存少量数据。由于缓存的读取量大于写入量，因此您需要确保该集合*始终*保留在工作集中（即 RAM 中）*，或者*接受所需索引的一些写入惩罚。
 
- `_id` 索引
+#### Oplog 集合
 
-封顶集合有 `_id` 字段并且有一个基于 `_id` 字段的默认索引.
+[在副本集中存储](https://www.mongodb.com/docs/v7.0/reference/glossary/#std-term-replica-set)[操作](https://www.mongodb.com/docs/v7.0/reference/glossary/#std-term-oplog)日志的 oplog.rs 集合使用上限集合。
 
- 限制与推荐
+从 MongoDB 4.0 开始，与其他上限集合不同，oplog 可以增长超过其配置的大小限制，以避免删除[`majority commit point`.](https://www.mongodb.com/docs/v7.0/reference/command/replSetGetStatus/#mongodb-data-replSetGetStatus.optimes.lastCommittedOpTime)
 
- 更新
+> **笔记:**
+>
+> MongoDB 将 oplog 的上限大小四舍五入到最接近的 256 整数倍（以字节为单位）。
 
-如果您计划更新封顶集合中的文档, 请创建一个索引, 来避免更新操进行集合扫描.
+#### `_id`指数
 
- 文档大小
+默认情况下，上限集合有一个`_id`字段和该字段上的索引`_id` 。
 
-在 3.2 版本中修改.
+### 限制和建议
 
-更新或替换文档大小的操作会失败. (注: 之前的 MMAPv1 可以修改)
+#### 读
 
- 文档删除
+从 MongoDB 5.0 开始，在读取 "capped"（固定大小）集合时，无法使用读关注级别 "[snapshot](https://www.mongodb.com/docs/v7.0/reference/read-concern-snapshot/#mongodb-readconcern-readconcern.-snapshot-)"。
 
-你不能删除封顶集合中的文档. 要删除集合中的所有文档, 请使用 [`drop()`](https://docs.mongodb.com/manual/reference/method/db.collection.drop/db.collection.drop) 方法删除集合, 并重新创建封顶的集合.
+#### 更新
 
- 分片
+如果您计划更新上限集合中的文档，请创建索引，以便这些更新操作不需要集合扫描。
 
-你不能对封顶集合进行分片操作.
+#### 分片
 
- 查询效率
+您无法对上限集合进行分片。
 
-使用自然顺序 (natural ordering) 来有效地检索集合最近插入的元素. 这 \(有点\) 类似 `tail` 一个日志文件 (查看他的尾部).
+#### 查询效率
 
- 聚合 `$out`
+使用自然排序有效地从集合中检索最近插入的元素。这类似于`tail` 在日志文件上使用命令。
 
-聚合管道操作符 [`$out`](https://docs.mongodb.com/manual/reference/operator/aggregation/out/pipe._S_out)不能将结果写入封顶集合.
+#### 聚合`$out`
 
- 使用
+聚合管道阶段[`$out`](https://www.mongodb.com/docs/v7.0/reference/operator/aggregation/out/#mongodb-pipeline-pipe.-out) 无法将结果写入上限集合。
 
- 创建封顶集合
+#### 交易
 
-When creating a capped collection you must specify the maximum size of the collection in bytes, which MongoDB will pre-allocate for the collection. The size of the capped collection includes a small amount of space for internal overhead.
+从 MongoDB 4.2 开始，在事务中无法向 "[capped](https://www.mongodb.com/docs/v7.0/core/capped-collections/#std-label-manual-capped-collection)"（固定大小）集合写入数据。
 
-您必须使用 [`db.createCollection()`](https://docs.mongodb.com/manual/reference/method/db.createCollection/db.createCollection) 方法显式地创建封顶集合, 该过程可以通过 [`mongo`](https://docs.mongodb.com/manual/reference/program/mongo/bin.mongo) shell 来帮忙执行 [`create`](https://docs.mongodb.com/manual/reference/command/create/dbcmd.create) 命令. 在创建封顶集合时, 您必须预先指定集合的最大容量 (以字节为单位). 其中包括少量的内部空间. 
+#### 稳定的API
+
+[稳定 API](https://www.mongodb.com/docs/v7.0/reference/stable-api/#std-label-stable-api) V1不支持上限集合。
+
+### 过程
+
+#### 创建上限集合
+
+您必须使用该方法显式创建上限集合 [`db.createCollection()`](https://www.mongodb.com/docs/v7.0/reference/method/db.createCollection/#mongodb-method-db.createCollection)，该方法是 [`mongosh`](https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh)命令的助手[`create`](https://www.mongodb.com/docs/v7.0/reference/command/create/#mongodb-dbcommand-dbcmd.create)。创建上限集合时，您必须指定集合的最大大小（以字节为单位），MongoDB 将为集合预先分配该大小。上限集合的大小包括少量的内部开销空间。
 
 ```
 db.createCollection( "log", { capped: true, size: 100000 } )
 ```
 
-如果 `size` 字段小于或等于 4096, 则该集合将具有 4096 字节的容量. 此外, MongoDB 会提升用户所提供给的 size 大小直到其满足 256 的倍数为止.
+>  *笔记*
+>
+> 您为该`size`字段提供的值必须大于且`0`小于或等于 `1024^5`(1 PB )。MongoDB 将`size`所有上限集合的 舍入为最接近的 256 整数倍（以字节为单位）。
 
-Additionally, you may also specify a maximum number of documents for the collection using the`max`field as in the following document:
+此外，您还可以使用该字段指定集合的最大文档数，`max`如下文档所示：
 
 ```
-db.createCollection("log", { capped : true, size : 5242880, max : 5000 } )
+db.createCollection("log", { capped : true, size : 5242880, max :
+5000 } )
 ```
 
-> IMPORTANT
+> 重要的:
 >
-> The`size`argument is_always_required, even when you specify`max`number of documents. MongoDB will remove older documents if a collection reaches the maximum size limit before it reaches the maximum document count.
+> 即使您指定了文档数量，该`size`字段*始终是必需的。*`max`如果集合在达到最大文档计数之前达到最大大小限制，MongoDB 会删除较旧的文档。
+
+> 提示:
 >
+> See:
+>
+> [`db.createCollection()`](https://www.mongodb.com/docs/v7.0/reference/method/db.createCollection/#mongodb-method-db.createCollection) 和 [`create`.](https://www.mongodb.com/docs/v7.0/reference/command/create/#mongodb-dbcommand-dbcmd.create)
 
-SEE
+#### 查询上限集合
 
-[`db.createCollection()`](https://docs.mongodb.com/manual/reference/method/db.createCollection/db.createCollection)and[`create`](https://docs.mongodb.com/manual/reference/command/create/dbcmd.create).
+如果您[`find()`](https://www.mongodb.com/docs/v7.0/reference/method/db.collection.find/#mongodb-method-db.collection.find)在未指定顺序的情况下对上限集合执行 a，MongoDB 将保证结果的顺序与插入顺序相同。
 
- 封顶集合查询
-
-If you perform a[`find()`](https://docs.mongodb.com/manual/reference/method/db.collection.find/db.collection.find)on a capped collection with no ordering specified, MongoDB guarantees that the ordering of results is the same as the insertion order.
-
-To retrieve documents in reverse insertion order, issue[`find()`](https://docs.mongodb.com/manual/reference/method/db.collection.find/db.collection.find)along with the[`sort()`](https://docs.mongodb.com/manual/reference/method/cursor.sort/cursor.sort)method with the[`$natural`](https://docs.mongodb.com/manual/reference/operator/meta/natural/metaOp._S_natural)parameter set to`-1`, as shown in the following example:
+要以反向插入顺序检索文档，请 与参数设置为 的 方法[`find()`](https://www.mongodb.com/docs/v7.0/reference/method/db.collection.find/#mongodb-method-db.collection.find)一起发出，如下例所示：[`sort()`](https://www.mongodb.com/docs/v7.0/reference/method/cursor.sort/#mongodb-method-cursor.sort)[`$natural`](https://www.mongodb.com/docs/v7.0/reference/operator/meta/natural/#mongodb-operator-metaOp.-natural)`-1`
 
 ```
 db.cappedCollection.find().sort( { $natural: -1 } )
 ```
 
- 检查集合是否封顶
+#### 检查集合是否有上限
 
-Use the[`isCapped()`](https://docs.mongodb.com/manual/reference/method/db.collection.isCapped/db.collection.isCapped)method to determine if a collection is capped, as follows:
+使用该[`isCapped()`](https://www.mongodb.com/docs/v7.0/reference/method/db.collection.isCapped/#mongodb-method-db.collection.isCapped)方法来确定集合是否有上限，如下所示：
 
 ```
 db.collection.isCapped()
 ```
 
- 集合转换为固定大小集合
+#### 将集合转换为上限
 
-You can convert a non-capped collection to a capped collection with the[`convertToCapped`](https://docs.mongodb.com/manual/reference/command/convertToCapped/dbcmd.convertToCapped)command:
+您可以使用以下命令将非上限集合转换为上限集合[`convertToCapped`](https://www.mongodb.com/docs/v7.0/reference/command/convertToCapped/#mongodb-dbcommand-dbcmd.convertToCapped)：
 
 ```
 db.runCommand({"convertToCapped": "mycoll", size: 100000});
 ```
 
-The`size`parameter specifies the size of the capped collection in bytes.
+该`size`参数指定上限集合的大小（以字节为单位）。
 
-> WARNING
+#### 更改上限集合的大小
+
+*6.0版本中的新功能*。
+
+[`collMod`](https://www.mongodb.com/docs/v7.0/reference/command/collMod/#mongodb-dbcommand-dbcmd.collMod)您可以使用命令的 选项来设置上限集合的大小`cappedSize`以`cappedSize`字节为单位。`cappedSize`必须大于且`0`小于或等于`1024^5`(1 PB )。
+
+> **笔记:**
 >
-> This command obtains a global write lock and will block other operations until it has completed.
->
+> 在调整上限集合的大小之前，您必须已将 featureCompatibilityVersion[至少](https://www.mongodb.com/docs/v7.0/reference/command/setFeatureCompatibilityVersion/#std-label-set-fcv)设置为 version `"6.0"`。
 
- Automatically Remove Data After a Specified Period of Time
+例如，以下命令将上限`"log"`集合的最大大小设置为 100000 字节：
 
-As an alternative to 封顶集合, consider MongoDB’s[TTL](https://docs.mongodb.com/manual/reference/glossary/term-ttl)\(“_time to live_”\) indexes. As described in[Expire Data from Collections by Setting TTL](https://docs.mongodb.com/manual/tutorial/expire-data/), these indexes allow you to expire and remove data from normal collections based on the value of a date-typed field and a TTL value for the index.
+```
+db.runCommand( { collMod: "log", cappedSize: 100000 } )
+```
 
-> IMPORTANT
->
-> [TTL indexes](https://docs.mongodb.com/manual/tutorial/expire-data/)are not compatible with 封顶集合.
->
+#### 更改上限集合中的最大文档数
 
- Tailable Cursor
+*6.0版本中的新功能*。
 
-You can use a[tailable cursor](https://docs.mongodb.com/manual/reference/glossary/term-tailable-cursor)with 封顶集合. Similar to the Unix`tail-f`command, the tailable cursor “tails” the end of a capped collection. As new documents are inserted into the capped collection, you can use the tailable cursor to continue retrieving documents.
+要更改上限集合中的最大文档数，请使用 [`collMod`](https://www.mongodb.com/docs/v7.0/reference/command/collMod/#mongodb-dbcommand-dbcmd.collMod)命令的`cappedMax`选项。如果`cappedMax`小于或等于`0`，则没有最大文档限制。如果 `cappedMax`小于集合中当前的文档数，MongoDB 将在下一次插入操作时删除多余的文档。
 
-See[Tailable Cursors](https://docs.mongodb.com/manual/core/tailable-cursors/)for information on creating a tailable cursor.
+例如，以下命令将 `"log"`上限集合中的最大文档数设置为 500：
 
+```
+db.runCommand( { collMod: "log", cappedMax: 500 } )
+```
 
-原文链接：https://docs.mongodb.com/v4.2/core/capped-collections/
+#### 可追溯游标
 
+您可以在固定大小的集合中使用可追溯游标](https://www.mongodb.com/docs/v7.0/reference/glossary/#std-term-tailable-cursor)（Tailable Cursor）。类似于 Unix 的 tail -f 命令，可追溯游标会"追踪"固定大小集合的末尾。当新文档插入到固定大小集合中时，您可以使用可追溯游标继续检索文档。这使您能够实时获取新插入的数据，适用于监视日志、事件流等需要实时数据的情境。
 
-
-
-
- 参见
-
-原文 - [Capped Collections]( https://docs.mongodb.com/manual/core/capped-collections/ )
-
+请参阅“[可追溯游标](https://www.mongodb.com/docs/v7.0/core/tailable-cursors/)”以获取有关创建可追溯游标的信息。
