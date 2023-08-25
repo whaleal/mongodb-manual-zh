@@ -31,7 +31,7 @@
   
 * [安装 MongoDB]( 02-installation.md )
   
-  * [安装MongoDB社区版]( 02-installation/01-install-on-linux.md )
+  * [安装MongoDB社区版]( 02-installation/01-install-community.md )
     * [在 Linux 上安装]( 02-installation/01-install-community/01-install-on-linux.md )
       * [在 Red Hat上安装]( 02-installation/01-install-community/01-install-on-linux/01-install-mongodb-on-red-hat.md )
         * [使用 .tgz 压缩包安装](  02-installation/01-install-community/01-install-on-linux/01-install-mongodb-on-red-hat/01-install-mongodb-on-red-hat-tarball.md )
