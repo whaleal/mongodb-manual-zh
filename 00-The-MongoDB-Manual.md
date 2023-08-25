@@ -1,111 +1,148 @@
 #  MongoDB 用户手册 #
 
-MONGODB 6.0发布于2022年6月8日
+### 什么是 MongoDB？
 
-有关MongoDB 6.0中的新功能，请参阅MongoDB 6.0 [发行说明](https://www.mongodb.com/docs/manual/release-notes/6.0/)。
+MongoDB 是一个文档数据库，旨在简化应用程序开发和扩展。
 
-欢迎使用MongoDB 6.0手册！MongoDB是一个文档数据库，旨在简化开发和扩展。该手册介绍了MongoDB中的关键概念，介绍了查询语言，并提供了操作和管理方面的考虑因素和过程以及全面的参考部分
+运行 MongoDB
 
-MongoDB提供数据库的*社区*版和*企业*版：
+- [MongoDB Atlas](https://www.mongodb.com/cloud?tck=docs_server)完全在云端管理，
+- 可用且免费使用的[MongoDB 社区](https://www.mongodb.com/docs/v7.0/administration/install-community/)来源，或
+- MongoDB [Enterprise Advanced](https://www.mongodb.com/docs/v7.0/administration/install-community/)订阅。
 
-- MongoDB社区版是MongoDB的[开源和免费](https://github.com/mongodb/mongo/)版本。
-- MongoDB企业版作为MongoDB高级企业版订阅的一部分提供，并包括对MongoDB部署的全面支持。MongoDB企业版还添加了以企业为中心的功能，例如LDAP和Kerberos支持，磁盘上的加密以及审计。
+[开始使用 MongoDB Atlas](https://www.mongodb.com/cloud?tck=docs_server)
 
-MongoDB还提供 [Atlas](https://www.mongodb.com/cloud/atlas?tck=docs_server)（云中托管的MongoDB企业版服务选项），无需安装开销，并提供免费的入门套餐。
+你可以做什么
 
-该手册记录了MongoDB社区版和企业版的特性和功能。
+### 在 MongoDB 中处理您的数据
 
+**存储和查询您的数据**
 
+1. 为您的数据建模
 
-## 入门 ##
+   设计您的数据模式以支持频繁的访问模式。您可以随时更新或强制执行您的架构。
 
-MongoDB 在以下版本中提供了“ [入门指南”](https://www.mongodb.com/docs/)。
+   [要了解更多信息，请参阅数据建模简介](https://www.mongodb.com/docs/v7.0/core/data-modeling-introduction/)
 
-| [mongo Shell版](https://www.mongodb.com/docs/manual/tutorial/getting-started/)<br/>[Node.JS版](http://mongodb.github.io/node-mongodb-native/3.4/quick-start/quick-start/) | [Python版](https://docs.mongodb.com/drivers/pymongo)<br/>[C ++版](https://mongodb.github.io/mongo-cxx-driver/mongocxx-v3/tutorial/) | [Java版](https://mongodb.github.io/mongo-java-driver/)<br/>[C＃版](http://mongodb.github.io/mongo-csharp-driver/) | [Ruby版](https://docs.mongodb.com/ruby-driver/current/quick-start/) |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-|                                                              |                                                              |                                                              |                                                              |
+2. 连接到 MongoDB
 
+   将数据从 CSV 或 JSON 文件导入到 MongoDB 数据库中。
 
+   [要了解更多信息，请参阅 MongoDB Shell (mongosh)](https://www.mongodb.com/docs/mongodb-shell/)
 
-完成《入门指南》后，您可能会发现以下有用的主题。
+3. 插入、查询、更新或删除文档
 
-| 介绍                                                         | 开发者                                                       | 管理员                                                       | 参考                                                         |
-| :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| [MongoDB简介](https://www.mongodb.com/docs/v6.0/introduction/)<br/>[安装指南](https://docs.mongodb.com/v6.0/installation/)<br/>[数据库和集合](https://docs.mongodb.com/v6.0/core/databases-and-collections/)<br/>[文档资料](https://docs.mongodb.com/v6.0/core/document/) | [CRUD操作](https://docs.mongodb.com/v6.0/crud/)<br/>[聚合](https://docs.mongodb.com/v6.0/aggregation/)<br/>[SQL到MongoDB](https://docs.mongodb.com/v6.0/reference/sql-comparison/)<br/>[索引](https://docs.mongodb.com/v6.0/indexes/) | [生产须知](https://docs.mongodb.com/v6.0/administration/production-notes/)<br/>[副本集](https://docs.mongodb.com/v6.0/replication/)<br/>[分片集群](https://docs.mongodb.com/v6.0/sharding/)<br/>[MongoDB安全](https://docs.mongodb.com/v6.0/security/) | [shell方法](https://docs.mongodb.com/v6.0/reference/method/)<br/>[查询运算符](https://docs.mongodb.com/v6.0/reference/operator/)<br/>[参考](https://docs.mongodb.com/v6.0/reference/)[词汇表](https://docs.mongodb.com/v6.0/reference/glossary/) |
+   使用 MongoDB 查询 API 对数据执行 CRUD 操作 - 无论是否有事务。
 
+   [要了解更多信息，请参阅 MongoDB CRUD 操作](https://www.mongodb.com/docs/v7.0/crud/#std-label-crud)
 
+```shell
+➜ mongosh --port 27017
+Current Mongosh Log ID:  123a4bc5d67891011ef1213g
+Connecting to:    mongodb://127.0.0.1:27017/
 
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
 
+test> db.messages.insertMany([
+         {
+            message: "Hello World!",
+            author: "MongoDB",
+            comments: [],
+            _id: 1
+         }
+      ])
+{ acknowledged: true, insertedIds: { '0': 1 } }
 
-## 支持 ##
+test> db.messages.findOne({ _id: 1 })
+{ _id: 1, message: 'Hello World!', author: 'MongoDB', comments: [] }
+```
 
- MongoDB社区
+**使用聚合转换数据**
 
-如有疑问，讨论或常规技术支持，请访问 [MongoDB社区论坛](https://community.mongodb.com/)。MongoDB社区论坛是与其他MongoDB用户联系，提出问题并获得答案的集中场所。
+1. 导入您的数据
 
+   使用 mongoimport 从 CSV 或 JSON 文件导入数据。
 
-##  MongoDB Atlas或Cloud ##
+   要了解更多信息，请参阅 [mongoimport](https://www.mongodb.com/docs/database-tools/mongoimport/)
 
-如有技术支持问题，请登录您的[MongoDB Cloud帐户](https://cloud.mongodb.com/user)并打开工单。
+2. 聚合您的数据
 
+   使用聚合管道分多个阶段处理数据并返回计算结果。
 
+   要了解更多信息，请参阅[聚合操作。](https://www.mongodb.com/docs/v7.0/aggregation/#std-label-aggregation)
 
- MongoDB Enterprise或Ops Manager
+```shell
+test> db.orders.insertMany([
+   { "item" : "almonds", "price" : 12, "quantity" : 2 },
+   { "item" : "pecans", "price" : 20, "quantity" : 1 },
+])
 
-如有技术支持问题，请通过[MongoDB支持门户](https://support.mongodb.com/)提交工单 。
+test> db.inventory.insertMany([
+   { "sku" : "almonds", "description": "product 1", "instock" : 120 },
+   { "sku" : "cashews", "description": "product 3", "instock" : 60 },
+   { "sku" : "pecans", "description": "product 4", "instock" : 70 }
+])
 
+test> db.orders.aggregate([
+   { $match: { price: { $lt: 15 } } },
+   { $lookup: {
+         from: "inventory",
+         localField: "item",
+         foreignField: "sku",
+         as: "inventory_docs"
+   } },
+   { $sort: { price: 1 } },
+])
+```
 
+**安全访问您的数据**
 
- 问题
+1. 验证客户端身份
 
-有关如何为MongoDB服务或相关项目之一提交JIRA工单的说明，请参阅 https://github.com/mongodb/mongo/wiki/Submit-Bug-Reports。
+   通过身份验证验证用户、副本集成员或分片集群成员的身份。
 
+   [要了解更多信息，请参阅身份验证](https://www.mongodb.com/docs/v7.0/core/authentication/#std-label-authentication)
 
+2. 控制对数据库的访问
 
- 社区
+   启用基于角色的访问控制来管理整个数据库集群或单个集合的用户权限。
 
-参与MongoDB社区是与其他才华横溢，志趣相投的工程师建立关系，提高对正在从事的有趣工作的认识并提高技能的一种好方法。要了解MongoDB社区，请参阅 [参与MongoDB](http://www.mongodb.org/get-involved?tck=docs_server)。
-同时可以参与[ whaleal社区 ](https://www.whaleal.com)和志同道合的工程师学习讨论MongoDB等相关专业知识技能。
+   [要了解更多信息，请参阅基于角色的访问控制](https://www.mongodb.com/docs/v7.0/core/authorization/#std-label-authorization)
 
-学习
+3. 加密您最敏感的数据
 
-除了文档外，还有许多学习使用MongoDB的方法。您可以：
+   客户端字段级加密可在数据库使用数据时保护数据。字段在离开应用程序之前会被加密，从而通过网络、内存和静态方式保护它们。
 
-- 在[MongoDB大学](https://university.mongodb.com/?tck=docs_server)注册免费的在线课程
-- 浏览[MongoDB演示文稿](https://www.mongodb.com/presentations?tck=docs_server)的存档
-- 加入本地的[MongoDB用户组（MUG）](https://www.mongodb.org/user-groups?tck=docs_server)
-- 参加即将举行的MongoDB [活动](http://www.mongodb.com/events?tck=docs_server)或 [网络研讨会](http://www.mongodb.com/webinars?tck=docs_server)
-- 阅读[MongoDB博客](http://www.mongodb.com/blog?tck=docs_server)
-- 下载[架构指南](https://www.mongodb.com/lp/whitepaper/architecture-guide?tck=docs_server)
+   要了解更多信息，请参阅[客户端字段级加密。](https://www.mongodb.com/docs/v7.0/core/csfle/#std-label-manual-csfle-feature)
 
+**部署和扩展您的数据库**
 
+1. 部署副本集
 
- 许可
+   通过部署副本集为数据库提供冗余和弹性。
 
-该手册已根据[知识共享署名-非商业性-相同方式共享3.0美国许可证进行了许可](http://creativecommons.org/licenses/by-nc-sa/3.0/us/)
+   [要了解更多信息，请参阅复制](https://www.mongodb.com/docs/v7.0/replication/#std-label-replication)
 
-有关MongoDB许可的信息，请参阅[MongoDB许可](https://www.mongodb.org/about/licensing/)。
+2. 扩展您的数据库
 
+   使用分片来水平扩展数据库或确保基于位置的数据分离。
 
+   [要了解更多信息，请参阅分片](https://www.mongodb.com/docs/v7.0/sharding/#std-label-sharding-introduction)
 
- 其他资源
+相关产品和资源
 
-- [MongoDB，Inc.](https://www.mongodb.com/?tck=docs_server)
+### 进一步探索 MongoDB
 
-  MongoDB背后的公司。
+探索 MongoDB 的库和工具。
 
-- [MongoDB Atlas](https://www.mongodb.com/cloud?tck=docs_server)
+* 以您的应用程序语言使用 MongoDB
 
-  数据库即服务。
+  [了解驱动程序](https://www.mongodb.com/docs/drivers/)
 
-- [MongoDB Cloud Manager](https://www.mongodb.com/cloud/cloud-manager/?tck=docs_server)
+* 使用 MongoDB Compass 直观地探索您的数据
 
-  适用于MongoDB的基于云的托管运营管理解决方案。
+  [查看Compass文档](https://www.mongodb.com/docs/compass/current/)
 
-- [MongoDB Ops Manager](https://docs.opsmanager.mongodb.com/current/?tck=docs_server)
+* 管理和监控您的部署
 
-  MongoDB的企业运营管理解决方案：包括自动化，备份和监控。
-
-- [MongoDB生态系统](https://docs.mongodb.com/ecosystem/?tck=docs_server)
-
-  可用于MongoDB的驱动程序，框架，工具和服务的文档。
+  [查看Ops Manager](https://www.mongodb.com/docs/ops-manager/current/)
