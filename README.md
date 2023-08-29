@@ -1,8 +1,23 @@
 # [MongoDB 中文手册 | MongoDB 中文文档 | 官方手册中文版翻译](https://docs.jinmu.info/MongoDB-Manual-zh/)
 
-<img src="./images/logo/jinmu.png" width="310px" alt="Jinmu Logo">  
-<img src="./images/logo/mongodb.png" width="300px" alt="MongoDB Logo">  
-<img src="./images/logo/whaleal-logo.png" width="300px" alt="whaleal Logo">> 
+  <table>
+    <tr> <!-- 第一行数据 -->
+        <td>
+            <img src="./images/logo/jinmu.png" width="310px" alt="Jinmu Logo">
+        </td>
+        <td rowspan="3">
+            <img src="./images/logo/whaleal.png" style="zoom:30%;" >
+        </td>
+    </tr>
+    <tr>
+    <td> <img src="./images/logo/mongodb.png" width="300px" alt="MongoDB Logo"> </td>
+    </tr>
+    <tr>
+    <td> <img src="./images/logo/whaleal-logo.png" width="300px" alt="whaleal Logo"></td>
+    </tr>
+</table>
+
+ 
 
 
 ## 项目介绍
