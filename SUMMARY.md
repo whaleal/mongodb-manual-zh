@@ -646,7 +646,7 @@
       * [适用于不同 SLA 或 SLO 的分层硬件]( 13-administration/06-data-center-awareness/02-zone-sharding/03-sharding-tiered-hardware-for-varying-slas.md )
       * [按应用程序或客户分段的数据]( 13-administration/06-data-center-awareness/02-zone-sharding/04-sharding-segmenting-shards.md )
       * [适用于仅插入工作负载的分布式本地写入]( 13-administration/06-data-center-awareness/02-zone-sharding/05-sharding-high-availability-writes.md )
-      * [使用分区进行集合分布]()
+      * [使用分区进行集合分布](13-administration/06-data-center-awareness/02-zone-sharding/06-Distribute-Collections-Using-Zones.md)
     * [管理分片区域]( 13-administration/06-data-center-awareness/03-manage-shard-zone.md )
     
   * [MongoDB 备份方法]( 13-administration/07-backups.md )
@@ -748,7 +748,6 @@
       * [usersInfo]( 16-reference/04-command/06-nav-user-management/07-usersInfo.md )
     
     * [角色管理命令]( 16-reference/04-command/07-nav-role-management.md )
-    
       * [createRole]( 16-reference/04-command/07-nav-role-management/01-createRole.md )
       * [dropRole]( 16-reference/04-command/07-nav-role-management/02-dropRole.md )
       * [dropAllRolesFromDatabase]( 16-reference/04-command/07-nav-role-management/03-dropAllRolesFromDatabase.md )
@@ -759,11 +758,10 @@
       * [revokeRolesFromRole]( 16-reference/04-command/07-nav-role-management/08-revokeRolesFromRole.md )
       * [rolesInfo]( 16-reference/04-command/07-nav-role-management/09-rolesInfo.md )
       * [updateRole]( 16-reference/04-command/07-nav-role-management/10-updateRole.md )
-    
-    * [复制命令]( 16-reference/4-command/08-nav-replication.md )
-    
-      * [appendOplogNote](16-reference/4-command/08-nav-replication/01-appendOplogNote.md)
-    
+      
+    * [复制命令]( 16-reference/04-command/08-nav-replication.md )
+      * [appendOplogNote](16-reference/04-command/08-nav-replication/01-appendOplogNote.md)
+      
       * [applyOps]( 16-reference/04-command/08-nav-replication/02-applyOps.md )
       * [hello]( 16-reference/04-command/08-nav-replication/03-hello.md )
       * [replSetAbortPrimaryCatchUp]( 16-reference/04-command/08-nav-replication/04-replSetAbortPrimaryCatchUp.md )
@@ -776,7 +774,7 @@
       * [replSetResizeOplog]( 16-reference/04-command/08-nav-replication/11-replSetResizeOplog.md )
       * [replSetStepDown]( 16-reference/04-command/08-nav-replication/12-replSetStepDown.md )
       * [replSetSyncFrom]( 16-reference/04-command/08-nav-replication/13-replSetSyncFrom.md )
-    
+      
     * [分片命令]( 16-reference/04-command/09-nav-sharding.md )
     
       * [abortReshardCollection](16-reference/04-command/09-nav-sharding/01-abortReshardCollection.md)
@@ -1011,9 +1009,9 @@
       
     * [Cursor Methods]( 16-reference/16-mongosh-methods/02-js-cursor.md )
       
-      * [cursor.addOption()]( 16-reference/16-mongosh-methods/02-js-cursor/01-cursor.addOption.md )
-      * [cursor.allowDiskUse()]( 16-reference/16-mongosh-methods/02-js-cursor/02-cursor.allowDiskUse.md )
-      * [cursor.allowPartialResults()]( 16-reference/16-mongosh-methods/02-js-cursor/03-cursor.allowPartialResults.md )
+      * [cursor.addOption()]( 16-reference/16-mongosh-methods/02-js-cursor/01-cursor-addOption.md )
+      * [cursor.allowDiskUse()]( 16-reference/16-mongosh-methods/02-js-cursor/02-cursor-allowDiskUse.md )
+      * [cursor.allowPartialResults()]( 16-reference/16-mongosh-methods/02-js-cursor/03-cursor-allowPartialResults.md )
       * [cursor.batchSize()]( 16-reference/16-mongosh-methods/02-js-cursor/04-cursor.batchSize.md )
       * [cursor.close()]( 16-reference/16-mongosh-methods/02-js-cursor/05-cursor.close.md )
       * [cursor.isClosed()]( 16-reference/16-mongosh-methods/02-js-cursor/06-cursor.isClosed.md )
@@ -1167,10 +1165,9 @@
       * [rs.syncFrom()]( 16-reference/16-mongosh-methods/08-js-replication/15-rs.syncFrom.md )
       
     * [Sharding Methods]( 16-reference/16-mongosh-methods/09-js-sharding.md )
-    
       * [convertShardKeyToHashed](16-reference/16-mongosh-methods/09-js-sharding/01-convertShardKeyToHashed.md)
       * [sh.abortReshardCollection()](16-reference/16-mongosh-methods/09-js-sharding/02-sh-abortReshardCollection.md)
-    
+      
       * [sh.addShard()]( 16-reference/16-mongosh-methods/09-js-sharding/03-sh.addShard.md )
       * [sh.addShardTag()]( 16-reference/16-mongosh-methods/09-js-sharding/04-sh.addShardTag.md )
       * [sh.addShardToZone()]( 16-reference/16-mongosh-methods/09-js-sharding/05-sh.addShardToZone.md )
@@ -1206,7 +1203,7 @@
       * [sh.waitForBalancerOff()]( 16-reference/16-mongosh-methods/09-js-sharding/35-sh.waitForBalancerOff.md )
       * [sh.waitForPingChange()]( 16-reference/16-mongosh-methods/09-js-sharding/36-sh.waitForPingChange.md )
       * [sh.updateZoneKeyRange()]( 16-reference/16-mongosh-methods/09-js-sharding/37-sh.updateZoneKeyRange.md )
-    
+      
     * [Free Monitoring Methods]( 16-reference/16-mongosh-methods/10-js-free-monitoring.md )
       
       * [db.disableFreeMonitoring()]( 16-reference/16-mongosh-methods/10-js-free-monitoring/01-db.disableFreeMonitoring.md )
