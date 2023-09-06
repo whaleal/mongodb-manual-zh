@@ -8519,14 +8519,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.15.6.2.6" >
+        <li class="chapter " data-level="1.15.6.2.6" data-path="../06-data-center-awareness/02-zone-sharding/06-Distribute-Collections-Using-Zones.html">
             
-                <span>
+                <a href="../06-data-center-awareness/02-zone-sharding/06-Distribute-Collections-Using-Zones.html">
             
                     
                     使用分区进行集合分布
             
-                </span>
+                </a>
             
 
             
@@ -9743,9 +9743,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.18.4.8" data-path="../../16-reference/4-command/08-nav-replication.md">
+        <li class="chapter " data-level="1.18.4.8" data-path="../../16-reference/04-command/08-nav-replication.html">
             
-                <span>
+                <a href="../../16-reference/04-command/08-nav-replication.html">
             
                     
                     复制命令
@@ -9757,9 +9757,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.18.4.8.1" data-path="../../16-reference/4-command/08-nav-replication/01-appendOplogNote.md">
+        <li class="chapter " data-level="1.18.4.8.1" data-path="../../16-reference/04-command/08-nav-replication/01-appendOplogNote.html">
             
-                <span>
+                <a href="../../16-reference/04-command/08-nav-replication/01-appendOplogNote.html">
             
                     
                     appendOplogNote
@@ -12636,9 +12636,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.18.16.2.1" data-path="../../16-reference/16-mongosh-methods/02-js-cursor/01-cursor.addOption.md">
+        <li class="chapter " data-level="1.18.16.2.1" data-path="../../16-reference/16-mongosh-methods/02-js-cursor/01-cursor-addOption.html">
             
-                <span>
+                <a href="../../16-reference/16-mongosh-methods/02-js-cursor/01-cursor-addOption.html">
             
                     
                     cursor.addOption()
@@ -12649,9 +12649,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.18.16.2.2" data-path="../../16-reference/16-mongosh-methods/02-js-cursor/02-cursor.allowDiskUse.md">
+        <li class="chapter " data-level="1.18.16.2.2" data-path="../../16-reference/16-mongosh-methods/02-js-cursor/02-cursor-allowDiskUse.html">
             
-                <span>
+                <a href="../../16-reference/16-mongosh-methods/02-js-cursor/02-cursor-allowDiskUse.html">
             
                     
                     cursor.allowDiskUse()
@@ -12662,9 +12662,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.18.16.2.3" data-path="../../16-reference/16-mongosh-methods/02-js-cursor/03-cursor.allowPartialResults.md">
+        <li class="chapter " data-level="1.18.16.2.3" data-path="../../16-reference/16-mongosh-methods/02-js-cursor/03-cursor-allowPartialResults.html">
             
-                <span>
+                <a href="../../16-reference/16-mongosh-methods/02-js-cursor/03-cursor-allowPartialResults.html">
             
                     
                     cursor.allowPartialResults()
@@ -21928,16 +21928,167 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p> Disable Transparent Huge Pages (THP)</p>
-<p> &#xFF01;&#x672C;&#x9875;&#x7FFB;&#x8BD1;&#x5F81;&#x96C6;&#x4E2D;&#xFF01;</p>
-<p>&#x8BF7;&#x70B9;&#x51FB;&#x9875;&#x9762;&#x4E0A;&#x65B9; EDIT THIS PAGE &#x53C2;&#x4E0E;&#x7FFB;&#x8BD1;&#x3002;
-&#x8BE6;&#x89C1;&#xFF1A;
-<a href="https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/CONTRIBUTING.md" target="_blank">&#x8D21;&#x732E;&#x6307;&#x5357;</a>&#x3001;
-<a href="https://docs.mongodb.com/manual/tutorial/transparent-huge-pages/" target="_blank">&#x539F;&#x6587;&#x94FE;&#x63A5;</a>&#x3002;</p>
+                                <h2 id="&#x7981;&#x7528;&#x900F;&#x660E;&#x5927;&#x9875;-thp">&#x7981;&#x7528;&#x900F;&#x660E;&#x5927;&#x9875; (THP)</h2>
+<p>&#x900F;&#x660E;&#x5927;&#x9875;&#xFF08;Transparent Huge Pages&#xFF0C;THP&#xFF09;&#x662F;&#x4E00;&#x79CD;Linux&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;&#xFF0C;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x66F4;&#x5927;&#x7684;&#x5185;&#x5B58;&#x9875;&#x6765;&#x51CF;&#x5C11;&#x5177;&#x6709;&#x5927;&#x91CF;&#x5185;&#x5B58;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#x4E0A;&#x7684;&#x8F6C;&#x6362;&#x67E5;&#x627E;&#x7F13;&#x51B2;&#x533A;&#xFF08;TLB&#xFF09;&#x67E5;&#x627E;&#x7684;&#x5F00;&#x9500;&#x3002;</p>
+<p>&#x7136;&#x800C;&#xFF0C;&#x542F;&#x7528;&#x900F;&#x660E;&#x5927;&#x9875;&#xFF08;THP&#xFF09;&#x901A;&#x5E38;&#x4F1A;&#x5BFC;&#x81F4;&#x6570;&#x636E;&#x5E93;&#x5DE5;&#x4F5C;&#x8D1F;&#x8F7D;&#x6027;&#x80FD;&#x4E0B;&#x964D;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x5F80;&#x5F80;&#x5177;&#x6709;&#x7A00;&#x758F;&#x800C;&#x4E0D;&#x662F;&#x8FDE;&#x7EED;&#x7684;&#x5185;&#x5B58;&#x8BBF;&#x95EE;&#x6A21;&#x5F0F;&#x3002;&#x5728;Linux&#x4E0A;&#x8FD0;&#x884C;MongoDB&#x65F6;&#xFF0C;&#x4E3A;&#x4E86;&#x83B7;&#x5F97;&#x6700;&#x4F73;&#x6027;&#x80FD;&#xFF0C;&#x5E94;&#x7981;&#x7528;THP&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x786E;&#x4FDD;&#x5728; <a href="https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod" target="_blank">mongod</a> &#x542F;&#x52A8;&#x4E4B;&#x524D;&#x7981;&#x7528; THP&#xFF0C;&#x60A8;&#x5E94;&#x8BE5;&#x4E3A;&#x60A8;&#x7684;&#x5E73;&#x53F0;&#x521D;&#x59CB;&#x5316;&#x7CFB;&#x7EDF;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x6587;&#x4EF6;&#xFF0C;&#x4EE5;&#x5728;&#x542F;&#x52A8;&#x65F6;&#x7981;&#x7528; THP&#x3002;&#x4EE5;&#x4E0B;&#x63D0;&#x4F9B;&#x4E86;&#x9488;&#x5BF9; systemd &#x548C; System V init &#x521D;&#x59CB;&#x5316;&#x7CFB;&#x7EDF;&#x7684;&#x8BF4;&#x660E;&#x3002;</p>
+<p>&#x6B64;&#x5916;&#xFF0C;&#x5BF9;&#x4E8E;&#x4F7F;&#x7528; ktune &#x548C; tuned &#x6027;&#x80FD;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684; RHEL/CentOS &#x7CFB;&#x7EDF;&#xFF0C;&#x60A8;&#x8FD8;&#x5FC5;&#x987B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x7684; tuned &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;</p>
+<h3 id="&#x521B;&#x5EFA;&#x670D;&#x52A1;&#x6587;&#x4EF6;">&#x521B;&#x5EFA;&#x670D;&#x52A1;&#x6587;&#x4EF6;</h3>
+<p>&#x8981;&#x521B;&#x5EFA;&#x7981;&#x7528; THP &#x7684;&#x670D;&#x52A1;&#x6587;&#x4EF6;&#xFF0C;&#x60A8;&#x5C06;&#x4F7F;&#x7528;&#x5E73;&#x53F0;&#x7684;&#x5185;&#x7F6E;&#x521D;&#x59CB;&#x5316;&#x7CFB;&#x7EDF;&#x3002;&#x6700;&#x65B0;&#x7248;&#x672C;&#x7684; Linux &#x503E;&#x5411;&#x4E8E;&#x4F7F;&#x7528;<strong>systemd</strong>&#xFF08;&#x5B83;&#x4F7F;&#x7528;&#x8BE5;<code>systemctl</code>&#x547D;&#x4EE4;&#xFF09;&#xFF0C;&#x800C;&#x65E7;&#x7248;&#x672C;&#x7684; Linux &#x503E;&#x5411;&#x4E8E;&#x4F7F;&#x7528;<strong>System V init</strong>&#xFF08;&#x5B83;&#x4F7F;&#x7528;&#x8BE5;<code>service</code>&#x547D;&#x4EE4;&#xFF09;&#x3002;&#x6709;&#x5173;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x9002;&#x7528;&#x4E8E;&#x60A8;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x6587;&#x6863;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x9002;&#x5408;&#x60A8;&#x5E73;&#x53F0;&#x7684;&#x521D;&#x59CB;&#x5316;&#x7CFB;&#x7EDF;&#xFF1A;</p>
+<h4 id="&#x7CFB;&#x7EDF;systemctl">&#x7CFB;&#x7EDF;(systemctl)</h4>
+<ol>
+<li><p>&#x521B;&#x5EFA;<code>systemd</code>&#x5355;&#x5143;&#x6587;&#x4EF6;</p>
+<p>&#x5728;&#x4EE5;&#x4E0B;&#x4F4D;&#x7F6E;&#x521B;&#x5EFA;&#x4EE5;&#x4E0B;&#x6587;&#x4EF6;<code>/etc/systemd/system/disable-transparent-huge-pages.service</code>&#xFF1A;</p>
+<pre><code>[Unit]
+Description=Disable Transparent Huge Pages (THP)
+DefaultDependencies=no
+After=sysinit.target local-fs.target
+Before=mongod.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c &apos;echo never | tee /sys/kernel/mm/transparent_hugepage/enabled &gt; /dev/null&apos;
+
+[Install]
+WantedBy=basic.target
+</code></pre><blockquote>
+<p>&#x7B14;&#x8BB0;:</p>
+<p>&#x7EA2;&#x5E3D;&#x4F01;&#x4E1A; Linux&#x7684;&#x67D0;&#x4E9B;&#x7248;&#x672C;&#x4EE5;&#x53CA;&#x53EF;&#x80FD;&#x7684;&#x5176;&#x4ED6;&#x57FA;&#x4E8E; Red Hat &#x7684;&#x884D;&#x751F;&#x7248;&#x672C;&#x5BF9; THP &#x6587;&#x4EF6;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x8DEF;&#x5F84;<code>enabled</code>&#xFF1A;</p>
+<pre><code>/sys/kernel/mm/redhat_transparent_hugepage/enabled
+</code></pre><p>&#x68C0;&#x67E5;&#x7CFB;&#x7EDF;&#x4E0A;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x54EA;&#x4E2A;&#x8DEF;&#x5F84;&#xFF0C;&#x5E76;<code>disable-transparent-huge-pages.service</code>&#x76F8;&#x5E94;&#x5730;&#x66F4;&#x65B0;&#x6587;&#x4EF6;&#x3002;</p>
+<p>&#x7B14;&#x8BB0;:</p>
+<p>&#x5728;&#x7248;&#x672C; 4.2 &#x4E4B;&#x524D;&#xFF0C;MongoDB &#x8FD8;&#x4F1A;&#x68C0;&#x67E5; THP <em>defrag</em> &#x8BBE;&#x7F6E;&#xFF0C;&#x5E76;&#x5728;&#x542F;&#x7528; defrag &#x65F6;&#x663E;&#x793A;&#x542F;&#x52A8;&#x8B66;&#x544A;&#x3002;&#x53EA;&#x8981; THP &#x672C;&#x8EAB;&#x5728;<code>systemd</code>&#x5355;&#x5143;&#x6587;&#x4EF6;&#x4E2D;&#x88AB;&#x7981;&#x7528;&#xFF0C;MongoDB &#x5C31;&#x4E0D;&#x4F1A;&#x53D7;&#x5230;&#x788E;&#x7247;&#x6574;&#x7406;&#x8BBE;&#x7F6E;&#x7684;&#x5F71;&#x54CD;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x51FA;&#x73B0;&#x6B64;&#x6D88;&#x606F;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5728;&#x5355;&#x5143;&#x6587;&#x4EF6;&#x4E2D;&#x73B0;&#x6709;&#x8BED;&#x53E5;&#x4E4B;&#x540E;<code>never</code>&#x6DFB;&#x52A0;&#x4EE5;&#x4E0B;&#x9644;&#x52A0;&#x884C;&#x6765; &#x8BBE;&#x7F6E; defrag &#xFF1A;<code>systemd``ExecStart</code></p>
+<pre><code>ExecStart=/bin/sh -c &apos;echo never | tee /sys/kernel/mm/transparent_hugepage/defrag &gt; /dev/null&apos;
+</code></pre><p>&#x5982;&#x679C;&#x5728; Red Hat &#x6216;&#x7C7B;&#x4F3C;&#x7CFB;&#x7EDF;&#x4E0A;&#xFF0C;&#x6587;&#x4EF6;&#x7684;&#x8DEF;&#x5F84;<code>defrag</code>&#x53EF;&#x80FD;&#x4F1A;&#x6709;&#x6240;&#x4E0D;&#x540C;&#x3002;&#x6709;&#x5173;&#x66F4;&#x591A;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x4E0A;&#x9762;&#x7684;&#x6CE8;&#x91CA;&#xFF0C;&#x5E76;<code>disable-transparent-huge-pages.service</code>&#x76F8;&#x5E94;&#x5730;&#x66F4;&#x65B0;&#x6587;&#x4EF6;&#x3002;</p>
+</blockquote>
+</li>
+<li><p>&#x91CD;&#x65B0;&#x52A0;&#x8F7D;<code>systemd</code>&#x5355;&#x5143;&#x6587;&#x4EF6;</p>
+<p>&#x8FD0;&#x884C;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x91CD;&#x65B0;&#x52A0;&#x8F7D;<code>systemd</code>&#x5355;&#x5143;&#x6587;&#x4EF6;&#x4EE5;&#x4F9B; <code>disable-transparent-huge-pages.service</code>&#x4F7F;&#x7528;&#xFF1A;</p>
+<pre><code>sudo systemctl daemon-reload
+</code></pre></li>
+<li><p>&#x542F;&#x52A8;&#x670D;&#x52A1;</p>
+<p>&#x624B;&#x52A8;&#x542F;&#x52A8;&#x670D;&#x52A1;&#x4E00;&#x6B21;&#xFF0C;&#x4EE5;&#x786E;&#x4FDD;&#x9002;&#x5F53;&#x7684; THP &#x8BBE;&#x7F6E;&#x5DF2;&#x66F4;&#x6539;&#xFF1A;</p>
+<pre><code>sudo systemctl start disable-transparent-huge-pages
+</code></pre><p><code>[never]</code>&#x901A;&#x8FC7;&#x8FD0;&#x884C;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x9A8C;&#x8BC1; THP &#x662F;&#x5426;&#x5DF2;&#x6210;&#x529F;&#x8BBE;&#x7F6E;&#xFF1A;</p>
+<pre><code>cat /sys/kernel/mm/transparent_hugepage/enabled
+</code></pre><p>&#x5728;&#x7EA2;&#x5E3D;&#x4F01;&#x4E1A; Linux&#x548C;&#x53EF;&#x80FD;&#x7684;&#x5176;&#x4ED6;&#x57FA;&#x4E8E; Red Hat &#x7684;&#x884D;&#x751F;&#x4EA7;&#x54C1;&#x4E0A;&#xFF0C;&#x60A8;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;:</p>
+<pre><code>cat /sys/kernel/mm/redhat_transparent_hugepage/enabled
+</code></pre></li>
+<li><p>&#x914D;&#x7F6E;&#x60A8;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4EE5;&#x5728;&#x542F;&#x52A8;&#x65F6;&#x8FD0;&#x884C;&#x5B83;</p>
+<pre><code>sudo systemctl enable disable-transparent-huge-pages
+</code></pre></li>
+<li><p>&#x81EA;&#x5B9A;&#x4E49;tuned / ktune &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF08;&#x5982;&#x679C;&#x9002;&#x7528;&#xFF09;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x60A8;&#x6B63;&#x5728;&#x4F7F;&#x7528;RHEL <code>tuned</code>/ CentOS&#xFF0C;&#x5219;&#x73B0;&#x5728;&#x8FD8;&#x5FC5;&#x987B;&#x521B;&#x5EFA;&#x81EA;&#x5B9A;&#x4E49;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;<code>ktune``tuned</code></p>
+</li>
+</ol>
+<h4 id="system-v-initservice">System V init(service)</h4>
+<ol>
+<li><p>&#x521B;&#x5EFA;<code>init.d</code>&#x811A;&#x672C;</p>
+<p>&#x5728;&#x4EE5;&#x4E0B;&#x4F4D;&#x7F6E;&#x521B;&#x5EFA;&#x4EE5;&#x4E0B;&#x6587;&#x4EF6;<code>/etc/init.d/disable-transparent-hugepages</code>&#xFF1A;</p>
+<pre><code>#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          disable-transparent-hugepages
+# Required-Start:    $local_fs
+# Required-Stop:
+# X-Start-Before:    mongod mongodb-mms-automation-agent
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Disable Linux transparent huge pages
+# Description:       Disable Linux transparent huge pages, to improve
+#                    database performance.
+### END INIT INFO
+
+case $1 in
+  start)
+    if [ -d /sys/kernel/mm/transparent_hugepage ]; then
+      thp_path=/sys/kernel/mm/transparent_hugepage
+    elif [ -d /sys/kernel/mm/redhat_transparent_hugepage ]; then
+      thp_path=/sys/kernel/mm/redhat_transparent_hugepage
+    else
+      return 0
+    fi
+
+    echo &apos;never&apos; | tee ${thp_path}/enabled &gt; /dev/null
+
+    unset thp_path
+    ;;
+esac
+</code></pre><blockquote>
+<p>&#x7B14;&#x8BB0;</p>
+<p>&#x5728;&#x7248;&#x672C; 4.2 &#x4E4B;&#x524D;&#xFF0C;MongoDB &#x8FD8;&#x4F1A;&#x68C0;&#x67E5; THP <em>defrag</em> &#x8BBE;&#x7F6E;&#xFF0C;&#x5E76;&#x5728;&#x542F;&#x7528; defrag &#x65F6;&#x663E;&#x793A;&#x542F;&#x52A8;&#x8B66;&#x544A;&#x3002;&#x53EA;&#x8981;&#x5728;<code>init.d</code>&#x811A;&#x672C;&#x4E2D;&#x7981;&#x7528; THP &#x672C;&#x8EAB;&#xFF0C;MongoDB &#x5C31;&#x4E0D;&#x4F1A;&#x53D7;&#x5230;&#x788E;&#x7247;&#x6574;&#x7406;&#x8BBE;&#x7F6E;&#x7684;&#x5F71;&#x54CD;&#x3002; &#x4F46;&#x662F;&#xFF0C;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x51FA;&#x73B0;&#x6B64;&#x6D88;&#x606F;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5728;&#x811A;&#x672C;&#x4E2D;&#x7684;&#x8BED;&#x53E5;&#x4E4B;&#x524D;<code>never</code>&#x6DFB;&#x52A0;&#x4EE5;&#x4E0B;&#x884C;&#x6765;&#x8BBE;&#x7F6E;&#x788E;&#x7247;&#x6574;&#x7406; &#xFF1A;<code>init.d``unset thp_path</code></p>
+<pre><code>echo &apos;never&apos; | tee ${thp_path}/defrag &gt; /dev/null
+</code></pre></blockquote>
+</li>
+<li><p>&#x4F7F;&#x5176;&#x53EF;&#x6267;&#x884C;</p>
+<p>&#x8FD0;&#x884C;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x4F7F;&#x811A;&#x672C;&#x53EF;&#x6267;&#x884C;&#xFF1A;</p>
+<pre><code>sudo chmod 755 /etc/init.d/disable-transparent-hugepages
+</code></pre></li>
+<li><p>&#x8FD0;&#x884C;&#x811A;&#x672C;</p>
+<p>&#x624B;&#x52A8;&#x8FD0;&#x884C;&#x4E00;&#x6B21;&#x811A;&#x672C;&#x4EE5;&#x786E;&#x4FDD;&#x9002;&#x5F53;&#x7684; THP &#x8BBE;&#x7F6E;&#x5DF2;&#x66F4;&#x6539;&#xFF1A;</p>
+<pre><code>sudo /etc/init.d/disable-transparent-hugepages start
+</code></pre><p><code>[never]</code>&#x901A;&#x8FC7;&#x8FD0;&#x884C;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x9A8C;&#x8BC1; THP &#x662F;&#x5426;&#x5DF2;&#x6210;&#x529F;&#x8BBE;&#x7F6E;&#xFF1A;</p>
+<pre><code>cat /sys/kernel/mm/transparent_hugepage/enabled
+</code></pre><p>&#x5728; Red Hat Enterprise Linux &#x548C;&#x53EF;&#x80FD;&#x7684;&#x5176;&#x4ED6;&#x57FA;&#x4E8E; Red Hat &#x7684;&#x884D;&#x751F;&#x4EA7;&#x54C1;&#x4E0A;&#xFF0C;&#x60A8;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF1A;</p>
+<pre><code>cat /sys/kernel/mm/redhat_transparent_hugepage/enabled
+</code></pre></li>
+<li><p>&#x914D;&#x7F6E;&#x60A8;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4EE5;&#x5728;&#x542F;&#x52A8;&#x65F6;&#x8FD0;&#x884C;&#x5B83;</p>
+<p>&#x8981;&#x786E;&#x4FDD;&#x6BCF;&#x6B21;&#x7CFB;&#x7EDF;&#x542F;&#x52A8;&#x65F6;&#x90FD;&#x5E94;&#x7528;&#x6B64;&#x8BBE;&#x7F6E;&#xFF0C;&#x8BF7;&#x9488;&#x5BF9;&#x60A8;&#x7684; Linux &#x53D1;&#x884C;&#x7248;&#x8FD0;&#x884C;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF1A;</p>
+<p>| &#x5206;&#x914D;                                       | &#x547D;&#x4EE4;                                                      |
+| :----------------------------------------- | :-------------------------------------------------------- |
+| Ubuntu &#x548C; Debian                           | <code>sudo update-rc.d disable-transparent-hugepages defaults</code> |
+| SUSE                                       | <code>sudo insserv /etc/init.d/disable-transparent-hugepages</code>  |
+| Red Hat&#x3001;CentOS&#x3001;Amazon Linux &#x53CA;&#x5176;&#x884D;&#x751F;&#x4EA7;&#x54C1; | <code>sudo chkconfig --add disable-transparent-hugepages</code>      |</p>
+</li>
+<li><p>&#x81EA;&#x5B9A;&#x4E49;tuned / ktune &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF08;&#x5982;&#x679C;&#x9002;&#x7528;&#xFF09;</p>
+<p>&#x5982;&#x679C;&#x60A8;&#x6B63;&#x5728;&#x4F7F;&#x7528;RHEL <code>tuned</code>/ CentOS&#xFF0C;&#x5219;&#x73B0;&#x5728;&#x8FD8;&#x5FC5;&#x987B;&#x521B;&#x5EFA;&#x81EA;&#x5B9A;&#x4E49;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;<code>ktune``tuned</code></p>
+</li>
+</ol>
+<h3 id="&#x4F7F;&#x7528;tuned&#x548C;ktune">&#x4F7F;&#x7528;<code>tuned</code>&#x548C;<code>ktune</code></h3>
+<blockquote>
+<p>&#x91CD;&#x8981;&#x7684;</p>
+<p>&#x5982;&#x679C;&#x4F7F;&#x7528;<code>tuned</code>&#x6216;<code>ktune</code>&#xFF0C;&#x60A8;&#x8FD8;&#x5FC5;&#x987B;&#x5728;&#x521B;&#x5EFA;&#x4E0A;&#x8FF0;&#x670D;&#x52A1;&#x6587;&#x4EF6;&#x540E;&#x6267;&#x884C;&#x672C;&#x8282;&#x4E2D;&#x7684;&#x6B65;&#x9AA4;&#x3002;</p>
+</blockquote>
+<p><code>tuned</code>&#x548C;<code>ktune</code>&#x662F;&#x52A8;&#x6001;&#x5185;&#x6838;&#x8C03;&#x6574;&#x5DE5;&#x5177;&#xFF0C;&#x53EF;&#x4EE5;&#x5F71;&#x54CD;&#x7CFB;&#x7EDF;&#x4E0A;&#x7684;&#x900F;&#x660E;&#x5927;&#x9875;&#x9762;&#x8BBE;&#x7F6E;&#x3002;&#x5982;&#x679C;&#x60A8;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x5728;RHEL /CentOS &#x7CFB;&#x7EDF;&#x4E0A;&#x4F7F;&#x7528; <code>tuned</code>/ &#xFF0C;&#x5219;&#x5FC5;&#x987B;&#x521B;&#x5EFA;&#x81EA;&#x5B9A;&#x4E49; &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4EE5;&#x786E;&#x4FDD; THP &#x4FDD;&#x6301;&#x7981;&#x7528;&#x72B6;&#x6001;&#x3002;<code>ktune``mongod``tuned</code></p>
+<h4 id="red-hatcentos-6">Red Hat/CentOS 6</h4>
+<ol>
+<li><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</p>
+<p>&#x901A;&#x8FC7;&#x590D;&#x5236;&#x76F8;&#x5173;&#x76EE;&#x5F55;&#xFF0C;&#x4ECE;&#x73B0;&#x6709;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x521B;&#x5EFA;&#x65B0;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;&#x6B64;&#x793A;&#x4F8B;&#x4F7F;&#x7528; <code>virtual-guest</code>&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4F5C;&#x4E3A;&#x57FA;&#x7840;&#xFF0C;&#x5E76;&#x7528;&#x4F5C; <code>virtual-guest-no-thp</code>&#x65B0;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF1A;</p>
+<pre><code>sudo cp -r /etc/tune-profiles/virtual-guest /etc/tune-profiles/virtual-guest-no-thp
+</code></pre></li>
+<li><p>&#x7F16;&#x8F91;<code>ktune.sh</code></p>
+<p>&#x7F16;&#x8F91;<code>/etc/tune-profiles/virtual-guest-no-thp/ktune.sh</code> &#x5E76;&#x5C06;&#x8BBE;&#x7F6E;&#x66F4;&#x6539;<code>set_transparent_hugepages</code>&#x4E3A;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#xFF1A;</p>
+<pre><code>set_transparent_hugepages never
+</code></pre></li>
+<li><p>&#x542F;&#x7528;&#x65B0;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</p>
+<p>&#x542F;&#x7528;&#x65B0;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF1A;</p>
+<pre><code>sudo tuned-adm profile virtual-guest-no-thp
+</code></pre></li>
+</ol>
+<h4 id="red-hatcentos-7-&#x548C;-8">Red Hat/CentOS 7 &#x548C; 8</h4>
+<ol>
+<li><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;</p>
+<p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x76EE;&#x5F55;&#x6765;&#x4FDD;&#x5B58;&#x81EA;&#x5B9A;&#x4E49;<code>tuned</code>&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;&#x6B64;&#x793A;&#x4F8B;&#x7EE7;&#x627F;&#x73B0;&#x6709;<code>virtual-guest</code> &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x7528;&#x4F5C;<code>virtual-guest-no-thp</code>&#x65B0;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF1A;</p>
+<pre><code>sudo mkdir /etc/tuned/virtual-guest-no-thp
+</code></pre></li>
+<li><p>&#x7F16;&#x8F91;<code>tuned.conf</code></p>
+<p>&#x521B;&#x5EFA;&#x5E76;&#x7F16;&#x8F91;&#xFF0C;<code>/etc/tuned/virtual-guest-no-thp/tuned.conf</code>&#x4F7F;&#x5176;&#x5305;&#x542B;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#xFF1A;</p>
+<pre><code>[main]
+include=virtual-guest
+
+[vm]
+transparent_hugepages=never
+</code></pre><p>&#x6B64;&#x793A;&#x4F8B;&#x7EE7;&#x627F;&#x81EA;&#x73B0;&#x6709;<code>virtual-guest</code> &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;&#x9009;&#x62E9;&#x6700;&#x9002;&#x5408;&#x60A8;&#x7684;&#x7CFB;&#x7EDF;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;</p>
+</li>
+<li><p>&#x542F;&#x7528;&#x65B0;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</p>
+<p>&#x542F;&#x7528;&#x65B0;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF1A;</p>
+<pre><code>sudo tuned-adm profile virtual-guest-no-thp
+</code></pre></li>
+</ol>
 <p> &#x53C2;&#x89C1;</p>
 <p>&#x539F;&#x6587; - <a href="https://docs.mongodb.com/manual/tutorial/transparent-huge-pages/" target="_blank">Disable Transparent Huge Pages (THP)</a></p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; &#x4E0A;&#x6D77;&#x9526;&#x6728;&#x4FE1;&#x606F;&#x6280;&#x672F;&#x6709;&#x9650;&#x516C;&#x53F8; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2023-08-25 18:42:46
+2023-09-01 17:10:26
 </span></footer>
                                 
                                 </section>
@@ -21981,7 +22132,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"禁用透明大页面(THP)","level":"1.15.4.3","depth":3,"next":{"title":"使用 Health Manager 管理分片集群的运行状况","level":"1.15.4.4","depth":3,"path":"13-administration/04-analyzing-mongodb-performance/04-Manage-Sharded-Cluster-Health-with-Health-Managers.md","ref":"13-administration/04-analyzing-mongodb-performance/04-Manage-Sharded-Cluster-Health-with-Health-Managers.md","articles":[]},"previous":{"title":"数据库分析器输出","level":"1.15.4.2.1","depth":4,"path":"13-administration/04-analyzing-mongodb-performance/02-manage-the-database-profiler/01-database-profiler.md","ref":"13-administration/04-analyzing-mongodb-performance/02-manage-the-database-profiler/01-database-profiler.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hide-element","-sharing","tbfed-pagefooter","github-buttons","github","chapter-fold","expandable-chapters","pageview-count","edit-link","back-to-top-button","-lunr","-search","search-pro","splitter","page-toc-button","auto-scroll-table","flexible-alerts","alerts","insert-logo"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 上海锦木信息技术有限公司","modify_label":"文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/whaleal/mongodb-manual-zh"},"splitter":{},"search-pro":{},"auto-scroll-table":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":4,"minTocSize":4},"back-to-top-button":{},"pageview-count":{},"alerts":{},"github-buttons":{"buttons":[{"user":"whaleal","repo":"mongodb-manual-zh","type":"star","count":true,"size":"small"}]},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"edit-link":{"label":"Edit This Page","base":"https://github.com/whaleal/mongodb-manual-zh/tree/dev"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 73px; min-height: 73px","url":"https://docs.whaleal.com/images/whaleal_logo1.png"},"expandable-chapters":{}},"theme":"default","keywords":"MongoDB,Manual,中文手册,操作手册,7.0版本,6.0版本,CSDN,中文手册,持续更新,社区,翻译,github,贴吧,Google,教程,安装配置","author":"hbnking","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MongoDB 中文手册 | MongoD Manual | 中文操作手册 | MongoDB 最新版","language":"zh-hans","gitbook":"*","description":"MongoDB-Manual-zh"},"file":{"path":"13-administration/04-analyzing-mongodb-performance/03-Disable-Transparent-Huge-Pages-THP.md","mtime":"2023-08-25T10:42:46.535Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-28T09:12:43.031Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"禁用透明大页面(THP)","level":"1.15.4.3","depth":3,"next":{"title":"使用 Health Manager 管理分片集群的运行状况","level":"1.15.4.4","depth":3,"path":"13-administration/04-analyzing-mongodb-performance/04-Manage-Sharded-Cluster-Health-with-Health-Managers.md","ref":"13-administration/04-analyzing-mongodb-performance/04-Manage-Sharded-Cluster-Health-with-Health-Managers.md","articles":[]},"previous":{"title":"数据库分析器输出","level":"1.15.4.2.1","depth":4,"path":"13-administration/04-analyzing-mongodb-performance/02-manage-the-database-profiler/01-database-profiler.md","ref":"13-administration/04-analyzing-mongodb-performance/02-manage-the-database-profiler/01-database-profiler.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hide-element","-sharing","tbfed-pagefooter","github-buttons","github","chapter-fold","expandable-chapters","pageview-count","edit-link","back-to-top-button","-lunr","-search","search-pro","splitter","page-toc-button","auto-scroll-table","flexible-alerts","alerts","insert-logo"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 上海锦木信息技术有限公司","modify_label":"文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/whaleal/mongodb-manual-zh"},"splitter":{},"search-pro":{},"auto-scroll-table":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":4,"minTocSize":4},"back-to-top-button":{},"pageview-count":{},"alerts":{},"github-buttons":{"buttons":[{"user":"whaleal","repo":"mongodb-manual-zh","type":"star","count":true,"size":"small"}]},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"edit-link":{"label":"Edit This Page","base":"https://github.com/whaleal/mongodb-manual-zh/tree/dev"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 73px; min-height: 73px","url":"https://docs.whaleal.com/images/whaleal_logo1.png"},"expandable-chapters":{}},"theme":"default","keywords":"MongoDB,Manual,中文手册,操作手册,7.0版本,6.0版本,CSDN,中文手册,持续更新,社区,翻译,github,贴吧,Google,教程,安装配置","author":"hbnking","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MongoDB 中文手册 | MongoD Manual | 中文操作手册 | MongoDB 最新版","language":"zh-hans","gitbook":"*","description":"MongoDB-Manual-zh"},"file":{"path":"13-administration/04-analyzing-mongodb-performance/03-Disable-Transparent-Huge-Pages-THP.md","mtime":"2023-09-01T09:10:26.066Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-09-04T03:19:02.857Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

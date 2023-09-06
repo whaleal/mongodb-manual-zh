@@ -8519,14 +8519,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.15.6.2.6" >
+        <li class="chapter " data-level="1.15.6.2.6" data-path="../../13-administration/06-data-center-awareness/02-zone-sharding/06-Distribute-Collections-Using-Zones.html">
             
-                <span>
+                <a href="../../13-administration/06-data-center-awareness/02-zone-sharding/06-Distribute-Collections-Using-Zones.html">
             
                     
                     使用分区进行集合分布
             
-                </span>
+                </a>
             
 
             
@@ -9743,9 +9743,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.18.4.8" data-path="../../16-reference/4-command/08-nav-replication.md">
+        <li class="chapter " data-level="1.18.4.8" data-path="../../16-reference/04-command/08-nav-replication.html">
             
-                <span>
+                <a href="../../16-reference/04-command/08-nav-replication.html">
             
                     
                     复制命令
@@ -9757,9 +9757,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.18.4.8.1" data-path="../../16-reference/4-command/08-nav-replication/01-appendOplogNote.md">
+        <li class="chapter " data-level="1.18.4.8.1" data-path="../../16-reference/04-command/08-nav-replication/01-appendOplogNote.html">
             
-                <span>
+                <a href="../../16-reference/04-command/08-nav-replication/01-appendOplogNote.html">
             
                     
                     appendOplogNote
@@ -12636,9 +12636,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.18.16.2.1" data-path="../../16-reference/16-mongosh-methods/02-js-cursor/01-cursor.addOption.md">
+        <li class="chapter " data-level="1.18.16.2.1" data-path="../../16-reference/16-mongosh-methods/02-js-cursor/01-cursor-addOption.html">
             
-                <span>
+                <a href="../../16-reference/16-mongosh-methods/02-js-cursor/01-cursor-addOption.html">
             
                     
                     cursor.addOption()
@@ -12649,9 +12649,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.18.16.2.2" data-path="../../16-reference/16-mongosh-methods/02-js-cursor/02-cursor.allowDiskUse.md">
+        <li class="chapter " data-level="1.18.16.2.2" data-path="../../16-reference/16-mongosh-methods/02-js-cursor/02-cursor-allowDiskUse.html">
             
-                <span>
+                <a href="../../16-reference/16-mongosh-methods/02-js-cursor/02-cursor-allowDiskUse.html">
             
                     
                     cursor.allowDiskUse()
@@ -12662,9 +12662,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.18.16.2.3" data-path="../../16-reference/16-mongosh-methods/02-js-cursor/03-cursor.allowPartialResults.md">
+        <li class="chapter " data-level="1.18.16.2.3" data-path="../../16-reference/16-mongosh-methods/02-js-cursor/03-cursor-allowPartialResults.html">
             
-                <span>
+                <a href="../../16-reference/16-mongosh-methods/02-js-cursor/03-cursor-allowPartialResults.html">
             
                     
                     cursor.allowPartialResults()
@@ -21928,16 +21928,127 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>Field Names with Periods (.) and Dollar Signs ($)</p>
-<p> &#xFF01;&#x672C;&#x9875;&#x7FFB;&#x8BD1;&#x5F81;&#x96C6;&#x4E2D;&#xFF01;</p>
-<p>&#x8BF7;&#x70B9;&#x51FB;&#x9875;&#x9762;&#x4E0A;&#x65B9; EDIT THIS PAGE &#x53C2;&#x4E0E;&#x7FFB;&#x8BD1;&#x3002;
-&#x8BE6;&#x89C1;&#xFF1A;
-<a href="https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/CONTRIBUTING.md" target="_blank">&#x8D21;&#x732E;&#x6307;&#x5357;</a>&#x3001;
-<a href="https://www.mongodb.com/docs/v7.0/core/dot-dollar-considerations/" target="_blank">&#x539F;&#x6587;&#x94FE;&#x63A5;</a>&#x3002;</p>
+                                <h2 id="&#x5E26;&#x6709;&#x53E5;&#x70B9;---&#x548C;&#x7F8E;&#x5143;&#x7B26;&#x53F7;--&#x7684;&#x5B57;&#x6BB5;&#x540D;&#x79F0;">&#x5E26;&#x6709;&#x53E5;&#x70B9; ( <code>.</code>) &#x548C;&#x7F8E;&#x5143;&#x7B26;&#x53F7; ( <code>$</code>)&#x7684;&#x5B57;&#x6BB5;&#x540D;&#x79F0;</h2>
+<h3 id="&#x6982;&#x8FF0;">&#x6982;&#x8FF0;</h3>
+<p>MongoDB 5.0 &#x6539;&#x8FDB;&#x4E86;&#x5BF9;&#x4EE5;&#x7F8E;&#x5143; ( <code>$</code>) &#x4E3A;&#x524D;&#x7F00;&#x6216;&#x5305;&#x542B;&#x53E5;&#x70B9; ( <code>.</code>) &#x7684;&#x5B57;&#x6BB5;&#x540D;&#x79F0;&#x7684;&#x652F;&#x6301;&#x3002;&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x6570;&#x636E;&#x7684;&#x9A8C;&#x8BC1;&#x89C4;&#x5219;&#x5DF2;&#x66F4;&#x65B0;&#xFF0C;&#x4EE5;&#x4FBF;&#x66F4;&#x8F7B;&#x677E;&#x5730;&#x5904;&#x7406;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x5B57;&#x7B26;&#x7684;&#x6570;&#x636E;&#x6E90;&#x3002;</p>
+<p>&#x5728;&#x5927;&#x591A;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4F7F;&#x7528;&#x6B64;&#x7C7B;&#x5B57;&#x6BB5;&#x540D;&#x79F0;&#x5B58;&#x50A8;&#x7684;&#x6570;&#x636E;&#x65E0;&#x6CD5;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x3002;&#x60A8;&#x9700;&#x8981; &#x5728;&#x8BBF;&#x95EE;&#x8FD9;&#x4E9B;&#x5B57;&#x6BB5;&#x7684;&#x67E5;&#x8BE2;&#x4E2D;&#x4F7F;&#x7528;<a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/getField/#mongodb-expression-exp.-getField" target="_blank"><code>$getField</code></a>&#x3001;<a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/setField/#mongodb-expression-exp.-setField" target="_blank"><code>$setField</code></a>&#x3001; &#x548C; &#x7B49; &#x8F85;&#x52A9;&#x65B9;&#x6CD5;&#x3002;<a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/literal/#mongodb-expression-exp.-literal" target="_blank"><code>$literal</code></a></p>
+<p>&#x5BF9;&#x4E8E;&#x6240;&#x6709;&#x7C7B;&#x578B;&#x7684;&#x5B58;&#x50A8;&#x64CD;&#x4F5C;&#xFF0C;&#x5B57;&#x6BB5;&#x540D;&#x79F0;&#x9A8C;&#x8BC1;&#x89C4;&#x5219;&#x5E76;&#x4E0D;&#x76F8;&#x540C;&#x3002;&#x672C;&#x9875;&#x603B;&#x7ED3;&#x4E86;&#x4E0D;&#x540C;&#x7684;&#x63D2;&#x5165;&#x548C;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x5982;&#x4F55;&#x5904;&#x7406;&#x7F8E;&#x5143; ( <code>$</code>) &#x524D;&#x7F00;&#x7684;&#x5B57;&#x6BB5;&#x540D;&#x79F0;&#x3002;</p>
+<h3 id="&#x63D2;&#x5165;&#x64CD;&#x4F5C;">&#x63D2;&#x5165;&#x64CD;&#x4F5C;</h3>
+<p>&#x5141;&#x8BB8;&#x4EE5;&#x7F8E;&#x5143; ( <code>$</code>) &#x4E3A;&#x524D;&#x7F00;&#x7684;&#x5B57;&#x6BB5;&#x4F5C;&#x4E3A;&#x63D2;&#x5165;&#x7684;&#x9876;&#x7EA7;&#x548C;&#x5D4C;&#x5957;&#x5B57;&#x6BB5;&#x540D;&#x79F0;&#x3002;</p>
+<pre><code>db.sales.insertOne( {
+   &quot;$price&quot;: 50.00,
+   &quot;quantity&quot;: 30
+} )
+</code></pre><p>&#x7F8E;&#x5143; ( <code>$</code>) &#x524D;&#x7F00;&#x5B57;&#x6BB5;&#x5141;&#x8BB8;&#x5728;&#x4F7F;&#x7528;&#x5176;&#x4ED6;&#x4FDD;&#x7559;&#x5B57;&#x7684;&#x63D2;&#x5165;&#x4E2D;&#x4F7F;&#x7528;&#x3002;&#x8FD0;&#x7B97;&#x7B26;&#x540D;&#x79F0;&#xFF08;<a href="https://www.mongodb.com/docs/manual/reference/operator/update/inc/#mongodb-update-up.-inc" target="_blank"><code>$inc</code></a>&#x4F8B;&#x5982;<code>id</code>&#x3001;<code>db</code>&#x3001; &#x548C; &#xFF09;&#x53EF;&#x4EE5;&#x7528;&#x4F5C;&#x5B57;&#x6BB5;&#x540D;&#x79F0;<code>ref</code>&#x3002;</p>
+<pre><code>db.books.insertOne( {
+   &quot;$id&quot;: &quot;h1961-01&quot;,
+   &quot;location&quot;: {
+      &quot;$db&quot;: &quot;novels&quot;,
+      &quot;$ref&quot;: &quot;2007042768&quot;,
+      &quot;$inc&quot;: true
+} } )
+</code></pre><p><a href="https://www.mongodb.com/docs/manual/reference/glossary/#std-term-upsert" target="_blank">&#x5728;upsert</a>&#x671F;&#x95F4;&#x521B;&#x5EFA;&#x65B0;&#x6587;&#x6863;&#x7684;&#x66F4;&#x65B0;&#x88AB;&#x89C6;&#x4E3A;&#x5B57;&#x6BB5;&#x540D;&#x79F0;&#x9A8C;&#x8BC1;<code>insert</code>&#x800C;&#x4E0D;&#x662F;<code>update</code>&#x5B57;&#x6BB5;&#x540D;&#x79F0;&#x9A8C;&#x8BC1;&#x3002;<a href="https://www.mongodb.com/docs/manual/reference/glossary/#std-term-upsert" target="_blank">&#x66F4;&#x65B0;&#x63D2;&#x5165;</a>&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x7F8E;&#x5143; ( <code>$</code>) &#x524D;&#x7F00;&#x5B57;&#x6BB5;&#x3002;&#x4F46;&#x662F;&#xFF0C;<a href="https://www.mongodb.com/docs/manual/reference/glossary/#std-term-upsert" target="_blank">&#x66F4;&#x65B0;&#x63D2;&#x5165;</a><code>match</code>&#x662F;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#xFF0C;&#x5982;&#x679C;&#x66F4;&#x65B0;&#x90E8;&#x5206;&#x9009;&#x62E9;&#x73B0;&#x6709;&#x6587;&#x6863;&#xFF0C;&#x5219;&#x7C7B;&#x4F3C;&#x7684;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x9519;&#x8BEF;&#x3002;</p>
+<p>&#x6B64;&#x4EE3;&#x7801;&#x793A;&#x4F8B;&#x5177;&#x6709;<code>upsert: true</code>&#xFF0C;&#x56E0;&#x6B64;&#x5982;&#x679C;&#x96C6;&#x5408;&#x5C1A;&#x672A;&#x5305;&#x542B;&#x4E0E;&#x67E5;&#x8BE2;&#x672F;&#x8BED; &#x5339;&#x914D;&#x7684;&#x6587;&#x6863;&#xFF0C;&#x5B83;&#x5C06;&#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x65B0;&#x6587;&#x6863;<code>{ &quot;date&quot;: &quot;2021-07-07&quot; }</code>&#x3002;&#x5982;&#x679C;&#x6B64;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x4E0E;&#x73B0;&#x6709;&#x6587;&#x6863;&#x5339;&#x914D;&#xFF0C;&#x5219;&#x66F4;&#x65B0;&#x5C06;&#x5931;&#x8D25;&#xFF0C;&#x56E0;&#x4E3A;<code>$hotel</code>&#x5E26;&#x6709;&#x7F8E;&#x5143; ( <code>$</code>) &#x524D;&#x7F00;&#x3002;</p>
+<pre><code>db.expenses.updateOne(
+   { &quot;date&quot;: &quot;2021-07-07&quot; },
+   { $set: {
+      &quot;phone&quot;: 25.17,
+      &quot;$hotel&quot;: 320.10
+   } },
+   { upsert: true }
+)
+</code></pre><h3 id="&#x6587;&#x6863;&#x66FF;&#x6362;&#x66F4;&#x65B0;">&#x6587;&#x6863;&#x66FF;&#x6362;&#x66F4;&#x65B0;</h3>
+<p>&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x5458;&#x8981;&#x4E48;&#x7528;&#x65B0;&#x6587;&#x6863;&#x66FF;&#x6362;&#x73B0;&#x6709;&#x5B57;&#x6BB5;&#xFF0C;&#x8981;&#x4E48;&#x4FEE;&#x6539;&#x8FD9;&#x4E9B;&#x5B57;&#x6BB5;&#x3002;&#x5728;&#x66F4;&#x65B0;&#x6267;&#x884C;&#x66FF;&#x6362;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;<code>$</code>&#x4E0D;&#x5141;&#x8BB8;&#x4EE5;&#x7F8E;&#x5143; ( ) &#x4E3A;&#x524D;&#x7F00;&#x7684;&#x5B57;&#x6BB5;&#x4F5C;&#x4E3A;&#x9876;&#x7EA7;&#x5B57;&#x6BB5;&#x540D;&#x79F0;&#x3002;</p>
+<p>&#x8003;&#x8651;&#x4E00;&#x4E2A;&#x50CF;&#x8FD9;&#x6837;&#x7684;&#x6587;&#x6863;</p>
+<pre><code>{
+   &quot;_id&quot;: &quot;E123&quot;,
+   &quot;address&quot;: {
+      &quot;$number&quot;: 123,
+      &quot;$street&quot;: &quot;Elm Road&quot;
+   },
+   &quot;$rooms&quot;: {
+      &quot;br&quot;: 2,
+      &quot;bath&quot;: 1
+   }
+}
+</code></pre><p>&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x66FF;&#x6362;&#x73B0;&#x6709;&#x6587;&#x6863;&#x7684;&#x66F4;&#x65B0;&#x8FD0;&#x7B97;&#x7B26;&#x6765;&#x4FEE;&#x6539;&#x5B57;&#x6BB5;<code>address.$street</code>&#xFF0C;&#x4F46;&#x65E0;&#x6CD5;&#x4EE5; <code>$rooms</code>&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x66F4;&#x65B0;&#x5B57;&#x6BB5;&#x3002;</p>
+<pre><code>db.housing.updateOne(
+   { &quot;_id&quot;: &quot;E123&quot; },
+   { $set: { &quot;address.$street&quot;: &quot;Elm Ave&quot; } }
+)
+</code></pre><p>&#x7528;&#x4F5C;<a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/setField/#mongodb-expression-exp.-setField" target="_blank"><code>$setField</code></a>&#x805A;&#x5408;&#x7BA1;&#x9053;&#x7684;&#x4E00;&#x90E8;&#x5206; <a href="https://www.mongodb.com/docs/manual/core/dot-dollar-considerations/#std-label-dotDollar-aggregate-update" target="_blank">&#x66F4;&#x65B0;&#x9876;&#x5C42;</a>&#x4EE5; $( <code>$</code>) &#x4E3A;&#x524D;&#x7F00;&#x7684;&#x5B57;&#x6BB5;&#xFF0C;&#x4F8B;&#x5982;<code>$rooms</code>.</p>
+<h3 id="&#x6587;&#x6863;&#x4FEE;&#x6539;&#x66F4;&#x65B0;">&#x6587;&#x6863;&#x4FEE;&#x6539;&#x66F4;&#x65B0;</h3>
+<p>&#x5F53;&#x66F4;&#x65B0;&#x4FEE;&#x6539;&#x800C;&#x4E0D;&#x662F;&#x66FF;&#x6362;&#x73B0;&#x6709;&#x6587;&#x6863;&#x5B57;&#x6BB5;&#x65F6;&#xFF0C;&#x7F8E;&#x5143; ( <code>$</code>) &#x524D;&#x7F00;&#x5B57;&#x6BB5;&#x53EF;&#x4EE5;&#x662F;&#x9876;&#x7EA7;&#x5B57;&#x6BB5;&#x540D;&#x79F0;&#x3002;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x5B50;&#x5B57;&#x6BB5;&#xFF0C;&#x4F46;&#x60A8;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x8F85;&#x52A9;&#x65B9;&#x6CD5;&#x6765;&#x8BBF;&#x95EE;&#x9876;&#x7EA7;&#x5B57;&#x6BB5;&#x3002;</p>
+<blockquote>
+<p>&#x4E5F;&#x53EF;&#x4EE5;&#x770B;&#x770B;:</p>
+<p><a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/getField/#mongodb-expression-exp.-getField" target="_blank"><code>$getField</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/setField/#mongodb-expression-exp.-setField" target="_blank"><code>$setField</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/literal/#mongodb-expression-exp.-literal" target="_blank"><code>$literal</code></a>,<a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/replaceWith/#mongodb-pipeline-pipe.-replaceWith" target="_blank"><code>$replaceWith</code></a></p>
+</blockquote>
+<p>&#x8003;&#x8651;&#x4E00;&#x4E2A;&#x5305;&#x542B;&#x50CF;&#x8FD9;&#x6837;&#x7684;&#x5E93;&#x5B58;&#x8BB0;&#x5F55;&#x8FD9;&#x6837;&#x7684;&#x6587;&#x6863;&#x7684;&#x96C6;&#x5408;&#xFF1A;</p>
+<pre><code>{
+   _id: ObjectId(&quot;610023ad7d58ecda39b8d161&quot;),
+   &quot;part&quot;: &quot;AB305&quot;,
+   &quot;$bin&quot;: 200,
+   &quot;quantity&quot;: 100,
+   &quot;pricing&quot;: { sale: true, &quot;$discount&quot;: 60 }
+}
+</code></pre><p><code>pricing.$discount</code>&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x67E5;&#x8BE2;&#x5B50;&#x5B57;&#x6BB5;&#x3002;</p>
+<pre><code>db.inventory.findAndModify( {
+    query: { &quot;part&quot;: { $eq: &quot;AB305&quot; } },
+    update: { $inc: { &quot;pricing.$discount&quot;: 10 } }
+} )
+</code></pre><p>&#x4F7F;&#x7528;<a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/getField/#mongodb-expression-exp.-getField" target="_blank"><code>$getField</code></a>&#x548C;<a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/literal/#mongodb-expression-exp.-literal" target="_blank"><code>$literal</code></a>&#x8BBF;&#x95EE;&#x9876;&#x7EA7;<code>$bin</code>&#x5B57;&#x6BB5;&#x7684;&#x503C;&#x3002;</p>
+<pre><code>db.inventory.findAndModify( {
+   query: { $expr: {
+      $eq: [ { $getField: { $literal: &quot;$bin&quot; } }, 200 ]
+   } },
+   update: { $inc: { &quot;quantity&quot;: 10 } }
+} )
+</code></pre><h3 id="&#x4F7F;&#x7528;&#x805A;&#x5408;&#x7BA1;&#x9053;&#x8FDB;&#x884C;&#x66F4;&#x65B0;">&#x4F7F;&#x7528;&#x805A;&#x5408;&#x7BA1;&#x9053;&#x8FDB;&#x884C;&#x66F4;&#x65B0;</h3>
+<p>&#x5728;&#x9636;&#x6BB5;&#x4E2D;&#x4F7F;&#x7528;<a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/setField/#mongodb-expression-exp.-setField" target="_blank"><code>$setField</code></a>&#x3001;&#x3001;<a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/getField/#mongodb-expression-exp.-getField" target="_blank"><code>$getField</code></a>&#x548C; &#x53EF;&#x4FEE;&#x6539;&#x805A;&#x5408;<a href="https://www.mongodb.com/docs/manual/reference/glossary/#std-term-pipeline" target="_blank">&#x7BA1;&#x9053;</a>&#x4E2D;&#x4EE5;dollar() &#x4E3A;&#x524D;&#x7F00;&#x7684;&#x5B57;&#x6BB5;<a href="https://www.mongodb.com/docs/manual/reference/glossary/#std-term-pipeline" target="_blank">&#x3002;</a><a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/literal/#mongodb-expression-exp.-literal" target="_blank"><code>$literal</code></a><a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/replaceWith/#mongodb-pipeline-pipe.-replaceWith" target="_blank"><code>$replaceWith</code></a><code>$</code></p>
+<p>&#x8003;&#x8651;&#x4E00;&#x7EC4;&#x5B66;&#x6821;&#x8BB0;&#x5F55;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code>{
+   &quot;_id&quot;: 100001,
+   &quot;$term&quot;: &quot;fall&quot;,
+   &quot;registered&quot;: true,
+   &quot;grade&quot;: 4
+}
+</code></pre><p><a href="https://www.mongodb.com/docs/manual/reference/glossary/#std-term-pipeline" target="_blank">&#x4F7F;&#x7528;&#x7BA1;&#x9053;</a>&#x66F4;&#x65B0;&#x4EE5;&#x7F8E;&#x5143; ( <code>$</code>) &#x4E3A;&#x524D;&#x7F00;&#x7684;&#x5B57;&#x6BB5;&#xFF0C;&#x4E3A;&#x6625;&#x5B63;&#x5B66;&#x671F;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x96C6;&#x5408; <code>$term</code>&#x3002;</p>
+<pre><code>db.school.aggregate( [
+   { $match: { &quot;registered&quot;: true } },
+   { $replaceWith: {
+      $setField: {
+         field: { $literal: &quot;$term&quot; },
+         input: &quot;$$ROOT&quot;,
+         value: &quot;spring&quot;
+   } } },
+   { $out: &quot;spring2022&quot; }
+] )
+</code></pre><h3 id="&#x4E00;&#x822C;&#x9650;&#x5236;">&#x4E00;&#x822C;&#x9650;&#x5236;</h3>
+<p>&#x9664;&#x4E86;&#x4E0A;&#x9762;&#x7684;&#x5B58;&#x50A8;&#x9A8C;&#x8BC1;&#x89C4;&#x5219;&#x4E4B;&#x5916;&#xFF0C;&#x4F7F;&#x7528;&#x7F8E;&#x5143; ( <code>$</code>) &#x524D;&#x7F00;&#x7684;&#x5B57;&#x6BB5;&#x540D;&#x79F0;&#x8FD8;&#x6709;&#x4E00;&#x4E9B;&#x4E00;&#x822C;&#x9650;&#x5236;&#x3002;&#x8FD9;&#x4E9B;&#x5B57;&#x6BB5;&#x4E0D;&#x80FD;&#xFF1A;</p>
+<ul>
+<li>&#x88AB;&#x7D22;&#x5F15;</li>
+<li>&#x7528;&#x4F5C;&#x5206;&#x7247;&#x952E;&#x7684;&#x4E00;&#x90E8;&#x5206;</li>
+<li>&#x4F7F;&#x7528;&#x9A8C;&#x8BC1;<a href="https://www.mongodb.com/docs/manual/reference/operator/query/jsonSchema/#mongodb-query-op.-jsonSchema" target="_blank"><code>$jsonSchema</code></a></li>
+<li>&#x4F7F;&#x7528;&#x8F6C;&#x4E49;&#x5E8F;&#x5217;&#x8FDB;&#x884C;&#x4FEE;&#x6539;</li>
+<li>&#x4E0E;&#x4F7F;&#x7528; <a href="https://www.mongodb.com/docs/drivers/security/client-side-field-level-encryption-guide/" target="_blank">&#x73B0;&#x573A;&#x7EA7;&#x52A0;&#x5BC6;</a></li>
+<li>&#x7528;&#x4F5C;<code>_id</code>&#x6587;&#x6863;&#x4E2D;&#x7684;&#x5B50;&#x5B57;&#x6BB5;</li>
+</ul>
+<blockquote>
+<p>&#x8B66;&#x544A;</p>
+<p><strong>&#x7F8E;&#x5143;&#x7B26;&#x53F7; ($) &#x548C;&#x53E5;&#x70B9; (.) &#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x6570;&#x636E;&#x4E22;&#x5931;</strong></p>
+<p><code>$</code>&#x5F53;&#x4F7F;&#x7528;&#x7F8E;&#x5143; ( ) &#x524D;&#x7F00;&#x7684;&#x5B57;&#x6BB5;&#x540D;&#x79F0;&#x6216;&#x5305;&#x542B;&#x53E5;&#x70B9; ( ) &#x7684;&#x5B57;&#x6BB5;&#x540D;&#x79F0;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x8FD9;&#x4E9B;&#x5B57;&#x6BB5;&#x540D;&#x79F0;&#x4E0E;&#x65E9;&#x4E8E; MongoDB 5.0 &#x7684;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x7684;&#x672A;&#x786E;&#x8BA4;&#x5199;&#x5165;&#xFF08;<a href="https://www.mongodb.com/docs/manual/reference/write-concern/#std-label-write-concern" target="_blank">&#x5199;&#x5165;&#x5173;&#x6CE8;</a><code>.</code>&#xFF09;&#x7ED3;&#x5408;&#x4F7F;&#x7528;&#xFF0C;&#x5219;&#x6570;&#x636E;&#x4E22;&#x5931;&#x7684;&#x53EF;&#x80FD;&#x6027;&#x5F88;&#x5C0F;&#x3002; <code>w=0</code></p>
+<p>&#x8FD0;&#x884C;<a href="https://www.mongodb.com/docs/manual/reference/command/insert/#mongodb-dbcommand-dbcmd.insert" target="_blank"><code>insert</code></a>&#x3001;<a href="https://www.mongodb.com/docs/manual/reference/command/update/#mongodb-dbcommand-dbcmd.update" target="_blank"><code>update</code></a>&#x548C; <a href="https://www.mongodb.com/docs/manual/reference/command/findAndModify/#mongodb-dbcommand-dbcmd.findAndModify" target="_blank"><code>findAndModify</code></a>&#x547D;&#x4EE4;&#x65F6;&#xFF0C;5.0 &#x517C;&#x5BB9;&#x7684;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x4F1A;&#x53D6;&#x6D88;&#x4F7F;&#x7528;&#x5B57;&#x6BB5;&#x540D;&#x79F0;&#x4EE5;&#x7F8E;&#x5143; ( <code>$</code>) &#x4E3A;&#x524D;&#x7F00;&#x6216;&#x5305;&#x542B;&#x53E5;&#x70B9; ( <code>.</code>) &#x7684;&#x6587;&#x6863;&#x7684;&#x9650;&#x5236;&#x3002;&#x8FD9;&#x4E9B;&#x5B57;&#x6BB5;&#x540D;&#x79F0;&#x5728;&#x65E9;&#x671F;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x7248;&#x672C;&#x4E2D;&#x751F;&#x6210;&#x5BA2;&#x6237;&#x7AEF;&#x9519;&#x8BEF;&#x3002;</p>
+<p>&#x65E0;&#x8BBA;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x8FDE;&#x63A5;&#x5230;&#x54EA;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x7248;&#x672C;&#xFF0C;&#x8FD9;&#x4E9B;&#x9650;&#x5236;&#x90FD;&#x4F1A;&#x88AB;&#x5220;&#x9664;&#x3002;&#x5982;&#x679C; 5.0 &#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x5C06;&#x6587;&#x6863;&#x53D1;&#x9001;&#x5230;&#x8F83;&#x65E7;&#x7684;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5219;&#x8BE5;&#x6587;&#x6863;&#x5C06;&#x88AB;&#x62D2;&#x7EDD;&#xFF0C;&#x800C;&#x4E0D;&#x4F1A;&#x53D1;&#x9001;&#x9519;&#x8BEF;&#x3002;</p>
+<p>&#x8B66;&#x544A;</p>
+<p><strong>&#x7F8E;&#x5143;&#x7B26;&#x53F7; ($) &#x548C;&#x53E5;&#x70B9; (.) &#x7684;&#x5BFC;&#x5165;&#x548C;&#x5BFC;&#x51FA;&#x95EE;&#x9898;</strong></p>
+<p>&#x4ECE; MongoDB 5.0 &#x5F00;&#x59CB;&#xFF0C;&#x6587;&#x6863;&#x5B57;&#x6BB5;&#x540D;&#x79F0;&#x53EF;&#x4EE5;&#x4EE5;&#x7F8E;&#x5143; ( <code>$</code>) &#x4E3A;&#x524D;&#x7F00;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x53E5;&#x70B9; ( <code>.</code>)&#x3002;&#x7136;&#x800C;&#xFF0C; <a href="https://www.mongodb.com/docs/database-tools/mongoimport/#mongodb-binary-bin.mongoimport" target="_blank"><code>mongoimport</code></a>&#x548C;<a href="https://www.mongodb.com/docs/database-tools/mongoexport/#mongodb-binary-bin.mongoexport" target="_blank"><code>mongoexport</code></a>&#x5728;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x5B57;&#x7B26;&#x7684;&#x5B57;&#x6BB5;&#x540D;&#x79F0;&#x53EF;&#x80FD;&#x65E0;&#x6CD5;&#x6309;&#x9884;&#x671F;&#x5DE5;&#x4F5C;&#x3002;</p>
+<p><a href="https://www.mongodb.com/docs/manual/reference/mongodb-extended-json/#std-label-extended-json-high-level-ref-v2" target="_blank">MongoDB &#x6269;&#x5C55; JSON v2</a> &#x65E0;&#x6CD5;&#x533A;&#x5206;&#x7C7B;&#x578B;&#x5305;&#x88C5;&#x5668;&#x548C;&#x6070;&#x597D;&#x4E0E;&#x7C7B;&#x578B;&#x5305;&#x88C5;&#x5668;&#x540C;&#x540D;&#x7684;&#x5B57;&#x6BB5;&#x3002;&#x4E0D;&#x8981;&#x5728;&#x76F8;&#x5E94;&#x7684; BSON &#x8868;&#x793A;&#x5F62;&#x5F0F;&#x53EF;&#x80FD;&#x5305;&#x542B;&#x7F8E;&#x5143; ( <code>$</code>) &#x524D;&#x7F00;&#x952E;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x4E2D;&#x4F7F;&#x7528;&#x6269;&#x5C55; JSON &#x683C;&#x5F0F;&#x3002;<a href="https://www.mongodb.com/docs/manual/reference/database-references/#std-label-dbref-explanation" target="_blank">DBRef</a>&#x673A;&#x5236; &#x662F;&#x8FD9;&#x4E2A;&#x4E00;&#x822C;&#x89C4;&#x5219;&#x7684;&#x4E00;&#x4E2A;&#x4F8B;&#x5916;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x4E0A;&#x4E5F;&#x6709;&#x9650;&#x5236;<a href="https://www.mongodb.com/docs/database-tools/mongoimport/#mongodb-binary-bin.mongoimport" target="_blank"><code>mongoimport</code></a>&#x548C; <a href="https://www.mongodb.com/docs/database-tools/mongoexport/#mongodb-binary-bin.mongoexport" target="_blank"><code>mongoexport</code></a><code>.</code>&#x5B57;&#x6BB5;&#x540D;&#x79F0;&#x4E2D;&#x5305;&#x542B;&#x53E5;&#x70B9; ( )&#x3002;&#x7531;&#x4E8E; CSV &#x6587;&#x4EF6;&#x4F7F;&#x7528;&#x53E5;&#x70B9; ( <code>.</code>) &#x6765;&#x8868;&#x793A;&#x6570;&#x636E;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#xFF0C;&#x56E0;&#x6B64;&#x5B57;&#x6BB5;&#x540D;&#x79F0;&#x4E2D;&#x7684;&#x53E5;&#x70B9; ( <code>.</code>) &#x5C06;&#x88AB;&#x8BEF;&#x89E3;&#x4E3A;&#x5D4C;&#x5957;&#x7EA7;&#x522B;&#x3002;</p>
+</blockquote>
 <p> &#x53C2;&#x89C1;</p>
 <p>&#x539F;&#x6587; - <a href="https://www.mongodb.com/docs/v7.0/core/dot-dollar-considerations/" target="_blank">https://www.mongodb.com/docs/v7.0/core/dot-dollar-considerations/</a> </p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; &#x4E0A;&#x6D77;&#x9526;&#x6728;&#x4FE1;&#x606F;&#x6280;&#x672F;&#x6709;&#x9650;&#x516C;&#x53F8; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2023-08-25 18:42:46
+2023-09-01 17:10:26
 </span></footer>
                                 
                                 </section>
@@ -21981,7 +22092,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"带有(.) 和($)的字段名称","level":"1.6.13.4","depth":3,"next":{"title":"读取隔离性、一致性和近效性","level":"1.6.13.5","depth":3,"path":"04-crud/13-crud/05-read-isolation-consistency-recency.md","ref":"04-crud/13-crud/05-read-isolation-consistency-recency.md","articles":[{"title":"因果一致性和读写问题","level":"1.6.13.5.1","depth":4,"path":"04-crud/13-crud/05-read-isolation-consistency-recency/01-causal-consistency-read-write-concerns.md","ref":"04-crud/13-crud/05-read-isolation-consistency-recency/01-causal-consistency-read-write-concerns.md","articles":[]}]},"previous":{"title":"分布式查询","level":"1.6.13.3","depth":3,"path":"04-crud/13-crud/03-distributed-queries.md","ref":"04-crud/13-crud/03-distributed-queries.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hide-element","-sharing","tbfed-pagefooter","github-buttons","github","chapter-fold","expandable-chapters","pageview-count","edit-link","back-to-top-button","-lunr","-search","search-pro","splitter","page-toc-button","auto-scroll-table","flexible-alerts","alerts","insert-logo"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 上海锦木信息技术有限公司","modify_label":"文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/whaleal/mongodb-manual-zh"},"splitter":{},"search-pro":{},"auto-scroll-table":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":4,"minTocSize":4},"back-to-top-button":{},"pageview-count":{},"alerts":{},"github-buttons":{"buttons":[{"user":"whaleal","repo":"mongodb-manual-zh","type":"star","count":true,"size":"small"}]},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"edit-link":{"label":"Edit This Page","base":"https://github.com/whaleal/mongodb-manual-zh/tree/dev"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 73px; min-height: 73px","url":"https://docs.whaleal.com/images/whaleal_logo1.png"},"expandable-chapters":{}},"theme":"default","keywords":"MongoDB,Manual,中文手册,操作手册,7.0版本,6.0版本,CSDN,中文手册,持续更新,社区,翻译,github,贴吧,Google,教程,安装配置","author":"hbnking","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MongoDB 中文手册 | MongoD Manual | 中文操作手册 | MongoDB 最新版","language":"zh-hans","gitbook":"*","description":"MongoDB-Manual-zh"},"file":{"path":"04-crud/13-crud/04-Field-Names-with-Periods.md","mtime":"2023-08-25T10:42:46.483Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-28T09:12:43.031Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"带有(.) 和($)的字段名称","level":"1.6.13.4","depth":3,"next":{"title":"读取隔离性、一致性和近效性","level":"1.6.13.5","depth":3,"path":"04-crud/13-crud/05-read-isolation-consistency-recency.md","ref":"04-crud/13-crud/05-read-isolation-consistency-recency.md","articles":[{"title":"因果一致性和读写问题","level":"1.6.13.5.1","depth":4,"path":"04-crud/13-crud/05-read-isolation-consistency-recency/01-causal-consistency-read-write-concerns.md","ref":"04-crud/13-crud/05-read-isolation-consistency-recency/01-causal-consistency-read-write-concerns.md","articles":[]}]},"previous":{"title":"分布式查询","level":"1.6.13.3","depth":3,"path":"04-crud/13-crud/03-distributed-queries.md","ref":"04-crud/13-crud/03-distributed-queries.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hide-element","-sharing","tbfed-pagefooter","github-buttons","github","chapter-fold","expandable-chapters","pageview-count","edit-link","back-to-top-button","-lunr","-search","search-pro","splitter","page-toc-button","auto-scroll-table","flexible-alerts","alerts","insert-logo"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 上海锦木信息技术有限公司","modify_label":"文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/whaleal/mongodb-manual-zh"},"splitter":{},"search-pro":{},"auto-scroll-table":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":4,"minTocSize":4},"back-to-top-button":{},"pageview-count":{},"alerts":{},"github-buttons":{"buttons":[{"user":"whaleal","repo":"mongodb-manual-zh","type":"star","count":true,"size":"small"}]},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"edit-link":{"label":"Edit This Page","base":"https://github.com/whaleal/mongodb-manual-zh/tree/dev"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 73px; min-height: 73px","url":"https://docs.whaleal.com/images/whaleal_logo1.png"},"expandable-chapters":{}},"theme":"default","keywords":"MongoDB,Manual,中文手册,操作手册,7.0版本,6.0版本,CSDN,中文手册,持续更新,社区,翻译,github,贴吧,Google,教程,安装配置","author":"hbnking","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MongoDB 中文手册 | MongoD Manual | 中文操作手册 | MongoDB 最新版","language":"zh-hans","gitbook":"*","description":"MongoDB-Manual-zh"},"file":{"path":"04-crud/13-crud/04-Field-Names-with-Periods.md","mtime":"2023-09-01T09:10:26.016Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-09-04T03:19:02.857Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

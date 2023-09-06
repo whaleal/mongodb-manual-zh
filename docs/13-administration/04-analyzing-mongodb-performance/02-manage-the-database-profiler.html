@@ -8519,14 +8519,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.15.6.2.6" >
+        <li class="chapter " data-level="1.15.6.2.6" data-path="../06-data-center-awareness/02-zone-sharding/06-Distribute-Collections-Using-Zones.html">
             
-                <span>
+                <a href="../06-data-center-awareness/02-zone-sharding/06-Distribute-Collections-Using-Zones.html">
             
                     
                     使用分区进行集合分布
             
-                </span>
+                </a>
             
 
             
@@ -9743,9 +9743,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.18.4.8" data-path="../../16-reference/4-command/08-nav-replication.md">
+        <li class="chapter " data-level="1.18.4.8" data-path="../../16-reference/04-command/08-nav-replication.html">
             
-                <span>
+                <a href="../../16-reference/04-command/08-nav-replication.html">
             
                     
                     复制命令
@@ -9757,9 +9757,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.18.4.8.1" data-path="../../16-reference/4-command/08-nav-replication/01-appendOplogNote.md">
+        <li class="chapter " data-level="1.18.4.8.1" data-path="../../16-reference/04-command/08-nav-replication/01-appendOplogNote.html">
             
-                <span>
+                <a href="../../16-reference/04-command/08-nav-replication/01-appendOplogNote.html">
             
                     
                     appendOplogNote
@@ -12636,9 +12636,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.18.16.2.1" data-path="../../16-reference/16-mongosh-methods/02-js-cursor/01-cursor.addOption.md">
+        <li class="chapter " data-level="1.18.16.2.1" data-path="../../16-reference/16-mongosh-methods/02-js-cursor/01-cursor-addOption.html">
             
-                <span>
+                <a href="../../16-reference/16-mongosh-methods/02-js-cursor/01-cursor-addOption.html">
             
                     
                     cursor.addOption()
@@ -12649,9 +12649,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.18.16.2.2" data-path="../../16-reference/16-mongosh-methods/02-js-cursor/02-cursor.allowDiskUse.md">
+        <li class="chapter " data-level="1.18.16.2.2" data-path="../../16-reference/16-mongosh-methods/02-js-cursor/02-cursor-allowDiskUse.html">
             
-                <span>
+                <a href="../../16-reference/16-mongosh-methods/02-js-cursor/02-cursor-allowDiskUse.html">
             
                     
                     cursor.allowDiskUse()
@@ -12662,9 +12662,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.18.16.2.3" data-path="../../16-reference/16-mongosh-methods/02-js-cursor/03-cursor.allowPartialResults.md">
+        <li class="chapter " data-level="1.18.16.2.3" data-path="../../16-reference/16-mongosh-methods/02-js-cursor/03-cursor-allowPartialResults.html">
             
-                <span>
+                <a href="../../16-reference/16-mongosh-methods/02-js-cursor/03-cursor-allowPartialResults.html">
             
                     
                     cursor.allowPartialResults()
@@ -21928,16 +21928,243 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p> Database Profiler</p>
-<p> &#xFF01;&#x672C;&#x9875;&#x7FFB;&#x8BD1;&#x5F81;&#x96C6;&#x4E2D;&#xFF01;</p>
-<p>&#x8BF7;&#x70B9;&#x51FB;&#x9875;&#x9762;&#x4E0A;&#x65B9; EDIT THIS PAGE &#x53C2;&#x4E0E;&#x7FFB;&#x8BD1;&#x3002;
-&#x8BE6;&#x89C1;&#xFF1A;
-<a href="https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/CONTRIBUTING.md" target="_blank">&#x8D21;&#x732E;&#x6307;&#x5357;</a>&#x3001;
-<a href="https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/" target="_blank">&#x539F;&#x6587;&#x94FE;&#x63A5;</a>&#x3002;</p>
+                                <h2 id="&#x6570;&#x636E;&#x5E93;&#x5206;&#x6790;&#x5668;&#xFF08;profiler&#xFF09;">&#x6570;&#x636E;&#x5E93;&#x5206;&#x6790;&#x5668;&#xFF08;profiler&#xFF09;</h2>
+<p>&#x6570;&#x636E;&#x5E93;&#x63A2;&#x67E5;&#x5668;&#x6536;&#x96C6;&#x6709;&#x5173;&#x9488;&#x5BF9; &#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684;&#x5B9E;&#x4F8B;&#x6267;&#x884C;&#x7684;<a href="https://www.mongodb.com/docs/manual/reference/command/#std-label-database-commands" target="_blank">&#x6570;&#x636E;&#x5E93;&#x547D;&#x4EE4;&#x7684;</a><a href="https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod" target="_blank"><code>mongod</code></a>&#x8BE6;&#x7EC6;&#x4FE1;&#x606F; &#x3002;&#x8FD9;&#x5305;&#x62EC; CRUD &#x64CD;&#x4F5C;&#x4EE5;&#x53CA;&#x914D;&#x7F6E;&#x548C;&#x7BA1;&#x7406;&#x547D;&#x4EE4;&#x3002;&#x5206;&#x6790;&#x5668;&#x5C06;&#x5176;&#x6536;&#x96C6;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x5199;&#x5165;&#x4E00;&#x4E2A; <a href="https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.profile" target="_blank"><code>system.profile</code></a>&#x96C6;&#x5408;&#xFF0C;&#x5373; &#x6BCF;&#x4E2A;&#x5206;&#x6790;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;<a href="https://www.mongodb.com/docs/manual/core/capped-collections/" target="_blank">&#x4E0A;&#x9650;&#x96C6;&#x5408;&#x3002;</a>&#x6709;&#x5173;&#x63A2;&#x67E5;&#x5668;&#x521B;&#x5EFA;&#x7684;&#x6587;&#x6863;&#x7684;&#x6982;&#x8FF0;&#xFF0C; &#x8BF7;&#x53C2;&#x9605;<a href="https://www.mongodb.com/docs/manual/reference/database-profiler/" target="_blank">&#x6570;&#x636E;&#x5E93;&#x63A2;&#x67E5;&#x5668;&#x8F93;&#x51FA;&#x3002;</a><a href="https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.profile" target="_blank"><code>system.profile</code></a></p>
+<p>&#x63A2;&#x67E5;&#x5668;&#x662F;<code>off</code>&#x9ED8;&#x8BA4;&#x7684;&#x3002;&#x60A8;&#x53EF;&#x4EE5;&#x5728;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x5B9E;&#x4F8B;&#x4E4B;&#x4E00;&#x9488;&#x5BF9;&#x6BCF;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x6216;&#x6BCF;&#x4E2A;&#x5B9E;&#x4F8B;&#x542F;&#x7528;&#x63A2;&#x67E5;&#x5668;&#xFF1A;<a href="https://www.mongodb.com/docs/manual/tutorial/manage-the-database-profiler/#std-label-database-profiling-level" target="_blank">&#x5206;&#x6790;&#x7EA7;&#x522B;&#x3002;</a></p>
+<p>&#x542F;&#x7528;&#x540E;&#xFF0C;&#x5206;&#x6790;&#x4F1A;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x6027;&#x80FD;&#x548C;&#x78C1;&#x76D8;&#x4F7F;&#x7528;&#x4EA7;&#x751F;&#x5F71;&#x54CD;&#x3002;&#x770B;<a href="https://www.mongodb.com/docs/manual/tutorial/manage-the-database-profiler/#std-label-database-profiling-overhead" target="_blank">&#x6570;&#x636E;&#x5E93;&#x5206;&#x6790;&#x5668;&#x5F00;&#x9500;</a>&#x4E86;&#x89E3;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#x3002;</p>
+<p>&#x672C;&#x6587;&#x6863;&#x6982;&#x8FF0;&#x4E86;&#x6570;&#x636E;&#x5E93;&#x5206;&#x6790;&#x5668;&#x7684;&#x8BB8;&#x591A;&#x5173;&#x952E;&#x7BA1;&#x7406;&#x9009;&#x9879;&#x3002;&#x6709;&#x5173;&#x5176;&#x4ED6;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#xFF1A;</p>
+<ul>
+<li><a href="https://www.mongodb.com/docs/manual/reference/database-profiler/#std-label-profiler" target="_blank">&#x6570;&#x636E;&#x5E93;&#x5206;&#x6790;&#x5668;&#x8F93;&#x51FA;</a></li>
+<li><a href="https://www.mongodb.com/docs/manual/reference/command/profile/#std-label-profile-command" target="_blank">&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x547D;&#x4EE4;</a></li>
+<li><a href="https://www.mongodb.com/docs/manual/reference/method/db.currentOp/#mongodb-method-db.currentOp" target="_blank"><code>db.currentOp()</code></a></li>
+</ul>
+<blockquote>
+<p>&#x8B66;&#x544A;</p>
+<p>&#x8BF7;&#x52FF;&#x5C1D;&#x8BD5;&#x4F7F;&#x7528;&#x540D;&#x79F0; system.profile &#x521B;&#x5EFA;&#x65F6;&#x95F4;&#x5E8F;&#x5217;&#x96C6;&#x5408;&#x6216;&#x89C6;&#x56FE;&#x3002;MongoDB 6.3 &#x53CA;&#x66F4;&#x9AD8;&#x7248;&#x672C;&#x4F1A;&#x5728;&#x5C1D;&#x8BD5;&#x521B;&#x5EFA;&#x65F6;&#x8FD4;&#x56DE;&#x975E;&#x6CD5;&#x64CD;&#x4F5C;&#x9519;&#x8BEF;&#x3002;&#x65E9;&#x671F;&#x7684; MongoDB &#x7248;&#x672C;&#x4F1A;&#x5D29;&#x6E83;&#x3002;</p>
+</blockquote>
+<h3 id="&#x5206;&#x6790;&#x7EA7;&#x522B;">&#x5206;&#x6790;&#x7EA7;&#x522B;</h3>
+<p>&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x5206;&#x6790;&#x7EA7;&#x522B;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x7B49;&#x7EA7;</th>
+<th style="text-align:left">&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>0</code></td>
+<td style="text-align:left">&#x63A2;&#x67E5;&#x5668;&#x5DF2;&#x5173;&#x95ED;&#x5E76;&#x4E14;&#x4E0D;&#x6536;&#x96C6;&#x4EFB;&#x4F55;&#x6570;&#x636E;&#x3002;&#x8FD9;&#x662F;&#x9ED8;&#x8BA4;&#x7684;&#x63A2;&#x67E5;&#x5668;&#x7EA7;&#x522B;&#x3002;</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>1</code></td>
+<td style="text-align:left">&#x63A2;&#x67E5;&#x5668;&#x6536;&#x96C6;&#x8017;&#x65F6;&#x8D85;&#x8FC7;&#x8FC7;&#x6EE4;&#x5668;&#x503C;<code>slowms</code>&#x6216;&#x4E0E;<a href="https://www.mongodb.com/docs/manual/reference/method/db.setProfilingLevel/#std-label-set-profiling-level-options-filter" target="_blank">&#x8FC7;&#x6EE4;&#x5668;&#x5339;&#x914D;&#x7684;&#x64CD;&#x4F5C;&#x7684;&#x6570;&#x636E;&#x3002;</a>&#x5F53;&#x8BBE;&#x7F6E;&#x8FC7;&#x6EE4;&#x5668;&#x65F6;&#xFF1A;&#x548C;<code>slowms</code>&#x9009;&#x9879;<code>sampleRate</code>&#x4E0D;&#x7528;&#x4E8E;&#x5206;&#x6790;&#x3002;&#x63A2;&#x67E5;&#x5668;&#x4EC5;&#x6355;&#x83B7;&#x4E0E; <a href="https://www.mongodb.com/docs/manual/reference/method/db.setProfilingLevel/#std-label-set-profiling-level-options-filter" target="_blank">&#x8FC7;&#x6EE4;&#x5668;&#x5339;&#x914D;&#x7684;&#x64CD;&#x4F5C;&#x3002;</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>2</code></td>
+<td style="text-align:left">&#x63A2;&#x67E5;&#x5668;&#x6536;&#x96C6;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x7684;&#x6570;&#x636E;&#x3002;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="&#x542F;&#x7528;&#x548C;&#x914D;&#x7F6E;&#x6570;&#x636E;&#x5E93;&#x5206;&#x6790;">&#x542F;&#x7528;&#x548C;&#x914D;&#x7F6E;&#x6570;&#x636E;&#x5E93;&#x5206;&#x6790;</h3>
+<p>&#x60A8;&#x53EF;&#x4EE5;&#x4E3A;<a href="https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod" target="_blank"><code>mongod</code></a>&#x5B9E;&#x4F8B;&#x542F;&#x7528;&#x6570;&#x636E;&#x5E93;&#x5206;&#x6790;&#x3002;</p>
+<p>&#x672C;&#x8282;&#x4F7F;&#x7528;<a href="https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh" target="_blank"><code>mongosh</code></a>helper <a href="https://www.mongodb.com/docs/manual/reference/method/db.setProfilingLevel/#mongodb-method-db.setProfilingLevel" target="_blank"><code>db.setProfilingLevel()</code></a>&#x542F;&#x7528;&#x5206;&#x6790;&#x7684;&#x52A9;&#x624B;&#x3002;&#x6709;&#x5173;&#x4F7F;&#x7528;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x7684;&#x8BF4;&#x660E;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x60A8;&#x7684;<a href="https://www.mongodb.com/docs/drivers/" target="_blank">&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x6587;&#x6863;&#x3002;</a></p>
+<p>&#x5F53;&#x60A8;&#x4E3A;<a href="https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod" target="_blank"><code>mongod</code></a>&#x5B9E;&#x4F8B;&#x542F;&#x7528;&#x5206;&#x6790;&#x65F6;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;<a href="https://www.mongodb.com/docs/manual/tutorial/manage-the-database-profiler/#std-label-database-profiling-levels" target="_blank">&#x5206;&#x6790;&#x7EA7;&#x522B;</a>&#x4E3A;&#x5927;&#x4E8E; 0 &#x7684;&#x503C;&#x3002;&#x63A2;&#x67E5;&#x5668;&#x5C06;&#x6570;&#x636E;&#x8BB0;&#x5F55;&#x5728;<a href="https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.profile" target="_blank"><code>system.profile</code></a>&#x96C6;&#x5408;&#x4E2D;&#x3002;&#x5728;&#x60A8;&#x542F;&#x7528;&#x6570;&#x636E;&#x5E93;&#x5206;&#x6790;&#x540E;&#xFF0C; MongoDB &#x4F1A; <a href="https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.profile" target="_blank"><code>system.profile</code></a>&#x5728;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x521B;&#x5EFA;&#x96C6;&#x5408;&#x3002;</p>
+<p>&#x8981;&#x542F;&#x7528;&#x5206;&#x6790;&#x5E76;&#x8BBE;&#x7F6E;&#x5206;&#x6790;&#x7EA7;&#x522B;&#xFF0C;&#x8BF7;&#x5C06;&#x5206;&#x6790;&#x7EA7;&#x522B;&#x4F20;&#x9012;&#x7ED9;<a href="https://www.mongodb.com/docs/manual/reference/method/db.setProfilingLevel/#mongodb-method-db.setProfilingLevel" target="_blank"><code>db.setProfilingLevel()</code></a>&#x5E2E;&#x52A9;&#x7A0B;&#x5E8F;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x8981;&#x542F;&#x7528;&#x6240;&#x6709;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x7684;&#x5206;&#x6790;&#xFF0C;&#x8BF7;&#x8003;&#x8651;&#x4EE5;&#x4E0B;&#x64CD;&#x4F5C;<a href="https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh" target="_blank"><code>mongosh</code>:</a></p>
+<pre><code>db.setProfilingLevel(2)
+</code></pre><p>shell &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x663E;&#x793A;<em>&#x4E0A;</em>&#x4E00;&#x4E2A;&#x5206;&#x6790;&#x7EA7;&#x522B;&#x7684;&#x6587;&#x6863;&#x3002;&#x952E;&#x503C;<code>&quot;ok&quot; : 1</code>&#x5BF9;&#x8868;&#x793A;&#x64CD;&#x4F5C;&#x6210;&#x529F;&#xFF1A;</p>
+<pre><code>{ &quot;was&quot; : 0, &quot;slowms&quot; : 100, &quot;sampleRate&quot; : 1.0, &quot;ok&quot; : 1 }
+</code></pre><p>&#x8981;&#x9A8C;&#x8BC1;&#x65B0;&#x8BBE;&#x7F6E;&#xFF0C;&#x8BF7;&#x53C2;&#x9605; <a href="https://www.mongodb.com/docs/manual/tutorial/manage-the-database-profiler/#std-label-database-profiling-view-status" target="_blank">&#x68C0;&#x67E5;&#x5206;&#x6790;&#x7EA7;&#x522B;</a>&#x90E8;&#x5206;&#x3002;</p>
+<p>&#x4ECE; MongoDB 5.0 &#x5F00;&#x59CB;&#xFF08;&#x4ECE; 4.4.2 &#x548C; 4.2.12 &#x5F00;&#x59CB;&#x4E5F;&#x53EF;&#x7528;&#xFF09;&#xFF0C;&#x5BF9;<a href="https://www.mongodb.com/docs/manual/tutorial/manage-the-database-profiler/#std-label-database-profiler" target="_blank">&#x6570;&#x636E;&#x5E93;&#x5206;&#x6790;&#x5668;</a> <code>level</code>&#x3001;<code>slowms</code>&#x3001;<code>sampleRate</code>&#x3001; &#x6216; <code>filter</code>&#x4F7F;&#x7528;<a href="https://www.mongodb.com/docs/manual/reference/command/profile/#mongodb-dbcommand-dbcmd.profile" target="_blank"><code>profile</code></a>&#x547D;&#x4EE4;&#x6216; <a href="https://www.mongodb.com/docs/manual/reference/method/db.setProfilingLevel/#mongodb-method-db.setProfilingLevel" target="_blank"><code>db.setProfilingLevel()</code></a>&#x5305;&#x88C5;&#x65B9;&#x6CD5;&#x90FD;&#x8BB0;&#x5F55;&#x5728; <a href="https://www.mongodb.com/docs/manual/reference/program/mongod/#std-option-mongod.--logpath" target="_blank"><code>log file</code>.</a></p>
+<h4 id="&#x5168;&#x5C40;&#x548C;&#x6BCF;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x7684;&#x5206;&#x6790;&#x8BBE;&#x7F6E;">&#x5168;&#x5C40;&#x548C;&#x6BCF;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x7684;&#x5206;&#x6790;&#x8BBE;&#x7F6E;</h4>
+<p>slowms &#x548C; sampleRate &#x5206;&#x6790;&#x8BBE;&#x7F6E;&#x662F;&#x5168;&#x5C40;&#x7684;&#x3002;&#x4E00;&#x65E6;&#x8BBE;&#x7F6E;&#xFF0C;&#x8FD9;&#x4E9B;&#x8BBE;&#x7F6E;&#x4F1A;&#x5F71;&#x54CD;&#x8FDB;&#x7A0B;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x5E93;&#x3002;</p>
+<p>&#x5F53;&#x901A;&#x8FC7; <a href="https://www.mongodb.com/docs/manual/reference/command/profile/#mongodb-dbcommand-dbcmd.profile" target="_blank">profile</a> &#x547D;&#x4EE4;&#x6216; <a href="https://www.mongodb.com/docs/manual/reference/method/db.setProfilingLevel/#mongodb-method-db.setProfilingLevel" target="_blank">db.setProfilingLevel()</a> shell &#x8F85;&#x52A9;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x8BBE;&#x7F6E;&#x65F6;&#xFF0C;&#x5206;&#x6790;&#x7EA7;&#x522B;&#x548C;&#x8FC7;&#x6EE4;&#x5668;&#x8BBE;&#x7F6E;&#x5728;&#x6570;&#x636E;&#x5E93;&#x7EA7;&#x522B;&#x4E0A;&#x8FDB;&#x884C;&#x8BBE;&#x7F6E;&#x3002;&#x5F53;&#x4F5C;&#x4E3A;&#x547D;&#x4EE4;&#x884C;&#x6216;<a href="https://www.mongodb.com/docs/manual/reference/configuration-options/#std-label-configuration-options" target="_blank">&#x914D;&#x7F6E;&#x6587;&#x4EF6;</a>&#x9009;&#x9879;&#x8BBE;&#x7F6E;&#x65F6;&#xFF0C;&#x5206;&#x6790;&#x7EA7;&#x522B;&#x548C;&#x8FC7;&#x6EE4;&#x5668;&#x8BBE;&#x7F6E;&#x4F1A;&#x5F71;&#x54CD;&#x6574;&#x4E2A;&#x8FDB;&#x7A0B;&#x3002;</p>
+<h3 id="&#x6307;&#x5B9A;&#x6162;&#x64CD;&#x4F5C;&#x7684;&#x9608;&#x503C;">&#x6307;&#x5B9A;&#x6162;&#x64CD;&#x4F5C;&#x7684;&#x9608;&#x503C;</h3>
+<p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6162;&#x64CD;&#x4F5C;&#x9608;&#x503C;&#x4E3A;100&#x6BEB;&#x79D2;&#x3002;&#x8981;&#x66F4;&#x6539;&#x6162;&#x64CD;&#x4F5C;&#x9608;&#x503C;&#xFF0C;&#x8BF7;&#x4EE5;&#x4EE5;&#x4E0B;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x6307;&#x5B9A;&#x6240;&#x9700;&#x7684;&#x9608;&#x503C;&#x503C;&#xFF1A;</p>
+<ul>
+<li>&#x4F7F;&#x7528; profile &#x547D;&#x4EE4;&#x6216; <a href="https://www.mongodb.com/docs/manual/reference/method/db.setProfilingLevel/#mongodb-method-db.setProfilingLevel" target="_blank">db.setProfilingLevel()</a> shell &#x8F85;&#x52A9;&#x65B9;&#x6CD5;&#x8BBE;&#x7F6E; slowms &#x7684;&#x503C;&#x3002;</li>
+<li>&#x5728;&#x542F;&#x52A8;&#x65F6;&#x901A;&#x8FC7;&#x547D;&#x4EE4;&#x884C;&#x8BBE;&#x7F6E; --slowms &#x7684;&#x503C;&#x3002;</li>
+<li>&#x5728;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x8BBE;&#x7F6E;<a href="https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-operationProfiling.slowOpThresholdMs" target="_blank">slowOpThresholdMs</a>&#x7684;&#x503C;&#x3002;</li>
+</ul>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x5C06;&#x5F53;&#x524D; mongod &#x5B9E;&#x4F8B;&#x7684;&#x5206;&#x6790;&#x7EA7;&#x522B;&#x8BBE;&#x7F6E;&#x4E3A; 1&#xFF0C;&#x5E76;&#x5C06; mongod &#x5B9E;&#x4F8B;&#x7684;&#x6162;&#x64CD;&#x4F5C;&#x9608;&#x503C;&#x8BBE;&#x7F6E;&#x4E3A; 20 &#x6BEB;&#x79D2;&#xFF1A;</p>
+<pre><code>db.setProfilingLevel(1, { slowms: 20 })
+</code></pre><p>&#x5206;&#x6790;&#x7EA7;&#x522B;&#x4E3A; 1 &#x4F1A;&#x5BF9;&#x6BD4;&#x9608;&#x503C;&#x66F4;&#x6162;&#x7684;&#x64CD;&#x4F5C;&#x8FDB;&#x884C;&#x5206;&#x6790;&#x3002;</p>
+<blockquote>
+<p>&#x91CD;&#x8981;</p>
+<p>&#x6162;&#x64CD;&#x4F5C;&#x9608;&#x503C;&#x9002;&#x7528;&#x4E8E; <a href="https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod" target="_blank"><code>mongod</code></a>&#x5B9E;&#x4F8B;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x5E93;&#x3002;&#x5B83;&#x7531;&#x6570;&#x636E;&#x5E93;&#x5206;&#x6790;&#x5668;&#x548C;&#x8BCA;&#x65AD;&#x65E5;&#x5FD7;&#x4F7F;&#x7528;&#xFF0C;&#x5E76;&#x4E14;&#x5E94;&#x8BBE;&#x7F6E;&#x4E3A;&#x6700;&#x9AD8;&#x6709;&#x7528;&#x503C;&#x4EE5;&#x907F;&#x514D;&#x6027;&#x80FD;&#x4E0B;&#x964D;&#x3002;</p>
+</blockquote>
+<p>&#x4ECE; MongoDB 4.0 &#x5F00;&#x59CB;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>db.setProfilingLevel()</code> &#x6765;&#x914D;&#x7F6E; <code>mongos</code> &#x7684; <code>slowms</code> &#x548C; <code>sampleRate</code>&#x3002;&#x5BF9;&#x4E8E; <code>mongos</code>&#xFF0C;<code>slowms</code> &#x548C; <code>sampleRate</code> &#x914D;&#x7F6E;&#x8BBE;&#x7F6E;&#x53EA;&#x5F71;&#x54CD;&#x8BCA;&#x65AD;&#x65E5;&#x5FD7;&#xFF0C;&#x800C;&#x4E0D;&#x5F71;&#x54CD;&#x5206;&#x6790;&#x5668;&#xFF0C;&#x56E0;&#x4E3A; <code>mongos</code> &#x4E0A;&#x4E0D;&#x652F;&#x6301;&#x5206;&#x6790;&#x5668;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x4EE5;&#x4E0B;&#x8BBE;&#x7F6E; mongos &#x5B9E;&#x4F8B;&#x7684;&#x6162;&#x64CD;&#x4F5C;&#x9608;&#x503C;&#x4EE5;&#x8BB0;&#x5F55;&#x6162;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<pre><code>db.setProfilingLevel(0, { slowms: 20 })
+</code></pre><p>&#x4ECE; MongoDB 4.2 &#x5F00;&#x59CB;&#xFF0C;&#x5206;&#x6790;&#x5668;&#x6761;&#x76EE;&#x548C;&#x8BFB;/&#x5199;&#x64CD;&#x4F5C;&#x7684;&#x8BCA;&#x65AD;&#x65E5;&#x5FD7;&#x6D88;&#x606F;&#xFF08;&#x5373; mongod/mongos &#x7684;&#x65E5;&#x5FD7;&#x6D88;&#x606F;&#xFF09;&#x5305;&#x62EC;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#xFF1A;</p>
+<ul>
+<li><p><code>queryHash</code> &#x7528;&#x4E8E;&#x5E2E;&#x52A9;&#x8BC6;&#x522B;&#x5177;&#x6709;&#x76F8;&#x540C;&#x67E5;&#x8BE2;&#x7ED3;&#x6784;&#x7684;&#x6162;&#x67E5;&#x8BE2;&#x3002;</p>
+</li>
+<li><p><code>planCacheKey</code> &#x7528;&#x4E8E;&#x66F4;&#x6DF1;&#x5165;&#x5730;&#x4E86;&#x89E3;&#x6162;&#x67E5;&#x8BE2;&#x7684;&#x67E5;&#x8BE2;&#x8BA1;&#x5212;&#x7F13;&#x5B58;&#x3002;</p>
+</li>
+</ul>
+<p>&#x4ECE;&#x7248;&#x672C; 4.2 &#x5F00;&#x59CB;&#xFF0C;&#x526F;&#x672C;&#x96C6;&#x7684;&#x8F85;&#x52A9;&#x6210;&#x5458;&#x73B0;&#x5728;&#x4F1A;&#x8BB0;&#x5F55;&#x5E94;&#x7528;&#x65F6;&#x95F4;&#x8D85;&#x8FC7;&#x6162;&#x64CD;&#x4F5C;&#x9608;&#x503C;&#x7684;<a href="https://www.mongodb.com/docs/manual/core/replica-set-oplog/#std-label-slow-oplog-application" target="_blank">oplog &#x6761;&#x76EE;&#x3002;</a>&#x8FD9;&#x4E9B;&#x6162;&#x7684; oplog &#x6D88;&#x606F;&#xFF1A;</p>
+<ul>
+<li><p>&#x88AB;&#x8BB0;&#x5F55;&#x5728;&#x8BCA;&#x65AD;&#x65E5;&#x5FD7;&#x4E2D;&#x7684;&#x8F85;&#x52A9;&#x6210;&#x5458;&#x3002;</p>
+</li>
+<li><p>&#x4EE5; REPL &#x7EC4;&#x4EF6;&#x7684;&#x8EAB;&#x4EFD;&#x8BB0;&#x5F55;&#xFF0C;&#x6587;&#x672C;&#x4E3A; </p>
+<pre><code>applied op: &lt;oplog entry&gt; took &lt;num&gt;ms&#x3002;
+</code></pre></li>
+<li><p>&#x4E0D;&#x4F9D;&#x8D56;&#x65E5;&#x5FD7;&#x7EA7;&#x522B;&#xFF08;&#x65E0;&#x8BBA;&#x662F;&#x7CFB;&#x7EDF;&#x7EA7;&#x522B;&#x8FD8;&#x662F;&#x7EC4;&#x4EF6;&#x7EA7;&#x522B;&#xFF09;</p>
+</li>
+<li><p>&#x4E0D;&#x4F9D;&#x8D56;&#x4E8E;&#x5206;&#x6790;&#x7EA7;&#x522B;&#x3002;</p>
+</li>
+<li><p>&#x53EF;&#x80FD;&#x4F1A;&#x53D7;&#x5230;&#x5F71;&#x54CD;<a href="https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-operationProfiling.slowOpSampleRate" target="_blank"><code>slowOpSampleRate</code></a>&#xFF0C;&#x5177;&#x4F53;&#x53D6;&#x51B3;&#x4E8E;&#x60A8;&#x7684; MongoDB &#x7248;&#x672C;:</p>
+<ul>
+<li>&#x5728; MongoDB 4.2 &#x4E2D;&#xFF0C;&#x8FD9;&#x4E9B;&#x6162;&#x901F; oplog &#x6761;&#x76EE;&#x4E0D;&#x53D7;<a href="https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-operationProfiling.slowOpSampleRate" target="_blank"><code>slowOpSampleRate</code></a>. &#x65E0;&#x8BBA;&#x91C7;&#x6837;&#x7387;&#x5982;&#x4F55;&#xFF0C;MongoDB &#x90FD;&#x4F1A;&#x8BB0;&#x5F55;&#x6240;&#x6709;&#x6162;&#x901F; oplog &#x6761;&#x76EE;&#x3002;</li>
+<li>&#x5728; MongoDB 4.4 &#x53CA;&#x66F4;&#x9AD8;&#x7248;&#x672C;&#x4E2D;&#xFF0C;&#x8FD9;&#x4E9B;&#x7F13;&#x6162;&#x7684; oplog &#x6761;&#x76EE;&#x53D7;&#x5230;<a href="https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-operationProfiling.slowOpSampleRate" target="_blank"><code>slowOpSampleRate</code>.</a></li>
+</ul>
+</li>
+</ul>
+<p>&#x63A2;&#x67E5;&#x5668;&#x4E0D;&#x4F1A;&#x6355;&#x83B7;&#x6162;oplog &#x6761;&#x76EE;&#x3002;</p>
+<h3 id="&#x5BF9;&#x6162;&#x64CD;&#x4F5C;&#x7684;&#x968F;&#x673A;&#x6837;&#x672C;&#x8FDB;&#x884C;&#x5206;&#x6790;&#x3002;">&#x5BF9;&#x6162;&#x64CD;&#x4F5C;&#x7684;&#x968F;&#x673A;&#x6837;&#x672C;&#x8FDB;&#x884C;&#x5206;&#x6790;&#x3002;</h3>
+<p>&#x8981;&#x4EC5;&#x5BF9;&#x6240;&#x6709;&#x6162;&#x64CD;&#x4F5C;&#x7684;&#x968F;&#x673A;&#x62BD;&#x6837; &#x5B50;&#x96C6;&#x8FDB;&#x884C;&#x5206;&#x6790;&#xFF0C;&#x8BF7;&#x4EE5;&#x4EE5;&#x4E0B;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x6307;&#x5B9A;&#x6240;&#x9700;&#x7684;&#x62BD;&#x6837;&#x7387;&#xFF1A;</p>
+<ul>
+<li>&#x4F7F;&#x7528; profile &#x547D;&#x4EE4;&#x6216; db.setProfilingLevel() shell &#x8F85;&#x52A9;&#x65B9;&#x6CD5;&#x8BBE;&#x7F6E; sampleRate &#x7684;&#x503C;&#x3002;</li>
+<li>&#x5728;&#x542F;&#x52A8;&#x65F6;&#x901A;&#x8FC7;&#x547D;&#x4EE4;&#x884C;&#x8BBE;&#x7F6E; mongod &#x7684; --slowOpSampleRate &#x6216; mongos &#x7684; --slowOpSampleRate &#x7684;&#x503C;&#x3002;</li>
+<li>&#x5728;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x8BBE;&#x7F6E; SlowOpSampleRate &#x7684;&#x503C;&#x3002;</li>
+</ul>
+<p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;sampleRate &#x8BBE;&#x7F6E;&#x4E3A; 1.0&#xFF0C;&#x8868;&#x793A;&#x4F1A;&#x5BF9;&#x6240;&#x6709;&#x6162;&#x64CD;&#x4F5C;&#x8FDB;&#x884C;&#x5206;&#x6790;&#x3002;&#x5F53; sampleRate &#x8BBE;&#x7F6E;&#x5728; 0 &#x5230; 1 &#x4E4B;&#x95F4;&#x65F6;&#xFF0C;&#x5177;&#x6709;&#x5206;&#x6790;&#x7EA7;&#x522B; 1 &#x7684;&#x6570;&#x636E;&#x5E93;&#x5C06;&#x6839;&#x636E; sampleRate &#x4EC5;&#x5BF9;&#x4E00;&#x5B9A;&#x767E;&#x5206;&#x6BD4;&#x7684;&#x6162;&#x64CD;&#x4F5C;&#x8FDB;&#x884C;&#x968F;&#x673A;&#x62BD;&#x6837;&#x5206;&#x6790;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x4EE5;&#x4E0B;&#x65B9;&#x6CD5;&#x5C06; mongod &#x7684;&#x5206;&#x6790;&#x7EA7;&#x522B;&#x8BBE;&#x7F6E;&#x4E3A; 1&#xFF0C;&#x5E76;&#x5C06;&#x5206;&#x6790;&#x5668;&#x8BBE;&#x7F6E;&#x4E3A;&#x5BF9;&#x6240;&#x6709;&#x6162;&#x901F;&#x64CD;&#x4F5C;&#x7684; 42% &#x8FDB;&#x884C;&#x91C7;&#x6837;&#xFF1A;</p>
+<pre><code>db.setProfilingLevel(1, { sampleRate: 0.42 })
+</code></pre><p>&#x4FEE;&#x6539;&#x540E;&#x7684;&#x91C7;&#x6837;&#x7387;&#x503C;&#x4E5F;&#x9002;&#x7528;&#x4E8E;&#x7CFB;&#x7EDF;&#x65E5;&#x5FD7;&#x3002;</p>
+<p>&#x4ECE; MongoDB 4.0 &#x5F00;&#x59CB;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>db.setProfilingLevel()</code> &#x6765;&#x914D;&#x7F6E; <code>mongos</code> &#x7684; <code>slowms</code> &#x548C; <code>sampleRate</code>&#x3002;&#x5BF9;&#x4E8E; <code>mongos</code>&#xFF0C;<code>slowms</code> &#x548C; <code>sampleRate</code> &#x914D;&#x7F6E;&#x8BBE;&#x7F6E;&#x53EA;&#x5F71;&#x54CD;&#x8BCA;&#x65AD;&#x65E5;&#x5FD7;&#xFF0C;&#x56E0;&#x4E3A; <code>mongos</code> &#x4E0A;&#x4E0D;&#x652F;&#x6301;&#x5206;&#x6790;&#x5668;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x4EE5;&#x4E0B;&#x8BBE;&#x7F6E; mongos &#x5B9E;&#x4F8B;&#x8BB0;&#x5F55;&#x6162;&#x901F;&#x64CD;&#x4F5C;&#x7684;&#x91C7;&#x6837;&#x7387;&#xFF1A;</p>
+<pre><code>db.setProfilingLevel(0, { sampleRate: 0.42 })
+</code></pre><blockquote>
+<p>&#x91CD;&#x8981;&#x7684;</p>
+<p>&#x5F53;<a href="https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.logLevel" target="_blank"><code>logLevel</code></a>&#x8BBE;&#x7F6E;&#x4E3A;&#x65F6;<code>0</code>&#xFF0C;MongoDB &#x4EE5;&#x7531; &#x786E;&#x5B9A;&#x7684;&#x901F;&#x7387; &#x5C06;<em>&#x6162;&#x64CD;&#x4F5C;&#x8BB0;&#x5F55;&#x5230;&#x8BCA;&#x65AD;&#x65E5;&#x5FD7;&#x4E2D;</em><a href="https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-operationProfiling.slowOpSampleRate" target="_blank"><code>slowOpSampleRate</code>&#x3002;</a></p>
+<p>&#x5728;&#x8F83;&#x9AD8;&#x7684;&#x8BBE;&#x7F6E;&#x4E0B;&#xFF0C;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x90FD;&#x4F1A;&#x51FA;&#x73B0;&#x5728;&#x8BCA;&#x65AD;&#x65E5;&#x5FD7;&#x4E2D;&#xFF0C;&#x65E0;&#x8BBA;&#x5176;&#x5EF6;&#x8FDF;&#x5982;&#x4F55;&#xFF0C;&#x4F46;&#x4EE5;&#x4E0B;&#x4F8B;&#x5916;&#xFF1A;<a href="https://www.mongodb.com/docs/manual/release-notes/4.2/#std-label-slow-oplog" target="_blank">&#x8F85;&#x52A9;&#x8282;&#x70B9;</a><a href="https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.logLevel" target="_blank"><code>logLevel</code></a>&#x8BB0;&#x5F55;&#x6162; oplog &#x6761;&#x76EE;&#x6D88;&#x606F;&#x3002;&#x8F85;&#x52A9;&#x8282;&#x70B9;&#x4EC5;&#x8BB0;&#x5F55;&#x6162; oplog &#x6761;&#x76EE;&#xFF1B;&#x589E;&#x52A0;&#x4E0D;&#x8BB0;&#x5F55;&#x6240;&#x6709; oplog &#x6761;&#x76EE;&#x3002;<a href="https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.logLevel" target="_blank"><code>logLevel</code></a></p>
+</blockquote>
+<p>&#x8BF7;&#x53C2;&#x9605;&#x300A;<a href="https://www.mongodb.com/docs/manual/tutorial/manage-the-database-profiler/#std-label-db-profiling-sharding" target="_blank">&#x6570;&#x636E;&#x5E93;&#x5206;&#x6790;&#x548C;&#x5206;&#x7247;</a>&#x300B;&#x3002;</p>
+<h4 id="&#x8BBE;&#x7F6E;filter&#x4EE5;&#x786E;&#x5B9A;&#x88AB;&#x5206;&#x6790;&#x7684;&#x64CD;&#x4F5C;">&#x8BBE;&#x7F6E;Filter&#x4EE5;&#x786E;&#x5B9A;&#x88AB;&#x5206;&#x6790;&#x7684;&#x64CD;&#x4F5C;</h4>
+<p><em>4.4.2&#x7248;&#x672C;&#x4E2D;&#x7684;&#x65B0;&#x589E;&#x529F;&#x80FD;</em>&#x3002;</p>
+<p>&#x60A8;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;Filter&#x6765;&#x63A7;&#x5236;&#x5206;&#x6790;&#x548C;&#x8BB0;&#x5F55;&#x54EA;&#x4E9B;&#x64CD;&#x4F5C;&#x3002;&#x60A8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x65B9;&#x5F0F;&#x4E4B;&#x4E00;&#x8BBE;&#x7F6E;&#x5206;&#x6790;&#x8FC7;&#x6EE4;&#x5668;&#xFF1A;</p>
+<ul>
+<li>&#x4F7F;&#x7528; <a href="https://www.mongodb.com/docs/manual/reference/command/profile/#mongodb-dbcommand-dbcmd.profile" target="_blank">profile</a> &#x547D;&#x4EE4;&#x6216; <a href="https://www.mongodb.com/docs/manual/reference/method/db.setProfilingLevel/#mongodb-method-db.setProfilingLevel" target="_blank">db.setProfilingLevel()</a> shell &#x65B9;&#x6CD5;&#x8BBE;&#x7F6E; filter &#x7684;&#x503C;&#x3002;</li>
+<li>&#x5728;<a href="https://www.mongodb.com/docs/manual/reference/configuration-options/#std-label-configuration-options" target="_blank">&#x914D;&#x7F6E;&#x6587;&#x4EF6;</a>&#x4E2D;&#x8BBE;&#x7F6E; <a href="https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-operationProfiling.filter" target="_blank">filter</a> &#x7684;&#x503C;&#x3002;</li>
+</ul>
+<p>&#x5BF9;&#x4E8E;<a href="https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod" target="_blank"><code>mongod</code></a>&#xFF0C;&#x8BE5;<code>filter</code>&#x4F1A;&#x5F71;&#x54CD;&#x8BCA;&#x65AD;&#x65E5;&#x5FD7;&#x548C;&#x5206;&#x6790;&#x5668;&#xFF08;&#x5982;&#x679C;&#x542F;&#x7528;&#xFF09;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E; mongos &#x5B9E;&#x4F8B;&#xFF0C;&#x8BE5;<code>filter</code>&#x4EC5;&#x5F71;&#x54CD;&#x8BCA;&#x65AD;&#x65E5;&#x5FD7;&#xFF0C;&#x4E0D;&#x5F71;&#x54CD;&#x5206;&#x6790;&#x5668;&#xFF0C;&#x56E0;&#x4E3A; mongos &#x4E0A;&#x4E0D;&#x652F;&#x6301;&#x5206;&#x6790;&#x5668;&#x3002;</p>
+<blockquote>
+<p>&#x7B14;&#x8BB0;</p>
+<p><code>filter</code>&#x8BBE;&#x7F6E;&#x5206;&#x6790;&#x540E;&#xFF0C; <a href="https://www.mongodb.com/docs/manual/reference/method/db.setProfilingLevel/#std-label-set-profiling-level-options-slowms" target="_blank">slowms</a>&#x548C;<a href="https://www.mongodb.com/docs/manual/reference/method/db.setProfilingLevel/#std-label-set-profiling-level-options-sampleRate" target="_blank">sampleRate</a>&#x9009;&#x9879;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#x8BCA;&#x65AD;&#x65E5;&#x5FD7;&#x6216;&#x5206;&#x6790;&#x5668;&#x3002;</p>
+</blockquote>
+<p>&#x4F8B;&#x5982;&#xFF0C;<a href="https://www.mongodb.com/docs/manual/reference/method/db.setProfilingLevel/#mongodb-method-db.setProfilingLevel" target="_blank"><code>db.setProfilingLevel()</code></a>&#x5BF9;&#x4E00;&#x4E2A;<a href="https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod" target="_blank"><code>mongod</code></a>&#x5B9E;&#x4F8B;&#x8BBE;&#x7F6E;&#x5982;&#x4E0B;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>&#x5206;&#x6790;&#x7EA7;&#x522B;&#x4E3A; 2</li>
+<li><a href="https://www.mongodb.com/docs/manual/reference/method/db.setProfilingLevel/#std-label-set-profiling-level-options-filter" target="_blank">filter</a> &#x4E3A; { op: &quot;query&quot;, millis: { $gt: 2000 } }&#xFF0C;&#x8FD9;&#x4F1A;&#x5BFC;&#x81F4;&#x5206;&#x6790;&#x5668;&#x4EC5;&#x8BB0;&#x5F55;&#x6267;&#x884C;&#x65F6;&#x95F4;&#x8D85;&#x8FC7;2&#x79D2;&#x7684;&#x67E5;&#x8BE2;&#x64CD;&#x4F5C;&#x3002;</li>
+</ul>
+<pre><code>db.setProfilingLevel( 2, { filter: { op: &quot;query&quot;, millis: { $gt: 2000 } } } )
+</code></pre><h4 id="&#x67E5;&#x770B;&#x5206;&#x6790;&#x7EA7;&#x522B;">&#x67E5;&#x770B;&#x5206;&#x6790;&#x7EA7;&#x522B;</h4>
+<p>&#x8981;&#x67E5;&#x770B;<a href="https://www.mongodb.com/docs/manual/tutorial/manage-the-database-profiler/#std-label-database-profiling-levels" target="_blank">&#x5206;&#x6790;&#x7EA7;&#x522B;</a>&#xFF0C;<a href="https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh" target="_blank"><code>mongosh</code>:</a></p>
+<pre><code>db.getProfilingStatus()
+</code></pre><p>shell &#x8FD4;&#x56DE;&#x7C7B;&#x4F3C;&#x4E8E;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#x7684;&#x6587;&#x6863;&#xFF1A;</p>
+<pre><code>{ &quot;was&quot; : 0, &quot;slowms&quot; : 100, &quot;sampleRate&quot; : 1.0, &quot;ok&quot; : 1 }
+</code></pre><p>&#x8BE5;<code>was</code>&#x5B57;&#x6BB5;&#x6307;&#x793A;&#x5F53;&#x524D;&#x7684;&#x5206;&#x6790;&#x7EA7;&#x522B;&#x3002;</p>
+<p>&#x8BE5;<code>slowms</code>&#x5B57;&#x6BB5;&#x6307;&#x793A;&#x64CD;&#x4F5C;&#x65F6;&#x95F4;&#x9608;&#x503C;&#xFF0C;&#x4EE5;&#x6BEB;&#x79D2;&#x4E3A;&#x5355;&#x4F4D;&#xFF0C;&#x8D85;&#x8FC7;&#x8BE5;&#x9608;&#x503C;&#x64CD;&#x4F5C;&#x88AB;&#x8BA4;&#x4E3A;&#x662F;<em>&#x7F13;&#x6162;&#x7684;</em>&#x3002;</p>
+<p>&#x8BE5;&#x5B57;&#x6BB5;&#x6307;&#x793A;&#x5E94;&#x5206;&#x6790;&#x7684;<em>&#x7F13;&#x6162;</em><code>sampleRate</code>&#x64CD;&#x4F5C;&#x7684;&#x767E;&#x5206;&#x6BD4;&#x3002;</p>
+<h4 id="&#x7981;&#x7528;&#x5206;&#x6790;">&#x7981;&#x7528;&#x5206;&#x6790;</h4>
+<p>&#x8981;&#x7981;&#x7528;&#x5206;&#x6790;&#xFF0C;&#x8BF7;&#x4F7F;&#x7528; <a href="https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh" target="_blank"><code>mongosh</code>:</a></p>
+<pre><code>db.setProfilingLevel(0)
+</code></pre><h4 id="&#x542F;&#x7528;&#x6574;&#x4E2A;mongod&#x5B9E;&#x4F8B;&#x7684;&#x5206;&#x6790;">&#x542F;&#x7528;&#x6574;&#x4E2A;<code>mongod</code>&#x5B9E;&#x4F8B;&#x7684;&#x5206;&#x6790;</h4>
+<p>&#x4E3A;&#x4E86;&#x5728;&#x6D4B;&#x8BD5;&#x73AF;&#x5883;&#x4E2D;&#x8FDB;&#x884C;&#x5F00;&#x53D1;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x4E3A;&#x6574;&#x4E2A;<a href="https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod" target="_blank"><code>mongod</code></a>&#x5B9E;&#x4F8B;&#x542F;&#x7528;&#x6570;&#x636E;&#x5E93;&#x5206;&#x6790;&#x3002;&#x5206;&#x6790;&#x7EA7;&#x522B;&#x9002;&#x7528;&#x4E8E; <a href="https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod" target="_blank"><code>mongod</code></a>&#x5B9E;&#x4F8B;&#x63D0;&#x4F9B;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x5E93;&#x3002;</p>
+<p>&#x8981;&#x542F;&#x7528;&#x5B9E;&#x4F8B;&#x5206;&#x6790;<a href="https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod" target="_blank"><code>mongod</code></a>&#xFF0C;&#x8BF7;&#x5728;&#x542F;&#x52A8;&#x65F6;&#x4F20;&#x9012;&#x4EE5;&#x4E0B;&#x9009;&#x9879;<a href="https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod" target="_blank"><code>mongod</code></a>&#x3002;</p>
+<pre><code>mongod --profile 1 --slowms 15 --slowOpSampleRate 0.5
+</code></pre><p>&#x6216;&#x8005;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x5728;<a href="https://www.mongodb.com/docs/manual/reference/configuration-options/" target="_blank">&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x6307;&#x5B9A;</a><a href="https://www.mongodb.com/docs/manual/reference/configuration-options/#std-label-operation-profiling-configuration-options" target="_blank">&#x64CD;&#x4F5C;Profiling </a><a href="https://www.mongodb.com/docs/manual/reference/configuration-options/" target="_blank">&#x3002;</a></p>
+<p>&#x8FD9;&#x4F1A;&#x5C06;&#x5206;&#x6790;&#x7EA7;&#x522B;&#x8BBE;&#x7F6E;&#x4E3A;<code>1</code>&#xFF0C;&#x5C06;&#x6162;&#x901F;&#x64CD;&#x4F5C;&#x5B9A;&#x4E49;&#x4E3A;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x8D85;&#x8FC7;<code>15</code>&#x6BEB;&#x79D2;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x5E76;&#x6307;&#x5B9A;&#x4EC5;&#x5E94;&#x5206;&#x6790;50% &#x7684;<em>&#x6162;&#x901F;&#x64CD;&#x4F5C;&#x3002;</em><a href="https://www.mongodb.com/docs/manual/tutorial/manage-the-database-profiler/#footnote-slow-oplogs" target="_blank">[ 2 ]</a></p>
+<p>&#x5F53; logLevel &#x8BBE;&#x7F6E;&#x4E3A; 0 &#x65F6;&#xFF0C;slowms &#x548C; slowOpSampleRate &#x4E5F;&#x4F1A;&#x5F71;&#x54CD;&#x8BB0;&#x5F55;&#x5230;&#x8BCA;&#x65AD;&#x65E5;&#x5FD7;&#x4E2D;&#x7684;&#x64CD;&#x4F5C;&#x3002;slowms &#x548C; slowOpSampleRate &#x4E5F;&#x53EF;&#x7528;&#x4E8E;&#x914D;&#x7F6E; mongos &#x7684;&#x8BCA;&#x65AD;&#x65E5;&#x5FD7;&#x8BB0;&#x5F55;&#x3002;[2]</p>
+<blockquote>
+<p>&#x63D0;&#x793A;</p>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x770B;&#xFF1A;</p>
+<ul>
+<li><a href="https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-operationProfiling.mode" target="_blank"><code>mode</code></a></li>
+<li><a href="https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-operationProfiling.slowOpThresholdMs" target="_blank"><code>slowOpThresholdMs</code></a></li>
+<li><a href="https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-operationProfiling.slowOpSampleRate" target="_blank"><code>slowOpSampleRate</code></a></li>
+</ul>
+</blockquote>
+<h4 id="&#x6570;&#x636E;&#x5E93;&#x5206;&#x6790;&#x548C;&#x5206;&#x7247;">&#x6570;&#x636E;&#x5E93;&#x5206;&#x6790;&#x548C;&#x5206;&#x7247;</h4>
+<p>&#x60A8;<em>&#x65E0;&#x6CD5;</em>&#x5728;<a href="https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos" target="_blank"><code>mongos</code></a>&#x5B9E;&#x4F8B;&#x4E0A;&#x542F;&#x7528;&#x5206;&#x6790;&#x3002;&#x8981;&#x5728;&#x5206;&#x7247;&#x96C6;&#x7FA4;&#x4E2D;&#x542F;&#x7528;&#x5206;&#x6790;&#xFF0C;&#x60A8;&#x5FC5;&#x987B;&#x4E3A;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;<a href="https://www.mongodb.com/docs/manual/reference/program/mongod/#mongodb-binary-bin.mongod" target="_blank"><code>mongod</code></a>&#x5B9E;&#x4F8B;&#x542F;&#x7528;&#x5206;&#x6790;&#x3002;</p>
+<p>&#x4F46;&#x662F;&#xFF0C;&#x4ECE; MongoDB 4.0 &#x5F00;&#x59CB;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;<a href="https://www.mongodb.com/docs/manual/reference/program/mongos/#std-option-mongos.--slowms" target="_blank"><code>--slowms</code></a>&#x548C;<a href="https://www.mongodb.com/docs/manual/reference/program/mongos/#std-option-mongos.--slowOpSampleRate" target="_blank"><code>slowOpSampleRate</code></a>on<a href="https://www.mongodb.com/docs/manual/reference/program/mongos/#mongodb-binary-bin.mongos" target="_blank"><code>mongos</code></a>&#x6765;&#x914D;&#x7F6E;&#x6162;&#x901F;&#x64CD;&#x4F5C;&#x7684;&#x8BCA;&#x65AD;&#x65E5;&#x5FD7;&#x3002;</p>
+<h4 id="&#x67E5;&#x770B;&#x5206;&#x6790;&#x5668;&#x6570;&#x636E;">&#x67E5;&#x770B;&#x5206;&#x6790;&#x5668;&#x6570;&#x636E;</h4>
+<p>&#x6570;&#x636E;&#x5E93;&#x63A2;&#x67E5;&#x5668;&#x5728; <a href="https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.profile" target="_blank"><code>system.profile</code></a>&#x96C6;&#x5408;&#x4E2D;&#x8BB0;&#x5F55;&#x6709;&#x5173;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x7684;&#x4FE1;&#x606F;&#x3002;</p>
+<p>&#x8981;&#x67E5;&#x770B;&#x5206;&#x6790;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x67E5;&#x8BE2;<a href="https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.profile" target="_blank"><code>system.profile</code></a>&#x96C6;&#x5408;&#x3002;&#x8981;&#x67E5;&#x770B;&#x793A;&#x4F8B;&#x67E5;&#x8BE2;&#xFF0C;&#x8BF7;&#x53C2;&#x9605; <a href="https://www.mongodb.com/docs/manual/tutorial/manage-the-database-profiler/#std-label-database-profiling-example-queries" target="_blank">Profiler &#x6570;&#x636E;&#x67E5;&#x8BE2;&#x793A;&#x4F8B;</a>&#x3002;&#x6709;&#x5173;&#x8F93;&#x51FA;&#x6570;&#x636E;&#x7684;&#x8BF4;&#x660E;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;<a href="https://www.mongodb.com/docs/manual/reference/database-profiler/" target="_blank">&#x6570;&#x636E;&#x5E93;&#x63A2;&#x67E5;&#x5668;&#x8F93;&#x51FA;&#x3002;</a></p>
+<p>&#x4ECE; MongoDB 4.4 &#x5F00;&#x59CB;&#xFF0C;&#x4E0D;&#x518D;&#x53EF;&#x80FD;&#x4ECE;<a href="https://www.mongodb.com/docs/manual/core/transactions/#std-label-transactions" target="_blank">&#x4E8B;&#x52A1;</a><a href="https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.profile" target="_blank"><code>system.profile</code></a>&#x5185;&#x5BF9;&#x96C6;&#x5408; &#x6267;&#x884C;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;&#xFF0C;&#x5305;&#x62EC;&#x8BFB;&#x53D6;<a href="https://www.mongodb.com/docs/manual/core/transactions/#std-label-transactions" target="_blank">&#x3002;</a></p>
+<blockquote>
+<p>&#x63D0;&#x793A;</p>
+<p>&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<a href="https://www.mongodb.com/docs/manual/reference/operator/query/comment/#mongodb-query-op.-comment" target="_blank"><code>$comment</code></a>&#x5C06;&#x6570;&#x636E;&#x6DFB;&#x52A0;&#x5230;&#x67E5;&#x8BE2;&#x8C13;&#x8BCD;&#xFF0C;&#x4EE5;&#x4FBF;&#x66F4;&#x8F7B;&#x677E;&#x5730;&#x5206;&#x6790;&#x63A2;&#x67E5;&#x5668;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+</blockquote>
+<h4 id="profiler-&#x6570;&#x636E;&#x67E5;&#x8BE2;&#x793A;&#x4F8B;">Profiler &#x6570;&#x636E;&#x67E5;&#x8BE2;&#x793A;&#x4F8B;</h4>
+<p>&#x6B64;&#x90E8;&#x5206;&#x663E;&#x793A;&#x5BF9;<a href="https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.profile" target="_blank"><code>system.profile</code></a> &#x96C6;&#x5408;&#x7684;&#x793A;&#x4F8B;&#x67E5;&#x8BE2;&#x3002;&#x6709;&#x5173;&#x67E5;&#x8BE2;&#x8F93;&#x51FA;&#x7684;&#x8BF4;&#x660E;&#xFF0C;&#x8BF7;&#x53C2;&#x9605; <a href="https://www.mongodb.com/docs/manual/reference/database-profiler/" target="_blank">&#x6570;&#x636E;&#x5E93;&#x63A2;&#x67E5;&#x5668;&#x8F93;&#x51FA;&#x3002;</a></p>
+<p>&#x8981;&#x8FD4;&#x56DE;&#x96C6;&#x5408;&#x4E2D;&#x6700;&#x65B0;&#x7684; 10 &#x4E2A;&#x65E5;&#x5FD7;&#x6761;&#x76EE;<a href="https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.profile" target="_blank"><code>system.profile</code></a> &#xFF0C;&#x8BF7;&#x8FD0;&#x884C;&#x7C7B;&#x4F3C;&#x4E8E;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#x7684;&#x67E5;&#x8BE2;&#xFF1A;</p>
+<pre><code>db.system.profile.find().limit(10).sort( { ts : -1 } ).pretty()
+</code></pre><p>&#x8981;&#x8FD4;&#x56DE;&#x9664;&#x547D;&#x4EE4;&#x64CD;&#x4F5C; ( <a href="https://www.mongodb.com/docs/manual/reference/glossary/#std-term--cmd" target="_blank">$cmd</a> ) &#x4E4B;&#x5916;&#x7684;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#xFF0C;&#x8BF7;&#x8FD0;&#x884C;&#x7C7B;&#x4F3C;&#x4E8E;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#x7684;&#x67E5;&#x8BE2;&#xFF1A;</p>
+<pre><code>db.system.profile.find( { op: { $ne : &apos;command&apos; } } ).pretty()
+</code></pre><p>&#x8981;&#x8FD4;&#x56DE;&#x7279;&#x5B9A;&#x96C6;&#x5408;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x8BF7;&#x8FD0;&#x884C;&#x7C7B;&#x4F3C;&#x4E8E;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#x7684;&#x67E5;&#x8BE2;&#x3002;&#x6B64;&#x793A;&#x4F8B;&#x8FD4;&#x56DE;<code>mydb</code>&#x6570;&#x636E;&#x5E93; <code>test</code>&#x96C6;&#x5408;&#x4E2D;&#x7684;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<pre><code>db.system.profile.find( { ns : &apos;mydb.test&apos; } ).pretty()
+</code></pre><p>&#x8981;&#x8FD4;&#x56DE;&#x6162;&#x4E8E;<code>5</code>&#x6BEB;&#x79D2;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x8BF7;&#x8FD0;&#x884C;&#x7C7B;&#x4F3C;&#x4E8E;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#x7684;&#x67E5;&#x8BE2;&#xFF1A;</p>
+<pre><code>db.system.profile.find( { millis : { $gt : 5 } } ).pretty()
+</code></pre><p>&#x8981;&#x8FD4;&#x56DE;&#x7279;&#x5B9A;&#x65F6;&#x95F4;&#x8303;&#x56F4;&#x5185;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x8FD0;&#x884C;&#x7C7B;&#x4F3C;&#x4E8E;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#x7684;&#x67E5;&#x8BE2;&#xFF1A;</p>
+<pre><code>db.system.profile.find({
+  ts : {
+    $gt: new ISODate(&quot;2012-12-09T03:00:00Z&quot;),
+    $lt: new ISODate(&quot;2012-12-09T03:40:00Z&quot;)
+  }
+}).pretty()
+</code></pre><p>&#x4EE5;&#x4E0B;&#x793A;&#x4F8B;&#x67E5;&#x770B;&#x65F6;&#x95F4;&#x8303;&#x56F4;&#xFF0C;<code>user</code> &#x4ECE;&#x8F93;&#x51FA;&#x4E2D;&#x9690;&#x85CF;&#x8BE5;&#x5B57;&#x6BB5;&#x4EE5;&#x4F7F;&#x5176;&#x66F4;&#x6613;&#x4E8E;&#x9605;&#x8BFB;&#xFF0C;&#x5E76;&#x6309;&#x6BCF;&#x4E2A;&#x64CD;&#x4F5C;&#x8FD0;&#x884C;&#x6240;&#x9700;&#x7684;&#x65F6;&#x95F4;&#x5BF9;&#x7ED3;&#x679C;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#xFF1A;</p>
+<pre><code>db.system.profile.find({
+  ts : {
+    $gt: new ISODate(&quot;2011-07-12T03:00:00Z&quot;),
+    $lt: new ISODate(&quot;2011-07-12T03:40:00Z&quot;)
+  }
+}, { user: 0 }).sort( { millis: -1 } )
+</code></pre><h4 id="&#x663E;&#x793A;&#x6700;&#x8FD1;&#x7684;&#x4E94;&#x4E2A;&#x4E8B;&#x4EF6;">&#x663E;&#x793A;&#x6700;&#x8FD1;&#x7684;&#x4E94;&#x4E2A;&#x4E8B;&#x4EF6;</h4>
+<p>&#x5728;&#x542F;&#x7528;&#x4E86;&#x5206;&#x6790;&#x7684;&#x6570;&#x636E;&#x5E93;&#x4E0A;&#xFF0C;<code>show profile</code>&#x5E2E;&#x52A9;&#x7A0B;&#x5E8F;<a href="https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh" target="_blank"><code>mongosh</code></a>&#x663E;&#x793A;&#x6267;&#x884C;&#x65F6;&#x95F4;&#x81F3;&#x5C11;&#x4E3A; 1 &#x6BEB;&#x79D2;&#x7684;&#x6700;&#x8FD1; 5 &#x4E2A;&#x64CD;&#x4F5C;&#x3002;&#x53D1;&#x51FA;<code>show profile</code> &#x81EA;<a href="https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh" target="_blank"><code>mongosh</code></a>&#xFF0C; &#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>show profile
+</code></pre><h3 id="&#x5206;&#x6790;&#x5668;&#xFF08;profiler&#xFF09;&#x5F00;&#x9500;">&#x5206;&#x6790;&#x5668;&#xFF08;profiler&#xFF09;&#x5F00;&#x9500;</h3>
+<p>&#x542F;&#x7528;&#x540E;&#xFF0C;&#x5206;&#x6790;&#x4F1A;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x6027;&#x80FD;&#x4EA7;&#x751F;&#x5F71;&#x54CD;&#xFF0C;&#x5C24;&#x5176;&#x662F;&#x5728;&#x914D;&#x7F6E;&#x4E86; <a href="https://www.mongodb.com/docs/manual/tutorial/manage-the-database-profiler/#std-label-database-profiling-level" target="_blank">&#x5206;&#x6790;&#x7EA7;&#x522B;</a>2&#xFF0C;&#x6216;&#x8005;&#x5F53;&#x4F7F;&#x7528;&#x4F4E;<a href="https://www.mongodb.com/docs/manual/tutorial/manage-the-database-profiler/#std-label-database-profiling-specify-slowms-threshold" target="_blank">&#x4E34;&#x754C;&#x70B9;</a>&#x5206;&#x6790;&#x7EA7;&#x522B;&#x4E3A; 1 &#x7684;&#x503C;&#x3002;&#x5206;&#x6790;&#x8FD8;&#x4F1A;&#x6D88;&#x8017;&#x78C1;&#x76D8;&#x7A7A;&#x95F4;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4F1A;&#x8BB0;&#x5F55;&#x5230;&#x96C6;&#x5408;<a href="https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.profile" target="_blank"><code>system.profile</code></a> &#x548C; MongoDB <a href="https://www.mongodb.com/docs/manual/reference/program/mongod/#std-option-mongod.--logpath" target="_blank"><code>logfile</code></a>&#x3002;&#x5728;&#x751F;&#x4EA7;&#x90E8;&#x7F72;&#x4E0A;&#x914D;&#x7F6E;&#x548C;&#x542F;&#x7528;&#x63A2;&#x67E5;&#x5668;&#x4E4B;&#x524D;&#xFF0C;&#x8BF7;&#x4ED4;&#x7EC6;&#x8003;&#x8651;&#x4EFB;&#x4F55;&#x6027;&#x80FD;&#x548C;&#x5B89;&#x5168;&#x5F71;&#x54CD;&#x3002;</p>
+<h4 id="systemprofile-&#x96C6;&#x5408;">system.profile &#x96C6;&#x5408;</h4>
+<p>&#x8BE5;<a href="https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.profile" target="_blank"><code>system.profile</code></a>&#x96C6;&#x5408;&#x662F;&#x4E00;&#x4E2A; <a href="https://www.mongodb.com/docs/manual/reference/glossary/#std-term-capped-collection" target="_blank">&#x4E0A;&#x9650;&#x96C6;&#x5408;</a>&#xFF0C;&#x9ED8;&#x8BA4;&#x5927;&#x5C0F;&#x4E3A; 1 MB&#x3002;&#x8FD9;&#x79CD;&#x5927;&#x5C0F;&#x7684;&#x96C6;&#x5408;&#x901A;&#x5E38;&#x53EF;&#x4EE5;&#x5B58;&#x50A8;&#x6570;&#x5343;&#x4E2A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x6587;&#x6863;&#xFF0C;&#x4F46;&#x67D0;&#x4E9B;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x53EF;&#x80FD;&#x4F1A;&#x5728;&#x6BCF;&#x4E2A;&#x64CD;&#x4F5C;&#x4E2D;&#x4F7F;&#x7528;&#x6216;&#x591A;&#x6216;&#x5C11;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x6570;&#x636E;&#x3002;&#x5982;&#x679C;&#x60A8;&#x9700;&#x8981;&#x66F4;&#x6539;&#x96C6;&#x5408;&#x7684;&#x5927;&#x5C0F; <a href="https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.profile" target="_blank"><code>system.profile</code></a>&#xFF0C;&#x8BF7;&#x6309;&#x7167;&#x4EE5;&#x4E0B;&#x6B65;&#x9AA4;&#x64CD;&#x4F5C;&#x3002;</p>
+<h4 id="systemprofile&#x66F4;&#x6539;&#x4E3B;&#x8282;&#x70B9;&#x4E0A;&#x96C6;&#x5408;&#x7684;&#x5927;&#x5C0F;"><code>system.profile</code>&#x66F4;&#x6539;&#x4E3B;&#x8282;&#x70B9;&#x4E0A;&#x96C6;&#x5408;&#x7684;&#x5927;&#x5C0F;</h4>
+<p><a href="https://www.mongodb.com/docs/manual/reference/glossary/#std-term-primary" target="_blank">&#x8981;&#x66F4;&#x6539;&#x4E3B;&#x8282;&#x70B9;</a><a href="https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.profile" target="_blank"><code>system.profile</code></a>&#x4E0A;&#x96C6;&#x5408;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x60A8;&#x5FC5;&#x987B;&#xFF1A;</p>
+<ol>
+<li>&#x7981;&#x7528;&#x5206;&#x6790;&#x3002;</li>
+<li>&#x653E;&#x4E0B;<a href="https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.profile" target="_blank"><code>system.profile</code></a> &#x6536;&#x85CF;&#x3002;</li>
+<li>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;<a href="https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.profile" target="_blank"><code>system.profile</code></a> &#x96C6;&#x5408;&#x3002;</li>
+<li>&#x91CD;&#x65B0;&#x542F;&#x7528;&#x5206;&#x6790;&#x3002;</li>
+</ol>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5B57;&#x8282; (4 MB)<a href="https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.profile" target="_blank"><code>system.profile</code></a>&#x7684;&#x65B0;&#x96C6;&#x5408;<code>4000000</code>&#xFF0C;&#x8BF7;&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x64CD;&#x4F5C;&#x5E8F;&#x5217; <a href="https://www.mongodb.com/docs/mongodb-shell/#mongodb-binary-bin.mongosh" target="_blank"><code>mongosh</code>:</a></p>
+<pre><code>db.setProfilingLevel(0)
+
+db.system.profile.drop()
+
+db.createCollection( &quot;system.profile&quot;, { capped: true, size:4000000 } )
+
+db.setProfilingLevel(1)
+</code></pre><h4 id="&#x66F4;&#x6539;systemprofile&#x8F85;&#x52A9;&#x8282;&#x70B9;&#x4E0A;&#x96C6;&#x5408;&#x7684;&#x5927;&#x5C0F;">&#x66F4;&#x6539;<code>system.profile</code>&#x8F85;&#x52A9;&#x8282;&#x70B9;&#x4E0A;&#x96C6;&#x5408;&#x7684;&#x5927;&#x5C0F;</h4>
+<p><a href="https://www.mongodb.com/docs/manual/reference/glossary/#std-term-secondary" target="_blank">&#x8981;&#x66F4;&#x6539;&#x8F85;&#x52A9;</a><a href="https://www.mongodb.com/docs/manual/reference/system-collections/#mongodb-data--database-.system.profile" target="_blank"><code>system.profile</code></a>&#x8282;&#x70B9;&#x4E0A;&#x7684;&#x96C6;&#x5408;&#x5927;&#x5C0F;&#xFF0C;&#x60A8;&#x5FC5;&#x987B;&#x505C;&#x6B62;&#x8F85;&#x52A9;&#x8282;&#x70B9;&#xFF0C;&#x5C06;&#x5176;&#x4F5C;&#x4E3A;&#x72EC;&#x7ACB;&#x8FD0;&#x884C;&#xFF0C;&#x7136;&#x540E;&#x6267;&#x884C;&#x4E0A;&#x8FF0;&#x6B65;&#x9AA4;&#x3002;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x4F5C;&#x4E3A;&#x526F;&#x672C;&#x96C6;&#x7684;&#x6210;&#x5458;&#x91CD;&#x65B0;&#x542F;&#x52A8;&#x72EC;&#x7ACB;&#x670D;&#x52A1;&#x5668;&#x3002;&#x6709;&#x5173;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;<a href="https://www.mongodb.com/docs/manual/tutorial/perform-maintence-on-replica-set-members/" target="_blank">&#x5BF9;&#x526F;&#x672C;&#x96C6;&#x6210;&#x5458;&#x6267;&#x884C;&#x7EF4;&#x62A4;</a><a href="https://www.mongodb.com/docs/manual/tutorial/perform-maintence-on-replica-set-members/" target="_blank">&#x3002;</a></p>
+<p>&#x4ECE;&#x7248;&#x672C; 4.2 &#x5F00;&#x59CB;&#xFF0C;&#x526F;&#x672C;&#x96C6;&#x7684;&#x6B21;&#x8981;&#x6210;&#x5458;&#x73B0;&#x5728;&#x4F1A;&#x8BB0;&#x5F55;&#x5E94;&#x7528;&#x65F6;&#x95F4;&#x8D85;&#x8FC7;&#x6162;&#x901F;&#x64CD;&#x4F5C;&#x9608;&#x503C;&#x7684;<a href="https://www.mongodb.com/docs/manual/core/replica-set-oplog/#std-label-slow-oplog-application" target="_blank">oplog &#x6761;&#x76EE;&#x3002;</a>&#x8FD9;&#x4E9B;&#x7F13;&#x6162;&#x7684; oplog &#x6D88;&#x606F;&#xFF1A;</p>
+<ul>
+<li>&#x8BB0;&#x5F55;&#x5728; &#x4E2D;&#x7684;&#x8F85;&#x52A9;&#x8282;&#x70B9; <a href="https://www.mongodb.com/docs/manual/reference/program/mongod/#std-option-mongod.--logpath" target="_blank"><code>diagnostic log</code>&#x3002;</a></li>
+<li>&#x88AB;&#x8BB0;&#x5F55;&#x5728; REPL &#x7EC4;&#x4EF6;&#x4E0B;&#xFF0C;&#x6587;&#x672C;&#x4E3A; <code>applied op: &lt;oplog entry&gt; took &lt;num&gt;ms</code>&#x3002;</li>
+<li>&#x4E0D;&#x4F9D;&#x8D56;&#x65E5;&#x5FD7;&#x7EA7;&#x522B;&#xFF08;&#x65E0;&#x8BBA;&#x662F;&#x7CFB;&#x7EDF;&#x7EA7;&#x522B;&#x8FD8;&#x662F;&#x7EC4;&#x4EF6;&#x7EA7;&#x522B;&#xFF09;</li>
+<li>&#x4E0D;&#x4F9D;&#x8D56;&#x4E8E;&#x5206;&#x6790;&#x7EA7;&#x522B;&#x3002;</li>
+<li>&#x53EF;&#x80FD;&#x4F1A;&#x53D7;&#x5230; SlowOpSampleRate &#x7684;&#x5F71;&#x54CD;&#xFF0C;&#x5177;&#x4F53;&#x53D6;&#x51B3;&#x4E8E;&#x60A8;&#x7684; MongoDB &#x7248;&#x672C;&#xFF1A;<ul>
+<li>&#x5728; MongoDB 4.2 &#x4E2D;&#xFF0C;&#x8FD9;&#x4E9B;&#x6162;&#x901F; oplog &#x6761;&#x76EE;&#x4E0D;&#x53D7;<a href="https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-operationProfiling.slowOpSampleRate" target="_blank"><code>slowOpSampleRate</code></a>. &#x65E0;&#x8BBA;&#x91C7;&#x6837;&#x7387;&#x5982;&#x4F55;&#xFF0C;MongoDB &#x90FD;&#x4F1A;&#x8BB0;&#x5F55;&#x6240;&#x6709;&#x6162;&#x901F; oplog &#x6761;&#x76EE;&#x3002;</li>
+<li>&#x5728; MongoDB 4.4 &#x53CA;&#x66F4;&#x9AD8;&#x7248;&#x672C;&#x4E2D;&#xFF0C;&#x8FD9;&#x4E9B;&#x7F13;&#x6162;&#x7684; oplog &#x6761;&#x76EE;&#x53D7;&#x5230;<a href="https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-operationProfiling.slowOpSampleRate" target="_blank"><code>slowOpSampleRate</code>.</a></li>
+</ul>
+</li>
+</ul>
+<p>&#x5206;&#x6790;&#x5668;&#x4E0D;&#x4F1A;&#x6355;&#x83B7;&#x6162;&#x7684; oplog &#x6761;&#x76EE;&#x3002;</p>
 <p> &#x53C2;&#x89C1;</p>
 <p>&#x539F;&#x6587; - <a href="https://docs.mongodb.com/manual/tutorial/manage-the-database-profiler/" target="_blank">Database Profiler</a></p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; &#x4E0A;&#x6D77;&#x9526;&#x6728;&#x4FE1;&#x606F;&#x6280;&#x672F;&#x6709;&#x9650;&#x516C;&#x53F8; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2023-08-25 18:42:46
+2023-09-01 17:10:26
 </span></footer>
                                 
                                 </section>
@@ -21981,7 +22208,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"数据库分析器","level":"1.15.4.2","depth":3,"next":{"title":"数据库分析器输出","level":"1.15.4.2.1","depth":4,"path":"13-administration/04-analyzing-mongodb-performance/02-manage-the-database-profiler/01-database-profiler.md","ref":"13-administration/04-analyzing-mongodb-performance/02-manage-the-database-profiler/01-database-profiler.md","articles":[]},"previous":{"title":"调整连接池设置","level":"1.15.4.1.1","depth":4,"path":"13-administration/04-analyzing-mongodb-performance/01-Connection Pool Overview/01-Tuning-Your-Connection-Pool-Settings.md","ref":"13-administration/04-analyzing-mongodb-performance/01-Connection Pool Overview/01-Tuning-Your-Connection-Pool-Settings.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hide-element","-sharing","tbfed-pagefooter","github-buttons","github","chapter-fold","expandable-chapters","pageview-count","edit-link","back-to-top-button","-lunr","-search","search-pro","splitter","page-toc-button","auto-scroll-table","flexible-alerts","alerts","insert-logo"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 上海锦木信息技术有限公司","modify_label":"文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/whaleal/mongodb-manual-zh"},"splitter":{},"search-pro":{},"auto-scroll-table":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":4,"minTocSize":4},"back-to-top-button":{},"pageview-count":{},"alerts":{},"github-buttons":{"buttons":[{"user":"whaleal","repo":"mongodb-manual-zh","type":"star","count":true,"size":"small"}]},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"edit-link":{"label":"Edit This Page","base":"https://github.com/whaleal/mongodb-manual-zh/tree/dev"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 73px; min-height: 73px","url":"https://docs.whaleal.com/images/whaleal_logo1.png"},"expandable-chapters":{}},"theme":"default","keywords":"MongoDB,Manual,中文手册,操作手册,7.0版本,6.0版本,CSDN,中文手册,持续更新,社区,翻译,github,贴吧,Google,教程,安装配置","author":"hbnking","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MongoDB 中文手册 | MongoD Manual | 中文操作手册 | MongoDB 最新版","language":"zh-hans","gitbook":"*","description":"MongoDB-Manual-zh"},"file":{"path":"13-administration/04-analyzing-mongodb-performance/02-manage-the-database-profiler.md","mtime":"2023-08-25T10:42:46.535Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-28T09:12:43.031Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"数据库分析器","level":"1.15.4.2","depth":3,"next":{"title":"数据库分析器输出","level":"1.15.4.2.1","depth":4,"path":"13-administration/04-analyzing-mongodb-performance/02-manage-the-database-profiler/01-database-profiler.md","ref":"13-administration/04-analyzing-mongodb-performance/02-manage-the-database-profiler/01-database-profiler.md","articles":[]},"previous":{"title":"调整连接池设置","level":"1.15.4.1.1","depth":4,"path":"13-administration/04-analyzing-mongodb-performance/01-Connection Pool Overview/01-Tuning-Your-Connection-Pool-Settings.md","ref":"13-administration/04-analyzing-mongodb-performance/01-Connection Pool Overview/01-Tuning-Your-Connection-Pool-Settings.md","articles":[]},"dir":"ltr"},"config":{"plugins":["hide-element","-sharing","tbfed-pagefooter","github-buttons","github","chapter-fold","expandable-chapters","pageview-count","edit-link","back-to-top-button","-lunr","-search","search-pro","splitter","page-toc-button","auto-scroll-table","flexible-alerts","alerts","insert-logo"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy 上海锦木信息技术有限公司","modify_label":"文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/whaleal/mongodb-manual-zh"},"splitter":{},"search-pro":{},"auto-scroll-table":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":4,"minTocSize":4},"back-to-top-button":{},"pageview-count":{},"alerts":{},"github-buttons":{"buttons":[{"user":"whaleal","repo":"mongodb-manual-zh","type":"star","count":true,"size":"small"}]},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"edit-link":{"label":"Edit This Page","base":"https://github.com/whaleal/mongodb-manual-zh/tree/dev"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 73px; min-height: 73px","url":"https://docs.whaleal.com/images/whaleal_logo1.png"},"expandable-chapters":{}},"theme":"default","keywords":"MongoDB,Manual,中文手册,操作手册,7.0版本,6.0版本,CSDN,中文手册,持续更新,社区,翻译,github,贴吧,Google,教程,安装配置","author":"hbnking","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MongoDB 中文手册 | MongoD Manual | 中文操作手册 | MongoDB 最新版","language":"zh-hans","gitbook":"*","description":"MongoDB-Manual-zh"},"file":{"path":"13-administration/04-analyzing-mongodb-performance/02-manage-the-database-profiler.md","mtime":"2023-09-01T09:10:26.065Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-09-04T03:19:02.857Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
