@@ -6,9 +6,9 @@
 可能有用的链接：
 
 [英文官网用户手册](https://docs.mongodb.com/manual/)<br/>
-[文档翻译认领列表](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md)<br/>
-[文档翻译贡献者名单](https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/List-of-contributors.md)<br/>
-[在线阅读文档 github](https://jinmuinfo.github.io/MongoDB-Manual-zh/)<br/>
+[文档翻译认领列表](https://github.com/whaleal/MongoDB-Manual-zh/blob/master/Document-translation-claim-list.md)<br/>
+[文档翻译贡献者名单](https://github.com/whaleal/MongoDB-Manual-zh/blob/master/List-of-contributors.md)<br/>
+[在线阅读文档 github](https://whaleal.github.io/MongoDB-Manual-zh/)<br/>
 
 
 
@@ -68,7 +68,7 @@
     例子:
 
     ```powershell
-powershell
+    powershell
     ```
     
   * 超链接的引用
@@ -152,13 +152,13 @@ img/docs/06-Aggregation/distinct.bakedsvg.svg
 ```
 比如设置成为 
 ```
-https://docs.jinmu.info/images/agg-pipeline.mp4
+https://docs.whaleal.com/images/agg-pipeline.mp4
 ```
 视屏问题 
 视屏推荐使用video  标签
 例子： 视屏格式 
 ```
-<video style="width:100%;" src="https://docs.jinmu.info/MongoDB-Manual-zh/images/agg-pipeline.mp4" controls> </video>
+<video style="width:100%;" src="https://docs.whaleal.com/MongoDB-Manual-zh/images/agg-pipeline.mp4" controls> </video>
 ```
 
 
@@ -202,8 +202,8 @@ pull request。
 ```
 译者：你的名字
 校对：你的名字
-本文链接：https://docs.jinmu.info/MongoDB-Manual-zh
-原文链接: https://docs.jinmu.info/MongoDB-Manual-zh
+本文链接：https://docs.whaleal.com/MongoDB-Manual-zh
+原文链接: https://docs.whaleal.com/MongoDB-Manual-zh
 最后更新时间：2020-01-01
 ```
 

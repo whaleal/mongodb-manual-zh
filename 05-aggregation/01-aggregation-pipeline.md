@@ -10,7 +10,7 @@
 
 聚合管道是用于数据聚合的框架，其模型基于数据处理管道的概念。文档进入多阶段管道，将文档转换为聚合结果。例如：
 
-<video style="width:100%;" src="https://docs.jinmu.info/MongoDB-Manual-zh/images/agg-pipeline.mp4" controls> </video>
+<video style="width:100%;" src="https://docs.whaleal.com/MongoDB-Manual-zh/images/agg-pipeline.mp4" controls> </video>
 
 在这个例子中
 
