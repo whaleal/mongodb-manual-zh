@@ -1,4 +1,4 @@
-# [MongoDB 中文手册 | MongoDB 中文文档 | 官方手册中文版翻译](https://docs.whaleal.com/MongoDB-Manual-zh/)
+# [MongoDB 中文手册 | MongoDB 中文文档 | 官方手册中文版翻译](https://docs.whaleal.com/mongodb-manual-zh/docs/)
 
   <table>
     <tr> <!-- 第一行数据 -->
