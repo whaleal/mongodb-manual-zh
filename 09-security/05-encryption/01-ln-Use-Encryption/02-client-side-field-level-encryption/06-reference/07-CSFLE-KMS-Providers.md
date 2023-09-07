@@ -72,7 +72,7 @@ CSFLE 支持以下密钥管理服务提供商：
 
 下图描述了使用AWS KMS的支持 CSFLE 的应用程序的架构。
 
-![AWS KMS的支持 CSFLE 的应用程序的架构图](/Users/jinmu/Desktop/mongodb-manual-zh/images/CSFLE-KMS-Providers-02.png)
+![AWS KMS的支持 CSFLE 的应用程序的架构图](../../../../../images/CSFLE-KMS-Providers-02.png)
 
 > 笔记:
 >
@@ -110,7 +110,7 @@ CSFLE 支持以下密钥管理服务提供商：
 
 下图描述了使用 Azure Key Vault 的支持 CSFLE 的应用程序的体系结构.
 
-![Azure Key Vault 的支持 CSFLE 的应用程序的体系结构](/Users/jinmu/Desktop/mongodb-manual-zh/images/CSFLE-KMS-Providers-03.png)
+![Azure Key Vault 的支持 CSFLE 的应用程序的体系结构](../../../../../images/CSFLE-KMS-Providers-03.png)
 
 > 笔记:
 >
@@ -149,7 +149,7 @@ CSFLE 支持以下密钥管理服务提供商：
 
 下图描述了使用 GCP KMS 的支持 CSFLE 的应用程序的架构。
 
-![ GCP KMS 的支持 CSFLE 的应用程序的架构](/Users/jinmu/Desktop/mongodb-manual-zh/images/CSFLE-KMS-Providers-04.png)
+![ GCP KMS 的支持 CSFLE 的应用程序的架构](../../../../../images/CSFLE-KMS-Providers-04.png)
 
 > 笔记:
 >
@@ -190,7 +190,7 @@ CSFLE 支持以下密钥管理服务提供商：
 
 下图描述了使用符合KMIP的密钥提供程序的支持 CSFLE 的应用程序的体系结构。
 
-![符合KMIP的密钥提供程序的支持 CSFLE 的应用程序的体系结构](/Users/jinmu/Desktop/mongodb-manual-zh/images/CSFLE-KMS-Providers-05.png)
+![符合KMIP的密钥提供程序的支持 CSFLE 的应用程序的体系结构](../../../../../images/CSFLE-KMS-Providers-05.png)
 
 > 重要的:
 >
@@ -241,7 +241,7 @@ CSFLE 支持以下密钥管理服务提供商：
 
 下图描述了使用本地密钥提供程序的支持 CSFLE 的应用程序的体系结构。
 
-![本地密钥提供程序的支持 CSFLE 的应用程序的体系结构图](/Users/jinmu/Desktop/mongodb-manual-zh/images/CSFLE-KMS-Providers-06.png)
+![本地密钥提供程序的支持 CSFLE 的应用程序的体系结构图](../../../../../images/CSFLE-KMS-Providers-06.png)
 
 #### kmsProviders 对象
 

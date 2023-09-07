@@ -1,4 +1,4 @@
-# [MongoDB 中文手册 | MongoDB 中文文档 | 官方手册中文版翻译](https://docs.jinmu.info/MongoDB-Manual-zh/)
+# [MongoDB 中文手册 | MongoDB 中文文档 | 官方手册中文版翻译](https://docs.whaleal.com/MongoDB-Manual-zh/)
 
   <table>
     <tr> <!-- 第一行数据 -->
@@ -17,7 +17,7 @@
     </tr>
 </table>
 
- 
+
 
 
 ## 项目介绍

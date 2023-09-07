@@ -201,5 +201,5 @@ MongoDB支持两种分片策略，用于在分片集群之间分发数据。
 
 请点击页面上方 EDIT THIS PAGE 参与校对。
 详见：
-[贡献指南]( https://github.com/JinMuInfo/MongoDB-Manual-zh/blob/master/CONTRIBUTING.md )、
+[贡献指南]( https://github.com/whaleal/MongoDB-Manual-zh/blob/master/CONTRIBUTING.md )、
 [原文链接]( https://docs.mongodb.com/manual/sharding/  )。
